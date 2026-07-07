@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODNOVA studio — Stare strony. Nowe życie.</title>
+<meta name="description" content="Zamieniamy przestarzałe strony internetowe w nowoczesne wizytówki, które sprzedają. Zobacz metamorfozy naszych klientów.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a12;
+  --bg2:#101019;
+  --card:#15151f;
+  --text:#f2f2f7;
+  --muted:#9a9aad;
+  --accent:#7c5cff;
+  --accent2:#00e5b0;
+  --border:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:'Sora',sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,18,.72);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:.02em}
+.logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:32px;font-size:.92rem;color:var(--muted)}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(90deg,var(--accent),#9d7bff);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.9rem;color:#fff;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,255,.4)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+header{position:relative;padding:170px 0 110px;text-align:center}
+.glow{position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;pointer-events:none}
+.glow-1{background:var(--accent);top:-220px;left:-140px}
+.glow-2{background:var(--accent2);top:-120px;right:-200px;opacity:.16}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(255,255,255,.04);padding:7px 16px;border-radius:99px;font-size:.82rem;color:var(--muted);margin-bottom:28px}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2)}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em}
+h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{max-width:620px;margin:26px auto 0;color:var(--muted);font-size:1.12rem}
+.hero-cta{display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)}
+.btn-ghost{border:1px solid var(--border);padding:16px 34px;border-radius:99px;font-weight:600;color:var(--muted);transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--accent2);color:var(--text)}
+
+/* ---------- interactive compare ---------- */
+.compare{max-width:880px;margin:80px auto 0;position:relative;text-align:left}
+.cmp-browser{background:#15151f;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 40px 110px rgba(0,0,0,.6),0 0 0 1px rgba(124,92,255,.08)}
+.cmp-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--border);background:#101019}
+.cmp-dot{width:11px;height:11px;border-radius:50%}
+.cmp-url{flex:1;margin-left:10px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;font-size:.72rem;color:var(--muted);padding:5px 14px}
+.cmp-stage{position:relative;height:350px;user-select:none;touch-action:pan-y;--x:96%}
+.cmp-old,.cmp-new{position:absolute;inset:0;padding:26px 32px;overflow:hidden}
+.cmp-old{background:#d4d0c8;font-family:'Times New Roman',serif;color:#000}
+.cmp-old .fake-title{background:linear-gradient(#316ac5,#1941a5);color:#ff0;font-weight:bold;padding:6px 10px;font-size:1rem;text-align:center;font-family:'Comic Sans MS',cursive}
+.cmp-old .fake-marq{background:#ffff99;color:#c00;font-weight:bold;font-size:.72rem;padding:4px 8px;border:1px dashed #c00;margin:8px 0;white-space:nowrap;overflow:hidden}
+.cmp-old .fake-line{height:7px;background:#909090;margin:9px 2px;border-radius:1px}
+.cmp-old .fake-line.w60{width:60%}
+.cmp-old .fake-line.w80{width:80%}
+.cmp-old .fake-btn{display:inline-block;background:#d4d0c8;border:2px outset #fff;font-size:.72rem;padding:4px 10px;margin:6px 4px 6px 0;font-family:'Comic Sans MS',cursive}
+.cmp-old .fake-img{background:#e8e8e8;border:2px inset #999;width:110px;height:76px;display:inline-block;margin:8px 8px 0 0;font-size:.62rem;color:#777;text-align:center;padding-top:30px;font-family:Arial}
+.cmp-old .fake-count{margin-top:12px;font-size:.7rem;font-family:'Courier New'}
+.cmp-old .fake-count span{background:#000;color:#0f0;padding:2px 7px;letter-spacing:2px}
+.cmp-new{background:radial-gradient(500px 260px at 80% 0%,rgba(124,92,255,.25),transparent),linear-gradient(135deg,#101019,#171226);clip-path:inset(0 0 0 var(--x))}
+.mini-nav{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+.mini-logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.mini-links{display:flex;gap:8px;flex:1}
+.mini-links i{display:block;width:34px;height:6px;border-radius:99px;background:rgba(255,255,255,.18)}
+.mini-cta{width:76px;height:24px;border-radius:99px;background:linear-gradient(90deg,var(--accent),#9d7bff)}
+.mini-kick{width:120px;height:8px;border-radius:99px;background:rgba(0,229,176,.5);margin-bottom:16px}
+.mini-h1{font-family:'Sora';font-weight:800;font-size:1.9rem;line-height:1.15;background:linear-gradient(90deg,#fff,#b9a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mini-sub{width:70%;height:8px;border-radius:99px;background:rgba(255,255,255,.16);margin-top:14px}
+.mini-sub.w50{width:45%}
+.mini-btn{display:inline-block;width:120px;height:34px;border-radius:99px;background:linear-gradient(90deg,var(--accent),#9d7bff);margin-top:20px;box-shadow:0 8px 26px rgba(124,92,255,.45)}
+.mini-cards{display:flex;gap:12px;margin-top:26px}
+.mini-cards div{flex:1;height:52px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--border)}
+.cmp-handle{position:absolute;top:0;bottom:0;left:var(--x);width:3px;background:linear-gradient(180deg,var(--accent),var(--accent2));transform:translateX(-50%);pointer-events:none;z-index:3}
+.cmp-handle::after{content:"◂ przeciągnij ▸";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,var(--accent),#9d7bff);color:#fff;font-family:'Sora';font-weight:700;font-size:.66rem;letter-spacing:.05em;padding:10px 13px;border-radius:99px;white-space:nowrap;box-shadow:0 8px 26px rgba(124,92,255,.55)}
+.cmp-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:4;-webkit-appearance:none;appearance:none}
+.cmp-lab{position:absolute;top:14px;z-index:3;font-family:'Sora';font-weight:800;font-size:.68rem;letter-spacing:.14em;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px);transition:opacity .3s}
+.cmp-lab.przed{left:14px;background:rgba(0,0,0,.55);color:#ffdf5c;border:1px solid rgba(255,255,255,.25)}
+.cmp-lab.po{right:14px;background:rgba(10,10,18,.7);color:var(--accent2);border:1px solid rgba(0,229,176,.4)}
+.cmp-hint{text-align:center;color:var(--muted);font-size:.85rem;margin-top:18px}
+.cmp-hint b{color:var(--accent2)}
+@media(max-width:640px){.cmp-stage{height:300px}.cmp-old,.cmp-new{padding:18px 20px}.mini-h1{font-size:1.4rem}}
+
+/* ---------- tape ---------- */
+.tape{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);padding:16px 0;transform:rotate(-1deg) scale(1.02);margin:30px 0 -10px}
+.tape-track{display:flex;gap:44px;width:max-content;animation:tape 26s linear infinite;font-family:'Sora';font-weight:700;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.tape-track span b{color:var(--accent2);margin-right:44px}
+@keyframes tape{to{transform:translateX(-50%)}}
+
+/* ---------- cursor glow ---------- */
+.cursor-glow{position:fixed;left:0;top:0;width:560px;height:560px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(124,92,255,.13),transparent 62%);z-index:1;opacity:0}
+@media(pointer:fine){.cursor-glow{opacity:1}}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:90px}
+.stat{background:var(--bg2);padding:34px 20px;text-align:center}
+.stat b{display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* ---------- sections ---------- */
+section{padding:100px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 64px}
+.sec-tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em}
+.sec-head p{color:var(--muted);margin-top:16px}
+
+/* ---------- how ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:34px 28px;position:relative;transition:transform .25s,border-color .25s}
+.step:hover{transform:translateY(-6px);border-color:rgba(124,92,255,.5)}
+.step-num{font-family:'Sora';font-size:.8rem;font-weight:700;color:var(--accent2);letter-spacing:.1em;margin-bottom:16px}
+.step h3{font-size:1.15rem;margin-bottom:10px}
+.step p{font-size:.92rem;color:var(--muted)}
+
+/* ---------- portfolio ---------- */
+#portfolio{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+.proj{background:var(--card);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column}
+.proj:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)}
+.proj-preview{display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative}
+.proj-preview::after{content:"PRZED → PO";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid var(--border);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)}
+.half{padding:18px 14px;overflow:hidden;font-size:.5rem}
+.half-old{background:#d4d0c8;color:#000;font-family:'Times New Roman',serif}
+.half-old .fake-title{background:linear-gradient(#316ac5,#1941a5);color:#ff0;font-weight:bold;padding:3px 6px;font-size:.62rem;text-align:center}
+.half-old .fake-line{height:4px;background:#888;margin:5px 4px;border-radius:1px}
+.half-old .fake-line.short{width:55%}
+.half-old .fake-btn{display:inline-block;background:#d4d0c8;border:2px outset #fff;font-size:.5rem;padding:2px 6px;margin:4px}
+.half-new{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:20px}
+.half-new .dot{width:26px;height:26px;border-radius:8px}
+.half-new .bar{height:7px;border-radius:99px;background:rgba(255,255,255,.25)}
+.half-new .bar.b1{width:80%}
+.half-new .bar.b2{width:55%;opacity:.6}
+.half-new .pill{width:64px;height:16px;border-radius:99px;margin-top:6px}
+.proj-body{padding:24px 26px 28px;flex:1;display:flex;flex-direction:column}
+.proj-tag{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.proj h3{font-size:1.25rem;margin-bottom:8px}
+.proj p{font-size:.9rem;color:var(--muted);flex:1}
+.proj-link{margin-top:18px;font-weight:700;font-size:.9rem;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.proj:hover .proj-link{color:#a98cff}
+.proj-link::after{content:"→";transition:transform .2s}
+.proj:hover .proj-link::after{transform:translateX(5px)}
+
+/* ---------- pricing ---------- */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.plan:hover{transform:translateY(-6px)}
+.plan.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(124,92,255,.12),var(--card) 60%)}
+.plan-name{font-family:'Sora';font-weight:700;font-size:1.05rem}
+.plan-price{font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px}
+.plan-price small{font-size:.9rem;color:var(--muted);font-weight:400}
+.plan ul{list-style:none;margin:24px 0;flex:1}
+.plan li{padding:8px 0;font-size:.92rem;color:var(--muted);display:flex;gap:10px}
+.plan li::before{content:"✓";color:var(--accent2);font-weight:700}
+.plan .btn-primary,.plan .btn-ghost{text-align:center}
+.plan-badge{position:relative;top:-52px;margin-bottom:-30px;align-self:center;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0a0a12;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:99px}
+
+/* ---------- contact ---------- */
+.contact-box{background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08));border:1px solid var(--border);border-radius:28px;padding:70px 40px;text-align:center}
+.contact-box p{color:var(--muted);max-width:520px;margin:16px auto 34px}
+
+footer{border-top:1px solid var(--border);padding:36px 0;color:var(--muted);font-size:.85rem}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">ODNOVA<span>°studio</span></a>
+    <div class="nav-links">
+      <a href="#jak">Jak działamy</a>
+      <a href="#portfolio">Metamorfozy</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="#kontakt" class="nav-cta">Darmowa wycena</a>
+  </div>
+</nav>
+
+<header>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="wrap">
+    <div class="badge">Przyjmujemy nowe projekty</div>
+    <h1>Stare strony.<br><span class="grad">Nowe życie.</span></h1>
+    <p class="sub">Twoja strona wygląda jak z 2008 roku i odstrasza klientów? Zamieniamy przestarzałe witryny w nowoczesne wizytówki, które budują zaufanie i sprzedają.</p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-primary">Zobacz metamorfozy</a>
+      <a href="#kontakt" class="btn-ghost">Bezpłatny audyt strony</a>
+    </div>
+
+    <div class="compare">
+      <div class="cmp-browser">
+        <div class="cmp-bar">
+          <span class="cmp-dot" style="background:#ff5f57"></span>
+          <span class="cmp-dot" style="background:#febc2e"></span>
+          <span class="cmp-dot" style="background:#28c840"></span>
+          <span class="cmp-url">www.twoja-firma.pl</span>
+        </div>
+        <div class="cmp-stage" id="cmpStage">
+          <div class="cmp-old">
+            <div class="fake-title">** ZAKŁAD USŁUGOWY ** Witamy!!!</div>
+            <div class="fake-marq">!!! PROMOCJA !!! Najlepsze ceny w miescie !!! Zadzwon juz dzis !!!</div>
+            <div class="fake-line w80"></div>
+            <div class="fake-line"></div>
+            <div class="fake-line w60"></div>
+            <div><span class="fake-btn">Wejdź</span><span class="fake-btn">Księga gości</span><span class="fake-btn">Cennik</span></div>
+            <div class="fake-img">[zdjecie1.jpg]</div><div class="fake-img">[foto2.bmp]</div>
+            <div class="fake-count">Odwiedzin: <span>004217</span></div>
+          </div>
+          <div class="cmp-new">
+            <div class="mini-nav"><span class="mini-logo"></span><span class="mini-links"><i></i><i></i><i></i></span><span class="mini-cta"></span></div>
+            <div class="mini-kick"></div>
+            <div class="mini-h1">Nowe życie<br>Twojej firmy.</div>
+            <div class="mini-sub"></div>
+            <div class="mini-sub w50"></div>
+            <span class="mini-btn"></span>
+            <div class="mini-cards"><div></div><div></div><div></div></div>
+          </div>
+          <div class="cmp-handle"></div>
+          <span class="cmp-lab przed">PRZED</span>
+          <span class="cmp-lab po">PO</span>
+          <input class="cmp-range" id="cmpRange" type="range" min="4" max="96" value="96" step="0.1" aria-label="Porównanie przed i po">
+        </div>
+      </div>
+      <p class="cmp-hint">To nie obrazek — <b>złap suwak i przeciągnij</b>. Dokładnie taką różnicę robimy dla Twojej firmy.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b><span class="cnt" data-target="7">0</span>&nbsp;dni</b><span>średni czas realizacji</span></div>
+      <div class="stat"><b>+<span class="cnt" data-target="180">0</span>%</b><span>więcej zapytań po redesignie</span></div>
+      <div class="stat"><b><span class="cnt" data-target="100">0</span>%</b><span>stron mobilnych i szybkich</span></div>
+      <div class="stat"><b>0&nbsp;zł</b><span>za audyt i wycenę</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="tape" aria-hidden="true">
+  <div class="tape-track">
+    <span><b>✦</b>STRONY WWW</span><span><b>✦</b>REDESIGN</span><span><b>✦</b>POZYCJONOWANIE</span><span><b>✦</b>GOOGLE MAPS</span><span><b>✦</b>COPYWRITING</span><span><b>✦</b>OPIEKA TECHNICZNA</span><span><b>✦</b>SZYBKOŚĆ 90+</span><span><b>✦</b>WERSJA MOBILNA</span>
+    <span><b>✦</b>STRONY WWW</span><span><b>✦</b>REDESIGN</span><span><b>✦</b>POZYCJONOWANIE</span><span><b>✦</b>GOOGLE MAPS</span><span><b>✦</b>COPYWRITING</span><span><b>✦</b>OPIEKA TECHNICZNA</span><span><b>✦</b>SZYBKOŚĆ 90+</span><span><b>✦</b>WERSJA MOBILNA</span>
+  </div>
+</div>
+
+<section id="jak">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Jak działamy</div>
+      <h2>Od reliktu do wizytówki w 3 krokach</h2>
+      <p>Bez żargonu, bez ukrytych kosztów. Ty prowadzisz firmę — my zajmujemy się resztą.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">KROK 01</div>
+        <h3>Darmowy audyt</h3>
+        <p>Analizujemy Twoją obecną stronę: szybkość, wygląd na telefonie, pozycję w Google. Dostajesz konkretny raport — co odstrasza Twoich klientów i ile Cię to kosztuje.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">KROK 02</div>
+        <h3>Projekt i budowa</h3>
+        <p>Projektujemy nową stronę dopasowaną do Twojej branży. Nowoczesny wygląd, błyskawiczne ładowanie, pełna wersja mobilna. Ty tylko akceptujesz efekt.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">KROK 03</div>
+        <h3>Start i rozwój</h3>
+        <p>Publikujemy stronę, konfigurujemy Google i wizytówkę Google Maps. Na życzenie prowadzimy dalej: pozycjonowanie, treści, marketing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Portfolio</div>
+      <h2>Zobacz metamorfozy na żywo</h2>
+      <p>Każda realizacja ma interaktywny przełącznik <b>PRZED / PO</b> — kliknij i zobacz różnicę na własne oczy.</p>
+    </div>
+    <div class="grid">
+
+      <a class="proj reveal" href="demos/fryzjer.html">
+        <div class="proj-preview">
+          <div class="half half-old">
+            <div class="fake-title">** SALON ANNA **</div>
+            <div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line"></div>
+            <span class="fake-btn">Wejdź</span><span class="fake-btn">Księga gości</span>
+          </div>
+          <div class="half half-new" style="background:linear-gradient(135deg,#1c1712,#2e2418)">
+            <div class="dot" style="background:linear-gradient(135deg,#d4af6a,#a8894e)"></div>
+            <div class="bar b1"></div><div class="bar b2"></div>
+            <div class="pill" style="background:#d4af6a"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Beauty · Salon fryzjerski</div>
+          <h3>Atelier Anna</h3>
+          <p>Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
+          <span class="proj-link">Zobacz metamorfozę</span>
+        </div>
+      </a>
+
+      <a class="proj reveal" href="demos/autoserwis.html">
+        <div class="proj-preview">
+          <div class="half half-old">
+            <div class="fake-title">AUTO-NAPRAWA</div>
+            <div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div>
+            <span class="fake-btn">Cennik</span><span class="fake-btn">Mapka</span>
+          </div>
+          <div class="half half-new" style="background:linear-gradient(135deg,#101418,#1a2129)">
+            <div class="dot" style="background:linear-gradient(135deg,#ff8a00,#ff5e00)"></div>
+            <div class="bar b1"></div><div class="bar b2"></div>
+            <div class="pill" style="background:#ff8a00"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Motoryzacja · Warsztat</div>
+          <h3>Auto-Serwis Kowalski</h3>
+          <p>Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.</p>
+          <span class="proj-link">Zobacz metamorfozę</span>
+        </div>
+      </a>
+
+      <a class="proj reveal" href="demos/pizzeria.html">
+        <div class="proj-preview">
+          <div class="half half-old">
+            <div class="fake-title">~*~ PIZZERIA ~*~</div>
+            <div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line"></div>
+            <span class="fake-btn">Menu.doc</span><span class="fake-btn">Dojazd</span>
+          </div>
+          <div class="half half-new" style="background:linear-gradient(135deg,#fff8ef,#ffe9d2)">
+            <div class="dot" style="background:linear-gradient(135deg,#e63b2e,#c22417)"></div>
+            <div class="bar b1" style="background:rgba(60,30,10,.25)"></div><div class="bar b2" style="background:rgba(60,30,10,.18)"></div>
+            <div class="pill" style="background:#e63b2e"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Gastronomia · Pizzeria</div>
+          <h3>Bella Napoli</h3>
+          <p>Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.</p>
+          <span class="proj-link">Zobacz metamorfozę</span>
+        </div>
+      </a>
+
+      <a class="proj reveal" href="demos/budmax.html">
+        <div class="proj-preview">
+          <div class="half half-old">
+            <div class="fake-title">BUD-MAX Usługi</div>
+            <div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div>
+            <span class="fake-btn">Oferta</span><span class="fake-btn">Kontakt</span>
+          </div>
+          <div class="half half-new" style="background:linear-gradient(135deg,#0d1526,#152238)">
+            <div class="dot" style="background:linear-gradient(135deg,#ffd60a,#ffb703)"></div>
+            <div class="bar b1"></div><div class="bar b2"></div>
+            <div class="pill" style="background:#ffd60a"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Budownictwo · Remonty</div>
+          <h3>BUD-MAX</h3>
+          <p>20 lat doświadczenia w remontach, strona "w budowie" od 2013. Teraz: portfolio realizacji, które samo sprzedaje.</p>
+          <span class="proj-link">Zobacz metamorfozę</span>
+        </div>
+      </a>
+
+      <a class="proj reveal" href="demos/dentysta.html">
+        <div class="proj-preview">
+          <div class="half half-old">
+            <div class="fake-title">Gabinet DENT-MED</div>
+            <div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line"></div>
+            <span class="fake-btn">Godziny</span><span class="fake-btn">Cennik</span>
+          </div>
+          <div class="half half-new" style="background:linear-gradient(135deg,#f3fbfa,#dff4f2)">
+            <div class="dot" style="background:linear-gradient(135deg,#0fa3a3,#0b7f86)"></div>
+            <div class="bar b1" style="background:rgba(10,60,60,.22)"></div><div class="bar b2" style="background:rgba(10,60,60,.15)"></div>
+            <div class="pill" style="background:#0fa3a3"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Zdrowie · Stomatologia</div>
+          <h3>Dent-Med</h3>
+          <p>Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.</p>
+          <span class="proj-link">Zobacz metamorfozę</span>
+        </div>
+      </a>
+
+      <a class="proj reveal" href="demos/pensjonat.html">
+        <div class="proj-preview">
+          <div class="half half-old">
+            <div class="fake-title">Pensjonat U GÓRALA</div>
+            <div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div>
+            <span class="fake-btn">Pokoje</span><span class="fake-btn">Galeria</span>
+          </div>
+          <div class="half half-new" style="background:linear-gradient(135deg,#101c14,#1a2e20)">
+            <div class="dot" style="background:linear-gradient(135deg,#7fb069,#5a8a4a)"></div>
+            <div class="bar b1"></div><div class="bar b2"></div>
+            <div class="pill" style="background:#7fb069"></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag">Turystyka · Noclegi</div>
+          <h3>Pensjonat Pod Świerkami</h3>
+          <p>Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.</p>
+          <span class="proj-link">Zobacz metamorfozę</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Oferta</div>
+      <h2>Proste pakiety, jasne ceny</h2>
+      <p>Bez abonamentów-pułapek. Płacisz za efekt, stronę masz na własność.</p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="plan-name">Odświeżenie</div>
+        <div class="plan-price">od 1 500 zł <small>netto</small></div>
+        <ul>
+          <li>Nowa strona-wizytówka (do 4 podstron)</li>
+          <li>Pełna wersja mobilna</li>
+          <li>Optymalizacja szybkości</li>
+          <li>Certyfikat SSL i podstawowe SEO</li>
+          <li>Realizacja w 7 dni</li>
+        </ul>
+        <a href="#kontakt" class="btn-ghost">Wybieram</a>
+      </div>
+      <div class="plan featured reveal">
+        <div class="plan-badge">Najczęściej wybierany</div>
+        <div class="plan-name">Metamorfoza</div>
+        <div class="plan-price">od 2 900 zł <small>netto</small></div>
+        <ul>
+          <li>Wszystko z pakietu Odświeżenie</li>
+          <li>Do 8 podstron + galeria realizacji</li>
+          <li>Wizytówka Google Maps + opinie</li>
+          <li>Formularz kontaktowy / rezerwacje</li>
+          <li>Teksty pisane pod klienta i Google</li>
+          <li>3 miesiące opieki technicznej gratis</li>
+        </ul>
+        <a href="#kontakt" class="btn-primary">Wybieram</a>
+      </div>
+      <div class="plan reveal">
+        <div class="plan-name">Rozwój</div>
+        <div class="plan-price">od 490 zł <small>/ mies.</small></div>
+        <ul>
+          <li>Pozycjonowanie lokalne (SEO)</li>
+          <li>Comiesięczny raport wyników</li>
+          <li>Aktualizacje treści i zdjęć</li>
+          <li>Opieka techniczna i kopie zapasowe</li>
+          <li>Doradztwo marketingowe</li>
+        </ul>
+        <a href="#kontakt" class="btn-ghost">Wybieram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div class="sec-tag">Kontakt</div>
+      <h2>Sprawdźmy, ile kosztuje Cię stara strona</h2>
+      <p>Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
+      <a href="mailto:kontakt@odnova.studio" class="btn-primary">kontakt@odnova.studio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 ODNOVA°studio — Stare strony. Nowe życie.</span>
+    <span>Strony demonstracyjne w portfolio przedstawiają fikcyjne firmy.</span>
+  </div>
+</footer>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// --- interaktywny suwak przed/po w hero ---
+const stage = document.getElementById('cmpStage');
+const range = document.getElementById('cmpRange');
+const setX = v => stage.style.setProperty('--x', v + '%');
+range.addEventListener('input', () => setX(range.value));
+const cmpIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  cmpIO.disconnect();
+  const start = performance.now(), from = 96, to = 52, dur = 1500;
+  (function step(now) {
+    const p = Math.min(1, (now - start) / dur);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const v = from + (to - from) * ease;
+    setX(v); range.value = v;
+    if (p < 1) requestAnimationFrame(step);
+  })(performance.now());
+}), { threshold: .45 });
+cmpIO.observe(stage);
+
+// --- animowane liczniki ---
+const cntIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  cntIO.unobserve(e.target);
+  const el = e.target, target = +el.dataset.target, start = performance.now(), dur = 1500;
+  (function tick(now) {
+    const p = Math.min(1, (now - start) / dur);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
+  })(performance.now());
+}), { threshold: .6 });
+document.querySelectorAll('.cnt').forEach(el => cntIO.observe(el));
+
+// --- tilt 3D kart portfolio ---
+if (matchMedia('(pointer:fine)').matches) {
+  document.querySelectorAll('.proj').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `translateY(-8px) perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // --- poświata za kursorem ---
+  const glow = document.getElementById('cursorGlow');
+  let gx = innerWidth / 2, gy = 0, tx = gx, ty = gy;
+  addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+  (function follow() {
+    gx += (tx - gx) * .08; gy += (ty - gy) * .08;
+    glow.style.transform = `translate(${gx - 280}px, ${gy - 280}px)`;
+    requestAnimationFrame(follow);
+  })();
+}
+</script>
+</body>
+</html>

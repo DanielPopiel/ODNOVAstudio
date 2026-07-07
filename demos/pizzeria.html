@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzeria Bella Napoli — metamorfoza strony | ODNOVA°studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,800;1,600&family=Nunito+Sans:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{padding-top:56px}
+
+/* ===== pasek demo ODNOVA ===== */
+.demo-bar{position:fixed;top:0;left:0;right:0;z-index:1000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.demo-bar a.back{color:#9a9aad;text-decoration:none;font-weight:600}
+.demo-bar a.back:hover{color:#fff}
+.demo-brand{color:#9a9aad;display:none}
+@media(min-width:640px){.demo-brand{display:block}}
+.demo-brand b{background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.switch{display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px}
+.switch button{border:0;background:transparent;color:#9a9aad;font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;transition:all .25s;letter-spacing:.04em}
+.switch button.active{background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff}
+.switch button:not(.active):hover{color:#fff}
+.switch button#btn-po:not(.active){animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
+#before,#after{display:none}
+body.show-before #before{display:block}
+body.show-after #after{display:block}
+
+/* ============================================================
+   PRZED — Pizzeria, rocznik 2009
+   ============================================================ */
+#before{background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect width="60" height="60" fill="%23006400"/><rect x="20" width="20" height="60" fill="%23ffffff"/><rect x="40" width="20" height="60" fill="%23cc0000"/></svg>');font-family:'Comic Sans MS','Comic Sans',cursive;color:#000}
+#before .old-wrap{width:760px;max-width:96%;margin:10px auto;background:#fffff0;border:4px double #cc0000}
+#before .old-header{text-align:center;padding:16px 6px;background:#fffff0}
+#before .old-header h1{color:#cc0000;font-size:2.2rem;text-shadow:2px 2px 0 #ffd700}
+#before .old-header .it{color:#006400;font-weight:bold;font-style:italic}
+#before marquee{background:#cc0000;color:#fff;font-weight:bold;padding:4px 0}
+#before .old-nav{background:#006400;text-align:center;padding:6px}
+#before .old-nav a{color:#fff;font-weight:bold;margin:0 9px;font-size:.9rem}
+#before .old-main{padding:14px;font-size:.9rem}
+#before .old-main h2{color:#cc0000;font-size:1.15rem;margin:12px 0 6px;text-decoration:underline}
+#before .old-main p{margin-bottom:8px}
+#before .doc-link{display:inline-block;border:2px outset #fff;background:#d4d0c8;padding:6px 14px;font-family:Arial;font-size:.85rem;color:#0000ee;text-decoration:underline;margin:6px 0}
+#before table.menu-old{border-collapse:collapse;width:100%;font-size:.85rem;font-family:'Times New Roman';margin:8px 0}
+#before table.menu-old td{border:1px dotted #cc0000;padding:4px 8px}
+#before .old-img{background:#ddd;border:2px inset #999;width:160px;height:115px;display:inline-block;margin:4px;text-align:center;font-size:.68rem;color:#666;font-family:Arial;padding-top:48px;vertical-align:top}
+#before .counter{background:#000;color:#0f0;font-family:'Courier New';padding:2px 8px;letter-spacing:3px}
+#before .blink{animation:blink 1s steps(2,start) infinite;color:#cc0000;font-weight:bold}
+@keyframes blink{to{visibility:hidden}}
+#before .old-footer{background:#006400;color:#fff;text-align:center;font-size:.72rem;padding:9px}
+#before .old-footer a{color:#ffff00}
+#before .gb{border:2px inset #fff;background:#fff;padding:8px;margin:8px 0;font-size:.8rem}
+
+/* ============================================================
+   PO — Bella Napoli, ciepło i apetycznie
+   ============================================================ */
+#after{background:#fdf7ee;color:#33251b;font-family:'Nunito Sans',sans-serif;line-height:1.65}
+#after h1,#after h2,#after h3{font-family:'Fraunces',serif}
+#after .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+#after .red{color:#d63426}
+#after nav.site{position:sticky;top:56px;z-index:50;background:rgba(253,247,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(214,52,38,.15)}
+#after .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+#after .brand{font-family:'Fraunces';font-weight:800;font-size:1.4rem;color:#d63426}
+#after .brand small{display:block;font-family:'Nunito Sans';font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#5a7d4a}
+#after .menu{display:flex;gap:28px;font-size:.9rem;font-weight:700}
+#after .menu a{color:#6b5a49;text-decoration:none;transition:color .2s}
+#after .menu a:hover{color:#d63426}
+@media(max-width:760px){#after .menu{display:none}}
+#after .cta{background:#d63426;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:99px;font-size:.9rem;transition:background .2s,transform .2s;box-shadow:0 6px 18px rgba(214,52,38,.3)}
+#after .cta:hover{background:#b8281c;transform:translateY(-2px)}
+#after header.hero{position:relative;padding:100px 0 80px;overflow:hidden;background:radial-gradient(800px 420px at 85% 10%,rgba(240,180,90,.35),transparent),#fdf7ee}
+#after .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+@media(max-width:860px){#after .hero-grid{grid-template-columns:1fr}}
+#after .kicker{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(214,52,38,.2);border-radius:99px;padding:7px 16px;font-size:.8rem;font-weight:700;color:#5a7d4a;margin-bottom:24px;box-shadow:0 3px 12px rgba(60,30,10,.06)}
+#after .hero h1{font-size:clamp(2.6rem,6vw,4.3rem);font-weight:800;line-height:1.06;color:#2b1c12}
+#after .hero h1 em{color:#d63426;font-style:italic}
+#after .hero p{color:#6b5a49;margin:24px 0 34px;font-size:1.12rem;max-width:480px}
+#after .hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+#after .btn2{color:#2b1c12;text-decoration:none;font-weight:700;font-size:.92rem;border-bottom:2px solid #d63426;padding-bottom:2px}
+#after .pizza-visual{position:relative;aspect-ratio:1;max-width:440px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 45% 40%,#f4c26b 0 58%,#d9913c 58% 70%,#c8752a 70% 100%);box-shadow:0 30px 60px rgba(120,60,20,.28),inset 0 -10px 30px rgba(120,60,20,.25);display:flex;align-items:center;justify-content:center;font-size:5rem}
+#after .pizza-visual::before{content:"🍕";position:absolute;font-size:8rem;filter:drop-shadow(0 12px 18px rgba(80,30,10,.3))}
+#after .float-card{position:absolute;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700}
+#after .fc1{top:8%;left:-6%;color:#5a7d4a}
+#after .fc2{bottom:10%;right:-4%;color:#d63426}
+#after section{padding:90px 0}
+#after .sec-kick{color:#5a7d4a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;text-align:center;margin-bottom:12px}
+#after h2{font-size:clamp(2rem,4.5vw,2.9rem);font-weight:800;text-align:center;margin-bottom:50px;color:#2b1c12}
+#after .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+#after .dish{background:#fff;border-radius:20px;padding:26px 26px 24px;box-shadow:0 8px 24px rgba(60,30,10,.07);transition:transform .22s,box-shadow .22s;border:1px solid rgba(214,52,38,.08)}
+#after .dish:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(60,30,10,.13)}
+#after .dish-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+#after .dish h3{font-size:1.3rem;color:#2b1c12}
+#after .dish .pr{font-family:'Fraunces';font-weight:800;color:#d63426;font-size:1.2rem;white-space:nowrap}
+#after .dish p{color:#8a7663;font-size:.9rem;margin-top:8px}
+#after .dish .tag{display:inline-block;margin-top:14px;background:#eef3e8;color:#5a7d4a;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:99px}
+#after .dish .tag.hot{background:#fdeae8;color:#d63426}
+#after .builder{background:radial-gradient(700px 380px at 15% 20%,rgba(240,180,90,.25),transparent),#fdf7ee}
+#after .b-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:860px){#after .b-grid{grid-template-columns:1fr}}
+#after .b-pizza-wrap{position:relative;max-width:400px;margin:0 auto;width:100%}
+#after .b-pizza{position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 48% 44%,#f7d489 0 55%,#eab04e 55% 68%,#d18b33 68% 82%,#c8752a 82% 100%);box-shadow:0 26px 50px rgba(120,60,20,.3),inset 0 -12px 26px rgba(140,70,20,.3);transition:transform .3s}
+#after .b-pizza.spin{animation:pspin .55s ease}
+@keyframes pspin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(8deg) scale(1.04)}100%{transform:rotate(0) scale(1)}}
+#after .b-pizza::before{content:"";position:absolute;inset:13%;border-radius:50%;background:radial-gradient(circle at 45% 40%,#e8483a 0 60%,#c93225 100%);opacity:.9}
+#after .b-pizza::after{content:"";position:absolute;inset:15%;border-radius:50%;background:radial-gradient(circle at 55% 45%,rgba(255,244,214,.92) 0 45%,rgba(250,225,170,.85) 75%,transparent 100%)}
+#after .b-top{position:absolute;font-size:1.7rem;transform:translate(-50%,-50%) scale(0);z-index:2;animation:drop .4s cubic-bezier(.2,1.6,.4,1) forwards;filter:drop-shadow(0 3px 4px rgba(80,30,10,.3))}
+@keyframes drop{to{transform:translate(-50%,-50%) scale(1)}}
+#after .b-controls h3{font-size:1.5rem;margin-bottom:18px;color:#2b1c12}
+#after .b-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){#after .b-opts{grid-template-columns:1fr}}
+#after .b-opt{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid rgba(214,52,38,.15);border-radius:14px;padding:12px 14px;cursor:pointer;transition:border-color .2s,transform .15s;font-weight:700;font-size:.9rem;user-select:none}
+#after .b-opt:hover{transform:translateY(-2px)}
+#after .b-opt input{width:17px;height:17px;accent-color:#d63426;cursor:pointer}
+#after .b-opt .em{font-size:1.2rem}
+#after .b-opt small{margin-left:auto;color:#d63426;font-weight:800}
+#after .b-opt.on{border-color:#d63426;background:#fdf1ef}
+#after .b-total{display:flex;align-items:center;justify-content:space-between;margin-top:22px;background:#2b1c12;color:#fff;border-radius:16px;padding:18px 24px}
+#after .b-total .sum{font-family:'Fraunces';font-weight:800;font-size:2rem;color:#f0b45a}
+#after .b-total .sum small{font-size:1.1rem}
+#after .story{background:#2b1c12;color:#f3e9dc}
+#after .story h2{color:#f3e9dc}
+#after .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:820px){#after .story-grid{grid-template-columns:1fr}}
+#after .story h2{text-align:left;margin-bottom:20px}
+#after .story p{color:#c9b8a4;margin-bottom:14px}
+#after .oven{aspect-ratio:4/3;border-radius:20px;background:radial-gradient(circle at 50% 85%,#ff9c3f 0 18%,#b8481f 40%,#3d2417 75%);display:flex;align-items:center;justify-content:center;font-size:5.5rem;box-shadow:inset 0 0 60px rgba(0,0,0,.5)}
+#after .badges{display:flex;gap:34px;flex-wrap:wrap;margin-top:30px}
+#after .badges div b{font-family:'Fraunces';font-size:1.9rem;color:#f0b45a;display:block;line-height:1.1}
+#after .badges div span{font-size:.82rem;color:#c9b8a4}
+#after .order{text-align:center;background:radial-gradient(600px 300px at 50% 0,rgba(240,180,90,.3),transparent)}
+#after .order p{color:#6b5a49;max-width:480px;margin:0 auto 30px}
+#after .order .phone{font-family:'Fraunces';font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:#d63426;text-decoration:none;display:inline-block;margin-bottom:26px}
+#after .info-row{display:flex;justify-content:center;gap:42px;flex-wrap:wrap;margin-top:36px;color:#6b5a49;font-size:.9rem}
+#after .info-row b{display:block;color:#2b1c12;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+#after footer.site{background:#2b1c12;color:#8f7c68;padding:32px 0;font-size:.82rem;text-align:center}
+#after .fade{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+#after .fade.on{opacity:1;transform:none}
+</style>
+</head>
+<body class="show-before">
+
+<div class="demo-bar">
+  <a class="back" href="../index.html">← Portfolio</a>
+  <div class="demo-brand">Metamorfoza: <b>Pizzeria Bella Napoli</b> · demo ODNOVA°studio</div>
+  <div class="switch">
+    <button id="btn-przed" class="active" onclick="show('before')">PRZED</button>
+    <button id="btn-po" onclick="show('after')">PO ✨</button>
+  </div>
+</div>
+
+<!-- ==================== PRZED ==================== -->
+<div id="before">
+  <div class="old-wrap">
+    <div class="old-header">
+      <h1>~*~ PIZZERIA BELLA NAPOLI ~*~</h1>
+      <div class="it">Prawdziwa wloska pizza w Twoim miescie!!!</div>
+    </div>
+    <marquee scrollamount="6">☎☎☎ ZAMÓWIENIA TELEFONICZNE: (067) 215-XX-XX ☎☎☎ DOWÓZ GRATIS powyżej 30 zł na terenie miasta!!! ☎☎☎ Zapraszamy codziennie od 11:00 ☎☎☎</marquee>
+    <div class="old-nav">
+      <a href="#">Start</a> ● <a href="#">Nasze Menu</a> ● <a href="#">Galeria</a> ● <a href="#">Dojazd</a> ● <a href="#">Księga Gości</a> ● <a href="#">Kontakt</a>
+    </div>
+    <div class="old-main">
+      <h2>Benvenuti! Witamy!!!</h2>
+      <p>Pizzeria BELLA NAPOLI zaprasza na najlepszą pizzę w mieście wypiekana w piecu opalanym drewnem! Posiadamy rowniez dania obiadowe, salatki oraz desery. Organizujemy takze imprezy okolicznosciowe (komunie, urodziny, stypy).</p>
+      <p class="blink">>>> NOWOŚĆ: Pizza XXL 60cm dla całej rodziny!!! <<<</p>
+      <h2>Nasze menu:</h2>
+      <p>Pełne menu do pobrania tutaj:</p>
+      <a class="doc-link" href="#">📄 menu_aktualne_2010_POPRAWIONE(2).doc (1,2 MB)</a><br>
+      <a class="doc-link" href="#">📄 cennik_dowozy.xls (890 KB)</a>
+      <p>Przykladowe ceny:</p>
+      <table class="menu-old">
+        <tr><td><b>Margherita</b> (sos, ser)</td><td>mała 12zł / duża 18zł</td></tr>
+        <tr><td><b>Wiejska</b> (sos, ser, boczek, cebula, ogórek)</td><td>mała 16zł / duża 24zł</td></tr>
+        <tr><td><b>Hawajska</b> (sos, ser, szynka, ananas)</td><td>mała 15zł / duża 22zł</td></tr>
+        <tr><td><b>BELLA SPECJAL</b> (niespodzianka szefa!)</td><td>tylko duża 28zł</td></tr>
+      </table>
+      <h2>Zdjecia naszych dan:</h2>
+      <div class="old-img">[pizza1.jpg]<br>nie można<br>wyświetlić obrazka</div>
+      <div class="old-img">[100_3417.JPG]</div>
+      <div class="old-img">[wnetrze_lokalu.jpg]</div>
+      <h2>Księga gości:</h2>
+      <div class="gb"><b>Grazyna</b> (14.05.2010, 21:44): Pizza super polecam wszystkim znajomym pozdrawiam wlasciciela :))))</div>
+      <div class="gb"><b>anonim</b> (02.03.2010, 15:12): czemu dowoz do rudek kosztuje 5zl a do wybczyc nie???</div>
+      <p style="text-align:center;margin-top:10px">Odwiedzin: <span class="counter">027761</span></p>
+    </div>
+    <div class="old-footer">
+      © 2008 Pizzeria Bella Napoli | Strona: syn właściciela | Najlepiej wygląda w IE6, 1024x768<br>
+      <a href="#">bellanapoli@op.pl</a> | GG: 4471223
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PO ==================== -->
+<div id="after">
+  <nav class="site">
+    <div class="wrap nav-in">
+      <div class="brand">Bella Napoli<small>Pizza Napoletana · dal 2008</small></div>
+      <div class="menu">
+        <a href="#menu">Menu</a><a href="#skomponuj">Skomponuj pizzę</a><a href="#historia">Nasza historia</a><a href="#zamow">Kontakt</a>
+      </div>
+      <a class="cta" href="#zamow">Zamów: 67 215 00 00</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">🔥 Piec opalany drewnem · 450°C</div>
+        <h1>Pizza jak z <em>Neapolu</em>, dowóz jak błyskawica</h1>
+        <p>Ciasto dojrzewa 48 godzin, pomidory San Marzano jadą do nas prosto z Kampanii. Gorąca pizza u Ciebie w 35 minut — albo rabat 20%.</p>
+        <div class="hero-btns">
+          <a class="cta" href="#menu">Zobacz menu</a>
+          <a class="btn2" href="#zamow">Zamów telefonicznie →</a>
+        </div>
+      </div>
+      <div class="pizza-visual fade">
+        <div class="float-card fc1">🌿 Składniki z Włoch</div>
+        <div class="float-card fc2">⏱ Dowóz do 35 min</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="sec-kick">La carta</div>
+      <h2>Menu, które czuć przez ekran</h2>
+      <div class="menu-grid">
+        <div class="dish fade"><div class="dish-top"><h3>Margherita D.O.P.</h3><span class="pr">29 zł</span></div><p>San Marzano, mozzarella fior di latte, świeża bazylia, oliwa extra vergine.</p><span class="tag">Klasyka</span></div>
+        <div class="dish fade"><div class="dish-top"><h3>Diavola</h3><span class="pr">36 zł</span></div><p>Pikantne salami spianata, nduja z Kalabrii, miód pitny, mozzarella.</p><span class="tag hot">🌶 Ostra</span></div>
+        <div class="dish fade"><div class="dish-top"><h3>Prosciutto e Rucola</h3><span class="pr">38 zł</span></div><p>Szynka parmeńska 18 mies., rukola, płatki parmezanu, pomidorki cherry.</p><span class="tag">Bestseller</span></div>
+        <div class="dish fade"><div class="dish-top"><h3>Quattro Formaggi</h3><span class="pr">37 zł</span></div><p>Gorgonzola, taleggio, parmezan, mozzarella. Na białym sosie.</p><span class="tag">Bez pomidora</span></div>
+        <div class="dish fade"><div class="dish-top"><h3>Bella Special</h3><span class="pr">42 zł</span></div><p>Burrata w całości, mortadela z pistacjami, krem z pistacji. Pozycja szefa.</p><span class="tag hot">Nowość</span></div>
+        <div class="dish fade"><div class="dish-top"><h3>Pizza dla dzieci 🧒</h3><span class="pr">19 zł</span></div><p>Mała margherita z uśmiechem z oliwek. Do tego sok jabłkowy gratis.</p><span class="tag">Dla rodzin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skomponuj" class="builder">
+    <div class="wrap">
+      <div class="sec-kick">Zabawa dozwolona</div>
+      <h2>Skomponuj własną pizzę</h2>
+      <div class="b-grid">
+        <div class="b-pizza-wrap fade">
+          <div class="b-pizza" id="bPizza"></div>
+        </div>
+        <div class="b-controls fade">
+          <h3>Baza: margherita 26 zł. Co dorzucamy?</h3>
+          <div class="b-opts" id="bOpts">
+            <label class="b-opt"><input type="checkbox" data-em="🍄" data-price="4"><span class="em">🍄</span> Pieczarki <small>+4 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🌶️" data-price="6"><span class="em">🌶️</span> Salami picante <small>+6 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🥓" data-price="6"><span class="em">🥓</span> Guanciale <small>+6 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🧀" data-price="9"><span class="em">🧀</span> Burrata <small>+9 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🌿" data-price="4"><span class="em">🌿</span> Rukola <small>+4 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🫒" data-price="4"><span class="em">🫒</span> Oliwki <small>+4 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🧅" data-price="3"><span class="em">🧅</span> Czerwona cebula <small>+3 zł</small></label>
+            <label class="b-opt"><input type="checkbox" data-em="🍍" data-price="5"><span class="em">🍍</span> Ananas <small>+5 zł*</small></label>
+          </div>
+          <div class="b-total">
+            <span id="bMsg">Twoja pizza:</span>
+            <span class="sum"><span id="bSum">26</span><small> zł</small></span>
+          </div>
+          <p style="color:#8a7663;font-size:.78rem;margin-top:10px">* przy ananasie pizzaiolo zastrzega sobie prawo do westchnięcia. Kreator jest poglądowy — zamówienia: ☎ 67 215 00 00.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" class="story">
+    <div class="wrap story-grid">
+      <div class="fade">
+        <div class="sec-kick" style="text-align:left;color:#f0b45a">Od 2008 roku</div>
+        <h2>Jedna rodzina, jeden piec, jedna pasja</h2>
+        <p>Zaczęliśmy w 2008 roku od małego lokalu i wielkiego pieca, który przypłynął do nas z Neapolu. Dziś wypiekamy ponad 200 pizz dziennie, ale każdą tak samo — ręcznie rozciągane ciasto, 90 sekund w ogniu, prosto na Twój stół.</p>
+        <p>Nie mrozimy, nie odgrzewamy, nie idziemy na skróty. Jeśli czegoś nie zjedlibyśmy sami, nie podamy tego Tobie.</p>
+        <div class="badges">
+          <div><b>48h</b><span>dojrzewania ciasta</span></div>
+          <div><b>90 s</b><span>wypieku w 450°C</span></div>
+          <div><b>4.8★</b><span>ocena Google (632 opinie)</span></div>
+        </div>
+      </div>
+      <div class="oven fade">🔥</div>
+    </div>
+  </section>
+
+  <section id="zamow" class="order">
+    <div class="wrap fade">
+      <div class="sec-kick">Zamówienia i dowóz</div>
+      <h2 style="margin-bottom:16px">Głodny? Dzwoń!</h2>
+      <p>Zamówienia przyjmujemy codziennie od 11:00 do 21:30. Dowóz gratis od 60 zł na terenie miasta.</p>
+      <a class="phone" href="tel:+48672150000">☎ 67 215 00 00</a><br>
+      <a class="cta" href="#">Zamów online</a>
+      <div class="info-row">
+        <div><b>Godziny</b>codziennie 11:00 – 22:00</div>
+        <div><b>Adres</b>Rynek 14, Piła</div>
+        <div><b>Dowóz</b>miasto + 15 km</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">© 2026 Pizzeria Bella Napoli · Projekt strony: ODNOVA°studio · Strona demonstracyjna — firma fikcyjna</footer>
+</div>
+
+<script>
+function show(which){
+  document.body.className = 'show-' + which;
+  document.getElementById('btn-przed').classList.toggle('active', which==='before');
+  document.getElementById('btn-po').classList.toggle('active', which==='after');
+  window.scrollTo({top:0});
+}
+const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+// kreator pizzy
+const pizza = document.getElementById('bPizza');
+const sumEl = document.getElementById('bSum');
+const msgEl = document.getElementById('bMsg');
+const BASE = 26;
+document.querySelectorAll('#bOpts input').forEach(box => {
+  box.addEventListener('change', () => {
+    const opt = box.closest('.b-opt');
+    opt.classList.toggle('on', box.checked);
+    const em = box.dataset.em;
+    if (box.checked) {
+      for (let i = 0; i < 6; i++) {
+        const s = document.createElement('span');
+        s.className = 'b-top';
+        s.dataset.em = em;
+        s.textContent = em;
+        // losowa pozycja w obrębie sera (promień do 32% od środka)
+        const ang = Math.random() * Math.PI * 2;
+        const rad = 8 + Math.sqrt(Math.random()) * 26;
+        s.style.left = (50 + Math.cos(ang) * rad) + '%';
+        s.style.top = (50 + Math.sin(ang) * rad) + '%';
+        s.style.animationDelay = (i * 45) + 'ms';
+        s.style.fontSize = (1.3 + Math.random() * .7) + 'rem';
+        pizza.appendChild(s);
+      }
+    } else {
+      pizza.querySelectorAll(`.b-top[data-em="${em}"]`).forEach(el => el.remove());
+    }
+    pizza.classList.remove('spin'); void pizza.offsetWidth; pizza.classList.add('spin');
+    const total = BASE + [...document.querySelectorAll('#bOpts input:checked')].reduce((a, b) => a + +b.dataset.price, 0);
+    sumEl.textContent = total;
+    const n = document.querySelectorAll('#bOpts input:checked').length;
+    msgEl.textContent = n === 0 ? 'Twoja pizza:' : n < 3 ? 'Dobry wybór! 👌' : n < 5 ? 'Robi się poważnie 🔥' : 'Pizzaiolo aprobuje! 👨‍🍳';
+  });
+});
+</script>
+</body>
+</html>
