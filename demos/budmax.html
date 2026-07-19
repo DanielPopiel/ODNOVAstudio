@@ -30,27 +30,27 @@ body.show-before #before{display:block}
 body.show-after #after{display:block}
 
 /* ============================================================
-   PRZED — BUD-MAX, rocznik 2006 (strona "w budowie")
+   PRZED — BUD-MAX, rocznik ~2010
    ============================================================ */
-#before{background:#808080;font-family:'Times New Roman',Times,serif;color:#000}
-#before .old-wrap{width:750px;max-width:96%;margin:8px auto;background:#ffffcc;border:3px solid #000}
-#before .old-header{background:repeating-linear-gradient(45deg,#ffcc00 0 22px,#000 22px 44px);padding:4px}
-#before .old-header-inner{background:#ffffcc;text-align:center;padding:14px 6px}
-#before .old-header h1{font-size:2.3rem;color:#b22222;letter-spacing:2px}
-#before .old-header .sub{font-weight:bold;font-style:italic}
-#before .uc{background:#ff0000;color:#ffff00;text-align:center;font-weight:bold;padding:5px;font-family:Arial;animation:blink 1s steps(2,start) infinite}
-@keyframes blink{to{visibility:hidden}}
-#before .old-nav{background:#b22222;text-align:center;padding:6px}
-#before .old-nav a{color:#ffff00;font-weight:bold;margin:0 10px;font-family:Arial;font-size:.9rem}
-#before .old-main{padding:14px;font-size:1rem}
-#before .old-main h2{color:#b22222;font-size:1.2rem;margin:12px 0 6px;border-bottom:2px solid #b22222}
+#before{background:#e6e6e2;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding-bottom:26px}
+#before .old-wrap{width:920px;max-width:96%;margin:14px auto 0;background:#fff;border:1px solid #b8b4a8;box-shadow:0 1px 7px rgba(0,0,0,.18)}
+#before .old-header{background:linear-gradient(#4a4238,#2e2820);padding:22px 24px}
+#before .old-header h1{color:#fff;font-size:1.75rem;font-weight:bold;letter-spacing:.02em}
+#before .old-header .sub{color:#c9c2b4;font-size:.8rem;margin-top:4px}
+#before .old-nav{background:linear-gradient(#f2f1ec,#dcd8cc);border-bottom:1px solid #a8a294;text-align:center}
+#before .old-nav a{display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none}
+#before .old-nav a:first-child{border-left:1px solid #c8c2b0}
+#before .old-nav a:hover{background:#ece8dd;text-decoration:underline}
+#before .notice{background:#fdf6d8;border-bottom:1px solid #e0d49a;color:#7a6a2f;font-size:.78rem;padding:7px 16px}
+#before .old-main{padding:18px 22px;font-size:.86rem;line-height:1.55}
+#before .old-main h2{color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px}
+#before .old-main h2:first-child{margin-top:0}
 #before .old-main p{margin-bottom:9px}
-#before .old-main ul{margin:6px 0 10px 30px}
-#before .old-img{background:#ddd;border:2px inset #999;width:165px;height:120px;display:inline-block;margin:4px;text-align:center;font-size:.7rem;color:#666;font-family:Arial;padding-top:48px;vertical-align:top}
-#before .counter{background:#000;color:#0f0;font-family:'Courier New';padding:2px 8px;letter-spacing:3px}
-#before .old-footer{background:#b22222;color:#fff;text-align:center;font-size:.75rem;padding:8px;font-family:Arial}
-#before .old-footer a{color:#ffff00}
-#before .clip{font-size:2.6rem;text-align:center;margin:6px 0}
+#before .old-main ul{margin:6px 0 10px 24px}
+#before .old-main li{margin-bottom:4px}
+#before .old-img{background:#e9e6de;border:1px solid #cec7b6;width:165px;height:120px;display:inline-block;margin:4px 8px 4px 0;text-align:center;font-size:.7rem;color:#93897a;padding-top:48px;vertical-align:top}
+#before .old-footer{background:#2e2820;color:#c4bcac;font-size:.7rem;padding:10px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+#before .old-footer a{color:#e6ddc9}
 
 /* ============================================================
    PO — BUD-MAX, mocny i konkretny
@@ -119,21 +119,32 @@ body.show-after #after{display:block}
 #after .m-note b{color:#0d1526}
 #after .real{background:#0d1526;color:#fff}
 #after .real h2{color:#fff}
-#after .real-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-#after .rcard{border-radius:14px;overflow:hidden;background:#131e33;border:1px solid #22304d;transition:transform .22s}
-#after .rcard:hover{transform:translateY(-6px)}
-#after .rimg{height:170px;display:flex;align-items:center;justify-content:center;font-size:3.4rem}
+#after .real-grid{columns:3 260px;column-gap:16px}
+@media(max-width:760px){#after .real-grid{columns:1 260px}}
+#after .rcard{border-radius:14px;overflow:hidden;background:#131e33;border:1px solid #22304d;position:relative;break-inside:avoid;margin-bottom:16px;cursor:pointer}
+#after .r1{height:260px}
+#after .r2{height:340px}
+#after .r3{height:220px}
+#after .rimg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;transition:transform .5s ease}
+#after .rcard:hover .rimg{transform:scale(1.08)}
 #after .r1 .rimg{background:linear-gradient(135deg,#20304f,#2c4066)}
 #after .r2 .rimg{background:linear-gradient(135deg,#3d3423,#5a4c30)}
 #after .r3 .rimg{background:linear-gradient(135deg,#23343d,#32505e)}
-#after .rbody{padding:22px 24px}
-#after .rbody h3{font-size:1.08rem;margin-bottom:6px}
-#after .rbody p{color:#aab4c8;font-size:.86rem}
-#after .rbody .meta{margin-top:14px;color:#ffd60a;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-#after .steps{counter-reset:s}
-#after .step-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-#after .st{background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:28px 24px;counter-increment:s;position:relative}
-#after .st::before{content:"0" counter(s);font-family:'Archivo';font-weight:900;font-size:2.4rem;color:#ffd60a;display:block;margin-bottom:10px}
+#after .rbody{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,.1) 75%,transparent);transform:translateY(calc(100% - 62px));transition:transform .35s ease}
+#after .rcard:hover .rbody{transform:translateY(0)}
+#after .rbody h3{font-size:1.08rem;margin-bottom:6px;color:#fff}
+#after .rbody p{color:#c2cbdb;font-size:.85rem;opacity:0;transition:opacity .25s ease .1s}
+#after .rcard:hover .rbody p{opacity:1}
+#after .rbody .meta{margin-top:12px;color:#ffd60a;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+#after .timeline{position:relative;max-width:720px;margin:0 auto}
+#after .tl-line{position:absolute;left:27px;top:6px;bottom:6px;width:2px;background:#e4e7ee}
+#after .tl-line-fill{position:absolute;left:0;top:0;width:100%;height:0%;background:#ffd60a;transition:height .3s linear}
+#after .tl-item{position:relative;padding:0 0 40px 76px;min-height:56px}
+#after .tl-item:last-child{padding-bottom:4px}
+#after .tl-num{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid #e4e7ee;display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:1.3rem;color:#c7cbd3;transition:border-color .3s,color .3s,background .3s;z-index:1}
+#after .tl-item.on .tl-num{border-color:#ffd60a;color:#0d1526;background:#ffd60a}
+#after .tl-item h3{font-size:1.1rem;margin-bottom:6px;padding-top:12px}
+#after .tl-item p{color:#5c6779;font-size:.9rem}
 #after .st h3{font-size:1.05rem;margin-bottom:6px}
 #after .st p{color:#5c6779;font-size:.88rem}
 #after .contact{background:#fff;border-top:1px solid #e4e7ee}
@@ -146,7 +157,13 @@ body.show-after #after{display:block}
 #after .quote-box{background:#0d1526;color:#fff;border-radius:16px;padding:38px 34px}
 #after .quote-box .stars{color:#ffd60a;letter-spacing:5px;margin-bottom:16px}
 #after .quote-box p{color:#c9d2e3;font-style:italic;font-size:1.02rem}
-#after .quote-box b{display:block;margin-top:18px;color:#8b96ab;font-size:.85rem}
+#after .quote-box .qwho{display:flex;align-items:center;gap:12px;margin-top:18px}
+#after .quote-box img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #22304d}
+#after .quote-box b{color:#e8ebf0;font-size:.88rem}
+#after .quote-box span{display:block;color:#8b96ab;font-size:.78rem}
+#after .c-box{background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:18px 20px}
+#after .c-box.owner{display:flex;align-items:center;gap:14px}
+#after .c-box.owner img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
 #after footer.site{background:#0d1526;color:#5f6d89;padding:32px 0;font-size:.82rem;text-align:center;border-top:1px solid #22304d}
 #after .fade{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 #after .fade.on{opacity:1;transform:none}
@@ -167,42 +184,36 @@ body.show-after #after{display:block}
 <div id="before">
   <div class="old-wrap">
     <div class="old-header">
-      <div class="old-header-inner">
-        <h1>F.H.U. "BUD-MAX"</h1>
-        <div class="sub">Usługi Ogólnobudowlane — Wiesław Maksymiak — Rok założenia 1996</div>
-      </div>
+      <h1>F.H.U. "BUD-MAX"</h1>
+      <div class="sub">Usługi ogólnobudowlane — Wiesław Maksymiak — od 1996 roku</div>
     </div>
-    <div class="uc">⚠ UWAGA: STRONA W BUDOWIE - zapraszamy wkrotce ⚠</div>
     <div class="old-nav">
-      <a href="#">Strona głowna</a> | <a href="#">Zakres uslug</a> | <a href="#">Nasze realizacje</a> | <a href="#">Referencje</a> | <a href="#">Kontakt</a>
+      <a href="#">Strona główna</a><a href="#">Zakres usług</a><a href="#">Realizacje</a><a href="#">Referencje</a><a href="#">Kontakt</a>
     </div>
+    <div class="notice">Galeria realizacji w przygotowaniu — pełny zestaw zdjęć wkrótce.</div>
     <div class="old-main">
-      <div class="clip">👷🧱🚧</div>
       <h2>O firmie</h2>
-      <p>Firma Handlowo-Usługowa "BUD-MAX" świadczy kompleksowe uslugi budowlane na terenie miasta i okolic (do 50km). Posiadamy wlasny sprzet oraz wykwalifikowana kadre pracownikow. Faktury VAT.</p>
-      <h2>Zakres usług:</h2>
+      <p>Firma Handlowo-Usługowa "BUD-MAX" świadczy kompleksowe usługi budowlane na terenie miasta i okolic (do 50 km). Posiadamy własny sprzęt oraz wykwalifikowaną kadrę. Faktury VAT.</p>
+      <h2>Zakres usług</h2>
       <ul>
-        <li>budowa domow jednorodzinnych od podstaw</li>
-        <li>remonty mieszkan i lokali</li>
-        <li>docieplenia budynkow (styropian, welna)</li>
+        <li>budowa domów jednorodzinnych od podstaw</li>
+        <li>remonty mieszkań i lokali</li>
+        <li>docieplenia budynków (styropian, wełna)</li>
         <li>układanie kostki brukowej</li>
-        <li>gladzie, malowanie, panele</li>
-        <li>i wiele wiecej - DZWOŃ!</li>
+        <li>gładzie, malowanie, panele</li>
       </ul>
-      <h2>Nasze realizacje:</h2>
-      <p><i>Galeria w przygotowaniu... (zdjecia wkrotce)</i></p>
-      <div class="old-img">[dom_p.stachowiak.jpg]<br>nie można<br>wyświetlić</div>
-      <div class="old-img">[elewacja2007.jpg]</div>
-      <div class="old-img">[kostka_rondo.jpg]</div>
-      <h2>Kontakt:</h2>
-      <p><b>Tel. kom.:</b> 0-608-XXX-XXX (najlepiej dzwonic wieczorem po 18)<br>
+      <h2>Nasze realizacje</h2>
+      <div class="old-img">dom_stachowiak.jpg</div>
+      <div class="old-img">elewacja2010.jpg</div>
+      <div class="old-img">kostka_rondo.jpg</div>
+      <h2>Kontakt</h2>
+      <p><b>Tel. kom.:</b> 608 XXX XXX (najlepiej dzwonić wieczorem po 18)<br>
       <b>Tel. dom.:</b> (067) 213-XX-XX<br>
       <b>E-mail:</b> budmax1996@interia.pl</p>
-      <p style="text-align:center">Jesteś <span class="counter">008452</span> gościem na naszej stronie</p>
     </div>
     <div class="old-footer">
-      © 2006 BUD-MAX Wszelkie prawa zastrzezone | Strona wykonana przez firme "InternetPartner" tel. 0-505-XXX-XXX<br>
-      Ostatnia aktualizacja strony: 11.02.2013r.
+      <span>© 2006–2013 BUD-MAX. Wszelkie prawa zastrzeżone.</span>
+      <span>Ostatnia aktualizacja: 02.2013</span>
     </div>
   </div>
 </div>
@@ -299,11 +310,12 @@ body.show-after #after{display:block}
     <div class="wrap">
       <div class="sec-kick">Jak działamy</div>
       <h2>Przejrzysty proces, stała cena</h2>
-      <div class="step-row steps">
-        <div class="st fade"><h3>Rozmowa i oględziny</h3><p>Przyjeżdżamy, mierzymy, słuchamy. Bez zobowiązań.</p></div>
-        <div class="st fade"><h3>Wycena w 5 dni</h3><p>Szczegółowy kosztorys pozycja po pozycji. Cena stała, zapisana w umowie.</p></div>
-        <div class="st fade"><h3>Realizacja</h3><p>Harmonogram tygodniowy, zdjęcia z postępów na WhatsApp, sprzątamy po sobie.</p></div>
-        <div class="st fade"><h3>Odbiór i gwarancja</h3><p>Protokół odbioru i 5 lat gwarancji na piśmie. Usterki? Reagujemy w 72h.</p></div>
+      <div class="timeline" id="timeline">
+        <div class="tl-line"><div class="tl-line-fill" id="tlFill"></div></div>
+        <div class="tl-item"><div class="tl-num">01</div><h3>Rozmowa i oględziny</h3><p>Przyjeżdżamy, mierzymy, słuchamy. Bez zobowiązań.</p></div>
+        <div class="tl-item"><div class="tl-num">02</div><h3>Wycena w 5 dni</h3><p>Szczegółowy kosztorys pozycja po pozycji. Cena stała, zapisana w umowie.</p></div>
+        <div class="tl-item"><div class="tl-num">03</div><h3>Realizacja</h3><p>Harmonogram tygodniowy, zdjęcia z postępów na WhatsApp, sprzątamy po sobie.</p></div>
+        <div class="tl-item"><div class="tl-num">04</div><h3>Odbiór i gwarancja</h3><p>Protokół odbioru i 5 lat gwarancji na piśmie. Usterki? Reagujemy w 72h.</p></div>
       </div>
     </div>
   </section>
@@ -314,6 +326,10 @@ body.show-after #after{display:block}
         <div class="sec-kick">Kontakt</div>
         <h2>Porozmawiajmy o Twojej budowie</h2>
         <p>Zadzwoń lub napisz — na wyceny odpowiadamy w ciągu 5 dni roboczych. Działamy w promieniu 60 km od Piły.</p>
+        <div class="c-box owner" style="margin-bottom:20px">
+          <img src="../img/bud-owner.jpg" alt="Wiesław Maksymiak, właściciel BUD-MAX" loading="lazy">
+          <div><b style="display:block;font-size:1rem">Wiesław Maksymiak</b><span style="color:#5c6779;font-size:.85rem">Właściciel, na budowie od 1996 roku</span></div>
+        </div>
         <ul class="c-list">
           <li><span class="lbl">Telefon</span> <a href="tel:+48608000000" style="color:#101828;text-decoration:none">608 000 000</a></li>
           <li><span class="lbl">E-mail</span> <a href="mailto:biuro@bud-max.pl" style="color:#101828;text-decoration:none">biuro@bud-max.pl</a></li>
@@ -323,7 +339,10 @@ body.show-after #after{display:block}
       <div class="quote-box fade">
         <div class="stars">★★★★★</div>
         <p>„Budowali nam dom w 2024. Jedyna ekipa, jaką znam, która zadzwoniła, że kończy etap TYDZIEŃ PRZED terminem. Kosztorys zgadzał się co do złotówki."</p>
-        <b>Anna i Tomasz S. · dom 140 m², Dolaszewo</b>
+        <div class="qwho">
+          <img src="../img/bud-op1.jpg" alt="Anna S., klientka" loading="lazy">
+          <div><b>Anna i Tomasz S.</b><span>dom 140 m², Dolaszewo</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -337,9 +356,32 @@ function show(which){
   document.getElementById('btn-przed').classList.toggle('active', which==='before');
   document.getElementById('btn-po').classList.toggle('active', which==='after');
   window.scrollTo({top:0});
+  dispatchEvent(new Event('scroll'));
 }
 const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+// oś czasu procesu — wypełnienie linii i podświetlanie kroków przy scrollu
+(() => {
+  const tl = document.getElementById('timeline');
+  const fill = document.getElementById('tlFill');
+  const items = document.querySelectorAll('.tl-item');
+  function update() {
+    const rect = tl.getBoundingClientRect();
+    const vh = innerHeight;
+    const total = rect.height;
+    if (!total) return;
+    const scrolled = Math.min(total, Math.max(0, vh * .75 - rect.top));
+    fill.style.height = (scrolled / total * 100) + '%';
+    items.forEach(it => {
+      const r = it.getBoundingClientRect();
+      it.classList.toggle('on', r.top < vh * .75);
+    });
+  }
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
 
 // suwak przed/po remoncie
 const mStage = document.getElementById('mStage'), mRange = document.getElementById('mRange');
