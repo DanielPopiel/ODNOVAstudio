@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
+  @keyframes bDraw{from{stroke-dashoffset:1500}to{stroke-dashoffset:0}}
+  @keyframes bDim{from{opacity:0}to{opacity:1}}
+  @keyframes bWin{0%{opacity:0}55%{opacity:1}72%{opacity:.35}100%{opacity:1}}
+  @keyframes bType{from{width:0}to{width:100%}}
+  @keyframes bStampIn{0%{opacity:0;transform:rotate(-14deg) scale(2.2)}60%{opacity:1;transform:rotate(-8deg) scale(.94)}100%{opacity:1;transform:rotate(-8deg) scale(1)}}
+  @keyframes bSlat{to{transform:translateY(-102%)}}
+  @keyframes bHide{to{opacity:0}}
+  @keyframes bCompass{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="font-family:'Inter',sans-serif;min-height:100vh">
+
+  <div data-intro="true" aria-hidden="true" onScroll="{{ introScroll }}" onMouseMove="{{ introPar }}" style="position:fixed;inset:0;z-index:2000;overflow-y:auto;display:{{ introDisplay }};background:#0a1327">
+    <div style="height:380vh">
+      <div style="position:sticky;top:0;height:100vh;overflow:hidden">
+        <div style="position:absolute;inset:0;opacity:{{ introContentO }};transition:opacity .5s ease">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(126,166,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(126,166,255,.08) 1px,transparent 1px),linear-gradient(rgba(126,166,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(126,166,255,.16) 1px,transparent 1px);background-size:24px 24px,24px 24px,120px 120px,120px 120px"></div>
+          <div ref="{{ introParaRef }}" style="position:absolute;inset:0;will-change:transform">
+            <svg style="position:absolute;left:50%;top:40%;transform:translate(-50%,-50%)" width="500" height="330" viewBox="0 0 500 330">
+              <path d="M30 280 L470 280" stroke="#7ea6ff" stroke-width="2" stroke-dasharray="1500" stroke-dashoffset="{{ groundD }}"></path>
+              <path d="M140 280 L140 160 L360 160 L360 280" fill="none" stroke="#7ea6ff" stroke-width="2.5" stroke-dasharray="1500" stroke-dashoffset="{{ wallD }}"></path>
+              <path d="M118 160 L250 72 L382 160" fill="none" stroke="#ffd60a" stroke-width="2.5" stroke-dasharray="1500" stroke-dashoffset="{{ roofD }}"></path>
+              <path d="M318 108 L318 78 L340 78 L340 123" fill="none" stroke="#7ea6ff" stroke-width="2" stroke-dasharray="1500" stroke-dashoffset="{{ chimD }}"></path>
+              <path d="M228 280 L228 212 L272 212 L272 280" fill="none" stroke="#7ea6ff" stroke-width="2" stroke-dasharray="1500" stroke-dashoffset="{{ doorD }}"></path>
+              <rect x="162" y="188" width="44" height="38" fill="none" stroke="#7ea6ff" stroke-width="2" stroke-dasharray="1500" stroke-dashoffset="{{ win1D }}"></rect>
+              <rect x="294" y="188" width="44" height="38" fill="none" stroke="#7ea6ff" stroke-width="2" stroke-dasharray="1500" stroke-dashoffset="{{ win2D }}"></rect>
+              <circle cx="250" cy="122" r="17" fill="none" stroke="#7ea6ff" stroke-width="2" stroke-dasharray="1500" stroke-dashoffset="{{ circD }}"></circle>
+              <rect x="163" y="189" width="42" height="36" fill="rgba(255,214,10,.55)" opacity="{{ glow1 }}" style="transition:opacity .4s"></rect>
+              <rect x="295" y="189" width="42" height="36" fill="rgba(255,214,10,.55)" opacity="{{ glow2 }}" style="transition:opacity .4s"></rect>
+              <circle cx="250" cy="122" r="15" fill="rgba(255,214,10,.45)" opacity="{{ glow3 }}" style="transition:opacity .4s"></circle>
+              <g opacity="{{ dimO }}" style="transition:opacity .45s" stroke="#5f7db8" stroke-width="1.5">
+                <path d="M140 302 L360 302 M140 296 L140 308 M360 296 L360 308"></path>
+                <path d="M404 160 L404 280 M398 160 L410 160 M398 280 L410 280"></path>
+              </g>
+              <text x="250" y="322" text-anchor="middle" fill="#7ea6ff" font-family="ui-monospace,monospace" font-size="13" opacity="{{ dimO }}" style="transition:opacity .45s">12,40 m</text>
+              <text x="432" y="224" fill="#7ea6ff" font-family="ui-monospace,monospace" font-size="13" opacity="{{ dimO }}" style="transition:opacity .45s">6,20 m</text>
+              <g style="transform-origin:52px 60px;animation:bCompass 14s linear infinite"><circle cx="52" cy="60" r="24" fill="none" stroke="rgba(126,166,255,.4)" stroke-width="1.5"></circle><path d="M52 40 L58 60 L52 80 L46 60 Z" fill="rgba(255,214,10,.6)"></path></g>
+            </svg>
+            <div style="position:absolute;left:0;right:0;top:70%;text-align:center;font-family:'Archivo';font-weight:900;font-size:clamp(2rem,6vw,3.8rem);letter-spacing:.04em;color:#fff;opacity:{{ titleO }};transform:{{ titleT }};transition:opacity .5s,transform .5s">BUD<span style="color:#ffd60a">-</span>MAX</div>
+            <div style="position:absolute;left:0;right:0;top:82%;text-align:center;font-family:ui-monospace,monospace;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:#8fa0bd;opacity:{{ subO }};transition:opacity .5s">— od projektu do klucza —</div>
+            <div style="position:absolute;left:64%;top:22%;border:3px solid rgba(229,72,58,.85);color:rgba(229,72,58,.95);font-family:'Archivo';font-weight:900;font-size:1rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 18px;border-radius:6px;opacity:{{ stampO }};transform:{{ stampT }};transition:opacity .35s,transform .35s cubic-bezier(.2,1.3,.4,1)">Projekt zatwierdzony</div>
+          </div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.08)"><div style="height:100%;width:{{ progW }};background:linear-gradient(90deg,#ffd60a,#7ea6ff);transition:width .15s linear"></div></div>
+          <div style="position:absolute;left:0;right:0;bottom:26px;text-align:center;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:#8fa0bd;opacity:{{ hintO }};transition:opacity .4s"><span style="display:inline-block;animation:demoPulse 0s">scrolluj w dół, aby narysować projekt ↓</span></div>
+          <button onClick="{{ skipIntro }}" style="position:absolute;right:22px;top:74px;background:none;border:1px solid rgba(255,255,255,.2);color:#8fa0bd;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:8px 16px;border-radius:99px;cursor:pointer">pomiń →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:1000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)">
+    <a href="ODNOVA Strona Glowna.dc.html" style="color:#9a9aad;text-decoration:none;font-weight:600" style-hover="color:#fff">← Portfolio</a>
+    <div style="color:#9a9aad">Metamorfoza: <b style="background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">BUD-MAX</b> · demo ODNOVA°studio</div>
+    <div style="display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px">
+      <button onClick="{{ showBefore }}" style="border:0;background:{{ przedBg }};color:{{ przedColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em">PRZED</button>
+      <button onClick="{{ showAfter }}" style="border:0;background:{{ poBg }};color:{{ poColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em;animation:{{ poPulse }}">PO ✨</button>
+    </div>
+  </div>
+
+  <div style="display:{{ beforeDisplay }};background:#e6e6e2;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding:70px 0 26px">
+    <div style="width:920px;max-width:96%;margin:14px auto 0;background:#fff;border:1px solid #b8b4a8;box-shadow:0 1px 7px rgba(0,0,0,.18)">
+      <div style="background:linear-gradient(#4a4238,#2e2820);padding:22px 24px">
+        <h1 style="color:#fff;font-size:1.75rem;font-weight:bold;letter-spacing:.02em;margin:0">F.H.U. "BUD-MAX"</h1>
+        <div style="color:#c9c2b4;font-size:.8rem;margin-top:4px">Usługi ogólnobudowlane — Wiesław Maksymiak — od 1996 roku</div>
+      </div>
+      <div style="background:linear-gradient(#f2f1ec,#dcd8cc);border-bottom:1px solid #a8a294;text-align:center">
+        <a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;border-left:1px solid #c8c2b0;text-decoration:none">Strona główna</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Zakres usług</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Realizacje</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Referencje</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Kontakt</a>
+      </div>
+      <div style="background:#fdf6d8;border-bottom:1px solid #e0d49a;color:#7a6a2f;font-size:.78rem;padding:7px 16px">Galeria realizacji w przygotowaniu — pełny zestaw zdjęć wkrótce.</div>
+      <div style="padding:18px 22px;font-size:.86rem;line-height:1.55">
+        <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:0 0 8px">O firmie</h2>
+        <p style="margin-bottom:9px">Firma Handlowo-Usługowa "BUD-MAX" świadczy kompleksowe usługi budowlane na terenie miasta i okolic (do 50 km). Posiadamy własny sprzęt oraz wykwalifikowaną kadrę. Faktury VAT.</p>
+        <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px">Zakres usług</h2>
+        <ul style="margin:6px 0 10px 24px">
+          <li style="margin-bottom:4px">budowa domów jednorodzinnych od podstaw</li>
+          <li style="margin-bottom:4px">remonty mieszkań i lokali</li>
+          <li style="margin-bottom:4px">docieplenia budynków (styropian, wełna)</li>
+          <li style="margin-bottom:4px">układanie kostki brukowej</li>
+          <li style="margin-bottom:4px">gładzie, malowanie, panele</li>
+        </ul>
+        <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px">Nasze realizacje</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+          <img src="img/nasze_realizacje1.jpg" alt="Realizacja BUD-MAX" style="width:165px;height:120px;object-fit:cover;filter:sepia(.3) saturate(.85)"></img>
+          <img src="img/nasze_realizacje2.jfif" alt="Realizacja BUD-MAX — elewacja" style="width:165px;height:120px;object-fit:cover;filter:sepia(.3) saturate(.85)"></img>
+          <img src="img/nasze_realizacje3.webp" alt="Realizacja BUD-MAX — kostka brukowa" style="width:165px;height:120px;object-fit:cover;filter:sepia(.3) saturate(.85)"></img>
+        </div>
+        <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px">Kontakt</h2>
+        <p style="margin-bottom:9px"><b>Tel. kom.:</b> 608 XXX XXX (najlepiej dzwonić wieczorem po 18)<br><b>Tel. dom.:</b> (067) 213-XX-XX<br><b>E-mail:</b> budmax1996@interia.pl</p>
+      </div>
+      <div style="background:#2e2820;color:#c4bcac;font-size:.7rem;padding:10px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+        <span>© 2006–2013 BUD-MAX. Wszelkie prawa zastrzeżone.</span>
+        <span>Ostatnia aktualizacja: 02.2013</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:{{ afterDisplay }};background:#f5f6f8;color:#101828;line-height:1.6;padding-top:56px">
+    <nav style="position:sticky;top:56px;z-index:50;background:#0d1526;border-bottom:3px solid #ffd60a">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px">
+        <div style="font-family:'Archivo';font-weight:900;font-size:1.45rem;color:#fff;letter-spacing:.02em">BUD<span style="color:#ffd60a">-</span>MAX</div>
+        <div style="display:flex;gap:28px;font-size:.88rem;font-weight:600">
+          <a href="#uslugi" style="color:#aab4c8;text-decoration:none" style-hover="color:#ffd60a">Usługi</a>
+          <a href="#metamorfoza" style="color:#aab4c8;text-decoration:none" style-hover="color:#ffd60a">Przed / po</a>
+          <a href="#realizacje" style="color:#aab4c8;text-decoration:none" style-hover="color:#ffd60a">Realizacje</a>
+          <a href="#kontakt" style="color:#aab4c8;text-decoration:none" style-hover="color:#ffd60a">Kontakt</a>
+        </div>
+        <a href="#kontakt" style="background:#ffd60a;color:#0d1526;text-decoration:none;font-weight:800;padding:12px 26px;font-size:.9rem;border-radius:6px" style-hover="background:#ffe14d">Bezpłatna wycena</a>
+      </div>
+    </nav>
+
+    <header style="background:#0d1526;color:#fff;padding:110px 0 90px;position:relative;overflow:hidden">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px;position:relative;z-index:2">
+        <div style="display:inline-block;background:rgba(255,214,10,.12);border:1px solid rgba(255,214,10,.35);color:#ffd60a;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 16px;border-radius:4px;margin-bottom:26px">Budowy i remonty · od 1996 roku</div>
+        <h1 style="font-family:'Archivo';font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:900;line-height:1.04;max-width:680px;margin:0">Budujemy tak,<br>jakbyśmy budowali <span style="color:#ffd60a">dla siebie</span></h1>
+        <p style="max-width:520px;color:#aab4c8;margin:26px 0 38px;font-size:1.1rem">Domy pod klucz, remonty i elewacje. Umowa, harmonogram i stała cena — zero niespodzianek na końcu budowy.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="#kontakt" style="background:#ffd60a;color:#0d1526;text-decoration:none;font-weight:800;padding:11px 26px;font-size:.9rem;border-radius:6px" style-hover="background:#ffe14d">Wyceń swój projekt</a>
+          <a href="#realizacje" style="border:2px solid #2a3650;color:#fff;text-decoration:none;font-weight:700;padding:11px 26px;font-size:.9rem;border-radius:6px" style-hover="border-color:#ffd60a;color:#ffd60a">Zobacz realizacje</a>
+        </div>
+      </div>
+    </header>
+
+    <div style="background:#ffd60a;color:#0d1526;padding:22px 0">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div><b style="font-family:'Archivo';font-weight:900;font-size:1.5rem;display:block;line-height:1.1">{{ cnt1 }} lat</b><span style="font-size:.82rem;font-weight:600">na rynku budowlanym</span></div>
+        <div><b style="font-family:'Archivo';font-weight:900;font-size:1.5rem;display:block;line-height:1.1">{{ cnt2 }}+</b><span style="font-size:.82rem;font-weight:600">ukończonych realizacji</span></div>
+        <div><b style="font-family:'Archivo';font-weight:900;font-size:1.5rem;display:block;line-height:1.1">{{ cnt3 }}%</b><span style="font-size:.82rem;font-weight:600">umów ze stałą ceną</span></div>
+        <div><b style="font-family:'Archivo';font-weight:900;font-size:1.5rem;display:block;line-height:1.1">{{ cnt4 }} lat</b><span style="font-size:.82rem;font-weight:600">gwarancji na roboty</span></div>
+      </div>
+    </div>
+
+    <section id="uslugi" style="padding:90px 0">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px">
+        <div style="color:#c99400;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin-bottom:10px">Zakres usług</div>
+        <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:900;margin:0 0 44px;color:#0d1526">Od fundamentów po dach</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:32px 28px;transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(13,21,38,.1)"><div style="width:52px;height:52px;border-radius:10px;background:#0d1526;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px">🏠</div><h3 style="font-size:1.2rem;margin:0 0 8px">Domy pod klucz</h3><p style="color:#5c6779;font-size:.92rem;margin:0">Od fundamentów po wykończenie. Prowadzimy budowę kompleksowo, z jednym punktem kontaktu.</p></div>
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:32px 28px;transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(13,21,38,.1)"><div style="width:52px;height:52px;border-radius:10px;background:#0d1526;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px">🔨</div><h3 style="font-size:1.2rem;margin:0 0 8px">Remonty i wykończenia</h3><p style="color:#5c6779;font-size:.92rem;margin:0">Mieszkania, domy i lokale usługowe. Gładzie, podłogi, łazienki, zabudowy GK.</p></div>
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:32px 28px;transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(13,21,38,.1)"><div style="width:52px;height:52px;border-radius:10px;background:#0d1526;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px">🧱</div><h3 style="font-size:1.2rem;margin:0 0 8px">Elewacje i docieplenia</h3><p style="color:#5c6779;font-size:.92rem;margin:0">Docieplenia styropianem i wełną z dofinansowaniem z programu Czyste Powietrze.</p></div>
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:32px 28px;transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(13,21,38,.1)"><div style="width:52px;height:52px;border-radius:10px;background:#0d1526;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px">🚧</div><h3 style="font-size:1.2rem;margin:0 0 8px">Kostka brukowa</h3><p style="color:#5c6779;font-size:.92rem;margin:0">Podjazdy, tarasy i place. Projekt układu i doradztwo w doborze materiału gratis.</p></div>
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:32px 28px;transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(13,21,38,.1)"><div style="width:52px;height:52px;border-radius:10px;background:#0d1526;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px">📐</div><h3 style="font-size:1.2rem;margin:0 0 8px">Adaptacje poddaszy</h3><p style="color:#5c6779;font-size:.92rem;margin:0">Zamieniamy strychy w sypialnie i biura. Ocieplenie, okna dachowe, zabudowa.</p></div>
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:32px 28px;transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(13,21,38,.1)"><div style="width:52px;height:52px;border-radius:10px;background:#0d1526;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px">📋</div><h3 style="font-size:1.2rem;margin:0 0 8px">Nadzór i doradztwo</h3><p style="color:#5c6779;font-size:.92rem;margin:0">Kierownik budowy z uprawnieniami. Odbiory, dziennik budowy, formalności.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metamorfoza" style="padding:90px 0;background:#fff;border-top:1px solid #e4e7ee">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px">
+        <div style="color:#c99400;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin-bottom:10px;text-align:center">Przed / po</div>
+        <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:900;margin:0 0 44px;color:#0d1526;text-align:center">Przesuń i zobacz nasz remont</h2>
+        <div ref="{{ mStageRef }}" style="position:relative;height:420px;border-radius:16px;overflow:hidden;user-select:none;box-shadow:0 24px 60px rgba(13,21,38,.18);max-width:900px;margin:0 auto">
+          <img src="img/przed_remontem.png" alt="Salon przed remontem" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+          <div ref="{{ mNewRef }}" style="position:absolute;inset:0;clip-path:inset(0 0 0 50%)">
+            <img src="img/po_remoncie.png" alt="Salon po remoncie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+          </div>
+          <div ref="{{ mHandleRef }}" style="position:absolute;top:0;bottom:0;left:50%;width:4px;background:#ffd60a;transform:translateX(-50%);pointer-events:none;z-index:3">
+            <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#ffd60a;color:#0d1526;font-family:'Archivo';font-weight:900;font-size:.9rem;padding:12px 14px;border-radius:99px;box-shadow:0 8px 24px rgba(0,0,0,.35)">◂ ▸</span>
+          </div>
+          <span style="position:absolute;top:16px;z-index:3;font-family:'Archivo';font-weight:900;font-size:.72rem;letter-spacing:.12em;padding:7px 14px;border-radius:6px;left:16px;background:rgba(13,21,38,.8);color:#fff">PRZED REMONTEM</span>
+          <span style="position:absolute;top:16px;z-index:3;font-family:'Archivo';font-weight:900;font-size:.72rem;letter-spacing:.12em;padding:7px 14px;border-radius:6px;right:16px;background:#ffd60a;color:#0d1526">PO REMONCIE</span>
+          <input ref="{{ mRangeRef }}" type="range" min="3" max="97" value="50" step="0.1" aria-label="Porównanie przed i po remoncie" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:4;appearance:none"></input>
+        </div>
+        <p style="text-align:center;color:#5c6779;font-size:.9rem;margin-top:20px">Salon klienta z os. Górnego — <b style="color:#0d1526">7 tygodni od wyburzenia do wniesienia sofy.</b> Złap suwak i porównaj.</p>
+      </div>
+    </section>
+
+    <section id="realizacje" style="padding:90px 0;background:#0d1526;color:#fff">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px">
+        <div style="color:#ffd60a;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin-bottom:10px">Portfolio</div>
+        <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:900;margin:0 0 44px;color:#fff">Ostatnie realizacje</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+          <div style="border-radius:14px;overflow:hidden;background:#152238;border:1px solid #22304d;padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end"><img src="img/dom_jednorodzinny.png" alt="Dom jednorodzinny — realizacja BUD-MAX" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:14px"></img><h3 style="font-size:1.08rem;margin:0 0 6px;color:#fff">Dom jednorodzinny 140 m²</h3><p style="color:#c2cbdb;font-size:.85rem;margin:0">Stan surowy → pod klucz w 14 miesięcy. Ogrzewanie pompą ciepła, rekuperacja.</p><div style="margin-top:12px;color:#ffd60a;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Dolaszewo · 2025</div></div>
+          <div style="border-radius:14px;overflow:hidden;background:#152238;border:1px solid #22304d;padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end"><img src="img/elewacja.png" alt="Elewacja kamienicy — realizacja BUD-MAX" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:14px"></img><h3 style="font-size:1.08rem;margin:0 0 6px;color:#fff">Elewacja kamienicy</h3><p style="color:#c2cbdb;font-size:.85rem;margin:0">Docieplenie 620 m² z odtworzeniem detali sztukatorskich. Nadzór konserwatora.</p><div style="margin-top:12px;color:#ffd60a;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Piła, Śródmieście · 2025</div></div>
+          <div style="border-radius:14px;overflow:hidden;background:#152238;border:1px solid #22304d;padding:26px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end"><img src="img/remont_mieszkania.jpg" alt="Generalny remont mieszkania — realizacja BUD-MAX" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:14px"></img><h3 style="font-size:1.08rem;margin:0 0 6px;color:#fff">Generalny remont mieszkania</h3><p style="color:#c2cbdb;font-size:.85rem;margin:0">68 m² w 7 tygodni: nowe instalacje, łazienka, kuchnia, podłogi.</p><div style="margin-top:12px;color:#ffd60a;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Piła, os. Górne · 2026</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proces" style="padding:90px 0">
+      <div style="max-width:720px;margin:0 auto;padding:0 24px">
+        <div style="color:#c99400;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin-bottom:10px">Jak działamy</div>
+        <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:900;margin:0 0 44px;color:#0d1526">Przejrzysty proces, stała cena</h2>
+        <div style="position:relative">
+          <div style="position:relative;padding:0 0 40px 76px;min-height:56px"><div style="position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background:#ffd60a;border:2px solid #ffd60a;display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:1.3rem;color:#0d1526">01</div><h3 style="font-size:1.1rem;margin:0 0 6px;padding-top:12px">Rozmowa i oględziny</h3><p style="color:#5c6779;font-size:.9rem;margin:0">Przyjeżdżamy, mierzymy, słuchamy. Bez zobowiązań.</p></div>
+          <div style="position:relative;padding:0 0 40px 76px;min-height:56px"><div style="position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background:#ffd60a;border:2px solid #ffd60a;display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:1.3rem;color:#0d1526">02</div><h3 style="font-size:1.1rem;margin:0 0 6px;padding-top:12px">Wycena w 5 dni</h3><p style="color:#5c6779;font-size:.9rem;margin:0">Szczegółowy kosztorys pozycja po pozycji. Cena stała, zapisana w umowie.</p></div>
+          <div style="position:relative;padding:0 0 40px 76px;min-height:56px"><div style="position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid #e4e7ee;display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:1.3rem;color:#c7cbd3">03</div><h3 style="font-size:1.1rem;margin:0 0 6px;padding-top:12px">Realizacja</h3><p style="color:#5c6779;font-size:.9rem;margin:0">Harmonogram tygodniowy, zdjęcia z postępów na WhatsApp, sprzątamy po sobie.</p></div>
+          <div style="position:relative;padding:0"><div style="position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid #e4e7ee;display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:1.3rem;color:#c7cbd3">04</div><h3 style="font-size:1.1rem;margin:0 0 6px;padding-top:12px;padding-left:76px">Odbiór i gwarancja</h3><p style="color:#5c6779;font-size:.9rem;margin:0;padding-left:76px">Protokół odbioru i 5 lat gwarancji na piśmie. Usterki? Reagujemy w 72h.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" style="padding:90px 0;background:#fff;border-top:1px solid #e4e7ee">
+      <div style="max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+        <div>
+          <div style="color:#c99400;font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin-bottom:10px">Kontakt</div>
+          <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:900;margin:0 0 20px;color:#0d1526">Porozmawiajmy o Twojej budowie</h2>
+          <p style="color:#5c6779;margin-bottom:22px">Zadzwoń lub napisz — na wyceny odpowiadamy w ciągu 5 dni roboczych. Działamy w promieniu 60 km od Piły.</p>
+          <div style="background:#fff;border:1px solid #e4e7ee;border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;margin-bottom:20px">
+            <img src="img/bud-owner.jpg" alt="Wiesław Maksymiak, właściciel BUD-MAX" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0"></img>
+            <div><b style="display:block;font-size:1rem">Wiesław Maksymiak</b><span style="color:#5c6779;font-size:.85rem">Właściciel, na budowie od 1996 roku</span></div>
+          </div>
+          <ul style="list-style:none;margin:0;padding:0">
+            <li style="padding:12px 0;border-bottom:1px solid #e4e7ee;display:flex;gap:14px;align-items:center;font-weight:600"><span style="color:#98a1b3;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;width:90px">Telefon</span> <a href="tel:+48608000000" style="color:#101828;text-decoration:none">608 000 000</a></li>
+            <li style="padding:12px 0;border-bottom:1px solid #e4e7ee;display:flex;gap:14px;align-items:center;font-weight:600"><span style="color:#98a1b3;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;width:90px">E-mail</span> <a href="mailto:biuro@bud-max.pl" style="color:#101828;text-decoration:none">biuro@bud-max.pl</a></li>
+            <li style="padding:12px 0;display:flex;gap:14px;align-items:center;font-weight:600"><span style="color:#98a1b3;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;width:90px">Biuro</span> ul. Składowa 3, Piła (pon–pt 7–15)</li>
+          </ul>
+        </div>
+        <div style="background:#0d1526;color:#fff;border-radius:16px;padding:38px 34px">
+          <div style="color:#ffd60a;letter-spacing:5px;margin-bottom:16px">★★★★★</div>
+          <p style="color:#c9d2e3;font-style:italic;font-size:1.02rem;margin:0">„Budowali nam dom w 2024. Jedyna ekipa, jaką znam, która zadzwoniła, że kończy etap TYDZIEŃ PRZED terminem. Kosztorys zgadzał się co do złotówki."</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:18px">
+            <div style="width:44px;height:44px;border-radius:50%;flex-shrink:0;background:repeating-linear-gradient(45deg,#22304d,#22304d 4px,#1a2540 4px,#1a2540 8px)"></div>
+            <div><b style="color:#e8ebf0;font-size:.88rem">Anna i Tomasz S.</b><span style="display:block;color:#8b96ab;font-size:.78rem">dom 140 m², Dolaszewo</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="background:#0d1526;color:#5f6d89;padding:32px 0;font-size:.82rem;text-align:center;border-top:1px solid #22304d">© 2026 BUD-MAX · Projekt strony: ODNOVA°studio · Strona demonstracyjna — firma fikcyjna</footer>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  mStageRef = React.createRef();
+  mNewRef = React.createRef();
+  mHandleRef = React.createRef();
+  mRangeRef = React.createRef();
+
+  state = { view: 'before', cnt1: 0, cnt2: 0, cnt3: 0, cnt4: 0 };
+
+  introParaRef = React.createRef();
+  introPar = (e) => {
+    const el = this.introParaRef.current; if (!el) return;
+    const dx = e.clientX / window.innerWidth - .5, dy = e.clientY / window.innerHeight - .5;
+    el.style.transform = `translate3d(${(dx * -22).toFixed(1)}px, ${(dy * -15).toFixed(1)}px, 0)`;
+  };
+  skipIntro = () => {
+    this._introDone = true;
+    if (this._introTimer) clearTimeout(this._introTimer);
+    this.setState({ introPlaying: false, introP: 0 });
+  };
+  introScroll = (e) => {
+    const p = Math.min(1, e.target.scrollTop / (window.innerHeight * 2.5));
+    this.setState({ introP: p });
+    if (p >= .99 && !this._introDone) {
+      this._introDone = true;
+      this._introTimer = setTimeout(() => this.setState({ introPlaying: false, introP: 0 }), 800);
+    }
+  };
+  showBefore = () => this.setState({ view: 'before' });
+  showAfter = () => {
+    const first = this.state.view !== 'after';
+    this._introDone = false;
+    if (this._introTimer) clearTimeout(this._introTimer);
+    this.setState({ view: 'after', introPlaying: first, introP: 0 });
+    this.animateCounters();
+  };
+
+  animateCounters() {
+    if (this._countersDone) return;
+    this._countersDone = true;
+    const targets = { cnt1: 28, cnt2: 140, cnt3: 100, cnt4: 5 };
+    const start = performance.now(), dur = 1400;
+    const tick = now => {
+      const p = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      this.setState({
+        cnt1: Math.round(targets.cnt1 * eased),
+        cnt2: Math.round(targets.cnt2 * eased),
+        cnt3: Math.round(targets.cnt3 * eased),
+        cnt4: Math.round(targets.cnt4 * eased),
+      });
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  componentDidMount() {
+    const range = this.mRangeRef.current;
+    const mNew = this.mNewRef.current;
+    const handle = this.mHandleRef.current;
+    if (!range) return;
+    this._onInput = () => {
+      const v = range.value + '%';
+      if (mNew) mNew.style.clipPath = `inset(0 0 0 ${v})`;
+      if (handle) handle.style.left = v;
+    };
+    range.addEventListener('input', this._onInput);
+  }
+  componentWillUnmount() {
+    if (this.mRangeRef.current && this._onInput) this.mRangeRef.current.removeEventListener('input', this._onInput);
+  }
+
+  renderVals() {
+    const isAfter = this.state.view === 'after';
+    return {
+      rootRef: this.rootRef,
+      introDisplay: this.state.introPlaying ? 'block' : 'none',
+      introParaRef: this.introParaRef,
+      introPar: this.introPar,
+      skipIntro: this.skipIntro,
+      introScroll: this.introScroll,
+      ...(() => {
+        const q = this.state.introP || 0;
+        const seg = (a, b) => Math.min(1, Math.max(0, (q - a) / (b - a)));
+        return {
+          introContentO: q >= .99 ? 0 : 1,
+          groundD: (1500 * (1 - seg(0, .1))).toFixed(0),
+          wallD: (1500 * (1 - seg(.08, .3))).toFixed(0),
+          roofD: (1500 * (1 - seg(.28, .45))).toFixed(0),
+          chimD: (1500 * (1 - seg(.45, .53))).toFixed(0),
+          doorD: (1500 * (1 - seg(.53, .62))).toFixed(0),
+          win1D: (1500 * (1 - seg(.6, .68))).toFixed(0),
+          win2D: (1500 * (1 - seg(.64, .72))).toFixed(0),
+          circD: (1500 * (1 - seg(.7, .76))).toFixed(0),
+          glow1: q > .72 ? 1 : 0, glow2: q > .76 ? 1 : 0, glow3: q > .8 ? 1 : 0,
+          dimO: q > .62 ? 1 : 0,
+          titleO: q > .74 ? 1 : 0, titleT: q > .74 ? 'none' : 'translateY(18px)',
+          subO: q > .8 ? 1 : 0,
+          stampO: q > .88 ? 1 : 0, stampT: q > .88 ? 'rotate(-8deg) scale(1)' : 'rotate(-14deg) scale(1.9)',
+          progW: `${(q * 100).toFixed(1)}%`,
+          hintO: q > .05 ? 0 : 1,
+        };
+      })(),
+      mStageRef: this.mStageRef,
+      mNewRef: this.mNewRef,
+      mHandleRef: this.mHandleRef,
+      mRangeRef: this.mRangeRef,
+      beforeDisplay: isAfter ? 'none' : 'block',
+      afterDisplay: isAfter ? 'block' : 'none',
+      przedBg: isAfter ? 'transparent' : 'linear-gradient(90deg,#7c5cff,#9d7bff)',
+      przedColor: isAfter ? '#9a9aad' : '#fff',
+      poBg: isAfter ? 'linear-gradient(90deg,#7c5cff,#9d7bff)' : 'transparent',
+      poColor: isAfter ? '#fff' : '#9a9aad',
+      poPulse: isAfter ? 'none' : 'demoPulse 1.6s infinite',
+      showBefore: this.showBefore,
+      showAfter: this.showAfter,
+      cnt1: this.state.cnt1, cnt2: this.state.cnt2, cnt3: this.state.cnt3, cnt4: this.state.cnt4,
+    };
+  }
+}
+</script>
+</body>
+</html>

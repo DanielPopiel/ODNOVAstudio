@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"></link>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,800;1,600&family=Nunito+Sans:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet"></link>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
+  @keyframes pspin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(8deg) scale(1.04)}100%{transform:rotate(0) scale(1)}}
+  @keyframes drop{from{transform:translate(-50%,-50%) scale(0)}to{transform:translate(-50%,-50%) scale(1)}}
+  @keyframes pToss{0%{transform:translate(-50%,-40%) rotate(0deg) scale(.2)}55%{transform:translate(-50%,-70%) rotate(430deg) scale(1.06)}80%{transform:translate(-50%,-46%) rotate(640deg) scale(.97)}100%{transform:translate(-50%,-50%) rotate(720deg) scale(1)}}
+  @keyframes pIris{to{clip-path:circle(0% at 50% 44%)}}
+  @keyframes pFade{from{opacity:0}to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="font-family:'Nunito Sans',sans-serif;min-height:100vh">
+
+  <div data-intro="true" aria-hidden="true" style="position:fixed;inset:0;z-index:2000;pointer-events:none;display:{{ introDisplay }}">
+    <div style="position:absolute;inset:0;background:radial-gradient(700px 500px at 50% 30%,#3a2314,#1a0f08 70%);clip-path:circle(150% at 50% 44%);animation:pIris 1.1s cubic-bezier(.76,0,.24,1) 3s both">
+      <div style="position:absolute;left:50%;top:44%;animation:pToss 2.7s cubic-bezier(.45,.1,.35,1) .2s both">
+        <svg width="210" height="210" viewBox="0 0 210 210" style="filter:drop-shadow(0 22px 40px rgba(0,0,0,.55))">
+          <circle cx="105" cy="105" r="100" fill="#e0a94e"></circle>
+          <circle cx="105" cy="105" r="82" fill="#c03318"></circle>
+          <circle cx="105" cy="105" r="76" fill="#f2dc9c"></circle>
+          <circle cx="78" cy="80" r="15" fill="#d4574a"></circle><circle cx="132" cy="72" r="14" fill="#d4574a"></circle><circle cx="142" cy="128" r="15" fill="#d4574a"></circle><circle cx="88" cy="140" r="14" fill="#d4574a"></circle><circle cx="108" cy="104" r="13" fill="#d4574a"></circle>
+          <ellipse cx="62" cy="118" rx="11" ry="6" fill="#3f6c35" transform="rotate(-20 62 118)"></ellipse><ellipse cx="124" cy="52" rx="10" ry="6" fill="#3f6c35" transform="rotate(30 124 52)"></ellipse><ellipse cx="150" cy="96" rx="10" ry="6" fill="#3f6c35" transform="rotate(70 150 96)"></ellipse>
+        </svg>
+      </div>
+      <div style="position:absolute;left:0;right:0;top:66%;text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:clamp(2rem,5.5vw,3.4rem);color:#fdf7ee;animation:pFade .9s ease 1.5s both">Bella Napoli</div>
+      <div style="position:absolute;left:0;right:0;top:78%;text-align:center;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:#e8cba8;animation:pFade 1s ease 1.9s both">Pizza napoletana · forno a legna</div>
+    </div>
+  </div>
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:1000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)">
+    <a href="ODNOVA Strona Glowna.dc.html" style="color:#9a9aad;text-decoration:none;font-weight:600" style-hover="color:#fff">← Portfolio</a>
+    <div style="color:#9a9aad">Metamorfoza: <b style="background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">Bella Napoli</b> · demo ODNOVA°studio</div>
+    <div style="display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px">
+      <button onClick="{{ showBefore }}" style="border:0;background:{{ przedBg }};color:{{ przedColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em">PRZED</button>
+      <button onClick="{{ showAfter }}" style="border:0;background:{{ poBg }};color:{{ poColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em;animation:{{ poPulse }}">PO ✨</button>
+    </div>
+  </div>
+
+  <div style="display:{{ beforeDisplay }};background:#eeeae2;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding:70px 0 26px">
+    <div style="width:920px;max-width:96%;margin:14px auto 0;background:#fffdf8;border:1px solid #ccc2b0;box-shadow:0 1px 7px rgba(0,0,0,.18)">
+      <div style="background:linear-gradient(#a13a2e,#7c2a21);padding:22px 24px">
+        <h1 style="font-family:Georgia,'Times New Roman',serif;color:#fff;font-size:1.9rem;font-weight:normal;text-shadow:1px 1px 2px rgba(0,0,0,.3);margin:0">Pizzeria Bella Napoli</h1>
+        <div style="color:#f2cfc4;font-size:.8rem;font-style:italic;margin-top:4px">Prawdziwa włoska pizza w Twoim mieście</div>
+      </div>
+      <div style="background:linear-gradient(#f7f3ec,#e3dbc9);border-bottom:1px solid #cfc4ab;text-align:center">
+        <a href="#" style="display:inline-block;color:#6b3a2e;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #d9cfb8;border-left:1px solid #d9cfb8;text-decoration:none">Start</a><a href="#" style="display:inline-block;color:#6b3a2e;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #d9cfb8;text-decoration:none">Nasze menu</a><a href="#" style="display:inline-block;color:#6b3a2e;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #d9cfb8;text-decoration:none">Galeria</a><a href="#" style="display:inline-block;color:#6b3a2e;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #d9cfb8;text-decoration:none">Dojazd</a><a href="#" style="display:inline-block;color:#6b3a2e;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #d9cfb8;text-decoration:none">Kontakt</a>
+      </div>
+      <div style="background:#fdf6d8;border-bottom:1px solid #e0d49a;color:#7a6a2f;font-size:.78rem;padding:7px 16px">Zamówienia telefoniczne: (067) 215-XX-XX · Dowóz gratis powyżej 30 zł</div>
+      <div style="padding:18px 22px;font-size:.82rem;line-height:1.55">
+        <h2 style="color:#a13a2e;font-size:1.05rem;border-bottom:1px solid #e6ddc9;padding-bottom:4px;margin:0 0 8px">Witamy</h2>
+        <p style="margin:0 0 9px">Pizzeria Bella Napoli zaprasza na pizzę wypiekaną w piecu opalanym drewnem. Serwujemy również dania obiadowe, sałatki i desery. Organizujemy imprezy okolicznościowe.</p>
+        <h2 style="color:#a13a2e;font-size:1.05rem;border-bottom:1px solid #e6ddc9;padding-bottom:4px;margin:16px 0 8px">Nasze menu</h2>
+        <p style="margin:0 0 9px">Pełne menu do pobrania:</p>
+        <a href="#" style="display:inline-block;border:1px solid #b7ab8f;background:linear-gradient(#fdfdfb,#eee6d3);border-radius:3px;padding:6px 14px;font-size:.78rem;color:#4a3a2a;text-decoration:none;margin:6px 6px 6px 0">menu_aktualne_2010.pdf</a>
+        <p style="margin:9px 0">Przykładowe ceny:</p>
+        <table style="border-collapse:collapse;width:100%;font-size:.8rem;margin:8px 0">
+          <tr><th style="border:1px solid #e6ddc9;padding:5px 9px;text-align:left;background:#f4ece0;color:#7c2a21">Pizza</th><th style="border:1px solid #e6ddc9;padding:5px 9px;text-align:left;background:#f4ece0;color:#7c2a21">Cena</th></tr>
+          <tr><td style="border:1px solid #e6ddc9;padding:5px 9px">Margherita (sos, ser)</td><td style="border:1px solid #e6ddc9;padding:5px 9px">mała 12 zł / duża 18 zł</td></tr>
+          <tr style="background:#fdfbf5"><td style="border:1px solid #e6ddc9;padding:5px 9px">Wiejska (sos, ser, boczek, cebula, ogórek)</td><td style="border:1px solid #e6ddc9;padding:5px 9px">mała 16 zł / duża 24 zł</td></tr>
+          <tr><td style="border:1px solid #e6ddc9;padding:5px 9px">Hawajska (sos, ser, szynka, ananas)</td><td style="border:1px solid #e6ddc9;padding:5px 9px">mała 15 zł / duża 22 zł</td></tr>
+        </table>
+        <h2 style="color:#a13a2e;font-size:1.05rem;border-bottom:1px solid #e6ddc9;padding-bottom:4px;margin:16px 0 8px">Zdjęcia naszych dań</h2>
+        <img src="img/pizza-cut1.jpg" alt="Pizza pepperoni" style="width:160px;height:115px;margin:4px 8px 4px 0;vertical-align:top;object-fit:cover;border:1px solid #d3c9b3;filter:sepia(.3) saturate(.85)"></img>
+        <img src="img/pizza-cut2.jpg" alt="Pizza z salami" style="width:160px;height:115px;margin:4px 8px 4px 0;vertical-align:top;object-fit:cover;border:1px solid #d3c9b3;filter:sepia(.3) saturate(.85)"></img>
+        <img src="img/pizza-cut3.jpg" alt="Pizza z warzywami" style="width:160px;height:115px;margin:4px 8px 4px 0;vertical-align:top;object-fit:cover;border:1px solid #d3c9b3;filter:sepia(.3) saturate(.85)"></img>
+        <h2 style="color:#a13a2e;font-size:1.05rem;border-bottom:1px solid #e6ddc9;padding-bottom:4px;margin:16px 0 8px">Księga gości</h2>
+        <div style="border:1px solid #e6ddc9;background:#fdfbf5;padding:8px 12px;margin:8px 0;font-size:.8rem;border-radius:3px"><b>Grażyna</b> (14.05.2010): Pizza super, polecam wszystkim znajomym, pozdrawiam właściciela.</div>
+        <div style="border:1px solid #e6ddc9;background:#fdfbf5;padding:8px 12px;margin:8px 0;font-size:.8rem;border-radius:3px"><b>anonim</b> (02.03.2010): Czemu dowóz do Rudek kosztuje 5 zł a do Wybczyc nie?</div>
+      </div>
+      <div style="background:#5c2a21;color:#e0c2b8;font-size:.7rem;padding:10px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+        <span>© 2008–2010 Pizzeria Bella Napoli</span>
+        <span>Ostatnia aktualizacja: 05.2010 | <a href="#" style="color:#f2d8cf">bellanapoli@op.pl</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:{{ afterDisplay }};background:#fdf7ee;color:#33251b;line-height:1.65">
+    <nav style="position:sticky;top:56px;z-index:50;background:rgba(253,247,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(214,52,38,.15)">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px">
+        <div style="font-family:'Fraunces';font-weight:800;font-size:1.4rem;color:#d63426">Bella Napoli<small style="display:block;font-family:'Nunito Sans';font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#5a7d4a">Pizza Napoletana · dal 2008</small></div>
+        <div style="display:flex;gap:28px;font-size:.9rem;font-weight:700">
+          <a href="#menu" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Menu</a>
+          <a href="#skomponuj" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Skomponuj pizzę</a>
+          <a href="#historia" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Nasza historia</a>
+          <a href="#zamow" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Kontakt</a>
+        </div>
+        <a href="#zamow" style="background:#d63426;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:99px;font-size:.9rem;box-shadow:0 6px 18px rgba(214,52,38,.3);transition:background .2s,transform .2s" style-hover="background:#b8281c;transform:translateY(-2px)">Zamów: 67 215 00 00</a>
+      </div>
+    </nav>
+
+    <header style="position:relative;padding:100px 0 80px;overflow:hidden;background:radial-gradient(800px 420px at 85% 10%,rgba(240,180,90,.35),transparent),#fdf7ee">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(214,52,38,.2);border-radius:99px;padding:7px 16px;font-size:.8rem;font-weight:700;color:#5a7d4a;margin-bottom:24px;box-shadow:0 3px 12px rgba(60,30,10,.06)">🔥 Piec opalany drewnem · 450°C</div>
+          <h1 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2.6rem,6vw,4.3rem);line-height:1.06;color:#2b1c12;margin:0">Pizza jak z <em style="color:#d63426;font-style:italic">Neapolu</em>, dowóz jak błyskawica</h1>
+          <p style="color:#6b5a49;margin:24px 0 34px;font-size:1.12rem;max-width:480px">Ciasto dojrzewa 48 godzin, pomidory San Marzano jadą do nas prosto z Kampanii. Gorąca pizza u Ciebie w 35 minut — albo rabat 20%.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+            <a href="#menu" style="background:#d63426;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:99px;font-size:.9rem;box-shadow:0 6px 18px rgba(214,52,38,.3)">Zobacz menu</a>
+            <a href="#zamow" style="color:#2b1c12;text-decoration:none;font-weight:700;font-size:.92rem;border-bottom:2px solid #d63426;padding-bottom:2px">Zamów telefonicznie →</a>
+          </div>
+        </div>
+        <div style="position:relative;aspect-ratio:1;max-width:440px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 45% 40%,#f4c26b 0 58%,#d9913c 58% 70%,#c8752a 70% 100%);box-shadow:0 30px 60px rgba(120,60,20,.28),inset 0 -10px 30px rgba(120,60,20,.25);display:flex;align-items:center;justify-content:center;font-size:8rem">🍕
+          <div style="position:absolute;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700;top:8%;left:-6%;color:#5a7d4a">🌿 Składniki z Włoch</div>
+          <div style="position:absolute;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700;bottom:10%;right:-4%;color:#d63426">⏱ Dowóz do 35 min</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="menu" style="padding:90px 0">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+        <div style="color:#5a7d4a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;text-align:center;margin-bottom:12px">La carta</div>
+        <h2 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);text-align:center;margin:0 0 36px;color:#2b1c12">Menu, które czuć przez ekran</h2>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <button onClick="{{ f.onClick }}" style="border:1.5px solid {{ f.border }};background:{{ f.bg }};color:{{ f.color }};font-weight:700;font-size:.85rem;padding:9px 20px;border-radius:99px;cursor:pointer;transition:all .2s">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+          <sc-for list="{{ dishes }}" as="dish" hint-placeholder-count="6">
+            <div style="display:{{ dish.display }};background:#fff;border-radius:20px;padding:0;overflow:hidden;box-shadow:0 8px 24px rgba(60,30,10,.07);border:1px solid rgba(214,52,38,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-6px);box-shadow:0 18px 40px rgba(60,30,10,.13)">
+              <img src="{{ dish.img }}" alt="{{ dish.name }}" style="width:100%;height:170px;object-fit:cover;display:block"></img>
+              <div style="padding:22px 26px 24px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><h3 style="font-family:'Fraunces';font-size:1.3rem;color:#2b1c12;margin:0">{{ dish.name }}</h3><span style="font-family:'Fraunces';font-weight:800;color:#d63426;font-size:1.2rem;white-space:nowrap">{{ dish.price }}</span></div>
+              <p style="color:#8a7663;font-size:.9rem;margin-top:8px">{{ dish.desc }}</p>
+              <span style="display:inline-block;margin-top:14px;background:{{ dish.tagBg }};color:{{ dish.tagColor }};font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:99px">{{ dish.tag }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="skomponuj" style="padding:90px 0;background:radial-gradient(700px 380px at 15% 20%,rgba(240,180,90,.25),transparent),#fdf7ee">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+        <div style="color:#5a7d4a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;text-align:center;margin-bottom:12px">Zabawa dozwolona</div>
+        <h2 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);text-align:center;margin:0 0 50px;color:#2b1c12">Skomponuj własną pizzę</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+          <div style="position:relative;max-width:400px;margin:0 auto;width:100%">
+            <div style="position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 48% 44%,#f7d489 0 55%,#eab04e 55% 68%,#d18b33 68% 82%,#c8752a 82% 100%);box-shadow:0 26px 50px rgba(120,60,20,.3),inset 0 -12px 26px rgba(140,70,20,.3);animation:{{ pizzaSpin }}">
+              <div style="position:absolute;inset:13%;border-radius:50%;background:radial-gradient(circle at 45% 40%,#e8483a 0 60%,#c93225 100%);opacity:.9"></div>
+              <div style="position:absolute;inset:15%;border-radius:50%;background:radial-gradient(circle at 55% 45%,rgba(255,244,214,.92) 0 45%,rgba(250,225,170,.85) 75%,transparent 100%)"></div>
+              <sc-for list="{{ toppingDots }}" as="t" hint-placeholder-count="0">
+                <span style="position:absolute;font-size:{{ t.size }};transform:translate(-50%,-50%);z-index:2;filter:drop-shadow(0 3px 4px rgba(80,30,10,.3));left:{{ t.left }};top:{{ t.top }};animation:drop .4s cubic-bezier(.2,1.6,.4,1)">{{ t.em }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family:'Fraunces';font-size:1.5rem;margin:0 0 18px;color:#2b1c12">Baza: margherita 26 zł. Co dorzucamy?</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <sc-for list="{{ toppings }}" as="top" hint-placeholder-count="8">
+                <label style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid {{ top.border }};background-color:{{ top.bgColor }};border-radius:14px;padding:12px 14px;cursor:pointer;transition:border-color .2s,transform .15s;font-weight:700;font-size:.9rem;user-select:none">
+                  <input type="checkbox" checked="{{ top.checked }}" onChange="{{ top.onToggle }}" style="width:17px;height:17px;accent-color:#d63426;cursor:pointer"></input>
+                  <span style="font-size:1.2rem">{{ top.em }}</span> {{ top.name }}
+                  <small style="margin-left:auto;color:#d63426;font-weight:800">+{{ top.price }} zł</small>
+                </label>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:22px;background:#2b1c12;color:#fff;border-radius:16px;padding:18px 24px">
+              <span>{{ builderMsg }}</span>
+              <span style="font-family:'Fraunces';font-weight:800;font-size:2rem;color:#f0b45a">{{ builderTotal }}<small style="font-size:1.1rem"> zł</small></span>
+            </div>
+            <p style="color:#8a7663;font-size:.78rem;margin-top:10px">* przy ananasie pizzaiolo zastrzega sobie prawo do westchnięcia. Kreator jest poglądowy — zamówienia: ☎ 67 215 00 00.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="historia" style="padding:90px 0;background:#2b1c12;color:#f3e9dc">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+        <div>
+          <div style="color:#f0b45a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;text-align:left;margin-bottom:12px">Od 2008 roku</div>
+          <h2 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);text-align:left;margin:0 0 20px;color:#f3e9dc">Jedna rodzina, jeden piec, jedna pasja</h2>
+          <p style="color:#c9b8a4;margin-bottom:14px">Zaczęliśmy w 2008 roku od małego lokalu i wielkiego pieca, który przypłynął do nas z Neapolu. Dziś wypiekamy ponad 200 pizz dziennie, ale każdą tak samo — ręcznie rozciągane ciasto, 90 sekund w ogniu, prosto na Twój stół.</p>
+          <p style="color:#c9b8a4;margin-bottom:14px">Nie mrozimy, nie odgrzewamy, nie idziemy na skróty. Jeśli czegoś nie zjedlibyśmy sami, nie podamy tego Tobie.</p>
+          <div style="display:flex;gap:34px;flex-wrap:wrap;margin-top:30px">
+            <div><b style="font-family:'Fraunces';font-size:1.9rem;color:#f0b45a;display:block;line-height:1.1">48h</b><span style="font-size:.82rem;color:#c9b8a4">dojrzewania ciasta</span></div>
+            <div><b style="font-family:'Fraunces';font-size:1.9rem;color:#f0b45a;display:block;line-height:1.1">90 s</b><span style="font-size:.82rem;color:#c9b8a4">wypieku w 450°C</span></div>
+            <div><b style="font-family:'Fraunces';font-size:1.9rem;color:#f0b45a;display:block;line-height:1.1">4.8★</b><span style="font-size:.82rem;color:#c9b8a4">ocena Google (632 opinie)</span></div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 24px 50px rgba(0,0,0,.4)">
+          <img src="img/pizza-chef.png" alt="Marco przy piecu opalanym drewnem" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,10,5,.75),transparent 55%)"></div>
+          <div style="position:absolute;left:22px;bottom:20px;z-index:2;color:#fff"><b style="display:block;font-family:'Fraunces';font-size:1.15rem">Marco</b><span style="font-size:.76rem;color:#e8cba8">Pizzaiolo od 2008 roku</span></div>
+          <div style="position:absolute;top:16px;right:16px;width:104px;height:104px;border-radius:50%;border:3px solid #fdf7ee;box-shadow:0 10px 24px rgba(0,0,0,.4);overflow:hidden;z-index:2"><img src="img/pizza-special.png" alt="Pizza Bella Special z burratą" style="width:100%;height:100%;object-fit:cover"></img></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="zamow" style="padding:90px 0;text-align:center;background:radial-gradient(600px 300px at 50% 0,rgba(240,180,90,.3),transparent)">
+      <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+        <div style="color:#5a7d4a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;margin-bottom:12px">Zamówienia i dowóz</div>
+        <h2 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);margin:0 0 16px;color:#2b1c12">Głodny? Dzwoń!</h2>
+        <p style="color:#6b5a49;max-width:480px;margin:0 auto 30px">Zamówienia przyjmujemy codziennie od 11:00 do 21:30. Dowóz gratis od 60 zł na terenie miasta.</p>
+        <a href="tel:+48672150000" style="font-family:'Fraunces';font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:#d63426;text-decoration:none;display:inline-block;margin-bottom:26px">☎ 67 215 00 00</a><br/>
+        <a href="#" style="background:#d63426;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:99px;font-size:.9rem;box-shadow:0 6px 18px rgba(214,52,38,.3)">Zamów online</a>
+        <div style="display:flex;justify-content:center;gap:42px;flex-wrap:wrap;margin-top:36px;color:#6b5a49;font-size:.9rem">
+          <div><b style="display:block;color:#2b1c12;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px">Godziny</b>codziennie 11:00 – 22:00</div>
+          <div><b style="display:block;color:#2b1c12;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px">Adres</b>Rynek 14, Piła</div>
+          <div><b style="display:block;color:#2b1c12;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px">Dowóz</b>miasto + 15 km</div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="background:#2b1c12;color:#8f7c68;padding:32px 0;font-size:.82rem;text-align:center">© 2026 Pizzeria Bella Napoli · Projekt strony: ODNOVA°studio · Strona demonstracyjna — firma fikcyjna</footer>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+
+  DISHES = [
+    { img: 'img/pizza-real-margherita.png', name: 'Margherita D.O.P.', price: '29 zł', desc: 'San Marzano, mozzarella fior di latte, świeża bazylia, oliwa extra vergine.', tag: 'Klasyka', cat: 'klasyczne', tagBg: '#eef3e8', tagColor: '#5a7d4a' },
+    { img: 'img/pizza-real-diavola.png', name: 'Diavola', price: '36 zł', desc: 'Pikantne salami spianata, nduja z Kalabrii, miód pitny, mozzarella.', tag: '🌶 Ostra', cat: 'ostre', tagBg: '#fdeae8', tagColor: '#d63426' },
+    { img: 'img/pizza-real-prosciutto.png', name: 'Prosciutto e Rucola', price: '38 zł', desc: 'Szynka parmeńska 18 mies., rukola, płatki parmezanu, pomidorki cherry.', tag: 'Bestseller', cat: 'klasyczne', tagBg: '#eef3e8', tagColor: '#5a7d4a' },
+    { img: 'img/pizza-real-formaggi.png', name: 'Quattro Formaggi', price: '37 zł', desc: 'Gorgonzola, taleggio, parmezan, mozzarella. Na białym sosie.', tag: 'Bez pomidora', cat: 'biale', tagBg: '#eef3e8', tagColor: '#5a7d4a' },
+    { img: 'img/pizza-real-special.png', name: 'Bella Special', price: '42 zł', desc: 'Burrata w całości, mortadela z pistacjami, krem z pistacji. Pozycja szefa.', tag: 'Nowość', cat: 'ostre', tagBg: '#fdeae8', tagColor: '#d63426' },
+    { img: 'img/pizza-real-kids.png', name: 'Pizza dla dzieci', price: '19 zł', desc: 'Mała margherita z uśmiechem z oliwek. Do tego sok jabłkowy gratis.', tag: 'Dla rodzin', cat: 'dzieci', tagBg: '#eef3e8', tagColor: '#5a7d4a' },
+  ];
+
+  TOPPINGS_DEF = [
+    { key: 'pieczarki', em: '🍄', name: 'Pieczarki', price: 4 },
+    { key: 'salami', em: '🌶️', name: 'Salami picante', price: 6 },
+    { key: 'guanciale', em: '🥓', name: 'Guanciale', price: 6 },
+    { key: 'burrata', em: '🧀', name: 'Burrata', price: 9 },
+    { key: 'rukola', em: '🌿', name: 'Rukola', price: 4 },
+    { key: 'oliwki', em: '🫒', name: 'Oliwki', price: 4 },
+    { key: 'cebula', em: '🧅', name: 'Czerwona cebula', price: 3 },
+    { key: 'ananas', em: '🍍', name: 'Ananas', price: 5 },
+  ];
+
+  state = { view: 'before', activeCat: 'all', selectedToppings: {} };
+
+  showBefore = () => this.setState({ view: 'before' });
+  showAfter = () => {
+    const first = this.state.view !== 'after';
+    this.setState({ view: 'after', introPlaying: first });
+    if (first) {
+      if (this._introTimer) clearTimeout(this._introTimer);
+      this._introTimer = setTimeout(() => this.setState({ introPlaying: false }), 4300);
+    }
+  };
+  setCat = (cat) => this.setState({ activeCat: cat });
+  toggleTopping = (key) => this.setState(s => ({ selectedToppings: { ...s.selectedToppings, [key]: !s.selectedToppings[key] } }));
+
+  positionsFor(key, count) {
+    // deterministic pseudo-random positions per topping type, spread across the cheese area
+    let seed = 0;
+    for (let i = 0; i < key.length; i++) seed = (seed * 31 + key.charCodeAt(i)) % 997;
+    const pts = [];
+    for (let i = 0; i < count; i++) {
+      seed = (seed * 1103515245 + 12345) % 2147483648;
+      const ang = (seed / 2147483648) * Math.PI * 2;
+      seed = (seed * 1103515245 + 12345) % 2147483648;
+      const rad = 8 + (seed / 2147483648) * 26;
+      pts.push({
+        left: (50 + Math.cos(ang) * rad).toFixed(1) + '%',
+        top: (50 + Math.sin(ang) * rad).toFixed(1) + '%',
+        size: (1.3 + (i % 3) * 0.25).toFixed(2) + 'rem',
+      });
+    }
+    return pts;
+  }
+
+  renderVals() {
+    const isAfter = this.state.view === 'after';
+    const { activeCat, selectedToppings } = this.state;
+
+    const CATS = [
+      { key: 'all', label: 'Wszystkie' },
+      { key: 'klasyczne', label: 'Klasyczne' },
+      { key: 'ostre', label: '🌶 Ostre' },
+      { key: 'biale', label: 'Bez pomidora' },
+      { key: 'dzieci', label: 'Dla dzieci' },
+    ];
+    const filters = CATS.map(c => ({
+      label: c.label,
+      onClick: () => this.setCat(c.key),
+      border: activeCat === c.key ? '#d63426' : 'rgba(214,52,38,.2)',
+      bg: activeCat === c.key ? '#d63426' : '#fff',
+      color: activeCat === c.key ? '#fff' : '#8a7663',
+    }));
+
+    const dishes = this.DISHES.map(d => ({
+      ...d,
+      display: (activeCat === 'all' || activeCat === d.cat) ? 'block' : 'none',
+    }));
+
+    const toppings = this.TOPPINGS_DEF.map(t => ({
+      em: t.em,
+      name: t.name,
+      price: t.price,
+      checked: !!selectedToppings[t.key],
+      onToggle: () => this.toggleTopping(t.key),
+      border: selectedToppings[t.key] ? '#d63426' : 'rgba(214,52,38,.15)',
+      bgColor: selectedToppings[t.key] ? '#fdf1ef' : '#fff',
+    }));
+
+    let toppingDots = [];
+    this.TOPPINGS_DEF.forEach(t => {
+      if (selectedToppings[t.key]) {
+        toppingDots = toppingDots.concat(this.positionsFor(t.key, 6).map(p => ({ ...p, em: t.em })));
+      }
+    });
+
+    const checkedList = this.TOPPINGS_DEF.filter(t => selectedToppings[t.key]);
+    const builderTotal = 26 + checkedList.reduce((a, t) => a + t.price, 0);
+    const n = checkedList.length;
+    const builderMsg = n === 0 ? 'Twoja pizza:' : n < 3 ? 'Dobry wybór! 👌' : n < 5 ? 'Robi się poważnie 🔥' : 'Pizzaiolo aprobuje! 👨‍🍳';
+
+    return {
+      rootRef: this.rootRef,
+      introDisplay: this.state.introPlaying ? 'block' : 'none',
+      beforeDisplay: isAfter ? 'none' : 'block',
+      afterDisplay: isAfter ? 'block' : 'none',
+      przedBg: isAfter ? 'transparent' : 'linear-gradient(90deg,#7c5cff,#9d7bff)',
+      przedColor: isAfter ? '#9a9aad' : '#fff',
+      poBg: isAfter ? 'linear-gradient(90deg,#7c5cff,#9d7bff)' : 'transparent',
+      poColor: isAfter ? '#fff' : '#9a9aad',
+      poPulse: isAfter ? 'none' : 'demoPulse 1.6s infinite',
+      showBefore: this.showBefore,
+      showAfter: this.showAfter,
+      filters,
+      dishes,
+      toppings,
+      toppingDots,
+      pizzaSpin: n > 0 ? 'pspin .55s ease' : 'none',
+      builderMsg,
+      builderTotal,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

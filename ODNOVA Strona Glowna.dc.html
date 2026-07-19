@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  @keyframes tape{to{transform:translateX(-50%)}}
+  @keyframes tapeRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes introLogo{from{opacity:0;transform:translateY(46px) skewY(4deg)}to{opacity:1;transform:none}}
+  @keyframes introLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes introTag{from{opacity:0;letter-spacing:.55em}to{opacity:1;letter-spacing:.3em}}
+  @keyframes introFade{to{opacity:0}}
+  @keyframes curtainUp{to{transform:translateY(-101%)}}
+  @keyframes curtainDown{to{transform:translateY(101%)}}
+  @keyframes heroUp{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  @keyframes wordUp{from{transform:translateY(112%)}to{transform:none}}
+  @keyframes navIn{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+  @keyframes beam{0%{transform:translateY(-140px);opacity:0}12%{opacity:1}85%{opacity:1}100%{transform:translateY(600px);opacity:0}}
+  @media (prefers-reduced-motion:reduce){
+    [data-intro]{display:none!important}
+    [data-hero],[data-beam]{animation:none!important;opacity:1!important;transform:none!important}
+  }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;background:#0a0a12;color:#f2f2f7;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;min-height:100vh">
+
+  <div ref="{{ introRef }}" data-intro="true" aria-hidden="true" style="position:fixed;inset:0;z-index:300;pointer-events:none">
+    <div style="position:absolute;left:0;right:0;top:0;height:50.5%;background:#07070d;animation:curtainUp .85s cubic-bezier(.76,0,.24,1) 1.5s both"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:50.5%;background:#07070d;animation:curtainDown .85s cubic-bezier(.76,0,.24,1) 1.5s both"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;animation:introFade .4s ease 1.45s both">
+      <div style="overflow:hidden;padding:6px 0">
+        <div style="display:flex;align-items:center;gap:18px;animation:introLogo .8s cubic-bezier(.22,1,.36,1) .15s both"><svg width="58" height="62" viewBox="0 0 76 84"><defs><linearGradient id="introLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#introLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#introLogoG)"></circle></svg><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,3.6rem);letter-spacing:.02em;color:#f2f2f7">ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></div></div>
+      </div>
+      <div style="width:min(320px,60vw);height:2px;background:linear-gradient(90deg,#7c5cff,#00e5b0);transform-origin:left;animation:introLine .7s cubic-bezier(.22,1,.36,1) .75s both"></div>
+      <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#9a9aad;animation:introTag .8s ease .95s both">Stare strony · Nowe życie</div>
+    </div>
+  </div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,18,.72);border-bottom:1px solid rgba(255,255,255,.08);animation:navIn .7s cubic-bezier(.22,1,.36,1) 1.75s both" data-hero="true">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px">
+      <a href="#" style="display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:.02em;color:#f2f2f7;text-decoration:none"><svg width="30" height="32" viewBox="0 0 76 84"><defs><linearGradient id="navLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#navLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#navLogoG)"></circle></svg>ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></a>
+      <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:32px;font-size:.92rem;color:#9a9aad">
+          <a href="#jak" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Jak działamy</a>
+          <a href="#portfolio" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Metamorfozy</a>
+          <a href="#oferta" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Oferta</a>
+          <a href="#kontakt" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Kontakt</a>
+        </div>
+      </sc-if>
+      <a href="#kontakt" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.9rem;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,255,.4)">Darmowa wycena</a>
+    </div>
+  </nav>
+
+  <header style="position:relative;padding:170px 0 110px;text-align:center">
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;pointer-events:none;background:#7c5cff;top:-220px;left:-140px"></div>
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.16;pointer-events:none;background:#00e5b0;top:-120px;right:-200px"></div>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative">
+      <div data-hero="true" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:7px 16px;border-radius:99px;font-size:.82rem;color:#9a9aad;margin-bottom:28px;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 1.8s both">
+        <span style="width:8px;height:8px;border-radius:50%;background:#00e5b0;box-shadow:0 0 12px #00e5b0;display:inline-block"></span>
+        Przyjmujemy nowe projekty
+      </div>
+      <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0"><span style="display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em"><span data-hero="true" style="display:block;animation:wordUp .9s cubic-bezier(.22,1,.36,1) 1.9s both">Stare strony.</span></span><span style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span data-hero="true" style="display:block;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent;animation:wordUp .9s cubic-bezier(.22,1,.36,1) 2.02s both">Nowe życie.</span></span></h1>
+      <p data-hero="true" style="max-width:620px;margin:26px auto 0;color:#9a9aad;font-size:1.12rem;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 2.15s both">Twoja strona wygląda jak z 2008 roku i odstrasza klientów? Zamieniamy przestarzałe witryny w nowoczesne wizytówki, które budują zaufanie i sprzedają.</p>
+      <div data-hero="true" style="display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 2.3s both">
+        <a href="#portfolio" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">Zobacz metamorfozy</a>
+        <a href="#kontakt" style="border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s;display:inline-block" style-hover="border-color:#00e5b0;color:#f2f2f7">Bezpłatny audyt strony</a>
+      </div>
+
+      <div data-hero="true" style="max-width:880px;margin:80px auto 0;position:relative;text-align:left;animation:heroUp .9s cubic-bezier(.22,1,.36,1) 2.45s both">
+        <div style="background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 40px 110px rgba(0,0,0,.6),0 0 0 1px rgba(124,92,255,.08)">
+          <div style="display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);background:#101019">
+            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57;display:inline-block"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#febc2e;display:inline-block"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#28c840;display:inline-block"></span>
+            <span style="flex:1;margin-left:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:.72rem;color:#9a9aad;padding:5px 14px">www.pensjonat-podswierkami.pl</span>
+          </div>
+          <div ref="{{ cmpStageRef }}" style="position:relative;height:460px;user-select:none;touch-action:pan-y;overflow:hidden">
+            <div data-beam="true" style="position:absolute;left:0;right:0;top:0;height:120px;z-index:6;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(180deg,transparent,rgba(124,92,255,.4) 40%,rgba(0,229,176,.35) 60%,transparent);animation:beam 1.6s ease-in-out 3.3s both"></div>
+            <div style="position:absolute;inset:0;overflow:hidden;background:#eceae4">
+              <img src="img/01-preview-pensjonat.png" alt="Strona pensjonatu przed metamorfozą — przestarzały wygląd" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:sepia(.35) contrast(.9) brightness(.97) saturate(.75)"></img>
+              <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.045) 0 1px,transparent 1px 3px)"></div>
+            </div>
+            <div style="position:absolute;inset:0;overflow:hidden;background:#101019;clip-path:inset(0 0 0 96%)" ref="{{ cmpNewRef }}">
+              <img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami po metamorfozie" style="width:100%;height:100%;object-fit:cover;object-position:top"></img>
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 55%,rgba(124,92,255,.1) 75%,rgba(0,229,176,.08) 90%,transparent)"></div>
+            </div>
+            <div ref="{{ cmpFlashRef }}" style="position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 45%,rgba(0,229,176,.3),rgba(124,92,255,.2) 45%,transparent 72%)"></div>
+            <div ref="{{ cmpHandleRef }}" style="position:absolute;top:0;bottom:0;left:96%;width:3px;background:linear-gradient(180deg,#7c5cff,#00e5b0);transform:translateX(-50%);pointer-events:none;z-index:3">
+              <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;font-family:'Sora';font-weight:700;font-size:.66rem;letter-spacing:.05em;padding:10px 13px;border-radius:99px;white-space:nowrap;box-shadow:0 8px 26px rgba(124,92,255,.55)">◂ przeciągnij ▸</span>
+            </div>
+            <span style="position:absolute;top:14px;z-index:3;font-family:'Sora';font-weight:800;font-size:.68rem;letter-spacing:.14em;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px);left:14px;background:rgba(0,0,0,.55);color:#ffdf5c;border:1px solid rgba(255,255,255,.25)">PRZED</span>
+            <span style="position:absolute;top:14px;z-index:3;font-family:'Sora';font-weight:800;font-size:.68rem;letter-spacing:.14em;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px);right:14px;background:rgba(10,10,18,.7);color:#00e5b0;border:1px solid rgba(0,229,176,.4)">PO</span>
+            <input ref="{{ cmpRangeRef }}" type="range" min="4" max="96" value="96" step="0.1" aria-label="Porównanie przed i po" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:4;appearance:none">
+          </div>
+        </div>
+        <p style="text-align:center;color:#9a9aad;font-size:.85rem;margin-top:18px">To prawdziwa realizacja — <b style="color:#00e5b0">złap suwak i przeciągnij</b>. Dokładnie taką różnicę robimy dla Twojej firmy. <a href="Demo Pensjonat.dc.html" style="color:#7c5cff">Zobacz całą stronę →</a></p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin-top:90px">
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent"><span data-cnt="true" data-target="7">0</span>&nbsp;dni</b>
+          <span style="font-size:.85rem;color:#9a9aad">średni czas realizacji</span>
+        </div>
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">+<span data-cnt="true" data-target="180">0</span>%</b>
+          <span style="font-size:.85rem;color:#9a9aad">więcej zapytań po redesignie</span>
+        </div>
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent"><span data-cnt="true" data-target="100">0</span>%</b>
+          <span style="font-size:.85rem;color:#9a9aad">stron mobilnych i szybkich</span>
+        </div>
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">0&nbsp;zł</b>
+          <span style="font-size:.85rem;color:#9a9aad">za audyt i wycenę</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div aria-hidden="true" onMouseEnter="{{ pauseTape }}" onMouseLeave="{{ resumeTape }}" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#101019;padding:24px 0;margin:30px 0 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+    <div ref="{{ tapeRow1Ref }}" style="display:flex;gap:48px;width:max-content;animation:tape 28s linear infinite;font-family:'Sora';font-weight:700;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;color:#f2f2f7;white-space:nowrap">
+      <span><b style="color:#00e5b0;margin-right:16px">✦</b>STRONY WWW</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>REDESIGN</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>POZYCJONOWANIE</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>GOOGLE MAPS</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>COPYWRITING</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>SZYBKOŚĆ 90+</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>WERSJA MOBILNA</span>
+      <span><b style="color:#00e5b0;margin-right:16px">✦</b>STRONY WWW</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>REDESIGN</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>POZYCJONOWANIE</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>GOOGLE MAPS</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>COPYWRITING</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>SZYBKOŚĆ 90+</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>WERSJA MOBILNA</span>
+    </div>
+    <div ref="{{ tapeRow2Ref }}" style="display:flex;gap:48px;width:max-content;animation:tapeRev 32s linear infinite;font-family:'Sora';font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#4d4d5c;white-space:nowrap;margin-top:14px">
+      <span><b style="color:#7c5cff;margin-right:16px">✦</b>7 DNI REALIZACJI</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>100% MOBILNIE</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>DARMOWY AUDYT</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>WSPARCIE 24/7</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>SEO LOKALNE</span>
+      <span><b style="color:#7c5cff;margin-right:16px">✦</b>7 DNI REALIZACJI</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>100% MOBILNIE</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>DARMOWY AUDYT</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>WSPARCIE 24/7</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>SEO LOKALNE</span>
+    </div>
+  </div>
+
+  <section id="jak" style="padding:100px 0">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Jak działamy</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Od reliktu do wizytówki w 3 krokach</h2>
+        <p style="color:#9a9aad;margin-top:16px">Bez żargonu, bez ukrytych kosztów. Ty prowadzisz firmę — my zajmujemy się resztą.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s,border-color .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px 28px" style-hover="transform:translateY(-6px);border-color:rgba(124,92,255,.5)">
+          <div style="font-family:'Sora';font-size:.8rem;font-weight:700;color:#00e5b0;letter-spacing:.1em;margin-bottom:16px">KROK 01</div>
+          <h3 style="font-size:1.15rem;margin:0 0 10px">Darmowy audyt</h3>
+          <p style="font-size:.92rem;color:#9a9aad;margin:0">Analizujemy Twoją obecną stronę: szybkość, wygląd na telefonie, pozycję w Google. Dostajesz konkretny raport — co odstrasza Twoich klientów i ile Cię to kosztuje.</p>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s,border-color .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px 28px" style-hover="transform:translateY(-6px);border-color:rgba(124,92,255,.5)">
+          <div style="font-family:'Sora';font-size:.8rem;font-weight:700;color:#00e5b0;letter-spacing:.1em;margin-bottom:16px">KROK 02</div>
+          <h3 style="font-size:1.15rem;margin:0 0 10px">Projekt i budowa</h3>
+          <p style="font-size:.92rem;color:#9a9aad;margin:0">Projektujemy nową stronę dopasowaną do Twojej branży. Nowoczesny wygląd, błyskawiczne ładowanie, pełna wersja mobilna. Ty tylko akceptujesz efekt.</p>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s,border-color .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px 28px" style-hover="transform:translateY(-6px);border-color:rgba(124,92,255,.5)">
+          <div style="font-family:'Sora';font-size:.8rem;font-weight:700;color:#00e5b0;letter-spacing:.1em;margin-bottom:16px">KROK 03</div>
+          <h3 style="font-size:1.15rem;margin:0 0 10px">Start i rozwój</h3>
+          <p style="font-size:.92rem;color:#9a9aad;margin:0">Publikujemy stronę, konfigurujemy Google i wizytówkę Google Maps. Na życzenie prowadzimy dalej: pozycjonowanie, treści, marketing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" style="padding:100px 0;background:#101019;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Portfolio</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Zobacz metamorfozy na żywo</h2>
+        <p style="color:#9a9aad;margin-top:16px">Każda realizacja ma interaktywny przełącznik <b style="color:#f2f2f7">PRZED / PO</b> — kliknij i zobacz różnicę na własne oczy.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px">
+
+        <a data-proj="true" href="Demo%20Fryzjer.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
+            <img src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img src="img/02-preview-fryzjer.png" alt="Nowa strona Atelier Anna" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+          </div>
+          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Beauty · Salon fryzjerski</div>
+            <h3 style="font-size:1.25rem;margin:0 0 8px">Atelier Anna</h3>
+            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
+            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a data-proj="true" href="Demo%20Autoserwis.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
+            <img src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img src="img/02-preview-autoserwis.png" alt="Nowa strona Auto-Serwis Kowalski" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+          </div>
+          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Motoryzacja · Warsztat</div>
+            <h3 style="font-size:1.25rem;margin:0 0 8px">Auto-Serwis Kowalski</h3>
+            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.</p>
+            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a data-proj="true" href="Demo%20Pizzeria.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
+            <img src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img src="img/02-preview-pizzeria.png" alt="Nowa strona Bella Napoli" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+          </div>
+          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Gastronomia · Pizzeria</div>
+            <h3 style="font-size:1.25rem;margin:0 0 8px">Bella Napoli</h3>
+            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.</p>
+            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a data-proj="true" href="Demo%20Budmax.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
+            <img src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img src="img/02-preview-budmax.png" alt="Nowa strona BUD-MAX" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+          </div>
+          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Budownictwo · Remonty</div>
+            <h3 style="font-size:1.25rem;margin:0 0 8px">BUD-MAX</h3>
+            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">20 lat doświadczenia w remontach, strona "w budowie" od 2013. Teraz: portfolio realizacji, które samo sprzedaje.</p>
+            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a data-proj="true" href="Demo%20Dentysta.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
+            <img src="img/01-preview-dentysta.png" alt="Stara strona Gabinetu Dent-Med" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img src="img/02-preview-dentysta.png" alt="Nowa strona Dent-Med" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+          </div>
+          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Zdrowie · Stomatologia</div>
+            <h3 style="font-size:1.25rem;margin:0 0 8px">Dent-Med</h3>
+            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.</p>
+            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a data-proj="true" href="Demo%20Pensjonat.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
+            <img src="img/01-preview-pensjonat.png" alt="Stara strona Pensjonatu U Górala" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+          </div>
+          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Turystyka · Noclegi</div>
+            <h3 style="font-size:1.25rem;margin:0 0 8px">Pensjonat Pod Świerkami</h3>
+            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.</p>
+            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="oferta" style="padding:100px 0">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Oferta</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Proste pakiety, jasne ceny</h2>
+        <p style="color:#9a9aad;margin-top:16px">Bez abonamentów-pułapek. Płacisz za efekt, stronę masz na własność.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:stretch">
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column" style-hover="transform:translateY(-6px)">
+          <div style="font-family:'Sora';font-weight:700;font-size:1.05rem">Odświeżenie</div>
+          <div style="font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px">od 1 500 zł <small style="font-size:.9rem;color:#9a9aad;font-weight:400">netto</small></div>
+          <ul style="list-style:none;margin:24px 0;padding:0;flex:1">
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Nowa strona-wizytówka (do 4 podstron)</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Pełna wersja mobilna</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Optymalizacja szybkości</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Certyfikat SSL i podstawowe SEO</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Realizacja w 7 dni</li>
+          </ul>
+          <a href="#kontakt" style="text-align:center;border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#00e5b0;color:#f2f2f7">Wybieram</a>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s;border:1px solid #7c5cff;background:linear-gradient(180deg,rgba(124,92,255,.12),#15151f 60%);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column" style-hover="transform:translateY(-6px)">
+          <div style="position:relative;top:-52px;margin-bottom:-30px;align-self:center;background:linear-gradient(90deg,#7c5cff,#00e5b0);color:#0a0a12;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:99px">Najczęściej wybierany</div>
+          <div style="font-family:'Sora';font-weight:700;font-size:1.05rem">Metamorfoza</div>
+          <div style="font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px">od 2 900 zł <small style="font-size:.9rem;color:#9a9aad;font-weight:400">netto</small></div>
+          <ul style="list-style:none;margin:24px 0;padding:0;flex:1">
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Wszystko z pakietu Odświeżenie</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Do 8 podstron + galeria realizacji</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Wizytówka Google Maps + opinie</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Formularz kontaktowy / rezerwacje</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Teksty pisane pod klienta i Google</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>3 miesiące opieki technicznej gratis</li>
+          </ul>
+          <a href="#kontakt" style="text-align:center;background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">Wybieram</a>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column" style-hover="transform:translateY(-6px)">
+          <div style="font-family:'Sora';font-weight:700;font-size:1.05rem">Rozwój</div>
+          <div style="font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px">od 199 zł <small style="font-size: 0.9rem; color: rgb(154, 154, 173); font-weight: 400;">/ mies.</small></div>
+          <ul style="list-style:none;margin:24px 0;padding:0;flex:1">
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Pozycjonowanie lokalne (SEO)</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Comiesięczny raport wyników</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Aktualizacje treści i zdjęć</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Opieka techniczna i kopie zapasowe</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Doradztwo marketingowe</li>
+          </ul>
+          <a href="#kontakt" style="text-align:center;border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#00e5b0;color:#f2f2f7">Wybieram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" style="padding:100px 0">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08));border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:70px 40px;text-align:center">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Kontakt</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Sprawdźmy, ile kosztuje Cię stara strona</h2>
+        <p style="color:#9a9aad;max-width:520px;margin:16px auto 34px">Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
+        <a href="mailto:kontakt@odnova.studio" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">kontakt@odnova.studio</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:36px 0;color:#9a9aad;font-size:.85rem">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <span>© 2026 ODNOVA°studio — Stare strony. Nowe życie.</span>
+      <span>Strony demonstracyjne w portfolio przedstawiają fikcyjne firmy.</span>
+    </div>
+  </footer>
+
+  <div ref="{{ cursorGlowRef }}" style="position:fixed;left:0;top:0;width:560px;height:560px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(124,92,255,.13),transparent 62%);z-index:1;opacity:1"></div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  introRef = React.createRef();
+  cmpStageRef = React.createRef();
+  cmpRangeRef = React.createRef();
+  cmpNewRef = React.createRef();
+  cmpHandleRef = React.createRef();
+  cmpFlashRef = React.createRef();
+  cursorGlowRef = React.createRef();
+  tapeRow1Ref = React.createRef();
+  tapeRow2Ref = React.createRef();
+
+  pauseTape = () => {
+    if (this.tapeRow1Ref.current) this.tapeRow1Ref.current.style.animationPlayState = 'paused';
+    if (this.tapeRow2Ref.current) this.tapeRow2Ref.current.style.animationPlayState = 'paused';
+  };
+  resumeTape = () => {
+    if (this.tapeRow1Ref.current) this.tapeRow1Ref.current.style.animationPlayState = 'running';
+    if (this.tapeRow2Ref.current) this.tapeRow2Ref.current.style.animationPlayState = 'running';
+  };
+
+  state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820 };
+
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root) return;
+
+    this.onResize = () => this.setState({ navOpen: window.innerWidth > 820 });
+    window.addEventListener('resize', this.onResize);
+
+    // intro overlay cleanup (curtain finishes ~2.35s)
+    this._introTimer = setTimeout(() => {
+      if (this.introRef.current) this.introRef.current.style.display = 'none';
+    }, 2500);
+
+    // reveal-on-scroll
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'none';
+        io.unobserve(e.target);
+      }
+    }), { threshold: .12 });
+    root.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    this.io = io;
+
+    // before/after compare slider
+    const stage = this.cmpStageRef.current;
+    const range = this.cmpRangeRef.current;
+    if (stage && range) {
+      const newEl = this.cmpNewRef.current;
+      const handle = this.cmpHandleRef.current;
+      const flash = this.cmpFlashRef.current;
+      const card = stage.closest ? stage.parentElement : null;
+      const setX = v => {
+        v = +v;
+        if (newEl) newEl.style.clipPath = `inset(0 0 0 ${v}%)`;
+        if (handle) handle.style.left = v + '%';
+        // glow rośnie im więcej "PO" widać
+        const t = Math.max(0, Math.min(1, (96 - v) / 92));
+        if (card) card.style.boxShadow = `0 40px 110px rgba(0,0,0,.6), 0 0 ${Math.round(30 + 90 * t)}px rgba(124,92,255,${(.12 + .4 * t).toFixed(2)}), 0 0 0 1px rgba(0,229,176,${(.06 + .3 * t).toFixed(2)})`;
+        // wow-flash przy pełnym odsłonięciu
+        if (v <= 26 && !this._wowed) {
+          this._wowed = true;
+          if (flash && flash.animate) flash.animate([{ opacity: 0 }, { opacity: 1, offset: .3 }, { opacity: 0 }], { duration: 800, easing: 'ease-out' });
+          if (card && card.animate) card.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.015)', offset: .4 }, { transform: 'scale(1)' }], { duration: 550, easing: 'ease-out' });
+        }
+        if (v > 70) this._wowed = false;
+      };
+      setX(range.value);
+      const onInput = () => setX(range.value);
+      range.addEventListener('input', onInput);
+      this._range = range;
+      this._onInput = onInput;
+
+      const cmpIO = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        cmpIO.disconnect();
+        const start = performance.now(), from = 96, to = 52, dur = 1500;
+        const step = now => {
+          const p = Math.min(1, (now - start) / dur);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const v = from + (to - from) * ease;
+          setX(v);
+          range.value = v;
+          if (p < 1) this._cmpRaf = requestAnimationFrame(step);
+        };
+        this._cmpRaf = requestAnimationFrame(step);
+      }), { threshold: .45 });
+      cmpIO.observe(stage);
+      this.cmpIO = cmpIO;
+    }
+
+    // animated counters
+    const cntIO = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      cntIO.unobserve(e.target);
+      const el = e.target, target = +el.dataset.target, start = performance.now(), dur = 1500;
+      const tick = now => {
+        const p = Math.min(1, (now - start) / dur);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }), { threshold: .6 });
+    root.querySelectorAll('[data-cnt]').forEach(el => cntIO.observe(el));
+    this.cntIO = cntIO;
+
+    // portfolio card tilt + cursor glow (fine-pointer only)
+    if (matchMedia('(pointer:fine)').matches) {
+      this._tiltHandlers = [];
+      root.querySelectorAll('[data-proj]').forEach(card => {
+        const mm = e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5;
+          const y = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = `translateY(-8px) perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
+        };
+        const ml = () => { card.style.transform = ''; };
+        card.addEventListener('mousemove', mm);
+        card.addEventListener('mouseleave', ml);
+        this._tiltHandlers.push([card, mm, ml]);
+      });
+
+      const glow = this.cursorGlowRef.current;
+      let gx = window.innerWidth / 2, gy = 0, tx = gx, ty = gy;
+      const mmove = e => { tx = e.clientX; ty = e.clientY; };
+      window.addEventListener('mousemove', mmove);
+      this._mmove = mmove;
+      const follow = () => {
+        gx += (tx - gx) * .08;
+        gy += (ty - gy) * .08;
+        if (glow) glow.style.transform = `translate(${gx - 280}px, ${gy - 280}px)`;
+        this._followRaf = requestAnimationFrame(follow);
+      };
+      follow();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._introTimer) clearTimeout(this._introTimer);
+    if (this.onResize) window.removeEventListener('resize', this.onResize);
+    if (this.io) this.io.disconnect();
+    if (this.cmpIO) this.cmpIO.disconnect();
+    if (this.cntIO) this.cntIO.disconnect();
+    if (this._range && this._onInput) this._range.removeEventListener('input', this._onInput);
+    if (this._mmove) window.removeEventListener('mousemove', this._mmove);
+    if (this._cmpRaf) cancelAnimationFrame(this._cmpRaf);
+    if (this._followRaf) cancelAnimationFrame(this._followRaf);
+    if (this._tiltHandlers) this._tiltHandlers.forEach(([card, mm, ml]) => {
+      card.removeEventListener('mousemove', mm);
+      card.removeEventListener('mouseleave', ml);
+    });
+  }
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      introRef: this.introRef,
+      cmpStageRef: this.cmpStageRef,
+      cmpRangeRef: this.cmpRangeRef,
+      cursorGlowRef: this.cursorGlowRef,
+      cmpNewRef: this.cmpNewRef,
+      cmpHandleRef: this.cmpHandleRef,
+      cmpFlashRef: this.cmpFlashRef,
+      tapeRow1Ref: this.tapeRow1Ref,
+      tapeRow2Ref: this.tapeRow2Ref,
+      pauseTape: this.pauseTape,
+      resumeTape: this.resumeTape,
+      navOpen: this.state.navOpen,
+    };
+  }
+}
+</script>
+</body>
+</html>

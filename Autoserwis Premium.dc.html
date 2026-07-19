@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#07090c}
+  a{color:#ff8a00}a:hover{color:#ffd60a}
+  @keyframes spinBlades{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes eq{0%,100%{transform:scaleY(.18)}50%{transform:scaleY(1)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+  @keyframes scanX{from{left:-4%}to{left:103%}}
+  @keyframes shutUp{to{transform:translateY(-101%)}}
+  @keyframes shutDown{to{transform:translateY(101%)}}
+  @keyframes irisZoom{to{transform:scale(6);opacity:0}}
+  @keyframes hintPulse{0%,100%{opacity:.45;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
+  @media (prefers-reduced-motion:reduce){[data-preloader]{display:none!important}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="font-family:'Barlow',sans-serif;background:#0a0d11;color:#e8ebf0;min-height:100vh">
+
+  <div data-preloader="true" aria-hidden="true" style="position:fixed;top:{{ topOff }};left:0;right:0;bottom:0;z-index:950;display:{{ preDisplay }};background:#07090c">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.012) 0 3px,transparent 3px 6px),repeating-linear-gradient(-45deg,rgba(0,0,0,.35) 0 3px,transparent 3px 6px),radial-gradient(900px 620px at 50% 42%,#12181f,#07090c 78%)"></div>
+    <div style="position:absolute;top:0;bottom:0;left:-4%;width:2px;background:linear-gradient(180deg,transparent,rgba(255,138,0,.55),transparent);box-shadow:0 0 22px 4px rgba(255,138,0,.2);animation:scanX 2.8s cubic-bezier(.4,0,.6,1) infinite"></div>
+    <div style="position:absolute;inset:0;animation:{{ preFadeAnim }}">
+      <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);display:flex;gap:64px;align-items:center;flex-wrap:wrap;justify-content:center;padding:0 24px">
+        <div style="position:relative;width:230px;height:230px">
+          <svg width="230" height="230" viewBox="0 0 230 230">
+            <circle cx="115" cy="115" r="104" fill="none" stroke="#1c242e" stroke-width="7"></circle>
+            <circle cx="115" cy="115" r="104" fill="none" stroke="#ff8a00" stroke-width="7" stroke-linecap="round" stroke-dasharray="653.4" stroke-dashoffset="{{ ringOffset }}" transform="rotate(-90 115 115)" style="filter:drop-shadow(0 0 8px rgba(255,138,0,.6))"></circle>
+            <path d="M115 33 C160 33 197 66 202 108 L173 108 C168 82 144 62 115 62 Z" fill="none" stroke="#5f6a78" stroke-width="2.5" opacity="{{ voluteO }}"></path>
+            <path d="M202 108 L226 108 L226 122 L202 122" fill="none" stroke="#5f6a78" stroke-width="2.5" opacity="{{ voluteO }}"></path>
+            <g style="transform-origin:115px 115px;animation:spinBlades {{ bladeSpeed }} linear infinite">
+              <circle cx="115" cy="115" r="46" fill="none" stroke="#8f9aa8" stroke-width="2.5"></circle>
+              <path d="M115 115 L115 72 M115 115 L152 94 M115 115 L152 136 M115 115 L115 158 M115 115 L78 136 M115 115 L78 94" stroke="#8f9aa8" stroke-width="2.5" stroke-linecap="round"></path>
+              <path d="M115 72 Q128 82 152 94 M152 94 Q152 110 152 136 M152 136 Q134 148 115 158 M115 158 Q96 148 78 136 M78 136 Q78 112 78 94 M78 94 Q98 82 115 72" fill="none" stroke="#3a4553" stroke-width="1.5"></path>
+            </g>
+            <circle cx="115" cy="115" r="10" fill="#0e1116" stroke="#ff8a00" stroke-width="3"></circle>
+          </svg>
+          <div style="position:absolute;left:0;right:0;top:100%;margin-top:10px;text-align:center;font-family:'Barlow Condensed';font-size:.72rem;letter-spacing:.3em;color:#5f6a78;text-transform:uppercase">Turbo spool</div>
+        </div>
+        <div style="min-width:280px">
+          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:4.2rem;line-height:1;color:#fff">{{ pct }}<span style="color:#ff8a00;font-size:2.2rem">%</span></div>
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:#9aa3b0;margin-top:18px;min-height:120px">
+            <div style="opacity:{{ log1 }};transition:opacity .3s">&gt; INIT ECU v4.2 .......... <b style="color:#00e5b0">OK</b></div>
+            <div style="opacity:{{ log2 }};transition:opacity .3s">&gt; FUEL MAP LOADED ........ <b style="color:#00e5b0">OK</b></div>
+            <div style="opacity:{{ log3 }};transition:opacity .3s">&gt; BOOST CTRL ONLINE ...... <b style="color:#00e5b0">OK</b></div>
+            <div style="opacity:{{ log4 }};transition:opacity .3s">&gt; SENSORS CALIBRATED ..... <b style="color:#00e5b0">OK</b></div>
+            <div style="opacity:{{ log5 }};transition:opacity .3s">&gt; IGNITION <b style="color:#ff8a00;animation:blink 1s steps(1) infinite">READY_</b></div>
+          </div>
+          <div style="display:flex;gap:5px;align-items:flex-end;height:34px;margin-top:10px">
+            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .9s ease-in-out -0.0s infinite;opacity:.85"></i>
+            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .7s ease-in-out -.2s infinite;opacity:.7"></i>
+            <i style="width:5px;height:100%;background:#ffd60a;display:block;transform-origin:bottom;animation:eq 1.1s ease-in-out -.4s infinite;opacity:.8"></i>
+            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .8s ease-in-out -.1s infinite;opacity:.6"></i>
+            <i style="width:5px;height:100%;background:#8f9aa8;display:block;transform-origin:bottom;animation:eq 1s ease-in-out -.5s infinite;opacity:.5"></i>
+            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .75s ease-in-out -.3s infinite;opacity:.85"></i>
+            <i style="width:5px;height:100%;background:#ffd60a;display:block;transform-origin:bottom;animation:eq .95s ease-in-out -.6s infinite;opacity:.7"></i>
+            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .65s ease-in-out -.15s infinite;opacity:.6"></i>
+            <i style="width:5px;height:100%;background:#8f9aa8;display:block;transform-origin:bottom;animation:eq 1.05s ease-in-out -.45s infinite;opacity:.5"></i>
+            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .85s ease-in-out -.25s infinite;opacity:.8"></i>
+          </div>
+        </div>
+      </div>
+      <button onClick="{{ skipPre }}" style="position:absolute;right:22px;bottom:20px;background:none;border:1px solid rgba(255,255,255,.18);color:#9aa3b0;font-family:'Barlow Condensed';font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer" style-hover="border-color:#ff8a00;color:#ff8a00">pomiń →</button>
+    </div>
+    <div style="position:absolute;left:0;right:0;top:0;height:50.5%;background:linear-gradient(180deg,#0b0e13,#10151c);border-bottom:2px solid rgba(255,138,0,.5);animation:{{ shutTop }};transform:translateY(0)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:50.5%;background:linear-gradient(0deg,#0b0e13,#10151c);border-top:2px solid rgba(255,138,0,.5);animation:{{ shutBot }};transform:translateY(0)"></div>
+  </div>
+
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,138,0,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,138,0,.045) 1px,transparent 1px);background-size:52px 52px;transform:{{ gridT }}"></div>
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(760px 520px at 72% 18%,rgba(255,138,0,.07),transparent 70%);transform:{{ glowT }}"></div>
+
+  <div style="position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:500;width:190px;display:{{ hudDisplay }};background:rgba(10,13,17,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,138,0,.25);border-radius:6px;padding:16px 16px 14px;font-family:ui-monospace,Menlo,monospace">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.62rem;letter-spacing:.22em;color:#9aa3b0;text-transform:uppercase;margin-bottom:12px"><i style="width:7px;height:7px;border-radius:50%;background:#00e5b0;display:block;animation:blink 1.4s steps(1) infinite"></i>ECU LIVE</div>
+    <div style="font-size:.68rem;color:#5f6a78">RPM</div>
+    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.7rem;color:#fff;line-height:1.1">{{ hudRpm }}</div>
+    <div style="height:4px;background:#1c242e;border-radius:2px;margin:6px 0 12px"><div style="height:100%;border-radius:2px;background:linear-gradient(90deg,#ff8a00,#ffd60a);width:{{ rpmW }}"></div></div>
+    <div style="font-size:.68rem;color:#5f6a78">BOOST</div>
+    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.7rem;color:#ff8a00;line-height:1.1">{{ hudBoost }} <span style="font-size:.9rem;color:#5f6a78">bar</span></div>
+    <div style="height:4px;background:#1c242e;border-radius:2px;margin:6px 0 12px"><div style="height:100%;border-radius:2px;background:#ff8a00;width:{{ boostW }}"></div></div>
+    <div style="font-size:.68rem;color:#5f6a78">SYSTEM INTEGRITY</div>
+    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.7rem;color:#00e5b0;line-height:1.1">{{ hudInteg }}%</div>
+    <div style="border-top:1px solid rgba(255,255,255,.08);margin-top:12px;padding-top:10px;font-size:.64rem;letter-spacing:.18em;color:#ffd60a;text-transform:uppercase">SEKCJA · {{ secName }}</div>
+  </div>
+
+  <nav style="position:fixed;top:{{ topOff }};left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(7,9,12,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,138,0,.18)">
+    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;color:#fff">Auto-Serwis <span style="color:#ff8a00">Kowalski</span></div>
+    <div style="display:flex;gap:26px;align-items:center;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase">
+      <a href="#silnik" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Silnik</a>
+      <a href="#uslugi" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Usługi</a>
+      <a href="#kontakt" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Kontakt</a>
+      <a href="#kontakt" style="color:#0e1116;background:#ff8a00;text-decoration:none;font-weight:700;padding:10px 20px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .15s,box-shadow .15s" style-hover="background:#ffd60a;box-shadow:0 0 24px rgba(255,214,10,.5)">Umów wizytę</a>
+    </div>
+  </nav>
+
+  <header style="position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 8vw 60px">
+    <div style="font-family:ui-monospace,monospace;font-size:.78rem;letter-spacing:.3em;color:#00e5b0;text-transform:uppercase;margin-bottom:18px">// system online · od 1994</div>
+    <h1 style="font-family:'Barlow Condensed';font-weight:800;font-size:clamp(3rem,9vw,7rem);line-height:.95;letter-spacing:.02em;text-transform:uppercase;margin:0;color:#fff">Precyzja.<br><span style="color:transparent;-webkit-text-stroke:2px #ff8a00">Moc.</span> Kontrola.</h1>
+    <p style="max-width:520px;color:#9aa3b0;font-size:1.08rem;margin:28px 0 40px">Warsztat klasy premium: diagnostyka komputerowa, tuning i mechanika z dokładnością do newtona. Twoje auto w rękach inżynierów, nie zgadywaczy.</p>
+    <div style="display:flex;gap:18px;flex-wrap:wrap">
+      <a href="#silnik" style="color:#0e1116;background:#ff8a00;text-decoration:none;font-family:'Barlow Condensed';font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 34px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:background .15s,box-shadow .15s,transform .15s" style-hover="background:#ffd60a;box-shadow:0 0 34px rgba(255,214,10,.45);transform:translateY(-2px)">Zobacz jak pracujemy</a>
+      <a href="#kontakt" style="color:#e8ebf0;background:none;border:1px solid rgba(255,255,255,.25);text-decoration:none;font-family:'Barlow Condensed';font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 34px;transition:border-color .15s,box-shadow .15s" style-hover="border-color:#ff8a00;box-shadow:inset 0 0 0 1px #ff8a00">☎ 61 812 40 15</a>
+    </div>
+    <div style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:#5f6a78;animation:hintPulse 1.8s ease-in-out infinite">scroll ↓</div>
+  </header>
+
+  <section id="silnik" ref="{{ engSecRef }}" style="position:relative;z-index:1;height:340vh">
+    <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center">
+      <div style="position:relative;width:min(760px,92vw)">
+        <svg viewBox="0 0 640 480" style="width:100%;display:block;transform:{{ engT }};transition:transform .1s linear;filter:drop-shadow(0 0 22px rgba(255,138,0,.12))">
+          <g style="transform:{{ headT }};transition:transform .1s linear" stroke="#ff8a00" stroke-width="2" fill="none">
+            <rect x="185" y="128" width="270" height="52" rx="4"></rect>
+            <path d="M200 128 L200 108 L440 108 L440 128"></path>
+            <circle cx="245" cy="154" r="11"></circle><circle cx="305" cy="154" r="11"></circle><circle cx="365" cy="154" r="11"></circle><circle cx="425" cy="154" r="11"></circle>
+            <path d="M185 118 L155 96 M455 118 L485 96" stroke="#5f6a78"></path>
+            <path d="M120 84 h70 M120 84 v24 M455 84 h70 M525 84 v24" stroke="#5f6a78" stroke-dasharray="5 5"></path>
+          </g>
+          <g stroke="#8f9aa8" stroke-width="2" fill="none">
+            <rect x="195" y="196" width="250" height="130" rx="6"></rect>
+            <path d="M195 226 h250 M195 296 h250" stroke="#3a4553"></path>
+            <circle cx="238" cy="261" r="24" stroke="#5f6a78"></circle><circle cx="296" cy="261" r="24" stroke="#5f6a78"></circle><circle cx="354" cy="261" r="24" stroke="#5f6a78"></circle><circle cx="412" cy="261" r="24" stroke="#5f6a78"></circle>
+          </g>
+          <g style="transform:{{ pistT }};transition:transform .1s linear" stroke="#ff8a00" stroke-width="2" fill="none">
+            <rect x="222" y="344" width="32" height="26" rx="3"></rect><path d="M238 370 L252 408"></path>
+            <rect x="280" y="344" width="32" height="26" rx="3"></rect><path d="M296 370 L288 408"></path>
+            <rect x="338" y="344" width="32" height="26" rx="3"></rect><path d="M354 370 L366 408"></path>
+            <rect x="396" y="344" width="32" height="26" rx="3"></rect><path d="M412 370 L400 408"></path>
+            <circle cx="326" cy="418" r="26" stroke="#8f9aa8"></circle>
+            <circle cx="326" cy="418" r="7" stroke="#ff8a00"></circle>
+          </g>
+          <g style="transform:{{ turboT }};transition:transform .1s linear" fill="none">
+            <circle cx="524" cy="262" r="40" stroke="#ff8a00" stroke-width="2"></circle>
+            <path d="M524 262 L524 230 M524 262 L552 246 M524 262 L552 278 M524 262 L524 294 M524 262 L496 278 M524 262 L496 246" stroke="#8f9aa8" stroke-width="2"></path>
+            <path d="M524 222 C556 222 582 244 586 272 L564 272" stroke="#5f6a78" stroke-width="2"></path>
+            <path d="M484 262 L445 262" stroke="#5f6a78" stroke-width="2" stroke-dasharray="6 5"></path>
+          </g>
+        </svg>
+        <div style="position:absolute;left:0;top:2%;max-width:230px;opacity:{{ lbl1o }};transform:{{ lbl1t }};transition:opacity .45s,transform .45s">
+          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff">01 · Tuning silnika</div>
+          <div style="width:54px;height:2px;background:#ff8a00;margin:8px 0"></div>
+          <p style="color:#9aa3b0;font-size:.88rem;margin:0">Mapy mocy na hamowni, stage 1–3, hardware pod większy boost.</p>
+        </div>
+        <div style="position:absolute;right:0;top:30%;max-width:230px;text-align:right;opacity:{{ lbl2o }};transform:{{ lbl2t }};transition:opacity .45s,transform .45s">
+          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff">02 · Diagnostyka</div>
+          <div style="width:54px;height:2px;background:#ff8a00;margin:8px 0 8px auto"></div>
+          <p style="color:#9aa3b0;font-size:.88rem;margin:0">Odczyt ECU, logi czujników na żywo, wykrywanie usterek zanim staną się kosztowne.</p>
+        </div>
+        <div style="position:absolute;left:0;bottom:4%;max-width:230px;opacity:{{ lbl3o }};transform:{{ lbl3t }};transition:opacity .45s,transform .45s">
+          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff">03 · Zawieszenie</div>
+          <div style="width:54px;height:2px;background:#ff8a00;margin:8px 0"></div>
+          <p style="color:#9aa3b0;font-size:.88rem;margin:0">Geometria 3D, gwinty, tłumiki drgań — auto klei się do drogi.</p>
+        </div>
+        <div style="position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);font-family:ui-monospace,monospace;font-size:.7rem;letter-spacing:.24em;color:#5f6a78;text-transform:uppercase;white-space:nowrap">widok eksplodowany · {{ engPct }}%</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="uslugi" style="position:relative;z-index:1;padding:120px 8vw">
+    <div style="font-family:ui-monospace,monospace;font-size:.76rem;letter-spacing:.3em;color:#00e5b0;text-transform:uppercase;margin-bottom:14px">// pełen zakres</div>
+    <h2 style="font-family:'Barlow Condensed';font-weight:800;font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;letter-spacing:.03em;margin:0 0 48px;color:#fff">Usługi <span style="color:#ff8a00">warsztatu</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:rgba(255,138,0,.18)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <div style="background:#0c1015;padding:30px 26px;position:relative;transition:background .2s,transform .2s" style-hover="background:#11161d;transform:translateY(-4px)" style-before="content:'';position:absolute;top:10px;right:10px;width:14px;height:14px;border-top:2px solid rgba(255,138,0,.5);border-right:2px solid rgba(255,138,0,.5)">
+          <div style="font-family:ui-monospace,monospace;font-size:.7rem;color:#ff8a00;margin-bottom:12px">{{ s.no }}</div>
+          <h3 style="font-family:'Barlow Condensed';font-weight:700;font-size:1.3rem;letter-spacing:.05em;text-transform:uppercase;margin:0 0 10px;color:#fff">{{ s.name }}</h3>
+          <p style="color:#9aa3b0;font-size:.9rem;margin:0">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="kontakt" style="position:relative;z-index:1;padding:120px 8vw 140px;text-align:center;border-top:1px solid rgba(255,138,0,.15)">
+    <div style="font-family:ui-monospace,monospace;font-size:.76rem;letter-spacing:.3em;color:#00e5b0;text-transform:uppercase;margin-bottom:14px">// rezerwacja stanowiska</div>
+    <h2 style="font-family:'Barlow Condensed';font-weight:800;font-size:clamp(2.2rem,6vw,4.2rem);text-transform:uppercase;margin:0 0 18px;color:#fff">Podłącz swoje auto <span style="color:#ff8a00">do systemu</span></h2>
+    <p style="color:#9aa3b0;max-width:480px;margin:0 auto 42px">ul. Warsztatowa 8, Piała · pon–pt 8:00–18:00, sob 9:00–14:00</p>
+    <a href="tel:+48618124015" style="display:inline-block;color:#0e1116;background:#ff8a00;text-decoration:none;font-family:'Barlow Condensed';font-weight:800;font-size:1.4rem;letter-spacing:.1em;padding:20px 52px;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:background .15s,box-shadow .15s,transform .15s" style-hover="background:#ffd60a;box-shadow:0 0 44px rgba(255,214,10,.5);transform:translateY(-3px)">☎ 61 812 40 15</a>
+    <div style="margin-top:70px;font-size:.74rem;letter-spacing:.16em;color:#5f6a78;text-transform:uppercase">© 2026 Auto-Serwis Kowalski · Projekt: ODNOVA°studio · strona demonstracyjna</div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { phase: 'boot', pct: 0, y: 0, vh: 800, eng: 0, p: 0, mob: false };
+  rootRef = React.createRef();
+  engSecRef = React.createRef();
+
+  componentDidMount() {
+    const t0 = performance.now(), DUR = 3600;
+    const tick = (t) => {
+      if (this.state.phase !== 'boot') return;
+      const raw = Math.min(1, (t - t0) / DUR);
+      const e = raw < .5 ? 2 * raw * raw : 1 - Math.pow(-2 * raw + 2, 2) / 2;
+      const pct = Math.round(e * 100);
+      if (pct !== this.state.pct) this.setState({ pct });
+      if (raw < 1) this._raf = requestAnimationFrame(tick);
+      else this.openShutter();
+    };
+    this._raf = requestAnimationFrame(tick);
+    this.onScroll = () => {
+      if (this._st) return;
+      this._st = requestAnimationFrame(() => {
+        this._st = 0;
+        const y = window.scrollY, vh = window.innerHeight;
+        const doc = document.documentElement;
+        const p = Math.min(1, y / Math.max(1, doc.scrollHeight - vh));
+        let eng = 0;
+        const sec = this.engSecRef.current;
+        if (sec) {
+          const r = sec.getBoundingClientRect();
+          eng = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
+        }
+        this.setState({ y, vh, p, eng, mob: window.innerWidth < 980 });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf); cancelAnimationFrame(this._st);
+    clearTimeout(this._sh);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onScroll);
+  }
+  openShutter = () => {
+    this.setState({ phase: 'open', pct: 100 });
+    this._sh = setTimeout(() => this.setState({ phase: 'done' }), 1150);
+  };
+  skipPre = () => { cancelAnimationFrame(this._raf); this.openShutter(); };
+
+  renderVals() {
+    const { phase, pct, eng, p, mob } = this.state;
+    const open = phase === 'open';
+    // engine: stage A (0-.3) assemble/rotate in, stage B (.3-1) explode
+    const a = Math.min(1, eng / .3);
+    const b = Math.max(0, (eng - .3) / .7);
+    const lbl = (from, to) => eng >= from && eng < to;
+    const services = [
+      { no: '[01]', name: 'Mechanika ogólna', desc: 'Rozrządy, sprzęgła, hamulce, zawieszenia — z częściami klasy OEM.' },
+      { no: '[02]', name: 'Diagnostyka ECU', desc: 'Interfejsy fabryczne, logi na żywo, kasowanie i analiza błędów.' },
+      { no: '[03]', name: 'Tuning & hamownia', desc: 'Mapy stage 1–3, pomiar mocy przed i po, wykres dla klienta.' },
+      { no: '[04]', name: 'Geometria 3D', desc: 'Laserowa geometria kół z wydrukiem parametrów.' },
+      { no: '[05]', name: 'Klimatyzacja', desc: 'Nabicie, odgrzybianie, szukanie nieszczelności barwnikiem UV.' },
+      { no: '[06]', name: 'Przegląd przed zakupem', desc: 'Pełny raport techniczny auta z ogłoszenia w 90 minut.' },
+    ];
+    return {
+      rootRef: this.rootRef, engSecRef: this.engSecRef,
+      topOff: `${this.props.topOffset ?? 0}px`,
+      skipPre: this.skipPre, services,
+      preDisplay: phase === 'done' ? 'none' : 'block',
+      preFadeAnim: open ? 'shutUp 0s linear .2s both' : 'none',
+      shutTop: open ? 'shutUp .95s cubic-bezier(.76,0,.24,1) .18s both' : 'none',
+      shutBot: open ? 'shutDown .95s cubic-bezier(.76,0,.24,1) .18s both' : 'none',
+      pct,
+      ringOffset: (653.4 * (1 - pct / 100)).toFixed(1),
+      voluteO: pct > 30 ? 1 : .25,
+      bladeSpeed: `${(2.6 - 2.25 * pct / 100).toFixed(2)}s`,
+      log1: pct > 12 ? 1 : 0, log2: pct > 34 ? 1 : 0, log3: pct > 55 ? 1 : 0, log4: pct > 74 ? 1 : 0, log5: pct > 92 ? 1 : 0,
+      gridT: `translateY(${(-p * 120).toFixed(1)}px)`,
+      glowT: `translateY(${(-p * 260).toFixed(1)}px)`,
+      hudDisplay: mob || phase !== 'done' ? 'none' : 'block',
+      hudRpm: (800 + Math.round(6400 * p)).toLocaleString('pl-PL'),
+      rpmW: `${(10 + 88 * p).toFixed(1)}%`,
+      hudBoost: (0.2 + 1.7 * eng).toFixed(2),
+      boostW: `${(8 + 90 * eng).toFixed(1)}%`,
+      hudInteg: (94 + 6 * p).toFixed(1),
+      secName: p < .12 ? 'START' : eng > 0 && eng < 1 ? 'SILNIK' : p < .82 ? 'USŁUGI' : 'KONTAKT',
+      engT: `rotate(${(-10 + 10 * a).toFixed(2)}deg) scale(${(.72 + .33 * a).toFixed(3)})`,
+      headT: `translateY(${(-74 * b).toFixed(1)}px)`,
+      pistT: `translateY(${(64 * b).toFixed(1)}px)`,
+      turboT: `translate(${(78 * b).toFixed(1)}px, ${(-18 * b).toFixed(1)}px)`,
+      engPct: Math.round(eng * 100),
+      lbl1o: lbl(.18, .45) ? 1 : 0, lbl1t: lbl(.18, .45) ? 'none' : 'translateY(14px)',
+      lbl2o: lbl(.45, .72) ? 1 : 0, lbl2t: lbl(.45, .72) ? 'none' : 'translateY(14px)',
+      lbl3o: eng >= .72 ? 1 : 0, lbl3t: eng >= .72 ? 'none' : 'translateY(14px)',
+    };
+  }
+}
+</script>
+</body>
+</html>

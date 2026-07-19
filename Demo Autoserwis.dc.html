@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
+  @keyframes aScan{from{left:-4%}to{left:102%}}
+  @keyframes aGlow{from{opacity:0}to{opacity:1}}
+  @keyframes aPulse{0%,100%{opacity:.5;transform:translateY(0)}50%{opacity:1;transform:translateY(7px)}}
+  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="font-family:'Barlow',sans-serif;min-height:100vh">
+
+  <div style="position:fixed;top:0;left:0;right:0;z-index:1000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)">
+    <a href="ODNOVA Strona Glowna.dc.html" style="color:#9a9aad;text-decoration:none;font-weight:600" style-hover="color:#fff">← Portfolio</a>
+    <div style="color:#9a9aad">Metamorfoza: <b style="background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">Auto-Serwis Kowalski</b> · demo ODNOVA°studio</div>
+    <div style="display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px">
+      <button onClick="{{ showBefore }}" style="border:0;background:{{ przedBg }};color:{{ przedColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em">PRZED</button>
+      <button onClick="{{ showAfter }}" style="border:0;background:{{ poBg }};color:{{ poColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em;animation:{{ poPulse }}">PO ✨</button>
+    </div>
+  </div>
+
+  <div style="display:{{ beforeDisplay }};background:#e4e4e4;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding:70px 0 26px">
+    <div style="width:920px;max-width:96%;margin:14px auto 0;background:#fff;border:1px solid #b0b0b0;box-shadow:0 1px 7px rgba(0,0,0,.2)">
+      <div style="background:linear-gradient(#3a3f47,#22262c);padding:22px 24px">
+        <h1 style="color:#fff;font-size:1.85rem;font-weight:bold;letter-spacing:.02em;margin:0">Auto-Naprawa Kowalski</h1>
+        <div style="color:#c9ccd1;font-size:.8rem;margin-top:4px">Mechanika pojazdowa · Blacharstwo · Lakiernictwo</div>
+      </div>
+      <div style="background:linear-gradient(#f2f2f2,#dcdcdc);border-bottom:1px solid #aaa;text-align:center">
+        <a href="#" style="display:inline-block;color:#22262c;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c8c8;border-left:1px solid #c8c8c8;text-decoration:none">Główna</a><a href="#" style="display:inline-block;color:#22262c;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c8c8;text-decoration:none">Usługi</a><a href="#" style="display:inline-block;color:#22262c;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c8c8;text-decoration:none">Cennik</a><a href="#" style="display:inline-block;color:#22262c;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c8c8;text-decoration:none">Galeria</a><a href="#" style="display:inline-block;color:#22262c;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c8c8;text-decoration:none">Dojazd</a><a href="#" style="display:inline-block;color:#22262c;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c8c8;text-decoration:none">Kontakt</a>
+      </div>
+      <div style="background:#fdf6d8;border-bottom:1px solid #e0d49a;color:#7a6a2f;font-size:.78rem;padding:7px 16px">Promocja: wymiana opon sezonowa — rezerwacja telefoniczna zalecana.</div>
+      <div style="display:table;width:100%">
+        <div style="display:table-cell;padding:18px 22px;vertical-align:top;font-size:.82rem;line-height:1.55">
+          <h2 style="color:#22262c;font-size:1.05rem;border-bottom:1px solid #ddd;padding-bottom:4px;margin:0 0 8px">Witamy na stronie warsztatu</h2>
+          <p style="margin:0 0 9px">Firma Auto-Naprawa Kowalski Zbigniew działa nieprzerwanie od 1994 roku. Naprawiamy samochody osobowe i dostawcze wszystkich marek.</p>
+          <h2 style="color:#22262c;font-size:1.05rem;border-bottom:1px solid #ddd;padding-bottom:4px;margin:16px 0 8px">Cennik wybranych usług</h2>
+          <table style="border-collapse:collapse;width:100%;font-size:.8rem;margin:6px 0">
+            <tr><th style="border:1px solid #ddd;padding:5px 9px;text-align:left;background:#eceff2;color:#22262c">Usługa</th><th style="border:1px solid #ddd;padding:5px 9px;text-align:left;background:#eceff2;color:#22262c">Cena</th></tr>
+            <tr><td style="border:1px solid #ddd;padding:5px 9px">Wymiana oleju</td><td style="border:1px solid #ddd;padding:5px 9px">50 zł + olej</td></tr>
+            <tr style="background:#f8f9fa"><td style="border:1px solid #ddd;padding:5px 9px">Wymiana klocków (przód)</td><td style="border:1px solid #ddd;padding:5px 9px">od 80 zł</td></tr>
+            <tr><td style="border:1px solid #ddd;padding:5px 9px">Diagnostyka komputerowa</td><td style="border:1px solid #ddd;padding:5px 9px">60 zł</td></tr>
+            <tr style="background:#f8f9fa"><td style="border:1px solid #ddd;padding:5px 9px">Wymiana opon (kpl.)</td><td style="border:1px solid #ddd;padding:5px 9px">60 zł</td></tr>
+          </table>
+          <p style="margin:0 0 9px"><i>Ceny mogą ulec zmianie. Dokładna wycena po oględzinach.</i></p>
+          <h2 style="color:#22262c;font-size:1.05rem;border-bottom:1px solid #ddd;padding-bottom:4px;margin:16px 0 8px">Zdjęcia z warsztatu</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <img src="img/warsztat1.webp" alt="Warsztat samochodowy Kowalski" style="width:186px;height:130px;object-fit:cover;filter:sepia(.3) saturate(.85)"></img>
+            <img src="img/warsztat2.jfif" alt="Naprawa samochodu w warsztacie" style="width:186px;height:130px;object-fit:cover;filter:sepia(.3) saturate(.85)"></img>
+            <img src="img/warsztat3.jfif" alt="Warsztat Auto-Naprawa Kowalski" style="width:186px;height:130px;object-fit:cover;filter:sepia(.3) saturate(.85)"></img>
+          </div>
+        </div>
+        <div style="display:table-cell;width:215px;background:#f2f2f2;border-left:1px solid #ddd;padding:14px;vertical-align:top;font-size:.78rem">
+          <div style="background:#fff;border:1px solid #d3d3d3;margin-bottom:12px"><div style="background:linear-gradient(#4a4f57,#2c3036);color:#fff;font-weight:bold;font-size:.74rem;padding:5px 9px">Kontakt</div><div style="padding:8px 10px;line-height:1.65">tel. 602 XXX XXX<br>ul. Przemysłowa 7<br>64-920 Piła</div></div>
+          <div style="background:#fff;border:1px solid #d3d3d3;margin-bottom:12px"><div style="background:linear-gradient(#4a4f57,#2c3036);color:#fff;font-weight:bold;font-size:.74rem;padding:5px 9px">Czynne</div><div style="padding:8px 10px;line-height:1.65">pon–pt: 8:00–16:00<br>sobota: 8:00–13:00</div></div>
+          <div style="background:#fff;border:1px solid #d3d3d3;margin-bottom:12px"><div style="background:linear-gradient(#4a4f57,#2c3036);color:#fff;font-weight:bold;font-size:.74rem;padding:5px 9px">Odwiedzin</div><div style="padding:8px 10px;line-height:1.65">Licznik: 11384</div></div>
+        </div>
+      </div>
+      <div style="background:#22262c;color:#b7bac0;font-size:.7rem;padding:10px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+        <span>© 2005–2011 Auto-Naprawa Kowalski</span>
+        <span>Ostatnia aktualizacja: 09.2011 | <a href="#" style="color:#e0e2e6">napisz do nas</a></span>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ isAfter }}" hint-placeholder-val="{{ false }}">
+    <div style="padding-top:56px;background:#0a0d11;min-height:100vh">
+      <dc-import name="Autoserwis Premium" top-offset="{{ toolbarH }}" hint-size="100%,100vh"></dc-import>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  gaugeRef = React.createRef();
+  gaugeNumRef = React.createRef();
+
+  state = {
+    view: 'before',
+    calcUsluga: 420,
+    calcKlasa: 1.15,
+    calcOryg: false,
+    calcPrice: 483,
+  };
+
+  introParaRef = React.createRef();
+  introPar = (e) => {
+    const el = this.introParaRef.current; if (!el) return;
+    const dx = e.clientX / window.innerWidth - .5, dy = e.clientY / window.innerHeight - .5;
+    el.style.transform = `translate3d(${(dx * -20).toFixed(1)}px, ${(dy * -14).toFixed(1)}px, 0)`;
+  };
+  skipIntro = () => {
+    this._introDone = true;
+    this.setState({ introPlaying: false, introP: 0 });
+  };
+  introScroll = (e) => {
+    const p = Math.min(1, e.target.scrollTop / (window.innerHeight * 2.5));
+    this.setState({ introP: p });
+    if (p >= 1 && !this._introDone) {
+      this._introDone = true;
+      setTimeout(() => this.setState({ introPlaying: false, introP: 0 }), 750);
+    }
+  };
+  showBefore = () => this.setState({ view: 'before' });
+  showAfter = () => this.setState({ view: 'after' });
+
+  animateGauge() {
+    if (this._gaugeDone) return;
+    this._gaugeDone = true;
+    setTimeout(() => {
+      const ring = this.gaugeRef.current;
+      const num = this.gaugeNumRef.current;
+      if (!ring || !num) return;
+      const circumference = 2 * Math.PI * 80;
+      const target = 98;
+      ring.style.strokeDashoffset = circumference * (1 - target / 100);
+      const start = performance.now(), dur = 1600;
+      const tick = now => {
+        const p = Math.min(1, (now - start) / dur);
+        num.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + '%';
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, 80);
+  }
+
+  recalc(usluga, klasa, oryg) {
+    const target = Math.round((usluga * klasa * (oryg ? 1.35 : 1)) / 5) * 5;
+    this.setState({ calcPrice: target });
+  }
+
+  onUslugaChange = e => {
+    const v = +e.target.value;
+    this.setState({ calcUsluga: v });
+    this.recalc(v, this.state.calcKlasa, this.state.calcOryg);
+  };
+  onKlasaChange = e => {
+    const v = +e.target.value;
+    this.setState({ calcKlasa: v });
+    this.recalc(this.state.calcUsluga, v, this.state.calcOryg);
+  };
+  onOrygChange = e => {
+    const v = e.target.checked;
+    this.setState({ calcOryg: v });
+    this.recalc(this.state.calcUsluga, this.state.calcKlasa, v);
+  };
+
+  renderVals() {
+    const isAfter = this.state.view === 'after';
+    return {
+      rootRef: this.rootRef,
+      introDisplay: this.state.introPlaying ? 'block' : 'none',
+      introParaRef: this.introParaRef,
+      introPar: this.introPar,
+      skipIntro: this.skipIntro,
+      introScroll: this.introScroll,
+      introWrapO: (this.state.introP || 0) >= 1 ? 0 : 1,
+      needleTransform: `rotate(${(-118 + 192 * Math.min(1, (this.state.introP || 0) * 1.12)).toFixed(1)}deg)`,
+      progW: `${((this.state.introP || 0) * 100).toFixed(1)}%`,
+      hintO: (this.state.introP || 0) > .06 ? 0 : 1,
+      l1o: (this.state.introP || 0) > .2 ? 1 : 0, l1t: (this.state.introP || 0) > .2 ? 'none' : 'translateX(-14px)',
+      l2o: (this.state.introP || 0) > .38 ? 1 : 0, l2t: (this.state.introP || 0) > .38 ? 'none' : 'translateX(-14px)',
+      l3o: (this.state.introP || 0) > .56 ? 1 : 0, l3t: (this.state.introP || 0) > .56 ? 'none' : 'translateX(-14px)',
+      l4o: (this.state.introP || 0) > .74 ? 1 : 0, l4t: (this.state.introP || 0) > .74 ? 'none' : 'translateX(-14px)',
+      titleO: (this.state.introP || 0) > .86 ? 1 : 0, titleT: (this.state.introP || 0) > .86 ? 'none' : 'translateY(16px)',
+      gaugeRef: this.gaugeRef,
+      gaugeNumRef: this.gaugeNumRef,
+      beforeDisplay: isAfter ? 'none' : 'block',
+      isAfter,
+      toolbarH: 56,
+      przedBg: isAfter ? 'transparent' : 'linear-gradient(90deg,#7c5cff,#9d7bff)',
+      przedColor: isAfter ? '#9a9aad' : '#fff',
+      poBg: isAfter ? 'linear-gradient(90deg,#7c5cff,#9d7bff)' : 'transparent',
+      poColor: isAfter ? '#fff' : '#9a9aad',
+      poPulse: isAfter ? 'none' : 'demoPulse 1.6s infinite',
+      showBefore: this.showBefore,
+      showAfter: this.showAfter,
+      calcUsluga: this.state.calcUsluga,
+      calcKlasa: this.state.calcKlasa,
+      calcOryg: this.state.calcOryg,
+      calcPrice: this.state.calcPrice,
+      onUslugaChange: this.onUslugaChange,
+      onKlasaChange: this.onKlasaChange,
+      onOrygChange: this.onOrygChange,
+    };
+  }
+}
+</script>
+</body>
+</html>
