@@ -94,7 +94,7 @@
     </div>
   </nav>
 
-  <header style="position:relative;padding:170px 0 110px;text-align:center">
+  <header style="position:relative;padding:170px 0 140px;text-align:center">
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;pointer-events:none;background:#7c5cff;top:-220px;left:-140px"></div>
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.16;pointer-events:none;background:#00e5b0;top:-120px;right:-200px"></div>
     <canvas id="heroNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
@@ -132,7 +132,7 @@
     </div>
   </header>
 
-  <div aria-hidden="true" onMouseEnter="{{ pauseTape }}" onMouseLeave="{{ resumeTape }}" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#101019;padding:24px 0;margin:30px 0 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+  <div aria-hidden="true" onMouseEnter="{{ pauseTape }}" onMouseLeave="{{ resumeTape }}" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#101019;padding:24px 0;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
     <div ref="{{ tapeRow1Ref }}" style="display:flex;gap:48px;width:max-content;animation:tape 28s linear infinite;font-family:'Sora';font-weight:700;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;color:#f2f2f7;white-space:nowrap">
       <span><b style="color:#00e5b0;margin-right:16px">✦</b>STRONY WWW</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>REDESIGN</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>POZYCJONOWANIE</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>GOOGLE MAPS</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>COPYWRITING</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>SZYBKOŚĆ 90+</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>WERSJA MOBILNA</span>
       <span><b style="color:#00e5b0;margin-right:16px">✦</b>STRONY WWW</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>REDESIGN</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>POZYCJONOWANIE</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>GOOGLE MAPS</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>COPYWRITING</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>SZYBKOŚĆ 90+</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>WERSJA MOBILNA</span>
@@ -428,8 +428,9 @@
   </section>
 
 
-  <section id="jak" style="padding:100px 0">
-    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+  <section id="jak" style="position:relative;padding:100px 0;overflow:hidden">
+    <canvas id="jakNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%)"></canvas>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
       <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
         <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Jak działamy</div>
         <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Od reliktu do wizytówki w 3 krokach</h2>
@@ -596,9 +597,10 @@
     </div>
   </section>
 
-  <section id="kontakt" style="padding:100px 0">
-    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
-      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08));border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:70px 40px;text-align:center">
+  <section id="kontakt" style="position:relative;padding:120px 0;overflow:hidden">
+    <canvas id="kontaktNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%)"></canvas>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08)),#0a0a12;border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:70px 40px;text-align:center">
         <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Kontakt</div>
         <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Sprawdźmy, ile kosztuje Cię stara strona</h2>
         <p style="color:#9a9aad;max-width:520px;margin:16px auto 34px">Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
@@ -871,11 +873,15 @@ class Component extends DCLogic {
       follow();
     }
 
-    // --- tło neuronowe hero (V4b: magnetyczny reflektor) ---
-    (() => {
-      const canvas = root.querySelector('#heroNeuro');
+    // --- tło neuronowe (V4b: magnetyczny reflektor) ---
+    this._neuroInstances = [];
+    const initNeuro = (sel, opt) => {
+      opt = opt || {};
+      const density = opt.density || 26000;             // im większa, tym mniej węzłów
+      const maxNodes = opt.maxNodes || 70;
+      const canvas = root.querySelector(sel);
       if (!canvas) return;
-      const host = canvas.parentElement;                 // <header>
+      const host = canvas.parentElement;                 // <header> / <section> / karta
       const ctx = canvas.getContext('2d');
       const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
       const A = [124, 92, 255], B = [0, 229, 176];
@@ -896,7 +902,7 @@ class Component extends DCLogic {
         canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         MAXD = W < 720 ? 125 : 160; R = W < 720 ? 170 : 250;
-        const count = Math.max(22, Math.min(70, Math.round(W * H / 26000)));
+        const count = Math.max(18, Math.min(maxNodes, Math.round(W * H / density)));
         nodes = [];
         for (let i = 0; i < count; i++) nodes.push({
           ax: Math.random() * W, ay: Math.random() * H,
@@ -948,29 +954,52 @@ class Component extends DCLogic {
       };
 
       build();
+      const inView = (r) => r.bottom > 0 && r.top < (window.innerHeight || 0);
       const onMove = (e) => {
         const r = host.getBoundingClientRect();
         const x = e.clientX - r.left, y = e.clientY - r.top;
-        ptr.on = (r.bottom > 0 && y >= 0 && y <= r.height && x >= 0 && x <= r.width);
+        ptr.on = (inView(r) && y >= 0 && y <= r.height && x >= 0 && x <= r.width);
         if (ptr.on) { ptr.x = x; ptr.y = y; }
       };
+      const onResize = () => build();
       window.addEventListener('mousemove', onMove, { passive: true });
-      window.addEventListener('resize', build);
+      window.addEventListener('resize', onResize);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-      this._neuroCleanup = () => {
+
+      // przebuduj gdy host zmieni rozmiar (także pierwszy layout, gdy szerokość = 0)
+      let roRaf = 0, ro = null;
+      if (window.ResizeObserver) {
+        ro = new ResizeObserver(() => {
+          if (roRaf) return;
+          roRaf = requestAnimationFrame(() => {
+            roRaf = 0;
+            if (host.offsetWidth !== W || host.offsetHeight !== H) build();
+          });
+        });
+        ro.observe(host);
+      }
+
+      const inst = { raf: 0 };
+      this._neuroInstances.push(() => {
         window.removeEventListener('mousemove', onMove);
-        window.removeEventListener('resize', build);
-        if (this._neuroRaf) cancelAnimationFrame(this._neuroRaf);
-      };
+        window.removeEventListener('resize', onResize);
+        if (ro) ro.disconnect();
+        if (roRaf) cancelAnimationFrame(roRaf);
+        if (inst.raf) cancelAnimationFrame(inst.raf);
+      });
 
       if (reduced) { frame(0); return; }
       const loop = (now) => {
         const r = host.getBoundingClientRect();
-        if (r.bottom > 0) frame(now / 1000);            // rysuj tylko gdy hero widoczne
-        this._neuroRaf = requestAnimationFrame(loop);
+        if (inView(r)) frame(now / 1000);               // rysuj tylko gdy sekcja widoczna
+        inst.raf = requestAnimationFrame(loop);
       };
-      this._neuroRaf = requestAnimationFrame(loop);
-    })();
+      inst.raf = requestAnimationFrame(loop);
+    };
+
+    initNeuro('#heroNeuro');
+    initNeuro('#jakNeuro', { density: 34000, maxNodes: 48 });
+    initNeuro('#kontaktNeuro', { density: 20000, maxNodes: 60 });
   }
 
   componentWillUnmount() {
@@ -984,7 +1013,7 @@ class Component extends DCLogic {
     if (this.cntIO) this.cntIO.disconnect();
     if (this._mmove) window.removeEventListener('mousemove', this._mmove);
     if (this._followRaf) cancelAnimationFrame(this._followRaf);
-    if (this._neuroCleanup) this._neuroCleanup();
+    if (this._neuroInstances) this._neuroInstances.forEach(fn => fn());
     if (this._tiltHandlers) this._tiltHandlers.forEach(([card, mm, ml]) => {
       card.removeEventListener('mousemove', mm);
       card.removeEventListener('mouseleave', ml);
