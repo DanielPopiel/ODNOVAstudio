@@ -10,7 +10,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -27,10 +27,40 @@
   @keyframes wordUp{from{transform:translateY(112%)}to{transform:none}}
   @keyframes navIn{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
   @keyframes beam{0%{transform:translateY(-140px);opacity:0}12%{opacity:1}85%{opacity:1}100%{transform:translateY(600px);opacity:0}}
+  @keyframes evoPulse{
+    0%,100%{box-shadow:0 0 0 6px rgba(124,77,232,0.15),0 0 18px rgba(124,77,232,0.55)}
+    50%{box-shadow:0 0 0 10px rgba(124,77,232,0.24),0 0 32px rgba(124,77,232,0.95)}
+  }
   @media (prefers-reduced-motion:reduce){
     [data-intro]{display:none!important}
     [data-hero],[data-beam]{animation:none!important;opacity:1!important;transform:none!important}
+    [data-evo-marker]{animation:none!important}
   }
+  /* ===== karty portfolio: pływające okna ===== */
+  .pf-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#16161f,#111119);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .3s ease,border-color .3s ease;will-change:transform}
+  .pf-card:hover{border-color:rgba(124,92,255,.55);box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 42px -18px rgba(124,92,255,.6)}
+  .pf-stage{position:relative;height:238px;overflow:hidden;perspective:900px;background:radial-gradient(120% 100% at 28% 0%,rgba(124,92,255,.16),transparent 60%),radial-gradient(120% 100% at 92% 100%,rgba(0,229,176,.13),transparent 55%),#0c0c14;animation:pfFloat 7s ease-in-out infinite;animation-delay:var(--d,0s)}
+  @keyframes pfFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .pf-win{position:absolute;border-radius:10px;overflow:hidden;background:#0c0c12;box-shadow:0 18px 40px -16px rgba(0,0,0,.85);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .7s ease,filter .7s ease,opacity .7s ease}
+  .pf-win img{display:block;width:100%;height:calc(100% - 16px);object-fit:cover;object-position:top}
+  .pf-bar{height:16px;display:flex;align-items:center;gap:4px;padding:0 7px}
+  .pf-bar.light{background:#e9e9ee}.pf-bar.dark{background:#20202b}
+  .pf-bar i{width:5px;height:5px;border-radius:50%}
+  .pf-bar.light i{background:#c3c3cc}
+  .pf-bar.dark i:nth-child(1){background:#ff5f57}.pf-bar.dark i:nth-child(2){background:#febc2e}.pf-bar.dark i:nth-child(3){background:#28c840}
+  .pf-lbl{position:absolute;bottom:8px;left:8px;font-family:'Sora',sans-serif;font-size:.55rem;font-weight:800;letter-spacing:.12em;padding:3px 8px;border-radius:99px;background:rgba(10,10,18,.72);color:#c9c2b4;border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(4px)}
+  .pf-lbl.po{color:#00e5b0;border-color:rgba(0,229,176,.5)}
+  .pf-before{width:62%;height:150px;left:6%;top:26px;transform:rotate(-5deg);z-index:1;filter:grayscale(.5) brightness(.82) contrast(.92);opacity:.9}
+  .pf-after{width:66%;height:162px;right:5%;bottom:20px;transform:rotate(3deg);z-index:2;box-shadow:0 26px 55px -18px rgba(0,0,0,.9),0 0 30px -14px rgba(124,92,255,.5)}
+  .pf-card:hover .pf-before{transform:rotate(-12deg) translate(-30px,-22px) scale(.9);opacity:.45}
+  .pf-card:hover .pf-after{transform:rotate(1deg) translate(26px,-20px) scale(1.12);box-shadow:0 42px 90px -18px rgba(0,0,0,.95),0 0 60px -10px rgba(0,229,176,.7)}
+  .pf-body{padding:22px 26px 26px;display:flex;flex-direction:column;flex:1}
+  .pf-cat{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px}
+  .pf-title{font-family:'Sora',sans-serif;font-size:1.25rem;margin:0 0 8px}
+  .pf-desc{font-size:.9rem;color:#9a9aad;flex:1;margin:0}
+  .pf-link{margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease,color .25s ease}
+  .pf-card:hover .pf-link{gap:12px;color:#9d7bff}
+  @media(prefers-reduced-motion:reduce){.pf-stage{animation:none}.pf-win{transition:none}}
 </style>
 </helmet>
 
@@ -53,6 +83,7 @@
       <a href="#" style="display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:.02em;color:#f2f2f7;text-decoration:none"><svg width="30" height="32" viewBox="0 0 76 84"><defs><linearGradient id="navLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#navLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#navLogoG)"></circle></svg>ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></a>
       <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;gap:32px;font-size:.92rem;color:#9a9aad">
+          <a href="#ewolucja" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Ewolucja</a>
           <a href="#jak" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Jak działamy</a>
           <a href="#portfolio" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Metamorfozy</a>
           <a href="#oferta" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Oferta</a>
@@ -66,7 +97,8 @@
   <header style="position:relative;padding:170px 0 110px;text-align:center">
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;pointer-events:none;background:#7c5cff;top:-220px;left:-140px"></div>
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.16;pointer-events:none;background:#00e5b0;top:-120px;right:-200px"></div>
-    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative">
+    <canvas id="heroNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:2">
       <div data-hero="true" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:7px 16px;border-radius:99px;font-size:.82rem;color:#9a9aad;margin-bottom:28px;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 1.8s both">
         <span style="width:8px;height:8px;border-radius:50%;background:#00e5b0;box-shadow:0 0 12px #00e5b0;display:inline-block"></span>
         Przyjmujemy nowe projekty
@@ -78,35 +110,6 @@
         <a href="#kontakt" style="border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s;display:inline-block" style-hover="border-color:#00e5b0;color:#f2f2f7">Bezpłatny audyt strony</a>
       </div>
 
-      <div data-hero="true" style="max-width:880px;margin:80px auto 0;position:relative;text-align:left;animation:heroUp .9s cubic-bezier(.22,1,.36,1) 2.45s both">
-        <div style="background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 40px 110px rgba(0,0,0,.6),0 0 0 1px rgba(124,92,255,.08)">
-          <div style="display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);background:#101019">
-            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57;display:inline-block"></span>
-            <span style="width:11px;height:11px;border-radius:50%;background:#febc2e;display:inline-block"></span>
-            <span style="width:11px;height:11px;border-radius:50%;background:#28c840;display:inline-block"></span>
-            <span style="flex:1;margin-left:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:.72rem;color:#9a9aad;padding:5px 14px">www.pensjonat-podswierkami.pl</span>
-          </div>
-          <div ref="{{ cmpStageRef }}" style="position:relative;height:460px;user-select:none;touch-action:pan-y;overflow:hidden">
-            <div data-beam="true" style="position:absolute;left:0;right:0;top:0;height:120px;z-index:6;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(180deg,transparent,rgba(124,92,255,.4) 40%,rgba(0,229,176,.35) 60%,transparent);animation:beam 1.6s ease-in-out 3.3s both"></div>
-            <div style="position:absolute;inset:0;overflow:hidden;background:#eceae4">
-              <img src="img/01-preview-pensjonat.png" alt="Strona pensjonatu przed metamorfozą — przestarzały wygląd" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:sepia(.35) contrast(.9) brightness(.97) saturate(.75)"></img>
-              <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.045) 0 1px,transparent 1px 3px)"></div>
-            </div>
-            <div style="position:absolute;inset:0;overflow:hidden;background:#101019;clip-path:inset(0 0 0 96%)" ref="{{ cmpNewRef }}">
-              <img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami po metamorfozie" style="width:100%;height:100%;object-fit:cover;object-position:top"></img>
-              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 55%,rgba(124,92,255,.1) 75%,rgba(0,229,176,.08) 90%,transparent)"></div>
-            </div>
-            <div ref="{{ cmpFlashRef }}" style="position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 45%,rgba(0,229,176,.3),rgba(124,92,255,.2) 45%,transparent 72%)"></div>
-            <div ref="{{ cmpHandleRef }}" style="position:absolute;top:0;bottom:0;left:96%;width:3px;background:linear-gradient(180deg,#7c5cff,#00e5b0);transform:translateX(-50%);pointer-events:none;z-index:3">
-              <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;font-family:'Sora';font-weight:700;font-size:.66rem;letter-spacing:.05em;padding:10px 13px;border-radius:99px;white-space:nowrap;box-shadow:0 8px 26px rgba(124,92,255,.55)">◂ przeciągnij ▸</span>
-            </div>
-            <span style="position:absolute;top:14px;z-index:3;font-family:'Sora';font-weight:800;font-size:.68rem;letter-spacing:.14em;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px);left:14px;background:rgba(0,0,0,.55);color:#ffdf5c;border:1px solid rgba(255,255,255,.25)">PRZED</span>
-            <span style="position:absolute;top:14px;z-index:3;font-family:'Sora';font-weight:800;font-size:.68rem;letter-spacing:.14em;padding:6px 14px;border-radius:99px;backdrop-filter:blur(6px);right:14px;background:rgba(10,10,18,.7);color:#00e5b0;border:1px solid rgba(0,229,176,.4)">PO</span>
-            <input ref="{{ cmpRangeRef }}" type="range" min="4" max="96" value="96" step="0.1" aria-label="Porównanie przed i po" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:4;appearance:none">
-          </div>
-        </div>
-        <p style="text-align:center;color:#9a9aad;font-size:.85rem;margin-top:18px">To prawdziwa realizacja — <b style="color:#00e5b0">złap suwak i przeciągnij</b>. Dokładnie taką różnicę robimy dla Twojej firmy. <a href="Demo Pensjonat.dc.html" style="color:#7c5cff">Zobacz całą stronę →</a></p>
-      </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin-top:90px">
         <div style="background:#101019;padding:34px 20px;text-align:center">
@@ -139,6 +142,291 @@
       <span><b style="color:#7c5cff;margin-right:16px">✦</b>7 DNI REALIZACJI</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>100% MOBILNIE</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>DARMOWY AUDYT</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>WSPARCIE 24/7</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>SEO LOKALNE</span>
     </div>
   </div>
+
+  <section id="ewolucja" style="padding:0">
+    <div style="max-width:1180px;margin:0 auto;padding:100px 24px 0;text-align:center">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;max-width:680px;margin:0 auto">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Metamorfoza krok po kroku</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Zobacz, jak zmienia się Twoja strona</h2>
+        <p style="color:#9a9aad;margin-top:16px">Od przestarzałej wizytówki do nowoczesnej strony — przewiń i prześledź całą drogę.</p>
+      </div>
+    </div>
+
+    <div data-evo-hud="" style="position:fixed;right:26px;bottom:26px;z-index:60;opacity:0;transform:translateY(16px) scale(.96);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none;display:flex;align-items:center;gap:14px;background:rgba(12,11,22,.82);backdrop-filter:blur(14px);border:1px solid rgba(167,139,250,.28);border-radius:16px;padding:12px 18px 12px 14px;box-shadow:0 20px 50px -18px rgba(0,0,0,.9),0 0 40px -22px rgba(124,77,232,.9)">
+      <svg width="46" height="46" viewBox="0 0 46 46" style="flex:none;transform:rotate(-90deg)">
+        <circle cx="23" cy="23" r="19" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="3"></circle>
+        <circle data-evo-hud-ring="" cx="23" cy="23" r="19" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .18s linear"></circle>
+      </svg>
+      <div style="line-height:1.25">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;letter-spacing:.18em;color:#8b8a99"><b data-evo-hud-num="" style="color:#eceaf5;font-size:.82rem">01</b> / 04</div>
+        <div data-evo-hud-label="" style="font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:600;color:#eceaf5;white-space:nowrap">Przestarzała strona</div>
+      </div>
+    </div>
+    <div ref="{{ setRoot }}" style="width: 100%; position: relative; background: linear-gradient(180deg, #0a0a12 0%, #141024 20%, #1a1230 50%, #141024 80%, #0a0a12 100%); color: #f3f2f8; font-family: 'Manrope', sans-serif; overflow: hidden; padding: 30px 0 60px;">
+    
+        <div style="position: absolute; top: 4%; left: -180px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(124,77,232,0.30), transparent 68%); filter: blur(12px); pointer-events: none;"></div>
+        <div style="position: absolute; top: 42%; right: -200px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(56,120,255,0.18), transparent 68%); filter: blur(12px); pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -160px; left: 20%; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(20,150,128,0.16), transparent 70%); filter: blur(12px); pointer-events: none;"></div>
+    
+      <!-- glowing line: dim base + scroll-driven fill -->
+      <div ref="{{ setLineBase }}" style="position: absolute; left: 50%; top: -30px; height: 0; width: 2px; transform: translateX(-50%); background: rgba(255,255,255,0.06); border-radius: 2px;">
+        <div ref="{{ setLineFill }}" style="width: 100%; height: 0%; background: linear-gradient(180deg, #7c4de8 0%, #5b8bff 55%, #22d3ee 100%); border-radius: 2px; box-shadow: 0 0 18px rgba(124,77,232,0.8), 0 0 40px rgba(91,139,255,0.4); transition: height 0.15s linear;"></div>
+      </div>
+    
+      <!-- ===== ETAP 01 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 01" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #8b8a99; margin-bottom: 10px;">ETAP 01</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Przestarzała strona</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Wygląda jak z 2008 roku — tabelkowy layout, krzykliwe kolory, licznik odwiedzin. Odstrasza klientów, zamiast ich przyciągać.</p>
+          </div>
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="width: 560px; border-radius: 8px; overflow: hidden; box-shadow: 0 26px 60px -24px rgba(0,0,0,0.8); filter: saturate(0.72) contrast(0.96); position: relative;">
+                <div style="background: linear-gradient(#dfdfdf,#bdbdbd); border: 1px solid #9a9a9a; border-bottom: none; padding: 5px 8px; display: flex; align-items: center; gap: 8px;">
+                  <div style="display: flex; gap: 4px;">
+                    <div style="width: 15px; height: 13px; background: #cfcfcf; border: 1px solid #7a7a7a; font: 9px monospace; text-align: center; line-height: 13px; color: #333;">_</div>
+                    <div style="width: 15px; height: 13px; background: #cfcfcf; border: 1px solid #7a7a7a; font: 9px monospace; text-align: center; line-height: 13px; color: #333;">□</div>
+                    <div style="width: 15px; height: 13px; background: #cfcfcf; border: 1px solid #7a7a7a; font: 9px monospace; text-align: center; line-height: 13px; color: #900;">×</div>
+                  </div>
+                  <div style="flex: 1; background: #fff; border: 1px solid #808080; border-style: inset; font: 10px 'Times New Roman', serif; color: #444; padding: 1px 6px;">http://www.corp-global.com.pl/index.htm</div>
+                </div>
+                <div style="background: #fdfdf5; font-family: 'Times New Roman', Times, serif; color: #111; border: 1px solid #9a9a9a;">
+                  <div style="display: flex;">
+                    <div style="background: #008080; color: #ffff33; font-weight: bold; font-size: 22px; padding: 12px 16px; flex: 1; text-shadow: 1px 1px 0 #000; letter-spacing: 0.5px;">CORP GLOBAL Sp. z o.o.</div>
+                    <div style="background: #cc0000; color: #fff; font-size: 11px; font-weight: bold; padding: 6px 10px; display: grid; place-items: center; text-align: center; line-height: 1.2;">*** POD<br>BUDOWĄ ***</div>
+                  </div>
+                  <div style="background: #000080; padding: 4px 12px; font-size: 12px;">
+                    <span style="color: #ffff00; text-decoration: underline;">Start</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">O firmie</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">Oferta</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">Księga gości</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">Kontakt</span>
+                  </div>
+                  <div style="height: 8px; background: repeating-linear-gradient(90deg,#ff0000 0 14px,#ff9900 14px 28px,#ffff00 28px 42px,#00cc00 42px 56px,#0066ff 56px 70px,#9900cc 70px 84px);"></div>
+                  <div style="text-align: center; color: #cc0000; font-weight: bold; font-size: 13px; padding: 7px 0; animation: odnPulse 1.4s infinite;">★★★ WITAMY NA NASZEJ STRONIE INTERNETOWEJ ★★★</div>
+                  <div style="display: flex; padding: 4px 12px 14px; gap: 14px;">
+                    <div style="width: 132px; border: 2px solid #808080; border-style: outset; background: #eee; padding: 8px;">
+                      <div style="background: #000080; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 5px; margin-bottom: 6px;">MENU</div>
+                      <div style="font-size: 12px; color: #0000ee; line-height: 1.9;">► <u>Aktualności</u><br>► <u>Nasze usługi</u><br>► <u>Cennik 2008</u><br>► <u>Galeria</u><br>► <u>Pobierz katalog</u></div>
+                      <div style="margin-top: 10px; border: 1px solid #000; background: #000; color: #0f0; font: 11px 'Courier New', monospace; text-align: center; padding: 3px;">Odwiedziny:<br>0&nbsp;0&nbsp;0&nbsp;1&nbsp;4&nbsp;7</div>
+                    </div>
+                    <div style="flex: 1; font-size: 12.5px; color: #222; line-height: 1.5;">
+                      <div style="background: #ffffcc; border: 1px dashed #999900; padding: 5px 7px; margin-bottom: 8px; color: #666600;">Najlepiej oglądać w rozdzielczości 800×600, Internet Explorer 6.0</div>
+                      <div style="display: flex; gap: 8px;">
+                        <div style="width: 90px; height: 62px; background: #c0c0c0; border: 2px inset #999; display: grid; place-items: center; color: #d00; font-weight: bold; font-size: 20px;">✗</div>
+                        <p style="margin: 0;">Witamy Państwa serdecznie na oficjalnej witrynie naszej firmy. Oferujemy szeroki wachlarz usług dla klientów biznesowych oraz indywidualnych.</p>
+                      </div>
+                      <p style="margin: 8px 0 0;"><span style="background: #ffff00;">NOWOŚĆ!</span> Zapraszamy do zapoznania się z naszą ofertą. W razie pytań prosimy o kontakt telefoniczny.</p>
+                    </div>
+                  </div>
+                  <div style="background: #d4d4d4; border-top: 1px solid #999; font-size: 10px; color: #555; text-align: center; padding: 4px;">Copyright © 2008 CORP GLOBAL. Webmaster: jan.k@corp-global.pl</div>
+                </div>
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(60,40,10,0.05) 0 2px, transparent 2px 4px); pointer-events: none; mix-blend-mode: multiply;"></div>
+                <div style="position: absolute; inset: 0; background: rgba(120,95,40,0.06); pointer-events: none;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- ===== ETAP 02 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 02" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="position: relative; width: 560px; height: 300px;">
+                <svg sc-camel-view-box="0 0 560 300" width="560" height="300" style="position: absolute; inset: 0;" fill="none">
+                  <path d="M120 70 L250 120" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <path d="M410 60 L280 130" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <path d="M90 210 L255 165" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <path d="M450 235 L300 175" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <circle cx="266" cy="146" r="5" fill="#7c4de8"></circle>
+                  <circle cx="120" cy="70" r="3" fill="#6b6a7c"></circle><circle cx="410" cy="60" r="3" fill="#6b6a7c"></circle>
+                  <circle cx="90" cy="210" r="3" fill="#6b6a7c"></circle><circle cx="450" cy="235" r="3" fill="#6b6a7c"></circle>
+                </svg>
+                <div style="position: absolute; left: 40px; top: 30px; width: 150px; transform: rotate(-7deg); background: #008080; color: #ffff33; font-family: 'Times New Roman', serif; font-weight: bold; font-size: 13px; padding: 8px 10px; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7); filter: saturate(0.7);">CORP GLOBAL</div>
+                <div style="position: absolute; left: 350px; top: 22px; width: 76px; height: 54px; transform: rotate(9deg); background: #c0c0c0; border: 2px inset #999; display: grid; place-items: center; color: #d00; font-weight: bold; font-size: 22px; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7);">✗</div>
+                <div style="position: absolute; left: 30px; top: 176px; transform: rotate(6deg); background: #000; color: #0f0; font: 11px 'Courier New', monospace; text-align: center; padding: 6px 8px; border: 1px solid #333; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7);">Odwiedziny<br>000147</div>
+                <div style="position: absolute; left: 405px; top: 210px; transform: rotate(-5deg); background: #ece9d8; border: 2px outset #b5b39e; font-family: 'Times New Roman', serif; font-size: 12px; padding: 5px 14px; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7);">Kliknij tutaj</div>
+                <div style="position: absolute; left: 190px; top: 78px; width: 158px; background: rgba(19,17,28,0.85); border: 1.5px dashed #7c4de8; border-radius: 8px; padding: 12px; box-shadow: 0 18px 40px -16px rgba(124,77,232,0.5); backdrop-filter: blur(2px);">
+                  <div style="height: 10px; width: 55%; border-radius: 3px; background: rgba(167,139,250,0.5); margin-bottom: 9px;"></div>
+                  <div style="display: flex; gap: 6px; margin-bottom: 9px;">
+                    <div style="width: 34px; height: 34px; border-radius: 6px; border: 1.5px dashed #5b8bff;"></div>
+                    <div style="flex: 1;"><div style="height: 6px; background: rgba(255,255,255,0.22); border-radius: 3px; margin-bottom: 5px;"></div><div style="height: 6px; width: 70%; background: rgba(255,255,255,0.14); border-radius: 3px;"></div></div>
+                  </div>
+                  <div style="height: 30px; border-radius: 6px; border: 1.5px dashed #22d3ee; display: grid; place-items: center; font-size: 9px; letter-spacing: 1px; color: #7fdff0; font-family: 'Space Grotesk';">SIATKA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #a78bfa; margin-bottom: 10px;">ETAP 02</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Rozbiórka i analiza</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Rozkładamy starą stronę na czynniki pierwsze — treść i formę analizujemy osobno. Każdy element trafia na siatkę i idzie do przeprojektowania.</p>
+          </div>
+        </div>
+      </section>
+    
+      <!-- ===== ETAP 03 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 03" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #7fa8ff; margin-bottom: 10px;">ETAP 03</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Przeprojektowanie</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Budujemy nowy układ i testujemy warianty — tła, typografię, akcenty. Ty wybierasz kierunek, my dopracowujemy detale.</p>
+          </div>
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="position: relative; width: 560px; height: 360px;">
+                <svg sc-camel-view-box="0 0 560 360" width="560" height="360" style="position: absolute; inset: 0; pointer-events: none;" fill="none">
+                  <path d="M330 120 C 348 118, 356 128, 364 138" stroke="#5b8bff" stroke-width="1.6" stroke-dasharray="3 4" opacity="0.7"></path>
+                  <path d="M330 250 C 350 258, 356 240, 366 226" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="3 4" opacity="0.7"></path>
+                </svg>
+                <!-- emerging layout -->
+                <div style="position: absolute; left: 0; top: 18px; width: 324px; border-radius: 12px; background: linear-gradient(160deg,#141221,#0e0d17); border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 30px 70px -26px rgba(0,0,0,0.85), 0 0 40px -18px rgba(124,77,232,0.4); overflow: hidden;">
+                  <div style="display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <div style="width: 18px; height: 18px; border-radius: 5px; background: linear-gradient(135deg,#a78bfa,#22d3ee);"></div>
+                    <div style="height: 8px; width: 56px; background: rgba(255,255,255,0.5); border-radius: 3px;"></div>
+                    <div style="flex: 1;"></div>
+                    <div style="height: 6px; width: 26px; background: rgba(255,255,255,0.2); border-radius: 3px;"></div>
+                    <div style="height: 6px; width: 26px; background: rgba(255,255,255,0.2); border-radius: 3px;"></div>
+                  </div>
+                  <div style="padding: 18px 16px;">
+                    <div style="height: 12px; width: 70%; background: linear-gradient(90deg,#e9e7f3,#b9c8ff); border-radius: 4px; margin-bottom: 8px;"></div>
+                    <div style="height: 12px; width: 45%; background: linear-gradient(90deg,#7fa8ff,#22d3ee); border-radius: 4px; margin-bottom: 12px;"></div>
+                    <div style="height: 7px; width: 90%; background: rgba(255,255,255,0.14); border-radius: 3px; margin-bottom: 5px;"></div>
+                    <div style="height: 7px; width: 78%; background: rgba(255,255,255,0.11); border-radius: 3px; margin-bottom: 16px;"></div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                      <div style="height: 26px; width: 96px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); box-shadow: 0 8px 20px -6px rgba(124,77,232,0.7);"></div>
+                      <div style="height: 26px; width: 82px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2);"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                      <div style="height: 46px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);"></div>
+                      <div style="height: 46px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);"></div>
+                      <div style="height: 46px; border-radius: 8px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.25);"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- variants panel -->
+                <div style="position: absolute; right: 0; top: 84px; width: 208px; background: rgba(19,17,28,0.94); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px; box-shadow: 0 24px 55px -20px rgba(0,0,0,0.85); animation: odnFloat 7s ease-in-out infinite;">
+                  <div style="font-family: 'Space Grotesk'; font-size: 10px; letter-spacing: 2px; color: #8b8a99; margin-bottom: 12px;">WARIANTY</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px;">
+                    <span style="font-size: 12px; color: #cfced9;">Poświata tła</span>
+                    <div style="width: 32px; height: 18px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); position: relative;"><div style="position: absolute; right: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff;"></div></div>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px;">
+                    <span style="font-size: 12px; color: #cfced9;">Animacje</span>
+                    <div style="width: 32px; height: 18px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); position: relative;"><div style="position: absolute; right: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff;"></div></div>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                    <span style="font-size: 12px; color: #cfced9;">Jasny motyw</span>
+                    <div style="width: 32px; height: 18px; border-radius: 999px; background: rgba(255,255,255,0.12); position: relative;"><div style="position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #8b8a99;"></div></div>
+                  </div>
+                  <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 12px;"></div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <span style="padding: 4px 11px; border-radius: 999px; font-size: 10.5px; font-family: 'Space Grotesk'; background: rgba(124,77,232,0.22); border: 1px solid rgba(167,139,250,0.5); color: #d6c9ff; white-space: nowrap;">Wariant A</span>
+                    <span style="padding: 4px 11px; border-radius: 999px; font-size: 10.5px; font-family: 'Space Grotesk'; border: 1px solid rgba(255,255,255,0.14); color: #8f8ea0; white-space: nowrap;">Wariant B</span>
+                    <span style="padding: 4px 11px; border-radius: 999px; font-size: 10.5px; font-family: 'Space Grotesk'; border: 1px solid rgba(255,255,255,0.14); color: #8f8ea0; white-space: nowrap;">Wariant C</span>
+                  </div>
+                </div>
+                <!-- palette chip -->
+                <div style="position: absolute; left: 28px; top: 322px; display: flex; gap: 5px; background: rgba(19,17,28,0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 7px 9px; box-shadow: 0 18px 40px -16px rgba(0,0,0,0.7); animation: odnFloat 6s ease-in-out infinite 0.5s;">
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #7c4de8;"></div>
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #5b8bff;"></div>
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #22d3ee;"></div>
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #10b981;"></div>
+                </div>
+                <!-- type card -->
+                <div style="position: absolute; left: 152px; top: 306px; width: 104px; background: rgba(19,17,28,0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 9px 12px; display: flex; align-items: center; gap: 9px; box-shadow: 0 18px 40px -16px rgba(0,0,0,0.7); animation: odnFloat 6.6s ease-in-out infinite 0.9s;">
+                  <div style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 22px; line-height: 1; background: linear-gradient(135deg,#a78bfa,#22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent;">Aa</div>
+                  <div style="font-size: 8.5px; color: #8f8ea0; font-family: 'Space Grotesk';">Space<br>Grotesk</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- ===== ETAP 04 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 04" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="width: 560px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 34px 80px -28px rgba(0,0,0,0.9), 0 0 60px -24px rgba(124,77,232,0.45); background: #0b0a12;">
+                <div style="display: flex; align-items: center; gap: 7px; padding: 9px 14px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);">
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div>
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div>
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div>
+                  <div style="flex: 1; margin-left: 8px; height: 18px; border-radius: 6px; background: rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 10px; font-size: 10px; color: #7f7e90; font-family: 'Space Grotesk';">corp-global.pl</div>
+                </div>
+                <div style="position: relative; background: radial-gradient(120% 90% at 15% 0%, rgba(124,77,232,0.4), transparent 55%), radial-gradient(120% 100% at 95% 60%, rgba(20,150,128,0.28), transparent 55%), #0a0910;">
+                  <div style="display: flex; align-items: center; gap: 16px; padding: 14px 22px;">
+                    <div style="display: flex; align-items: center; gap: 7px;">
+                      <div style="width: 18px; height: 18px; border-radius: 5px; background: linear-gradient(135deg,#a78bfa,#22d3ee);"></div>
+                      <span style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 14px;">CORP GLOBAL</span>
+                    </div>
+                    <div style="flex: 1;"></div>
+                    <span style="font-size: 11px; color: #c7c6d4;">O firmie</span>
+                    <span style="font-size: 11px; color: #c7c6d4;">Oferta</span>
+                    <span style="font-size: 11px; color: #c7c6d4;">Realizacje</span>
+                    <span style="font-size: 11px; color: #c7c6d4;">Kontakt</span>
+                    <div style="padding: 7px 15px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); font-family: 'Space Grotesk'; font-weight: 600; font-size: 11px; box-shadow: 0 8px 18px -6px rgba(124,77,232,0.7); white-space: nowrap;">Wyceń projekt</div>
+                  </div>
+                  <div style="text-align: center; padding: 30px 22px 40px;">
+                    <div style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); font-size: 10.5px; color: #cfced9; margin-bottom: 20px; white-space: nowrap;">
+                      <span style="width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 7px #10b981; animation: odnPulse 2s infinite;"></span> Zaufało nam 120+ firm
+                    </div>
+                    <h3 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 40px; line-height: 1.02; margin: 0 0 6px; letter-spacing: -1px;">Rozwiązania,<br><span style="background: linear-gradient(100deg,#8b8bff,#22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent;">które działają.</span></h3>
+                    <p style="max-width: 340px; margin: 14px auto 24px; font-size: 12.5px; line-height: 1.6; color: #a3a2b3;">Nowoczesna strona, która buduje zaufanie klientów biznesowych i realnie wspiera Twoją sprzedaż.</p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                      <div style="padding: 12px 26px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); font-family: 'Space Grotesk'; font-weight: 600; font-size: 13px; box-shadow: 0 14px 30px -8px rgba(124,77,232,0.75); white-space: nowrap;">Zobacz ofertę</div>
+                      <div style="padding: 12px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.03); font-family: 'Space Grotesk'; font-weight: 600; font-size: 13px; color: #e6e5ef; white-space: nowrap;">Skontaktuj się</div>
+                    </div>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 0 22px 26px;">
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px;">
+                      <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(124,77,232,0.16); border: 1px solid rgba(167,139,250,0.3); display: grid; place-items: center; margin-bottom: 11px;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"></path></svg></div>
+                      <div style="height: 7px; width: 68%; background: rgba(255,255,255,0.55); border-radius: 3px; margin-bottom: 7px;"></div>
+                      <div style="height: 5px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px;"></div>
+                      <div style="height: 5px; width: 80%; background: rgba(255,255,255,0.12); border-radius: 3px;"></div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px;">
+                      <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(91,139,255,0.16); border: 1px solid rgba(91,139,255,0.3); display: grid; place-items: center; margin-bottom: 11px;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#7fa8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"></path><path d="M12 6v6l4 2"></path></svg></div>
+                      <div style="height: 7px; width: 60%; background: rgba(255,255,255,0.55); border-radius: 3px; margin-bottom: 7px;"></div>
+                      <div style="height: 5px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px;"></div>
+                      <div style="height: 5px; width: 74%; background: rgba(255,255,255,0.12); border-radius: 3px;"></div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px;">
+                      <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(34,211,238,0.14); border: 1px solid rgba(34,211,238,0.3); display: grid; place-items: center; margin-bottom: 11px;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                      <div style="height: 7px; width: 72%; background: rgba(255,255,255,0.55); border-radius: 3px; margin-bottom: 7px;"></div>
+                      <div style="height: 5px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px;"></div>
+                      <div style="height: 5px; width: 66%; background: rgba(255,255,255,0.12); border-radius: 3px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #34d399; margin-bottom: 10px;">ETAP 04</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Gotowa metamorfoza</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Nowoczesna, profesjonalna wizytówka — czytelna, szybka i budująca zaufanie. Stare strony, nowe życie.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
 
   <section id="jak" style="padding:100px 0">
     <div style="max-width:1180px;margin:0 auto;padding:0 24px">
@@ -176,87 +464,81 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px">
 
-        <a data-proj="true" href="Demo%20Fryzjer.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
-            <img src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <img src="img/02-preview-fryzjer.png" alt="Nowa strona Atelier Anna" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+        <a class="pf-card" data-proj="true" href="Demo%20Fryzjer.dc.html">
+          <div class="pf-stage" style="--d:0s">
+            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" loading="lazy"><span class="pf-lbl">PRZED</span></div>
+            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-fryzjer.png" alt="Nowa strona Atelier Anna" loading="lazy"><span class="pf-lbl po">PO</span></div>
           </div>
-          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Beauty · Salon fryzjerski</div>
-            <h3 style="font-size:1.25rem;margin:0 0 8px">Atelier Anna</h3>
-            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
-            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
-          </div>
-        </a>
-
-        <a data-proj="true" href="Demo%20Autoserwis.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
-            <img src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <img src="img/02-preview-autoserwis.png" alt="Nowa strona Auto-Serwis Kowalski" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
-          </div>
-          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Motoryzacja · Warsztat</div>
-            <h3 style="font-size:1.25rem;margin:0 0 8px">Auto-Serwis Kowalski</h3>
-            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.</p>
-            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          <div class="pf-body">
+            <div class="pf-cat">Beauty · Salon fryzjerski</div>
+            <h3 class="pf-title">Atelier Anna</h3>
+            <p class="pf-desc">Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
+            <span class="pf-link">Zobacz metamorfozę →</span>
           </div>
         </a>
 
-        <a data-proj="true" href="Demo%20Pizzeria.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
-            <img src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <img src="img/02-preview-pizzeria.png" alt="Nowa strona Bella Napoli" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+        <a class="pf-card" data-proj="true" href="Demo%20Autoserwis.dc.html">
+          <div class="pf-stage" style="--d:.9s">
+            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" loading="lazy"><span class="pf-lbl">PRZED</span></div>
+            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-autoserwis.png" alt="Nowa strona Auto-Serwis Kowalski" loading="lazy"><span class="pf-lbl po">PO</span></div>
           </div>
-          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Gastronomia · Pizzeria</div>
-            <h3 style="font-size:1.25rem;margin:0 0 8px">Bella Napoli</h3>
-            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.</p>
-            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
-          </div>
-        </a>
-
-        <a data-proj="true" href="Demo%20Budmax.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
-            <img src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <img src="img/02-preview-budmax.png" alt="Nowa strona BUD-MAX" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
-          </div>
-          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Budownictwo · Remonty</div>
-            <h3 style="font-size:1.25rem;margin:0 0 8px">BUD-MAX</h3>
-            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">20 lat doświadczenia w remontach, strona "w budowie" od 2013. Teraz: portfolio realizacji, które samo sprzedaje.</p>
-            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          <div class="pf-body">
+            <div class="pf-cat">Motoryzacja · Warsztat</div>
+            <h3 class="pf-title">Auto-Serwis Kowalski</h3>
+            <p class="pf-desc">Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.</p>
+            <span class="pf-link">Zobacz metamorfozę →</span>
           </div>
         </a>
 
-        <a data-proj="true" href="Demo%20Dentysta.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
-            <img src="img/01-preview-dentysta.png" alt="Stara strona Gabinetu Dent-Med" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <img src="img/02-preview-dentysta.png" alt="Nowa strona Dent-Med" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+        <a class="pf-card" data-proj="true" href="Demo%20Pizzeria.dc.html">
+          <div class="pf-stage" style="--d:1.8s">
+            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" loading="lazy"><span class="pf-lbl">PRZED</span></div>
+            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-pizzeria.png" alt="Nowa strona Bella Napoli" loading="lazy"><span class="pf-lbl po">PO</span></div>
           </div>
-          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Zdrowie · Stomatologia</div>
-            <h3 style="font-size:1.25rem;margin:0 0 8px">Dent-Med</h3>
-            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.</p>
-            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          <div class="pf-body">
+            <div class="pf-cat">Gastronomia · Pizzeria</div>
+            <h3 class="pf-title">Bella Napoli</h3>
+            <p class="pf-desc">Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.</p>
+            <span class="pf-link">Zobacz metamorfozę →</span>
           </div>
         </a>
 
-        <a data-proj="true" href="Demo%20Pensjonat.dc.html" style="text-decoration:none;color:inherit;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column" style-hover="box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(124,92,255,.5)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;height:190px;position:relative">
-            <img src="img/01-preview-pensjonat.png" alt="Stara strona Pensjonatu U Górala" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami" style="width:100%;height:100%;object-fit:cover;object-position:top">
-            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(10,10,18,.85);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:99px;font-size:.68rem;font-weight:700;letter-spacing:.1em;backdrop-filter:blur(6px)">PRZED → PO</div>
+        <a class="pf-card" data-proj="true" href="Demo%20Budmax.dc.html">
+          <div class="pf-stage" style="--d:.45s">
+            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" loading="lazy"><span class="pf-lbl">PRZED</span></div>
+            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-budmax.png" alt="Nowa strona BUD-MAX" loading="lazy"><span class="pf-lbl po">PO</span></div>
           </div>
-          <div style="padding:24px 26px 28px;flex:1;display:flex;flex-direction:column">
-            <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px">Turystyka · Noclegi</div>
-            <h3 style="font-size:1.25rem;margin:0 0 8px">Pensjonat Pod Świerkami</h3>
-            <p style="font-size:.9rem;color:#9a9aad;flex:1;margin:0">Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.</p>
-            <span style="margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px">Zobacz metamorfozę →</span>
+          <div class="pf-body">
+            <div class="pf-cat">Budownictwo · Remonty</div>
+            <h3 class="pf-title">BUD-MAX</h3>
+            <p class="pf-desc">20 lat doświadczenia w remontach, strona "w budowie" od 2013. Teraz: portfolio realizacji, które samo sprzedaje.</p>
+            <span class="pf-link">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a class="pf-card" data-proj="true" href="Demo%20Dentysta.dc.html">
+          <div class="pf-stage" style="--d:1.35s">
+            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-dentysta.png" alt="Stara strona Gabinetu Dent-Med" loading="lazy"><span class="pf-lbl">PRZED</span></div>
+            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-dentysta.png" alt="Nowa strona Dent-Med" loading="lazy"><span class="pf-lbl po">PO</span></div>
+          </div>
+          <div class="pf-body">
+            <div class="pf-cat">Zdrowie · Stomatologia</div>
+            <h3 class="pf-title">Dent-Med</h3>
+            <p class="pf-desc">Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.</p>
+            <span class="pf-link">Zobacz metamorfozę →</span>
+          </div>
+        </a>
+
+        <a class="pf-card" data-proj="true" href="Demo%20Pensjonat.dc.html">
+          <div class="pf-stage" style="--d:2.25s">
+            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-pensjonat.png" alt="Stara strona Pensjonatu U Górala" loading="lazy"><span class="pf-lbl">PRZED</span></div>
+            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami" loading="lazy"><span class="pf-lbl po">PO</span></div>
+          </div>
+          <div class="pf-body">
+            <div class="pf-cat">Turystyka · Noclegi</div>
+            <h3 class="pf-title">Pensjonat Pod Świerkami</h3>
+            <p class="pf-desc">Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.</p>
+            <span class="pf-link">Zobacz metamorfozę →</span>
           </div>
         </a>
 
@@ -320,7 +602,7 @@
         <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Kontakt</div>
         <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Sprawdźmy, ile kosztuje Cię stara strona</h2>
         <p style="color:#9a9aad;max-width:520px;margin:16px auto 34px">Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
-        <a href="mailto:kontakt@odnova.studio" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">kontakt@odnova.studio</a>
+        <a href="mailto:biuro.odnovastudio@gmail.com" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">biuro.odnovastudio@gmail.com</a>
       </div>
     </div>
   </section>
@@ -341,12 +623,8 @@
 class Component extends DCLogic {
   rootRef = React.createRef();
   introRef = React.createRef();
-  cmpStageRef = React.createRef();
-  cmpRangeRef = React.createRef();
-  cmpNewRef = React.createRef();
-  cmpHandleRef = React.createRef();
-  cmpFlashRef = React.createRef();
   cursorGlowRef = React.createRef();
+  evoSecs = [];
   tapeRow1Ref = React.createRef();
   tapeRow2Ref = React.createRef();
 
@@ -360,6 +638,23 @@ class Component extends DCLogic {
   };
 
   state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820 };
+
+  // --- sekcja "Ewolucja strony": odsłanianie elementów przy scrollu ---
+  evoReveal(el, delay, scale) {
+    if (!el || el.__rv) return;
+    el.__rv = 1;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)' + (scale ? ' scale(0.96)' : '');
+    el.style.transition = 'opacity .8s ease ' + delay + ', transform .8s ease ' + delay;
+    this.evoRevIO ||= new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0) scale(1)';
+        this.evoRevIO.unobserve(e.target);
+      }
+    }), { threshold: 0.15 });
+    this.evoRevIO.observe(el);
+  }
 
   componentDidMount() {
     const root = this.rootRef.current;
@@ -384,52 +679,152 @@ class Component extends DCLogic {
     root.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
     this.io = io;
 
-    // before/after compare slider
-    const stage = this.cmpStageRef.current;
-    const range = this.cmpRangeRef.current;
-    if (stage && range) {
-      const newEl = this.cmpNewRef.current;
-      const handle = this.cmpHandleRef.current;
-      const flash = this.cmpFlashRef.current;
-      const card = stage.closest ? stage.parentElement : null;
-      const setX = v => {
-        v = +v;
-        if (newEl) newEl.style.clipPath = `inset(0 0 0 ${v}%)`;
-        if (handle) handle.style.left = v + '%';
-        // glow rośnie im więcej "PO" widać
-        const t = Math.max(0, Math.min(1, (96 - v) / 92));
-        if (card) card.style.boxShadow = `0 40px 110px rgba(0,0,0,.6), 0 0 ${Math.round(30 + 90 * t)}px rgba(124,92,255,${(.12 + .4 * t).toFixed(2)}), 0 0 0 1px rgba(0,229,176,${(.06 + .3 * t).toFixed(2)})`;
-        // wow-flash przy pełnym odsłonięciu
-        if (v <= 26 && !this._wowed) {
-          this._wowed = true;
-          if (flash && flash.animate) flash.animate([{ opacity: 0 }, { opacity: 1, offset: .3 }, { opacity: 0 }], { duration: 800, easing: 'ease-out' });
-          if (card && card.animate) card.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.015)', offset: .4 }, { transform: 'scale(1)' }], { duration: 550, easing: 'ease-out' });
-        }
-        if (v > 70) this._wowed = false;
-      };
-      setX(range.value);
-      const onInput = () => setX(range.value);
-      range.addEventListener('input', onInput);
-      this._range = range;
-      this._onInput = onInput;
+    // --- sekcja "Ewolucja strony": świecąca linia, znaczniki, HUD i scroll-scrub ---
+    const evoReduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const evoHud = root.querySelector('[data-evo-hud]');
+    const evoHudRing = root.querySelector('[data-evo-hud-ring]');
+    const evoHudNum = root.querySelector('[data-evo-hud-num]');
+    const evoHudLabel = root.querySelector('[data-evo-hud-label]');
+    const EVO_RING = 119.4;
+    const EVO_LABELS = ['Przestarzała strona', 'Rozbiórka i analiza', 'Przeprojektowanie', 'Gotowa metamorfoza'];
 
-      const cmpIO = new IntersectionObserver(es => es.forEach(e => {
-        if (!e.isIntersecting) return;
-        cmpIO.disconnect();
-        const start = performance.now(), from = 96, to = 52, dur = 1500;
-        const step = now => {
-          const p = Math.min(1, (now - start) / dur);
-          const ease = 1 - Math.pow(1 - p, 3);
-          const v = from + (to - from) * ease;
-          setX(v);
-          range.value = v;
-          if (p < 1) this._cmpRaf = requestAnimationFrame(step);
-        };
-        this._cmpRaf = requestAnimationFrame(step);
-      }), { threshold: .45 });
-      cmpIO.observe(stage);
-      this.cmpIO = cmpIO;
-    }
+    this.evoScroll = () => {
+      if (!this.evoRootEl || !this.evoLineFillEl || !this.evoLineBaseEl) return;
+      const vh = window.innerHeight || 800;
+      const scanY = vh * 0.55;               // linia skanująca — na jej wysokości "czyta się" postęp
+      const rootR = this.evoRootEl.getBoundingClientRect();
+      // środki znaczników liczone NA ŻYWO (odporne na przesunięcia layoutu / późne wczytanie fontów)
+      const markCY = this.evoSecs.map(s => {
+        const m = s.querySelector('[data-evo-marker]');
+        const mr = m.getBoundingClientRect();
+        return mr.top + mr.height / 2;
+      });
+      const firstY = rootR.top - 30;                 // linia wchodzi tuż nad pierwszym etapem
+      const lastY = markCY[markCY.length - 1];       // i kończy się dokładnie na ostatnim znaczniku
+      const span = Math.max(1, lastY - firstY);
+      const p = Math.min(1, Math.max(0, (scanY - firstY) / span));
+      // wysokość elementu linii ustawiana na żywo = zawsze sięga znacznika 4, bez zamrożonej wartości
+      this.evoLineBaseEl.style.height = span + 'px';
+      this.evoLineFillEl.style.height = (p * 100) + '%';
+      const tipY = firstY + span * p;
+      let lastLit = -1;
+      markCY.forEach((cy, i) => { if (tipY >= cy - 0.5) lastLit = i; });
+      this.evoSecs.forEach((s, i) => {
+        const m = s.querySelector('[data-evo-marker]');
+        const want = i <= lastLit ? (i === lastLit ? 2 : 1) : 0;
+        if (!m || m.__lit === want) return;
+        const dot = m.firstElementChild;
+        m.style.transition = 'border-color .5s ease, box-shadow .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1)';
+        dot.style.transition = 'background .5s ease, box-shadow .5s ease';
+        m.__lit = want;
+        if (want) {
+          const current = want === 2;
+          m.style.borderColor = current ? '#a78bfa' : '#7c4de8';
+          m.style.transform = current ? 'translate(-50%,-50%) scale(1.18)' : 'translate(-50%,-50%) scale(1)';
+          m.style.animation = current ? 'evoPulse 2.2s ease-in-out infinite' : 'none';
+          m.style.boxShadow = current ? '' : '0 0 0 5px rgba(124,77,232,0.14), 0 0 14px rgba(124,77,232,0.5)';
+          dot.style.background = current ? '#c4b5fd' : '#a78bfa';
+          dot.style.boxShadow = current ? '0 0 12px #a78bfa' : '0 0 6px rgba(167,139,250,0.6)';
+        } else {
+          m.style.borderColor = '#3a3950';
+          m.style.transform = 'translate(-50%,-50%) scale(1)';
+          m.style.animation = 'none';
+          m.style.boxShadow = 'none';
+          dot.style.background = '#55546a';
+          dot.style.boxShadow = 'none';
+        }
+      });
+
+      // --- HUD: licznik etapu + pierścień postępu ---
+      if (evoHud) {
+        const shown = rootR.top < vh * 0.55 && rootR.bottom > vh * 0.45;
+        evoHud.style.opacity = shown ? '1' : '0';
+        evoHud.style.transform = shown ? 'translateY(0) scale(1)' : 'translateY(16px) scale(.96)';
+        const cur = Math.max(0, lastLit);
+        if (evoHudNum) evoHudNum.textContent = String(cur + 1).padStart(2, '0');
+        if (evoHudLabel && evoHudLabel.textContent !== EVO_LABELS[cur]) evoHudLabel.textContent = EVO_LABELS[cur];
+        if (evoHudRing) evoHudRing.style.strokeDashoffset = (EVO_RING * (1 - p)).toFixed(1);
+      }
+
+      // --- scroll-scrub: parallaksa + efekty właściwe dla etapu ---
+      if (evoReduced) return;
+      this.evoSecs.forEach((s, i) => {
+        const fit = s.querySelector('[data-evo-fit]');
+        if (!fit) return;
+        const r = s.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return; // poza ekranem — nie liczymy
+        const prog = (vh - r.top) / (vh + r.height);     // 0 = wchodzi, 1 = wychodzi
+        const c = Math.max(-1, Math.min(1, (prog - 0.5) * 2)); // -1 .. 0 (środek) .. 1
+
+        // parallaksa wizualizacji (na opakowaniu — [data-evo-fit] ma własny scale z evoResize)
+        const wrap = fit.parentElement;
+        if (wrap) wrap.style.transform = 'perspective(1200px) rotateX(' + (c * 3).toFixed(2) + 'deg) translateY(' + (c * -30).toFixed(1) + 'px)';
+
+        if (i === 0) {
+          // Etap 01 — stara strona blaknie i „umiera", gdy ją mijamy
+          if (fit.__baseFilter === undefined) fit.__baseFilter = fit.style.filter || '';
+          const d = Math.max(0, c);
+          fit.style.filter = (fit.__baseFilter + ' grayscale(' + (d * 0.8).toFixed(2) + ') brightness(' + (1 - d * 0.22).toFixed(2) + ')').trim();
+        } else if (i === 1) {
+          // Etap 02 — oderwane kawałki rozsypują się na boki
+          if (!s.__pieces) {
+            s.__pieces = [...fit.children].filter(el => el.tagName === 'DIV' && /rotate/.test(el.style.transform));
+            const fw = fit.offsetWidth / 2, fh = fit.offsetHeight / 2;
+            s.__pieces.forEach(pc => {
+              pc.__base = pc.style.transform;
+              const vx = (pc.offsetLeft + pc.offsetWidth / 2) - fw;
+              const vy = (pc.offsetTop + pc.offsetHeight / 2) - fh;
+              const len = Math.hypot(vx, vy) || 1;
+              pc.__vx = vx / len; pc.__vy = vy / len;
+            });
+          }
+          const sc = Math.max(0, Math.min(1, (prog - 0.32) / 0.46));
+          s.__pieces.forEach((pc, k) => {
+            const dist = sc * (70 + k * 16);
+            pc.style.transform = pc.__base + ' translate(' + (pc.__vx * dist).toFixed(1) + 'px,' + (pc.__vy * dist).toFixed(1) + 'px) rotate(' + (sc * (k % 2 ? 9 : -9)).toFixed(1) + 'deg)';
+            pc.style.opacity = (1 - sc * 0.5).toFixed(2);
+          });
+        } else if (i === 3) {
+          // Etap 04 — nowa strona rozbłyska, gdy trafia na środek
+          if (fit.__baseShadow === undefined) fit.__baseShadow = fit.style.boxShadow || '';
+          const b = 1 - Math.abs(c);
+          fit.style.boxShadow = (fit.__baseShadow ? fit.__baseShadow + ', ' : '') +
+            '0 0 ' + (28 + 72 * b).toFixed(0) + 'px -' + (22 - 12 * b).toFixed(0) + 'px rgba(124,77,232,' + (0.22 + 0.55 * b).toFixed(2) + ')';
+        }
+      });
+    };
+
+    this.evoResize = () => {
+      if (!this.evoRootEl) return;
+      const mob = window.innerWidth < 760;
+      const left = mob ? '26px' : '50%';
+      if (this.evoLineBaseEl) { this.evoLineBaseEl.style.left = left; this.evoLineBaseEl.style.bottom = 'auto'; }
+      // wysokość linii ustawia evoScroll na żywo (kończy się dokładnie na znaczniku Etapu 04)
+      this.evoSecs.forEach(s => {
+        const m = s.querySelector('[data-evo-marker]');
+        if (m) m.style.left = left;
+        const inner = s.querySelector('[data-evo-inner]');
+        if (inner) {
+          inner.style.paddingLeft = mob ? '64px' : '48px';
+          inner.style.gap = mob ? '48px' : '120px';
+        }
+      });
+      this.evoRootEl.querySelectorAll('[data-evo-fit]').forEach(el => {
+        const pw = el.parentElement.offsetWidth;
+        const sc = Math.min(1, pw / 560);
+        el.style.transform = 'scale(' + sc + ')';
+        el.style.transformOrigin = 'top left';
+        el.parentElement.style.height = (el.offsetHeight * sc) + 'px';
+      });
+      this.evoScroll();
+    };
+
+    window.addEventListener('scroll', this.evoScroll, { passive: true });
+    window.addEventListener('resize', this.evoResize);
+    this.evoScroll();
+    this.evoResize();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.evoResize());
+    this._evoTimer = setTimeout(() => this.evoResize(), 600);
 
     // animated counters
     const cntIO = new IntersectionObserver(es => es.forEach(e => {
@@ -475,18 +870,121 @@ class Component extends DCLogic {
       };
       follow();
     }
+
+    // --- tło neuronowe hero (V4b: magnetyczny reflektor) ---
+    (() => {
+      const canvas = root.querySelector('#heroNeuro');
+      if (!canvas) return;
+      const host = canvas.parentElement;                 // <header>
+      const ctx = canvas.getContext('2d');
+      const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+      const A = [124, 92, 255], B = [0, 229, 176];
+      const mix = (c1, c2, t) => Math.round(c1[0] + (c2[0] - c1[0]) * t) + ',' + Math.round(c1[1] + (c2[1] - c1[1]) * t) + ',' + Math.round(c1[2] + (c2[2] - c1[2]) * t);
+      const sprite = (rgb) => {
+        const s = 64, cc = document.createElement('canvas'); cc.width = cc.height = s;
+        const gg = cc.getContext('2d'), gr = gg.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+        gr.addColorStop(0, 'rgba(' + rgb + ',1)'); gr.addColorStop(.25, 'rgba(' + rgb + ',.55)'); gr.addColorStop(1, 'rgba(' + rgb + ',0)');
+        gg.fillStyle = gr; gg.fillRect(0, 0, s, s); return cc;
+      };
+      const gA = sprite(A.join(',')), gB = sprite(B.join(','));
+      let W = 0, H = 0, nodes = [], MAXD = 160, R = 250;
+      const ptr = { x: -9999, y: -9999, on: false };
+
+      const build = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = host.offsetWidth; H = host.offsetHeight;
+        canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        MAXD = W < 720 ? 125 : 160; R = W < 720 ? 170 : 250;
+        const count = Math.max(22, Math.min(70, Math.round(W * H / 26000)));
+        nodes = [];
+        for (let i = 0; i < count; i++) nodes.push({
+          ax: Math.random() * W, ay: Math.random() * H,
+          dsx: .14 + Math.random() * .22, dsy: .14 + Math.random() * .22,
+          drx: 14 + Math.random() * 28, dry: 14 + Math.random() * 28,
+          phx: Math.random() * 6.28, phy: Math.random() * 6.28,
+          tone: Math.random(), prox: 0, x: 0, y: 0
+        });
+      };
+
+      const frame = (t) => {
+        ctx.clearRect(0, 0, W, H);
+        const on = ptr.on, mx = ptr.x, my = ptr.y;
+        for (const n of nodes) {
+          const bx = n.ax + Math.sin(t * n.dsx + n.phx) * n.drx;
+          const by = n.ay + Math.cos(t * n.dsy + n.phy) * n.dry;
+          let prox = 0, ox = 0, oy = 0;
+          if (on) {
+            const dx = mx - bx, dy = my - by, d = Math.hypot(dx, dy);
+            if (d < R) { prox = 1 - d / R; prox *= prox; const pull = prox * 34; ox = dx / (d || 1) * pull; oy = dy / (d || 1) * pull; }
+          }
+          n.prox = prox; n.x = bx + ox; n.y = by + oy;
+        }
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+            if (d2 < MAXD * MAXD) {
+              const d = Math.sqrt(d2), boost = Math.max(a.prox, b.prox);
+              const al = (1 - d / MAXD) * (.09 + boost * .6);
+              ctx.strokeStyle = 'rgba(' + mix([140, 130, 190], B, boost) + ',' + al.toFixed(3) + ')';
+              ctx.lineWidth = .8 + boost * 1.1;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+        }
+        ctx.globalCompositeOperation = 'lighter';
+        if (on) { ctx.globalAlpha = .3; ctx.drawImage(gB, mx - 90, my - 90, 180, 180); }
+        for (const n of nodes) {
+          const spr = n.tone > .5 ? gB : gA, gs = 8 + n.prox * 30;
+          ctx.globalAlpha = .2 + n.prox * .7;
+          ctx.drawImage(spr, n.x - gs / 2, n.y - gs / 2, gs, gs);
+        }
+        ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+        for (const n of nodes) {
+          ctx.fillStyle = n.prox > .4 ? '#eafff9' : 'rgba(' + mix(A, B, n.tone) + ',.72)';
+          ctx.beginPath(); ctx.arc(n.x, n.y, 1.4 + n.prox * 2.2, 0, 6.2832); ctx.fill();
+        }
+      };
+
+      build();
+      const onMove = (e) => {
+        const r = host.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        ptr.on = (r.bottom > 0 && y >= 0 && y <= r.height && x >= 0 && x <= r.width);
+        if (ptr.on) { ptr.x = x; ptr.y = y; }
+      };
+      window.addEventListener('mousemove', onMove, { passive: true });
+      window.addEventListener('resize', build);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+      this._neuroCleanup = () => {
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('resize', build);
+        if (this._neuroRaf) cancelAnimationFrame(this._neuroRaf);
+      };
+
+      if (reduced) { frame(0); return; }
+      const loop = (now) => {
+        const r = host.getBoundingClientRect();
+        if (r.bottom > 0) frame(now / 1000);            // rysuj tylko gdy hero widoczne
+        this._neuroRaf = requestAnimationFrame(loop);
+      };
+      this._neuroRaf = requestAnimationFrame(loop);
+    })();
   }
 
   componentWillUnmount() {
     if (this._introTimer) clearTimeout(this._introTimer);
+    if (this._evoTimer) clearTimeout(this._evoTimer);
     if (this.onResize) window.removeEventListener('resize', this.onResize);
+    if (this.evoScroll) window.removeEventListener('scroll', this.evoScroll);
+    if (this.evoResize) window.removeEventListener('resize', this.evoResize);
     if (this.io) this.io.disconnect();
-    if (this.cmpIO) this.cmpIO.disconnect();
+    if (this.evoRevIO) this.evoRevIO.disconnect();
     if (this.cntIO) this.cntIO.disconnect();
-    if (this._range && this._onInput) this._range.removeEventListener('input', this._onInput);
     if (this._mmove) window.removeEventListener('mousemove', this._mmove);
-    if (this._cmpRaf) cancelAnimationFrame(this._cmpRaf);
     if (this._followRaf) cancelAnimationFrame(this._followRaf);
+    if (this._neuroCleanup) this._neuroCleanup();
     if (this._tiltHandlers) this._tiltHandlers.forEach(([card, mm, ml]) => {
       card.removeEventListener('mousemove', mm);
       card.removeEventListener('mouseleave', ml);
@@ -497,12 +995,18 @@ class Component extends DCLogic {
     return {
       rootRef: this.rootRef,
       introRef: this.introRef,
-      cmpStageRef: this.cmpStageRef,
-      cmpRangeRef: this.cmpRangeRef,
       cursorGlowRef: this.cursorGlowRef,
-      cmpNewRef: this.cmpNewRef,
-      cmpHandleRef: this.cmpHandleRef,
-      cmpFlashRef: this.cmpFlashRef,
+      // --- sekcja "Ewolucja strony" ---
+      setRoot: el => { this.evoRootEl = el; },
+      setLineBase: el => { this.evoLineBaseEl = el; },
+      setLineFill: el => { this.evoLineFillEl = el; },
+      sec: el => {
+        if (!el || el.__evo) return;
+        el.__evo = 1;
+        this.evoSecs.push(el);
+      },
+      revT: el => this.evoReveal(el, '0s', false),
+      revV: el => this.evoReveal(el, '0.18s', true),
       tapeRow1Ref: this.tapeRow1Ref,
       tapeRow2Ref: this.tapeRow2Ref,
       pauseTape: this.pauseTape,

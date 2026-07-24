@@ -1,0 +1,8 @@
+# pliki robocze / podglądowe — nie publikować
+tlo-preview/
+tło landing page/
+Ewolucja strony.html
+dev-server.js
+*.bak
+.claude/
+.thumbnail
