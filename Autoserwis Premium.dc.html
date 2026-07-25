@@ -10,7 +10,8 @@
 <helmet>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;background:#07090c}
+  body{margin:0;background:#07090c;overflow-x:hidden}
+  html{overflow-x:hidden}
   a{color:#ff8a00}a:hover{color:#ffd60a}
   @keyframes spinBlades{from{transform:rotate(0)}to{transform:rotate(360deg)}}
   @keyframes eq{0%,100%{transform:scaleY(.18)}50%{transform:scaleY(1)}}
@@ -21,6 +22,11 @@
   @keyframes irisZoom{to{transform:scale(6);opacity:0}}
   @keyframes hintPulse{0%,100%{opacity:.45;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
   @media (prefers-reduced-motion:reduce){[data-preloader]{display:none!important}}
+  @media(max-width:680px){
+    .odn-nav-plainlink{display:none!important}
+    .odn-nav-logo{font-size:1.05rem!important}
+    .odn-nav-cta{padding:9px 16px!important;font-size:.7rem!important}
+  }
 </style>
 </helmet>
 
@@ -92,12 +98,12 @@
   </div>
 
   <nav style="position:fixed;top:{{ topOff }};left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(7,9,12,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,138,0,.18)">
-    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;color:#fff">Auto-Serwis <span style="color:#ff8a00">Kowalski</span></div>
+    <div class="odn-nav-logo" style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;color:#fff">Auto-Serwis <span style="color:#ff8a00">Kowalski</span></div>
     <div style="display:flex;gap:26px;align-items:center;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase">
-      <a href="#silnik" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Silnik</a>
-      <a href="#uslugi" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Usługi</a>
-      <a href="#kontakt" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Kontakt</a>
-      <a href="#kontakt" style="color:#0e1116;background:#ff8a00;text-decoration:none;font-weight:700;padding:10px 20px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .15s,box-shadow .15s" style-hover="background:#ffd60a;box-shadow:0 0 24px rgba(255,214,10,.5)">Umów wizytę</a>
+      <a href="#silnik" class="odn-nav-plainlink" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Silnik</a>
+      <a href="#uslugi" class="odn-nav-plainlink" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Usługi</a>
+      <a href="#kontakt" class="odn-nav-plainlink" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Kontakt</a>
+      <a href="#kontakt" class="odn-nav-cta" style="color:#0e1116;background:#ff8a00;text-decoration:none;font-weight:700;padding:10px 20px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .15s,box-shadow .15s;white-space:nowrap" style-hover="background:#ffd60a;box-shadow:0 0 24px rgba(255,214,10,.5)">Umów wizytę</a>
     </div>
   </nav>
 

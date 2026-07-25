@@ -14,7 +14,7 @@
 <style>
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0}
+  body{margin:0;overflow-x:hidden}
   @keyframes tape{to{transform:translateX(-50%)}}
   @keyframes tapeRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
   @keyframes introLogo{from{opacity:0;transform:translateY(46px) skewY(4deg)}to{opacity:1;transform:none}}
@@ -61,6 +61,43 @@
   .pf-link{margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease,color .25s ease}
   .pf-card:hover .pf-link{gap:12px;color:#9d7bff}
   @media(prefers-reduced-motion:reduce){.pf-stage{animation:none}.pf-win{transition:none}}
+  @media(max-width:600px){
+    .nav-logo-text{font-size:1.02rem!important}
+    .nav-logo svg{width:24px!important;height:26px!important}
+    .nav-cta{padding:9px 14px!important;font-size:.78rem!important}
+  }
+  @media(max-width:400px){
+    .nav-logo-suffix{display:none!important}
+  }
+  /* ===== formularz kontaktowy ===== */
+  .kf-card{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .kf-list{list-style:none;margin:0 0 28px;padding:0}
+  .kf-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-size:.94rem;color:#cfcfdb}
+  .kf-list b{color:#f2f2f7;font-weight:600}
+  .kf-tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(0,229,176,.12);color:#00e5b0;display:grid;place-items:center;font-size:.72rem;font-weight:800;margin-top:2px}
+  .kf-mail{display:inline-flex;align-items:center;gap:9px;color:#f2f2f7;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(124,92,255,.5);transition:.2s;padding-bottom:2px}
+  .kf-mail:hover{border-color:#00e5b0;color:#00e5b0}
+  .kf-form{position:relative;background:rgba(10,10,18,.66);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:32px 28px;backdrop-filter:blur(8px)}
+  .kf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .kf-fl{position:relative;margin-bottom:18px}
+  .kf-fl input,.kf-fl textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;color:#f2f2f7;font-family:'Inter',sans-serif;font-size:.96rem;padding:22px 16px 10px;outline:none;transition:border-color .22s,box-shadow .22s,background .22s;resize:vertical}
+  .kf-fl textarea{min-height:100px;padding-top:26px}
+  .kf-fl label{position:absolute;left:17px;top:15px;font-size:.94rem;color:#9a9aad;pointer-events:none;transition:.18s cubic-bezier(.22,1,.36,1);transform-origin:left}
+  .kf-fl input:focus,.kf-fl textarea:focus{border-color:rgba(124,92,255,.85);background:rgba(124,92,255,.06);box-shadow:0 0 0 4px rgba(124,92,255,.12)}
+  .kf-fl input:focus+label,.kf-fl textarea:focus+label,.kf-fl input:not(:placeholder-shown)+label,.kf-fl textarea:not(:placeholder-shown)+label{top:7px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#9d7bff;font-weight:600}
+  .kf-req{color:#9d7bff}
+  .kf-submit{width:100%;margin-top:6px;background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;border:0;padding:16px 34px;border-radius:99px;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .kf-submit:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)}
+  .kf-note{font-size:.76rem;color:#9a9aad;text-align:center;margin:14px 0 0}
+  .kf-ok{text-align:center;padding:26px 10px;animation:kfPop .5s cubic-bezier(.22,1,.36,1) both}
+  @keyframes kfPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+  .kf-ok-ico{width:64px;height:64px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:rgba(0,229,176,.12);border:1px solid rgba(0,229,176,.4);color:#00e5b0;font-size:1.8rem}
+  .kf-ok-h{font-family:'Sora',sans-serif;margin:0 0 8px;font-size:1.2rem}
+  .kf-ok-p{color:#9a9aad;margin:0;font-size:.92rem}
+  @media(max-width:860px){
+    .kf-card{grid-template-columns:1fr;padding:40px 24px!important;gap:34px}
+    .kf-row{grid-template-columns:1fr}
+  }
 </style>
 </helmet>
 
@@ -80,7 +117,7 @@
 
   <nav style="position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,18,.72);border-bottom:1px solid rgba(255,255,255,.08);animation:navIn .7s cubic-bezier(.22,1,.36,1) 1.75s both" data-hero="true">
     <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px">
-      <a href="#" style="display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:.02em;color:#f2f2f7;text-decoration:none"><svg width="30" height="32" viewBox="0 0 76 84"><defs><linearGradient id="navLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#navLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#navLogoG)"></circle></svg>ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></a>
+      <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:.02em;color:#f2f2f7;text-decoration:none"><svg width="30" height="32" viewBox="0 0 76 84"><defs><linearGradient id="navLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#navLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#navLogoG)"></circle></svg><span class="nav-logo-text">ODNOVA<span class="nav-logo-suffix" style="font-weight:400;color:#9a9aad">°studio</span></span></a>
       <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;gap:32px;font-size:.92rem;color:#9a9aad">
           <a href="#ewolucja" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Ewolucja</a>
@@ -90,7 +127,7 @@
           <a href="#kontakt" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Kontakt</a>
         </div>
       </sc-if>
-      <a href="#kontakt" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.9rem;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,255,.4)">Darmowa wycena</a>
+      <a href="#kontakt" class="nav-cta" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.9rem;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap" style-hover="transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,255,.4)">Darmowa wycena</a>
     </div>
   </nav>
 
@@ -600,11 +637,41 @@
   <section id="kontakt" style="position:relative;padding:120px 0;overflow:hidden">
     <canvas id="kontaktNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%)"></canvas>
     <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
-      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08)),#0a0a12;border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:70px 40px;text-align:center">
-        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Kontakt</div>
-        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Sprawdźmy, ile kosztuje Cię stara strona</h2>
-        <p style="color:#9a9aad;max-width:520px;margin:16px auto 34px">Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
-        <a href="mailto:biuro.odnovastudio@gmail.com" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">biuro.odnovastudio@gmail.com</a>
+      <div data-reveal="true" class="kf-card" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08)),#0a0a12;border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:56px 44px">
+        <div class="kf-copy">
+          <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Kontakt</div>
+          <h2 style="font-family:'Sora';font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-height:1.15">Sprawdźmy, ile kosztuje Cię stara strona</h2>
+          <p style="color:#9a9aad;margin:0 0 26px">Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
+          <ul class="kf-list">
+            <li><span class="kf-tick">✓</span><span><b>Audyt w 48 h</b> — lista konkretnych błędów, nie ogólniki.</span></li>
+            <li><span class="kf-tick">✓</span><span><b>Wycena z góry</b> — stała kwota, żadnych dopłat w trakcie.</span></li>
+            <li><span class="kf-tick">✓</span><span><b>Zero zobowiązań</b> — nie odpisujesz, sprawa zamknięta.</span></li>
+          </ul>
+          <a class="kf-mail" href="mailto:biuro.odnovastudio@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5b0" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            biuro.odnovastudio@gmail.com
+          </a>
+        </div>
+
+        <form class="kf-form" onSubmit="{{ handleContactSubmit }}">
+          <sc-if value="{{ contactNotSent }}" hint-placeholder-val="{{ true }}">
+            <div class="kf-row">
+              <div class="kf-fl"><input type="text" placeholder=" " required="{{ true }}"></input><label>Imię <span class="kf-req">*</span></label></div>
+              <div class="kf-fl"><input type="email" placeholder=" " required="{{ true }}"></input><label>E-mail <span class="kf-req">*</span></label></div>
+            </div>
+            <div class="kf-fl"><input type="text" placeholder=" "></input><label>Adres Twojej strony (jeśli masz)</label></div>
+            <div class="kf-fl"><textarea placeholder=" "></textarea><label>Co chcesz zmienić?</label></div>
+            <button class="kf-submit" type="submit">Wyślij i odbierz darmowy audyt</button>
+            <p class="kf-note">Odpowiadamy w 48 h. Twoje dane trafiają wyłącznie do nas.</p>
+          </sc-if>
+          <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+            <div class="kf-ok">
+              <div class="kf-ok-ico">✓</div>
+              <h4 class="kf-ok-h">Dziękujemy — mamy Twoje zgłoszenie</h4>
+              <p class="kf-ok-p">Audyt i wycena wrócą na Twój e-mail w ciągu 48 godzin.</p>
+            </div>
+          </sc-if>
+        </form>
       </div>
     </div>
   </section>
@@ -639,7 +706,13 @@ class Component extends DCLogic {
     if (this.tapeRow2Ref.current) this.tapeRow2Ref.current.style.animationPlayState = 'running';
   };
 
-  state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820 };
+  state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820, contactSent: false };
+
+  handleContactSubmit = (e) => {
+    e.preventDefault();
+    if (!e.target.reportValidity()) return;
+    this.setState({ contactSent: true });
+  };
 
   // --- sekcja "Ewolucja strony": odsłanianie elementów przy scrollu ---
   evoReveal(el, delay, scale) {
@@ -1041,6 +1114,9 @@ class Component extends DCLogic {
       pauseTape: this.pauseTape,
       resumeTape: this.resumeTape,
       navOpen: this.state.navOpen,
+      handleContactSubmit: this.handleContactSubmit,
+      contactSent: this.state.contactSent,
+      contactNotSent: !this.state.contactSent,
     };
   }
 }

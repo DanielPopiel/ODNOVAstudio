@@ -13,8 +13,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,800;1,600&family=Nunito+Sans:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet"></link>
 <style>
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{margin:0;overflow-x:hidden}
   @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
   @keyframes pspin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(8deg) scale(1.04)}100%{transform:rotate(0) scale(1)}}
   @keyframes drop{from{transform:translate(-50%,-50%) scale(0)}to{transform:translate(-50%,-50%) scale(1)}}
@@ -26,6 +26,14 @@
   @keyframes ctaFly{to{opacity:0;transform:translateY(-72vh) scale(.32) rotate(-8deg)}}
   .cta-reveal:hover{transform:translateY(-3px) scale(1.03)!important}
   @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal{animation:none!important}}
+  @media(max-width:680px){
+    .odn-toolbar-label{display:none!important}
+    .odn-toolbar{padding:0 14px!important}
+    .odn-nav-links{display:none!important}
+    .odn-nav-logo{font-size:1.05rem!important}
+    .odn-nav-cta{padding:9px 14px!important;font-size:.72rem!important}
+    .odn-grid-2{grid-template-columns:1fr!important;gap:32px!important}
+  }
 </style>
 </helmet>
 
@@ -47,9 +55,9 @@
     </div>
   </div>
 
-  <div style="position:fixed;top:0;left:0;right:0;z-index:1000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)">
+  <div class="odn-toolbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)">
     <a href="index.html" style="color:#9a9aad;text-decoration:none;font-weight:600" style-hover="color:#fff">← Portfolio</a>
-    <div style="color:#9a9aad">Metamorfoza: <b style="background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">Bella Napoli</b> · demo ODNOVA°studio</div>
+    <div class="odn-toolbar-label" style="color:#9a9aad">Metamorfoza: <b style="background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">Bella Napoli</b> · demo ODNOVA°studio</div>
     <div style="display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px">
       <button onClick="{{ showBefore }}" style="border:0;background:{{ przedBg }};color:{{ przedColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em">PRZED</button>
       <button onClick="{{ showAfter }}" style="border:0;background:{{ poBg }};color:{{ poColor }};font-family:'Sora';font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em;animation:{{ poPulse }}">PO ✨</button>
@@ -100,19 +108,19 @@
   <div style="display:{{ afterDisplay }};background:#fdf7ee;color:#33251b;line-height:1.65">
     <nav style="position:sticky;top:56px;z-index:50;background:rgba(253,247,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(214,52,38,.15)">
       <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px">
-        <div style="font-family:'Fraunces';font-weight:800;font-size:1.4rem;color:#d63426">Bella Napoli<small style="display:block;font-family:'Nunito Sans';font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#5a7d4a">Pizza Napoletana · dal 2008</small></div>
-        <div style="display:flex;gap:28px;font-size:.9rem;font-weight:700">
+        <div class="odn-nav-logo" style="font-family:'Fraunces';font-weight:800;font-size:1.4rem;color:#d63426">Bella Napoli<small style="display:block;font-family:'Nunito Sans';font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#5a7d4a">Pizza Napoletana · dal 2008</small></div>
+        <div class="odn-nav-links" style="display:flex;gap:28px;font-size:.9rem;font-weight:700">
           <a href="#menu" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Menu</a>
           <a href="#skomponuj" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Skomponuj pizzę</a>
           <a href="#historia" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Nasza historia</a>
           <a href="#zamow" style="color:#6b5a49;text-decoration:none" style-hover="color:#d63426">Kontakt</a>
         </div>
-        <a href="#zamow" style="background:#d63426;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:99px;font-size:.9rem;box-shadow:0 6px 18px rgba(214,52,38,.3);transition:background .2s,transform .2s" style-hover="background:#b8281c;transform:translateY(-2px)">Zamów: 67 215 00 00</a>
+        <a href="#zamow" class="odn-nav-cta" style="background:#d63426;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:99px;font-size:.9rem;box-shadow:0 6px 18px rgba(214,52,38,.3);transition:background .2s,transform .2s;white-space:nowrap" style-hover="background:#b8281c;transform:translateY(-2px)">Zamów: 67 215 00 00</a>
       </div>
     </nav>
 
     <header style="position:relative;padding:100px 0 80px;overflow:hidden;background:radial-gradient(800px 420px at 85% 10%,rgba(240,180,90,.35),transparent),#fdf7ee">
-      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center">
+      <div class="odn-grid-2" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center">
         <div>
           <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(214,52,38,.2);border-radius:99px;padding:7px 16px;font-size:.8rem;font-weight:700;color:#5a7d4a;margin-bottom:24px;box-shadow:0 3px 12px rgba(60,30,10,.06)">🔥 Piec opalany drewnem · 450°C</div>
           <h1 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2.6rem,6vw,4.3rem);line-height:1.06;color:#2b1c12;margin:0">Pizza jak z <em style="color:#d63426;font-style:italic">Neapolu</em>, dowóz jak błyskawica</h1>
@@ -157,7 +165,7 @@
       <div style="max-width:1100px;margin:0 auto;padding:0 24px">
         <div style="color:#5a7d4a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;text-align:center;margin-bottom:12px">Zabawa dozwolona</div>
         <h2 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);text-align:center;margin:0 0 50px;color:#2b1c12">Skomponuj własną pizzę</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+        <div class="odn-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
           <div style="position:relative;max-width:400px;margin:0 auto;width:100%">
             <div style="position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 48% 44%,#f7d489 0 55%,#eab04e 55% 68%,#d18b33 68% 82%,#c8752a 82% 100%);box-shadow:0 26px 50px rgba(120,60,20,.3),inset 0 -12px 26px rgba(140,70,20,.3);animation:{{ pizzaSpin }}">
               <div style="position:absolute;inset:13%;border-radius:50%;background:radial-gradient(circle at 45% 40%,#e8483a 0 60%,#c93225 100%);opacity:.9"></div>
@@ -189,7 +197,7 @@
     </section>
 
     <section id="historia" style="padding:90px 0;background:#2b1c12;color:#f3e9dc">
-      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+      <div class="odn-grid-2" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
         <div>
           <div style="color:#f0b45a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;text-align:left;margin-bottom:12px">Od 2008 roku</div>
           <h2 style="font-family:'Fraunces';font-weight:800;font-size:clamp(2rem,4.5vw,2.9rem);text-align:left;margin:0 0 20px;color:#f3e9dc">Jedna rodzina, jeden piec, jedna pasja</h2>
