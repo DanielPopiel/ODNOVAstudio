@@ -89,6 +89,10 @@
   .kf-submit{width:100%;margin-top:6px;background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;border:0;padding:16px 34px;border-radius:99px;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s,box-shadow .2s}
   .kf-submit:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)}
   .kf-note{font-size:.76rem;color:#9a9aad;text-align:center;margin:14px 0 0}
+  .kf-error{font-size:.86rem;color:#ff9d9d;background:rgba(255,90,90,.08);border:1px solid rgba(255,90,90,.3);border-radius:12px;padding:12px 14px;margin:0 0 18px}
+  .kf-error a{color:#ff9d9d;text-decoration:underline}
+  .kf-honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .kf-submit:disabled{opacity:.6;cursor:not-allowed}
   .kf-ok{text-align:center;padding:26px 10px;animation:kfPop .5s cubic-bezier(.22,1,.36,1) both}
   @keyframes kfPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
   .kf-ok-ico{width:64px;height:64px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:rgba(0,229,176,.12);border:1px solid rgba(0,229,176,.4);color:#00e5b0;font-size:1.8rem}
@@ -655,13 +659,17 @@
 
         <form class="kf-form" onSubmit="{{ handleContactSubmit }}">
           <sc-if value="{{ contactNotSent }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ contactError }}" hint-placeholder-val="{{ false }}">
+              <p class="kf-error">Coś poszło nie tak przy wysyłce. Spróbuj ponownie albo napisz od razu na <a href="mailto:biuro.odnovastudio@gmail.com">biuro.odnovastudio@gmail.com</a>.</p>
+            </sc-if>
             <div class="kf-row">
-              <div class="kf-fl"><input type="text" placeholder=" " required="{{ true }}"></input><label>Imię <span class="kf-req">*</span></label></div>
-              <div class="kf-fl"><input type="email" placeholder=" " required="{{ true }}"></input><label>E-mail <span class="kf-req">*</span></label></div>
+              <div class="kf-fl"><input name="name" type="text" placeholder=" " required="{{ true }}"></input><label>Imię <span class="kf-req">*</span></label></div>
+              <div class="kf-fl"><input name="email" type="email" placeholder=" " required="{{ true }}"></input><label>E-mail <span class="kf-req">*</span></label></div>
             </div>
-            <div class="kf-fl"><input type="text" placeholder=" "></input><label>Adres Twojej strony (jeśli masz)</label></div>
-            <div class="kf-fl"><textarea placeholder=" "></textarea><label>Co chcesz zmienić?</label></div>
-            <button class="kf-submit" type="submit">Wyślij i odbierz darmowy audyt</button>
+            <div class="kf-fl"><input name="website" type="text" placeholder=" "></input><label>Adres Twojej strony (jeśli masz)</label></div>
+            <div class="kf-fl"><textarea name="message" placeholder=" "></textarea><label>Co chcesz zmienić?</label></div>
+            <input type="checkbox" name="botcheck" class="kf-honeypot" tabindex="-1" autocomplete="off"></input>
+            <button class="kf-submit" type="submit" disabled="{{ contactSending }}">{{ submitLabel }}</button>
             <p class="kf-note">Odpowiadamy w 48 h. Twoje dane trafiają wyłącznie do nas.</p>
           </sc-if>
           <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
@@ -706,12 +714,35 @@ class Component extends DCLogic {
     if (this.tapeRow2Ref.current) this.tapeRow2Ref.current.style.animationPlayState = 'running';
   };
 
-  state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820, contactSent: false };
+  state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820, contactSent: false, contactSending: false, contactError: false };
+
+  WEB3FORMS_KEY = '52e84326-d565-42aa-bfd0-5bc5b4a4d2c3';
 
   handleContactSubmit = (e) => {
     e.preventDefault();
-    if (!e.target.reportValidity()) return;
-    this.setState({ contactSent: true });
+    const form = e.target;
+    if (!form.reportValidity()) return;
+    if (form.elements.botcheck && form.elements.botcheck.checked) return;
+    this.setState({ contactSending: true, contactError: false });
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: this.WEB3FORMS_KEY,
+        subject: 'Nowe zapytanie ze strony ODNOVA°studio',
+        from_name: 'ODNOVA°studio — formularz kontaktowy',
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        website: form.elements.website.value,
+        message: form.elements.message.value,
+      }),
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.success) this.setState({ contactSending: false, contactSent: true });
+        else this.setState({ contactSending: false, contactError: true });
+      })
+      .catch(() => this.setState({ contactSending: false, contactError: true }));
   };
 
   // --- sekcja "Ewolucja strony": odsłanianie elementów przy scrollu ---
@@ -1117,6 +1148,9 @@ class Component extends DCLogic {
       handleContactSubmit: this.handleContactSubmit,
       contactSent: this.state.contactSent,
       contactNotSent: !this.state.contactSent,
+      contactSending: this.state.contactSending,
+      contactError: this.state.contactError,
+      submitLabel: this.state.contactSending ? 'Wysyłanie…' : 'Wyślij i odbierz darmowy audyt',
     };
   }
 }
