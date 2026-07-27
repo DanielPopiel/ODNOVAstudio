@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="./favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -27,7 +30,10 @@
   @keyframes ctaGlow{0%,100%{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 22px 55px -18px rgba(124,92,255,.5),0 0 0 0 rgba(0,229,176,.45)}50%{box-shadow:inset 0 0 0 1px rgba(0,229,176,.32),0 22px 55px -18px rgba(124,92,255,.5),0 0 0 15px rgba(0,229,176,0)}}
   @keyframes ctaFly{to{opacity:0;transform:translateY(-72vh) scale(.32) rotate(-8deg)}}
   .cta-reveal:hover{transform:translateY(-3px) scale(1.03)!important}
-  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal{animation:none!important}}
+  .cta-reveal::before{content:'';position:absolute;z-index:-2;left:-60%;top:-200%;width:220%;height:500%;background:conic-gradient(#7c5cff,#00e5b0,#5b8bff,#7c5cff);animation:ctaSpin 3.4s linear infinite}
+  .cta-reveal::after{content:'';position:absolute;z-index:-1;inset:2px;border-radius:99px;background:#14121f}
+  @keyframes ctaSpin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal,.cta-reveal::before{animation:none!important}}
   @media(max-width:680px){
     .odn-toolbar-label{display:none!important}
     .odn-toolbar{padding:0 14px!important}
@@ -70,7 +76,7 @@
 
   <div style="display:{{ beforeDisplay }};background:#e2ebea;font-family:Verdana,Arial,sans-serif;color:#2b2b2b;padding:70px 0 26px">
     <div style="position:fixed;left:0;right:0;top:56px;bottom:0;z-index:900;display:flex;align-items:center;justify-content:center;pointer-events:none">
-      <button id="ctaReveal" class="cta-reveal" onClick="{{ reveal }}" style="pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border:0;border-radius:99px;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(.95rem,2.4vw,1.1rem);color:#fff;background:linear-gradient(90deg,#5b32d6,#7d55f0);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),0 18px 42px -14px rgba(91,50,214,.6);transition:transform .25s ease;animation:ctaIn .55s cubic-bezier(.16,1,.3,1) both,ctaGlow 2.4s ease-in-out 1s infinite"><span style="font-size:1.15em">✨</span> Zobacz metamorfozę</button>
+      <button id="ctaReveal" class="cta-reveal" onClick="{{ reveal }}" style="pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border:0;border-radius:99px;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(.95rem,2.4vw,1.1rem);color:#fff;background:transparent;position:relative;z-index:0;overflow:hidden;box-shadow:0 20px 46px -14px rgba(124,92,255,.6);transition:transform .25s ease;animation:ctaIn .55s cubic-bezier(.16,1,.3,1) both"><span style="font-size:1.15em">✨</span> Zobacz metamorfozę</button>
     </div>
     <div style="width:920px;max-width:96%;margin:14px auto 0;background:#fff;border:1px solid #a8c0be;box-shadow:0 1px 7px rgba(0,0,0,.16)">
       <div style="background:linear-gradient(#2e7a78,#1d5654);padding:22px 24px">
