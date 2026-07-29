@@ -8,285 +8,740 @@
 <body>
 <x-dc>
 <helmet>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link rel="preload" as="image" href="img/engine/e001.webp">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;background:#07090c;overflow-x:hidden}
-  html{overflow-x:hidden}
-  a{color:#ff8a00}a:hover{color:#ffd60a}
-  @keyframes spinBlades{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-  @keyframes eq{0%,100%{transform:scaleY(.18)}50%{transform:scaleY(1)}}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-  @keyframes scanX{from{left:-4%}to{left:103%}}
-  @keyframes shutUp{to{transform:translateY(-101%)}}
-  @keyframes shutDown{to{transform:translateY(101%)}}
-  @keyframes irisZoom{to{transform:scale(6);opacity:0}}
-  @keyframes hintPulse{0%,100%{opacity:.45;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
-  @media (prefers-reduced-motion:reduce){[data-preloader]{display:none!important}}
-  @media(max-width:680px){
-    .odn-nav-plainlink{display:none!important}
-    .odn-nav-logo{font-size:1.05rem!important}
-    .odn-nav-cta{padding:9px 16px!important;font-size:.7rem!important}
-  }
+/* ======== ODNOVA°studio · Auto-Serwis Kowalski · biel / pomarańcz / czerń ======== */
+:root{
+  --paper:#f4f3f0; --paper2:#fff; --paper3:#eae8e3;
+  --ink:#0b0c0e; --ink2:#15171b; --ink3:#22252a;
+  --mut:#6b7078; --mut2:#9aa0a8;
+  --line:rgba(11,12,14,.13);
+  --orange:#ff6a00; --amber:#ffa000;
+  --disp:'Barlow Condensed',Impact,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --top:0px;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);overflow-x:clip}
+a{text-decoration:none;color:inherit}
+
+/* ---------- primitives ---------- */
+.k-eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;color:var(--orange);text-transform:uppercase}
+.k-h2{font-family:var(--disp);font-weight:900;font-size:clamp(2.1rem,6vw,4.6rem);line-height:.9;text-transform:uppercase;letter-spacing:.005em;margin:14px 0 0;color:var(--ink)}
+.k-p{color:var(--mut);line-height:1.65}
+.k-btn{display:inline-flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 32px;color:#fff;background:var(--orange);clip-path:polygon(11px 0,100% 0,calc(100% - 11px) 100%,0 100%);transition:background .18s,transform .18s,box-shadow .18s}
+.k-btn:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(11,12,14,.55)}
+.k-btn-ghost{display:inline-flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 32px;color:var(--ink);border:1px solid var(--line);transition:border-color .18s,background .18s}
+.k-btn-ghost:hover{border-color:var(--ink);background:rgba(11,12,14,.04)}
+/* on the black blocks */
+.dark{background:var(--ink);color:#f2f2f0}
+.dark .k-h2{color:#fff}
+.dark .k-p{color:#a8adb5}
+.dark .k-btn-ghost{color:#f2f2f0;border-color:rgba(255,255,255,.22)}
+.dark .k-btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+
+[data-rv]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+[data-rv].rv-in{opacity:1;transform:none}
+[data-rv="2"]{transition-delay:.08s}[data-rv="3"]{transition-delay:.16s}[data-rv="4"]{transition-delay:.24s}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+/* transform only — opacity on .hint is scroll-driven and an animation would win over it */
+@keyframes hintPulse{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes lineUp{from{transform:translateY(104%) skewY(3deg)}to{transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ---------- nav: czarny kokpit ---------- */
+.nav{position:fixed;left:0;right:0;z-index:600;background:var(--ink)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px;padding:0 26px}
+.nav-logo{font-family:var(--disp);font-weight:900;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.nav-logo span{color:var(--orange)}
+.nav-mid{display:flex;align-items:center;gap:26px;font-family:var(--mono);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:#6b7078}
+.nav-mid b{color:#fff;font-weight:500}
+.nav-open{display:flex;align-items:center;gap:8px}
+.nav-open i{width:7px;height:7px;border-radius:50%;background:var(--orange);display:block;animation:blink 2s steps(1) infinite}
+.nav-open i.off{background:#4a4f57;animation:none}
+.nav-right{display:flex;gap:26px;align-items:center}
+.nav-a{position:relative;padding:7px 0;font-size:.77rem;letter-spacing:.14em;text-transform:uppercase;color:#9aa0a8;transition:color .18s}
+.nav-a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--orange);transition:right .34s cubic-bezier(.16,1,.3,1)}
+.nav-a:hover{color:#fff}
+.nav-a:hover::after{right:0}
+.nav-cta{font-family:var(--disp);font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:#fff;padding:11px 20px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .15s,color .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--orange);color:#fff}
+.nav-bar{height:3px;background:rgba(255,255,255,.09)}
+.nav-bar i{display:block;height:100%;width:calc(var(--sp,0) * 100%);background:var(--orange)}
+
+/* ================= HERO / SILNIK ================= */
+.stage{position:relative;width:100%;height:100%;overflow:hidden;background:var(--paper)}
+/* blueprint grid, weighted to the engine side */
+.stage-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,106,0,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(255,106,0,.16) 1px,transparent 1px);
+  background-size:66px 66px;
+  transform:translate3d(0,calc(var(--e,0) * -40px),0);
+  -webkit-mask-image:radial-gradient(760px 620px at 66% 50%,#000 12%,transparent 76%);
+  mask-image:radial-gradient(760px 620px at 66% 50%,#000 12%,transparent 76%)}
+.stage-word{position:absolute;right:-2%;top:50%;transform:translateY(-50%) translateY(calc(var(--e,0) * -26px));
+  font-family:var(--disp);font-weight:900;font-size:min(17vw,13rem);line-height:1;letter-spacing:.02em;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1.5px rgba(11,12,14,.09);pointer-events:none;
+  /* keep it on the engine side, out from behind the copy */
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.stage-cvs{position:absolute;left:0;top:0;width:100%;height:100%;mix-blend-mode:multiply;
+  opacity:0;transition:opacity .7s ease;will-change:transform;
+  transform:scale(calc(.95 + var(--e,0) * .09))}
+.stage-cvs.ready{opacity:1}
+
+.hero-col{position:absolute;left:clamp(20px,6vw,92px);top:50%;transform:translateY(-50%);width:min(470px,42vw);z-index:2}
+.hero-kick{font-family:var(--mono);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);
+  display:flex;align-items:center;gap:9px;margin-bottom:26px}
+.hero-kick i{width:6px;height:6px;border-radius:50%;background:var(--orange);display:block;animation:blink 1.8s steps(1) infinite}
+.hero-slots{position:relative;min-height:330px}
+/* bez transition — wartość --o jest już wygładzana w pętli rAF,
+   druga warstwa wygładzania tylko opóźnia i pokazuje dwie karty naraz */
+.slot{position:absolute;left:0;top:0;right:0;opacity:var(--o,0);
+  transform:translateY(calc((1 - var(--o,0)) * 18px));pointer-events:none}
+.slot.live{pointer-events:auto}
+.slot-n{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;color:var(--orange);margin-bottom:12px}
+.slot-t{font-family:var(--disp);font-weight:900;font-size:clamp(1.8rem,3.4vw,2.9rem);line-height:.95;letter-spacing:.01em;text-transform:uppercase;color:var(--ink)}
+.slot-p{color:var(--mut);font-size:.98rem;line-height:1.62;margin:16px 0 0;max-width:400px}
+.slot-rule{width:56px;height:3px;background:var(--orange);margin:18px 0 0}
+
+.hero-h1{font-family:var(--disp);font-weight:900;font-size:clamp(2.6rem,5.6vw,4.6rem);line-height:.88;letter-spacing:.005em;text-transform:uppercase;color:var(--ink);margin:0}
+.hero-h1 .line{display:block;overflow:hidden}
+.hero-h1 .line>span{display:block;animation:lineUp 1s cubic-bezier(.16,1,.3,1) both}
+.hero-h1 .line:nth-child(2)>span{animation-delay:.1s}
+.hero-sub{font-family:var(--disp);font-weight:700;font-size:1.15rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:16px 0 0;animation:fadeUp .8s .22s cubic-bezier(.16,1,.3,1) both}
+.hero-p{color:var(--mut);font-size:1rem;line-height:1.65;margin:18px 0 28px;max-width:400px;animation:fadeUp .8s .3s cubic-bezier(.16,1,.3,1) both}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .8s .38s cubic-bezier(.16,1,.3,1) both}
+
+.stage-foot{position:absolute;left:clamp(20px,6vw,92px);right:clamp(20px,4vw,44px);bottom:26px;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.stage-foot b{font-family:var(--disp);font-size:1.5rem;letter-spacing:0;color:var(--ink)}
+.stage-foot b.o{color:var(--orange)}
+.scrub{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(11,12,14,.08);z-index:2}
+.scrub i{display:block;height:100%;width:calc(var(--e,0) * 100%);background:var(--orange)}
+.hint{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);z-index:2;
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);
+  animation:hintPulse 1.9s ease-in-out infinite;opacity:calc(1 - var(--e,0) * 22)}
+.load-pill{position:absolute;right:clamp(20px,4vw,44px);top:calc(var(--top) + 84px);z-index:2;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);
+  background:rgba(255,255,255,.72);border:1px solid var(--line);padding:6px 12px}
+
+/* ---------- marquee ---------- */
+.mq-wrap{position:relative;overflow:hidden;padding:18px 0;background:var(--ink)}
+.mq{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq b{font-family:var(--disp);font-weight:800;font-size:clamp(1.05rem,2.2vw,1.6rem);letter-spacing:.06em;text-transform:uppercase;padding:0 24px;color:#fff;white-space:nowrap}
+.mq i{color:var(--orange);font-style:normal;align-self:center}
+
+/* ---------- stats ---------- */
+.stat-n{font-family:var(--disp);font-weight:900;font-size:clamp(2.6rem,7vw,5rem);line-height:1;color:var(--ink)}
+.stat-l{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--mut);text-transform:uppercase;margin-top:10px}
+
+/* ---------- usługi (czarny blok) ---------- */
+.svc{position:relative;display:grid;grid-template-columns:78px minmax(190px,1.05fr) 1.5fr 44px;align-items:center;gap:22px;
+  padding:30px 22px;border-top:1px solid rgba(255,255,255,.1);overflow:hidden}
+.svc:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.svc::before{content:'';position:absolute;inset:0;background:var(--orange);transform:scaleY(0);transform-origin:bottom center;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.svc>*{position:relative;z-index:1;transition:color .3s,transform .5s cubic-bezier(.16,1,.3,1)}
+.svc:hover::before{transform:scaleY(1)}
+.svc-n{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--orange)}
+.svc-t{font-family:var(--disp);font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:1}
+.svc-d{color:#9aa0a8;font-size:.92rem;line-height:1.5}
+.svc-a{font-family:var(--disp);font-size:1.5rem;color:#6b7078;text-align:right}
+.svc:hover .svc-n,.svc:hover .svc-t,.svc:hover .svc-d,.svc:hover .svc-a{color:#fff}
+.svc:hover .svc-t{transform:translateX(10px)}
+.svc:hover .svc-a{transform:translateX(8px)}
+
+/* ---------- proces ---------- */
+.proc-line{position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:rgba(11,12,14,.1)}
+.proc-line i{display:block;width:100%;height:calc(var(--proc,0) * 100%);background:var(--orange)}
+.proc-i{position:relative;display:grid;grid-template-columns:40px 1fr;gap:26px;padding:0 0 44px}
+.proc-dot{width:40px;height:40px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.7rem;color:var(--orange);z-index:1}
+.proc-t{font-family:var(--disp);font-weight:800;font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+
+/* ---------- opinie ---------- */
+.q-card{background:var(--paper2);border:1px solid var(--line);padding:28px 26px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.q-card:hover{transform:translateY(-4px);box-shadow:0 22px 46px -26px rgba(11,12,14,.4);border-color:rgba(255,106,0,.5)}
+
+/* ---------- kontakt ---------- */
+.info{background:var(--ink2);padding:24px}
+.info-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#6b7078;margin-bottom:9px}
+
+/* ---------- kursor ---------- */
+.cur{position:fixed;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border:1px solid rgba(255,106,0,.8);border-radius:50%;
+  pointer-events:none;z-index:9998;opacity:0;transition:opacity .3s,width .22s,height .22s,margin .22s,background .22s}
+.cur.on{opacity:1}
+.cur.hot{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(255,106,0,.1)}
+.cur i{position:absolute;left:50%;top:50%;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:50%;background:var(--orange)}
+
+@media (max-width:980px){
+  /* silnik u góry, tekst pod nim */
+  .hero-col{left:20px;right:20px;width:auto;top:auto;bottom:96px;transform:none}
+  .hero-kick{margin-bottom:16px}
+  .hero-slots{min-height:280px}
+  .slot-p,.hero-p{max-width:none}
+  .stage-word{font-size:30vw;right:-8%;top:26%}
+  .hint{display:none}
+  .svc{grid-template-columns:58px 1fr;row-gap:8px}
+  .svc-d{grid-column:2}
+  .svc-a{display:none}
+  .stage-foot{left:20px;right:20px;bottom:22px}
+}
+@media (max-width:680px){
+  .nav-plain{display:none}
+  .k-btn,.k-btn-ghost{padding:13px 22px;font-size:.88rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .mq{animation:none}
+  [data-rv]{opacity:1;transform:none}
+  .hero-h1 .line>span,.hero-sub,.hero-p,.hero-cta{animation:none}
+}
 </style>
 </helmet>
 
-<div ref="{{ rootRef }}" style="font-family:'Barlow',sans-serif;background:#0a0d11;color:#e8ebf0;min-height:100vh">
+<div ref="{{ rootRef }}" style="--top:{{ topOff }};font-family:'Barlow',sans-serif;background:#f4f3f0;color:#0b0c0e;min-height:100vh;position:relative">
 
-  <div data-preloader="true" aria-hidden="true" style="position:fixed;top:{{ topOff }};left:0;right:0;bottom:0;z-index:950;display:{{ preDisplay }};background:#07090c">
-    <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.012) 0 3px,transparent 3px 6px),repeating-linear-gradient(-45deg,rgba(0,0,0,.35) 0 3px,transparent 3px 6px),radial-gradient(900px 620px at 50% 42%,#12181f,#07090c 78%)"></div>
-    <div style="position:absolute;top:0;bottom:0;left:-4%;width:2px;background:linear-gradient(180deg,transparent,rgba(255,138,0,.55),transparent);box-shadow:0 0 22px 4px rgba(255,138,0,.2);animation:scanX 2.8s cubic-bezier(.4,0,.6,1) infinite"></div>
-    <div style="position:absolute;inset:0;animation:{{ preFadeAnim }}">
-      <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);display:flex;gap:64px;align-items:center;flex-wrap:wrap;justify-content:center;padding:0 24px">
-        <div style="position:relative;width:230px;height:230px">
-          <svg width="230" height="230" viewBox="0 0 230 230">
-            <circle cx="115" cy="115" r="104" fill="none" stroke="#1c242e" stroke-width="7"></circle>
-            <circle cx="115" cy="115" r="104" fill="none" stroke="#ff8a00" stroke-width="7" stroke-linecap="round" stroke-dasharray="653.4" stroke-dashoffset="{{ ringOffset }}" transform="rotate(-90 115 115)" style="filter:drop-shadow(0 0 8px rgba(255,138,0,.6))"></circle>
-            <path d="M115 33 C160 33 197 66 202 108 L173 108 C168 82 144 62 115 62 Z" fill="none" stroke="#5f6a78" stroke-width="2.5" opacity="{{ voluteO }}"></path>
-            <path d="M202 108 L226 108 L226 122 L202 122" fill="none" stroke="#5f6a78" stroke-width="2.5" opacity="{{ voluteO }}"></path>
-            <g style="transform-origin:115px 115px;animation:spinBlades {{ bladeSpeed }} linear infinite">
-              <circle cx="115" cy="115" r="46" fill="none" stroke="#8f9aa8" stroke-width="2.5"></circle>
-              <path d="M115 115 L115 72 M115 115 L152 94 M115 115 L152 136 M115 115 L115 158 M115 115 L78 136 M115 115 L78 94" stroke="#8f9aa8" stroke-width="2.5" stroke-linecap="round"></path>
-              <path d="M115 72 Q128 82 152 94 M152 94 Q152 110 152 136 M152 136 Q134 148 115 158 M115 158 Q96 148 78 136 M78 136 Q78 112 78 94 M78 94 Q98 82 115 72" fill="none" stroke="#3a4553" stroke-width="1.5"></path>
-            </g>
-            <circle cx="115" cy="115" r="10" fill="#0e1116" stroke="#ff8a00" stroke-width="3"></circle>
-          </svg>
-          <div style="position:absolute;left:0;right:0;top:100%;margin-top:10px;text-align:center;font-family:'Barlow Condensed';font-size:.72rem;letter-spacing:.3em;color:#5f6a78;text-transform:uppercase">Turbo spool</div>
-        </div>
-        <div style="min-width:280px">
-          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:4.2rem;line-height:1;color:#fff">{{ pct }}<span style="color:#ff8a00;font-size:2.2rem">%</span></div>
-          <div style="font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:#9aa3b0;margin-top:18px;min-height:120px">
-            <div style="opacity:{{ log1 }};transition:opacity .3s">&gt; INIT ECU v4.2 .......... <b style="color:#00e5b0">OK</b></div>
-            <div style="opacity:{{ log2 }};transition:opacity .3s">&gt; FUEL MAP LOADED ........ <b style="color:#00e5b0">OK</b></div>
-            <div style="opacity:{{ log3 }};transition:opacity .3s">&gt; BOOST CTRL ONLINE ...... <b style="color:#00e5b0">OK</b></div>
-            <div style="opacity:{{ log4 }};transition:opacity .3s">&gt; SENSORS CALIBRATED ..... <b style="color:#00e5b0">OK</b></div>
-            <div style="opacity:{{ log5 }};transition:opacity .3s">&gt; IGNITION <b style="color:#ff8a00;animation:blink 1s steps(1) infinite">READY_</b></div>
-          </div>
-          <div style="display:flex;gap:5px;align-items:flex-end;height:34px;margin-top:10px">
-            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .9s ease-in-out -0.0s infinite;opacity:.85"></i>
-            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .7s ease-in-out -.2s infinite;opacity:.7"></i>
-            <i style="width:5px;height:100%;background:#ffd60a;display:block;transform-origin:bottom;animation:eq 1.1s ease-in-out -.4s infinite;opacity:.8"></i>
-            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .8s ease-in-out -.1s infinite;opacity:.6"></i>
-            <i style="width:5px;height:100%;background:#8f9aa8;display:block;transform-origin:bottom;animation:eq 1s ease-in-out -.5s infinite;opacity:.5"></i>
-            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .75s ease-in-out -.3s infinite;opacity:.85"></i>
-            <i style="width:5px;height:100%;background:#ffd60a;display:block;transform-origin:bottom;animation:eq .95s ease-in-out -.6s infinite;opacity:.7"></i>
-            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .65s ease-in-out -.15s infinite;opacity:.6"></i>
-            <i style="width:5px;height:100%;background:#8f9aa8;display:block;transform-origin:bottom;animation:eq 1.05s ease-in-out -.45s infinite;opacity:.5"></i>
-            <i style="width:5px;height:100%;background:#ff8a00;display:block;transform-origin:bottom;animation:eq .85s ease-in-out -.25s infinite;opacity:.8"></i>
-          </div>
-        </div>
+  <div ref="{{ curRef }}" class="cur"><i></i></div>
+
+  <nav class="nav" style="top:{{ topOff }}">
+    <div class="nav-in">
+      <a href="#gora" class="nav-logo">Auto-Serwis <span>Kowalski</span></a>
+      <div class="nav-mid nav-plain">
+        <span>Sekcja · <b ref="{{ navSecRef }}">Silnik</b></span>
+        <span class="nav-open"><i ref="{{ openDotRef }}"></i><span ref="{{ openTxtRef }}">otwarte teraz</span></span>
       </div>
-      <button onClick="{{ skipPre }}" style="position:absolute;right:22px;bottom:20px;background:none;border:1px solid rgba(255,255,255,.18);color:#9aa3b0;font-family:'Barlow Condensed';font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer" style-hover="border-color:#ff8a00;color:#ff8a00">pomiń →</button>
+      <div class="nav-right">
+        <a href="#uslugi" class="nav-a nav-plain">Usługi</a>
+        <a href="#proces" class="nav-a nav-plain">Proces</a>
+        <a href="#opinie" class="nav-a nav-plain">Opinie</a>
+        <a href="#kontakt" class="nav-cta">Umów wizytę</a>
+      </div>
     </div>
-    <div style="position:absolute;left:0;right:0;top:0;height:50.5%;background:linear-gradient(180deg,#0b0e13,#10151c);border-bottom:2px solid rgba(255,138,0,.5);animation:{{ shutTop }};transform:translateY(0)"></div>
-    <div style="position:absolute;left:0;right:0;bottom:0;height:50.5%;background:linear-gradient(0deg,#0b0e13,#10151c);border-top:2px solid rgba(255,138,0,.5);animation:{{ shutBot }};transform:translateY(0)"></div>
-  </div>
-
-  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,138,0,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,138,0,.045) 1px,transparent 1px);background-size:52px 52px;transform:{{ gridT }}"></div>
-  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(760px 520px at 72% 18%,rgba(255,138,0,.07),transparent 70%);transform:{{ glowT }}"></div>
-
-  <div style="position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:500;width:190px;display:{{ hudDisplay }};background:rgba(10,13,17,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,138,0,.25);border-radius:6px;padding:16px 16px 14px;font-family:ui-monospace,Menlo,monospace">
-    <div style="display:flex;align-items:center;gap:8px;font-size:.62rem;letter-spacing:.22em;color:#9aa3b0;text-transform:uppercase;margin-bottom:12px"><i style="width:7px;height:7px;border-radius:50%;background:#00e5b0;display:block;animation:blink 1.4s steps(1) infinite"></i>ECU LIVE</div>
-    <div style="font-size:.68rem;color:#5f6a78">RPM</div>
-    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.7rem;color:#fff;line-height:1.1">{{ hudRpm }}</div>
-    <div style="height:4px;background:#1c242e;border-radius:2px;margin:6px 0 12px"><div style="height:100%;border-radius:2px;background:linear-gradient(90deg,#ff8a00,#ffd60a);width:{{ rpmW }}"></div></div>
-    <div style="font-size:.68rem;color:#5f6a78">BOOST</div>
-    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.7rem;color:#ff8a00;line-height:1.1">{{ hudBoost }} <span style="font-size:.9rem;color:#5f6a78">bar</span></div>
-    <div style="height:4px;background:#1c242e;border-radius:2px;margin:6px 0 12px"><div style="height:100%;border-radius:2px;background:#ff8a00;width:{{ boostW }}"></div></div>
-    <div style="font-size:.68rem;color:#5f6a78">SYSTEM INTEGRITY</div>
-    <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.7rem;color:#00e5b0;line-height:1.1">{{ hudInteg }}%</div>
-    <div style="border-top:1px solid rgba(255,255,255,.08);margin-top:12px;padding-top:10px;font-size:.64rem;letter-spacing:.18em;color:#ffd60a;text-transform:uppercase">SEKCJA · {{ secName }}</div>
-  </div>
-
-  <nav style="position:fixed;top:{{ topOff }};left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(7,9,12,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,138,0,.18)">
-    <div class="odn-nav-logo" style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;color:#fff">Auto-Serwis <span style="color:#ff8a00">Kowalski</span></div>
-    <div style="display:flex;gap:26px;align-items:center;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase">
-      <a href="#silnik" class="odn-nav-plainlink" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Silnik</a>
-      <a href="#uslugi" class="odn-nav-plainlink" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Usługi</a>
-      <a href="#kontakt" class="odn-nav-plainlink" style="color:#9aa3b0;text-decoration:none" style-hover="color:#ff8a00">Kontakt</a>
-      <a href="#kontakt" class="odn-nav-cta" style="color:#0e1116;background:#ff8a00;text-decoration:none;font-weight:700;padding:10px 20px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:background .15s,box-shadow .15s;white-space:nowrap" style-hover="background:#ffd60a;box-shadow:0 0 24px rgba(255,214,10,.5)">Umów wizytę</a>
-    </div>
+    <div class="nav-bar"><i></i></div>
   </nav>
 
-  <header style="position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 8vw 60px">
-    <div style="font-family:ui-monospace,monospace;font-size:.78rem;letter-spacing:.3em;color:#00e5b0;text-transform:uppercase;margin-bottom:18px">// system online · od 1994</div>
-    <h1 style="font-family:'Barlow Condensed';font-weight:800;font-size:clamp(3rem,9vw,7rem);line-height:.95;letter-spacing:.02em;text-transform:uppercase;margin:0;color:#fff">Precyzja.<br><span style="color:transparent;-webkit-text-stroke:2px #ff8a00">Moc.</span> Kontrola.</h1>
-    <p style="max-width:520px;color:#9aa3b0;font-size:1.08rem;margin:28px 0 40px">Warsztat klasy premium: diagnostyka komputerowa, tuning i mechanika z dokładnością do newtona. Twoje auto w rękach inżynierów, nie zgadywaczy.</p>
-    <div style="display:flex;gap:18px;flex-wrap:wrap">
-      <a href="#silnik" style="color:#0e1116;background:#ff8a00;text-decoration:none;font-family:'Barlow Condensed';font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 34px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:background .15s,box-shadow .15s,transform .15s" style-hover="background:#ffd60a;box-shadow:0 0 34px rgba(255,214,10,.45);transform:translateY(-2px)">Zobacz jak pracujemy</a>
-      <a href="#kontakt" style="color:#e8ebf0;background:none;border:1px solid rgba(255,255,255,.25);text-decoration:none;font-family:'Barlow Condensed';font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 34px;transition:border-color .15s,box-shadow .15s" style-hover="border-color:#ff8a00;box-shadow:inset 0 0 0 1px #ff8a00">☎ 61 812 40 15</a>
-    </div>
-    <div style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:#5f6a78;animation:hintPulse 1.8s ease-in-out infinite">scroll ↓</div>
-  </header>
+  <!-- ============ HERO = przypięty silnik ============ -->
+  <section id="gora" ref="{{ secRef }}" style="position:relative;height:{{ secH }}">
+    <div id="silnik" style="position:sticky;top:{{ topOff }};height:calc(100vh - {{ topOff }});overflow:hidden">
+      <div ref="{{ stageRef }}" class="stage">
+        <div class="stage-grid"></div>
+        <div class="stage-word">Exploded view</div>
+        <canvas ref="{{ cvsRef }}" class="stage-cvs" width="1280" height="720"></canvas>
 
-  <section id="silnik" ref="{{ engSecRef }}" style="position:relative;z-index:1;height:340vh">
-    <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center">
-      <div style="position:relative;width:min(760px,92vw)">
-        <svg viewBox="0 0 640 480" style="width:100%;display:block;transform:{{ engT }};transition:transform .1s linear;filter:drop-shadow(0 0 22px rgba(255,138,0,.12))">
-          <g style="transform:{{ headT }};transition:transform .1s linear" stroke="#ff8a00" stroke-width="2" fill="none">
-            <rect x="185" y="128" width="270" height="52" rx="4"></rect>
-            <path d="M200 128 L200 108 L440 108 L440 128"></path>
-            <circle cx="245" cy="154" r="11"></circle><circle cx="305" cy="154" r="11"></circle><circle cx="365" cy="154" r="11"></circle><circle cx="425" cy="154" r="11"></circle>
-            <path d="M185 118 L155 96 M455 118 L485 96" stroke="#5f6a78"></path>
-            <path d="M120 84 h70 M120 84 v24 M455 84 h70 M525 84 v24" stroke="#5f6a78" stroke-dasharray="5 5"></path>
-          </g>
-          <g stroke="#8f9aa8" stroke-width="2" fill="none">
-            <rect x="195" y="196" width="250" height="130" rx="6"></rect>
-            <path d="M195 226 h250 M195 296 h250" stroke="#3a4553"></path>
-            <circle cx="238" cy="261" r="24" stroke="#5f6a78"></circle><circle cx="296" cy="261" r="24" stroke="#5f6a78"></circle><circle cx="354" cy="261" r="24" stroke="#5f6a78"></circle><circle cx="412" cy="261" r="24" stroke="#5f6a78"></circle>
-          </g>
-          <g style="transform:{{ pistT }};transition:transform .1s linear" stroke="#ff8a00" stroke-width="2" fill="none">
-            <rect x="222" y="344" width="32" height="26" rx="3"></rect><path d="M238 370 L252 408"></path>
-            <rect x="280" y="344" width="32" height="26" rx="3"></rect><path d="M296 370 L288 408"></path>
-            <rect x="338" y="344" width="32" height="26" rx="3"></rect><path d="M354 370 L366 408"></path>
-            <rect x="396" y="344" width="32" height="26" rx="3"></rect><path d="M412 370 L400 408"></path>
-            <circle cx="326" cy="418" r="26" stroke="#8f9aa8"></circle>
-            <circle cx="326" cy="418" r="7" stroke="#ff8a00"></circle>
-          </g>
-          <g style="transform:{{ turboT }};transition:transform .1s linear" fill="none">
-            <circle cx="524" cy="262" r="40" stroke="#ff8a00" stroke-width="2"></circle>
-            <path d="M524 262 L524 230 M524 262 L552 246 M524 262 L552 278 M524 262 L524 294 M524 262 L496 278 M524 262 L496 246" stroke="#8f9aa8" stroke-width="2"></path>
-            <path d="M524 222 C556 222 582 244 586 272 L564 272" stroke="#5f6a78" stroke-width="2"></path>
-            <path d="M484 262 L445 262" stroke="#5f6a78" stroke-width="2" stroke-dasharray="6 5"></path>
-          </g>
-        </svg>
-        <div style="position:absolute;left:0;top:2%;max-width:230px;opacity:{{ lbl1o }};transform:{{ lbl1t }};transition:opacity .45s,transform .45s">
-          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff">01 · Tuning silnika</div>
-          <div style="width:54px;height:2px;background:#ff8a00;margin:8px 0"></div>
-          <p style="color:#9aa3b0;font-size:.88rem;margin:0">Mapy mocy na hamowni, stage 1–3, hardware pod większy boost.</p>
+        <div class="hero-col">
+          <div class="hero-kick"><i></i>Warsztat od 1994 · Piła</div>
+
+          <div class="hero-slots">
+            <div class="slot live" style="--o:var(--o0,1)">
+              <h1 class="hero-h1">
+                <span class="line"><span>Auto-Serwis</span></span>
+                <span class="line"><span style="color:#ff6a00">Kowalski</span></span>
+              </h1>
+              <div class="hero-sub">Precyzja · Moc · Kontrola</div>
+              <p class="hero-p">Diagnostyka komputerowa, tuning i mechanika z dokładnością do newtona. Przewiń, żeby rozłożyć nasz przegląd na czynniki pierwsze.</p>
+              <div class="hero-cta">
+                <a href="#kontakt" class="k-btn">Umów wizytę</a>
+                <a href="tel:+48618124015" class="k-btn-ghost">☎ 61 812 40 15</a>
+              </div>
+            </div>
+
+            <div class="slot" style="--o:var(--o1,0)">
+              <div class="slot-n">REF · 01-INT · DEMONTAŻ</div>
+              <div class="slot-t">Kolektor<br>dolotowy</div>
+              <div class="slot-rule"></div>
+              <p class="slot-p">Sprawdzamy przepływ i szczelność. Zapchany dolot to −18% mocy, którego nie widać na desce rozdzielczej.</p>
+            </div>
+
+            <div class="slot" style="--o:var(--o2,0)">
+              <div class="slot-n">REF · 02-HEAD · POMIAR</div>
+              <div class="slot-t">Głowica<br>i zawory</div>
+              <div class="slot-rule"></div>
+              <p class="slot-p">Pomiar luzów, próba ciśnieniowa, kontrola prowadnic. Tu zaczyna się większość drogich awarii.</p>
+            </div>
+
+            <div class="slot" style="--o:var(--o3,0)">
+              <div class="slot-n">REF · 03-BELT · OSPRZĘT</div>
+              <div class="slot-t">Rozrząd<br>i napinacze</div>
+              <div class="slot-rule"></div>
+              <p class="slot-p">Rolki, napinacze, pompa wody. Wymieniamy kompletami — bo zerwany pasek kosztuje cały silnik.</p>
+            </div>
+
+            <div class="slot" style="--o:var(--o4,0)">
+              <div class="slot-n">REF · 04-BLOCK · DIAGNOZA</div>
+              <div class="slot-t">Blok<br>i tłoki</div>
+              <div class="slot-rule"></div>
+              <p class="slot-p">Kompresja cylinder po cylindrze, endoskopia, ocena gładzi. Raport dostajesz na piśmie.</p>
+            </div>
+
+            <div class="slot live" style="--o:var(--o5,0)">
+              <div class="slot-n">REF · 05-TORQUE · MONTAŻ</div>
+              <div class="slot-t">Montaż<br>na moment</div>
+              <div class="slot-rule"></div>
+              <p class="slot-p">Składamy kluczem dynamometrycznym, wg wartości producenta. Zero „na czuja”, 24 miesiące gwarancji.</p>
+              <div style="margin-top:24px"><a href="#kontakt" class="k-btn">Umów przegląd</a></div>
+            </div>
+          </div>
         </div>
-        <div style="position:absolute;right:0;top:30%;max-width:230px;text-align:right;opacity:{{ lbl2o }};transform:{{ lbl2t }};transition:opacity .45s,transform .45s">
-          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff">02 · Diagnostyka</div>
-          <div style="width:54px;height:2px;background:#ff8a00;margin:8px 0 8px auto"></div>
-          <p style="color:#9aa3b0;font-size:.88rem;margin:0">Odczyt ECU, logi czujników na żywo, wykrywanie usterek zanim staną się kosztowne.</p>
+
+        <div class="hint">scroll ↓</div>
+        <div ref="{{ loadRef }}" class="load-pill" style="display:none">wczytywanie 0%</div>
+
+        <div class="stage-foot">
+          <div>elementów w kontroli · <b ref="{{ partsRef }}">0</b></div>
+          <div style="text-align:right">rozłożenie · <b class="o" ref="{{ engPctRef }}">0%</b></div>
         </div>
-        <div style="position:absolute;left:0;bottom:4%;max-width:230px;opacity:{{ lbl3o }};transform:{{ lbl3t }};transition:opacity .45s,transform .45s">
-          <div style="font-family:'Barlow Condensed';font-weight:800;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;color:#fff">03 · Zawieszenie</div>
-          <div style="width:54px;height:2px;background:#ff8a00;margin:8px 0"></div>
-          <p style="color:#9aa3b0;font-size:.88rem;margin:0">Geometria 3D, gwinty, tłumiki drgań — auto klei się do drogi.</p>
-        </div>
-        <div style="position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);font-family:ui-monospace,monospace;font-size:.7rem;letter-spacing:.24em;color:#5f6a78;text-transform:uppercase;white-space:nowrap">widok eksplodowany · {{ engPct }}%</div>
+        <div class="scrub"><i></i></div>
       </div>
     </div>
   </section>
 
-  <section id="uslugi" style="position:relative;z-index:1;padding:120px 8vw">
-    <div style="font-family:ui-monospace,monospace;font-size:.76rem;letter-spacing:.3em;color:#00e5b0;text-transform:uppercase;margin-bottom:14px">// pełen zakres</div>
-    <h2 style="font-family:'Barlow Condensed';font-weight:800;font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;letter-spacing:.03em;margin:0 0 48px;color:#fff">Usługi <span style="color:#ff8a00">warsztatu</span></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:rgba(255,138,0,.18)">
+  <!-- ============ MARQUEE ============ -->
+  <div class="mq-wrap">
+    <div class="mq">
+      <b>Diagnostyka ECU</b><i>◆</i><b>Hamownia</b><i>◆</i><b>Geometria 3D</b><i>◆</i><b>Tuning stage 1–3</b><i>◆</i><b>Rozrząd</b><i>◆</i><b>Klimatyzacja</b><i>◆</i>
+      <b>Diagnostyka ECU</b><i>◆</i><b>Hamownia</b><i>◆</i><b>Geometria 3D</b><i>◆</i><b>Tuning stage 1–3</b><i>◆</i><b>Rozrząd</b><i>◆</i><b>Klimatyzacja</b><i>◆</i>
+    </div>
+  </div>
+
+  <!-- ============ LICZBY ============ -->
+  <section id="liczby" style="padding:100px 8vw;border-bottom:1px solid rgba(11,12,14,.13)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:44px">
+      <div data-rv="1"><div class="stat-n"><span data-count="31">0</span></div><div class="stat-l">lat na rynku</div></div>
+      <div data-rv="2"><div class="stat-n"><span data-count="1200">0</span><span style="color:#ff6a00">+</span></div><div class="stat-l">aut rocznie</div></div>
+      <div data-rv="3"><div class="stat-n"><span data-count="412">0</span></div><div class="stat-l">punktów kontroli</div></div>
+      <div data-rv="4"><div class="stat-n"><span data-count="98">0</span><span style="color:#ff6a00">%</span></div><div class="stat-l">trafionych diagnoz</div></div>
+    </div>
+  </section>
+
+  <!-- ============ USŁUGI (czarny blok) ============ -->
+  <section id="uslugi" class="dark" style="padding:110px 8vw">
+    <div class="k-eyebrow" data-rv="1">// pełen zakres</div>
+    <h2 class="k-h2" data-rv="2" style="margin-bottom:50px">Usługi <span style="color:#ff6a00">warsztatu</span></h2>
+    <div data-rv="3">
       <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
-        <div style="background:#0c1015;padding:30px 26px;position:relative;transition:background .2s,transform .2s" style-hover="background:#11161d;transform:translateY(-4px)" style-before="content:'';position:absolute;top:10px;right:10px;width:14px;height:14px;border-top:2px solid rgba(255,138,0,.5);border-right:2px solid rgba(255,138,0,.5)">
-          <div style="font-family:ui-monospace,monospace;font-size:.7rem;color:#ff8a00;margin-bottom:12px">{{ s.no }}</div>
-          <h3 style="font-family:'Barlow Condensed';font-weight:700;font-size:1.3rem;letter-spacing:.05em;text-transform:uppercase;margin:0 0 10px;color:#fff">{{ s.name }}</h3>
-          <p style="color:#9aa3b0;font-size:.9rem;margin:0">{{ s.desc }}</p>
-        </div>
+        <a href="#kontakt" class="svc">
+          <div class="svc-n">{{ s.no }}</div>
+          <div class="svc-t">{{ s.name }}</div>
+          <div class="svc-d">{{ s.desc }}</div>
+          <div class="svc-a">→</div>
+        </a>
       </sc-for>
     </div>
   </section>
 
-  <section id="kontakt" style="position:relative;z-index:1;padding:120px 8vw 140px;text-align:center;border-top:1px solid rgba(255,138,0,.15)">
-    <div style="font-family:ui-monospace,monospace;font-size:.76rem;letter-spacing:.3em;color:#00e5b0;text-transform:uppercase;margin-bottom:14px">// rezerwacja stanowiska</div>
-    <h2 style="font-family:'Barlow Condensed';font-weight:800;font-size:clamp(2.2rem,6vw,4.2rem);text-transform:uppercase;margin:0 0 18px;color:#fff">Podłącz swoje auto <span style="color:#ff8a00">do systemu</span></h2>
-    <p style="color:#9aa3b0;max-width:480px;margin:0 auto 42px">ul. Warsztatowa 8, Piała · pon–pt 8:00–18:00, sob 9:00–14:00</p>
-    <a href="tel:+48618124015" style="display:inline-block;color:#0e1116;background:#ff8a00;text-decoration:none;font-family:'Barlow Condensed';font-weight:800;font-size:1.4rem;letter-spacing:.1em;padding:20px 52px;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:background .15s,box-shadow .15s,transform .15s" style-hover="background:#ffd60a;box-shadow:0 0 44px rgba(255,214,10,.5);transform:translateY(-3px)">☎ 61 812 40 15</a>
-    <div style="margin-top:70px;font-size:.74rem;letter-spacing:.16em;color:#5f6a78;text-transform:uppercase">© 2026 Auto-Serwis Kowalski · Projekt: ODNOVA°studio · strona demonstracyjna</div>
+  <!-- ============ PROCES ============ -->
+  <section id="proces" ref="{{ procRef }}" style="padding:110px 8vw">
+    <div class="k-eyebrow" data-rv="1">// jak to działa</div>
+    <h2 class="k-h2" data-rv="2" style="margin-bottom:54px">Cztery kroki<br><span style="color:#ff6a00">do sprawnego auta</span></h2>
+    <div style="position:relative;max-width:820px">
+      <div class="proc-line"><i></i></div>
+      <div class="proc-i" data-rv="1"><div class="proc-dot">01</div><div><div class="proc-t">Zgłoszenie i wywiad</div><p class="k-p" style="margin:8px 0 0;max-width:520px">Telefon albo formularz. Pytamy o objawy, przebieg i historię — zanim auto wjedzie na kanał.</p></div></div>
+      <div class="proc-i" data-rv="2"><div class="proc-dot">02</div><div><div class="proc-t">Diagnoza na sprzęcie</div><p class="k-p" style="margin:8px 0 0;max-width:520px">Interfejs fabryczny, logi na żywo, endoskopia. Dostajesz wydruk, nie opowieść.</p></div></div>
+      <div class="proc-i" data-rv="3"><div class="proc-dot">03</div><div><div class="proc-t">Wycena przed pracą</div><p class="k-p" style="margin:8px 0 0;max-width:520px">Kwota, termin i lista części do akceptacji. Nic nie robimy bez Twojego „tak”.</p></div></div>
+      <div class="proc-i" data-rv="4" style="padding-bottom:0"><div class="proc-dot">04</div><div><div class="proc-t">Naprawa i jazda próbna</div><p class="k-p" style="margin:8px 0 0;max-width:520px">Montaż na moment, test drogowy, 24 miesiące gwarancji na robociznę.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ============ OPINIE ============ -->
+  <section id="opinie" style="padding:0 8vw 110px">
+    <div class="k-eyebrow" data-rv="1">// z książki serwisowej</div>
+    <h2 class="k-h2" data-rv="2" style="margin-bottom:44px">Co mówią <span style="color:#ff6a00">kierowcy</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px">
+      <div class="q-card" data-rv="1">
+        <div style="color:#ff6a00;letter-spacing:.2em;font-size:.8rem">★★★★★</div>
+        <p style="font-size:1.02rem;line-height:1.6;margin:14px 0 18px">„Trzy warsztaty nie umiały znaleźć błędu. Tu podłączyli sprzęt i po godzinie miałem wydruk z dokładną przyczyną.”</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:#6b7078;text-transform:uppercase">Marek W. · Passat B8</div>
+      </div>
+      <div class="q-card" data-rv="2">
+        <div style="color:#ff6a00;letter-spacing:.2em;font-size:.8rem">★★★★★</div>
+        <p style="font-size:1.02rem;line-height:1.6;margin:14px 0 18px">„Wycena przed pracą co do złotówki. Zero niespodzianek przy odbiorze — rzadkość w tej branży.”</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:#6b7078;text-transform:uppercase">Anna K. · Mazda CX-5</div>
+      </div>
+      <div class="q-card" data-rv="3">
+        <div style="color:#ff6a00;letter-spacing:.2em;font-size:.8rem">★★★★★</div>
+        <p style="font-size:1.02rem;line-height:1.6;margin:14px 0 18px">„Rozrząd wymieniony kompletem, po roku cisza jak w banku. Wiedzą, co robią.”</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:#6b7078;text-transform:uppercase">Tomasz R. · Ford Focus</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KONTAKT (czarny blok) ============ -->
+  <section id="kontakt" class="dark" style="padding:110px 8vw 56px;text-align:center">
+    <div class="k-eyebrow" data-rv="1">// rezerwacja stanowiska</div>
+    <h2 class="k-h2" data-rv="2" style="margin-bottom:18px">Podłącz swoje auto<br><span style="color:#ff6a00">do systemu</span></h2>
+    <p class="k-p" data-rv="3" style="max-width:480px;margin:0 auto 38px">Zadzwoń albo wpadnij. Diagnostykę wstępną robimy tego samego dnia, jeśli jest wolne stanowisko.</p>
+    <div data-rv="4" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px">
+      <a href="tel:+48618124015" class="k-btn" style="font-size:1.2rem;padding:19px 42px">☎ 61 812 40 15</a>
+      <a href="#gora" class="k-btn-ghost" style="font-size:1.2rem;padding:19px 42px">Wróć na górę ↑</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px;background:rgba(255,255,255,.1);text-align:left;max-width:1000px;margin:0 auto">
+      <div class="info"><div class="info-l">Adres</div><div style="line-height:1.6">ul. Warsztatowa 8<br>64-920 Piła</div></div>
+      <div class="info"><div class="info-l">Godziny</div><div style="line-height:1.6">pon–pt 8:00–18:00<br>sob 9:00–14:00</div></div>
+      <div class="info"><div class="info-l">E-mail</div><div style="line-height:1.6">serwis@kowalski-auto.pl</div></div>
+      <div class="info"><div class="info-l">Gwarancja</div><div style="line-height:1.6">24 miesiące<br>na robociznę</div></div>
+    </div>
+    <div style="margin-top:58px;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;color:#6b7078;text-transform:uppercase">© 2026 Auto-Serwis Kowalski · Projekt: ODNOVA°studio · strona demonstracyjna</div>
   </section>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { phase: 'boot', pct: 0, y: 0, vh: 800, eng: 0, p: 0, mob: false };
+  state = { mob: false };
+
   rootRef = React.createRef();
-  engSecRef = React.createRef();
+  stageRef = React.createRef();
+  cvsRef = React.createRef();
+  secRef = React.createRef();
+  procRef = React.createRef();
+  curRef = React.createRef();
+  loadRef = React.createRef();
+  partsRef = React.createRef();
+  engPctRef = React.createRef();
+  navSecRef = React.createRef();
+  openDotRef = React.createRef();
+  openTxtRef = React.createRef();
+
+  FRAMES = 193;        // pełne 24 kl./s materiału źródłowego
+  EASE = .17;          // im mniej, tym bardziej "ciężko" nadąża animacja za scrollem
+  SECTIONS = [['gora', 'Silnik'], ['liczby', 'Liczby'], ['uslugi', 'Usługi'], ['proces', 'Proces'], ['opinie', 'Opinie'], ['kontakt', 'Kontakt']];
 
   componentDidMount() {
-    const t0 = performance.now(), DUR = 3600;
-    const tick = (t) => {
-      if (this.state.phase !== 'boot') return;
-      const raw = Math.min(1, (t - t0) / DUR);
-      const e = raw < .5 ? 2 * raw * raw : 1 - Math.pow(-2 * raw + 2, 2) / 2;
-      const pct = Math.round(e * 100);
-      if (pct !== this.state.pct) this.setState({ pct });
-      if (raw < 1) this._raf = requestAnimationFrame(tick);
-      else this.openShutter();
-    };
-    this._raf = requestAnimationFrame(tick);
-    this.onScroll = () => {
-      if (this._st) return;
-      this._st = requestAnimationFrame(() => {
-        this._st = 0;
-        const y = window.scrollY, vh = window.innerHeight;
-        const doc = document.documentElement;
-        const p = Math.min(1, y / Math.max(1, doc.scrollHeight - vh));
-        let eng = 0;
-        const sec = this.engSecRef.current;
-        if (sec) {
-          const r = sec.getBoundingClientRect();
-          eng = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
-        }
-        this.setState({ y, vh, p, eng, mob: window.innerWidth < 980 });
-      });
-    };
+    this.top = this.props.topOffset ?? 0;
+    this.frames = new Array(this.FRAMES).fill(null);
+    this.loaded = 0;
+    this.lastF = -1;
+    // wartości docelowe (z pozycji scrolla) i wygładzone (rysowane)
+    this.eT = this.eC = 0; this.spT = this.spC = 0; this.procT = this.procC = 0;
+    this.navLbl = 'Silnik';
+
+    // klatka 0 najpierw i sama — to ją widać w chwili wejścia na stronę
+    this.loadOne(0);
+    this.loadSequence();
+
+    this.secEls = this.SECTIONS.map(([id, name]) => [document.getElementById(id), name]);
+
+    this.onScroll = () => { this.needMeasure = true; this.kick(); };
     window.addEventListener('scroll', this.onScroll, { passive: true });
-    window.addEventListener('resize', this.onScroll);
-    this.onScroll();
+    window.addEventListener('resize', this.onResize, { passive: true });
+    this.onResize();
+
+    this.updateOpen();
+    this._openTimer = setInterval(this.updateOpen, 60000);
+
+    this.initReveals();
+    this.initCursor();
+    window.addEventListener('pointermove', this.onPointer, { passive: true });
   }
+
   componentWillUnmount() {
-    cancelAnimationFrame(this._raf); cancelAnimationFrame(this._st);
-    clearTimeout(this._sh);
+    cancelAnimationFrame(this._raf); cancelAnimationFrame(this._cur);
+    clearTimeout(this._pump); clearInterval(this._openTimer);
     window.removeEventListener('scroll', this.onScroll);
-    window.removeEventListener('resize', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('pointermove', this.onPointer);
+    if (this._io) this._io.disconnect();
+    (this.frames || []).forEach(f => { if (f) f.onload = f.onerror = null; });
   }
-  openShutter = () => {
-    this.setState({ phase: 'open', pct: 100 });
-    this._sh = setTimeout(() => this.setState({ phase: 'done' }), 1150);
+
+  // ---------- godziny otwarcia ----------
+  updateOpen = () => {
+    const dot = this.openDotRef.current, txt = this.openTxtRef.current;
+    if (!dot || !txt) return;
+    const H = [null, [480, 1080], [480, 1080], [480, 1080], [480, 1080], [480, 1080], [540, 840]];
+    const DNI = ['nd', 'pon', 'wt', 'śr', 'czw', 'pt', 'sob'];
+    const now = new Date(), day = now.getDay(), m = now.getHours() * 60 + now.getMinutes();
+    const hhmm = (v) => Math.floor(v / 60) + ':' + String(v % 60).padStart(2, '0');
+
+    if (H[day] && m >= H[day][0] && m < H[day][1]) {
+      dot.classList.remove('off');
+      txt.textContent = 'otwarte teraz';
+      return;
+    }
+    dot.classList.add('off');
+    if (H[day] && m < H[day][0]) { txt.textContent = 'zamknięte · dziś od ' + hhmm(H[day][0]); return; }
+    for (let k = 1; k <= 7; k++) {
+      const d = (day + k) % 7;
+      if (!H[d]) continue;
+      txt.textContent = 'zamknięte · ' + (k === 1 ? 'jutro' : DNI[d]) + ' od ' + hhmm(H[d][0]);
+      return;
+    }
   };
-  skipPre = () => { cancelAnimationFrame(this._raf); this.openShutter(); };
+
+  // ---------- sekwencja klatek ----------
+  src(i) { return 'img/engine/e' + String(i + 1).padStart(3, '0') + '.webp'; }
+
+  loadOne(i) {
+    if (this.frames[i]) return;
+    const img = new Image();
+    img.decoding = 'async';
+    if (i === 0) img.fetchPriority = 'high';
+    this.frames[i] = img;
+    img.onload = () => {
+      this.loaded++;
+      this.updateLoadPill();
+      this.lastF = -1;   // wymuś przerysowanie — doszła ostrzejsza klatka
+      this.kick();
+    };
+    img.onerror = () => { this.frames[i] = null; };
+    img.src = this.src(i);
+  }
+
+  loadSequence() {
+    // zgrubny przebieg najpierw — scrub działa niemal od razu, reszta dochodzi w tle.
+    // na małych ekranach co druga klatka: połowa transferu, wciąż płynnie.
+    const step = window.innerWidth < 980 ? 2 : 1;
+    const order = [];
+    for (let i = 0; i < this.FRAMES; i += 8) order.push(i);
+    for (let i = 0; i < this.FRAMES; i += step) if (order.indexOf(i) < 0) order.push(i);
+    this.wanted = order.length;
+    let k = 0;
+    const pump = () => {
+      let inflight = 0;
+      while (k < order.length && inflight < 6) { this.loadOne(order[k++]); inflight++; }
+      if (k < order.length) this._pump = setTimeout(pump, 90);
+    };
+    pump();
+  }
+
+  updateLoadPill() {
+    const el = this.loadRef.current; if (!el) return;
+    const p = Math.round(this.loaded / (this.wanted || this.FRAMES) * 100);
+    if (p >= 100) { el.style.display = 'none'; return; }
+    el.style.display = 'block';
+    el.textContent = 'wczytywanie · ' + p + '%';
+  }
+
+  nearest(i) {
+    if (this.frames[i] && this.frames[i].complete) return this.frames[i];
+    for (let d = 1; d < this.FRAMES; d++) {
+      const a = i - d, b = i + d;
+      if (a >= 0 && this.frames[a] && this.frames[a].complete) return this.frames[a];
+      if (b < this.FRAMES && this.frames[b] && this.frames[b].complete) return this.frames[b];
+    }
+    return null;
+  }
+
+  sizeCanvas() {
+    const cvs = this.cvsRef.current, st = this.stageRef.current;
+    if (!cvs || !st) return;
+    const r = st.getBoundingClientRect();
+    const w = Math.max(320, Math.min(1900, Math.round(r.width)));
+    const h = Math.max(240, Math.min(1200, Math.round(r.height)));
+    if (cvs.width !== w || cvs.height !== h) {
+      cvs.width = w; cvs.height = h;
+      this._ctx = null; this.lastF = -1;
+    }
+  }
+
+  // Bez mieszania klatek: przy tym materiale części przemieszczają się między
+  // klatkami za daleko i przenikanie czyta się jako podwójna ekspozycja, nie jako
+  // rozmycie ruchu. Płynność bierze się z gęstości klatek (24 kl./s) i z
+  // wygładzania scrolla w tick().
+  drawAt(f) {
+    const i = Math.max(0, Math.min(this.FRAMES - 1, Math.round(f)));
+    if (i === this.lastF) return;
+    const cvs = this.cvsRef.current; if (!cvs) return;
+    const img = this.nearest(i); if (!img) return;
+
+    if (!this._ctx) this._ctx = cvs.getContext('2d', { alpha: false });
+    const ctx = this._ctx, W = cvs.width, H = cvs.height;
+
+    // pełne tło na biało: pod multiply biel jest kolorem neutralnym,
+    // więc poza samym silnikiem canvas nie rusza tła strony
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, W, H);
+
+    const narrow = W < 980;
+    const tw = narrow ? Math.min(W * .99, H * 1.25) : Math.min(1150, W * .62, H * 1.78);
+    const th = tw * 720 / 1280;
+    // desktop: silnik lekko na prawo od środka; mobile: u góry, tekst pod nim
+    const cx = narrow ? W * .5 : W * .645;
+    const cy = narrow ? H * .3 : H * .5;
+    const x = Math.round(cx - tw / 2), y = Math.round(cy - th / 2);
+
+    ctx.drawImage(img, x, y, tw, th);
+
+    // wtopienie krawędzi klatki w biel — żeby nigdzie nie było widać prostokąta
+    const fe = Math.round(Math.min(tw, th) * .07);
+    const grad = (x0, y0, x1, y1) => {
+      const g = ctx.createLinearGradient(x0, y0, x1, y1);
+      g.addColorStop(0, 'rgba(255,255,255,1)');
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      return g;
+    };
+    ctx.fillStyle = grad(x, 0, x + fe, 0);            ctx.fillRect(x, y, fe, th);
+    ctx.fillStyle = grad(x + tw, 0, x + tw - fe, 0);  ctx.fillRect(x + tw - fe, y, fe, th);
+    ctx.fillStyle = grad(0, y, 0, y + fe);            ctx.fillRect(x, y, tw, fe);
+    ctx.fillStyle = grad(0, y + th, 0, y + th - fe); ctx.fillRect(x, y + th - fe, tw, fe);
+
+    this.lastF = i;
+    if (!cvs.classList.contains('ready')) cvs.classList.add('ready');
+  }
+
+  // ---------- scroll ----------
+  onResize = () => {
+    const mob = window.innerWidth < 980;
+    if (mob !== this.state.mob) this.setState({ mob });
+    this.sizeCanvas();
+    this.needMeasure = true;
+    this.kick();
+  };
+
+  setVar(el, name, val) {
+    if (!el) return;
+    const k = '__v' + name;
+    if (el[k] === val) return;
+    el[k] = val;
+    el.style.setProperty(name, val);
+  }
+  setText(ref, val) {
+    const el = ref.current; if (!el) return;
+    if (el.__v === val) return;
+    el.__v = val; el.textContent = val;
+  }
+
+  kick() { if (!this._raf) this._raf = requestAnimationFrame(this.tick); }
+
+  // Kółko myszy przewija skokami po ~100 px, więc mapowanie scrolla wprost na
+  // klatkę zawsze wygląda schodkowo. Zamiast tego scroll ustawia wartość
+  // docelową, a osobna pętla dociąga do niej wartość rysowaną.
+  tick = () => {
+    this._raf = 0;
+    if (this.needMeasure) { this.needMeasure = false; this.measure(); }
+
+    let moving = false;
+    const step = (cur, tgt) => {
+      const d = tgt - cur;
+      if (Math.abs(d) < .0005) return tgt;
+      moving = true;
+      return cur + d * this.EASE;
+    };
+    this.eC = step(this.eC, this.eT);
+    this.spC = step(this.spC, this.spT);
+    this.procC = step(this.procC, this.procT);
+
+    this.render();
+    if (moving) this.kick();
+  };
+
+  // wszystkie odczyty układu w jednym miejscu — żeby nie przeplatać ich z zapisami
+  measure() {
+    const vh = window.innerHeight, doc = document.documentElement;
+    const cl = (v) => v < 0 ? 0 : v > 1 ? 1 : v;
+
+    this.spT = cl(window.scrollY / Math.max(1, doc.scrollHeight - vh));
+
+    const sec = this.secRef.current;
+    if (sec) {
+      const r = sec.getBoundingClientRect();
+      this.eT = cl((this.top - r.top) / Math.max(1, r.height - (vh - this.top)));
+    }
+    const proc = this.procRef.current;
+    if (proc) {
+      const r = proc.getBoundingClientRect();
+      this.procT = cl((vh * .82 - r.top) / Math.max(1, r.height * .72));
+    }
+    for (const [el, name] of (this.secEls || [])) {
+      if (el && el.getBoundingClientRect().top <= vh * .45) this.navLbl = name;
+    }
+  }
+
+  render() {
+    const root = this.rootRef.current, stage = this.stageRef.current;
+    if (!root) return;
+    const cl = (v) => v < 0 ? 0 : v > 1 ? 1 : v;
+    const e = this.eC;
+
+    this.setVar(root, '--sp', this.spC.toFixed(4));
+    this.setVar(stage, '--e', e.toFixed(4));
+
+    // Blok wstępny znika, karty etapów wchodzą po kolei. Okna MUSZĄ być rozłączne —
+    // karty leżą jedna na drugiej, więc każde zachodzenie to dwa teksty naraz.
+    this.setVar(stage, '--o0', (1 - cl((e - .03) / .06)).toFixed(3));
+    const win = [[.09, .29], [.29, .49], [.49, .67], [.67, .84], [.84, 1.02]];
+    for (let i = 0; i < win.length; i++) {
+      const [a, b] = win[i];
+      this.setVar(stage, '--o' + (i + 1), cl(Math.min((e - a) / .04, (b - e) / .04)).toFixed(3));
+    }
+
+    this.drawAt(e * (this.FRAMES - 1));
+
+    this.setText(this.partsRef, String(Math.round(e * 412)));
+    this.setText(this.engPctRef, Math.round(e * 100) + '%');
+    this.setText(this.navSecRef, this.navLbl);
+    this.setVar(this.procRef.current, '--proc', this.procC.toFixed(3));
+  }
+
+  // ---------- wjazdy + liczniki ----------
+  initReveals() {
+    const root = this.rootRef.current; if (!root || !('IntersectionObserver' in window)) return;
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('rv-in');
+        this._io.unobserve(en.target);
+        en.target.querySelectorAll('[data-count]').forEach(el => this.countUp(el));
+      });
+    }, { threshold: .18, rootMargin: '0px 0px -8% 0px' });
+    root.querySelectorAll('[data-rv]').forEach(el => this._io.observe(el));
+  }
+
+  countUp(el) {
+    const target = +el.dataset.count || 0;
+    const t0 = performance.now(), dur = 1500;
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('pl-PL');
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- celownik ----------
+  initCursor() {
+    if (!window.matchMedia || !window.matchMedia('(pointer:fine)').matches) return;
+    this.cx = this.cy = -100; this.tx = this.ty = -100; this.curOn = true;
+    const loop = () => {
+      this.cx += (this.tx - this.cx) * .18;
+      this.cy += (this.ty - this.cy) * .18;
+      const el = this.curRef.current;
+      if (el) el.style.transform = 'translate3d(' + this.cx.toFixed(1) + 'px,' + this.cy.toFixed(1) + 'px,0)';
+      this._cur = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  onPointer = (ev) => {
+    if (!this.curOn) return;
+    this.tx = ev.clientX; this.ty = ev.clientY;
+    const el = this.curRef.current; if (!el) return;
+    if (!el.classList.contains('on')) el.classList.add('on');
+    el.classList.toggle('hot', !!(ev.target && ev.target.closest && ev.target.closest('a,button,.svc,.q-card')));
+  };
 
   renderVals() {
-    const { phase, pct, eng, p, mob } = this.state;
-    const open = phase === 'open';
-    // engine: stage A (0-.3) assemble/rotate in, stage B (.3-1) explode
-    const a = Math.min(1, eng / .3);
-    const b = Math.max(0, (eng - .3) / .7);
-    const lbl = (from, to) => eng >= from && eng < to;
     const services = [
-      { no: '[01]', name: 'Mechanika ogólna', desc: 'Rozrządy, sprzęgła, hamulce, zawieszenia — z częściami klasy OEM.' },
-      { no: '[02]', name: 'Diagnostyka ECU', desc: 'Interfejsy fabryczne, logi na żywo, kasowanie i analiza błędów.' },
-      { no: '[03]', name: 'Tuning & hamownia', desc: 'Mapy stage 1–3, pomiar mocy przed i po, wykres dla klienta.' },
-      { no: '[04]', name: 'Geometria 3D', desc: 'Laserowa geometria kół z wydrukiem parametrów.' },
+      { no: '[01]', name: 'Mechanika ogólna', desc: 'Rozrządy, sprzęgła, hamulce, zawieszenia — części klasy OEM z gwarancją.' },
+      { no: '[02]', name: 'Diagnostyka ECU', desc: 'Interfejsy fabryczne, logi na żywo, kasowanie i analiza błędów z wydrukiem.' },
+      { no: '[03]', name: 'Tuning i hamownia', desc: 'Mapy stage 1–3, pomiar mocy przed i po, wykres dla klienta.' },
+      { no: '[04]', name: 'Geometria 3D', desc: 'Laserowa geometria kół z protokołem parametrów przed i po.' },
       { no: '[05]', name: 'Klimatyzacja', desc: 'Nabicie, odgrzybianie, szukanie nieszczelności barwnikiem UV.' },
-      { no: '[06]', name: 'Przegląd przed zakupem', desc: 'Pełny raport techniczny auta z ogłoszenia w 90 minut.' },
+      { no: '[06]', name: 'Przegląd przed zakupem', desc: 'Pełny raport techniczny auta z ogłoszenia — w 90 minut.' },
     ];
     return {
-      rootRef: this.rootRef, engSecRef: this.engSecRef,
+      rootRef: this.rootRef, stageRef: this.stageRef, cvsRef: this.cvsRef, secRef: this.secRef,
+      procRef: this.procRef, curRef: this.curRef, loadRef: this.loadRef,
+      partsRef: this.partsRef, engPctRef: this.engPctRef,
+      navSecRef: this.navSecRef, openDotRef: this.openDotRef, openTxtRef: this.openTxtRef,
       topOff: `${this.props.topOffset ?? 0}px`,
-      skipPre: this.skipPre, services,
-      preDisplay: phase === 'done' ? 'none' : 'block',
-      preFadeAnim: open ? 'shutUp 0s linear .2s both' : 'none',
-      shutTop: open ? 'shutUp .95s cubic-bezier(.76,0,.24,1) .18s both' : 'none',
-      shutBot: open ? 'shutDown .95s cubic-bezier(.76,0,.24,1) .18s both' : 'none',
-      pct,
-      ringOffset: (653.4 * (1 - pct / 100)).toFixed(1),
-      voluteO: pct > 30 ? 1 : .25,
-      bladeSpeed: `${(2.6 - 2.25 * pct / 100).toFixed(2)}s`,
-      log1: pct > 12 ? 1 : 0, log2: pct > 34 ? 1 : 0, log3: pct > 55 ? 1 : 0, log4: pct > 74 ? 1 : 0, log5: pct > 92 ? 1 : 0,
-      gridT: `translateY(${(-p * 120).toFixed(1)}px)`,
-      glowT: `translateY(${(-p * 260).toFixed(1)}px)`,
-      hudDisplay: mob || phase !== 'done' ? 'none' : 'block',
-      hudRpm: (800 + Math.round(6400 * p)).toLocaleString('pl-PL'),
-      rpmW: `${(10 + 88 * p).toFixed(1)}%`,
-      hudBoost: (0.2 + 1.7 * eng).toFixed(2),
-      boostW: `${(8 + 90 * eng).toFixed(1)}%`,
-      hudInteg: (94 + 6 * p).toFixed(1),
-      secName: p < .12 ? 'START' : eng > 0 && eng < 1 ? 'SILNIK' : p < .82 ? 'USŁUGI' : 'KONTAKT',
-      engT: `rotate(${(-10 + 10 * a).toFixed(2)}deg) scale(${(.72 + .33 * a).toFixed(3)})`,
-      headT: `translateY(${(-74 * b).toFixed(1)}px)`,
-      pistT: `translateY(${(64 * b).toFixed(1)}px)`,
-      turboT: `translate(${(78 * b).toFixed(1)}px, ${(-18 * b).toFixed(1)}px)`,
-      engPct: Math.round(eng * 100),
-      lbl1o: lbl(.18, .45) ? 1 : 0, lbl1t: lbl(.18, .45) ? 'none' : 'translateY(14px)',
-      lbl2o: lbl(.45, .72) ? 1 : 0, lbl2t: lbl(.45, .72) ? 'none' : 'translateY(14px)',
-      lbl3o: eng >= .72 ? 1 : 0, lbl3t: eng >= .72 ? 'none' : 'translateY(14px)',
+      services,
+      secH: this.state.mob ? '400vh' : '540vh',
     };
   }
 }
