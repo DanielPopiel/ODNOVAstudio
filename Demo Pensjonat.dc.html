@@ -19,8 +19,57 @@
   html{scroll-behavior:smooth;overflow-x:hidden}
   body{margin:0;overflow-x:hidden}
   @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
-  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(130vw)}}
-  @keyframes twinkle{0%,100%{opacity:.1;transform:translateY(0)}50%{opacity:1;transform:translateY(-16px)}}
+  /* Kadr: 10% z góry i 5% z dołu ścięte, czyli widoczne 85% wysokości plików.
+     Stąd proporcja hero 1928 : (1076 * .85) i object-position 66.667%
+     (10 z 15 punktów nadmiaru wypada na górę). */
+  .pens-hero{--pensX:50%;--pensY:50%;min-height:460px}
+  .pens-hero-media,.pens-hero-src{position:absolute;inset:0;width:100%;height:100%;display:block;
+    object-fit:cover;object-position:50% 66.667%}
+  @media(min-width:681px){
+    .pens-hero{aspect-ratio:1928/915;min-height:0}
+  }
+  /* Zimowe wideo leży POD letnim zdjęciem: jest odtwarzane i dekodowane, ale
+     widać je wyłącznie tam, gdzie kursor odsłonił je na canvasie. Ślad zostaje
+     i sam zarasta — wygaszanie maski robi pętla w JS. */
+  /* width/height:100% jest KONIECZNE: canvas to element zastępowany, więc przy
+     samym inset:0 renderuje się w rozmiarze swojego bufora (czyli razy dpr) i
+     rozjeżdża się ze zdjęciem na ekranach ze skalowaniem 125/150%. */
+  .pens-hero-winter{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+  /* Chłód: odbarwia i rozjaśnia zdjęcie tam, gdzie właśnie jest kursor. */
+  .pens-hero-cold{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .45s ease;
+    -webkit-backdrop-filter:saturate(.55) brightness(1.06) hue-rotate(-12deg);
+    backdrop-filter:saturate(.55) brightness(1.06) hue-rotate(-12deg);
+    -webkit-mask-image:radial-gradient(circle 200px at var(--pensX) var(--pensY),#000 0%,#000 46%,transparent 100%);
+    mask-image:radial-gradient(circle 200px at var(--pensX) var(--pensY),#000 0%,#000 46%,transparent 100%);
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+  .pens-hero.is-frosty .pens-hero-cold{opacity:1}
+  /* Po chwili bezruchu hero zaczyna szronić. */
+  .pens-hero-frost{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.6s ease;
+    background:radial-gradient(120% 90% at 50% 0%,rgba(226,240,255,.5),rgba(226,240,255,.05) 70%)}
+  .pens-hero.is-deep .pens-hero-frost{opacity:1}
+  .pens-hero-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(62% 58% at 50% 50%,rgba(10,16,8,.46),rgba(10,16,8,.12) 72%),linear-gradient(180deg,rgba(10,16,8,.3),rgba(10,16,8,.12) 40%,rgba(10,16,8,.5))}
+  /* Płatki lecą nad scrimem, żeby nie były przez niego przygaszone. */
+  .pens-hero-snow{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+  /* Choinka zamiast kursora na całej nowej stronie — także nad linkami
+     i przyciskami, dlatego !important (inline'owe cursor:pointer w kalendarzu). */
+  .pens-po.is-live,.pens-po.is-live *{cursor:none!important}
+  .pens-cursor{position:fixed;left:0;top:0;z-index:120;pointer-events:none;opacity:0;--cx:-200px;--cy:-200px;
+    transform:translate3d(var(--cx),var(--cy),0) translate(-50%,-58%) scale(.72);
+    transition:opacity .28s ease,transform .09s linear;filter:drop-shadow(0 3px 7px rgba(6,12,4,.55))}
+  .pens-po.is-live .pens-cursor.is-on{opacity:1;transform:translate3d(var(--cx),var(--cy),0) translate(-50%,-58%) scale(1)}
+  /* Choinka z intra kurczy się do rozmiaru kursora i zostaje nim. */
+  .pens-intro-tree{position:fixed;left:50%;top:50%;z-index:2001;
+    transform:translate(-50%,-58%) scale(1);
+    transition:transform .78s cubic-bezier(.5,0,.2,1),opacity .3s ease}
+  .pens-intro-tree.is-shrunk{transform:translate(-50%,-58%) scale(.2667)}
+  .pens-intro-cap{position:fixed;left:0;right:0;top:50%;margin-top:104px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:14px}
+  /* Pierwszy ruch myszy po intrze: choinka płynnie dojeżdża ze środka. */
+  .pens-cursor.is-arriving{transition:opacity .28s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+  @media (prefers-reduced-motion:reduce){
+    .pens-hero-winter,.pens-hero-src,.pens-hero-cold,.pens-hero-frost,.pens-hero-snow,.pens-cursor{display:none!important}
+    .pens-po.is-live,.pens-po.is-live *{cursor:auto!important}
+  }
   @keyframes treeDraw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
   @keyframes treeFill{from{opacity:0}to{opacity:1}}
   @keyframes introText{from{opacity:0;letter-spacing:.55em}to{opacity:1;letter-spacing:.32em}}
@@ -51,11 +100,13 @@
   <div ref="{{ introRef }}" data-intro="true" aria-hidden="true" style="position:fixed;inset:0;z-index:2000;pointer-events:none;overflow:hidden;display:{{ introDisplay }}">
     <div style="position:absolute;top:0;bottom:0;left:0;width:50.5%;background:linear-gradient(160deg,#16200f,#0d1409);animation:curtainL 1.2s cubic-bezier(.76,0,.24,1) 3s both"></div>
     <div style="position:absolute;top:0;bottom:0;right:0;width:50.5%;background:linear-gradient(200deg,#16200f,#0d1409);animation:curtainR 1.2s cubic-bezier(.76,0,.24,1) 3s both"></div>
-    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;animation:introHide .6s ease 2.8s both">
+    <div ref="{{ introTreeRef }}" class="pens-intro-tree">
       <svg width="120" height="150" viewBox="0 0 100 125" fill="none">
-        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 114 L54 114 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" stroke="#9db884" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="900" style="animation:treeDraw 2s ease-out .1s both"></path>
-        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 114 L54 114 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(157,184,132,.16)" style="animation:treeFill 1s ease 1.7s both"></path>
+        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" stroke="#9db884" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="900" style="animation:treeDraw 2s ease-out .1s both"></path>
+        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(157,184,132,.16)" style="animation:treeFill 1s ease 1.7s both"></path>
       </svg>
+    </div>
+    <div class="pens-intro-cap" style="animation:introHide .6s ease 2.8s both">
       <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.4rem);color:#f6f4ee;animation:treeFill 1s ease 1.2s both">Pod Świerkami</div>
       <div style="font-family:'Karla';font-weight:700;font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:#9db884;animation:introText 1.2s ease 1.6s both">Pensjonat górski · 820 m n.p.m.</div>
     </div>
@@ -117,7 +168,13 @@
     </div>
   </div>
 
-  <div style="display:{{ afterDisplay }};background:#f6f4ee;color:#22301f;line-height:1.7">
+  <div ref="{{ poRef }}" class="pens-po" style="display:{{ afterDisplay }};background:#f6f4ee;color:#22301f;line-height:1.7">
+    <div ref="{{ cursorRef }}" class="pens-cursor" aria-hidden="true">
+      <svg width="32" height="40" viewBox="0 0 100 125" fill="none">
+        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(29,45,22,.55)" stroke="#f2f7ec" stroke-width="5" stroke-linejoin="round"></path>
+        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(157,184,132,.5)" stroke="#9db884" stroke-width="2" stroke-linejoin="round"></path>
+      </svg>
+    </div>
     <nav style="position:sticky;top:56px;z-index:50;background:rgba(246,244,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(65,105,47,.15)">
       <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:74px">
         <div class="odn-nav-logo" style="font-family:'Cormorant Garamond';font-weight:700;font-size:1.5rem;color:#22301f">Pod Świerkami<small style="display:block;font-family:'Karla';font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:{{ accent }}">Pensjonat górski</small></div>
@@ -131,21 +188,27 @@
       </div>
     </nav>
 
-    <header style="min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden;background:{{ heroBg }}">
-      <div style="position:absolute;left:-5%;right:-5%;bottom:10%;height:36%;background:linear-gradient(180deg,{{ mtnColor }},rgba(74,102,62,.12));clip-path:polygon(0 70%,10% 40%,20% 58%,32% 26%,44% 55%,56% 18%,68% 48%,80% 28%,92% 56%,100% 40%,100% 100%,0 100%)"></div>
-      <div style="position:absolute;left:-320px;background:rgba(255,255,255,.8);border-radius:99px;filter:blur(16px);width:240px;height:56px;top:10%;animation:drift 75s linear infinite;animation-delay:-20s;opacity:{{ cloudOpacity }}"></div>
-      <div style="position:absolute;left:-320px;background:rgba(255,255,255,.8);border-radius:99px;filter:blur(16px);width:160px;height:42px;top:22%;animation:drift 100s linear infinite;animation-delay:-60s;opacity:{{ cloudOpacity }}"></div>
-      <div style="position:absolute;left:-320px;background:rgba(255,255,255,.8);border-radius:99px;filter:blur(16px);width:320px;height:66px;top:5%;animation:drift 130s linear infinite;animation-delay:-95s;opacity:{{ cloudOpacity }}"></div>
-      <span style="position:absolute;width:6px;height:6px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 14px 5px rgba(255,233,168,.55);left:16%;bottom:22%;animation:twinkle 3.4s ease-in-out infinite;z-index:2;opacity:{{ fireflyOpacity }}"></span>
-      <span style="position:absolute;width:6px;height:6px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 14px 5px rgba(255,233,168,.55);left:52%;bottom:12%;animation:twinkle 3.8s ease-in-out infinite;animation-delay:1.4s;z-index:2;opacity:{{ fireflyOpacity }}"></span>
-      <span style="position:absolute;width:6px;height:6px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 14px 5px rgba(255,233,168,.55);left:82%;bottom:16%;animation:twinkle 3.6s ease-in-out infinite;animation-delay:2s;z-index:2;opacity:{{ fireflyOpacity }}"></span>
-      <div style="position:relative;z-index:2;text-align:center;width:100%;padding:80px 24px;max-width:1100px;margin:0 auto">
-        <div style="font-family:'Karla';letter-spacing:.34em;text-transform:uppercase;font-size:.74rem;font-weight:700;color:{{ heroKickerColor }};margin-bottom:20px">820 m n.p.m. · z dala od zgiełku</div>
-        <h1 style="font-family:'Cormorant Garamond';font-weight:600;font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.05;color:{{ heroTextColor }};margin:0">Tu góry budzą Cię <em style="font-style:italic">ciszą</em></h1>
-        <p style="max-width:520px;margin:22px auto 36px;color:{{ heroTextColor }};font-size:1.12rem">Rodzinny pensjonat na skraju lasu: własna kuchnia z lokalnych produktów, sauna z widokiem na szczyty i szlaki zaczynające się za progiem.</p>
+    <header ref="{{ heroRef }}" class="pens-hero" style="display:flex;align-items:center;position:relative;overflow:hidden;background:#101a0c">
+      <picture>
+        <source srcset="img/pens-tlo2.webp" type="image/webp"></source>
+        <img ref="{{ srcRef }}" class="pens-hero-src" src="img/pens-tlo2-foto.jpg" alt="" aria-hidden="true"></img>
+      </picture>
+      <picture>
+        <source srcset="img/pens-tlo1.webp" type="image/webp"></source>
+        <img class="pens-hero-media" src="img/pens-tlo1.jpg" alt="Panorama gór latem — widok z pensjonatu"></img>
+      </picture>
+      <canvas ref="{{ winterRef }}" class="pens-hero-winter" aria-hidden="true"></canvas>
+      <div class="pens-hero-cold" aria-hidden="true"></div>
+      <div class="pens-hero-frost" aria-hidden="true"></div>
+      <div class="pens-hero-scrim"></div>
+      <canvas ref="{{ canvasRef }}" class="pens-hero-snow" aria-hidden="true"></canvas>
+      <div style="position:relative;z-index:4;text-align:center;width:100%;padding:80px 24px;max-width:1100px;margin:0 auto;text-shadow:0 2px 18px rgba(8,14,6,.5)">
+        <div style="font-family:'Karla';letter-spacing:.34em;text-transform:uppercase;font-size:.74rem;font-weight:700;color:#d8e6c6;margin-bottom:20px">820 m n.p.m. · z dala od zgiełku</div>
+        <h1 style="font-family:'Cormorant Garamond';font-weight:600;font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.05;color:#f8f6f0;margin:0">Tu góry budzą Cię <em style="font-style:italic">ciszą</em></h1>
+        <p style="max-width:520px;margin:22px auto 36px;color:rgba(248,246,240,.92);font-size:1.12rem">Rodzinny pensjonat na skraju lasu: własna kuchnia z lokalnych produktów, sauna z widokiem na szczyty i szlaki zaczynające się za progiem.</p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <a href="#rezerwacja" style="background:{{ accent }};color:#f6f4ee;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em">Sprawdź wolne terminy</a>
-          <a href="#pokoje" style="border:1.5px solid rgba(34,48,31,.4);color:#1c2b18;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;transition:border-color .2s,background .2s" style-hover="border-color:#1c2b18;background:rgba(255,255,255,.3)">Zobacz pokoje</a>
+          <a href="#rezerwacja" style="background:{{ accent }};color:#f6f4ee;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;text-shadow:none;box-shadow:0 10px 26px -10px rgba(8,14,6,.7);transition:filter .2s,transform .2s,box-shadow .2s" style-hover="filter:brightness(1.2) drop-shadow(0 0 12px rgba(216,230,198,.55));transform:translateY(-2px)">Sprawdź wolne terminy</a>
+          <a href="#pokoje" style="border:1.5px solid rgba(248,246,240,.55);color:#f8f6f0;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;transition:border-color .2s,background .2s" style-hover="border-color:#f8f6f0;background:rgba(255,255,255,.18)">Zobacz pokoje</a>
         </div>
       </div>
     </header>
@@ -278,13 +341,315 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{
   &quot;palette&quot;: {&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:[&quot;#41692f&quot;,&quot;#22301f&quot;,&quot;#9db884&quot;],&quot;options&quot;:[[&quot;#41692f&quot;,&quot;#22301f&quot;,&quot;#9db884&quot;],[&quot;#3b6b78&quot;,&quot;#16292d&quot;,&quot;#8fc2cc&quot;],[&quot;#a15c3a&quot;,&quot;#2e1f16&quot;,&quot;#d9a878&quot;],[&quot;#6b4064&quot;,&quot;#22141f&quot;,&quot;#c9a0c0&quot;]],&quot;tsType&quot;:&quot;string[]&quot;,&quot;section&quot;:&quot;Wygląd&quot;},
-  &quot;heroMood&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Dzień&quot;,&quot;options&quot;:[&quot;Dzień&quot;,&quot;Zmierzch&quot;,&quot;Noc&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Wygląd&quot;},
   &quot;cardShape&quot;: {&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Organiczny&quot;,&quot;options&quot;:[&quot;Organiczny&quot;,&quot;Architektoniczny&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Wygląd&quot;}
 }">
 class Component extends DCLogic {
   rootRef = React.createRef();
   introRef = React.createRef();
-  componentWillUnmount() { if (this._introTimer) clearTimeout(this._introTimer); }
+  introTreeRef = React.createRef();
+  heroRef = React.createRef();
+  poRef = React.createRef();
+  winterRef = React.createRef();
+  srcRef = React.createRef();
+  canvasRef = React.createRef();
+  cursorRef = React.createRef();
+
+  componentDidMount() { this.bindHero(); }
+  componentDidUpdate() { this.bindHero(); }
+  componentWillUnmount() {
+    if (this._introTimer) clearTimeout(this._introTimer);
+    if (this._revealTimer) clearTimeout(this._revealTimer);
+    if (this._shrinkTimer) clearTimeout(this._shrinkTimer);
+    if (this._handoffTimer) clearTimeout(this._handoffTimer);
+    this.unbindHero();
+  }
+
+  /* Choinka zamiast kursora na całej stronie PO; nad hero kursor sieje śnieg,
+     wychładza zdjęcie i lekko odsłania zimowe wideo. */
+  bindHero = () => {
+    const hero = this.heroRef.current;
+    const po = this.poRef.current;
+    const winter = this.winterRef.current;
+    const cursor = this.cursorRef.current;
+    const canvas = this.canvasRef.current;
+    if (this._heroBound || !hero || !po || !winter || !cursor || !canvas) return;
+    // Tylko myszka/trackpad — dotyk nie ma hovera, a reduced-motion nie chce wideo.
+    if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    this._heroBound = true;
+    po.classList.add('is-live');
+
+    const ctx = canvas.getContext('2d');
+    const wctx = winter.getContext('2d');
+    const maskCv = document.createElement('canvas');
+    const mctx = maskCv.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const BRUSH = 100;   // promień odsłonięcia w px CSS
+    const STEP = 22;     // co ile px trasy odcisk szpachli
+    const HOLD = 10;     // tyle sekund ślad stoi w pełnej sile, zanim zacznie zarastać
+    const TAU = 7.7;     // stała czasowa zarastania: pełny zanik ok. 25 s po HOLD
+    // Wygaszanie paczkami: krok musi być na tyle duży, żeby ubytek alfy nie
+    // zaokrąglał się do zera (patrz niżej), stąd liczony z TAU, a nie na sztywno.
+    const FADE_STEP = -TAU * Math.log(1 - 0.055);
+    let raf = 0, snowRaf = 0, winterRaf = 0, px = 0, py = 0, seen = false, moved = false;
+    let flakes = [], lx = null, ly = null, lastDab = 0, lastT = 0, fadeAcc = 0;
+
+    // Szpachla: twarda, prosta krawędź z wyszczerbieniami, ustawiana
+    // PROSTOPADLE do ruchu — ślad jak rozsmarowana farba.
+    const BS = Math.round(BRUSH * 2);
+    const blade = (() => {
+      const cv = document.createElement('canvas');
+      cv.width = cv.height = BS;
+      const b = cv.getContext('2d'), c = BS / 2, w = BS * 0.42, h = BS * 0.17;
+      b.fillStyle = '#000';
+      b.beginPath();
+      b.moveTo(c - w, c - h * 0.8); b.lineTo(c + w * 0.9, c - h);
+      b.lineTo(c + w, c + h * 0.85); b.lineTo(c - w * 0.92, c + h);
+      b.closePath(); b.fill();
+      b.globalCompositeOperation = 'destination-out';   // wyszczerbienia krawędzi
+      for (let i = 0; i < 14; i++) {
+        b.globalAlpha = 0.3 + Math.random() * 0.7;
+        b.beginPath();
+        b.ellipse(c - w + Math.random() * w * 2, c + (Math.random() < 0.5 ? -h : h),
+          2 + Math.random() * 9, 1 + Math.random() * 4, Math.random() * 3, 0, 6.2832);
+        b.fill();
+      }
+      b.globalCompositeOperation = 'source-over';
+      return cv;
+    })();
+
+    let bladeAng = 0, angSet = false;
+    const dab = (x, y, ang) => {
+      mctx.save();
+      mctx.translate(x * dpr, y * dpr);
+      mctx.rotate(ang);
+      mctx.scale(dpr, dpr);
+      mctx.globalAlpha = 1;
+      mctx.drawImage(blade, -BS / 2, -BS / 2);
+      mctx.restore();
+    };
+    const paint = (x, y) => {
+      const now = performance.now();
+      if (lx === null || now - lastDab > 500) {   // szpachla oderwana → nowe pociągnięcie
+        angSet = false;
+        if (lx === null) { lx = x; ly = y; lastDab = now; startWinter(); return; }
+      }
+      const dx = x - lx, dy = y - ly, dist = Math.hypot(dx, dy);
+      if (dist < 2) return;
+      const target = Math.atan2(dy, dx) + Math.PI / 2;   // krawędź w poprzek ruchu
+      if (!angSet) { bladeAng = target; angSet = true; }
+      else {
+        let diff = target - bladeAng;
+        while (diff > Math.PI) diff -= 6.2832;
+        while (diff < -Math.PI) diff += 6.2832;
+        bladeAng += diff * 0.5;
+      }
+      const steps = Math.max(1, Math.round(dist / STEP));
+      const speed = dist / steps;
+      for (let i = 1; i <= steps; i++) {
+        // Przy szybkim ruchu szpachla odrywa się od podłoża i zostawia przeskoki.
+        if (speed > 14 && Math.random() < (speed - 14) / 42) continue;
+        dab(lx + dx * i / steps, ly + dy * i / steps, bladeAng);
+      }
+      lx = x; ly = y; lastDab = now;
+      startWinter();
+    };
+    const tickWinter = (t) => {
+      winterRaf = 0;
+      const dt = lastT ? Math.min(0.1, (t - lastT) / 1000) : 0.016;
+      lastT = t;
+      // Zarastanie: maska słabnie wykładniczo, niezależnie od liczby klatek.
+      // Wygaszamy paczkami po ~100 ms, nie co klatkę: przy 1% na klatkę ubytek
+      // schodzi poniżej pół jednostki alfy, zaokrągla się do zera i ślad
+      // zatrzymuje się na trwałe (utykał na 42/255). Większy krok tego unika.
+      // Ślad stoi HOLD sekund w pełnej sile i dopiero potem zarasta.
+      if (performance.now() - lastDab > HOLD * 1000) {
+        fadeAcc += dt;
+        if (fadeAcc >= FADE_STEP) {
+          mctx.globalCompositeOperation = 'destination-out';
+          mctx.fillStyle = 'rgba(0,0,0,' + (1 - Math.exp(-fadeAcc / TAU)).toFixed(4) + ')';
+          mctx.fillRect(0, 0, maskCv.width, maskCv.height);
+          mctx.globalCompositeOperation = 'source-over';
+          fadeAcc = 0;
+        }
+      } else fadeAcc = 0;
+      // Klatka wideo kadrowana jak zdjęcie (cover + object-position 66.667%).
+      const W = winter.width, H = winter.height;
+      wctx.clearRect(0, 0, W, H);
+      const v = this.srcRef.current;
+      if (v && v.complete && v.naturalWidth) {
+        const s = Math.max(W / v.naturalWidth, H / v.naturalHeight);
+        const dw = v.naturalWidth * s, dh = v.naturalHeight * s;
+        wctx.drawImage(v, (W - dw) * 0.5, (H - dh) * 0.66667, dw, dh);
+      }
+      wctx.globalCompositeOperation = 'destination-in';
+      wctx.drawImage(maskCv, 0, 0);
+      wctx.globalCompositeOperation = 'source-over';
+      // Pętla żyje jeszcze chwilę po ostatnim ruchu, aż ślad zarośnie.
+      if (performance.now() - lastDab < HOLD * 1000 + TAU * 5000) winterRaf = requestAnimationFrame(tickWinter);
+      else {
+        wctx.clearRect(0, 0, W, H);
+        mctx.clearRect(0, 0, maskCv.width, maskCv.height);
+        lastT = 0; fadeAcc = 0;
+      }
+    };
+    const startWinter = () => {
+      if (!winterRaf) { lastT = 0; winterRaf = requestAnimationFrame(tickWinter); }
+    };
+
+    // Sprite'y płatków: sześcioramienne kryształki z bocznymi gałązkami,
+    // rysowane raz i stemplowane z obrotem — zamiast białych kulek.
+    const FLAKES = [];
+    for (let k = 0; k < 3; k++) {
+      const S = 32, sp = document.createElement('canvas');
+      sp.width = sp.height = S;
+      const g = sp.getContext('2d'), c = S / 2, len = c * (0.8 - k * 0.06);
+      g.translate(c, c);
+      // Grube ramiona: sprite jest zmniejszany ~2x, cieńsze zniknęłyby.
+      g.strokeStyle = '#fff'; g.lineCap = 'round'; g.lineWidth = 3.1 - k * 0.5;
+      for (let i = 0; i < 6; i++) {
+        const a = i * Math.PI / 3, dx = Math.cos(a), dy = Math.sin(a);
+        g.beginPath(); g.moveTo(0, 0); g.lineTo(dx * len, dy * len); g.stroke();
+        for (const t of (k === 2 ? [0.55] : [0.42, 0.72])) {
+          const bx = dx * len * t, by = dy * len * t, bl = len * (0.3 - k * 0.05);
+          for (const sgn of [-1, 1]) {
+            const ba = a + sgn * 1.02;
+            g.beginPath(); g.moveTo(bx, by);
+            g.lineTo(bx + Math.cos(ba) * bl, by + Math.sin(ba) * bl); g.stroke();
+          }
+        }
+      }
+      g.fillStyle = '#fff';
+      g.beginPath(); g.arc(0, 0, 1.3, 0, 6.284); g.fill();
+      FLAKES.push(sp);
+    }
+
+    // Płatki sypią się z kursora, opadają, obracają się i topią (life -> 0).
+    const tickSnow = () => {
+      snowRaf = 0;
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+      flakes = flakes.filter((f) => f.life > 0);
+      for (const f of flakes) {
+        f.life -= 0.006; f.y += f.vy; f.x += Math.sin(f.y / 26) * f.sway; f.rot += f.vr;
+        ctx.globalAlpha = Math.max(0, Math.min(1, f.life)) * 0.85;
+        ctx.save();
+        ctx.translate(f.x, f.y); ctx.rotate(f.rot);
+        ctx.drawImage(FLAKES[f.sp], -f.d / 2, -f.d / 2, f.d, f.d);
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
+      if (flakes.length) snowRaf = requestAnimationFrame(tickSnow);
+    };
+    let emitAcc = 0;
+    const emit = (x, y) => {
+      emitAcc += 0.84;  // poziom z laboratorium: o 30% mniej niż 1,2 na klatkę
+      while (emitAcc >= 1) {
+        emitAcc -= 1;
+        flakes.push({
+          x: x + (Math.random() - 0.5) * 90, y: y + (Math.random() - 0.5) * 60,
+          d: 9 + Math.random() * 9, vy: 0.5 + Math.random() * 1.3,
+          sway: 0.25 + Math.random() * 0.7, life: 0.7 + Math.random() * 0.6,
+          sp: (Math.random() * 3) | 0, rot: Math.random() * 6.284,
+          vr: (Math.random() - 0.5) * 0.05,
+        });
+      }
+      if (flakes.length > 168) flakes.splice(0, flakes.length - 168);
+      if (!snowRaf) snowRaf = requestAnimationFrame(tickSnow);
+    };
+
+    const apply = () => {
+      raf = 0;
+      cursor.style.setProperty('--cx', px + 'px');
+      cursor.style.setProperty('--cy', py + 'px');
+      const r = hero.getBoundingClientRect();
+      const w = Math.round(r.width), h = Math.round(r.height);
+      const cw = Math.round(w * dpr), ch = Math.round(h * dpr);
+      if (canvas.width !== cw || canvas.height !== ch) {
+        canvas.width = cw; canvas.height = ch;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);   // płatki liczone w px CSS
+      }
+      const W = Math.round(w * dpr), H = Math.round(h * dpr);
+      if (winter.width !== W || winter.height !== H) {
+        winter.width = W; winter.height = H; maskCv.width = W; maskCv.height = H;
+      }
+      hero.style.setProperty('--pensX', (px - r.left) + 'px');
+      hero.style.setProperty('--pensY', (py - r.top) + 'px');
+      // Zima i śnieg tylko wtedy, gdy kursor jest nad hero.
+      if (px >= r.left && px <= r.right && py >= r.top && py <= r.bottom) {
+        if (moved) { emit(px - r.left, py - r.top); paint(px - r.left, py - r.top); }
+        frost();
+      } else { lx = ly = null; thaw(false); }
+      moved = false;
+    };
+
+    const frost = () => {
+      hero.classList.add('is-frosty');
+      hero.classList.remove('is-deep');
+      cursor.classList.add('is-on');
+      clearTimeout(this._idleTimer);
+      // Kursor stoi w miejscu → hero zaczyna szronić.
+      this._idleTimer = setTimeout(() => hero.classList.add('is-deep'), 2000);
+    };
+    // Wideo pauzuje dopiero pętla zimy, kiedy ślad zarośnie — nie tutaj.
+    const thaw = (leaving) => {
+      hero.classList.remove('is-frosty');
+      hero.classList.remove('is-deep');
+      if (leaving) { cursor.classList.remove('is-on'); lx = ly = null; }
+      clearTimeout(this._idleTimer);
+    };
+
+    this._onMove = (e) => {
+      px = e.clientX; py = e.clientY; moved = true;
+      cursor.classList.add('is-on');
+      // Po intrze choinka stoi na środku — pierwszy ruch to płynny dojazd.
+      if (this._arriving) {
+        this._arriving = false;
+        clearTimeout(this._arriveTimer);
+        this._arriveTimer = setTimeout(() => cursor.classList.remove('is-arriving'), 520);
+      }
+      if (!seen) { seen = true; apply(); return; }
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    this._onLeave = () => { cursor.classList.remove('is-on'); thaw(true); };
+    // Przy scrollu hero jedzie względem kursora — trzeba przeliczyć maskę.
+    this._onScroll = () => { if (seen && !raf) raf = requestAnimationFrame(apply); };
+    this._cancelRaf = () => {
+      if (raf) cancelAnimationFrame(raf); raf = 0;
+      if (snowRaf) cancelAnimationFrame(snowRaf); snowRaf = 0;
+      if (winterRaf) cancelAnimationFrame(winterRaf); winterRaf = 0;
+      flakes = []; lx = ly = null;
+    };
+
+    this._onHeroOut = () => thaw(false);
+
+    po.addEventListener('pointermove', this._onMove);
+    po.addEventListener('pointerleave', this._onLeave);
+    hero.addEventListener('pointerleave', this._onHeroOut);
+    window.addEventListener('blur', this._onLeave);
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll);
+  };
+
+  unbindHero = () => {
+    if (!this._heroBound) return;
+    this._heroBound = false;
+    const po = this.poRef.current;
+    const hero = this.heroRef.current;
+    if (po) {
+      po.removeEventListener('pointermove', this._onMove);
+      po.removeEventListener('pointerleave', this._onLeave);
+    }
+    if (hero) hero.removeEventListener('pointerleave', this._onHeroOut);
+    window.removeEventListener('blur', this._onLeave);
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onScroll);
+    clearTimeout(this._idleTimer);
+    clearTimeout(this._arriveTimer);
+    if (this._cancelRaf) this._cancelRaf();
+  };
   MONTHS = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
   DOW = ['Pn','Wt','Śr','Cz','Pt','So','Nd'];
 
@@ -305,7 +670,26 @@ class Component extends DCLogic {
     if (first) {
       if (this._introTimer) clearTimeout(this._introTimer);
       this._introTimer = setTimeout(() => this.setState({ introPlaying: false }), 4300);
+      // Choinka z intra kurczy się i staje się kursorem stojącym na środku.
+      this._shrinkTimer = setTimeout(() => {
+        const t = this.introTreeRef.current;
+        if (t) t.classList.add('is-shrunk');
+      }, 3150);
+      this._handoffTimer = setTimeout(this.cursorToCenter, 3900);
     }
+  };
+
+  /* Przekazanie: choinka z intra znika, a kursor pojawia się w tym samym
+     miejscu — na środku ekranu — i czeka na pierwszy ruch myszy. */
+  cursorToCenter = () => {
+    const t = this.introTreeRef.current;
+    if (t) t.style.opacity = '0';
+    const cursor = this.cursorRef.current;
+    if (!cursor || !this._heroBound) return;
+    cursor.style.setProperty('--cx', Math.round(window.innerWidth / 2) + 'px');
+    cursor.style.setProperty('--cy', Math.round(window.innerHeight / 2) + 'px');
+    cursor.classList.add('is-arriving', 'is-on');
+    this._arriving = true;
   };
 
   isBusy(y, m, d) {
@@ -343,23 +727,6 @@ class Component extends DCLogic {
     const ctaRadius = isArch ? '4px' : '99px';
     const badgeRadius = isArch ? '4px' : '50%';
 
-    const mood = this.props.heroMood ?? 'Dzień';
-    const moodMap = {
-      'Dzień': {
-        heroBg: 'radial-gradient(900px 500px at 50% 110%,rgba(65,105,47,.25),transparent),linear-gradient(180deg,#dfe7d5 0%,#c6d6b4 45%,#9db884 75%,#6f9457 100%)',
-        mtn: 'rgba(74,102,62,.4)', kicker: '#2f4a24', text: '#1c2b18', cloud: 1, firefly: 0.15,
-      },
-      'Zmierzch': {
-        heroBg: 'radial-gradient(900px 500px at 50% 110%,rgba(160,90,50,.3),transparent),linear-gradient(180deg,#f0c199 0%,#e08a5e 40%,#a9573f 75%,#5c3a3a 100%)',
-        mtn: 'rgba(60,35,30,.55)', kicker: '#4a2418', text: '#3a1c12', cloud: 0.6, firefly: 0.7,
-      },
-      'Noc': {
-        heroBg: 'radial-gradient(900px 500px at 50% 110%,rgba(40,50,90,.35),transparent),linear-gradient(180deg,#111a30 0%,#1c2740 45%,#28304a 75%,#0d1220 100%)',
-        mtn: 'rgba(10,14,26,.65)', kicker: '#9db8e0', text: '#eef1fa', cloud: 0.25, firefly: 1,
-      },
-    };
-    const m = moodMap[mood] || moodMap['Dzień'];
-
     const calCells = [];
     for (let i = 0; i < offset; i++) calCells.push({ label: '', visibility: 'hidden', cursor: 'default', bg: 'transparent', color: '#22301f', decoration: 'none', onClick: null });
     for (let d = 1; d <= days; d++) {
@@ -381,6 +748,13 @@ class Component extends DCLogic {
     return {
       rootRef: this.rootRef,
       introRef: this.introRef,
+      introTreeRef: this.introTreeRef,
+      heroRef: this.heroRef,
+      poRef: this.poRef,
+      winterRef: this.winterRef,
+      srcRef: this.srcRef,
+      canvasRef: this.canvasRef,
+      cursorRef: this.cursorRef,
       introDisplay: this.state.introPlaying ? 'block' : 'none',
       beforeDisplay: isAfter ? 'none' : 'block',
       afterDisplay: isAfter ? 'block' : 'none',
@@ -401,12 +775,6 @@ class Component extends DCLogic {
       calCtaLabel,
       accent, dark, light,
       cardRadius, ctaRadius, badgeRadius,
-      heroBg: m.heroBg,
-      mtnColor: m.mtn,
-      heroKickerColor: m.kicker,
-      heroTextColor: m.text,
-      cloudOpacity: m.cloud,
-      fireflyOpacity: m.firefly,
     };
   }
 }
