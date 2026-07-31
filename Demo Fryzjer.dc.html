@@ -36,6 +36,9 @@
   .cta-reveal::after{content:'';position:absolute;z-index:-1;inset:2px;border-radius:99px;background:#14121f}
   @keyframes ctaSpin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal,.cta-reveal::before{animation:none!important}}
+  @media(max-width:900px){
+    .odn-hero-media{display:none!important}
+  }
   @media(max-width:680px){
     .odn-toolbar-label{display:none!important}
     .odn-toolbar{padding:0 14px!important}
@@ -135,14 +138,21 @@
       </div>
     </nav>
 
-    <header style="min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(1000px 500px at 80% 20%,rgba(212,175,106,.14),transparent),linear-gradient(160deg,#171310,#241c14 60%,#171310)">
-      <div style="max-width:1100px;margin:0 auto;padding:90px 24px;position:relative;width:100%">
+    <header style="min-height:86vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(1000px 500px at 80% 20%,rgba(212,175,106,.14),transparent),linear-gradient(160deg,#171310,#241c14 60%,#171310)">
+      <div style="max-width:1100px;margin:0 auto;padding:90px 24px;position:relative;width:100%;z-index:2;pointer-events:none">
         <div style="letter-spacing:.34em;text-transform:uppercase;font-size:.75rem;color:#d4af6a;margin-bottom:22px">Salon fryzjerski · od 1998 roku</div>
-        <h1 style="font-family:'Playfair Display';font-size:clamp(2.6rem,6vw,4.6rem);font-weight:500;line-height:1.12;max-width:640px;margin:0">Twoje włosy w rękach <em style="font-style:italic;color:#d4af6a">mistrzyni</em> rzemiosła</h1>
+        <h1 style="font-family:'Playfair Display';font-size:clamp(2.6rem,6vw,4.6rem);font-weight:500;line-height:1.12;max-width:560px;margin:0">Twoje włosy w rękach <em style="font-style:italic;color:#d4af6a">mistrzyni</em> rzemiosła</h1>
         <p style="max-width:480px;color:#bdb2a4;margin:26px 0 38px;font-weight:300;font-size:1.08rem">Ponad 25 lat doświadczenia, autorskie koloryzacje i wnętrze, w którym odpoczniesz. Umów wizytę online w 30 sekund.</p>
-        <a href="#rezerwacja" style="background:#d4af6a;color:#171310;text-decoration:none;font-weight:600;padding:11px 26px;border-radius:2px;letter-spacing:.08em;font-size:.82rem;text-transform:uppercase" style-hover="background:#e6c584">Zarezerwuj termin</a>
+        <a href="#rezerwacja" style="background:#d4af6a;color:#171310;text-decoration:none;font-weight:600;padding:11px 26px;border-radius:2px;letter-spacing:.08em;font-size:.82rem;text-transform:uppercase;pointer-events:auto" style-hover="background:#e6c584">Zarezerwuj termin</a>
       </div>
-      <div style="position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:420px;height:420px;border:1px solid rgba(212,175,106,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7rem;opacity:.28">✂</div>
+      <div ref="{{ heroMediaRef }}" class="odn-hero-media" style="position:absolute;top:0;right:0;bottom:0;width:56%;min-width:420px;cursor:crosshair">
+        <img src="img/fryzjer-hero-model.png" alt="Modelka z długimi ciemnymi włosami" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%"></img>
+        <video ref="{{ heroVideoRef }}" src="img/fryzjer-hero-hair.mp4" muted loop autoplay playsinline preload="auto" style="position:absolute;left:0;top:0;opacity:0;pointer-events:none"></video>
+        <audio ref="{{ heroAudioRef }}" src="img/fryzjer-hero-hair.m4a" loop preload="auto"></audio>
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,#171310 0%,rgba(23,19,16,.55) 20%,transparent 52%);pointer-events:none"></div>
+        <div ref="{{ heroGlowRef }}" style="position:absolute;left:0;top:0;width:100px;height:100px;border-radius:50%;border:1.5px solid rgba(212,175,106,.65);box-shadow:0 0 34px rgba(212,175,106,.3),inset 0 0 26px rgba(212,175,106,.18);opacity:0;pointer-events:none"></div>
+        <div ref="{{ heroHintRef }}" style="position:absolute;right:22px;bottom:20px;background:rgba(23,19,16,.78);border:1px solid rgba(212,175,106,.4);color:#d4af6a;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;pointer-events:none;transition:opacity .6s ease">✨ Prowadź kursorem po zdjęciu</div>
+      </div>
     </header>
 
     <section id="uslugi" style="padding:96px 0">
@@ -255,6 +265,11 @@
 class Component extends DCLogic {
   rootRef = React.createRef();
   lbTrackRef = React.createRef();
+  heroMediaRef = React.createRef();
+  heroVideoRef = React.createRef();
+  heroHintRef = React.createRef();
+  heroGlowRef = React.createRef();
+  heroAudioRef = React.createRef();
 
   state = {
     view: 'before',
@@ -284,29 +299,133 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const track = this.lbTrackRef.current;
-    if (!track) return;
-    let isDown = false, startX, scrollStart;
-    this._down = e => {
-      isDown = true; track.style.cursor = 'grabbing';
-      startX = e.clientX; scrollStart = track.scrollLeft;
-      track.setPointerCapture(e.pointerId);
-    };
-    this._move = e => {
-      if (!isDown) return;
-      track.scrollLeft = scrollStart - (e.clientX - startX);
-    };
-    this._up = () => { isDown = false; track.style.cursor = 'grab'; };
-    track.addEventListener('pointerdown', this._down);
-    track.addEventListener('pointermove', this._move);
-    ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => track.addEventListener(ev, this._up));
+    if (track) {
+      let isDown = false, startX, scrollStart;
+      this._down = e => {
+        isDown = true; track.style.cursor = 'grabbing';
+        startX = e.clientX; scrollStart = track.scrollLeft;
+        track.setPointerCapture(e.pointerId);
+      };
+      this._move = e => {
+        if (!isDown) return;
+        track.scrollLeft = scrollStart - (e.clientX - startX);
+      };
+      this._up = () => { isDown = false; track.style.cursor = 'grab'; };
+      track.addEventListener('pointerdown', this._down);
+      track.addEventListener('pointermove', this._move);
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => track.addEventListener(ev, this._up));
+    }
+
+    // hero: kursor odkrywa animację włosów przez maskę radialną na wideo
+    const media = this.heroMediaRef.current;
+    const video = this.heroVideoRef.current;
+    if (media && video) {
+      // rejestracja wideo->zdjecie (SIFT RANSAC+LMEDS, RMSE 1.5px): skala 1.269021, przesuniecie (333.26, -12.60)
+      // img 2752x1536 object-fit:cover center 18%, wideo 1664x1248 pozycjonowane pikselowo
+      const IMG_W = 2752, IMG_H = 1536, VID_W = 1664, VID_H = 1248;
+      const REG_S = 1.269021, REG_TX = 333.26, REG_TY = -12.60;
+      this._heroLayout = () => {
+        const r = media.getBoundingClientRect();
+        const sI = Math.max(r.width / IMG_W, r.height / IMG_H);
+        const ox = (r.width - IMG_W * sI) * 0.5;
+        const oy = (r.height - IMG_H * sI) * 0.18;
+        video.style.width = (VID_W * REG_S * sI) + 'px';
+        video.style.height = (VID_H * REG_S * sI) + 'px';
+        video.style.left = (REG_TX * sI + ox) + 'px';
+        video.style.top = (REG_TY * sI + oy) + 'px';
+      };
+      this._heroLayout();
+      this._heroLastW = 0; this._heroLastH = 0;
+      window.addEventListener('resize', this._heroLayout);
+
+      this._heroHover = false;
+      this._heroTX = 0; this._heroTY = 0;
+      this._heroCX = 0; this._heroCY = 0; this._heroR = 0;
+      this._heroMove = e => {
+        const r = media.getBoundingClientRect();
+        this._heroTX = e.clientX - r.left;
+        this._heroTY = e.clientY - r.top;
+        if (!this._heroHover) { this._heroCX = this._heroTX; this._heroCY = this._heroTY; }
+        this._heroHover = true;
+      };
+      // wideo leci w petli od startu (autoplay); na wypadek zablokowania autoplay wymuszamy play()
+      const tryPlay = () => video.play().catch(() => {});
+      tryPlay();
+      video.addEventListener('canplay', tryPlay);
+      // dzwiek tylko na hover: plynne narastanie/wyciszenie glosnosci
+      const audio = this.heroAudioRef.current;
+      const VOL_MAX = 0.6;
+      if (audio) { audio.volume = 0; this._heroVol = 0; }
+      this._heroEnter = () => {
+        tryPlay();
+        if (audio && audio.paused) audio.play().catch(() => {});
+        const hint = this.heroHintRef.current;
+        if (hint) hint.style.opacity = '0';
+      };
+      this._heroLeave = () => { this._heroHover = false; };
+      media.addEventListener('pointermove', this._heroMove);
+      media.addEventListener('pointerenter', this._heroEnter);
+      media.addEventListener('pointerleave', this._heroLeave);
+      const R_MAX = 190;
+      const glow = this.heroGlowRef.current;
+      const loop = () => {
+        const targetR = this._heroHover ? R_MAX : 0;
+        this._heroR += (targetR - this._heroR) * 0.1;
+        this._heroCX += (this._heroTX - this._heroCX) * 0.16;
+        this._heroCY += (this._heroTY - this._heroCY) * 0.16;
+        if (this._heroR > 1) {
+          const mask = 'radial-gradient(circle ' + this._heroR.toFixed(1) + 'px at ' + this._heroCX.toFixed(1) + 'px ' + this._heroCY.toFixed(1) + 'px, #000 55%, transparent 100%)';
+          video.style.webkitMaskImage = mask;
+          video.style.maskImage = mask;
+          if (video.style.opacity !== '1') video.style.opacity = '1';
+        } else {
+          // poza hoverem wideo calkowicie niewidzialne - widac tylko zdjecie
+          if (video.style.opacity !== '0') video.style.opacity = '0';
+          if (video.style.maskImage !== 'none') { video.style.webkitMaskImage = 'none'; video.style.maskImage = 'none'; }
+        }
+        if (glow) {
+          const d = (this._heroR * 2 * 0.82);
+          glow.style.width = d + 'px';
+          glow.style.height = d + 'px';
+          glow.style.transform = 'translate(' + (this._heroCX - d / 2) + 'px,' + (this._heroCY - d / 2) + 'px)';
+          glow.style.opacity = (this._heroR / R_MAX * 0.9).toFixed(3);
+        }
+        if (audio) {
+          const targetV = this._heroHover ? VOL_MAX : 0;
+          this._heroVol += (targetV - this._heroVol) * 0.07;
+          if (this._heroVol < 0.005) this._heroVol = 0;
+          audio.volume = this._heroVol;
+        }
+        // panel moze byc niewidoczny przy starcie (widok "przed") - przelicz uklad, gdy sie pojawi
+        if ((this._heroTick = (this._heroTick || 0) + 1) % 15 === 0) {
+          const rr = media.getBoundingClientRect();
+          if (rr.width !== this._heroLastW || rr.height !== this._heroLastH) {
+            this._heroLastW = rr.width; this._heroLastH = rr.height;
+            this._heroLayout();
+          }
+          if (video.paused) tryPlay();
+        }
+        this._heroRaf = requestAnimationFrame(loop);
+      };
+      this._heroRaf = requestAnimationFrame(loop);
+    }
   }
 
   componentWillUnmount() {
     const track = this.lbTrackRef.current;
-    if (!track) return;
-    track.removeEventListener('pointerdown', this._down);
-    track.removeEventListener('pointermove', this._move);
-    ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => track.removeEventListener(ev, this._up));
+    if (track) {
+      track.removeEventListener('pointerdown', this._down);
+      track.removeEventListener('pointermove', this._move);
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => track.removeEventListener(ev, this._up));
+    }
+    const media = this.heroMediaRef.current;
+    if (media) {
+      media.removeEventListener('pointermove', this._heroMove);
+      media.removeEventListener('pointerenter', this._heroEnter);
+      media.removeEventListener('pointerleave', this._heroLeave);
+    }
+    if (this._heroRaf) cancelAnimationFrame(this._heroRaf);
+    if (this._heroLayout) window.removeEventListener('resize', this._heroLayout);
   }
 
   pickService = (label) => this.setState({ bkService: label });
@@ -338,6 +457,11 @@ class Component extends DCLogic {
       rootRef: this.rootRef,
       introDisplay: this.state.introPlaying ? 'block' : 'none',
       lbTrackRef: this.lbTrackRef,
+      heroMediaRef: this.heroMediaRef,
+      heroVideoRef: this.heroVideoRef,
+      heroHintRef: this.heroHintRef,
+      heroGlowRef: this.heroGlowRef,
+      heroAudioRef: this.heroAudioRef,
       beforeDisplay: isAfter ? 'none' : 'block',
       afterDisplay: isAfter ? 'block' : 'none',
       przedBg: isAfter ? 'transparent' : 'linear-gradient(90deg,#7c5cff,#9d7bff)',
