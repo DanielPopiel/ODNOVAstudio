@@ -3,7 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Budmax — Budujemy przyszłość</title>
+<title>Firma budowlana — metamorfoza strony | demo ODNOVA°studio</title>
+<meta name="description" content="Strona firmy budowlanej przed i po metamorfozie. Filmowe hero, portfolio realizacji i czytelny proces współpracy zamiast archiwalnej wizytówki.">
+<link rel="canonical" href="https://www.odnovastudio.com/Demo%20Budmax.dc.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ODNOVA°studio">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://www.odnovastudio.com/Demo%20Budmax.dc.html">
+<meta property="og:title" content="Firma budowlana — metamorfoza strony | demo ODNOVA°studio">
+<meta property="og:description" content="Strona firmy budowlanej przed i po metamorfozie. Filmowe hero, portfolio realizacji i czytelny proces współpracy zamiast archiwalnej wizytówki.">
+<meta property="og:image" content="https://www.odnovastudio.com/img/02-preview-budmax.png">
+<meta property="og:image:width" content="909">
+<meta property="og:image:height" content="540">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -37,7 +50,7 @@
 
   /* ── Preloader ── */
   .preloader{
-    position:fixed;inset:0;z-index:9999;
+    position:fixed;inset:0;top:56px;z-index:9999;
     background:var(--bg);
     display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;
     transition:opacity 0.8s cubic-bezier(0.65,0,0.35,1), visibility 0.8s;
@@ -64,7 +77,7 @@
 
   /* ── Nav ── */
   .nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
+    position:fixed;top:56px;left:0;right:0;z-index:100;
     padding:24px 5vw;
     display:flex;align-items:center;justify-content:space-between;
     transition:background 0.4s, backdrop-filter 0.4s, padding 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
@@ -124,10 +137,10 @@
 
   /* ── Hero · Manifesto ── */
   .hero{
-    position:relative;height:100vh;overflow:hidden;
+    position:relative;height:calc(100vh - 56px);overflow:hidden;
     display:flex;align-items:center;justify-content:center;
   }
-  .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;will-change:transform}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;will-change:transform}
   .hero::after{
     content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
     background:linear-gradient(to bottom, rgba(6,6,8,0.55) 0%, rgba(6,6,8,0.15) 35%, rgba(6,6,8,0.2) 65%, rgba(6,6,8,0.78) 100%);
@@ -337,9 +350,96 @@
 
   /* ── Reveal animations ── */
   .reveal{opacity:0;transform:translateY(30px)}
+
+  /* ── Pasek demo ODNOVA + przełącznik PRZED/PO (wzorzec wspólny dla wszystkich dem) ── */
+  .odn-toolbar{position:fixed;top:0;left:0;right:0;z-index:10000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)}
+  .odn-toolbar a.odn-back{color:#9a9aad;text-decoration:none;font-weight:600;transition:color .2s}
+  .odn-toolbar a.odn-back:hover{color:#fff}
+  .odn-toolbar-label{color:#9a9aad}
+  .odn-toolbar-label b{background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .odn-switch{display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px}
+  .odn-switch button{border:0;background:transparent;color:#9a9aad;font-family:'Sora',sans-serif;font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em}
+  body.view-przed .odn-switch .odn-b-przed{background:#fff;color:#0a0a12}
+  body.view-po    .odn-switch .odn-b-po{background:linear-gradient(90deg,#7c5cff,#00e5b0);color:#0a0a12;animation:demoPulse 2.6s ease-in-out infinite}
+  @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
+  body.view-przed #poView{display:none}
+  body.view-po    #przedView{display:none}
+  /* przycisk „Zobacz metamorfozę" na widoku PRZED */
+  @keyframes ctaIn{from{opacity:0;transform:translateY(26px) scale(.9)}to{opacity:1;transform:none}}
+  @keyframes ctaFly{to{opacity:0;transform:translateY(-72vh) scale(.32) rotate(-8deg)}}
+  @keyframes ctaSpin{to{transform:rotate(360deg)}}
+  .cta-reveal:hover{transform:translateY(-3px) scale(1.03)}
+  .cta-reveal::before{content:'';position:absolute;z-index:-2;left:-60%;top:-200%;width:220%;height:500%;background:conic-gradient(#7c5cff,#00e5b0,#5b8bff,#7c5cff);animation:ctaSpin 3.4s linear infinite}
+  .cta-reveal::after{content:'';position:absolute;z-index:-1;inset:2px;border-radius:99px;background:#14121f}
+  .bud-przed{background:#e6e6e2;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding:70px 0 26px;min-height:calc(100vh - 56px)}
+  @media(max-width:680px){
+    .odn-toolbar-label{display:none}
+    .odn-toolbar{padding:0 14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1!important;transform:none!important}
+    .cta-reveal,.cta-reveal::before,.odn-switch button{animation:none!important}
+    /* wideo zostaje (pokazuje poster), ale JS go nie odtwarza — patrz reducedMotion niżej */
+    .scroll-hint .line-v{animation:none!important}
+    .grain{display:none}
+  }
 </style>
 </head>
-<body>
+<body class="view-przed">
+
+<!-- Pasek demo ODNOVA -->
+<div class="odn-toolbar">
+  <a class="odn-back" href="index.html#portfolio">← Portfolio</a>
+  <div class="odn-toolbar-label">Metamorfoza: <b>BUD-MAX</b> · demo ODNOVA°studio</div>
+  <div class="odn-switch">
+    <button type="button" class="odn-b-przed" id="btnPrzed">PRZED</button>
+    <button type="button" class="odn-b-po" id="btnPo">PO ✨</button>
+  </div>
+</div>
+
+<!-- ══ WIDOK PRZED — strona z ok. 2013 roku ══ -->
+<div id="przedView" class="bud-przed">
+  <div style="position:fixed;left:0;right:0;top:56px;bottom:0;z-index:900;display:flex;align-items:center;justify-content:center;pointer-events:none">
+    <button id="ctaReveal" type="button" class="cta-reveal" style="pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border:0;border-radius:99px;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(.95rem,2.4vw,1.1rem);color:#fff;background:transparent;position:relative;z-index:0;overflow:hidden;box-shadow:0 20px 46px -14px rgba(124,92,255,.6);transition:transform .25s ease;animation:ctaIn .55s cubic-bezier(.16,1,.3,1) both"><span style="font-size:1.15em">✨</span> Zobacz metamorfozę</button>
+  </div>
+  <div style="width:920px;max-width:96%;margin:14px auto 0;background:#fff;border:1px solid #b8b4a8;box-shadow:0 1px 7px rgba(0,0,0,.18)">
+    <div style="background:linear-gradient(#4a4238,#2e2820);padding:22px 24px">
+      <h1 style="color:#fff;font-size:1.75rem;font-weight:bold;letter-spacing:.02em;margin:0">F.H.U. "BUD-MAX"</h1>
+      <div style="color:#c9c2b4;font-size:.8rem;margin-top:4px">Usługi ogólnobudowlane — Wiesław Maksymiak — od 1996 roku</div>
+    </div>
+    <div style="background:linear-gradient(#f2f1ec,#dcd8cc);border-bottom:1px solid #a8a294;text-align:center">
+      <a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;border-left:1px solid #c8c2b0;text-decoration:none">Strona główna</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Zakres usług</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Realizacje</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Referencje</a><a href="#" style="display:inline-block;color:#2e2820;font-weight:bold;font-size:.8rem;padding:9px 16px;border-right:1px solid #c8c2b0;text-decoration:none">Kontakt</a>
+    </div>
+    <div style="background:#fdf6d8;border-bottom:1px solid #e0d49a;color:#7a6a2f;font-size:.78rem;padding:7px 16px">Galeria realizacji w przygotowaniu — pełny zestaw zdjęć wkrótce.</div>
+    <div style="padding:18px 22px;font-size:.86rem;line-height:1.55">
+      <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:0 0 8px">O firmie</h2>
+      <p style="margin-bottom:9px">Firma Handlowo-Usługowa "BUD-MAX" świadczy kompleksowe usługi budowlane na terenie miasta i okolic (do 50 km). Posiadamy własny sprzęt oraz wykwalifikowaną kadrę. Faktury VAT.</p>
+      <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px">Zakres usług</h2>
+      <ul style="margin:6px 0 10px 24px">
+        <li style="margin-bottom:4px">budowa domów jednorodzinnych od podstaw</li>
+        <li style="margin-bottom:4px">remonty mieszkań i lokali</li>
+        <li style="margin-bottom:4px">docieplenia budynków (styropian, wełna)</li>
+        <li style="margin-bottom:4px">układanie kostki brukowej</li>
+        <li style="margin-bottom:4px">gładzie, malowanie, panele</li>
+      </ul>
+      <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px">Nasze realizacje</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+        <img src="img/nasze_realizacje1.jpg" alt="Realizacja BUD-MAX" style="width:165px;height:120px;object-fit:cover;filter:sepia(.3) saturate(.85)">
+        <img src="img/nasze_realizacje2.jfif" alt="Realizacja BUD-MAX — elewacja" style="width:165px;height:120px;object-fit:cover;filter:sepia(.3) saturate(.85)">
+        <img src="img/nasze_realizacje3.webp" alt="Realizacja BUD-MAX — kostka brukowa" style="width:165px;height:120px;object-fit:cover;filter:sepia(.3) saturate(.85)">
+      </div>
+      <h2 style="color:#5a4c34;font-size:1.05rem;border-bottom:1px solid #e2ddd0;padding-bottom:4px;margin:16px 0 8px">Kontakt</h2>
+      <p style="margin-bottom:9px"><b>Tel. kom.:</b> 608 XXX XXX (najlepiej dzwonić wieczorem po 18)<br><b>Tel. dom.:</b> (067) 213-XX-XX<br><b>E-mail:</b> budmax1996@interia.pl</p>
+    </div>
+    <div style="background:#2e2820;color:#c4bcac;font-size:.7rem;padding:10px 16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+      <span>© 2006–2013 BUD-MAX. Wszelkie prawa zastrzeżone.</span>
+      <span>Ostatnia aktualizacja: 02.2013</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WIDOK PO — strona po metamorfozie ══ -->
+<div id="poView">
 
 <!-- Preloader -->
 <div class="preloader" id="preloader">
@@ -375,7 +475,10 @@
 
 <!-- Hero · Manifesto -->
 <header class="hero" id="hero">
-  <canvas id="heroCanvas"></canvas>
+  <video id="heroVideo" poster="img/bud-manifesto-poster.webp" loop playsinline preload="auto" aria-hidden="true">
+    <source src="img/bud-manifesto.webm" type="video/webm">
+    <source src="img/bud-manifesto.mp4" type="video/mp4">
+  </video>
   <div class="hero-glow"></div>
   <div class="hero-content">
     <span class="hero-eyebrow" id="heroEyebrow">Budownictwo premium · od 2008</span>
@@ -541,8 +644,11 @@
   <div class="footer-inner">
     <div class="footer-logo">Bud<span>max</span></div>
     <div class="footer-copy">© 2025 Budmax. Wszystkie prawa zastrzeżone.</div>
+    <div class="footer-copy" style="margin-top:10px;opacity:.65">Firma i wszystkie dane są fikcyjne — to demo metamorfozy strony wykonane przez ODNOVA°studio.</div>
   </div>
 </footer>
+
+</div><!-- /#poView -->
 
 <script>
 // ── Preloader ──
@@ -588,80 +694,36 @@ window.addEventListener('scroll', () => {
 // ── GSAP setup ──
 gsap.registerPlugin(ScrollTrigger);
 
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
+const reducedMotion = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-// ── Frame-based hero (autoplay loop) ──
-const TOTAL_FRAMES = 240;
-const frames = [];
-let framesLoaded = 0;
-let currentFrame = 0;
+// ── Hero: ta sama animacja co wcześniej (240 klatek, 17 fps), ale jako wideo.
+// Sekwencja WebP ważyła 54,8 MB i cała szła do przeglądarki przed startem;
+// webm/mp4 to ~3,7 MB i zaczyna grać po pierwszym fragmencie.
+const heroVideo = document.getElementById('heroVideo');
+heroVideo.muted = true;              // atrybut w markupie bywa ignorowany, a bez tego play() blokuje autoplay
+heroVideo.playsInline = true;
+heroVideo.addEventListener('loadeddata', () => updatePreloader(100), { once: true });
+heroVideo.addEventListener('error', () => updatePreloader(100), { once: true });
+updatePreloader(35);
 
-function pad(n) { return String(n).padStart(4, '0'); }
-
-function resizeCanvas() {
-  const rect = canvas.parentElement.getBoundingClientRect();
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = Math.round(rect.width * dpr);
-  canvas.height = Math.round(rect.height * dpr);
-  drawFrame();
+function playHero() {
+  if (reducedMotion) return;         // zostaje poster, bez ruchu
+  const pr = heroVideo.play();
+  if (pr && pr.catch) pr.catch(() => {});
 }
 
-function drawFrame() {
-  const img = frames[Math.min(Math.max(currentFrame, 0), TOTAL_FRAMES - 1)];
-  if (!img || !img.complete || !img.naturalWidth) return;
-  const cw = canvas.width, ch = canvas.height;
-  const iw = img.naturalWidth, ih = img.naturalHeight;
-  const scale = Math.max(cw / iw, ch / ih);
-  const w = iw * scale, h = ih * scale;
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
-}
-
-window.addEventListener('resize', resizeCanvas);
-
-// Preload all frames
-for (let i = 0; i < TOTAL_FRAMES; i++) {
-  const img = new Image();
-  img.src = `./frames-budmax/frame_${pad(i)}.webp`;
-  img.onload = () => {
-    framesLoaded++;
-    if (framesLoaded === 1) { resizeCanvas(); }
-    updatePreloader(15 + Math.round(85 * framesLoaded / TOTAL_FRAMES));
-  };
-  img.onerror = () => { framesLoaded++; };
-  frames[i] = img;
-}
-resizeCanvas();
-
-// Cinematic autoplay loop (~14s, slow-burn 17fps)
-const HERO_FPS = 17;
-let heroLast = performance.now(), heroAcc = 0;
-function heroLoop(t) {
-  heroAcc += t - heroLast; heroLast = t;
-  const step = 1000 / HERO_FPS;
-  if (heroAcc >= step) {
-    const advance = Math.floor(heroAcc / step);
-    heroAcc -= advance * step;
-    currentFrame = (currentFrame + advance) % TOTAL_FRAMES;
-    drawFrame();
-  }
-  requestAnimationFrame(heroLoop);
-}
-requestAnimationFrame(heroLoop);
-
-// Subtle mouse parallax on the hero canvas
-gsap.set(canvas, { scale: 1.08 }); // headroom so edges never show
-const parX = gsap.quickTo(canvas, 'x', { duration: 0.9, ease: 'power3.out' });
-const parY = gsap.quickTo(canvas, 'y', { duration: 0.9, ease: 'power3.out' });
+// Subtle mouse parallax on the hero video
+gsap.set(heroVideo, { scale: 1.08 }); // headroom so edges never show
+const parX = gsap.quickTo(heroVideo, 'x', { duration: 0.9, ease: 'power3.out' });
+const parY = gsap.quickTo(heroVideo, 'y', { duration: 0.9, ease: 'power3.out' });
 window.addEventListener('mousemove', (e) => {
   parX((e.clientX / innerWidth - 0.5) * 26);
   parY((e.clientY / innerHeight - 0.5) * 18);
 });
 
-// Hero intro timeline
-const heroIntro = gsap.timeline({ delay: 0.4 });
+// Hero intro timeline — startuje dopiero przy wejściu w widok PO,
+// żeby użytkownik nie przegapił go, oglądając wersję PRZED.
+const heroIntro = gsap.timeline({ paused: true, delay: 0.4 });
 heroIntro
   .to('#heroEyebrow', { opacity: 1, duration: 0.8, ease: 'power2.out' })
   .to('#heroTitle .line span', { y: 0, duration: 1.1, stagger: 0.14, ease: 'power4.out' }, '-=0.45')
@@ -756,6 +818,50 @@ gsap.to('#scrollHint', {
   opacity: 0, ease: 'none',
   scrollTrigger: { trigger: '#hero', start: 'top top', end: '18% top', scrub: 0.5 }
 });
+
+// ── Przełącznik PRZED / PO (wzorzec wspólny dla wszystkich dem ODNOVA) ──
+const btnPrzed = document.getElementById('btnPrzed');
+const btnPo    = document.getElementById('btnPo');
+const ctaReveal = document.getElementById('ctaReveal');
+let poShown = false;
+
+function showPo() {
+  document.body.classList.remove('view-przed');
+  document.body.classList.add('view-po');
+  window.scrollTo(0, 0);
+  // #poView był display:none, więc ScrollTrigger ma zapamiętane zerowe wysokości
+  ScrollTrigger.refresh();
+  playHero();
+  if (!poShown) { poShown = true; heroIntro.play(); }
+}
+
+function showPrzed() {
+  document.body.classList.remove('view-po');
+  document.body.classList.add('view-przed');
+  window.scrollTo(0, 0);
+  heroVideo.pause();
+}
+
+btnPo.addEventListener('click', showPo);
+btnPrzed.addEventListener('click', showPrzed);
+
+// CTA na widoku PRZED: przycisk odlatuje w górę, potem wjeżdża nowa strona
+let revealing = false;
+ctaReveal.addEventListener('click', () => {
+  if (revealing) return;
+  revealing = true;
+  ctaReveal.style.animation = 'ctaFly .62s cubic-bezier(.5,0,.75,0) forwards';
+  ctaReveal.style.pointerEvents = 'none';
+  setTimeout(() => {
+    showPo();
+    revealing = false;
+    ctaReveal.style.animation = 'ctaIn .55s cubic-bezier(.16,1,.3,1) both';
+    ctaReveal.style.pointerEvents = 'auto';
+  }, 600);
+});
+
+// ?po=1 — wejście od razu w wersję po metamorfozie (przydatne przy podglądzie)
+if (/[?&]po=1/.test(location.search)) showPo();
 </script>
 </body>
 </html>

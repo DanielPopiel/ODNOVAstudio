@@ -7,3 +7,8 @@ dev-server.js
 *.bak
 .claude/
 .thumbnail
+
+# materiał źródłowy — zostaje lokalnie, ale nie idzie na serwer
+# frames-budmax: 240 klatek (54,8 MB), z których zakodowano img/bud-manifesto.webm
+frames-budmax/
+uploads/

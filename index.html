@@ -3,9 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ODNOVA°studio — metamorfozy stron internetowych dla małych firm</title>
+<meta name="description" content="Zamieniamy przestarzałe strony w nowoczesne wizytówki, które budują zaufanie i sprzedają. Realizacja w 7 dni, darmowy audyt i wycena. Zobacz metamorfozy na żywo.">
+<link rel="canonical" href="https://www.odnovastudio.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ODNOVA°studio">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://www.odnovastudio.com/">
+<meta property="og:title" content="ODNOVA°studio — metamorfozy stron internetowych dla małych firm">
+<meta property="og:description" content="Twoja strona wygląda jak z 2008 roku? Zamieniamy przestarzałe witryny w nowoczesne wizytówki. Realizacja w 7 dni, darmowy audyt.">
+<meta property="og:image" content="https://www.odnovastudio.com/img/og-odnova.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ODNOVA°studio — stare strony, nowe życie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a12">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="./favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<script>
+  // Wejście z podstrony demo (link "← Portfolio") albo dowolny deep-link z #kotwicą
+  // pomija intro: ta sama reguła co przy prefers-reduced-motion, patrz <style> niżej.
+  try {
+    var skip = location.hash.length > 1 || /[?&]skipIntro=1/.test(location.search);
+    if (skip) document.documentElement.className += ' no-intro';
+  } catch (e) {}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -39,6 +62,11 @@
     [data-hero],[data-beam]{animation:none!important;opacity:1!important;transform:none!important}
     [data-evo-marker]{animation:none!important}
   }
+  /* Powrót z demo / deep-link — od razu treść, bez kurtyny i wjazdów hero */
+  html.no-intro [data-intro]{display:none!important}
+  html.no-intro [data-hero]{animation:none!important;opacity:1!important;transform:none!important}
+  /* kotwice nie mogą chować się pod przyklejonym navem (68px) */
+  section[id]{scroll-margin-top:88px}
   /* ===== karty portfolio: pływające okna ===== */
   .pf-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#16161f,#111119);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .3s ease,border-color .3s ease;will-change:transform}
   .pf-card:hover{border-color:rgba(124,92,255,.55);box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 42px -18px rgba(124,92,255,.6)}
@@ -111,18 +139,18 @@
 <div ref="{{ rootRef }}" style="position:relative;background:#0a0a12;color:#f2f2f7;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;min-height:100vh">
 
   <div ref="{{ introRef }}" data-intro="true" aria-hidden="true" style="position:fixed;inset:0;z-index:300;pointer-events:none">
-    <div style="position:absolute;left:0;right:0;top:0;height:50.5%;background:#07070d;animation:curtainUp .85s cubic-bezier(.76,0,.24,1) 1.5s both"></div>
-    <div style="position:absolute;left:0;right:0;bottom:0;height:50.5%;background:#07070d;animation:curtainDown .85s cubic-bezier(.76,0,.24,1) 1.5s both"></div>
-    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;animation:introFade .4s ease 1.45s both">
+    <div style="position:absolute;left:0;right:0;top:0;height:50.5%;background:#07070d;animation:curtainUp 1.25s cubic-bezier(.76,0,.24,1) 2.25s both"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:50.5%;background:#07070d;animation:curtainDown 1.25s cubic-bezier(.76,0,.24,1) 2.25s both"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;animation:introFade .6s ease 2.2s both">
       <div style="overflow:hidden;padding:6px 0">
-        <div style="display:flex;align-items:center;gap:18px;animation:introLogo .8s cubic-bezier(.22,1,.36,1) .15s both"><svg width="58" height="62" viewBox="0 0 76 84"><defs><linearGradient id="introLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#introLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#introLogoG)"></circle></svg><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,3.6rem);letter-spacing:.02em;color:#f2f2f7">ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></div></div>
+        <div style="display:flex;align-items:center;gap:18px;animation:introLogo 1.2s cubic-bezier(.22,1,.36,1) .25s both"><svg width="58" height="62" viewBox="0 0 76 84"><defs><linearGradient id="introLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#introLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#introLogoG)"></circle></svg><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,3.6rem);letter-spacing:.02em;color:#f2f2f7">ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></div></div>
       </div>
-      <div style="width:min(320px,60vw);height:2px;background:linear-gradient(90deg,#7c5cff,#00e5b0);transform-origin:left;animation:introLine .7s cubic-bezier(.22,1,.36,1) .75s both"></div>
-      <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#9a9aad;animation:introTag .8s ease .95s both">Stare strony · Nowe życie</div>
+      <div style="width:min(320px,60vw);height:2px;background:linear-gradient(90deg,#7c5cff,#00e5b0);transform-origin:left;animation:introLine 1.05s cubic-bezier(.22,1,.36,1) 1.15s both"></div>
+      <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#9a9aad;animation:introTag 1.2s ease 1.45s both">Stare strony · Nowe życie</div>
     </div>
   </div>
 
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,18,.72);border-bottom:1px solid rgba(255,255,255,.08);animation:navIn .7s cubic-bezier(.22,1,.36,1) 1.75s both" data-hero="true">
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,18,.72);border-bottom:1px solid rgba(255,255,255,.08);animation:navIn 1.05s cubic-bezier(.22,1,.36,1) 2.65s both" data-hero="true">
     <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px">
       <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:.02em;color:#f2f2f7;text-decoration:none"><svg width="30" height="32" viewBox="0 0 76 84"><defs><linearGradient id="navLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#navLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#navLogoG)"></circle></svg><span class="nav-logo-text">ODNOVA<span class="nav-logo-suffix" style="font-weight:400;color:#9a9aad">°studio</span></span></a>
       <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
@@ -143,13 +171,13 @@
     <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.16;pointer-events:none;background:#00e5b0;top:-120px;right:-200px"></div>
     <canvas id="heroNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
     <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:2">
-      <div data-hero="true" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:7px 16px;border-radius:99px;font-size:.82rem;color:#9a9aad;margin-bottom:28px;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 1.8s both">
+      <div data-hero="true" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:7px 16px;border-radius:99px;font-size:.82rem;color:#9a9aad;margin-bottom:28px;animation:heroUp 1.2s cubic-bezier(.22,1,.36,1) 2.75s both">
         <span style="width:8px;height:8px;border-radius:50%;background:#00e5b0;box-shadow:0 0 12px #00e5b0;display:inline-block"></span>
         Przyjmujemy nowe projekty
       </div>
-      <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0"><span style="display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em"><span data-hero="true" style="display:block;animation:wordUp .9s cubic-bezier(.22,1,.36,1) 1.9s both">Stare strony.</span></span><span style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span data-hero="true" style="display:block;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent;animation:wordUp .9s cubic-bezier(.22,1,.36,1) 2.02s both">Nowe życie.</span></span></h1>
-      <p data-hero="true" style="max-width:620px;margin:26px auto 0;color:#9a9aad;font-size:1.12rem;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 2.15s both">Twoja strona wygląda jak z 2008 roku i odstrasza klientów? Zamieniamy przestarzałe witryny w nowoczesne wizytówki, które budują zaufanie i sprzedają.</p>
-      <div data-hero="true" style="display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap;animation:heroUp .8s cubic-bezier(.22,1,.36,1) 2.3s both">
+      <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0"><span style="display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em"><span data-hero="true" style="display:block;animation:wordUp 1.35s cubic-bezier(.22,1,.36,1) 2.9s both">Stare strony.</span></span><span style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span data-hero="true" style="display:block;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent;animation:wordUp 1.35s cubic-bezier(.22,1,.36,1) 3.1s both">Nowe życie.</span></span></h1>
+      <p data-hero="true" style="max-width:620px;margin:26px auto 0;color:#9a9aad;font-size:1.12rem;animation:heroUp 1.2s cubic-bezier(.22,1,.36,1) 3.3s both">Twoja strona wygląda jak z 2008 roku i odstrasza klientów? Zamieniamy przestarzałe witryny w nowoczesne wizytówki, które budują zaufanie i sprzedają.</p>
+      <div data-hero="true" style="display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap;animation:heroUp 1.2s cubic-bezier(.22,1,.36,1) 3.5s both">
         <a href="#portfolio" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">Zobacz metamorfozy</a>
         <a href="#kontakt" style="border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s;display:inline-block" style-hover="border-color:#00e5b0;color:#f2f2f7">Bezpłatny audyt strony</a>
       </div>
@@ -773,10 +801,35 @@ class Component extends DCLogic {
     this.onResize = () => this.setState({ navOpen: window.innerWidth > 820 });
     window.addEventListener('resize', this.onResize);
 
-    // intro overlay cleanup (curtain finishes ~2.35s)
-    this._introTimer = setTimeout(() => {
+    // Wejście z demo / deep-link: intro jest wyłączone w CSS (html.no-intro),
+    // więc nakładkę zdejmujemy od razu i dojeżdżamy do kotwicy — x-dc renderuje
+    // asynchronicznie, więc w chwili wczytania sekcji jeszcze nie ma w DOM
+    // i natywny skok przeglądarki po #hash nie zadziała.
+    const skipIntro = document.documentElement.classList.contains('no-intro');
+    if (skipIntro) {
       if (this.introRef.current) this.introRef.current.style.display = 'none';
-    }, 2500);
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id && root.querySelector('#' + CSS.escape(id));
+      if (target) {
+        // Zdjęcia w kartach mają loading="lazy" bez wymiarów, więc doładowują się
+        // PO skoku i przesuwają layout — jeden scrollIntoView zostawiał sekcję
+        // ~200 px za wysoko. Stąd ponowienia, aż pozycja się ustabilizuje.
+        const snap = () => {
+          const prev = document.documentElement.style.scrollBehavior;
+          document.documentElement.style.scrollBehavior = 'auto';
+          target.scrollIntoView();
+          document.documentElement.style.scrollBehavior = prev;
+        };
+        snap();
+        this._anchorTimers = [80, 300, 900].map(ms => setTimeout(snap, ms));
+        window.addEventListener('load', snap, { once: true });
+      }
+    } else {
+      // intro overlay cleanup (kurtyna kończy się ~3.5s)
+      this._introTimer = setTimeout(() => {
+        if (this.introRef.current) this.introRef.current.style.display = 'none';
+      }, 3700);
+    }
 
     // reveal-on-scroll
     const io = new IntersectionObserver(es => es.forEach(e => {
@@ -1383,6 +1436,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     if (this._introTimer) clearTimeout(this._introTimer);
+    if (this._anchorTimers) this._anchorTimers.forEach(clearTimeout);
     if (this._evoTimer) clearTimeout(this._evoTimer);
     if (this.onResize) window.removeEventListener('resize', this.onResize);
     if (this.evoScroll) window.removeEventListener('scroll', this.evoScroll);
