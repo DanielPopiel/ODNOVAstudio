@@ -31,7 +31,29 @@
   .cta-reveal::before{content:'';position:absolute;z-index:-2;left:-60%;top:-200%;width:220%;height:500%;background:conic-gradient(#7c5cff,#00e5b0,#5b8bff,#7c5cff);animation:ctaSpin 3.4s linear infinite}
   .cta-reveal::after{content:'';position:absolute;z-index:-1;inset:2px;border-radius:99px;background:#14121f}
   @keyframes ctaSpin{to{transform:rotate(360deg)}}
-  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal,.cta-reveal::before{animation:none!important}}
+  @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal,.cta-reveal::before{animation:none!important}.cp-card,.cp-deck{transition:none!important}.cp-card.s0::after{animation:none!important}}
+
+  /* ---- hero: talia kart z pizzami (parallax 3D + auto-tasowanie) ---- */
+  .cp-stage{position:relative;aspect-ratio:1;max-width:440px;width:100%;margin:0 auto;perspective:1100px;perspective-origin:50% 45%}
+  .cp-deck{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.3,1)}
+  .cp-card{position:absolute;left:50%;top:50%;width:62%;aspect-ratio:1/1;background:#fff;padding:9px;border-radius:18px;
+           cursor:pointer;transform-style:preserve-3d;will-change:transform;box-shadow:0 20px 44px rgba(60,30,10,.22);
+           transition:transform .8s cubic-bezier(.22,.9,.28,1),opacity .55s ease,box-shadow .3s ease}
+  .cp-card img{display:block;width:100%;height:100%;object-fit:cover;border-radius:11px}
+  .cp-cap{position:absolute;left:9px;right:9px;bottom:9px;background:rgba(20,10,5,.74);color:#fff;border-radius:0 0 11px 11px;
+          font-size:.72rem;font-weight:700;padding:7px 11px;display:flex;justify-content:space-between;gap:10px}
+  .cp-cap i{font-style:normal;color:#f0b45a}
+  .cp-card.s0{transform:translate(-50%,-38%) rotate(-2deg)  scale(1.06) translateZ(80px);z-index:4;opacity:1}
+  .cp-card.s1{transform:translate(-104%,-84%) rotate(-9deg) scale(.78)  translateZ(30px);z-index:3;opacity:1}
+  .cp-card.s2{transform:translate(4%,-78%)   rotate(8deg)   scale(.76)  translateZ(10px);z-index:2;opacity:1}
+  .cp-card.sh{transform:translate(-50%,-44%) rotate(0deg)   scale(.62)  translateZ(-90px);z-index:1;opacity:0;pointer-events:none}
+  .cp-card.s1:hover,.cp-card.s2:hover{box-shadow:0 30px 60px rgba(60,30,10,.34);filter:brightness(1.05)}
+  .cp-card.s1:hover{transform:translate(-104%,-88%) rotate(-5deg) scale(.84) translateZ(60px)}
+  .cp-card.s2:hover{transform:translate(4%,-82%)    rotate(4deg)  scale(.82) translateZ(60px)}
+  .cp-card.s0::after{content:'';position:absolute;inset:9px;border-radius:11px;pointer-events:none;
+    background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.55) 48%,transparent 58%);
+    background-size:260% 100%;animation:cpSheen 4.2s ease-in-out 1.2s infinite}
+  @keyframes cpSheen{0%{background-position:180% 0}55%,100%{background-position:-80% 0}}
   @media(max-width:680px){
     .odn-toolbar-label{display:none!important}
     .odn-toolbar{padding:0 14px!important}
@@ -39,6 +61,7 @@
     .odn-nav-logo{font-size:1.05rem!important}
     .odn-nav-cta{padding:9px 14px!important;font-size:.72rem!important}
     .odn-grid-2{grid-template-columns:1fr!important;gap:32px!important}
+    .cp-stage{max-width:min(320px,78vw)!important}
   }
 </style>
 </helmet>
@@ -136,9 +159,17 @@
             <a href="#zamow" style="color:#2b1c12;text-decoration:none;font-weight:700;font-size:.92rem;border-bottom:2px solid #d63426;padding-bottom:2px">Zamów telefonicznie →</a>
           </div>
         </div>
-        <div style="position:relative;aspect-ratio:1;max-width:440px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 45% 40%,#f4c26b 0 58%,#d9913c 58% 70%,#c8752a 70% 100%);box-shadow:0 30px 60px rgba(120,60,20,.28),inset 0 -10px 30px rgba(120,60,20,.25);display:flex;align-items:center;justify-content:center;font-size:8rem">🍕
-          <div style="position:absolute;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700;top:8%;left:-6%;color:#5a7d4a">🌿 Składniki z Włoch</div>
-          <div style="position:absolute;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700;bottom:10%;right:-4%;color:#d63426">⏱ Dowóz do 35 min</div>
+        <div class="cp-stage" onMouseEnter="{{ cpPause }}" onMouseLeave="{{ cpLeave }}" onMouseMove="{{ cpTilt }}">
+          <div ref="{{ cpDeckRef }}" class="cp-deck">
+            <sc-for list="{{ cpCards }}" as="c" hint-placeholder-count="6">
+              <div class="{{ c.cls }}" onClick="{{ c.onClick }}" style="transition-delay:{{ c.delay }}" title="{{ c.name }}">
+                <img src="{{ c.img }}" alt="{{ c.name }}"></img>
+                <div class="cp-cap"><span>{{ c.name }}</span><i>{{ c.price }}</i></div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;z-index:6;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700;top:-5%;right:-5%;color:#5a7d4a">🌿 Składniki z Włoch</div>
+          <div style="position:absolute;z-index:6;background:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 12px 30px rgba(60,30,10,.15);font-size:.82rem;font-weight:700;bottom:-8%;left:-6%;color:#d63426">⏱ Dowóz do 35 min</div>
         </div>
       </div>
     </header>
@@ -215,8 +246,9 @@
             <div><b style="font-family:'Fraunces';font-size:1.9rem;color:#f0b45a;display:block;line-height:1.1">4.8★</b><span style="font-size:.82rem;color:#c9b8a4">ocena Google (632 opinie)</span></div>
           </div>
         </div>
-        <div style="aspect-ratio:4/3;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 24px 50px rgba(0,0,0,.4)">
+        <div onMouseEnter="{{ marcoPlay }}" onMouseLeave="{{ marcoStop }}" style="aspect-ratio:4/3;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 24px 50px rgba(0,0,0,.4);cursor:pointer">
           <img src="img/pizza-chef.png" alt="Marco przy piecu opalanym drewnem" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+          <video ref="{{ marcoVideoRef }}" src="img/pizza-chef-toss.mp4" loop muted playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ marcoVideoOpacity }};transition:opacity .35s ease"></video>
           <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,10,5,.75),transparent 55%)"></div>
           <div style="position:absolute;left:22px;bottom:20px;z-index:2;color:#fff"><b style="display:block;font-family:'Fraunces';font-size:1.15rem">Marco</b><span style="font-size:.76rem;color:#e8cba8">Pizzaiolo od 2008 roku</span></div>
           <div style="position:absolute;top:16px;right:16px;width:104px;height:104px;border-radius:50%;border:3px solid #fdf7ee;box-shadow:0 10px 24px rgba(0,0,0,.4);overflow:hidden;z-index:2"><img src="img/pizza-special.png" alt="Pizza Bella Special z burratą" style="width:100%;height:100%;object-fit:cover"></img></div>
@@ -248,6 +280,9 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   rootRef = React.createRef();
+  marcoVideoRef = React.createRef();
+  cpDeckRef = React.createRef();
+  CP_SLOTS = ['s0', 's1', 's2'];
 
   DISHES = [
     { img: 'img/pizza-real-margherita.png', name: 'Margherita D.O.P.', price: '29 zł', desc: 'San Marzano, mozzarella fior di latte, świeża bazylia, oliwa extra vergine.', tag: 'Klasyka', cat: 'klasyczne', tagBg: '#eef3e8', tagColor: '#5a7d4a' },
@@ -269,7 +304,65 @@ class Component extends DCLogic {
     { key: 'ananas', em: '🍍', name: 'Ananas', price: 5 },
   ];
 
-  state = { view: 'before', activeCat: 'all', selectedToppings: {} };
+  state = { view: 'before', activeCat: 'all', selectedToppings: {}, marcoHover: false,
+            cpOffset: 0, cpReady: false, cpEntered: false };
+
+  componentWillUnmount() {
+    clearTimeout(this._cpEnterTimer);
+    clearTimeout(this._cpDoneTimer);
+    this.cpStop();
+  }
+
+  get cpReduced() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  // rozdanie kart — odpalane dopiero, gdy intro zejdzie z ekranu
+  cpBegin = () => {
+    if (this._cpBegun) return;
+    this._cpBegun = true;
+    this._cpEnterTimer = setTimeout(() => {
+      this.setState({ cpReady: true });
+      this._cpDoneTimer = setTimeout(() => {
+        this.setState({ cpEntered: true });
+        this.cpStart();
+      }, this.DISHES.length * 110 + 900);
+    }, 3600);
+  };
+  cpStart = () => {
+    if (this._cpTimer || this.cpReduced) return;
+    this._cpTimer = setInterval(
+      () => this.setState(s => ({ cpOffset: (s.cpOffset + 1) % this.DISHES.length })),
+      4000
+    );
+  };
+  cpStop = () => { clearInterval(this._cpTimer); this._cpTimer = null; };
+  cpPause = () => this.cpStop();
+  cpLeave = () => {
+    const d = this.cpDeckRef.current;
+    if (d) d.style.transform = '';
+    this.cpStart();
+  };
+  cpTilt = (e) => {
+    const d = this.cpDeckRef.current;
+    if (!d || this.cpReduced) return;
+    const r = d.parentElement.getBoundingClientRect();
+    const dx = (e.clientX - r.left) / r.width - 0.5;
+    const dy = (e.clientY - r.top) / r.height - 0.5;
+    d.style.transform = 'rotateY(' + (dx * 16).toFixed(2) + 'deg) rotateX(' + (-dy * 12).toFixed(2) + 'deg)';
+  };
+  cpPromote = (i) => { this.setState({ cpOffset: i }); this.cpStop(); this.cpStart(); };
+
+  marcoPlay = () => {
+    this.setState({ marcoHover: true });
+    const v = this.marcoVideoRef.current;
+    if (v) { v.muted = true; v.currentTime = 0; v.play().catch(() => {}); }
+  };
+  marcoStop = () => {
+    this.setState({ marcoHover: false });
+    const v = this.marcoVideoRef.current;
+    if (v) v.pause();
+  };
 
   showBefore = () => this.setState({ view: 'before' });
   reveal = () => {
@@ -287,6 +380,7 @@ class Component extends DCLogic {
       if (this._introTimer) clearTimeout(this._introTimer);
       this._introTimer = setTimeout(() => this.setState({ introPlaying: false }), 4300);
     }
+    this.cpBegin();
   };
   setCat = (cat) => this.setState({ activeCat: cat });
   toggleTopping = (key) => this.setState(s => ({ selectedToppings: { ...s.selectedToppings, [key]: !s.selectedToppings[key] } }));
@@ -356,8 +450,31 @@ class Component extends DCLogic {
     const n = checkedList.length;
     const builderMsg = n === 0 ? 'Twoja pizza:' : n < 3 ? 'Dobry wybór! 👌' : n < 5 ? 'Robi się poważnie 🔥' : 'Pizzaiolo aprobuje! 👨‍🍳';
 
+    const cpLen = this.DISHES.length;
+    const cpCards = this.DISHES.map((d, i) => {
+      const pos = (i - this.state.cpOffset + cpLen * 10) % cpLen;
+      const slot = (this.state.cpReady && pos < this.CP_SLOTS.length) ? this.CP_SLOTS[pos] : 'sh';
+      return {
+        img: d.img,
+        name: d.name,
+        price: d.price,
+        cls: 'cp-card ' + slot,
+        delay: this.state.cpEntered ? '0ms' : (i * 110) + 'ms',
+        onClick: () => this.cpPromote(i),
+      };
+    });
+
     return {
       rootRef: this.rootRef,
+      marcoVideoRef: this.marcoVideoRef,
+      cpCards,
+      cpDeckRef: this.cpDeckRef,
+      cpPause: this.cpPause,
+      cpLeave: this.cpLeave,
+      cpTilt: this.cpTilt,
+      marcoPlay: this.marcoPlay,
+      marcoStop: this.marcoStop,
+      marcoVideoOpacity: this.state.marcoHover ? 1 : 0,
       introDisplay: this.state.introPlaying ? 'block' : 'none',
       beforeDisplay: isAfter ? 'none' : 'block',
       afterDisplay: isAfter ? 'block' : 'none',
