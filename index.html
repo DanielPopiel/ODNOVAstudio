@@ -67,31 +67,62 @@
   html.no-intro [data-hero]{animation:none!important;opacity:1!important;transform:none!important}
   /* kotwice nie mogą chować się pod przyklejonym navem (68px) */
   section[id]{scroll-margin-top:88px}
-  /* ===== karty portfolio: pływające okna ===== */
-  .pf-card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#16161f,#111119);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .3s ease,border-color .3s ease;will-change:transform}
-  .pf-card:hover{border-color:rgba(124,92,255,.55);box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 42px -18px rgba(124,92,255,.6)}
-  .pf-stage{position:relative;height:238px;overflow:hidden;perspective:900px;background:radial-gradient(120% 100% at 28% 0%,rgba(124,92,255,.16),transparent 60%),radial-gradient(120% 100% at 92% 100%,rgba(0,229,176,.13),transparent 55%),#0c0c14;animation:pfFloat 7s ease-in-out infinite;animation-delay:var(--d,0s)}
-  @keyframes pfFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  .pf-win{position:absolute;border-radius:10px;overflow:hidden;background:#0c0c12;box-shadow:0 18px 40px -16px rgba(0,0,0,.85);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .7s ease,filter .7s ease,opacity .7s ease}
-  .pf-win img{display:block;width:100%;height:calc(100% - 16px);object-fit:cover;object-position:top}
-  .pf-bar{height:16px;display:flex;align-items:center;gap:4px;padding:0 7px}
-  .pf-bar.light{background:#e9e9ee}.pf-bar.dark{background:#20202b}
-  .pf-bar i{width:5px;height:5px;border-radius:50%}
-  .pf-bar.light i{background:#c3c3cc}
-  .pf-bar.dark i:nth-child(1){background:#ff5f57}.pf-bar.dark i:nth-child(2){background:#febc2e}.pf-bar.dark i:nth-child(3){background:#28c840}
-  .pf-lbl{position:absolute;bottom:8px;left:8px;font-family:'Sora',sans-serif;font-size:.55rem;font-weight:800;letter-spacing:.12em;padding:3px 8px;border-radius:99px;background:rgba(10,10,18,.72);color:#c9c2b4;border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(4px)}
-  .pf-lbl.po{color:#00e5b0;border-color:rgba(0,229,176,.5)}
-  .pf-before{width:62%;height:150px;left:6%;top:26px;transform:rotate(-5deg);z-index:1;filter:grayscale(.5) brightness(.82) contrast(.92);opacity:.9}
-  .pf-after{width:66%;height:162px;right:5%;bottom:20px;transform:rotate(3deg);z-index:2;box-shadow:0 26px 55px -18px rgba(0,0,0,.9),0 0 30px -14px rgba(124,92,255,.5)}
-  .pf-card:hover .pf-before{transform:rotate(-12deg) translate(-30px,-22px) scale(.9);opacity:.45}
-  .pf-card:hover .pf-after{transform:rotate(1deg) translate(26px,-20px) scale(1.12);box-shadow:0 42px 90px -18px rgba(0,0,0,.95),0 0 60px -10px rgba(0,229,176,.7)}
-  .pf-body{padding:22px 26px 26px;display:flex;flex-direction:column;flex:1}
-  .pf-cat{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px}
-  .pf-title{font-family:'Sora',sans-serif;font-size:1.25rem;margin:0 0 8px}
-  .pf-desc{font-size:.9rem;color:#9a9aad;flex:1;margin:0}
-  .pf-link{margin-top:18px;font-weight:700;font-size:.9rem;color:#7c5cff;display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease,color .25s ease}
-  .pf-card:hover .pf-link{gap:12px;color:#9d7bff}
-  @media(prefers-reduced-motion:reduce){.pf-stage{animation:none}.pf-win{transition:none}}
+  /* ===== portfolio: lista realizacji + duży podgląd PRZED/PO ===== */
+  .pfx-grid{display:grid;grid-template-columns:396px 1fr;gap:26px;align-items:start}
+  .pfx-list{display:flex;flex-direction:column;gap:12px;margin:0;padding:0}
+  .pfx-item{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:#12121b;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:11px 18px 11px 11px;color:inherit;font-family:inherit;cursor:pointer;transition:border-color .25s ease,background .25s ease,box-shadow .25s ease}
+  .pfx-item:hover{border-color:rgba(124,92,255,.45);background:#16161f}
+  .pfx-item:focus-visible{outline:2px solid #9d7bff;outline-offset:3px}
+  .pfx-item.is-active{border-color:#7c5cff;background:linear-gradient(115deg,rgba(124,92,255,.17),#14141e 62%);box-shadow:0 0 36px -12px rgba(124,92,255,.75)}
+  .pfx-thumb{flex:none;width:104px;height:66px;border-radius:12px;overflow:hidden;background:#0c0c14;border:1px solid rgba(255,255,255,.08)}
+  .pfx-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+  .pfx-txt{flex:1;min-width:0}
+  .pfx-name{display:block;font-family:'Sora',sans-serif;font-weight:700;font-size:1.06rem;line-height:1.25;color:#f2f2f7}
+  .pfx-cat{display:block;font-size:.85rem;color:#9a9aad;margin-top:3px}
+  .pfx-arrow{flex:none;color:#9a9aad;font-size:1.05rem;transition:transform .25s ease,color .25s ease}
+  .pfx-item:hover .pfx-arrow,.pfx-item.is-active .pfx-arrow{color:#9d7bff;transform:translateX(4px)}
+  .pfx-detail{background:#12121b;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden}
+  .pfx-stage{position:relative;display:block;aspect-ratio:909/540;background:#0c0c14;cursor:pointer;text-decoration:none;color:inherit}
+  .pfx-stage:focus-visible{outline:2px solid #9d7bff;outline-offset:-3px}
+  .pfx-open{position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;font-family:'Sora',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:9px 17px;border-radius:99px;background:rgba(10,10,18,.78);border:1px solid rgba(124,92,255,.6);color:#f2f2f7;backdrop-filter:blur(6px);opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;pointer-events:none}
+  .pfx-stage:hover .pfx-open,.pfx-stage:focus-visible .pfx-open{opacity:1;transform:none}
+  @media(hover:none){.pfx-open{opacity:1;transform:none}}
+  .pfx-shot{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+  .pfx-shot.is-active{opacity:1}
+  .pfx-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:opacity .4s ease}
+  .pfx-shot .pfx-old{opacity:0;filter:grayscale(.35) brightness(.9)}
+  .pfx-detail.show-before .pfx-shot .pfx-old{opacity:1}
+  .pfx-badge{position:absolute;left:18px;bottom:18px;font-family:'Sora',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.14em;padding:6px 15px;border-radius:99px;background:rgba(10,10,18,.72);border:1px solid rgba(0,229,176,.5);color:#00e5b0;backdrop-filter:blur(4px)}
+  .pfx-detail.show-before .pfx-badge{border-color:rgba(255,255,255,.18);color:#c9c2b4}
+  .pfx-info{display:flex;gap:28px;align-items:flex-end;padding:24px 28px 26px;flex-wrap:wrap}
+  .pfx-info-txt{flex:1;min-width:250px}
+  .pfx-d-cat{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px}
+  .pfx-d-name{font-family:'Sora',sans-serif;font-size:1.45rem;margin:0 0 8px}
+  .pfx-d-desc{font-size:.92rem;color:#9a9aad;margin:0;max-width:54ch}
+  .pfx-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .pfx-toggle{display:inline-flex;background:#0c0c14;border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:4px}
+  .pfx-toggle button{border:0;background:transparent;color:#9a9aad;font-family:'Sora',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:.1em;padding:9px 21px;border-radius:99px;cursor:pointer;transition:background .25s ease,color .25s ease}
+  .pfx-toggle button:hover{color:#f2f2f7}
+  .pfx-toggle button:focus-visible{outline:2px solid #9d7bff;outline-offset:2px}
+  .pfx-toggle button.is-on{background:#00e5b0;color:#06110d}
+  .pfx-cta{font-weight:700;font-size:.92rem;color:#7c5cff;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:gap .25s ease,color .25s ease}
+  .pfx-cta:hover{gap:12px;color:#9d7bff}
+  @media(max-width:1040px){
+    .pfx-grid{grid-template-columns:1fr;gap:20px}
+    .pfx-list{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:8px}
+    .pfx-list::-webkit-scrollbar{height:6px}
+    .pfx-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:99px}
+    .pfx-item{flex:0 0 auto;width:auto;scroll-snap-align:start;padding:9px 16px 9px 9px;gap:12px}
+    .pfx-thumb{width:66px;height:44px}
+    .pfx-name{font-size:.95rem}
+    .pfx-cat,.pfx-arrow{display:none}
+  }
+  @media(max-width:640px){
+    .pfx-info{padding:20px;gap:20px}
+    .pfx-actions{width:100%;justify-content:space-between;gap:14px}
+    .pfx-d-name{font-size:1.25rem}
+  }
+  @media(prefers-reduced-motion:reduce){.pfx-shot,.pfx-shot img,.pfx-item,.pfx-arrow,.pfx-open{transition:none}}
   @media(max-width:600px){
     .nav-logo-text{font-size:1.02rem!important}
     .nav-logo svg{width:24px!important;height:26px!important}
@@ -533,87 +564,87 @@
       <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
         <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Portfolio</div>
         <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Zobacz metamorfozy na żywo</h2>
-        <p style="color:#9a9aad;margin-top:16px">Każda realizacja ma interaktywny przełącznik <b style="color:#f2f2f7">PRZED / PO</b> — kliknij i zobacz różnicę na własne oczy.</p>
+        <p style="color:#9a9aad;margin-top:16px">Wybierz realizację z listy i przełącz <b style="color:#f2f2f7">PRZED / PO</b> — zobacz różnicę na własne oczy.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px">
+      <div class="pfx-grid" data-pfx="true" data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease">
 
-        <a class="pf-card" data-proj="true" href="Demo%20Fryzjer.dc.html">
-          <div class="pf-stage" style="--d:0s">
-            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" loading="lazy"><span class="pf-lbl">PRZED</span></div>
-            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-fryzjer.png" alt="Nowa strona Atelier Anna" loading="lazy"><span class="pf-lbl po">PO</span></div>
-          </div>
-          <div class="pf-body">
-            <div class="pf-cat">Beauty · Salon fryzjerski</div>
-            <h3 class="pf-title">Atelier Anna</h3>
-            <p class="pf-desc">Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
-            <span class="pf-link">Zobacz metamorfozę →</span>
-          </div>
-        </a>
+        <div class="pfx-list" role="tablist" aria-label="Zrealizowane metamorfozy">
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Fryzjer.dc.html" data-pfx-desc="Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.">
+            <span class="pfx-thumb"><img src="img/02-preview-fryzjer.png" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Atelier Anna</span><span class="pfx-cat">Beauty · Salon fryzjerski</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Autoserwis.dc.html" data-pfx-desc="Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.">
+            <span class="pfx-thumb"><img src="img/02-preview-autoserwis.webp" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Auto-Serwis Kowalski</span><span class="pfx-cat">Motoryzacja · Warsztat</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Pizzeria.dc.html" data-pfx-desc="Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.">
+            <span class="pfx-thumb"><img src="img/02-preview-pizzeria.png" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Bella Napoli</span><span class="pfx-cat">Gastronomia · Pizzeria</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Budmax.dc.html" data-pfx-desc="20 lat doświadczenia w remontach, strona &quot;w budowie&quot; od 2013. Teraz: portfolio realizacji, które samo sprzedaje.">
+            <span class="pfx-thumb"><img src="img/02-preview-budmax.png" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">BUD-MAX</span><span class="pfx-cat">Budownictwo · Remonty</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Dentysta.dc.html" data-pfx-desc="Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.">
+            <span class="pfx-thumb"><img src="img/02-preview-dentysta.png" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Dent-Med</span><span class="pfx-cat">Zdrowie · Stomatologia</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Pensjonat.dc.html" data-pfx-desc="Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.">
+            <span class="pfx-thumb"><img src="img/02-preview-pensjonat.png" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Pensjonat Pod Świerkami</span><span class="pfx-cat">Turystyka · Noclegi</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
 
-        <a class="pf-card" data-proj="true" href="Demo%20Autoserwis.dc.html">
-          <div class="pf-stage" style="--d:.9s">
-            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" loading="lazy"><span class="pf-lbl">PRZED</span></div>
-            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-autoserwis.webp" alt="Nowa strona Auto-Serwis Kowalski" loading="lazy"><span class="pf-lbl po">PO</span></div>
+        <div class="pfx-detail" id="pfx-panel" role="tabpanel" data-pfx-detail="true">
+          <a class="pfx-stage" data-pfx-stage="true" href="Demo%20Fryzjer.dc.html" aria-label="Otwórz nową stronę: Atelier Anna">
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-fryzjer.png" alt="Nowa strona Atelier Anna">
+              <img class="pfx-old" src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-autoserwis.webp" alt="Nowa strona Auto-Serwis Kowalski" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-pizzeria.png" alt="Nowa strona Bella Napoli" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-budmax.png" alt="Nowa strona BUD-MAX" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-dentysta.png" alt="Nowa strona Dent-Med" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-dentysta.png" alt="Stara strona Gabinetu Dent-Med" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-pensjonat.png" alt="Stara strona Pensjonatu U Górala" loading="lazy">
+            </div>
+            <span class="pfx-badge" data-pfx-badge="true">PO</span>
+            <span class="pfx-open" aria-hidden="true">Otwórz stronę →</span>
+          </a>
+          <div class="pfx-info">
+            <div class="pfx-info-txt">
+              <div class="pfx-d-cat" data-pfx-d-cat="true">Beauty · Salon fryzjerski</div>
+              <h3 class="pfx-d-name" data-pfx-d-name="true">Atelier Anna</h3>
+              <p class="pfx-d-desc" data-pfx-d-desc="true">Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
+            </div>
+            <div class="pfx-actions">
+              <div class="pfx-toggle">
+                <button type="button" data-pfx-mode="before" aria-pressed="false">PRZED</button>
+                <button type="button" class="is-on" data-pfx-mode="after" aria-pressed="true">PO</button>
+              </div>
+              <a class="pfx-cta" data-pfx-cta="true" href="Demo%20Fryzjer.dc.html">Zobacz metamorfozę →</a>
+            </div>
           </div>
-          <div class="pf-body">
-            <div class="pf-cat">Motoryzacja · Warsztat</div>
-            <h3 class="pf-title">Auto-Serwis Kowalski</h3>
-            <p class="pf-desc">Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.</p>
-            <span class="pf-link">Zobacz metamorfozę →</span>
-          </div>
-        </a>
-
-        <a class="pf-card" data-proj="true" href="Demo%20Pizzeria.dc.html">
-          <div class="pf-stage" style="--d:1.8s">
-            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" loading="lazy"><span class="pf-lbl">PRZED</span></div>
-            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-pizzeria.png" alt="Nowa strona Bella Napoli" loading="lazy"><span class="pf-lbl po">PO</span></div>
-          </div>
-          <div class="pf-body">
-            <div class="pf-cat">Gastronomia · Pizzeria</div>
-            <h3 class="pf-title">Bella Napoli</h3>
-            <p class="pf-desc">Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.</p>
-            <span class="pf-link">Zobacz metamorfozę →</span>
-          </div>
-        </a>
-
-        <a class="pf-card" data-proj="true" href="Demo%20Budmax.dc.html">
-          <div class="pf-stage" style="--d:.45s">
-            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" loading="lazy"><span class="pf-lbl">PRZED</span></div>
-            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-budmax.png" alt="Nowa strona BUD-MAX" loading="lazy"><span class="pf-lbl po">PO</span></div>
-          </div>
-          <div class="pf-body">
-            <div class="pf-cat">Budownictwo · Remonty</div>
-            <h3 class="pf-title">BUD-MAX</h3>
-            <p class="pf-desc">20 lat doświadczenia w remontach, strona "w budowie" od 2013. Teraz: portfolio realizacji, które samo sprzedaje.</p>
-            <span class="pf-link">Zobacz metamorfozę →</span>
-          </div>
-        </a>
-
-        <a class="pf-card" data-proj="true" href="Demo%20Dentysta.dc.html">
-          <div class="pf-stage" style="--d:1.35s">
-            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-dentysta.png" alt="Stara strona Gabinetu Dent-Med" loading="lazy"><span class="pf-lbl">PRZED</span></div>
-            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-dentysta.png" alt="Nowa strona Dent-Med" loading="lazy"><span class="pf-lbl po">PO</span></div>
-          </div>
-          <div class="pf-body">
-            <div class="pf-cat">Zdrowie · Stomatologia</div>
-            <h3 class="pf-title">Dent-Med</h3>
-            <p class="pf-desc">Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.</p>
-            <span class="pf-link">Zobacz metamorfozę →</span>
-          </div>
-        </a>
-
-        <a class="pf-card" data-proj="true" href="Demo%20Pensjonat.dc.html">
-          <div class="pf-stage" style="--d:2.25s">
-            <div class="pf-win pf-before"><div class="pf-bar light"><i></i><i></i><i></i></div><img src="img/01-preview-pensjonat.png" alt="Stara strona Pensjonatu U Górala" loading="lazy"><span class="pf-lbl">PRZED</span></div>
-            <div class="pf-win pf-after"><div class="pf-bar dark"><i></i><i></i><i></i></div><img src="img/02-preview-pensjonat.png" alt="Nowa strona Pensjonatu Pod Świerkami" loading="lazy"><span class="pf-lbl po">PO</span></div>
-          </div>
-          <div class="pf-body">
-            <div class="pf-cat">Turystyka · Noclegi</div>
-            <h3 class="pf-title">Pensjonat Pod Świerkami</h3>
-            <p class="pf-desc">Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.</p>
-            <span class="pf-link">Zobacz metamorfozę →</span>
-          </div>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -1004,22 +1035,75 @@ class Component extends DCLogic {
     root.querySelectorAll('[data-cnt]').forEach(el => cntIO.observe(el));
     this.cntIO = cntIO;
 
-    // portfolio card tilt + cursor glow (fine-pointer only)
-    if (matchMedia('(pointer:fine)').matches) {
-      this._tiltHandlers = [];
-      root.querySelectorAll('[data-proj]').forEach(card => {
-        const mm = e => {
-          const r = card.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - .5;
-          const y = (e.clientY - r.top) / r.height - .5;
-          card.style.transform = `translateY(-8px) perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
-        };
-        const ml = () => { card.style.transform = ''; };
-        card.addEventListener('mousemove', mm);
-        card.addEventListener('mouseleave', ml);
-        this._tiltHandlers.push([card, mm, ml]);
-      });
+    // portfolio: lista realizacji + duży podgląd z przełącznikiem PRZED/PO
+    const pfx = root.querySelector('[data-pfx]');
+    if (pfx) {
+      const items = Array.from(pfx.querySelectorAll('[data-pfx-item]'));
+      const shots = Array.from(pfx.querySelectorAll('[data-pfx-shot]'));
+      const detail = pfx.querySelector('[data-pfx-detail]');
+      const badge = pfx.querySelector('[data-pfx-badge]');
+      const dCat = pfx.querySelector('[data-pfx-d-cat]');
+      const dName = pfx.querySelector('[data-pfx-d-name]');
+      const dDesc = pfx.querySelector('[data-pfx-d-desc]');
+      const cta = pfx.querySelector('[data-pfx-cta]');
+      const stage = pfx.querySelector('[data-pfx-stage]');
+      const modes = Array.from(pfx.querySelectorAll('[data-pfx-mode]'));
 
+      const setMode = mode => {
+        const before = mode === 'before';
+        detail.classList.toggle('show-before', before);
+        badge.textContent = before ? 'PRZED' : 'PO';
+        modes.forEach(b => {
+          const on = b.dataset.pfxMode === mode;
+          b.classList.toggle('is-on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      };
+
+      const select = (i, focus) => {
+        items.forEach((b, k) => {
+          const on = k === i;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          b.tabIndex = on ? 0 : -1;
+        });
+        shots.forEach((s, k) => s.classList.toggle('is-active', k === i));
+        const it = items[i];
+        dCat.textContent = it.querySelector('.pfx-cat').textContent;
+        dName.textContent = it.querySelector('.pfx-name').textContent;
+        dDesc.textContent = it.dataset.pfxDesc;
+        cta.setAttribute('href', it.dataset.pfxHref);
+        cta.setAttribute('aria-label', 'Zobacz metamorfozę: ' + it.querySelector('.pfx-name').textContent);
+        stage.setAttribute('href', it.dataset.pfxHref);   // klik w podgląd = przejście na nową stronę
+        stage.setAttribute('aria-label', 'Otwórz nową stronę: ' + it.querySelector('.pfx-name').textContent);
+        setMode('after');                          // nowa realizacja zawsze startuje od "PO"
+        if (focus) it.focus();
+        // mobile: lista jest poziomym paskiem — dosuwamy aktywny kafelek do widoku
+        const list = it.parentElement;
+        if (list.scrollWidth > list.clientWidth) {
+          const r = it.getBoundingClientRect(), lr = list.getBoundingClientRect();
+          if (r.left < lr.left || r.right > lr.right) {
+            list.scrollBy({ left: r.left - lr.left - 12, behavior: 'smooth' });
+          }
+        }
+      };
+
+      items.forEach((b, i) => b.addEventListener('click', () => select(i)));
+      modes.forEach(b => b.addEventListener('click', () => setMode(b.dataset.pfxMode)));
+      pfx.querySelector('[role=tablist]').addEventListener('keydown', e => {
+        const cur = items.findIndex(b => b.classList.contains('is-active'));
+        const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1
+          : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1
+            : e.key === 'Home' ? -cur : e.key === 'End' ? items.length - 1 - cur : 0;
+        if (!step && e.key !== 'Home') return;
+        e.preventDefault();
+        select((cur + step + items.length) % items.length, true);
+      });
+      select(0);
+    }
+
+    // kursorowa poświata (fine-pointer only)
+    if (matchMedia('(pointer:fine)').matches) {
       const glow = this.cursorGlowRef.current;
       let gx = window.innerWidth / 2, gy = 0, tx = gx, ty = gy;
       const mmove = e => { tx = e.clientX; ty = e.clientY; };
@@ -1447,10 +1531,6 @@ class Component extends DCLogic {
     if (this._mmove) window.removeEventListener('mousemove', this._mmove);
     if (this._followRaf) cancelAnimationFrame(this._followRaf);
     if (this._neuroInstances) this._neuroInstances.forEach(fn => fn());
-    if (this._tiltHandlers) this._tiltHandlers.forEach(([card, mm, ml]) => {
-      card.removeEventListener('mousemove', mm);
-      card.removeEventListener('mouseleave', ml);
-    });
   }
 
   renderVals() {
