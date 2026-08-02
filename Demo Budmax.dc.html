@@ -50,7 +50,7 @@
 
   /* ── Preloader ── */
   .preloader{
-    position:fixed;inset:0;top:56px;z-index:9999;
+    position:fixed;inset:0;z-index:9999;
     background:var(--bg);
     display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;
     transition:opacity 0.8s cubic-bezier(0.65,0,0.35,1), visibility 0.8s;
@@ -77,7 +77,7 @@
 
   /* ── Nav ── */
   .nav{
-    position:fixed;top:56px;left:0;right:0;z-index:100;
+    position:fixed;top:0;left:0;right:0;z-index:100;
     padding:24px 5vw;
     display:flex;align-items:center;justify-content:space-between;
     transition:background 0.4s, backdrop-filter 0.4s, padding 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
@@ -137,7 +137,7 @@
 
   /* ── Hero · Manifesto ── */
   .hero{
-    position:relative;height:calc(100vh - 56px);overflow:hidden;
+    position:relative;height:100vh;overflow:hidden;
     display:flex;align-items:center;justify-content:center;
   }
   .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;will-change:transform}
@@ -351,14 +351,14 @@
   /* ── Reveal animations ── */
   .reveal{opacity:0;transform:translateY(30px)}
 
-  /* ── Pasek demo ODNOVA + przełącznik PRZED/PO (wzorzec wspólny dla wszystkich dem) ── */
-  .odn-toolbar{position:fixed;top:0;left:0;right:0;z-index:10000;height:56px;background:#0a0a12;color:#f2f2f7;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:'Sora',sans-serif;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.1)}
-  .odn-toolbar a.odn-back{color:#9a9aad;text-decoration:none;font-weight:600;transition:color .2s}
-  .odn-toolbar a.odn-back:hover{color:#fff}
-  .odn-toolbar-label{color:#9a9aad}
-  .odn-toolbar-label b{background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .odn-switch{display:flex;background:rgba(255,255,255,.08);border-radius:99px;padding:4px;gap:4px}
-  .odn-switch button{border:0;background:transparent;color:#9a9aad;font-family:'Sora',sans-serif;font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:99px;cursor:pointer;letter-spacing:.04em}
+  /* ── Pływające sterowanie demo: powrót + PRZED/PO (wzorzec wspólny dla wszystkich dem) ── */
+  .odn-back,.odn-switch{position:fixed;bottom:22px;z-index:10000;font-family:'Sora',sans-serif;background:rgba(10,10,18,.82);border:1px solid rgba(255,255,255,.14);box-shadow:0 16px 44px -16px rgba(0,0,0,.95);backdrop-filter:blur(10px)}
+  .odn-back{left:22px;display:flex;flex-direction:column;gap:1px;padding:10px 20px;border-radius:16px;text-decoration:none;line-height:1.3;transition:transform .2s ease,border-color .2s ease}
+  .odn-back:hover{transform:translateY(-3px);border-color:rgba(124,92,255,.75)}
+  .odn-back-top{color:#f2f2f7;font-size:.82rem;font-weight:700}
+  .odn-back-sub{color:#9a9aad;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
+  .odn-switch{left:50%;transform:translateX(-50%);display:flex;gap:4px;padding:5px;border-radius:99px}
+  .odn-switch button{border:0;background:transparent;color:#9a9aad;font-family:'Sora',sans-serif;font-weight:700;font-size:.78rem;padding:9px 22px;border-radius:99px;cursor:pointer;letter-spacing:.04em}
   body.view-przed .odn-switch .odn-b-przed{background:#fff;color:#0a0a12}
   body.view-po    .odn-switch .odn-b-po{background:linear-gradient(90deg,#7c5cff,#00e5b0);color:#0a0a12;animation:demoPulse 2.6s ease-in-out infinite}
   @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,176,.5)}50%{box-shadow:0 0 0 7px rgba(0,229,176,0)}}
@@ -371,10 +371,13 @@
   .cta-reveal:hover{transform:translateY(-3px) scale(1.03)}
   .cta-reveal::before{content:'';position:absolute;z-index:-2;left:-60%;top:-200%;width:220%;height:500%;background:conic-gradient(#7c5cff,#00e5b0,#5b8bff,#7c5cff);animation:ctaSpin 3.4s linear infinite}
   .cta-reveal::after{content:'';position:absolute;z-index:-1;inset:2px;border-radius:99px;background:#14121f}
-  .bud-przed{background:#e6e6e2;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding:70px 0 26px;min-height:calc(100vh - 56px)}
+  .bud-przed{background:#e6e6e2;font-family:Arial,Helvetica,sans-serif;color:#2b2b2b;padding:26px 0 110px;min-height:100vh}
   @media(max-width:680px){
-    .odn-toolbar-label{display:none}
-    .odn-toolbar{padding:0 14px}
+    .odn-switch{bottom:14px;padding:4px}
+    .odn-switch button{padding:8px 16px;font-size:.72rem}
+    .odn-back{left:50%;bottom:64px;transform:translateX(-50%);flex-direction:row;align-items:center;gap:8px;padding:8px 16px;border-radius:99px}
+    .odn-back:hover{transform:translateX(-50%)}
+    .odn-back-sub{display:none}
   }
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1!important;transform:none!important}
@@ -388,18 +391,18 @@
 <body class="view-przed">
 
 <!-- Pasek demo ODNOVA -->
-<div class="odn-toolbar">
-  <a class="odn-back" href="index.html#portfolio">← Portfolio</a>
-  <div class="odn-toolbar-label">Metamorfoza: <b>BUD-MAX</b> · demo ODNOVA°studio</div>
-  <div class="odn-switch">
-    <button type="button" class="odn-b-przed" id="btnPrzed">PRZED</button>
-    <button type="button" class="odn-b-po" id="btnPo">PO ✨</button>
-  </div>
+<a class="odn-back" href="index.html#portfolio">
+  <span class="odn-back-top">← Portfolio</span>
+  <span class="odn-back-sub">demo ODNOVA°studio</span>
+</a>
+<div class="odn-switch">
+  <button type="button" class="odn-b-przed" id="btnPrzed">PRZED</button>
+  <button type="button" class="odn-b-po" id="btnPo">PO ✨</button>
 </div>
 
 <!-- ══ WIDOK PRZED — strona z ok. 2013 roku ══ -->
 <div id="przedView" class="bud-przed">
-  <div style="position:fixed;left:0;right:0;top:56px;bottom:0;z-index:900;display:flex;align-items:center;justify-content:center;pointer-events:none">
+  <div style="position:fixed;left:0;right:0;top:0;bottom:0;z-index:900;display:flex;align-items:center;justify-content:center;pointer-events:none">
     <button id="ctaReveal" type="button" class="cta-reveal" style="pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border:0;border-radius:99px;cursor:pointer;font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(.95rem,2.4vw,1.1rem);color:#fff;background:transparent;position:relative;z-index:0;overflow:hidden;box-shadow:0 20px 46px -14px rgba(124,92,255,.6);transition:transform .25s ease;animation:ctaIn .55s cubic-bezier(.16,1,.3,1) both"><span style="font-size:1.15em">✨</span> Zobacz metamorfozę</button>
   </div>
   <div style="width:920px;max-width:96%;margin:14px auto 0;background:#fff;border:1px solid #b8b4a8;box-shadow:0 1px 7px rgba(0,0,0,.18)">
