@@ -41,8 +41,20 @@
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;overflow-x:hidden}
-  @keyframes tape{to{transform:translateX(-50%)}}
-  @keyframes tapeRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  /* ===== pasek zaufania pod hero (statyczny — bez przewijanej taśmy) ===== */
+  .tb-in{max-width:1180px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr)}
+  .tb-item{display:flex;align-items:center;justify-content:center;gap:12px;padding:4px 18px;border-left:1px solid rgba(255,255,255,.08)}
+  .tb-item:first-child{border-left:0}
+  .tb-mark{color:#00e5b0;font-size:.7rem;line-height:1;flex:none}
+  .tb-txt{font-family:'Sora',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.02em;color:#cfcfdb;white-space:nowrap}
+  @media(max-width:860px){
+    .tb-in{grid-template-columns:repeat(2,1fr);row-gap:16px;padding:20px 24px}
+    .tb-item:nth-child(odd){border-left:0}
+  }
+  @media(max-width:420px){
+    .tb-txt{font-size:.8rem;white-space:normal}
+    .tb-item{padding:4px 10px;gap:9px}
+  }
   @keyframes introLogo{from{opacity:0;transform:translateY(46px) skewY(4deg)}to{opacity:1;transform:none}}
   @keyframes introLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
   @keyframes introTag{from{opacity:0;letter-spacing:.55em}to{opacity:1;letter-spacing:.3em}}
@@ -67,6 +79,9 @@
   html.no-intro [data-hero]{animation:none!important;opacity:1!important;transform:none!important}
   /* kotwice nie mogą chować się pod przyklejonym navem (68px) */
   section[id]{scroll-margin-top:88px}
+  /* powrót z demo: ląduj niżej, żeby cała lista realizacji zmieściła się na ekranie
+     (nagłówek zostaje tuż pod navem, eyebrow "PORTFOLIO" chowa się za nim) */
+  #portfolio{scroll-margin-top:-60px}
   /* ===== portfolio: lista realizacji + duży podgląd PRZED/PO ===== */
   .pfx-grid{display:grid;grid-template-columns:396px 1fr;gap:26px;align-items:start}
   .pfx-list{display:flex;flex-direction:column;gap:12px;margin:0;padding:0}
@@ -235,14 +250,12 @@
     </div>
   </header>
 
-  <div aria-hidden="true" onMouseEnter="{{ pauseTape }}" onMouseLeave="{{ resumeTape }}" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#101019;padding:24px 0;margin:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
-    <div ref="{{ tapeRow1Ref }}" style="display:flex;gap:48px;width:max-content;animation:tape 28s linear infinite;font-family:'Sora';font-weight:700;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;color:#f2f2f7;white-space:nowrap">
-      <span><b style="color:#00e5b0;margin-right:16px">✦</b>STRONY WWW</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>REDESIGN</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>POZYCJONOWANIE</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>GOOGLE MAPS</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>COPYWRITING</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>SZYBKOŚĆ 90+</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>WERSJA MOBILNA</span>
-      <span><b style="color:#00e5b0;margin-right:16px">✦</b>STRONY WWW</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>REDESIGN</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>POZYCJONOWANIE</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>GOOGLE MAPS</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>COPYWRITING</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>SZYBKOŚĆ 90+</span><span><b style="color:#00e5b0;margin-right:16px">✦</b>WERSJA MOBILNA</span>
-    </div>
-    <div ref="{{ tapeRow2Ref }}" style="display:flex;gap:48px;width:max-content;animation:tapeRev 32s linear infinite;font-family:'Sora';font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#4d4d5c;white-space:nowrap;margin-top:14px">
-      <span><b style="color:#7c5cff;margin-right:16px">✦</b>7 DNI REALIZACJI</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>100% MOBILNIE</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>DARMOWY AUDYT</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>WSPARCIE 24/7</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>SEO LOKALNE</span>
-      <span><b style="color:#7c5cff;margin-right:16px">✦</b>7 DNI REALIZACJI</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>100% MOBILNIE</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>DARMOWY AUDYT</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>WSPARCIE 24/7</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>OPIEKA TECHNICZNA</span><span><b style="color:#7c5cff;margin-right:16px">✦</b>SEO LOKALNE</span>
+  <div class="tb" style="border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#101019">
+    <div class="tb-in">
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">Strony wizytówki i redesign</span></div>
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">SEO lokalne i Google Maps</span></div>
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">Copywriting</span></div>
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">Opieka techniczna</span></div>
     </div>
   </div>
 
@@ -570,7 +583,7 @@
 
         <div class="pfx-list" role="tablist" aria-label="Zrealizowane metamorfozy">
           <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Fryzjer.dc.html" data-pfx-desc="Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.">
-            <span class="pfx-thumb"><img src="img/02-preview-fryzjer.png" alt="" loading="lazy"></span>
+            <span class="pfx-thumb"><img src="img/02-preview-fryzjer.webp" alt="" loading="lazy"></span>
             <span class="pfx-txt"><span class="pfx-name">Atelier Anna</span><span class="pfx-cat">Beauty · Salon fryzjerski</span></span>
             <span class="pfx-arrow" aria-hidden="true">→</span>
           </button>
@@ -580,12 +593,12 @@
             <span class="pfx-arrow" aria-hidden="true">→</span>
           </button>
           <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Pizzeria.dc.html" data-pfx-desc="Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.">
-            <span class="pfx-thumb"><img src="img/02-preview-pizzeria.png" alt="" loading="lazy"></span>
+            <span class="pfx-thumb"><img src="img/02-preview-pizzeria.webp" alt="" loading="lazy"></span>
             <span class="pfx-txt"><span class="pfx-name">Bella Napoli</span><span class="pfx-cat">Gastronomia · Pizzeria</span></span>
             <span class="pfx-arrow" aria-hidden="true">→</span>
           </button>
           <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Budmax.dc.html" data-pfx-desc="20 lat doświadczenia w remontach, strona &quot;w budowie&quot; od 2013. Teraz: portfolio realizacji, które samo sprzedaje.">
-            <span class="pfx-thumb"><img src="img/02-preview-budmax.png" alt="" loading="lazy"></span>
+            <span class="pfx-thumb"><img src="img/02-preview-budmax.webp" alt="" loading="lazy"></span>
             <span class="pfx-txt"><span class="pfx-name">BUD-MAX</span><span class="pfx-cat">Budownictwo · Remonty</span></span>
             <span class="pfx-arrow" aria-hidden="true">→</span>
           </button>
@@ -602,9 +615,9 @@
         </div>
 
         <div class="pfx-detail" id="pfx-panel" role="tabpanel" data-pfx-detail="true">
-          <a class="pfx-stage" data-pfx-stage="true" href="Demo%20Fryzjer.dc.html" aria-label="Otwórz nową stronę: Atelier Anna">
+          <a class="pfx-stage" data-pfx-stage="true" href="Demo%20Fryzjer.dc.html?v=po" aria-label="Otwórz nową stronę: Atelier Anna">
             <div class="pfx-shot" data-pfx-shot="true">
-              <img src="img/02-preview-fryzjer.png" alt="Nowa strona Atelier Anna">
+              <img src="img/02-preview-fryzjer.webp" alt="Nowa strona Atelier Anna">
               <img class="pfx-old" src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" loading="lazy">
             </div>
             <div class="pfx-shot" data-pfx-shot="true">
@@ -612,11 +625,11 @@
               <img class="pfx-old" src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" loading="lazy">
             </div>
             <div class="pfx-shot" data-pfx-shot="true">
-              <img src="img/02-preview-pizzeria.png" alt="Nowa strona Bella Napoli" loading="lazy">
+              <img src="img/02-preview-pizzeria.webp" alt="Nowa strona Bella Napoli" loading="lazy">
               <img class="pfx-old" src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" loading="lazy">
             </div>
             <div class="pfx-shot" data-pfx-shot="true">
-              <img src="img/02-preview-budmax.png" alt="Nowa strona BUD-MAX" loading="lazy">
+              <img src="img/02-preview-budmax.webp" alt="Nowa strona BUD-MAX" loading="lazy">
               <img class="pfx-old" src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" loading="lazy">
             </div>
             <div class="pfx-shot" data-pfx-shot="true">
@@ -764,17 +777,6 @@ class Component extends DCLogic {
   introRef = React.createRef();
   cursorGlowRef = React.createRef();
   evoSecs = [];
-  tapeRow1Ref = React.createRef();
-  tapeRow2Ref = React.createRef();
-
-  pauseTape = () => {
-    if (this.tapeRow1Ref.current) this.tapeRow1Ref.current.style.animationPlayState = 'paused';
-    if (this.tapeRow2Ref.current) this.tapeRow2Ref.current.style.animationPlayState = 'paused';
-  };
-  resumeTape = () => {
-    if (this.tapeRow1Ref.current) this.tapeRow1Ref.current.style.animationPlayState = 'running';
-    if (this.tapeRow2Ref.current) this.tapeRow2Ref.current.style.animationPlayState = 'running';
-  };
 
   state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820, contactSent: false, contactSending: false, contactError: false };
 
@@ -1074,7 +1076,7 @@ class Component extends DCLogic {
         dDesc.textContent = it.dataset.pfxDesc;
         cta.setAttribute('href', it.dataset.pfxHref);
         cta.setAttribute('aria-label', 'Zobacz metamorfozę: ' + it.querySelector('.pfx-name').textContent);
-        stage.setAttribute('href', it.dataset.pfxHref);   // klik w podgląd = przejście na nową stronę
+        stage.setAttribute('href', it.dataset.pfxHref + '?v=po');   // klik w podgląd = od razu strona PO metamorfozie
         stage.setAttribute('aria-label', 'Otwórz nową stronę: ' + it.querySelector('.pfx-name').textContent);
         setMode('after');                          // nowa realizacja zawsze startuje od "PO"
         if (focus) it.focus();
@@ -1549,10 +1551,6 @@ class Component extends DCLogic {
       },
       revT: el => this.evoReveal(el, '0s', false),
       revV: el => this.evoReveal(el, '0.18s', true),
-      tapeRow1Ref: this.tapeRow1Ref,
-      tapeRow2Ref: this.tapeRow2Ref,
-      pauseTape: this.pauseTape,
-      resumeTape: this.resumeTape,
       navOpen: this.state.navOpen,
       handleContactSubmit: this.handleContactSubmit,
       contactSent: this.state.contactSent,

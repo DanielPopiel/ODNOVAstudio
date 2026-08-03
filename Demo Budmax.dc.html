@@ -389,6 +389,11 @@
 </style>
 </head>
 <body class="view-przed">
+<script>
+  // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie.
+  // Klasa musi wejsc przed pierwszym malowaniem, inaczej mignie retro strona.
+  if (/[?&]v=po(?:[&#]|$)/.test(location.search)) document.body.className = 'view-po';
+</script>
 
 <!-- Pasek demo ODNOVA -->
 <a class="odn-back" href="index.html#portfolio">
@@ -847,6 +852,10 @@ function showPrzed() {
 
 btnPo.addEventListener('click', showPo);
 btnPrzed.addEventListener('click', showPrzed);
+
+// wejscie z "?v=po": klasa jest juz ustawiona (skrypt na poczatku body), ale hero i
+// ScrollTrigger trzeba odpalic tak samo jak przy kliknieciu w PO
+if (document.body.classList.contains('view-po')) showPo();
 
 // CTA na widoku PRZED: przycisk odlatuje w górę, potem wjeżdża nowa strona
 let revealing = false;

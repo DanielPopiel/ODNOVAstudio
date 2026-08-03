@@ -135,7 +135,8 @@ class Component extends DCLogic {
   gaugeNumRef = React.createRef();
 
   state = {
-    view: 'before',
+    // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie
+    view: (typeof location !== 'undefined' && /[?&]v=po(?:[&#]|$)/.test(location.search)) ? 'after' : 'before',
     calcUsluga: 420,
     calcKlasa: 1.15,
     calcOryg: false,

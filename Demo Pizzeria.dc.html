@@ -329,8 +329,15 @@ class Component extends DCLogic {
     { key: 'ananas', em: '🍍', name: 'Ananas', price: 5 },
   ];
 
-  state = { view: 'before', activeCat: 'all', selectedToppings: {}, marcoHover: false,
+  // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie
+  state = { view: (typeof location !== 'undefined' && /[?&]v=po(?:[&#]|$)/.test(location.search)) ? 'after' : 'before', activeCat: 'all', selectedToppings: {}, marcoHover: false,
             cpOffset: 0, cpReady: false, cpEntered: false };
+
+  componentDidMount() {
+    // Wejscie prosto na widok PO ("?v=po") omija showAfter(), a to on rozdaje talie kart
+    // w hero. Bez tego wszystkie karty zostaja w klasie "sh" (opacity 0) na zawsze.
+    if (this.state.view === 'after') this.cpBegin(500);
+  }
 
   componentWillUnmount() {
     clearTimeout(this._cpEnterTimer);
@@ -342,8 +349,9 @@ class Component extends DCLogic {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
-  // rozdanie kart — odpalane dopiero, gdy intro zejdzie z ekranu
-  cpBegin = () => {
+  // rozdanie kart — odpalane dopiero, gdy intro zejdzie z ekranu.
+  // Wejscie z "?v=po" nie ma intra metamorfozy, wiec czeka tylko chwile (patrz componentDidMount).
+  cpBegin = (delay = 3600) => {
     if (this._cpBegun) return;
     this._cpBegun = true;
     this._cpEnterTimer = setTimeout(() => {
@@ -352,7 +360,7 @@ class Component extends DCLogic {
         this.setState({ cpEntered: true });
         this.cpStart();
       }, this.DISHES.length * 110 + 900);
-    }, 3600);
+    }, delay);
   };
   cpStart = () => {
     if (this._cpTimer || this.cpReduced) return;

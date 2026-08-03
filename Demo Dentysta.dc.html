@@ -279,7 +279,8 @@ class Component extends DCLogic {
   rootRef = React.createRef();
   simRangeRef = React.createRef();
 
-  state = { view: 'before', simValue: 0, activeStory: 0 };
+  // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie
+  state = { view: (typeof location !== 'undefined' && /[?&]v=po(?:[&#]|$)/.test(location.search)) ? 'after' : 'before', simValue: 0, activeStory: 0 };
 
   showBefore = () => this.setState({ view: 'before' });
   reveal = () => {

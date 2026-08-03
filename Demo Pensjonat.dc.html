@@ -678,7 +678,8 @@ class Component extends DCLogic {
   MONTHS = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
   DOW = ['Pn','Wt','Śr','Cz','Pt','So','Nd'];
 
-  state = { view: 'before', year: 2026, month: 7, selectedDay: null };
+  // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie
+  state = { view: (typeof location !== 'undefined' && /[?&]v=po(?:[&#]|$)/.test(location.search)) ? 'after' : 'before', year: 2026, month: 7, selectedDay: null };
 
   showBefore = () => this.setState({ view: 'before' });
   reveal = () => {
