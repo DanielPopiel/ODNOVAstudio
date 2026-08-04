@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://www.odnovastudio.com/Demo%20Pensjonat.dc.html">
 <meta property="og:title" content="Pensjonat górski — metamorfoza strony | demo ODNOVA°studio">
 <meta property="og:description" content="Strona pensjonatu przed i po metamorfozie. Kalendarz dostępności, zimowe hero odsłaniane kursorem i rezerwacja pokoi zamiast galerii z 2011 roku.">
-<meta property="og:image" content="https://www.odnovastudio.com/img/02-preview-pensjonat.png">
+<meta property="og:image" content="https://www.odnovastudio.com/img/02-preview-pensjonat.jpg">
 <meta property="og:image:width" content="909">
 <meta property="og:image:height" content="540">
 <meta name="twitter:card" content="summary_large_image">
@@ -98,7 +98,161 @@
   .cta-reveal::after{content:'';position:absolute;z-index:-1;inset:2px;border-radius:99px;background:#14121f}
   @keyframes ctaSpin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion:reduce){[data-intro]{display:none!important}.cta-reveal,.cta-reveal::before{animation:none!important}}
-  /* ===== pływające sterowanie demo (zamiast paska u góry) ===== */
+  @media(max-width:680px){
+    .odn-nav-links{display:none!important}
+    .odn-nav-logo{font-size:1.05rem!important}
+    .odn-nav-cta{padding:9px 14px!important;font-size:.72rem!important}
+    .odn-grid-2{grid-template-columns:1fr!important;gap:32px!important}
+  }
+
+  /* ================= HERO FILMOWE (scroll scrubbing) ================= */
+  .kino{position:relative}
+  .kino-stick{position:sticky;top:0;height:100svh;overflow:hidden;background:#070c05}
+  .kino-stick canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .kino-veil{position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:radial-gradient(78% 46% at 50% 44%,rgba(8,14,6,.60) 0%,rgba(8,14,6,.28) 52%,transparent 80%),
+               linear-gradient(to bottom,rgba(8,14,6,.50) 0%,transparent 24%)}
+
+  /* Szew: dół kadru schodzi do koloru ODCZYTANEGO z ostatniej klatki (--seam).
+     Stały kolor nie mógł pasować, bo finał zimy jest ciepły, a lata jasny —
+     teraz barwa bierze się z samego materiału, więc zgadza się zawsze. */
+  /* Szew wchodzi dopiero pod koniec podróży (--seam-op sterowane postępem scrolla).
+     Na starcie kadr jest zimny, więc ciepły pas u dołu wyglądałby obco. */
+  .kino-stick::after{content:'';position:absolute;left:0;right:0;bottom:0;height:36%;
+    pointer-events:none;z-index:2;opacity:var(--seam-op,0);
+    background:linear-gradient(to bottom,transparent 0%,var(--seam,#151a12) 88%,var(--seam,#151a12) 100%)}
+
+  /* ---- Ciemny łącznik: cisza między filmem a treścią ---- */
+  /* Góra łącznika to dokładnie kolor, do którego schodzi kadr; dół ląduje na
+     ciemnej zieleni strony, tej samej, której używają sekcje poniżej. */
+  /* Cały łącznik bierze barwę z ostatniej klatki, więc zimą jest ciepły od lampy,
+     a latem jasny od nieba — bez sztywnego koloru, który nie pasował do żadnego. */
+  .pens-bridge{position:relative;z-index:1;color:#e9ede2;
+    padding:104px 24px 132px;text-align:center;overflow:hidden;
+    background:linear-gradient(180deg,var(--seam,#151a12) 0%,var(--seam-deep,#0e120c) 100%)}
+  .pens-bridge .w{max-width:620px;margin:0 auto;position:relative;z-index:2}
+  .pens-bridge p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+    font-weight:500;font-size:clamp(1.4rem,3.2vw,2rem);line-height:1.5;
+    color:#e4ecd8;margin:0}
+  .pens-bridge .k{font-family:'Karla';font-size:.66rem;font-weight:700;letter-spacing:.34em;
+    text-transform:uppercase;color:#8fa87a;margin-bottom:22px}
+  /* Dwie poświaty: ciepłe echo lampy z ostatniego kadru i chłodna zieleń lasu
+     od dołu — dzięki nim łącznik ma głębię zamiast płaskiej plamy koloru. */
+  .pens-bridge::before{content:'';position:absolute;left:50%;top:-40%;width:120%;height:150%;
+    transform:translateX(-50%);pointer-events:none;
+    background:radial-gradient(46% 42% at 50% 38%,rgba(255,206,132,.13) 0%,transparent 68%)}
+  .pens-bridge::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(80% 62% at 50% 120%,rgba(0,0,0,.28) 0%,transparent 62%)}
+
+  /* Kremowa płyta wjeżdża na ciemny łącznik — styk jest wyraźny i zamierzony */
+  .pens-panel{position:relative;z-index:2;background:#f6f4ee;
+    margin-top:-56px;border-radius:56px 56px 0 0;
+    box-shadow:0 -30px 60px -30px rgba(0,0,0,.55)}
+
+  .kino-beats{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:0 24px;pointer-events:none}
+  .kino-beat{position:absolute;max-width:780px;opacity:0;transform:translateY(26px);
+    transition:opacity .3s ease,transform .4s cubic-bezier(.16,1,.3,1);
+    text-shadow:0 2px 26px rgba(6,10,4,.75);color:#f8f6f0}
+  .kino-beat.on{opacity:1;transform:none;
+    transition:opacity .45s ease .28s,transform .7s cubic-bezier(.16,1,.3,1) .28s}
+  .kino-beat .k{font-family:'Karla';font-size:.72rem;font-weight:700;letter-spacing:.34em;
+    text-transform:uppercase;color:#d8e6c6;margin-bottom:18px}
+  .kino-beat h2{font-family:'Cormorant Garamond';font-weight:600;margin:0;
+    font-size:clamp(2.4rem,6.2vw,4.8rem);line-height:1.05}
+  .kino-beat h2 em{font-style:italic}
+  .kino-beat p{font-family:'Karla';margin:20px auto 0;max-width:520px;font-size:1.08rem;
+    line-height:1.65;color:rgba(248,246,240,.93)}
+  .kino-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;pointer-events:auto}
+
+  .kino-rail{position:absolute;left:50%;transform:translateX(-50%);bottom:28px;z-index:3;
+    width:min(320px,54vw);height:2px;background:rgba(248,246,240,.22);border-radius:2px;overflow:hidden}
+  .kino-rail i{display:block;height:100%;width:0;background:#d8e6c6}
+
+  /* przełącznik pory roku — spina hero z resztą strony */
+  /* 74px przyklejonej nawigacji — inaczej przełącznik chowa się pod nią */
+  .kino-season{position:absolute;top:96px;right:22px;display:flex;gap:4px;padding:4px;
+    background:rgba(8,14,6,.42);backdrop-filter:blur(10px);border:1px solid rgba(216,230,198,.28);
+    border-radius:99px;pointer-events:auto;z-index:6}
+  .kino-season button{border:0;cursor:pointer;font-family:'Karla';font-weight:700;font-size:.7rem;
+    letter-spacing:.16em;text-transform:uppercase;padding:9px 18px;border-radius:99px;
+    background:transparent;color:rgba(248,246,240,.72);transition:background .25s,color .25s}
+  .kino-season button.on{background:#f6f4ee;color:#22301f}
+  .kino-season button:hover{color:#fff}
+  .kino-season button.on:hover{color:#22301f}
+
+  .kino-load{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:16px;background:#070c05;z-index:5;transition:opacity .6s ease}
+  .kino-load.done{opacity:0;pointer-events:none}
+  .kino-load .bar{width:min(240px,50vw);height:2px;background:rgba(248,246,240,.16);
+    border-radius:2px;overflow:hidden}
+  .kino-load .bar i{display:block;height:100%;width:0;background:#8fbf6a;transition:width .18s ease}
+  .kino-load span{font-family:'Karla';font-size:.68rem;letter-spacing:.28em;
+    text-transform:uppercase;color:rgba(248,246,240,.55)}
+
+  /* karta pokoju: najechanie pokazuje widok z okna tego pokoju */
+  .pens-room-media{position:relative;height:190px;overflow:hidden}
+  .pens-room-media img{width:100%;height:100%;object-fit:cover;display:block;
+    transition:opacity .55s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+  .pens-room-media .win{position:absolute;inset:0;opacity:0;transform:scale(1.06)}
+  .pens-room:hover .pens-room-media .win{opacity:1;transform:scale(1)}
+  .pens-room:hover .pens-room-media .inr{opacity:0;transform:scale(1.04)}
+  .pens-room-media .tag{position:absolute;left:12px;bottom:12px;z-index:2;font-family:'Karla';
+    font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:#f6f4ee;background:rgba(8,14,6,.55);backdrop-filter:blur(6px);
+    padding:6px 12px;border-radius:99px;opacity:0;transition:opacity .35s ease}
+  .pens-room:hover .pens-room-media .tag{opacity:1}
+  @media (hover:none){ .pens-room-media .win,.pens-room-media .tag{display:none} }
+
+  @media(max-width:680px){
+    .kino-season{top:88px;right:14px}
+    .kino-season button{padding:8px 13px;font-size:.63rem;letter-spacing:.1em}
+  }
+  /* ---- Intro: obiektyw łapie ostrość na kadrze, który już jest pod spodem ---- */
+  .kino-stick canvas{transition:filter 1.25s cubic-bezier(.22,1,.36,1)}
+  .kino.is-intro canvas{filter:blur(30px) saturate(.82) brightness(.55)}
+  /* W trakcie intra etapy hero muszą milczeć — inaczej nakładają się na napis
+     intra dokładnie na środku i dublują niemal identyczny nadtytuł. */
+  .kino-beats{transition:opacity .5s ease .15s}
+  .kino.is-intro .kino-beats{opacity:0;transition:opacity .2s ease}
+  .pens-intro{position:fixed;inset:0;z-index:2000;pointer-events:none;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:0 24px}
+  .pens-intro .t1{font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(2rem,5.4vw,3.4rem);color:#f8f6f0;text-shadow:0 2px 34px rgba(6,10,4,.85);
+    animation:introUp .65s cubic-bezier(.16,1,.3,1) .05s both, introHide .5s ease 1.1s both}
+  .pens-intro .t2{font-family:'Karla';font-weight:700;font-size:.68rem;letter-spacing:.32em;
+    text-transform:uppercase;color:#d8e6c6;text-shadow:0 2px 22px rgba(6,10,4,.85);
+    animation:introText .8s ease .3s both, introHide .5s ease 1.1s both}
+  @keyframes introUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  /* Przy ograniczonych animacjach intro w ogóle nie startuje — kadr od razu ostry. */
+  @media (prefers-reduced-motion:reduce){ .kino.is-intro canvas{filter:none} }
+
+  /* ---- Nawigacja: leży na hero, dopiero niżej robi się nieprzezroczysta ---- */
+  /* Przezroczystość i przesunięcie sterowane inline, nie klasą — klasę nadpisywałby
+     mechanizm przełączający nawigację na nieprzezroczystą przy zjeździe z hero. */
+  .pens-nav{position:fixed;top:0;left:0;right:0;z-index:60;
+    transition:background .35s ease,border-color .35s ease,box-shadow .35s ease,
+               opacity .6s ease .1s,transform .7s cubic-bezier(.16,1,.3,1) .1s;
+    background:transparent;border-bottom:1px solid transparent}
+  .pens-nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;
+    align-items:center;justify-content:space-between;height:74px}
+  .pens-logo{font-family:'Cormorant Garamond';font-weight:700;font-size:1.5rem;
+    color:#f8f6f0;text-shadow:0 2px 16px rgba(6,10,4,.6);transition:color .35s,text-shadow .35s}
+  .pens-logo small{display:block;font-family:'Karla';font-size:.6rem;font-weight:700;
+    letter-spacing:.3em;text-transform:uppercase;color:#d8e6c6;transition:color .35s}
+  .odn-nav-links{display:flex;gap:30px;font-size:.85rem;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase}
+  .odn-nav-links a{color:rgba(248,246,240,.86);text-decoration:none;
+    text-shadow:0 2px 14px rgba(6,10,4,.55);transition:color .35s,text-shadow .35s}
+  .odn-nav-links a:hover{color:#fff}
+  .pens-nav.is-solid{background:rgba(246,244,238,.94);backdrop-filter:blur(12px);
+    border-bottom-color:rgba(65,105,47,.15);box-shadow:0 6px 24px -16px rgba(34,48,31,.5)}
+  .pens-nav.is-solid .pens-logo{color:#22301f;text-shadow:none}
+  .pens-nav.is-solid .pens-logo small{color:#41692f}
+  .pens-nav.is-solid .odn-nav-links a{color:#5e6d55;text-shadow:none}
+  .pens-nav.is-solid .odn-nav-links a:hover{color:#41692f}
+
+  /* ===== pływające sterowanie demo (konwencja wspólna dla wszystkich dem) ===== */
   .odn-back,.odn-switch{position:fixed;bottom:22px;z-index:10000;font-family:'Sora',sans-serif;background:rgba(10,10,18,.82);border:1px solid rgba(255,255,255,.14);box-shadow:0 16px 44px -16px rgba(0,0,0,.95);backdrop-filter:blur(10px)}
   .odn-back{left:22px;display:flex;flex-direction:column;gap:1px;padding:10px 20px;border-radius:16px;text-decoration:none;line-height:1.3;transition:transform .2s ease,border-color .2s ease}
   .odn-back:hover{transform:translateY(-3px);border-color:rgba(124,92,255,.75)}
@@ -112,31 +266,23 @@
     .odn-back{left:50%;bottom:64px;transform:translateX(-50%);flex-direction:row;align-items:center;gap:8px;padding:8px 16px;border-radius:99px}
     .odn-back:hover{transform:translateX(-50%)}
     .odn-back-sub{display:none!important}
-    .odn-nav-links{display:none!important}
-    .odn-nav-logo{font-size:1.05rem!important}
-    .odn-nav-cta{padding:9px 14px!important;font-size:.72rem!important}
-    .odn-grid-2{grid-template-columns:1fr!important;gap:32px!important}
   }
 </style>
 </helmet>
 
 <div ref="{{ rootRef }}" style="font-family:'Karla',sans-serif;min-height:100vh">
 
-  <div ref="{{ introRef }}" data-intro="true" aria-hidden="true" style="position:fixed;inset:0;z-index:2000;pointer-events:none;overflow:hidden;display:{{ introDisplay }}">
-    <div style="position:absolute;top:0;bottom:0;left:0;width:50.5%;background:linear-gradient(160deg,#16200f,#0d1409);animation:curtainL 1.2s cubic-bezier(.76,0,.24,1) 3s both"></div>
-    <div style="position:absolute;top:0;bottom:0;right:0;width:50.5%;background:linear-gradient(200deg,#16200f,#0d1409);animation:curtainR 1.2s cubic-bezier(.76,0,.24,1) 3s both"></div>
-    <div ref="{{ introTreeRef }}" class="pens-intro-tree">
-      <svg width="120" height="150" viewBox="0 0 100 125" fill="none">
-        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" stroke="#9db884" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="900" style="animation:treeDraw 2s ease-out .1s both"></path>
-        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(157,184,132,.16)" style="animation:treeFill 1s ease 1.7s both"></path>
-      </svg>
-    </div>
-    <div class="pens-intro-cap" style="animation:introHide .6s ease 2.8s both">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.4rem);color:#f6f4ee;animation:treeFill 1s ease 1.2s both">Pod Świerkami</div>
-      <div style="font-family:'Karla';font-weight:700;font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:#9db884;animation:introText 1.2s ease 1.6s both">Pensjonat górski · 820 m n.p.m.</div>
-    </div>
+  <!-- Intro „ustawianie ostrości": kadr hero jest już pod spodem, tylko rozmyty
+       i przygaszony. Ostrość dochodzi, napis odpływa. Działa tak samo dla szronu
+       i dla pary, bo operuje na tym, co akurat jest w kadrze. -->
+  <div ref="{{ introRef }}" data-intro="true" aria-hidden="true" class="pens-intro" style="display:{{ introDisplay }}">
+    <div class="t1">Pod Świerkami</div>
+    <div class="t2">Pensjonat górski · 820 m n.p.m.</div>
   </div>
 
+  <!-- Bez paska na górze — odcinał hero poziomą krechą. Przełącznik metamorfozy
+       zostaje jako mała pigułka w rogu, bo bez niego demo nie ma sensu.
+       Powrót do portfolio zszedł do stopki. -->
   <a class="odn-back" href="index.html#portfolio">
     <span class="odn-back-top">← Portfolio</span>
     <span class="odn-back-sub">demo ODNOVA°studio</span>
@@ -194,73 +340,92 @@
   </div>
 
   <div ref="{{ poRef }}" class="pens-po" style="display:{{ afterDisplay }};background:#f6f4ee;color:#22301f;line-height:1.7">
-    <div ref="{{ cursorRef }}" class="pens-cursor" aria-hidden="true">
-      <svg width="32" height="40" viewBox="0 0 100 125" fill="none">
-        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(29,45,22,.55)" stroke="#f2f7ec" stroke-width="5" stroke-linejoin="round"></path>
-        <path d="M50 8 L28 42 L38 40 L20 70 L33 67 L14 100 L46 94 L46 116 L54 116 L54 94 L86 100 L67 67 L80 70 L62 40 L72 42 Z" fill="rgba(157,184,132,.5)" stroke="#9db884" stroke-width="2" stroke-linejoin="round"></path>
-      </svg>
-    </div>
-    <nav style="position:sticky;top:0;z-index:50;background:rgba(246,244,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(65,105,47,.15)">
-      <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:74px">
-        <div class="odn-nav-logo" style="font-family:'Cormorant Garamond';font-weight:700;font-size:1.5rem;color:#22301f">Pod Świerkami<small style="display:block;font-family:'Karla';font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:{{ accent }}">Pensjonat górski</small></div>
-        <div class="odn-nav-links" style="display:flex;gap:30px;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase">
-          <a href="#pokoje" style="color:#5e6d55;text-decoration:none" style-hover="color:{{ accent }}">Pokoje</a>
-          <a href="#atuty" style="color:#5e6d55;text-decoration:none" style-hover="color:{{ accent }}">Pobyt</a>
-          <a href="#gospodarze" style="color:#5e6d55;text-decoration:none" style-hover="color:{{ accent }}">Gospodarze</a>
-          <a href="#rezerwacja" style="color:#5e6d55;text-decoration:none" style-hover="color:{{ accent }}">Kontakt</a>
+    <!-- Nawigacja LEŻY na hero (position:fixed), nie spycha go w dół. Gdyby spychała,
+         pierwsze ~75 px scrolla byłoby martwe: strona jechałaby w górę, zanim
+         animacja w ogóle by ruszyła. -->
+    <nav ref="{{ navRef }}" class="pens-nav" style="opacity:{{ navOpacity }};transform:{{ navShift }};pointer-events:{{ navPointer }}">
+      <div class="pens-nav-in">
+        <div class="odn-nav-logo pens-logo">Pod Świerkami<small>Pensjonat górski</small></div>
+        <div class="odn-nav-links">
+          <a href="#pokoje">Pokoje</a>
+          <a href="#atuty">Pobyt</a>
+          <a href="#gospodarze">Gospodarze</a>
+          <a href="#rezerwacja">Kontakt</a>
         </div>
         <a href="#rezerwacja" class="odn-nav-cta" style="background:{{ accent }};color:#f6f4ee;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;transition:filter .2s,transform .2s;white-space:nowrap" style-hover="filter:brightness(.9);transform:translateY(-2px)">Rezerwuj pobyt</a>
       </div>
     </nav>
 
-    <header ref="{{ heroRef }}" class="pens-hero" style="display:flex;align-items:center;position:relative;overflow:hidden;background:#101a0c">
-      <picture>
-        <source srcset="img/pens-tlo2.webp" type="image/webp"></source>
-        <img ref="{{ srcRef }}" class="pens-hero-src" src="img/pens-tlo2-foto.jpg" alt="" aria-hidden="true"></img>
-      </picture>
-      <picture>
-        <source srcset="img/pens-tlo1.webp" type="image/webp"></source>
-        <img class="pens-hero-media" src="img/pens-tlo1.jpg" alt="Panorama gór latem — widok z pensjonatu"></img>
-      </picture>
-      <canvas ref="{{ winterRef }}" class="pens-hero-winter" aria-hidden="true"></canvas>
-      <div class="pens-hero-cold" aria-hidden="true"></div>
-      <div class="pens-hero-frost" aria-hidden="true"></div>
-      <div class="pens-hero-scrim"></div>
-      <canvas ref="{{ canvasRef }}" class="pens-hero-snow" aria-hidden="true"></canvas>
-      <div style="position:relative;z-index:4;text-align:center;width:100%;padding:80px 24px;max-width:1100px;margin:0 auto;text-shadow:0 2px 18px rgba(8,14,6,.5)">
-        <div style="font-family:'Karla';letter-spacing:.34em;text-transform:uppercase;font-size:.74rem;font-weight:700;color:#d8e6c6;margin-bottom:20px">820 m n.p.m. · z dala od zgiełku</div>
-        <h1 style="font-family:'Cormorant Garamond';font-weight:600;font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.05;color:#f8f6f0;margin:0">Tu góry budzą Cię <em style="font-style:italic">ciszą</em></h1>
-        <p style="max-width:520px;margin:22px auto 36px;color:rgba(248,246,240,.92);font-size:1.12rem">Rodzinny pensjonat na skraju lasu: własna kuchnia z lokalnych produktów, sauna z widokiem na szczyty i szlaki zaczynające się za progiem.</p>
-        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <a href="#rezerwacja" style="background:{{ accent }};color:#f6f4ee;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;text-shadow:none;box-shadow:0 10px 26px -10px rgba(8,14,6,.7);transition:filter .2s,transform .2s,box-shadow .2s" style-hover="filter:brightness(1.2) drop-shadow(0 0 12px rgba(216,230,198,.55));transform:translateY(-2px)">Sprawdź wolne terminy</a>
-          <a href="#pokoje" style="border:1.5px solid rgba(248,246,240,.55);color:#f8f6f0;text-decoration:none;font-weight:700;padding:13px 28px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;transition:border-color .2s,background .2s" style-hover="border-color:#f8f6f0;background:rgba(255,255,255,.18)">Zobacz pokoje</a>
+    <header ref="{{ heroRef }}" class="kino {{ introCls }}">
+      <div class="kino-stick">
+        <canvas ref="{{ kinoCanvasRef }}" aria-hidden="true"></canvas>
+        <div class="kino-veil"></div>
+
+        <div class="kino-season" role="group" aria-label="Pora roku">
+          <button type="button" class="{{ winterBtn }}" onClick="{{ setWinter }}">Zima</button>
+          <button type="button" class="{{ summerBtn }}" onClick="{{ setSummer }}">Lato</button>
+        </div>
+
+        <div class="kino-beats">
+          <div ref="{{ beat1Ref }}" class="kino-beat" data-from="0" data-to="0.30">
+            <div class="k">{{ heroKicker }}</div>
+            <h2>{{ b1a }} <em>{{ b1b }}</em></h2>
+            <p>{{ b1p }}</p>
+          </div>
+          <div ref="{{ beat2Ref }}" class="kino-beat" data-from="0.30" data-to="0.62">
+            <h2>{{ b2a }} <em>{{ b2b }}</em></h2>
+            <p>{{ b2p }}</p>
+          </div>
+          <div ref="{{ beat3Ref }}" class="kino-beat" data-from="0.62" data-to="1.01">
+            <h2>{{ b3a }} <em>{{ b3b }}</em></h2>
+            <p>{{ b3p }}</p>
+            <div class="kino-acts">
+              <a href="#rezerwacja" style="background:{{ accent }};color:#f6f4ee;text-decoration:none;font-weight:700;padding:14px 30px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;text-shadow:none;box-shadow:0 12px 30px -10px rgba(6,10,4,.85);transition:filter .2s,transform .2s" style-hover="filter:brightness(1.18);transform:translateY(-2px)">Sprawdź wolne terminy</a>
+              <a href="#pokoje" style="border:1.5px solid rgba(248,246,240,.5);color:#f8f6f0;text-decoration:none;font-weight:700;padding:14px 30px;border-radius:{{ ctaRadius }};font-size:.85rem;letter-spacing:.06em;transition:border-color .2s,background .2s" style-hover="border-color:#f8f6f0;background:rgba(255,255,255,.16)">Zobacz pokoje</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="kino-rail"><i ref="{{ kinoRailRef }}"></i></div>
+        <div ref="{{ kinoLoadRef }}" class="kino-load">
+          <span>Wczytywanie</span>
+          <div class="bar"><i ref="{{ kinoBarRef }}"></i></div>
         </div>
       </div>
     </header>
 
-    <section id="pokoje" style="padding:96px 0">
+    <!-- Ciemny łącznik w kolorze końca kadru — styk ciemne-w-ciemne jest niewidoczny,
+         a strona nie wyskakuje z filmu prosto w jasną tabelkę. -->
+    <section class="pens-bridge">
+      <div class="w">
+        <div class="k">Pod Świerkami</div>
+        <p>Za oknem zmienia się pora roku. W środku zawsze pachnie drewnem i kawą.</p>
+      </div>
+    </section>
+
+    <section id="pokoje" class="pens-panel" style="padding:96px 0">
       <div style="max-width:1100px;margin:0 auto;padding:0 24px">
         <div style="font-family:'Karla';letter-spacing:.3em;text-transform:uppercase;font-size:.7rem;font-weight:700;color:#41692f;text-align:center;margin-bottom:12px">Noclegi</div>
         <h2 style="font-family:'Cormorant Garamond';font-weight:600;font-size:clamp(2.1rem,4.5vw,3.1rem);text-align:center;margin:0 0 52px;color:#1c2b18">Pokoje z widokiem na góry</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px">
-          <div style="background:#fff;border-radius:{{ cardRadius }};overflow:hidden;box-shadow:0 10px 30px rgba(34,48,31,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-7px);box-shadow:0 22px 48px rgba(34,48,31,.14)">
-            <div style="height:190px"><img src="img/pokoj_swierkowy.jfif" alt="Pokój Świerkowy — łóżko z widokiem na góry" style="width:100%;height:100%;object-fit:cover;display:block"></img></div>
+          <div class="pens-room" style="background:#fff;border-radius:{{ cardRadius }};overflow:hidden;box-shadow:0 10px 30px rgba(34,48,31,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-7px);box-shadow:0 22px 48px rgba(34,48,31,.14)">
+            <div class="pens-room-media"><img class="inr" src="img/pokoj_swierkowy.jfif" alt="Pokój Świerkowy — łóżko z widokiem na góry"></img><img class="win" src="{{ widokDolina }}" alt="Widok z okna pokoju Świerkowego na dolinę"></img><span class="tag">Widok z okna</span></div>
             <div style="padding:26px 28px 28px">
               <h3 style="font-family:'Cormorant Garamond';font-size:1.5rem;margin:0 0 6px">Pokój Świerkowy</h3>
               <div style="color:#5e6d55;font-size:.86rem;margin-bottom:14px">2 osoby · balkon z widokiem na dolinę · łazienka · 24 m²</div>
               <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e8e4d8;padding-top:16px"><span style="font-family:'Cormorant Garamond';font-size:1.5rem;font-weight:700;color:{{ accent }}">260 zł <small style="font-family:'Karla';font-size:.75rem;color:#5e6d55;font-weight:400">/ doba ze śniadaniem</small></span><a href="#rezerwacja" style="color:{{ accent }};font-weight:700;font-size:.85rem;text-decoration:none;letter-spacing:.04em">Rezerwuj →</a></div>
             </div>
           </div>
-          <div style="background:#fff;border-radius:{{ cardRadius }};overflow:hidden;box-shadow:0 10px 30px rgba(34,48,31,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-7px);box-shadow:0 22px 48px rgba(34,48,31,.14)">
-            <div style="height:190px"><img src="img/apartament_widokowy.jfif" alt="Apartament Widokowy — wnętrze z oknem na dolinę" style="width:100%;height:100%;object-fit:cover;display:block"></img></div>
+          <div class="pens-room" style="background:#fff;border-radius:{{ cardRadius }};overflow:hidden;box-shadow:0 10px 30px rgba(34,48,31,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-7px);box-shadow:0 22px 48px rgba(34,48,31,.14)">
+            <div class="pens-room-media"><img class="inr" src="img/apartament_widokowy.jfif" alt="Apartament Widokowy — wnętrze z oknem na dolinę"></img><img class="win" src="{{ widokSzczyty }}" alt="Widok z okna Apartamentu Widokowego na szczyty"></img><span class="tag">Widok z okna</span></div>
             <div style="padding:26px 28px 28px">
               <h3 style="font-family:'Cormorant Garamond';font-size:1.5rem;margin:0 0 6px">Apartament Widokowy</h3>
               <div style="color:#5e6d55;font-size:.86rem;margin-bottom:14px">2–4 osoby · salon z kominkiem · aneks kuchenny · 46 m²</div>
               <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e8e4d8;padding-top:16px"><span style="font-family:'Cormorant Garamond';font-size:1.5rem;font-weight:700;color:{{ accent }}">440 zł <small style="font-family:'Karla';font-size:.75rem;color:#5e6d55;font-weight:400">/ doba ze śniadaniem</small></span><a href="#rezerwacja" style="color:{{ accent }};font-weight:700;font-size:.85rem;text-decoration:none;letter-spacing:.04em">Rezerwuj →</a></div>
             </div>
           </div>
-          <div style="background:#fff;border-radius:{{ cardRadius }};overflow:hidden;box-shadow:0 10px 30px rgba(34,48,31,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-7px);box-shadow:0 22px 48px rgba(34,48,31,.14)">
-            <div style="height:190px"><img src="img/pokoj_rodzinny.jpg" alt="Pokój Rodzinny — przytulne wnętrze z drewna" style="width:100%;height:100%;object-fit:cover;display:block"></img></div>
+          <div class="pens-room" style="background:#fff;border-radius:{{ cardRadius }};overflow:hidden;box-shadow:0 10px 30px rgba(34,48,31,.08);transition:transform .22s,box-shadow .22s" style-hover="transform:translateY(-7px);box-shadow:0 22px 48px rgba(34,48,31,.14)">
+            <div class="pens-room-media"><img class="inr" src="img/pokoj_rodzinny.jpg" alt="Pokój Rodzinny — przytulne wnętrze z drewna"></img><img class="win" src="{{ widokLas }}" alt="Widok z okna Pokoju Rodzinnego na las"></img><span class="tag">Widok z okna</span></div>
             <div style="padding:26px 28px 28px">
               <h3 style="font-family:'Cormorant Garamond';font-size:1.5rem;margin:0 0 6px">Pokój Rodzinny</h3>
               <div style="color:#5e6d55;font-size:.86rem;margin-bottom:14px">4 osoby · dwie sypialnie · łazienka · widok na las · 38 m²</div>
@@ -358,7 +523,7 @@
       </div>
     </section>
 
-    <footer style="background:{{ dark }};color:#8a9a7e;padding:32px 0;font-size:.82rem;text-align:center">© 2026 Pensjonat Pod Świerkami · Projekt strony: ODNOVA°studio · Strona demonstracyjna — firma fikcyjna</footer>
+    <footer style="background:{{ dark }};color:#8a9a7e;padding:32px 0;font-size:.82rem;text-align:center"><div style="margin-bottom:14px"><a href="index.html#portfolio" style="color:#c3d0b7;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.04em;border:1px solid rgba(195,208,183,.3);border-radius:99px;padding:9px 20px;display:inline-block;transition:background .2s,color .2s" style-hover="background:rgba(195,208,183,.14);color:#f6f4ee">← Wróć do portfolio</a></div>© 2026 Pensjonat Pod Świerkami · Projekt strony: ODNOVA°studio · Strona demonstracyjna — firma fikcyjna</footer>
   </div>
 
 </div>
@@ -371,315 +536,492 @@
 class Component extends DCLogic {
   rootRef = React.createRef();
   introRef = React.createRef();
-  introTreeRef = React.createRef();
   heroRef = React.createRef();
   poRef = React.createRef();
-  winterRef = React.createRef();
-  srcRef = React.createRef();
-  canvasRef = React.createRef();
-  cursorRef = React.createRef();
+  navRef = React.createRef();
+  kinoCanvasRef = React.createRef();
+  kinoRailRef = React.createRef();
+  kinoLoadRef = React.createRef();
+  kinoBarRef = React.createRef();
 
-  componentDidMount() { this.bindHero(); }
-  componentDidUpdate() { this.bindHero(); }
+  componentDidMount() {
+    this.bindKino();
+    // przy wejsciu prosto na PO nikt nie wywolal showAfter(), wiec licznik intra trzeba wystartowac tutaj
+    if (this._wprostNaPo && !this._bezIntra) this._introTimer = setTimeout(() => this.setState({ introPlaying: false }), 2450);
+  }
+  componentDidUpdate() { this.bindKino(); }
   componentWillUnmount() {
     if (this._introTimer) clearTimeout(this._introTimer);
     if (this._revealTimer) clearTimeout(this._revealTimer);
-    if (this._shrinkTimer) clearTimeout(this._shrinkTimer);
-    if (this._handoffTimer) clearTimeout(this._handoffTimer);
-    this.unbindHero();
+    this.unbindKino();
   }
 
-  /* Choinka zamiast kursora na całej stronie PO; nad hero kursor sieje śnieg,
-     wychładza zdjęcie i lekko odsłania zimowe wideo. */
-  bindHero = () => {
-    const hero = this.heroRef.current;
-    const po = this.poRef.current;
-    const winter = this.winterRef.current;
-    const cursor = this.cursorRef.current;
-    const canvas = this.canvasRef.current;
-    if (this._heroBound || !hero || !po || !winter || !cursor || !canvas) return;
-    // Tylko myszka/trackpad — dotyk nie ma hovera, a reduced-motion nie chce wideo.
-    if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    this._heroBound = true;
-    po.classList.add('is-live');
+  /* ===================== HERO FILMOWE =====================
+     Klatki wygenerowanego ujęcia przypięte do pozycji scrolla: przewijasz
+     w dół, kamera jedzie do przodu. Klatki kończą się przed końcem sekcji —
+     dalej scena żyje dalej sama (kurz, światło), a te efekty wchodzą jeszcze
+     ZANIM klatki się skończą, żeby nie było widać szwu.
+     Przełącznik pory roku podmienia całą sekwencję. */
+  KINO = {
+    // loop: ile początkowych klatek odtwarzać w kółko na postoju (0 = trzymaj pierwszą).
+    // Szron stoi naturalnie, więc zimą wystarczą śnieg i iskry; para musi płynąć.
+    // Klatki w WebP 1440×810. Próbowałem AVIF-a (byłby ostrzejszy i lżejszy), ale
+    // ffmpeg w trybie sekwencji obrazów zapisuje pliki, których przeglądarki nie
+    // dekodują — sprawdzone na trzech wariantach kodowania. Mechanizm wyboru
+    // katalogu (dirHq) zostaje: wystarczy podać zestaw z prawdziwego avifenc.
+    zima: { dir:'frames-szron',
+            frameEnd:0.76, motes:300, loop:0,
+            tint:[255,206,132], lights:[[0.465,0.215,0.36,1],[0.07,0.36,0.32,0.85]],
+            snow:140, glints:80, openTint:[216,234,255] },
+    // loopDir: osobne ujęcie z ZABLOKOWANĄ kamerą, odtwarzane w kółko na postoju.
+    // Zapętlanie początku głównego klipu nie działało, bo kamera rusza tam ostro
+    // od pierwszej klatki — pętla odtwarzała kawałek najazdu, czyli właśnie zoom.
+    lato: { dir:'frames-poranek', loopDir:'frames-para', loopSpeed:0.42,
+            frameEnd:0.88, motes:0,
+            tint:[255,236,205], lights:[[0.12,0.15,0.42,0.70]],
+            snow:0, glints:0, openTint:[220,236,255] }
+  };
+  FX = { snow:1, glint:1, dust:2.2 };   // natężenia dobrane okiem na podglądzie
 
-    const ctx = canvas.getContext('2d');
-    const wctx = winter.getContext('2d');
-    const maskCv = document.createElement('canvas');
-    const mctx = maskCv.getContext('2d');
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    const BRUSH = 100;   // promień odsłonięcia w px CSS
-    const STEP = 22;     // co ile px trasy odcisk szpachli
-    const HOLD = 10;     // tyle sekund ślad stoi w pełnej sile, zanim zacznie zarastać
-    const TAU = 7.7;     // stała czasowa zarastania: pełny zanik ok. 25 s po HOLD
-    // Wygaszanie paczkami: krok musi być na tyle duży, żeby ubytek alfy nie
-    // zaokrąglał się do zera (patrz niżej), stąd liczony z TAU, a nie na sztywno.
-    const FADE_STEP = -TAU * Math.log(1 - 0.055);
-    let raf = 0, snowRaf = 0, winterRaf = 0, px = 0, py = 0, seen = false, moved = false;
-    let flakes = [], lx = null, ly = null, lastDab = 0, lastT = 0, fadeAcc = 0;
+  bindKino = () => {
+    const cv = this.kinoCanvasRef.current;
+    const host = this.heroRef.current;
+    if (!cv || !host) return;
 
-    // Szpachla: twarda, prosta krawędź z wyszczerbieniami, ustawiana
-    // PROSTOPADLE do ruchu — ślad jak rozsmarowana farba.
-    const BS = Math.round(BRUSH * 2);
-    const blade = (() => {
-      const cv = document.createElement('canvas');
-      cv.width = cv.height = BS;
-      const b = cv.getContext('2d'), c = BS / 2, w = BS * 0.42, h = BS * 0.17;
-      b.fillStyle = '#000';
-      b.beginPath();
-      b.moveTo(c - w, c - h * 0.8); b.lineTo(c + w * 0.9, c - h);
-      b.lineTo(c + w, c + h * 0.85); b.lineTo(c - w * 0.92, c + h);
-      b.closePath(); b.fill();
-      b.globalCompositeOperation = 'destination-out';   // wyszczerbienia krawędzi
-      for (let i = 0; i < 14; i++) {
-        b.globalAlpha = 0.3 + Math.random() * 0.7;
-        b.beginPath();
-        b.ellipse(c - w + Math.random() * w * 2, c + (Math.random() < 0.5 ? -h : h),
-          2 + Math.random() * 9, 1 + Math.random() * 4, Math.random() * 3, 0, 6.2832);
-        b.fill();
-      }
-      b.globalCompositeOperation = 'source-over';
-      return cv;
-    })();
-
-    let bladeAng = 0, angSet = false;
-    const dab = (x, y, ang) => {
-      mctx.save();
-      mctx.translate(x * dpr, y * dpr);
-      mctx.rotate(ang);
-      mctx.scale(dpr, dpr);
-      mctx.globalAlpha = 1;
-      mctx.drawImage(blade, -BS / 2, -BS / 2);
-      mctx.restore();
-    };
-    const paint = (x, y) => {
-      const now = performance.now();
-      if (lx === null || now - lastDab > 500) {   // szpachla oderwana → nowe pociągnięcie
-        angSet = false;
-        if (lx === null) { lx = x; ly = y; lastDab = now; startWinter(); return; }
-      }
-      const dx = x - lx, dy = y - ly, dist = Math.hypot(dx, dy);
-      if (dist < 2) return;
-      const target = Math.atan2(dy, dx) + Math.PI / 2;   // krawędź w poprzek ruchu
-      if (!angSet) { bladeAng = target; angSet = true; }
-      else {
-        let diff = target - bladeAng;
-        while (diff > Math.PI) diff -= 6.2832;
-        while (diff < -Math.PI) diff += 6.2832;
-        bladeAng += diff * 0.5;
-      }
-      const steps = Math.max(1, Math.round(dist / STEP));
-      const speed = dist / steps;
-      for (let i = 1; i <= steps; i++) {
-        // Przy szybkim ruchu szpachla odrywa się od podłoża i zostawia przeskoki.
-        if (speed > 14 && Math.random() < (speed - 14) / 42) continue;
-        dab(lx + dx * i / steps, ly + dy * i / steps, bladeAng);
-      }
-      lx = x; ly = y; lastDab = now;
-      startWinter();
-    };
-    const tickWinter = (t) => {
-      winterRaf = 0;
-      const dt = lastT ? Math.min(0.1, (t - lastT) / 1000) : 0.016;
-      lastT = t;
-      // Zarastanie: maska słabnie wykładniczo, niezależnie od liczby klatek.
-      // Wygaszamy paczkami po ~100 ms, nie co klatkę: przy 1% na klatkę ubytek
-      // schodzi poniżej pół jednostki alfy, zaokrągla się do zera i ślad
-      // zatrzymuje się na trwałe (utykał na 42/255). Większy krok tego unika.
-      // Ślad stoi HOLD sekund w pełnej sile i dopiero potem zarasta.
-      if (performance.now() - lastDab > HOLD * 1000) {
-        fadeAcc += dt;
-        if (fadeAcc >= FADE_STEP) {
-          mctx.globalCompositeOperation = 'destination-out';
-          mctx.fillStyle = 'rgba(0,0,0,' + (1 - Math.exp(-fadeAcc / TAU)).toFixed(4) + ')';
-          mctx.fillRect(0, 0, maskCv.width, maskCv.height);
-          mctx.globalCompositeOperation = 'source-over';
-          fadeAcc = 0;
-        }
-      } else fadeAcc = 0;
-      // Klatka wideo kadrowana jak zdjęcie (cover + object-position 66.667%).
-      const W = winter.width, H = winter.height;
-      wctx.clearRect(0, 0, W, H);
-      const v = this.srcRef.current;
-      if (v && v.complete && v.naturalWidth) {
-        const s = Math.max(W / v.naturalWidth, H / v.naturalHeight);
-        const dw = v.naturalWidth * s, dh = v.naturalHeight * s;
-        wctx.drawImage(v, (W - dw) * 0.5, (H - dh) * 0.66667, dw, dh);
-      }
-      wctx.globalCompositeOperation = 'destination-in';
-      wctx.drawImage(maskCv, 0, 0);
-      wctx.globalCompositeOperation = 'source-over';
-      // Pętla żyje jeszcze chwilę po ostatnim ruchu, aż ślad zarośnie.
-      if (performance.now() - lastDab < HOLD * 1000 + TAU * 5000) winterRaf = requestAnimationFrame(tickWinter);
-      else {
-        wctx.clearRect(0, 0, W, H);
-        mctx.clearRect(0, 0, maskCv.width, maskCv.height);
-        lastT = 0; fadeAcc = 0;
-      }
-    };
-    const startWinter = () => {
-      if (!winterRaf) { lastT = 0; winterRaf = requestAnimationFrame(tickWinter); }
-    };
-
-    // Sprite'y płatków: sześcioramienne kryształki z bocznymi gałązkami,
-    // rysowane raz i stemplowane z obrotem — zamiast białych kulek.
-    const FLAKES = [];
-    for (let k = 0; k < 3; k++) {
-      const S = 32, sp = document.createElement('canvas');
-      sp.width = sp.height = S;
-      const g = sp.getContext('2d'), c = S / 2, len = c * (0.8 - k * 0.06);
-      g.translate(c, c);
-      // Grube ramiona: sprite jest zmniejszany ~2x, cieńsze zniknęłyby.
-      g.strokeStyle = '#fff'; g.lineCap = 'round'; g.lineWidth = 3.1 - k * 0.5;
-      for (let i = 0; i < 6; i++) {
-        const a = i * Math.PI / 3, dx = Math.cos(a), dy = Math.sin(a);
-        g.beginPath(); g.moveTo(0, 0); g.lineTo(dx * len, dy * len); g.stroke();
-        for (const t of (k === 2 ? [0.55] : [0.42, 0.72])) {
-          const bx = dx * len * t, by = dy * len * t, bl = len * (0.3 - k * 0.05);
-          for (const sgn of [-1, 1]) {
-            const ba = a + sgn * 1.02;
-            g.beginPath(); g.moveTo(bx, by);
-            g.lineTo(bx + Math.cos(ba) * bl, by + Math.sin(ba) * bl); g.stroke();
-          }
-        }
-      }
-      g.fillStyle = '#fff';
-      g.beginPath(); g.arc(0, 0, 1.3, 0, 6.284); g.fill();
-      FLAKES.push(sp);
+    if (!this._k) {
+      this._k = { frames:[], count:0, loaded:0, coarse:1, ready:false, gen:0,
+                  motes:[], snow:[], glints:[], dest:{x:0,y:0,w:1,h:1}, dpr:1 };
+      this._kCalm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+      this._onKinoResize = () => this.sizeKino();
+      window.addEventListener('resize', this._onKinoResize, { passive:true });
+      this._onKinoVis = () => { if (!document.hidden) this.pumpKino(); };
+      document.addEventListener('visibilitychange', this._onKinoVis);
+      /* Nawigacja ma własny nasłuch, bo pętla rysowania zatrzymuje się, gdy hero
+         zjedzie z ekranu — inaczej zostałaby przezroczysta nad jasnymi sekcjami. */
+      this._onNavScroll = () => {
+        const nav = this.navRef.current, hero = this.heroRef.current;
+        if (!nav || !hero) return;
+        const r = hero.getBoundingClientRect();
+        if (r.height < 200) return;   // sekcja jeszcze bez wysokości — nie zgaduj, bo mignie jasnym
+        nav.classList.toggle('is-solid', r.bottom <= 90);
+      };
+      window.addEventListener('scroll', this._onNavScroll, { passive:true });
+      this._onNavScroll();
+      this._kIO = new IntersectionObserver((es) => {
+        this._kLive = es[0].isIntersecting;
+        if (this._kLive) this.pumpKino();
+      }, { rootMargin:'150px' });
+      this._kIO.observe(host);
     }
-
-    // Płatki sypią się z kursora, opadają, obracają się i topią (life -> 0).
-    const tickSnow = () => {
-      snowRaf = 0;
-      ctx.save();
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.restore();
-      flakes = flakes.filter((f) => f.life > 0);
-      for (const f of flakes) {
-        f.life -= 0.006; f.y += f.vy; f.x += Math.sin(f.y / 26) * f.sway; f.rot += f.vr;
-        ctx.globalAlpha = Math.max(0, Math.min(1, f.life)) * 0.85;
-        ctx.save();
-        ctx.translate(f.x, f.y); ctx.rotate(f.rot);
-        ctx.drawImage(FLAKES[f.sp], -f.d / 2, -f.d / 2, f.d, f.d);
-        ctx.restore();
-      }
-      ctx.globalAlpha = 1;
-      if (flakes.length) snowRaf = requestAnimationFrame(tickSnow);
-    };
-    let emitAcc = 0;
-    const emit = (x, y) => {
-      emitAcc += 0.84;  // poziom z laboratorium: o 30% mniej niż 1,2 na klatkę
-      while (emitAcc >= 1) {
-        emitAcc -= 1;
-        flakes.push({
-          x: x + (Math.random() - 0.5) * 90, y: y + (Math.random() - 0.5) * 60,
-          d: 9 + Math.random() * 9, vy: 0.5 + Math.random() * 1.3,
-          sway: 0.25 + Math.random() * 0.7, life: 0.7 + Math.random() * 0.6,
-          sp: (Math.random() * 3) | 0, rot: Math.random() * 6.284,
-          vr: (Math.random() - 0.5) * 0.05,
-        });
-      }
-      if (flakes.length > 168) flakes.splice(0, flakes.length - 168);
-      if (!snowRaf) snowRaf = requestAnimationFrame(tickSnow);
-    };
-
-    const apply = () => {
-      raf = 0;
-      cursor.style.setProperty('--cx', px + 'px');
-      cursor.style.setProperty('--cy', py + 'px');
-      const r = hero.getBoundingClientRect();
-      const w = Math.round(r.width), h = Math.round(r.height);
-      const cw = Math.round(w * dpr), ch = Math.round(h * dpr);
-      if (canvas.width !== cw || canvas.height !== ch) {
-        canvas.width = cw; canvas.height = ch;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);   // płatki liczone w px CSS
-      }
-      const W = Math.round(w * dpr), H = Math.round(h * dpr);
-      if (winter.width !== W || winter.height !== H) {
-        winter.width = W; winter.height = H; maskCv.width = W; maskCv.height = H;
-      }
-      hero.style.setProperty('--pensX', (px - r.left) + 'px');
-      hero.style.setProperty('--pensY', (py - r.top) + 'px');
-      // Zima i śnieg tylko wtedy, gdy kursor jest nad hero.
-      if (px >= r.left && px <= r.right && py >= r.top && py <= r.bottom) {
-        if (moved) { emit(px - r.left, py - r.top); paint(px - r.left, py - r.top); }
-        frost();
-      } else { lx = ly = null; thaw(false); }
-      moved = false;
-    };
-
-    const frost = () => {
-      hero.classList.add('is-frosty');
-      hero.classList.remove('is-deep');
-      cursor.classList.add('is-on');
-      clearTimeout(this._idleTimer);
-      // Kursor stoi w miejscu → hero zaczyna szronić.
-      this._idleTimer = setTimeout(() => hero.classList.add('is-deep'), 2000);
-    };
-    // Wideo pauzuje dopiero pętla zimy, kiedy ślad zarośnie — nie tutaj.
-    const thaw = (leaving) => {
-      hero.classList.remove('is-frosty');
-      hero.classList.remove('is-deep');
-      if (leaving) { cursor.classList.remove('is-on'); lx = ly = null; }
-      clearTimeout(this._idleTimer);
-    };
-
-    this._onMove = (e) => {
-      px = e.clientX; py = e.clientY; moved = true;
-      cursor.classList.add('is-on');
-      // Po intrze choinka stoi na środku — pierwszy ruch to płynny dojazd.
-      if (this._arriving) {
-        this._arriving = false;
-        clearTimeout(this._arriveTimer);
-        this._arriveTimer = setTimeout(() => cursor.classList.remove('is-arriving'), 520);
-      }
-      if (!seen) { seen = true; apply(); return; }
-      if (!raf) raf = requestAnimationFrame(apply);
-    };
-    this._onLeave = () => { cursor.classList.remove('is-on'); thaw(true); };
-    // Przy scrollu hero jedzie względem kursora — trzeba przeliczyć maskę.
-    this._onScroll = () => { if (seen && !raf) raf = requestAnimationFrame(apply); };
-    this._cancelRaf = () => {
-      if (raf) cancelAnimationFrame(raf); raf = 0;
-      if (snowRaf) cancelAnimationFrame(snowRaf); snowRaf = 0;
-      if (winterRaf) cancelAnimationFrame(winterRaf); winterRaf = 0;
-      flakes = []; lx = ly = null;
-    };
-
-    this._onHeroOut = () => thaw(false);
-
-    po.addEventListener('pointermove', this._onMove);
-    po.addEventListener('pointerleave', this._onLeave);
-    hero.addEventListener('pointerleave', this._onHeroOut);
-    window.addEventListener('blur', this._onLeave);
-    window.addEventListener('scroll', this._onScroll, { passive: true });
-    window.addEventListener('resize', this._onScroll);
+    // Za pierwszym razem hero jest ukryte (widok PRZED), więc kontener nie ma
+    // wymiarów — mierzymy przy każdej aktualizacji, aż się faktycznie pojawi.
+    this.sizeKino();
+    if (this._kSeason !== this.state.season) {
+      this._kSeason = this.state.season;
+      this.loadKino();
+    }
   };
 
-  unbindHero = () => {
-    if (!this._heroBound) return;
-    this._heroBound = false;
-    const po = this.poRef.current;
-    const hero = this.heroRef.current;
-    if (po) {
-      po.removeEventListener('pointermove', this._onMove);
-      po.removeEventListener('pointerleave', this._onLeave);
+  unbindKino = () => {
+    if (!this._k) return;
+    if (this._kIO) this._kIO.disconnect();
+    window.removeEventListener('resize', this._onKinoResize);
+    window.removeEventListener('scroll', this._onNavScroll);
+    document.removeEventListener('visibilitychange', this._onKinoVis);
+    if (this._kRaf) cancelAnimationFrame(this._kRaf);
+    this._kRaf = 0; this._kLive = false; this._k = null; this._kSeason = null;
+  };
+
+  sizeKino = () => {
+    const cv = this.kinoCanvasRef.current, k = this._k;
+    if (!cv || !k) return;
+    const box = cv.parentElement;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.round(box.clientWidth * dpr), h = Math.round(box.clientHeight * dpr);
+    if (!w || !h) return;                          // widok ukryty — nie ma czego mierzyć
+    if (cv.width === w && cv.height === h) return; // zmiana rozmiaru czyści canvas, więc tylko gdy trzeba
+    k.dpr = dpr; cv.width = w; cv.height = h;
+    this.pumpKino();
+  };
+
+  /* Kolejność wczytywania: najpierw co ósma klatka, potem zagęszczanie —
+     przewijanie działa (zgrubnie) po ~12% pobranych danych, nie po 100%. */
+  kinoOrder = (n) => {
+    const order = [], seen = new Array(n);
+    [8,4,2,1].forEach((step) => {
+      for (let i = 0; i < n; i += step) if (!seen[i]) { seen[i] = 1; order.push(i); }
+    });
+    return order;
+  };
+
+  /* Wybór katalogu: próbujemy wczytać pierwszą klatkę AVIF. Jeśli przeglądarka
+     jej nie zrozumie, obraz zgłosi błąd i schodzimy na zapasowy zestaw WebP.
+     Zamiast sztucznego testu wsparcia pobieramy klatkę, która i tak jest potrzebna. */
+  pickKinoDir = (cfg) => new Promise((res) => {
+    if (!cfg.dirHq) return res(cfg.dir);
+    if (this._avifOk === true)  return res(cfg.dirHq);
+    if (this._avifOk === false) return res(cfg.dir);
+    const probe = new Image();
+    probe.onload  = () => { this._avifOk = true;  res(cfg.dirHq); };
+    probe.onerror = () => { this._avifOk = false; res(cfg.dir); };
+    probe.src = cfg.dirHq + '/f_0001.avif';
+  });
+
+  loadKino = () => {
+    const k = this._k, cfgSeason = this.KINO[this.state.season];
+    if (!k || !cfgSeason) return;
+    this.pickKinoDir(cfgSeason).then((dir) => this.loadKinoFrom(cfgSeason, dir));
+  };
+
+  loadKinoFrom = (cfg, dir) => {
+    const k = this._k;
+    if (!k || !cfg) return;
+    const gen = ++k.gen;                       // unieważnia wczytywanie poprzedniej pory roku
+    k.frames = []; k.count = 0; k.loaded = 0; k.ready = false;
+    const load = this.kinoLoadRef.current, bar = this.kinoBarRef.current;
+    if (load) load.classList.remove('done');
+    if (bar) bar.style.width = '0%';
+
+    fetch(dir + '/manifest.json')
+      .then((r) => { if (!r.ok) throw new Error('brak manifestu'); return r.json(); })
+      .then((m) => {
+        if (gen !== k.gen) return;
+        k.count = m.count;
+        k.coarse = Math.ceil(m.count / 8);
+        const host = this.heroRef.current;
+        if (host) host.style.height = (m.scrollVh || 320) + 'vh';
+        if (this._onNavScroll) this._onNavScroll();   // sekcja ma już wysokość — przelicz nawigację
+        this.seedKino();
+        const pad = m.pad || 4, ext = m.ext || 'webp';
+        const order = this.kinoOrder(k.count);
+        let next = 0, active = 0;
+        const pump = () => {
+          while (active < 8 && next < order.length) {
+            const i = order[next++];
+            active++;
+            const img = new Image();
+            img.onload = img.onerror = () => {
+              if (gen !== k.gen) return;
+              k.loaded++; active--;
+              if (bar) bar.style.width = Math.min(100, Math.round(k.loaded / k.coarse * 100)) + '%';
+              if (k.loaded === 1) { k.ready = true; this.pumpKino(); }
+              if (k.loaded === k.coarse) { if (load) load.classList.add('done'); this.seamFromFrames(); }
+              pump();
+            };
+            img.src = dir + '/f_' + String(i + 1).padStart(pad, '0') + '.' + ext;
+            k.frames[i] = img;
+          }
+        };
+        pump();
+        if (cfg.loopDir) this.loadKinoLoop(cfg.loopDir, gen);
+      })
+      .catch(() => {
+        if (load) load.innerHTML = '<span style="max-width:340px;text-align:center;line-height:1.7">' +
+          'Brak klatek dla sekwencji <b>' + dir + '</b>.</span>';
+      });
+  };
+
+  /* Osobne, krótkie ujęcie na postój — ładowane w całości po kolei, bo jest małe
+     i musi być gotowe od razu: to pierwsza rzecz, którą widać po wejściu. */
+  loadKinoLoop = (dir, gen) => {
+    const k = this._k;
+    if (!k) return;
+    k.loop = [];
+    fetch(dir + '/manifest.json')
+      .then((r) => { if (!r.ok) throw new Error('brak manifestu pętli'); return r.json(); })
+      .then((m) => {
+        if (gen !== k.gen) return;
+        const pad = m.pad || 4, ext = m.ext || 'webp';
+        for (let i = 0; i < m.count; i++) {
+          const img = new Image();
+          img.src = dir + '/f_' + String(i + 1).padStart(pad, '0') + '.' + ext;
+          k.loop[i] = img;
+        }
+      })
+      .catch(() => { k.loop = []; });   // brak pętli — scena po prostu trzyma pierwszą klatkę
+  };
+
+  /* Barwa szwu: uśredniamy ostatnią wczytaną klatkę i z niej robimy kolor,
+     w którym kadr się kończy i w którym zaczyna się łącznik. Dzięki temu styk
+     zgadza się dla każdej pory roku — i dla każdego klipu, który tu wstawisz. */
+  seamFromFrames = () => {
+    const k = this._k;
+    if (!k || !k.count) return;
+    let img = null;
+    for (let i = k.count - 1; i >= 0 && i > k.count - 48; i--) {
+      const f = k.frames[i];
+      if (f && f.complete && f.naturalWidth) { img = f; break; }
     }
-    if (hero) hero.removeEventListener('pointerleave', this._onHeroOut);
-    window.removeEventListener('blur', this._onLeave);
-    window.removeEventListener('scroll', this._onScroll);
-    window.removeEventListener('resize', this._onScroll);
-    clearTimeout(this._idleTimer);
-    clearTimeout(this._arriveTimer);
-    if (this._cancelRaf) this._cancelRaf();
+    if (!img) return;
+    try {
+      const c = document.createElement('canvas');
+      c.width = 12; c.height = 8;
+      const x = c.getContext('2d');
+      x.drawImage(img, 0, 0, 12, 8);
+      const d = x.getImageData(0, 0, 12, 8).data;
+      let r = 0, g = 0, b = 0, n = 0;
+      for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i+1]; b += d[i+2]; n++; }
+      r /= n; g /= n; b /= n;
+      // Przyciemniamy, żeby szew był głęboki, ale zachował ton materiału.
+      const mix = (v, f) => Math.round(Math.max(0, Math.min(255, v * f)));
+      const rgb = (f) => 'rgb(' + mix(r,f) + ',' + mix(g,f) + ',' + mix(b,f) + ')';
+      const host = this.poRef.current;
+      if (!host) return;
+      host.style.setProperty('--seam', rgb(0.38));
+      host.style.setProperty('--seam-deep', rgb(0.22));
+    } catch (e) { /* nie udało się odczytać pikseli — zostają wartości domyślne */ }
+  };
+
+  /* Miękka kropka rysowana raz do bufora — liczenie gradientu dla każdej
+     z 300 drobinek na klatkę byłoby zabójcze dla płynności. */
+  kinoPuff = (rgb) => {
+    const c = document.createElement('canvas'), S = 64;
+    c.width = c.height = S;
+    const cx = c.getContext('2d');
+    const g = cx.createRadialGradient(S/2, S/2, 0, S/2, S/2, S/2);
+    const base = rgb[0] + ',' + rgb[1] + ',' + rgb[2];
+    g.addColorStop(0, 'rgba(' + base + ',1)');
+    g.addColorStop(0.45, 'rgba(' + base + ',0.42)');
+    g.addColorStop(1, 'rgba(' + base + ',0)');
+    cx.fillStyle = g; cx.fillRect(0, 0, S, S);
+    return c;
+  };
+
+  seedKino = () => {
+    const k = this._k, cfg = this.KINO[this.state.season];
+    k.motes = []; k.snow = []; k.glints = [];
+    k.puffWarm = this.kinoPuff(cfg.tint);
+    k.puffCold = this.kinoPuff(cfg.openTint);
+    if (this._kCalm) return;
+    for (let i = 0; i < cfg.motes; i++) {
+      k.motes.push({ x:Math.random(), y:Math.random(), dep:Math.random(),
+                     sp:0.004 + Math.random()*0.012, ph:Math.random()*6.283,
+                     sw:0.4 + Math.random()*1.4 });
+    }
+    for (let i = 0; i < cfg.snow; i++) {
+      const dep = Math.random();
+      k.snow.push({ x:Math.random(), y:Math.random(), dep,
+                    sp:0.018 + dep*0.055, drift:0.25 + Math.random()*0.9,
+                    ph:Math.random()*6.283 });
+    }
+    // Iskry siedzą nieruchomo na lodzie — to odblaski fasetek, nie pyłki.
+    for (let i = 0; i < cfg.glints; i++) {
+      k.glints.push({ x:Math.random(), y:Math.random(), r:0.5 + Math.random()*1.6,
+                      per:2.2 + Math.random()*4.5, ph:Math.random()*6.283 });
+    }
+  };
+
+  kinoStep = (a, b, x) => { const t = Math.min(1, Math.max(0, (x-a)/(b-a))); return t*t*(3-2*t); };
+
+  // Jak mocno dany punkt kadru jest oświetlony — kurz widać tylko w świetle.
+  kinoLit = (x, y) => {
+    const L = this.KINO[this.state.season].lights;
+    let v = 0;
+    for (let i = 0; i < L.length; i++) {
+      const dx = x - L[i][0], dy = (y - L[i][1]) * 0.62;
+      v += L[i][3] * (1 - this.kinoStep(0, L[i][2], Math.sqrt(dx*dx + dy*dy)));
+    }
+    return Math.min(1, v);
+  };
+
+  kinoBlob = (ctx, x, y, r, sprite, a) => {
+    if (a <= 0.004) return;
+    ctx.globalAlpha = Math.min(1, a);
+    ctx.drawImage(sprite, x - r, y - r, r*2, r*2);
+    ctx.globalAlpha = 1;
+  };
+
+  drawKino = (now) => {
+    const k = this._k, cv = this.kinoCanvasRef.current, host = this.heroRef.current;
+    if (!k || !cv || !host || !k.ready || !k.count) return;
+    const cfg = this.KINO[this.state.season];
+    const ctx = cv.getContext('2d');
+    const t = now / 1000;
+
+    const stick = cv.parentElement;
+    const span = host.offsetHeight - stick.clientHeight;
+    const p = span > 0 ? Math.max(0, Math.min(1, -host.getBoundingClientRect().top / span)) : 0;
+
+    const amb  = this._kCalm ? 0 : this.kinoStep(cfg.frameEnd - 0.18, cfg.frameEnd + 0.02, p);
+    const open = this._kCalm ? 0 : 1 - this.kinoStep(0.015, 0.13, p);
+    // Sceny z osobną pętlą nie oddychają na postoju — kadr ma stać nieruchomo,
+    // a całe życie ma pochodzić z pary w zapętlonym ujęciu.
+    const alive = cfg.loopDir ? amb : Math.max(amb, open * 0.55);
+
+    // Klatki zajmują tylko pierwszą część drogi; reszta to już ożywiony bezruch.
+    const fp = Math.min(1, p / cfg.frameEnd);
+    let raw = fp * (k.count - 1);
+
+    const idx = Math.max(0, Math.min(k.count - 1, Math.round(raw)));
+
+    // Kadr ledwie oddycha na obu postojach, żeby obraz nigdy nie zamarł.
+    const zoom = 1 + 0.016 * alive * (0.5 + 0.5 * Math.sin(t * 0.16));
+    const ox = Math.sin(t * 0.11) * 11 * alive * k.dpr;
+    const oy = Math.cos(t * 0.14) * 7  * alive * k.dpr;
+
+    let img = k.frames[idx];
+    if (!img || !img.complete || !img.naturalWidth) {
+      img = null;
+      for (let d = 1; d < k.count; d++) {          // zanim dojdzie właściwa — najbliższa wczytana
+        const a = k.frames[idx - d], b = k.frames[idx + d];
+        if (a && a.complete && a.naturalWidth) { img = a; break; }
+        if (b && b.complete && b.naturalWidth) { img = b; break; }
+      }
+    }
+    if (img) {
+      const cw = cv.width, ch = cv.height;
+      const s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight) * zoom;
+      const w = img.naturalWidth * s, h = img.naturalHeight * s;
+      const x = (cw - w) / 2 + ox, y = (ch - h) / 2 + oy;
+      ctx.drawImage(img, x, y, w, h);
+      k.dest = { x, y, w, h };
+    }
+
+    /* Zapętlone ujęcie z nieruchomą kamerą kładziemy NA kadrze głównym i wygaszamy
+       w miarę przewijania. Dzięki temu przejęcie przez scroll to przenikanie,
+       a nie przeskok — nawet jeśli kadrowanie obu ujęć różni się o włos. */
+    if (cfg.loopDir && open > 0.01 && k.loop && k.loop.length) {
+      const n = k.loop.length;
+      const osc = 0.5 - 0.5 * Math.cos(t * (cfg.loopSpeed || 0.42));   // tam i z powrotem
+      const li = Math.max(0, Math.min(n - 1, Math.round(osc * (n - 1))));
+      let lim = k.loop[li];
+      if (!lim || !lim.complete || !lim.naturalWidth) {
+        lim = null;
+        for (let d = 1; d < n; d++) {
+          const a = k.loop[li - d], b = k.loop[li + d];
+          if (a && a.complete && a.naturalWidth) { lim = a; break; }
+          if (b && b.complete && b.naturalWidth) { lim = b; break; }
+        }
+      }
+      if (lim) {
+        const cw = cv.width, ch = cv.height;
+        const s = Math.max(cw / lim.naturalWidth, ch / lim.naturalHeight);
+        const w = lim.naturalWidth * s, h = lim.naturalHeight * s;
+        ctx.globalAlpha = open;
+        ctx.drawImage(lim, (cw - w) / 2, (ch - h) / 2, w, h);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    if (open > 0.01) { this.drawKinoSnow(ctx, t, open); this.drawKinoGlints(ctx, t, open); }
+    if (amb  > 0.01) { this.drawKinoGlow(ctx, t, amb);  this.drawKinoMotes(ctx, t, amb); }
+
+    // Ciepły szew u dołu narasta dopiero pod koniec podróży — na starcie kadr
+    // jest zimny i pas w barwie finału wyglądałby jak obca naklejka.
+    stick.style.setProperty('--seam-op', this.kinoStep(0.58, 0.93, p).toFixed(3));
+
+    // Stan nawigacji przeliczamy też tutaj: sam nasłuch scrolla nie wystarczy,
+    // bo pierwsze sprawdzenie wypada, zanim manifest nada sekcji wysokość.
+    if (this._onNavScroll) this._onNavScroll();
+
+    const rail = this.kinoRailRef.current;
+    if (rail) {
+      rail.style.width = (p * 100).toFixed(1) + '%';
+      // Dół kadru robi się kremowy — jasny pasek przestałby być widoczny, więc gaśnie.
+      rail.parentElement.style.opacity = (1 - this.kinoStep(0.80, 0.95, p)).toFixed(2);
+    }
+    host.querySelectorAll('.kino-beat').forEach((b) => {
+      const f = parseFloat(b.dataset.from), to = parseFloat(b.dataset.to);
+      b.classList.toggle('on', p >= f && p < to);
+    });
+  };
+
+  drawKinoGlow = (ctx, t, amb) => {
+    const k = this._k, cfg = this.KINO[this.state.season];
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    cfg.lights.forEach((L, i) => {
+      const cx = k.dest.x + L[0] * k.dest.w, cy = k.dest.y + L[1] * k.dest.h;
+      const rad = L[2] * k.dest.w;
+      const puls = 0.72 + 0.28 * Math.sin(t * 0.55 + i * 2.1);   // powolne tętnienie żarówki
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      const base = cfg.tint.join(',');
+      g.addColorStop(0, 'rgba(' + base + ',' + (0.21 * L[3] * puls * amb * this.FX.dust).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(' + base + ',0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(cx - rad, cy - rad, rad * 2, rad * 2);
+    });
+    ctx.restore();
+  };
+
+  drawKinoMotes = (ctx, t, amb) => {
+    const k = this._k;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < k.motes.length; i++) {
+      const m = k.motes[i];
+      m.y -= m.sp * 0.0028;                        // kurz unosi się z ciepłym powietrzem
+      if (m.y < -0.05) { m.y = 1.05; m.x = Math.random(); }
+      const x = m.x + Math.sin(t * 0.35 + m.ph) * 0.006 * m.sw;
+      const lit = this.kinoLit(x, m.y);
+      if (lit <= 0.02) continue;                   // poza światłem kurzu nie widać
+      this.kinoBlob(ctx, k.dest.x + x * k.dest.w, k.dest.y + m.y * k.dest.h,
+                    (1.3 + m.dep * 3.6) * k.dpr, k.puffWarm,
+                    (0.20 + m.dep * 0.70) * lit * amb * this.FX.dust);
+    }
+    ctx.restore();
+  };
+
+  drawKinoSnow = (ctx, t, amt) => {
+    const k = this._k;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < k.snow.length; i++) {
+      const s = k.snow[i];
+      s.y += s.sp * 0.0032;
+      if (s.y > 1.06) { s.y = -0.06; s.x = Math.random(); }
+      let x = s.x + Math.sin(t * 0.22 + s.ph) * 0.02 * s.drift + t * 0.004 * s.drift;
+      x = ((x % 1) + 1) % 1;                       // wiatr znosi w bok, więc zawijamy
+      // Ostrość obiektywu siedzi na lodzie, więc śnieg za szybą jest miękki i duży.
+      this.kinoBlob(ctx, k.dest.x + x * k.dest.w, k.dest.y + s.y * k.dest.h,
+                    (3 + s.dep * 11) * k.dpr, k.puffCold,
+                    (0.14 + s.dep * 0.40) * amt * this.FX.snow);
+    }
+    ctx.restore();
+  };
+
+  drawKinoGlints = (ctx, t, amt) => {
+    const k = this._k;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < k.glints.length; i++) {
+      const g = k.glints[i];
+      const ph = (t / g.per + g.ph) % 1;
+      const f = Math.pow(Math.max(0, Math.sin(ph * 3.1416)), 9);   // krótki błysk, nie równe miganie
+      if (f < 0.02) continue;
+      this.kinoBlob(ctx, k.dest.x + g.x * k.dest.w, k.dest.y + g.y * k.dest.h,
+                    g.r * 3.4 * k.dpr, k.puffCold, f * 0.95 * amt * this.FX.glint);
+    }
+    ctx.restore();
+  };
+
+  /* Pętla chodzi tylko wtedy, gdy sekcja jest na ekranie — kurz i światło
+     muszą żyć czasem, a nie pozycją scrolla, inaczej zatrzymanie kółka
+     zamrażałoby pokój. */
+  pumpKino = () => {
+    if (this._kRaf || !this._kLive) return;
+    const step = (now) => {
+      if (!this._kLive || !this._k) { this._kRaf = 0; return; }
+      this.drawKino(now);
+      this._kRaf = requestAnimationFrame(step);
+    };
+    this._kRaf = requestAnimationFrame(step);
   };
   MONTHS = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
   DOW = ['Pn','Wt','Śr','Cz','Pt','So','Nd'];
 
-  // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie
-  state = { view: (typeof location !== 'undefined' && /[?&]v=po(?:[&#]|$)/.test(location.search)) ? 'after' : 'before', year: 2026, month: 7, selectedDay: null };
+  // "?v=po" — wejscie z portfolio przyciskiem "Otworz strone": od razu widok po metamorfozie.
+  // Intro odpalamy takze wtedy, bo to pierwsze wrazenie, a showAfter() sie w tym wypadku nie wykona.
+  _wprostNaPo = (typeof location !== 'undefined' && /[?&]v=po(?:[&#]|$)/.test(location.search));
+  // "&noIntro=1" — pomija intro. Uzywane przy robieniu zrzutow do podgladow w portfolio.
+  _bezIntra = (typeof location !== 'undefined' && /[?&]noIntro=1(?:[&#]|$)/.test(location.search));
+  state = { view: this._wprostNaPo ? 'after' : 'before',
+            introPlaying: this._wprostNaPo && !this._bezIntra,
+            year: 2026, month: 7, selectedDay: null, season: 'zima' };
+
+  // Pora roku steruje hero i całą stroną poniżej — jedno przełączenie, jeden nastrój.
+  setWinter = () => this.setState({ season: 'zima' });
+  setSummer = () => this.setState({ season: 'lato' });
 
   showBefore = () => this.setState({ view: 'before' });
   reveal = () => {
@@ -695,28 +1037,11 @@ class Component extends DCLogic {
     this.setState({ view: 'after', introPlaying: first });
     if (first) {
       if (this._introTimer) clearTimeout(this._introTimer);
-      this._introTimer = setTimeout(() => this.setState({ introPlaying: false }), 4300);
-      // Choinka z intra kurczy się i staje się kursorem stojącym na środku.
-      this._shrinkTimer = setTimeout(() => {
-        const t = this.introTreeRef.current;
-        if (t) t.classList.add('is-shrunk');
-      }, 3150);
-      this._handoffTimer = setTimeout(this.cursorToCenter, 3900);
+      // 1,7 s napis + 0,7 s zejscie; ostrosc dochodzi rownolegle przez 1,7 s
+      this._introTimer = setTimeout(() => this.setState({ introPlaying: false }), 2450);
     }
   };
 
-  /* Przekazanie: choinka z intra znika, a kursor pojawia się w tym samym
-     miejscu — na środku ekranu — i czeka na pierwszy ruch myszy. */
-  cursorToCenter = () => {
-    const t = this.introTreeRef.current;
-    if (t) t.style.opacity = '0';
-    const cursor = this.cursorRef.current;
-    if (!cursor || !this._heroBound) return;
-    cursor.style.setProperty('--cx', Math.round(window.innerWidth / 2) + 'px');
-    cursor.style.setProperty('--cy', Math.round(window.innerHeight / 2) + 'px');
-    cursor.classList.add('is-arriving', 'is-on');
-    this._arriving = true;
-  };
 
   isBusy(y, m, d) {
     const h = (y * 13 + m * 31 + d * 7) % 11;
@@ -741,6 +1066,26 @@ class Component extends DCLogic {
 
   renderVals() {
     const isAfter = this.state.view === 'after';
+    const isWinter = this.state.season === 'zima';
+
+    // Trzy etapy napisów w hero — po jednym na odcinek podróży kamery.
+    const hero = isWinter ? {
+      heroKicker: 'Pensjonat pod Świerkami · 820 m n.p.m.',
+      b1a: 'Na zewnątrz', b1b: 'mróz',
+      b1p: 'Szron zarasta szybę od strony doliny. Wiatr niesie śnieg znad przełęczy.',
+      b2a: 'Jeszcze', b2b: 'chwila',
+      b2p: 'Lód puszcza. Szkło się rozstępuje.',
+      b3a: 'I jesteś', b3b: 'w środku',
+      b3p: 'Rozgrzane drewno, lampa, wełniany koc i cisza, której nie przerywa nic poza trzaskiem w piecu.',
+    } : {
+      heroKicker: 'Pensjonat pod Świerkami · śniadanie od 7:30',
+      b1a: 'Zaczyna się od', b1b: 'pary',
+      b1p: 'Kawa na tarasie, zanim dolina zdąży się obudzić.',
+      b2a: 'Mgła między', b2b: 'świerkami',
+      b2p: 'Szlak zaczyna się za progiem. Pierwsze pół godziny idziesz w chmurze.',
+      b3a: 'Aż nad nią', b3b: 'wyjdziesz',
+      b3p: 'Powyżej mgły są już tylko granie i słońce. Wracasz na obiad.',
+    };
     const { year, month, selectedDay } = this.state;
     const offset = this.firstWeekdayMon(year, month);
     const days = new Date(year, month + 1, 0).getDate();
@@ -774,14 +1119,27 @@ class Component extends DCLogic {
     return {
       rootRef: this.rootRef,
       introRef: this.introRef,
-      introTreeRef: this.introTreeRef,
       heroRef: this.heroRef,
       poRef: this.poRef,
-      winterRef: this.winterRef,
-      srcRef: this.srcRef,
-      canvasRef: this.canvasRef,
-      cursorRef: this.cursorRef,
-      introDisplay: this.state.introPlaying ? 'block' : 'none',
+      navRef: this.navRef,
+      kinoCanvasRef: this.kinoCanvasRef,
+      kinoRailRef: this.kinoRailRef,
+      kinoLoadRef: this.kinoLoadRef,
+      kinoBarRef: this.kinoBarRef,
+      setWinter: this.setWinter,
+      setSummer: this.setSummer,
+      winterBtn: isWinter ? 'on' : '',
+      summerBtn: isWinter ? '' : 'on',
+      ...hero,
+      widokDolina:  'img/widok-dolina-'  + (isWinter ? 'zima' : 'lato') + '.jpg',
+      widokSzczyty: 'img/widok-szczyty-' + (isWinter ? 'zima' : 'lato') + '.jpg',
+      widokLas:     'img/widok-las-'     + (isWinter ? 'zima' : 'lato') + '.jpg',
+      introDisplay: this.state.introPlaying ? 'flex' : 'none',   // 'block' zabija centrowanie z klasy
+      introCls: this.state.introPlaying ? 'is-intro' : '',
+      // Podczas intra na ekranie zostaje tylko nazwa nad rozmytym kadrem
+      navOpacity: this.state.introPlaying ? '0' : '1',
+      navShift:   this.state.introPlaying ? 'translateY(-16px)' : 'none',
+      navPointer: this.state.introPlaying ? 'none' : 'auto',
       beforeDisplay: isAfter ? 'none' : 'block',
       afterDisplay: isAfter ? 'block' : 'none',
       przedBg: isAfter ? 'transparent' : 'linear-gradient(90deg,#7c5cff,#9d7bff)',

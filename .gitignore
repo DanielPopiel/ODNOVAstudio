@@ -12,3 +12,10 @@ dev-server.js
 # frames-budmax: 240 klatek (54,8 MB), z których zakodowano img/bud-manifesto.webm
 frames-budmax/
 uploads/
+# materiał źródłowy hero filmowego — klipy z Higgsfielda i wersje pośrednie
+# (klatki w frames-szron/ i frames-poranek/ są potrzebne na serwerze, te pliki nie)
+kino-src/
+
+# pliki robocze podglądu, nie idą na produkcję
+demo-3d-hero.html
+demo-hero-kino.html
