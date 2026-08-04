@@ -170,13 +170,13 @@
         <p style="max-width:480px;color:#bdb2a4;margin:26px 0 38px;font-weight:300;font-size:1.08rem">Ponad 25 lat doświadczenia, autorskie koloryzacje i wnętrze, w którym odpoczniesz. Umów wizytę online w 30 sekund.</p>
         <a href="#rezerwacja" style="background:#d4af6a;color:#171310;text-decoration:none;font-weight:600;padding:11px 26px;border-radius:2px;letter-spacing:.08em;font-size:.82rem;text-transform:uppercase;pointer-events:auto" style-hover="background:#e6c584">Zarezerwuj termin</a>
       </div>
-      <div ref="{{ heroMediaRef }}" class="odn-hero-media" style="position:absolute;top:0;right:0;bottom:0;width:56%;min-width:420px;cursor:none">
+      <div ref="{{ heroMediaRef }}" class="odn-hero-media" style="position:absolute;top:0;right:0;bottom:0;width:56%;min-width:420px;cursor:none;overflow:hidden">
         <img src="img/fryzjer-hero-model.webp" alt="Modelka z długimi ciemnymi włosami" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%"></img>
         <video ref="{{ heroVideoRef }}" src="img/fryzjer-hero-hair.mp4" muted loop autoplay playsinline preload="auto" style="position:absolute;left:0;top:0;opacity:0;pointer-events:none;object-fit:fill"></video>
         <audio ref="{{ heroAudioRef }}" src="img/fryzjer-hero-hair.m4a" loop preload="auto"></audio>
         <div style="position:absolute;inset:0;background:linear-gradient(90deg,#171310 0%,rgba(23,19,16,.55) 20%,transparent 52%);pointer-events:none"></div>
         <div ref="{{ heroTintRef }}" style="position:absolute;inset:0;background:#d4af6a;mix-blend-mode:screen;opacity:0;pointer-events:none"></div>
-        <div ref="{{ heroHintRef }}" style="position:absolute;right:22px;bottom:20px;background:rgba(23,19,16,.78);border:1px solid rgba(212,175,106,.4);color:#d4af6a;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;pointer-events:none;transition:opacity .6s ease">✨ Prowadź kursorem po zdjęciu</div>
+        <div ref="{{ heroHintRef }}" style="position:absolute;right:22px;bottom:20px;background:rgba(23,19,16,.78);border:1px solid rgba(212,175,106,.4);color:#d4af6a;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;pointer-events:none;transition:opacity .6s ease">✨ Najedź — zdjęcie ożyje</div>
       </div>
     </header>
 
@@ -366,7 +366,7 @@ class Component extends DCLogic {
 
       this._heroHover = false;
       this._heroTX = 0; this._heroTY = 0;
-      this._heroCX = 0; this._heroCY = 0; this._heroR = 0;
+      this._heroCX = 0; this._heroCY = 0; this._heroR = 0; this._heroFade = 0;
       // Kursor-plama: zamiast jednego twardego kola suma kilku miekkich platow, kazdy
       // z wlasna faza i predkoscia. Czestotliwosci sa niewspolmierne, wiec ksztalt nigdy
       // sie nie powtarza — plama plynie i przelewa sie za kursorem.
@@ -386,15 +386,16 @@ class Component extends DCLogic {
         if (!this._heroHover) { this._heroCX = this._heroTX; this._heroCY = this._heroTY; }
         this._heroHover = true;
       };
-      // wideo leci w petli od startu (autoplay); na wypadek zablokowania autoplay wymuszamy play()
       const tryPlay = () => video.play().catch(() => {});
-      tryPlay();
-      video.addEventListener('canplay', tryPlay);
       // dzwiek tylko na hover: plynne narastanie/wyciszenie glosnosci
       const audio = this.heroAudioRef.current;
       const VOL_MAX = 0.6;
       if (audio) { audio.volume = 0; this._heroVol = 0; }
       this._heroEnter = () => {
+        // Przewijamy na klatke 0, bo ona JEST tym zdjeciem (PSNR 35.8 dB) — dzieki temu
+        // przenikanie zaczyna sie od obrazu identycznego z fotografia i czyta sie jako
+        // "zdjecie ozywa", a nie jako podmiana kadru.
+        try { video.currentTime = 0; } catch (e) {}
         tryPlay();
         if (audio && audio.paused) audio.play().catch(() => {});
         const hint = this.heroHintRef.current;
@@ -404,43 +405,46 @@ class Component extends DCLogic {
       media.addEventListener('pointermove', this._heroMove);
       media.addEventListener('pointerenter', this._heroEnter);
       media.addEventListener('pointerleave', this._heroLeave);
-      const R_MAX = 190;
+      const R_CUR = 110;               // promien plamy-kursora (juz niczego nie odslania)
       const tint = this.heroTintRef.current;
       const loop = () => {
-        const targetR = this._heroHover ? R_MAX : 0;
+        // ── przenikanie calego kadru ──────────────────────────────────────────────
+        // Animacja to pelna etiuda (modelka obraca glowe i zmienia mimike), wiec
+        // odslanianie jej wycinkiem na tle nieruchomego zdjecia zawsze pokazywalo
+        // twarz w dwoch pozach naraz. Zamiast maski przenika CALY panel.
+        const targetF = this._heroHover ? 1 : 0;
+        this._heroFade += (targetF - this._heroFade) * 0.055;
+        if (this._heroFade < 0.004) this._heroFade = 0;
+        video.style.opacity = this._heroFade.toFixed(3);
+        if (this._heroFade === 0) { if (!video.paused) video.pause(); }
+
+        // ── plama-kursor: dekoracja plynaca za wskaznikiem ────────────────────────
+        const targetR = this._heroHover ? R_CUR : 0;
         this._heroR += (targetR - this._heroR) * 0.1;
         this._heroCX += (this._heroTX - this._heroCX) * 0.16;
         this._heroCY += (this._heroTY - this._heroCY) * 0.16;
-        if (this._heroR > 1) {
-          // suma miekkich platow = nieregularna, wolno zmieniajaca sie plama;
-          // lagodny spad (#000 34% -> przezroczyste) zamiast mocnej krawedzi gradientu
-          const t = (performance.now() - this._heroT0) / 1000;
-          const R = this._heroR, cx = this._heroCX, cy = this._heroCY;
-          let mask = '';
-          for (let i = 0; i < this._heroLobes.length; i++) {
-            const l = this._heroLobes[i];
-            const ang = l.ph + t * l.wa;
-            const dist = R * l.di * (0.55 + 0.45 * Math.sin(t * l.wd + l.ph));
-            const rad = R * l.rr * (0.80 + 0.20 * Math.sin(t * l.wr + l.ph * 2));
-            const x = cx + Math.cos(ang) * dist, y = cy + Math.sin(ang) * dist;
-            mask += (i ? ',' : '') + 'radial-gradient(circle ' + rad.toFixed(1) + 'px at ' +
-              x.toFixed(1) + 'px ' + y.toFixed(1) + 'px, #000 34%, rgba(0,0,0,0) 100%)';
-          }
-          video.style.webkitMaskImage = mask;
-          video.style.maskImage = mask;
-          if (video.style.opacity !== '1') video.style.opacity = '1';
-          // ta sama plama jako ledwie widoczne rozjasnienie — inaczej nie widac, gdzie jest
-          // kursor, bo animacja jest zgrana ze zdjeciem co do piksela
-          if (tint) {
+        if (tint) {
+          if (this._heroR > 1) {
+            // suma miekkich platow o niewspolmiernych czestotliwosciach — ksztalt
+            // nigdy sie nie powtarza; lagodny spad zamiast mocnej krawedzi
+            const t = (performance.now() - this._heroT0) / 1000;
+            const R = this._heroR, cx = this._heroCX, cy = this._heroCY;
+            let mask = '';
+            for (let i = 0; i < this._heroLobes.length; i++) {
+              const l = this._heroLobes[i];
+              const ang = l.ph + t * l.wa;
+              const dist = R * l.di * (0.55 + 0.45 * Math.sin(t * l.wd + l.ph));
+              const rad = R * l.rr * (0.80 + 0.20 * Math.sin(t * l.wr + l.ph * 2));
+              const x = cx + Math.cos(ang) * dist, y = cy + Math.sin(ang) * dist;
+              mask += (i ? ',' : '') + 'radial-gradient(circle ' + rad.toFixed(1) + 'px at ' +
+                x.toFixed(1) + 'px ' + y.toFixed(1) + 'px, #000 34%, rgba(0,0,0,0) 100%)';
+            }
             tint.style.webkitMaskImage = mask;
             tint.style.maskImage = mask;
-            tint.style.opacity = (this._heroR / R_MAX * 0.13).toFixed(3);
+            tint.style.opacity = (this._heroR / R_CUR * 0.16).toFixed(3);
+          } else if (tint.style.opacity !== '0') {
+            tint.style.opacity = '0';
           }
-        } else {
-          // poza hoverem wideo calkowicie niewidzialne - widac tylko zdjecie
-          if (video.style.opacity !== '0') video.style.opacity = '0';
-          if (video.style.maskImage !== 'none') { video.style.webkitMaskImage = 'none'; video.style.maskImage = 'none'; }
-          if (tint && tint.style.opacity !== '0') tint.style.opacity = '0';
         }
         if (audio) {
           const targetV = this._heroHover ? VOL_MAX : 0;
@@ -455,7 +459,8 @@ class Component extends DCLogic {
             this._heroLastW = rr.width; this._heroLastH = rr.height;
             this._heroLayout();
           }
-          if (video.paused) tryPlay();
+          // wideo gra tylko pod kursorem — poza hoverem ma prawo byc zatrzymane
+          if (this._heroHover && video.paused) tryPlay();
         }
         this._heroRaf = requestAnimationFrame(loop);
       };
