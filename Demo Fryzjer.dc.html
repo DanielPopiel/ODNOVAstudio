@@ -58,6 +58,39 @@
   .odn-back-sub{color:#9a9aad;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
   .odn-switch{left:50%;transform:translateX(-50%);display:flex;gap:4px;padding:5px;border-radius:99px}
   .odn-switch button{border:0;font-family:'Sora',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:9px 22px;border-radius:99px;cursor:pointer}
+  /* ===== Look Book: kolor odsłania modelkę ===== */
+  .lb-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 4px 22px;cursor:grab;scrollbar-color:#d4af6a #241c14;scrollbar-width:thin}
+  .lb-card{flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:2/3;border-radius:4px;overflow:hidden;isolation:isolate;
+    transition:opacity .8s ease,filter .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),box-shadow .8s ease}
+  .lb-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 14%;
+    opacity:0;transform:scale(1.12);filter:saturate(.8);
+    transition:opacity 1s ease,transform 1.7s cubic-bezier(.2,.7,.2,1),filter 1s ease}
+  .lb-veil{position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,10,7,.92),rgba(14,10,7,.3) 40%,rgba(14,10,7,0) 66%);opacity:.6;transition:opacity .8s ease}
+  .lb-cap{position:absolute;left:0;right:0;bottom:0;padding:18px;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .lb-cap b{display:block;color:#fff;font-family:'Playfair Display',serif;font-size:1.15rem;text-shadow:0 2px 16px rgba(0,0,0,.6)}
+  .lb-cap span{display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px}
+  .lb-rule{display:block;height:1px;background:#d4af6a;margin-top:12px;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform .75s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+  .lb-more{display:block;margin-top:10px;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:#d4af6a;opacity:0;transform:translateY(9px);transition:opacity .55s ease .08s,transform .55s cubic-bezier(.2,.7,.2,1) .08s}
+  .lb-card:hover{transform:translateY(-6px);box-shadow:inset 0 0 0 1px rgba(212,175,106,.55)}
+  .lb-card:hover .lb-photo{opacity:1;transform:scale(1);filter:saturate(1);transition:opacity .5s ease,transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s ease}
+  .lb-card:hover .lb-veil{opacity:1}
+  .lb-card:hover .lb-cap{transform:translateY(-4px)}
+  .lb-card:hover .lb-rule{opacity:1;transform:scaleX(1)}
+  .lb-card:hover .lb-more{opacity:1;transform:none}
+  .lb-track:hover .lb-card{opacity:.42;filter:saturate(.55)}
+  .lb-track:hover .lb-card:hover{opacity:1;filter:none}
+  @media (hover:none){
+    .lb-photo{opacity:1!important;transform:none!important;filter:none!important}
+    .lb-veil{opacity:1}
+    .lb-rule{opacity:1;transform:scaleX(1)}
+    .lb-more{opacity:1;transform:none}
+    .lb-track:hover .lb-card{opacity:1;filter:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .lb-card:hover{transform:none}
+    .lb-photo{transform:none!important}
+    .lb-card,.lb-photo,.lb-veil,.lb-cap,.lb-rule,.lb-more{transition-duration:.2s!important}
+  }
   @media(max-width:900px){
     .odn-hero-media{display:none!important}
   }
@@ -199,15 +232,15 @@
         <h2 style="font-family:'Playfair Display';font-size:clamp(1.9rem,4vw,2.7rem);font-weight:500;text-align:center;margin:0 0 40px">Inspiracje na Twoją wizytę</h2>
       </div>
       <div style="max-width:1200px;margin:0 auto;padding:0 24px">
-        <div ref="{{ lbTrackRef }}" style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 22px;cursor:grab;scrollbar-color:#d4af6a #241c14;scrollbar-width:thin">
-          <div style="flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:linear-gradient(160deg,#3a2417,#6b4423 60%,#8a5a30)"><div style="position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%)"><b style="display:block;color:#fff;font-family:'Playfair Display';font-size:1.15rem">Karmelowy Balayage</b><span style="display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px">od 260 zł · 3,5 h</span></div></div>
-          <div style="flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:linear-gradient(160deg,#1a1a1a,#3d3d3d 60%,#565656)"><div style="position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%)"><b style="display:block;color:#fff;font-family:'Playfair Display';font-size:1.15rem">Głęboka Czerń</b><span style="display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px">od 180 zł · 2 h</span></div></div>
-          <div style="flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:linear-gradient(160deg,#6b1f2b,#9c3b46 60%,#c05e63)"><div style="position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%)"><b style="display:block;color:#fff;font-family:'Playfair Display';font-size:1.15rem">Rubinowy Miedziany</b><span style="display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px">od 240 zł · 3 h</span></div></div>
-          <div style="flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:linear-gradient(160deg,#d9c9a3,#e8dcc0 60%,#f5ecd8)"><div style="position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 70%)"><b style="display:block;color:#fff;font-family:'Playfair Display';font-size:1.15rem">Platynowy Blond</b><span style="display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px">od 320 zł · 4 h</span></div></div>
-          <div style="flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:linear-gradient(160deg,#4a2f1f,#7a4f2f 60%,#a8794f)"><div style="position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%)"><b style="display:block;color:#fff;font-family:'Playfair Display';font-size:1.15rem">Sombre Orzechowy</b><span style="display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px">od 250 zł · 3 h</span></div></div>
-          <div style="flex:0 0 240px;scroll-snap-align:start;position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:linear-gradient(160deg,#2b1a2e,#4d2f52 60%,#6f4a75)"><div style="position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 70%)"><b style="display:block;color:#fff;font-family:'Playfair Display';font-size:1.15rem">Fiolet Ametyst</b><span style="display:block;color:#e8d9c4;font-size:.78rem;margin-top:4px">od 270 zł · 3,5 h</span></div></div>
+        <div class="lb-track" ref="{{ lbTrackRef }}">
+          <div class="lb-card" style="background:linear-gradient(160deg,#3a2417,#6b4423 60%,#8a5a30)"><img class="lb-photo" src="img/fryz-kolor-karmel.webp" alt="Modelka z włosami w kolorze karmelowy balayage" loading="lazy" decoding="async"></img><div class="lb-veil"></div><div class="lb-cap"><b>Karmelowy Balayage</b><span>od 260 zł · 3,5 h</span><i class="lb-rule"></i><span class="lb-more">Zapytaj o ten odcień</span></div></div>
+          <div class="lb-card" style="background:linear-gradient(160deg,#1a1a1a,#3d3d3d 60%,#565656)"><img class="lb-photo" src="img/fryz-kolor-czern.webp" alt="Modelka z włosami w kolorze głęboka czerń" loading="lazy" decoding="async"></img><div class="lb-veil"></div><div class="lb-cap"><b>Głęboka Czerń</b><span>od 180 zł · 2 h</span><i class="lb-rule"></i><span class="lb-more">Zapytaj o ten odcień</span></div></div>
+          <div class="lb-card" style="background:linear-gradient(160deg,#6b1f2b,#9c3b46 60%,#c05e63)"><img class="lb-photo" src="img/fryz-kolor-rubin.webp" alt="Modelka z włosami w kolorze rubinowy miedziany" loading="lazy" decoding="async"></img><div class="lb-veil"></div><div class="lb-cap"><b>Rubinowy Miedziany</b><span>od 240 zł · 3 h</span><i class="lb-rule"></i><span class="lb-more">Zapytaj o ten odcień</span></div></div>
+          <div class="lb-card" style="background:linear-gradient(160deg,#d9c9a3,#e8dcc0 60%,#f5ecd8)"><img class="lb-photo" src="img/fryz-kolor-platyna.webp" alt="Modelka z włosami w kolorze platynowy blond" loading="lazy" decoding="async"></img><div class="lb-veil"></div><div class="lb-cap"><b>Platynowy Blond</b><span>od 320 zł · 4 h</span><i class="lb-rule"></i><span class="lb-more">Zapytaj o ten odcień</span></div></div>
+          <div class="lb-card" style="background:linear-gradient(160deg,#4a2f1f,#7a4f2f 60%,#a8794f)"><img class="lb-photo" src="img/fryz-kolor-sombre.webp" alt="Modelka z włosami w kolorze sombre orzechowy" loading="lazy" decoding="async"></img><div class="lb-veil"></div><div class="lb-cap"><b>Sombre Orzechowy</b><span>od 250 zł · 3 h</span><i class="lb-rule"></i><span class="lb-more">Zapytaj o ten odcień</span></div></div>
+          <div class="lb-card" style="background:linear-gradient(160deg,#2b1a2e,#4d2f52 60%,#6f4a75)"><img class="lb-photo" src="img/fryz-kolor-fiolet.webp" alt="Modelka z włosami w kolorze fiolet ametyst" loading="lazy" decoding="async"></img><div class="lb-veil"></div><div class="lb-cap"><b>Fiolet Ametyst</b><span>od 270 zł · 3,5 h</span><i class="lb-rule"></i><span class="lb-more">Zapytaj o ten odcień</span></div></div>
         </div>
-        <p style="text-align:center;color:#8d8172;font-size:.8rem;margin-top:12px">Przeciągnij, aby zobaczyć więcej ›</p>
+        <p style="text-align:center;color:#8d8172;font-size:.8rem;margin-top:12px">Najedź na kolor, aby zobaczyć go na modelce · przeciągnij, aby zobaczyć więcej ›</p>
       </div>
     </section>
 
