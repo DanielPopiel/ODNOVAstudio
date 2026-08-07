@@ -1179,8 +1179,12 @@ class Component extends DCLogic {
 
       if (withShots) {
         // tylko wersje „po” — ścieżki względem index.html
-        ['fryzjer', 'autoserwis', 'pizzeria', 'budmax', 'dentysta', 'pensjonat'].forEach(n => {
-          const im = new Image(); im.src = 'img/02-preview-' + n + '.png';
+        // Dokladnie te same pliki, co kafelki w portfolio. Rozszerzenia sie roznia,
+        // wiec lista jest jawna: sklejanie nazwy z '.png' laduje stare duplikaty
+        // z lipca zamiast odswiezonych podgladow.
+        ['02-preview-fryzjer.webp', '02-preview-autoserwis.webp', '02-preview-pizzeria.webp',
+         '02-preview-budmax.webp', '02-preview-dentysta.png', '02-preview-pensjonat.jpg'].forEach(f => {
+          const im = new Image(); im.src = 'img/' + f;
           im.decoding = 'async'; BANK.push(im);
         });
         const pickImg = () => {
