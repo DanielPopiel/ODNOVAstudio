@@ -462,11 +462,16 @@ body[data-scroll="on"] .portrait img{
   .nav.compact .sigil{width:36px}
 
   .hero-inner{padding:66px 20px 60px}
-  .hero-photo{left:0;
-    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 54%,transparent 94%);
-    mask-image:linear-gradient(180deg,#000 0%,#000 54%,transparent 94%);
-    -webkit-mask-composite:source-over;mask-composite:add;
+  /* Maska nakladana na warstwe wideo jest na telefonie droga, a jej efekt
+     i tak powtarza gradient z .hero-photo::after — wiec ja zdejmujemy. */
+  .hero-photo{left:0;-webkit-mask-image:none;mask-image:none}
+  /* Przy przewijaniu zostaje samo przesuniecie: zmiana skali co klatke
+     zmusza GPU do przerysowania calej warstwy z filmem. */
+  body[data-scroll="on"] .hero-photo{
+    transform:translate3d(0,calc(var(--hp,0) * 70px * var(--pk)),0);
   }
+  /* Rozmycie tla pod paskiem trzeba przeliczac co klatke nad ruchomym obrazem. */
+  .nav{backdrop-filter:none;-webkit-backdrop-filter:none}
   .hero-photo img,.hero-photo video{object-position:70% 30%}
   .hero-photo::after{background:linear-gradient(180deg, rgba(8,18,14,.62) 0%, rgba(8,18,14,.80) 55%, rgba(8,18,14,.96) 100%)}
   body[data-bg="photo"] .hero-veil{background:linear-gradient(180deg, rgba(8,17,14,.55) 0%, rgba(8,17,14,.35) 40%, rgba(8,17,14,.96) 100%)}
@@ -551,7 +556,7 @@ body[data-scroll="on"] .portrait img{
   <span>Makieta · propozycja projektowa</span>
   <span><b>Odnova Studio</b> · wariant „Aequitas”</span>
   <span class="rb-hide">strona demonstracyjna, nie jest witryną Kancelarii</span>
-  <span class="rb-ver">wersja 1 &middot; 7.09.2026</span>
+  <span class="rb-ver">wersja 1 &middot; 8.09.2026</span>
   <button class="bgtoggle" id="bgt" hidden>Tło: zdjęcie</button>
 </div>
 
@@ -955,8 +960,7 @@ document.body.setAttribute('data-bg','photo');
     var photo=document.body.getAttribute('data-bg')==='photo';
     document.body.setAttribute('data-bg', photo?'code':'photo');
     if(btn) btn.textContent = photo ? 'Tło: kod' : 'Tło: zdjęcie';
-    var v=window.__heroVideo;
-    if(v && v.src){ if(photo) v.pause(); else { var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){}); } }
+    if(window.__heroBg) window.__heroBg(!photo);
   }
   if(btn) btn.addEventListener('click',toggle);
   document.addEventListener('keydown',function(e){
@@ -1037,23 +1041,58 @@ document.querySelectorAll('.credentials .cred').forEach(function(el,i){
   if(c.saveData) return;
   if(/(^|-)2g$/.test(c.effectiveType||'')) return;
 
+  var box=document.querySelector('.hero-photo'),
+      zoom=document.querySelector('.hp-zoom'),
+      ready=false, visible=!document.hidden, inView=true, allowed=true;
+
+  function sync(){
+    if(!ready) return;
+    if(visible && inView && allowed){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+    else if(!v.paused) v.pause();
+  }
+
+  // Telefon dostaje lżejszy plik — 720p zamiast 1080p to ponad dwa razy mniej
+  // pikseli do zdekodowania w każdej klatce, co widać przy przewijaniu.
+  function pick(){
+    var w=Math.min(window.innerWidth||9999, (window.screen&&screen.width)||9999);
+    return (w<=820 ? 'hero-loop-mobile.mp4' : 'hero-loop.mp4') + '?v=2';
+  }
+
+  // Powolny zoom Ken Burnsa był drugim ciągłym skalowaniem tej samej warstwy.
+  // Gdy film ruszy, zamrażamy zoom w bieżącej pozycji i spokojnie go wygaszamy,
+  // żeby przenikanie było zgodne, a potem warstwa przestaje się przerysowywać.
+  function freezeZoom(){
+    if(!zoom) return;
+    var cur=getComputedStyle(zoom).transform;
+    zoom.style.animation='none';
+    if(cur && cur!=='none') zoom.style.transform=cur;
+    void zoom.offsetWidth;
+    zoom.style.transition='transform 1.4s ease';
+    zoom.style.transform='scale(1.02)';
+  }
+
   function start(){
-    v.src='hero-loop.mp4';
-    v.addEventListener('playing',function(){ v.classList.add('on'); },{once:true});
+    v.src=pick();
+    v.addEventListener('playing',function(){
+      if(v.classList.contains('on')) return;
+      v.classList.add('on');
+      freezeZoom();
+    });
     v.addEventListener('error',function(){ v.removeAttribute('src'); },{once:true});
-    var tryPlay=function(){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); };
-    v.addEventListener('loadeddata',tryPlay,{once:true});
+    v.addEventListener('loadeddata',function(){ ready=true; sync(); },{once:true});
     v.load();
   }
   if(document.readyState==='complete') start();
   else window.addEventListener('load',start);
 
-  // Karta w tle nie musi dekodowac wideo.
-  document.addEventListener('visibilitychange',function(){
-    if(!v.src) return;
-    if(document.hidden) v.pause(); else { var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
-  });
-  window.__heroVideo=v;
+  document.addEventListener('visibilitychange',function(){ visible=!document.hidden; sync(); });
+
+  // Poza kadrem film nie ma po co się dekodować — to on zabierał klatki przewijaniu.
+  if('IntersectionObserver' in window && box){
+    new IntersectionObserver(function(e){ inView=e[0].isIntersecting; sync(); },{threshold:0}).observe(box);
+  }
+
+  window.__heroBg=function(on){ allowed=on; sync(); };
 })();
 
 // ---------- mapa: doładowywana dopiero na życzenie ----------
