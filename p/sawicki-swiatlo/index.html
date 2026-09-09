@@ -50,9 +50,20 @@ img{max-width:100%}
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:clamp(14px,3vw,40px);padding:16px var(--pad);background:rgba(255,255,255,0);border-bottom:1px solid transparent;transition:background .35s,border-color .35s,box-shadow .35s}
 .nav.solid{background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom-color:var(--line);box-shadow:0 1px 20px -8px rgba(15,39,64,.2)}
-.logo{display:flex;flex-direction:column;line-height:1;flex:none}
-.logo b{font-weight:600;font-size:15px;letter-spacing:.24em;color:var(--navy)}
-.logo span{font-family:var(--fm);font-size:8.5px;letter-spacing:.3em;color:var(--blue);margin-top:5px}
+
+/* ---------- logotyp kancelarii (odtworzony typograficznie) ---------- */
+.brand{display:inline-block;line-height:1;font-family:var(--f);white-space:nowrap}
+.brand .b1{display:block;font-size:var(--s);font-weight:700;letter-spacing:.012em}
+.brand .b2{display:block;position:relative;font-size:calc(var(--s)*1.21);font-weight:300;
+  letter-spacing:.022em;padding-left:calc(var(--s)*5.78);margin-top:calc(var(--s)*.42)}
+.brand .b2::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:calc(var(--s)*1.16);height:calc(var(--s)*.26);background:currentColor}
+.brand .b3{display:block;font-size:calc(var(--s)*.46);letter-spacing:.55em;text-indent:.55em;
+  margin-top:calc(var(--s)*1.15);font-weight:400}
+.nav .brand{--s:15px;color:var(--navy);text-decoration:none;flex:none}
+.nav .brand:hover{color:var(--blue)}
+footer .brand{--s:16px;color:var(--navy)}
+footer .brand .b3{color:var(--navy-3)}
 .nav ul{list-style:none;display:flex;gap:clamp(12px,2vw,28px);margin:0 0 0 auto;padding:0}
 .nav ul a{color:var(--navy-2);text-decoration:none;font-size:13px;letter-spacing:.01em;transition:color .2s}
 .nav ul a:hover{color:var(--blue)}
@@ -224,7 +235,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 </div>
 
 <nav class="nav" id="nav">
-  <div class="logo"><b>SAWICKI</b><span>I WSPÓLNICY</span></div>
+  <a class="brand" href="#" aria-label="Sawicki i Wspólnicy — Kancelaria Adwokacka"><span class="b1">SAWICKI</span><span class="b2">WSPÓLNICY</span></a>
   <ul>
     <li><a href="#sciezka">Ścieżka</a></li>
     <li><a href="#specjalizacje">Specjalizacje</a></li>
@@ -367,8 +378,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 <footer>
   <div class="fgrid">
     <div>
-      <div class="logo" style="margin-bottom:16px"><b>SAWICKI</b><span>I WSPÓLNICY</span></div>
-      <p style="color:var(--navy-3);font-size:13px;max-width:26ch;margin:0">Kancelaria Adwokacka<br>Piotr Sawicki i Wspólnicy</p>
+      <div style="margin-bottom:18px"><span class="brand"><span class="b1">SAWICKI</span><span class="b2">WSPÓLNICY</span><span class="b3">KANCELARIA ADWOKACKA</span></span></div>
+      <p style="color:var(--navy-3);font-size:13px;max-width:30ch;margin:0">Piotr Sawicki i Wspólnicy<br>Warszawa · Kraków</p>
     </div>
     <div><span class="lab">Specjalizacje</span><ul><li><a href="#">Prawo migracyjne</a></li><li><a href="#">Prawo pracy i HR</a></li><li><a href="#">Obsługa spółek</a></li><li><a href="#">Nowe technologie i RODO</a></li></ul></div>
     <div><span class="lab">Kancelaria</span><ul><li><a href="#">Zespół</a></li><li><a href="#">Baza wiedzy</a></li><li><a href="#">Kariera</a></li><li><a href="#">Kontakt</a></li></ul></div>

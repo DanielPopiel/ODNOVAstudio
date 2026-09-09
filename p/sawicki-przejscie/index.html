@@ -59,9 +59,20 @@ img{max-width:100%}
   backdrop-filter:blur(0px);
 }
 .nav.solid{background:rgba(7,10,13,.88);backdrop-filter:blur(14px);border-bottom-color:var(--line-d);padding-top:11px;padding-bottom:11px}
-.logo{display:flex;flex-direction:column;line-height:1;flex:none}
-.logo b{font-weight:600;font-size:15px;letter-spacing:.24em;color:var(--mist)}
-.logo span{font-family:var(--fm);font-size:8.5px;letter-spacing:.3em;color:var(--jade);margin-top:5px}
+
+/* ---------- logotyp kancelarii (odtworzony typograficznie) ---------- */
+.brand{display:inline-block;line-height:1;font-family:var(--f);white-space:nowrap}
+.brand .b1{display:block;font-size:var(--s);font-weight:700;letter-spacing:.012em}
+.brand .b2{display:block;position:relative;font-size:calc(var(--s)*1.21);font-weight:300;
+  letter-spacing:.022em;padding-left:calc(var(--s)*5.78);margin-top:calc(var(--s)*.42)}
+.brand .b2::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:calc(var(--s)*1.16);height:calc(var(--s)*.26);background:currentColor}
+.brand .b3{display:block;font-size:calc(var(--s)*.46);letter-spacing:.55em;text-indent:.55em;
+  margin-top:calc(var(--s)*1.15);font-weight:400}
+.nav .brand{--s:15px;color:var(--mist);text-decoration:none;flex:none}
+.nav .brand:hover{color:var(--jade)}
+footer .brand{--s:16px;color:var(--mist)}
+footer .brand .b3{color:var(--mist-faint)}
 .nav ul{list-style:none;display:flex;gap:clamp(12px,2vw,28px);margin:0;padding:0;margin-left:auto}
 .nav ul a{color:var(--mist-dim);text-decoration:none;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
 .nav ul a:hover{color:var(--jade)}
@@ -269,7 +280,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--jade);outline-offse
 </div>
 
 <nav class="nav" id="nav">
-  <div class="logo"><b>SAWICKI</b><span>I WSPÓLNICY</span></div>
+  <a class="brand" href="#" aria-label="Sawicki i Wspólnicy — Kancelaria Adwokacka"><span class="b1">SAWICKI</span><span class="b2">WSPÓLNICY</span></a>
   <ul>
     <li><a href="#sciezka">Ścieżka</a></li>
     <li><a href="#specjalizacje">Specjalizacje</a></li>
@@ -415,8 +426,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--jade);outline-offse
 <footer>
   <div class="fgrid">
     <div>
-      <div class="logo" style="margin-bottom:16px"><b>SAWICKI</b><span>I WSPÓLNICY</span></div>
-      <p style="color:var(--mist-faint);font-size:13px;max-width:26ch;margin:0">Kancelaria Adwokacka<br>Piotr Sawicki i Wspólnicy</p>
+      <div style="margin-bottom:18px"><span class="brand"><span class="b1">SAWICKI</span><span class="b2">WSPÓLNICY</span><span class="b3">KANCELARIA ADWOKACKA</span></span></div>
+      <p style="color:var(--mist-faint);font-size:13px;max-width:30ch;margin:0">Piotr Sawicki i Wspólnicy<br>Warszawa · Kraków</p>
     </div>
     <div><span class="lab">Specjalizacje</span><ul><li><a href="#">Prawo migracyjne</a></li><li><a href="#">Prawo pracy i HR</a></li><li><a href="#">Obsługa spółek</a></li><li><a href="#">Nowe technologie i RODO</a></li></ul></div>
     <div><span class="lab">Kancelaria</span><ul><li><a href="#">Zespół</a></li><li><a href="#">Baza wiedzy</a></li><li><a href="#">Kariera</a></li><li><a href="#">Kontakt</a></li></ul></div>
