@@ -79,6 +79,13 @@
   html.no-intro [data-hero]{animation:none!important;opacity:1!important;transform:none!important}
   /* kotwice nie mogą chować się pod przyklejonym navem (68px) */
   section[id]{scroll-margin-top:88px}
+  /* Etapy metamorfozy na mobile — mniejsza typografia, żeby nic nie było ucinane
+     (układ kolumn i paddingi ustawia evoResize) */
+  @media (max-width:760px){
+    [data-evo-inner] h2{font-size:25px!important;letter-spacing:-.3px!important;line-height:1.2!important}
+    [data-evo-inner] p{font-size:15px!important;max-width:100%!important}
+    [data-evo-inner] h2,[data-evo-inner] p{overflow-wrap:break-word}
+  }
   /* powrót z demo: ląduj niżej, żeby cała lista realizacji zmieściła się na ekranie
      (nagłówek zostaje tuż pod navem, eyebrow "PORTFOLIO" chowa się za nim) */
   #portfolio{scroll-margin-top:-60px}
@@ -1001,8 +1008,12 @@ class Component extends DCLogic {
         if (m) m.style.left = left;
         const inner = s.querySelector('[data-evo-inner]');
         if (inner) {
-          inner.style.paddingLeft = mob ? '64px' : '48px';
-          inner.style.gap = mob ? '48px' : '120px';
+          // na mobile jedna kolumna, która MOŻE się zwęzić — minmax(320px,1fr)
+          // wymuszałoby 320px i wypychało treść poza ekran (ucinanie przy 375px)
+          inner.style.gridTemplateColumns = mob ? 'minmax(0,1fr)' : 'repeat(auto-fit, minmax(320px, 1fr))';
+          inner.style.paddingLeft = mob ? '58px' : '48px';
+          inner.style.paddingRight = mob ? '18px' : '48px';
+          inner.style.gap = mob ? '34px' : '120px';
         }
       });
       this.evoRootEl.querySelectorAll('[data-evo-fit]').forEach(el => {
