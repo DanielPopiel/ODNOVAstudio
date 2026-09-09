@@ -89,7 +89,7 @@ footer .brand .b3{color:var(--navy-3)}
 .hmap{position:absolute;right:1.5%;top:50%;transform:translateY(-50%);width:min(54%,850px);height:auto;
   -webkit-mask-image:linear-gradient(95deg,transparent 0,#000 26%,#000 88%,transparent 100%);
           mask-image:linear-gradient(95deg,transparent 0,#000 26%,#000 88%,transparent 100%)}
-.mland path{fill:rgba(15,39,64,.045);stroke:rgba(15,39,64,.22);stroke-width:1;vector-effect:non-scaling-stroke}
+.mland path{fill:rgba(15,39,64,.045);stroke:rgba(15,39,64,.28);stroke-width:1;vector-effect:non-scaling-stroke}
 .mroute{fill:none;stroke:var(--blue);stroke-width:2.4;stroke-linecap:round;vector-effect:non-scaling-stroke;
   stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:draw 13s linear infinite}
 @keyframes draw{
@@ -100,14 +100,15 @@ footer .brand .b3{color:var(--navy-3)}
   70%{stroke-dashoffset:0;opacity:0}
   100%{stroke-dashoffset:0;opacity:0}
 }
-.msrc{fill:none;stroke:rgba(15,39,64,.5);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.msrc{fill:rgba(249,251,253,.9);stroke:rgba(15,39,64,.66);stroke-width:1.8;vector-effect:non-scaling-stroke}
 .mdest .mcore{fill:var(--blue)}
 .mdest .mring{fill:none;stroke:var(--blue);stroke-width:1.4;vector-effect:non-scaling-stroke;
   transform-box:fill-box;transform-origin:center;animation:pulse 3.4s ease-out infinite}
 @keyframes pulse{0%{transform:scale(1);opacity:.7}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
 .mspark{fill:var(--blue-2)}
-.mlab{font-family:var(--fm);font-size:16px;letter-spacing:.14em;fill:var(--navy-3)}
-.mlab-d{fill:var(--navy);font-weight:500}
+.mlab{font-family:var(--fm);font-size:16px;letter-spacing:.14em;fill:var(--navy-2);font-weight:500;
+  paint-order:stroke fill;stroke:rgba(249,251,253,.92);stroke-width:5;stroke-linejoin:round}
+.mlab-d{fill:var(--navy);font-weight:600;stroke-width:6}
 @media(prefers-reduced-motion:reduce){
   .mroute{animation:none;stroke-dashoffset:0;opacity:.8}
   .mring{animation:none}
