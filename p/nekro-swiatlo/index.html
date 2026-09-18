@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEKRO — Zakład Pogrzebowy Toruń | Makieta D „Światło"</title>
+<meta name="description" content="Zakład Pogrzebowy NEKRO w Toruniu. Kompleksowe usługi pogrzebowe, całodobowy dyżur: 725 725 551.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 42'><rect width='32' height='42' fill='%23FBFAF7'/><path fill='%235C7B59' fill-rule='evenodd' d='M16.6 1.2c.2 5.6 2.2 8.4 4.3 11.1 2.6 3.3 5.3 6.5 5.3 12.1 0 8.2-4.6 14.3-10.2 14.3S5.8 32.6 5.8 24.4c0-6.2 3.4-9.3 5.9-12.2-.5 2.6-.2 4.9 1.1 6.4 1.1-4.3.9-11.9 3.8-17.4zM16 21.9c-.5 3.1-3.3 4.6-3.3 8 0 2.8 1.6 4.7 3.5 4.7s3.5-1.9 3.5-4.7c0-3.3-2.9-4.7-3.7-8z'/></svg>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NEKRO — makieta strony, wariant „Światło”">
+<meta property="og:description" content="Propozycja nowej strony dla Zakładu Pogrzebowego NEKRO w Toruniu. Makieta przygotowana przez ODNOVA Studio.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/nekro-swiatlo/assets/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/nekro-swiatlo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FuneralHome","name":"Zakład Pogrzebowy NEKRO","telephone":"+48725725551","email":"nekro-zielinski@wp.pl","address":{"@type":"PostalAddress","streetAddress":"ul. Grudziądzka 192","addressLocality":"Toruń","postalCode":"87-100","addressCountry":"PL"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"areaServed":"Toruń i okolice","url":"https://nekro-zielinski.pl/"}
+</script>
+<script>document.documentElement.className='js';</script>
+<style>
+:root{
+  --paper:#FBFAF7; --paper2:#F2F4EE; --card:#FFFFFF; --sageBg:#E7EDE3;
+  --ink:#21241F; --body:#54584E; --mute:#8B8F84; --line:#E4E7DC; --line2:#D3D8C9;
+  --green:#5C7B59; --green-d:#3C543B; --green-900:#28382A; --green-soft:#DCE6D6;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Manrope",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --gut:20px; --max:1200px; --r:18px; --r-lg:26px;
+  --sh:0 1px 2px rgba(33,36,31,.04),0 8px 24px rgba(33,36,31,.05);
+  --sh-lg:0 2px 4px rgba(33,36,31,.05),0 18px 44px rgba(33,36,31,.09);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16.5px;line-height:1.72;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:400;margin:0;letter-spacing:-.015em;font-variant-numeric:lining-nums}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut);width:100%}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:600;display:block}
+
+/* ---------- ODSŁANIANIE PRZY PRZEWIJANIU ---------- */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger > *{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0) * 85ms)}
+.js .stagger.in > *{opacity:1;transform:none}
+@media(max-width:700px){
+  .js .reveal{transform:translateY(16px);transition-duration:.7s}
+  .js .stagger > *{transform:translateY(16px);transition-duration:.7s;transition-delay:calc(var(--i,0) * 55ms)}
+}
+@media(prefers-reduced-motion:reduce){
+  .js .reveal,.js .stagger > *{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* flame */
+.flame{width:1em;height:1.31em;display:inline-block;flex:none;color:var(--green)}
+.flame svg{width:100%;height:100%;display:block}
+
+/* ---------- PASEK + NAV ---------- */
+.topstack{position:fixed;top:0;left:0;right:0;z-index:80}
+.mockbar{background:var(--green-900);color:#C9D6C4;font-size:11px;letter-spacing:.1em;text-align:center;padding:8px 14px;line-height:1.35}
+.mockbar b{color:#E9F0E5;font-weight:600}
+.mockbar .long{display:none}
+@media(min-width:800px){.mockbar .long{display:inline}}
+header{background:rgba(251,250,247,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.brand{display:block;line-height:0}
+.brand img{width:clamp(96px,25vw,124px);height:auto}
+@media(min-width:900px){.brand img{width:126px}}
+.nav-links{display:none;gap:26px;font-size:14.5px;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--body);transition:color .25s}
+.nav-links a:hover{color:var(--green)}
+.pill{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 22px;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.01em;transition:background-color .3s,color .3s,box-shadow .3s,transform .3s;border:1px solid transparent}
+.pill-solid{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(92,123,89,.28)}
+.pill-solid:hover{background:var(--green-d);transform:translateY(-1px)}
+.pill-solid .flame{color:#fff}
+.pill-ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.pill-ghost:hover{border-color:var(--green);color:var(--green)}
+.nav-call{display:none}
+@media(min-width:1000px){.nav-links{display:flex}.nav-call{display:inline-flex}}
+
+/* ---------- HERO ---------- */
+.hero{padding:calc(68px + 34px + 34px) 0 clamp(52px,7vw,84px)}
+.hero-grid{display:grid;gap:26px;grid-template-areas:'a' 'c' 'b'}
+.h-top{grid-area:a}.h-bot{grid-area:b}.hero-fig{grid-area:c}
+.tag{display:inline-flex;align-items:center;gap:9px;background:var(--sageBg);color:var(--green-d);border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:600;letter-spacing:.04em}
+.tag .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(92,123,89,.5)}70%{box-shadow:0 0 0 9px rgba(92,123,89,0)}100%{box-shadow:0 0 0 0 rgba(92,123,89,0)}}
+.hero h1{font-size:clamp(34px,5.6vw,60px);line-height:1.1;margin:22px 0 0;max-width:15ch}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero .lead{margin:0;max-width:44ch;font-size:clamp(16px,2vw,18px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-fig{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);background:var(--paper2)}
+.hero-fig img{width:100%;height:clamp(280px,44vw,520px);object-fit:cover;object-position:52% 50%}
+@media(prefers-reduced-motion:reduce){.tag .dot{animation:none}}
+.hero-badge{position:absolute;left:18px;bottom:18px;right:18px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--ink);box-shadow:var(--sh)}
+.hero-badge b{font-weight:600}
+@media(min-width:960px){
+  .hero-grid{grid-template-columns:minmax(0,1.02fr) minmax(0,1.08fr);grid-template-areas:'a c' 'b c';column-gap:56px;row-gap:0;align-items:center}
+  .hero-fig{align-self:center}
+  .hero-badge{right:auto;min-width:300px}
+}
+
+/* wejście hero */
+.js .hero .h-top{animation:heroup 1.05s cubic-bezier(.22,.61,.36,1) both}
+.js .hero .hero-fig{animation:heroup 1.15s .14s cubic-bezier(.22,.61,.36,1) both}
+.js .hero .h-bot{animation:heroup 1.05s .28s cubic-bezier(.22,.61,.36,1) both}
+@keyframes heroup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.js .hero .h-top,.js .hero .hero-fig,.js .hero .h-bot{animation:none}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:clamp(58px,8vw,96px) 0}
+section[id]{scroll-margin-top:118px}
+.s-paper{background:var(--paper)}
+.s-tint{background:var(--paper2)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(30px,4.5vw,46px)}
+.sec-head h2{font-size:clamp(27px,4.4vw,42px);line-height:1.15}
+.sec-head p{margin:0;max-width:54ch}
+@media(min-width:900px){.sec-head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:end}}
+
+/* ---------- LICZBY ---------- */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;text-align:center;box-shadow:var(--sh)}
+.fact b{display:block;font-family:var(--serif);font-size:clamp(25px,4.4vw,34px);color:var(--green-d);font-weight:500;line-height:1}
+.fact span{display:block;font-size:12.5px;color:var(--mute);margin-top:8px}
+@media(min-width:780px){.facts{grid-template-columns:repeat(4,1fr);gap:16px}}
+
+/* ---------- KROKI (oś czasu) ---------- */
+.steps{display:grid;gap:26px;position:relative}
+.step{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;flex:none;box-shadow:0 6px 16px rgba(92,123,89,.25)}
+.step h3{font-size:21px;margin-bottom:6px}
+.step p{margin:0;font-size:15.5px}
+@media(min-width:900px){
+  .steps{grid-template-columns:repeat(3,1fr);gap:34px}
+  .step{grid-template-columns:1fr;gap:16px}
+  .steps::before{content:"";position:absolute;top:22px;left:12%;right:12%;height:1px;background:var(--line2);z-index:0}
+  .step .n{position:relative;z-index:1}
+}
+
+/* ---------- KARTY OFERTY ---------- */
+.cards{display:grid;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s,border-color .4s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);border-color:var(--line2)}
+.card .ph{overflow:hidden;background:var(--paper2)}
+.card .ph img{width:100%;height:190px;object-fit:cover;transition:transform 1s cubic-bezier(.22,.61,.36,1)}
+.card:hover .ph img{transform:scale(1.06)}
+.card .tx{padding:22px 22px 26px}
+.card h3{font-size:20px;margin-bottom:7px}
+.card p{margin:0;font-size:14.5px;color:var(--body)}
+.card .more{margin-top:14px;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);opacity:.55;transition:opacity .3s}
+.card:hover .more{opacity:1}
+.card.mini .tx{padding:22px}
+@media(min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.cards{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- PAS Z CYTATEM ---------- */
+.band{background:var(--sageBg)}
+.band-grid{display:grid;gap:30px;align-items:center}
+.band blockquote{margin:0;font-family:var(--serif);font-size:clamp(25px,3.8vw,40px);line-height:1.22;color:var(--green-900);max-width:17ch}
+.band p{margin:20px 0 0;max-width:44ch;color:var(--green-d)}
+.band-img{margin:0}
+.band-img img{width:100%;height:clamp(250px,36vw,420px);object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--sh-lg)}
+@media(min-width:900px){.band-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:54px}}
+
+/* ---------- NEKROLOGI ---------- */
+.searchrow{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.searchrow input{flex:1 1 240px;min-width:0;padding:15px 20px;border:1px solid var(--line2);border-radius:999px;background:var(--card);color:var(--ink);font-family:var(--sans);font-size:15.5px}
+.searchrow input::placeholder{color:var(--mute)}
+.searchrow input:focus{outline:2px solid var(--green);outline-offset:-1px;border-color:var(--green)}
+.searchrow .pill{flex:0 0 auto}
+.obits{display:grid;gap:14px}
+.obit{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:var(--r);padding:24px 24px;text-decoration:none;display:block;transition:transform .35s,box-shadow .35s}
+.obit:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
+.obit .date{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.obit h3{font-size:23px;margin:8px 0 14px}
+.obit dl{margin:0;display:grid;gap:7px;font-size:14.5px}
+.obit dt{color:var(--green);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.obit dd{margin:0}
+.obit .share{margin-top:16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:600;opacity:.5;transition:opacity .3s}
+.obit:hover .share{opacity:1}
+@media(min-width:860px){.obits{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- ZASIŁEK ---------- */
+.aid{background:var(--green-900);color:#CBD8C6;border-radius:var(--r-lg);padding:34px 26px;display:grid;gap:24px}
+.aid .big{font-family:var(--serif);font-size:clamp(44px,9vw,74px);color:#fff;line-height:1;font-weight:400}
+.aid h3{color:#fff;font-size:24px;margin-bottom:8px}
+.aid p{margin:0;max-width:52ch}
+.aid .pill-solid{background:#fff;color:var(--green-900);box-shadow:none}
+.aid .pill-solid:hover{background:var(--green-soft)}
+@media(min-width:880px){.aid{grid-template-columns:auto 1fr;gap:54px;align-items:center;padding:48px 52px}}
+
+/* ---------- OPINIE ---------- */
+.quotes{display:grid;gap:16px}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;box-shadow:var(--sh)}
+.quote p{margin:0 0 16px;font-size:16.5px;line-height:1.6;color:var(--ink)}
+.quote cite{font-style:normal;font-size:12.5px;color:var(--mute)}
+.stars{color:var(--green);letter-spacing:.16em;font-size:12.5px;margin-bottom:12px}
+@media(min-width:860px){.quotes{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- KONTAKT ---------- */
+.contact{display:grid;gap:30px}
+.cbox{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px 26px;box-shadow:var(--sh)}
+.cbox dl{display:grid;gap:22px;margin:0}
+.cbox dt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:5px}
+.cbox dd{margin:0;font-size:19px;color:var(--ink);line-height:1.45}
+.cbox dd.tel a{font-size:24px;font-weight:600;text-decoration:none;letter-spacing:.02em;font-variant-numeric:lining-nums tabular-nums}
+.cbox dd.tel a:hover{color:var(--green)}
+.cbox dd small{display:block;font-size:13.5px;color:var(--mute);margin-top:4px}
+.cimg img{width:100%;height:clamp(240px,36vw,420px);object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--sh-lg)}
+@media(min-width:900px){.contact{grid-template-columns:1fr 1fr;gap:44px;align-items:start}}
+
+/* ---------- STOPKA ---------- */
+footer{background:var(--green-900);color:#A9BAA4;padding:52px 0 118px;font-size:14.5px}
+.fgrid{display:grid;gap:28px}
+.fgrid a{text-decoration:none}
+.fgrid a:hover{color:#fff}
+.fgrid img.flogo{width:134px;height:auto;margin-bottom:18px}
+.fgrid strong{color:#fff;font-weight:600}
+@media(min-width:800px){.fgrid{grid-template-columns:1.4fr 1fr 1fr;gap:40px}footer{padding-bottom:58px}}
+
+/* ---------- PASEK MOBILNY ---------- */
+.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:70;display:flex;gap:10px}
+.callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 10px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-size:15.5px;font-weight:600;box-shadow:0 10px 26px rgba(40,56,42,.32)}
+.callbar a .flame{color:#fff}
+.callbar a.sec{flex:0 0 36%;background:var(--card);color:var(--ink);border:1px solid var(--line2);box-shadow:var(--sh)}
+@media(min-width:1000px){.callbar{display:none}}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:700px){
+  body{font-size:16px}
+  section{padding:54px 0}
+  .hero{padding-top:calc(68px + 32px + 26px);padding-bottom:44px}
+  .hero h1{font-size:clamp(31px,8.4vw,40px);line-height:1.14;max-width:18ch}
+  .hero .lead{font-size:16px;margin-top:0}
+  .hero-cta{margin-top:24px;gap:10px}
+  .hero-cta .pill{flex:1 1 100%;justify-content:center}
+  .hero-fig img{height:268px}
+  .hero-badge{left:14px;right:14px;bottom:14px;padding:12px 15px;font-size:13px}
+  .sec-head{margin-bottom:26px;gap:11px}
+  .sec-head h2{font-size:clamp(26px,7.4vw,32px)}
+  .fact{padding:20px 14px}
+  .step .n{width:40px;height:40px;font-size:14px}
+  .card .ph img{height:200px}
+  .card .tx{padding:20px 20px 24px}
+  .obit{padding:22px 20px}
+  .obit h3{font-size:22px}
+  .searchrow .pill{flex:1 1 100%;justify-content:center}
+  .band blockquote{max-width:100%;font-size:26px}
+  .band-img img{height:240px}
+  .aid{padding:28px 22px;gap:16px}
+  .quote{padding:24px 22px}
+  .cbox{padding:26px 22px}
+  .cimg img{height:240px}
+  footer{padding:44px 0 104px}
+}
+@media(max-width:380px){:root{--gut:16px}.mockbar{font-size:10.5px;letter-spacing:.06em}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="fl" viewBox="0 0 32 42"><path fill="currentColor" fill-rule="evenodd" d="M16.6 1.2c.2 5.6 2.2 8.4 4.3 11.1 2.6 3.3 5.3 6.5 5.3 12.1 0 8.2-4.6 14.3-10.2 14.3S5.8 32.6 5.8 24.4c0-6.2 3.4-9.3 5.9-12.2-.5 2.6-.2 4.9 1.1 6.4 1.1-4.3.9-11.9 3.8-17.4zM16 21.9c-.5 3.1-3.3 4.6-3.3 8 0 2.8 1.6 4.7 3.5 4.7s3.5-1.9 3.5-4.7c0-3.3-2.9-4.7-3.7-8z"/></symbol></svg>
+
+<div class="topstack">
+<div class="mockbar">MAKIETA · <b>WARIANT D „ŚWIATŁO"</b><span class="long"> · przygotowana dla Zakładu Pogrzebowego NEKRO przez ODNOVA STUDIO</span></div>
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top"><img src="assets/logo-ciemne.png" alt="NEKRO — Usługi Pogrzebowe, Toruń" width="640" height="276"></a>
+    <div class="nav-links">
+      <a href="#pomoc">Pierwsze kroki</a>
+      <a href="#oferta">Zakres opieki</a>
+      <a href="#nekrologi">Nekrologi</a>
+      <a href="#opinie">Opinie</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a class="pill pill-solid nav-call" href="tel:+48725725551"><span class="flame"><svg><use href="#fl"/></svg></span>725 725 551</a>
+  </nav>
+</header>
+</div>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="h-top">
+      <span class="tag"><span class="dot"></span>Dyżur całodobowy · 7 dni w tygodniu</span>
+      <h1>Zajmiemy się wszystkim, <em>od pierwszego telefonu.</em></h1>
+    </div>
+    <div class="h-bot">
+      <p class="lead">Rodzinny zakład pogrzebowy w Toruniu. Odbierzemy o każdej porze, przejmiemy formalności i przygotujemy ceremonię tak, żeby rodzina mogła być tylko przy bliskiej osobie.</p>
+      <div class="hero-cta">
+        <a class="pill pill-solid" href="tel:+48725725551"><span class="flame"><svg><use href="#fl"/></svg></span>Zadzwoń 725 725 551</a>
+        <a class="pill pill-ghost" href="#pomoc">Co zrobić teraz</a>
+      </div>
+    </div>
+    <figure class="hero-fig" style="margin:0">
+      <picture>
+        <source media="(max-width:760px)" srcset="assets/swiatlo-1000.webp" type="image/webp">
+        <img src="assets/swiatlo-1440.webp" alt="Jasne wnętrze kaplicy ze światłem wpadającym przez okno" width="1440" height="810" fetchpriority="high">
+      </picture>
+      <figcaption class="hero-badge"><span class="flame"><svg><use href="#fl"/></svg></span><span><b>Toruń i okolice</b> — wszystkie cmentarze, pogrzeby tradycyjne i kremacyjne</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="s-tint" style="padding-top:clamp(40px,5vw,56px);padding-bottom:clamp(40px,5vw,56px)">
+  <div class="wrap">
+    <div class="facts stagger">
+      <div class="fact"><b>24/7</b><span>Odbieramy telefon</span></div>
+      <div class="fact"><b>7000 zł</b><span>Zasiłek — pomagamy uzyskać</span></div>
+      <div class="fact"><b>Własny tabor</b><span>Auta, namiot, kaplice</span></div>
+      <div class="fact"><b>Rodzinnie</b><span>Firma prowadzona przez rodzinę</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="s-paper" id="pomoc">
+  <div class="wrap">
+    <div class="sec-head stagger">
+      <div>
+        <span class="eyebrow">Pierwsze kroki</span>
+        <h2 style="margin-top:12px">Co zrobić teraz</h2>
+      </div>
+      <p>Jeżeli właśnie odeszła bliska Państwu osoba, nie trzeba niczego przygotowywać ani nic wiedzieć. Wystarczy jeden telefon — resztą zajmiemy się my.</p>
+    </div>
+    <div class="steps stagger">
+      <div class="step"><span class="n">1</span><div><h3>Proszę zadzwonić</h3><p>O każdej porze dnia i nocy. Powiemy, co zrobić w ciągu najbliższej godziny, i umówimy odbiór.</p></div></div>
+      <div class="step"><span class="n">2</span><div><h3>Przyjedziemy</h3><p>Odbierzemy zmarłego z domu, szpitala lub hospicjum i przejmiemy formalności urzędowe oraz cmentarne.</p></div></div>
+      <div class="step"><span class="n">3</span><div><h3>Spotkamy się</h3><p>W biurze przy Grudziądzkiej albo u Państwa w domu — nasz pracownik przyjedzie o ustalonej godzinie.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--green-d)">Własna baza</span>
+      <blockquote style="margin-top:14px">Wszystko, od czego zależy ceremonia, jest po naszej stronie.</blockquote>
+      <p>Własne samochody, namiot ceremonialny, kaplice i pełne zaplecze florystyczne. Nie podzlecamy tego, co decyduje o przebiegu uroczystości — dzięki temu wiemy, o której godzinie wszystko będzie gotowe.</p>
+      <p style="margin-top:24px"><a class="pill pill-solid" href="#oferta">Zakres opieki</a></p>
+    </div>
+    <figure class="band-img reveal">
+      <img src="assets/busy.webp" alt="Samochody Zakładu Pogrzebowego NEKRO przed kościołem" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<section class="s-paper" id="oferta">
+  <div class="wrap">
+    <div class="sec-head stagger">
+      <div>
+        <span class="eyebrow">Oferta</span>
+        <h2 style="margin-top:12px">Zakres opieki</h2>
+      </div>
+      <p>Wszystko, czym możemy się zająć — od pierwszego telefonu, przez formalności, po dzień ceremonii i to, co po niej.</p>
+    </div>
+    <div class="cards stagger">
+      <a class="card" href="#kontakt">
+        <div class="ph"><img src="assets/kwiaty.webp" alt="Białe kwiaty i eukaliptus" loading="lazy"></div>
+        <div class="tx"><h3>Oprawa florystyczna</h3><p>Kwiaty, wieńce, wiązanki i znicze. Na życzenie dobierzemy wszystko sami, według Państwa wskazówek.</p><div class="more">Zapytaj →</div></div>
+      </a>
+      <a class="card" href="#kontakt">
+        <div class="ph"><img src="assets/kosciol.webp" alt="Ceremonia w kościele" loading="lazy"></div>
+        <div class="tx"><h3>Organizacja pogrzebu</h3><p>Formalności, przebieg ceremonii, przewóz, wybór trumny, ubrania i kwiatów — całość po naszej stronie.</p><div class="more">Zapytaj →</div></div>
+      </a>
+      <a class="card" href="#kontakt">
+        <div class="ph"><img src="assets/namiot.webp" alt="Namiot ceremonialny NEKRO na cmentarzu" loading="lazy"></div>
+        <div class="tx"><h3>Ceremonia na cmentarzu</h3><p>Własny namiot ceremonialny, wykładziny i pełne przygotowanie miejsca pochówku.</p><div class="more">Zapytaj →</div></div>
+      </a>
+      <a class="card" href="#kontakt">
+        <div class="ph"><img src="assets/kaplica.webp" alt="Kaplica przygotowana do ceremonii" loading="lazy"></div>
+        <div class="tx"><h3>Kaplice</h3><p>Przygotowanie kaplicy do ceremonii i możliwość pożegnania w spokoju, we własnym czasie.</p><div class="more">Zapytaj →</div></div>
+      </a>
+      <a class="card" href="#kontakt">
+        <div class="ph"><img src="assets/trumna.webp" alt="Trumna z oprawą kwiatową" loading="lazy"></div>
+        <div class="tx"><h3>Akcesoria pogrzebowe</h3><p>Trumny, urny, klepsydry, tabliczki, krzyże i ubrania — wszystko, co potrzebne przy pochówku.</p><div class="more">Zapytaj →</div></div>
+      </a>
+      <a class="card" href="#kontakt">
+        <div class="ph"><img src="assets/grob.webp" alt="Grób przygotowany do ceremonii" loading="lazy"></div>
+        <div class="tx"><h3>Nagrobki i ekshumacje</h3><p>Gotowe nagrobki, pomoc w doborze materiału oraz prace ekshumacyjne zgodne z zaleceniami służb.</p><div class="more">Zapytaj →</div></div>
+      </a>
+      <div class="card mini"><div class="tx"><h3>Usługi całodobowe</h3><p>Eksportacja zmarłego z miejsca zgonu bez względu na porę oraz przygotowanie do pochówku.</p></div></div>
+      <div class="card mini"><div class="tx"><h3>Transport zmarłych</h3><p>W całym kraju i za granicą, specjalistycznymi pojazdami, zgodnie z przepisami.</p></div></div>
+      <div class="card mini"><div class="tx"><h3>Kremacje</h3><p>Pogrzeby z uprzednim spopieleniem ciała, przeprowadzane z szacunkiem i zgodnie z procedurami.</p></div></div>
+      <div class="card mini"><div class="tx"><h3>Międzynarodowy transport zwłok</h3><p>Sprowadzenie zmarłego z zagranicy do Polski wraz z kompletem pozwoleń.</p></div></div>
+      <div class="card mini"><div class="tx"><h3>Biuro mobilne</h3><p>Nasz pracownik przyjedzie do Państwa w dogodne miejsce i o ustalonej godzinie.</p></div></div>
+      <div class="card mini"><div class="tx"><h3>Wsparcie psychologiczne</h3><p>Współpracujący z nami psycholog towarzyszy bliskim w powrocie do codzienności.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s-tint" id="nekrologi">
+  <div class="wrap">
+    <div class="sec-head stagger">
+      <div>
+        <span class="eyebrow">Zawiadomienia</span>
+        <h2 style="margin-top:12px">Nekrologi</h2>
+      </div>
+      <p>Terminy ceremonii, które organizujemy. Proszę wpisać nazwisko — stronę zawiadomienia można przesłać rodzinie jednym linkiem.</p>
+    </div>
+    <div class="searchrow reveal">
+      <input id="q" type="search" placeholder="Nazwisko lub imię…" aria-label="Szukaj nekrologu">
+      <a class="pill pill-solid" href="#nekrologi">Szukaj</a>
+    </div>
+    <div class="obits stagger" id="obits">
+      <a class="obit" href="#nekrologi" data-name="marcin sadurski">
+        <span class="date">3 listopada 2025</span>
+        <h3>śp. Marcin Sadurski</h3>
+        <dl>
+          <dt>Msza Święta</dt><dd>5.11, godz. 11:00 — kościół pw. Miłosierdzia Bożego i św. Siostry Faustyny, ul. św. Faustyny 7</dd>
+          <dt>Pochówek</dt><dd>godz. 12:00 — Cmentarz Komunalny nr 2, Toruń</dd>
+        </dl>
+        <div class="share">Udostępnij →</div>
+      </a>
+      <a class="obit" href="#nekrologi" data-name="alojzy pruski">
+        <span class="date">20 października 2025</span>
+        <h3>śp. Alojzy Pruski</h3>
+        <dl>
+          <dt>Msza Święta</dt><dd>24.10, godz. 12:00 — kościół pw. św. Antoniego, ul. św. Antoniego 4</dd>
+          <dt>Pochówek</dt><dd>godz. 13:00 — cmentarz NMP, ul. Wybickiego 78-80</dd>
+        </dl>
+        <div class="share">Udostępnij →</div>
+      </a>
+      <a class="obit" href="#nekrologi" data-name="wieslawa jabczynska wiesława jabczyńska">
+        <span class="date">20 października 2025</span>
+        <h3>śp. Wiesława Jabczyńska</h3>
+        <dl>
+          <dt>Msza Święta</dt><dd>22.10, godz. 10:00 — kościół pw. św. Józefa, ul. św. Józefa 23/35</dd>
+          <dt>Pochówek</dt><dd>godz. 11:00 — Centralny Cmentarz Komunalny, ul. Grudziądzka 192</dd>
+        </dl>
+        <div class="share">Udostępnij →</div>
+      </a>
+    </div>
+    <p id="noresult" style="display:none;color:var(--mute);margin-top:22px">Nie znaleźliśmy zawiadomienia o tym nazwisku. Proszę zadzwonić — sprawdzimy.</p>
+    <p style="margin-top:26px"><a class="pill pill-ghost" href="#nekrologi">Całe archiwum</a></p>
+  </div>
+</section>
+
+<section class="s-paper">
+  <div class="wrap">
+    <div class="aid reveal">
+      <div class="big">7000&nbsp;zł</div>
+      <div>
+        <h3>Zasiłek pogrzebowy</h3>
+        <p>Rodzinie przysługuje zasiłek pogrzebowy z ZUS, KRUS lub MSWiA. Podpowiemy, jakie dokumenty przygotować i co warto mieć przy sobie na pierwszym spotkaniu — a wniosek wypełnimy razem z Państwem.</p>
+        <p style="margin-top:22px"><a class="pill pill-solid" href="#kontakt">Lista dokumentów</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-tint" id="opinie">
+  <div class="wrap">
+    <div class="sec-head stagger">
+      <div>
+        <span class="eyebrow">Opinie</span>
+        <h2 style="margin-top:12px">Co mówią rodziny</h2>
+      </div>
+      <p>Opinie zebrane w wizytówce Google. Publikujemy je w całości, bez wybierania.</p>
+    </div>
+    <div class="quotes stagger">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>„Chciałbym bardzo podziękować pani Magdzie za całą ceremonię pogrzebową. Podejście do wszystkiego bardzo profesjonalne."</p>
+        <cite>Mariusz Cielas · Google</cite>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>„Profesjonalna, miła i pomocna obsługa. Pomnik wygląda tak, jak chcieliśmy. Szybka realizacja."</p>
+        <cite>Anna Wiśniewska · Google</cite>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>„Dziękujemy za profesjonalną i pełną empatii opiekę podczas pochówku naszej Mamy, Cioci i Siostry."</p>
+        <cite>Jolanta Frejlichowska · Google</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-paper" id="kontakt">
+  <div class="wrap">
+    <div class="sec-head stagger">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h2 style="margin-top:12px">Jesteśmy pod telefonem</h2>
+      </div>
+      <p>Odbieramy o każdej porze — również w nocy, w niedziele i w święta. Biuro znajduje się przy ul. Grudziądzkiej 192, w czwartym pawilonie od strony krematorium.</p>
+    </div>
+    <div class="contact reveal">
+      <div class="cbox">
+        <dl>
+          <div>
+            <dt>Telefon całodobowy</dt>
+            <dd class="tel"><a href="tel:+48725725551">+48 725 725 551</a><small>Odbieramy również w nocy i w święta</small></dd>
+          </div>
+          <div>
+            <dt>Biuro</dt>
+            <dd>ul. Grudziądzka 192, 87-100 Toruń<small>Czwarty pawilon od strony krematorium</small></dd>
+          </div>
+          <div>
+            <dt>E-mail</dt>
+            <dd><a href="mailto:nekro-zielinski@wp.pl" style="text-decoration:none">nekro-zielinski@wp.pl</a></dd>
+          </div>
+          <div>
+            <dt>Biuro mobilne</dt>
+            <dd>Przyjedziemy do Państwa<small>Wystarczy wspomnieć o tym przez telefon</small></dd>
+          </div>
+        </dl>
+        <p style="margin:28px 0 0"><a class="pill pill-solid" href="tel:+48725725551"><span class="flame"><svg><use href="#fl"/></svg></span>Zadzwoń teraz</a></p>
+      </div>
+      <figure class="cimg" style="margin:0">
+        <img src="assets/biuro-auta.webp" alt="Samochody NEKRO przed biurem przy Grudziądzkiej" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <img class="flogo" src="assets/logo-jasne.png" alt="NEKRO — Usługi Pogrzebowe" loading="lazy">
+      <p style="margin:0;max-width:34ch">Rodzinny zakład pogrzebowy działający w Toruniu i okolicach. Dyżur całodobowy.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 9px"><a href="#pomoc">Pierwsze kroki</a></p>
+      <p style="margin:0 0 9px"><a href="#oferta">Zakres opieki</a></p>
+      <p style="margin:0 0 9px"><a href="#nekrologi">Nekrologi</a></p>
+      <p style="margin:0"><a href="#kontakt">Kontakt</a></p>
+    </div>
+    <div>
+      <p style="margin:0 0 9px"><a href="tel:+48725725551"><strong>+48 725 725 551</strong></a></p>
+      <p style="margin:0 0 9px"><a href="mailto:nekro-zielinski@wp.pl">nekro-zielinski@wp.pl</a></p>
+      <p style="margin:0">ul. Grudziądzka 192<br>87-100 Toruń</p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:36px;font-size:11.5px;letter-spacing:.1em;opacity:.7">
+    MAKIETA KONCEPCYJNA · ODNOVA STUDIO · odnovastudio.com
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="tel:+48725725551"><span class="flame"><svg><use href="#fl"/></svg></span>Zadzwoń 725 725 551</a>
+  <a class="sec" href="#kontakt">Dojazd</a>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.reveal,.stagger'));
+  items.forEach(function(el){
+    if(el.classList.contains('stagger')){
+      [].forEach.call(el.children,function(c,i){ c.style.setProperty('--i', i); });
+    }
+  });
+  function showAll(){ items.forEach(function(el){ el.classList.add('in'); }); }
+  if('IntersectionObserver' in window){
+    var fired=false;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ fired=true; e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -12% 0px',threshold:0.02});
+    items.forEach(function(el){ io.observe(el); });
+    // dosprzątanie po szybkim przewinięciu — nic nie zostaje puste
+    var t;
+    function sweep(){
+      for(var i=0;i<items.length;i++){
+        var el=items[i];
+        if(el.classList.contains('in')) continue;
+        var r=el.getBoundingClientRect();
+        if(r.top < window.innerHeight*0.92){ el.classList.add('in'); io.unobserve(el); }
+      }
+    }
+    window.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sweep,140); },{passive:true});
+    setTimeout(function(){ if(!fired) showAll(); },4000);
+  } else { showAll(); }
+})();
+
+(function(){
+  var q=document.getElementById('q'),list=document.getElementById('obits'),nores=document.getElementById('noresult');
+  if(q){ q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase(),shown=0;
+    Array.prototype.forEach.call(list.children,function(el){
+      var hit=!v||(el.getAttribute('data-name')||'').indexOf(v)>-1;
+      el.style.display=hit?'':'none'; if(hit)shown++;
+    });
+    nores.style.display=shown?'none':'block';
+  });}
+})();
+</script>
+</body>
+</html>

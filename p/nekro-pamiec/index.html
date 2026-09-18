@@ -48,10 +48,19 @@ h1,h2,h3{font-family:var(--serif);color:var(--fg);font-weight:300;margin:0;lette
 .flicker{animation:flick 3.2s ease-in-out infinite}
 @keyframes flick{0%,100%{opacity:1;transform:scaleY(1)}42%{opacity:.55;transform:scaleY(.86)}55%{opacity:.9;transform:scaleY(1.04)}70%{opacity:.7;transform:scaleY(.94)}}
 
-/* reveal */
-.js .rev{opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1)}
-.js .rev.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.js .rev{opacity:1!important;transform:none!important;transition:none}.flicker{animation:none}}
+/* ---------- ODSŁANIANIE PRZY PRZEWIJANIU ---------- */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger > *{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0) * 85ms)}
+.js .stagger.in > *{opacity:1;transform:none}
+@media(max-width:700px){
+  .js .reveal{transform:translateY(16px);transition-duration:.7s}
+  .js .stagger > *{transform:translateY(16px);transition-duration:.7s;transition-delay:calc(var(--i,0) * 55ms)}
+}
+@media(prefers-reduced-motion:reduce){
+  .js .reveal,.js .stagger > *{opacity:1!important;transform:none!important;transition:none!important}
+}
+@media(prefers-reduced-motion:reduce){.flicker{animation:none}}
 
 /* ---------- NAV ---------- */
 .topstack{position:fixed;top:0;left:0;right:0;z-index:80}
@@ -329,7 +338,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 </section>
 
 <section class="s-dark2" style="padding:0">
-  <div class="facts">
+  <div class="facts stagger">
     <div class="fact"><b>24/7</b><span>Dyżur telefoniczny</span></div>
     <div class="fact"><b>7000 zł</b><span>Zasiłek — pomagamy uzyskać</span></div>
     <div class="fact"><b>Toruń</b><span>Wszystkie cmentarze i okolice</span></div>
@@ -339,19 +348,19 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 
 <section class="s-light" id="pomoc">
   <div class="wrap">
-    <div class="rev">
+    <div class="reveal">
       <div class="divider"><span class="flame"><svg><use href="#fl"/></svg></span><span></span></div>
       <div class="sec-head">
         <h2>Co zrobić teraz</h2>
         <p>Jeżeli właśnie odeszła bliska Państwu osoba, nie trzeba niczego przygotowywać ani nic wiedzieć. Wystarczy jeden telefon — resztą zajmiemy się my.</p>
       </div>
     </div>
-    <div class="steps rev">
+    <div class="steps stagger">
       <div class="step"><span class="n">01</span><h3>Proszę zadzwonić</h3><p>O każdej porze dnia i nocy. Powiemy, co zrobić w ciągu najbliższej godziny, i umówimy odbiór.</p></div>
       <div class="step"><span class="n">02</span><h3>Przyjedziemy</h3><p>Odbierzemy zmarłego z domu, szpitala lub hospicjum i przejmiemy formalności urzędowe oraz cmentarne.</p></div>
       <div class="step"><span class="n">03</span><h3>Spotkamy się</h3><p>W biurze przy Grudziądzkiej albo u Państwa w domu — nasz pracownik przyjedzie o ustalonej godzinie.</p></div>
     </div>
-    <div class="light-split rev">
+    <div class="light-split reveal">
       <div>
         <span class="eyebrow">Własna baza i tabor</span>
         <h3 style="font-size:clamp(24px,3.6vw,34px);margin:12px 0 14px">Wszystko po naszej stronie</h3>
@@ -365,18 +374,18 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 
 <section class="s-dark2" id="pamiec">
   <div class="wrap">
-    <div class="rev">
+    <div class="reveal">
       <div class="divider"><span class="flame flicker"><svg><use href="#fl"/></svg></span><span></span></div>
       <div class="sec-head">
         <h2>Księga Pamięci</h2>
         <p>Zawiadomienia o ceremoniach, które organizujemy. Proszę wpisać nazwisko, aby odnaleźć termin — stronę zawiadomienia można przesłać rodzinie jednym linkiem.</p>
       </div>
     </div>
-    <div class="searchrow rev">
+    <div class="searchrow reveal">
       <input id="q" type="search" placeholder="Nazwisko lub imię…" aria-label="Szukaj w Księdze Pamięci">
       <a class="btn" href="#pamiec">Szukaj</a>
     </div>
-    <div class="obits rev" id="obits">
+    <div class="obits stagger" id="obits">
       <a class="obit" href="#pamiec" data-name="marcin sadurski">
         <div class="mark"><span class="flame flicker"><svg><use href="#fl"/></svg></span><em>3 listopada 2025</em></div>
         <h3>śp. Marcin Sadurski</h3>
@@ -412,13 +421,13 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 
 <section class="s-light band">
   <div class="wrap band-grid">
-    <div class="rev">
+    <div class="reveal">
       <div class="divider"><span class="flame"><svg><use href="#fl"/></svg></span><span></span></div>
       <blockquote>Godne pożegnanie to takie, o którym rodzina nie musi myśleć.</blockquote>
       <p>Organizujemy pogrzeby tradycyjne i kremacyjne, świeckie i wyznaniowe — zgodnie z wolą rodziny i charakterem uroczystości, na wszystkich cmentarzach w Toruniu i regionie.</p>
       <p style="margin-top:24px"><a class="btn" href="#oferta">Zakres opieki</a></p>
     </div>
-    <figure class="band-img rev">
+    <figure class="band-img reveal">
       <img src="assets/band.webp" alt="Namiot ceremonialny NEKRO nad grobem pokrytym kwiatami" loading="lazy">
       <figcaption>Namiot ceremonialny NEKRO · Toruń</figcaption>
     </figure>
@@ -427,14 +436,14 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 
 <section class="s-dark2" id="oferta">
   <div class="wrap">
-    <div class="rev">
+    <div class="reveal">
       <div class="divider"><span class="flame"><svg><use href="#fl"/></svg></span><span></span></div>
       <div class="sec-head">
         <h2>Zakres opieki</h2>
         <p>Wszystko, czym możemy się zająć — od pierwszego telefonu, przez formalności, po dzień ceremonii i to, co po niej.</p>
       </div>
     </div>
-    <div class="grid rev">
+    <div class="grid stagger">
       <a class="tile" href="#kontakt">
         <div class="bg"><img src="assets/wience.webp" alt="Wieńce pogrzebowe" loading="lazy"></div>
         <div class="txt"><h3>Oprawa florystyczna</h3><p>Kwiaty, wieńce, wiązanki i znicze. Na życzenie dobierzemy wszystko sami, według Państwa wskazówek.</p></div>
@@ -483,7 +492,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 
 <section class="s-light" id="opinie">
   <div class="wrap">
-    <div class="aid rev">
+    <div class="aid reveal">
       <div class="big num">7000&nbsp;zł</div>
       <div>
         <span class="eyebrow">Zasiłek pogrzebowy</span>
@@ -491,7 +500,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
         <p style="margin-top:20px"><a class="btn" href="#kontakt">Lista dokumentów</a></p>
       </div>
     </div>
-    <div class="quotes rev">
+    <div class="quotes stagger">
       <div class="quote">
         <div class="stars">★★★★★</div>
         <p>„Chciałbym bardzo podziękować pani Magdzie za całą ceremonię pogrzebową. Podejście do wszystkiego bardzo profesjonalne."</p>
@@ -513,7 +522,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
 
 <section class="s-dark" id="kontakt">
   <div class="wrap">
-    <div class="contact rev">
+    <div class="contact reveal">
       <div class="cinfo">
         <div class="divider"><span class="flame flicker"><svg><use href="#fl"/></svg></span><span></span></div>
         <h2 style="font-size:clamp(28px,5vw,46px);margin-bottom:30px">Kontakt</h2>
@@ -580,15 +589,34 @@ footer{border-top:1px solid var(--line);padding:52px 0 120px;font-size:14px;colo
   function onScroll(){ hdr.classList.toggle('solid', window.scrollY>60); }
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
-  var revs=[].slice.call(document.querySelectorAll('.rev'));
-  function showAll(){revs.forEach(function(e){e.classList.add('in')});}
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.reveal,.stagger'));
+  items.forEach(function(el){
+    if(el.classList.contains('stagger')){
+      [].forEach.call(el.children,function(c,i){ c.style.setProperty('--i', i); });
+    }
+  });
+  function showAll(){ items.forEach(function(el){ el.classList.add('in'); }); }
   if('IntersectionObserver' in window){
+    var fired=false;
     var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    },{rootMargin:'0px 0px -8% 0px',threshold:.05});
-    revs.forEach(function(e){io.observe(e)});
-    setTimeout(showAll,4000);
+      es.forEach(function(e){ if(e.isIntersecting){ fired=true; e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -12% 0px',threshold:0.02});
+    items.forEach(function(el){ io.observe(el); });
+    // dosprzątanie po szybkim przewinięciu — nic nie zostaje puste
+    var t;
+    function sweep(){
+      for(var i=0;i<items.length;i++){
+        var el=items[i];
+        if(el.classList.contains('in')) continue;
+        var r=el.getBoundingClientRect();
+        if(r.top < window.innerHeight*0.92){ el.classList.add('in'); io.unobserve(el); }
+      }
+    }
+    window.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sweep,140); },{passive:true});
+    setTimeout(function(){ if(!fired) showAll(); },4000);
   } else { showAll(); }
+})();
 
   var q=document.getElementById('q'),list=document.getElementById('obits'),nores=document.getElementById('noresult');
   if(q){ q.addEventListener('input',function(){
