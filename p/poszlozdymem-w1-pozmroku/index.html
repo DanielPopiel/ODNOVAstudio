@@ -758,5 +758,101 @@ var PZD_FRAMES = (Math.min(innerWidth, screen.width || innerWidth) * Math.min(de
 {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],
 "acceptsReservations":"True"}
 </script>
+<style id="karta-mobilna-css">
+/* Na telefonie karta menu nie leży w strumieniu strony — otwiera się osobno,
+   spod przycisku KARTA na pasku. Powód: sama karta to 45 pozycji przewijania. */
+#kartaBtn{display:none;align-items:center;justify-content:center;margin-left:auto;
+  font:600 11px/1 ui-sans-serif,system-ui,-apple-system,sans-serif;letter-spacing:.16em;
+  text-transform:uppercase;padding:12px 15px;border:1px solid currentColor;border-radius:2px;
+  background:transparent;color:inherit;cursor:pointer;opacity:.8;white-space:nowrap}
+#kartaBtn:active{opacity:1}
+#karta-ark{display:none;position:fixed;inset:0;z-index:80;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;opacity:0;pointer-events:none;transition:opacity .25s}
+#karta-ark.on{opacity:1;pointer-events:auto}
+#karta-ark .ark-x{position:fixed;top:12px;right:14px;z-index:3;width:44px;height:44px;
+  display:none;align-items:center;justify-content:center;border-radius:2px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.3);background:rgba(18,14,12,.72);color:#fff;
+  font:400 18px/1 ui-sans-serif,system-ui,sans-serif;backdrop-filter:blur(8px)}
+#karta-ark.on .ark-x{display:flex}
+#karta-ark > section{padding-top:64px !important}
+body.ark-open{overflow:hidden}
+@media(max-width:760px){
+  #kartaBtn{display:inline-flex}
+  #karta-ark{display:block}
+  .burger{margin-left:10px !important}
+}
+</style>
+<script>
+(function(){
+  var sek = document.getElementById('menu'); if (!sek) return;
+  var BP = matchMedia('(max-width:760px)');
+
+  var slot = document.createElement('div'); slot.hidden = true;
+  sek.parentNode.insertBefore(slot, sek);
+
+  var ark = document.createElement('div'); ark.id = 'karta-ark';
+  ark.setAttribute('aria-hidden', 'true');
+  var x = document.createElement('button');
+  x.className = 'ark-x'; x.type = 'button';
+  x.setAttribute('aria-label', 'Zamknij kartę'); x.textContent = '✕';
+  ark.appendChild(x);
+  document.body.appendChild(ark);
+
+  /* Tlo arkusza: ta sama warstwa, ktora maluje strone (bywa na html, nie na body),
+     przesunieta tak, zeby sekcja widziala dokladnie swoj wycinek gradientu. */
+  var doc = document.documentElement;
+  var bs = getComputedStyle(document.body), hs = getComputedStyle(doc);
+  var zr = (bs.backgroundImage !== 'none' || bs.backgroundColor !== 'rgba(0, 0, 0, 0)') ? bs : hs;
+  var wysStrony = doc.scrollHeight;
+  var gora = sek.getBoundingClientRect().top + (window.pageYOffset || 0);
+  ark.style.color = bs.color;
+  ark.style.backgroundColor = zr.backgroundColor !== 'rgba(0, 0, 0, 0)' ? zr.backgroundColor : hs.backgroundColor;
+  if (zr.backgroundImage !== 'none'){
+    ark.style.backgroundImage = zr.backgroundImage;
+    ark.style.backgroundRepeat = 'no-repeat';
+    ark.style.backgroundSize = '100% ' + wysStrony + 'px';
+    ark.style.backgroundPosition = '0 -' + Math.round(gora) + 'px';
+    ark.style.backgroundAttachment = 'local';
+  }
+
+  var host = document.querySelector('#hdr .bar, #hdr .hdr, header .bar, header .hdr') ||
+             document.querySelector('header');
+  var btn = document.createElement('button');
+  btn.id = 'kartaBtn'; btn.type = 'button'; btn.textContent = 'Karta';
+  btn.setAttribute('aria-haspopup', 'dialog');
+  var burger = host.querySelector('.burger');
+  if (burger) host.insertBefore(btn, burger); else host.appendChild(btn);
+
+  function otworz(){
+    if (!BP.matches) return;
+    ark.classList.add('on'); ark.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('ark-open');
+    [].forEach.call(ark.querySelectorAll('.rv'), function(e){ e.classList.add('in'); });
+    ark.scrollTop = 0;
+  }
+  function zamknij(){
+    ark.classList.remove('on'); ark.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('ark-open');
+  }
+
+  function ustaw(){
+    if (BP.matches){
+      if (sek.parentNode !== ark) ark.appendChild(sek);
+    } else if (sek.parentNode === ark){
+      slot.parentNode.insertBefore(sek, slot.nextSibling);
+      zamknij();
+    }
+  }
+  ustaw();
+  if (BP.addEventListener) BP.addEventListener('change', ustaw); else BP.addListener(ustaw);
+
+  [].forEach.call(document.querySelectorAll('a[href="#menu"]'), function(a){
+    a.addEventListener('click', function(e){ if (BP.matches){ e.preventDefault(); otworz(); } });
+  });
+  btn.addEventListener('click', otworz);
+  x.addEventListener('click', zamknij);
+  addEventListener('keydown', function(e){ if (e.key === 'Escape') zamknij(); });
+})();
+</script>
 </body>
 </html>
