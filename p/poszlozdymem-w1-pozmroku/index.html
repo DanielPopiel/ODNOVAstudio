@@ -97,7 +97,8 @@ nav a.act::after{transform:scaleX(1)}
 
 /* ---------- film ---------- */
 .film{position:relative;height:620vh;background:var(--noc)}
-.stage{position:sticky;top:0;height:100svh;min-height:520px;overflow:hidden}
+.stage{position:sticky;top:0;height:100svh;min-height:520px;overflow:hidden;
+  background:radial-gradient(130% 55% at 50% 20%,rgba(240,171,91,.07),transparent 68%),linear-gradient(180deg,#07080E 0%,#0B0A0C 46%,#05060B 100%)}
 #cv{position:absolute;inset:0;width:100%;height:100%;display:block}
 .veil{position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(5,6,11,.80) 0%,rgba(5,6,11,.15) 22%,rgba(5,6,11,0) 40%,rgba(5,6,11,.42) 72%,rgba(5,6,11,.93) 100%)}
@@ -237,7 +238,7 @@ footer{background:var(--noc);padding:clamp(70px,10vh,120px) 0 40px;text-align:ce
   .acts{bottom:auto;top:calc(var(--band,52%) + 26px);max-width:none}
   .scn{bottom:auto;top:0}
   .rail{display:none}
-  .veil{background:linear-gradient(180deg,rgba(5,6,11,.55) 0%,rgba(5,6,11,0) 18%,rgba(5,6,11,0) 46%,rgba(5,6,11,.5) 60%,rgba(5,6,11,.95) 100%)}
+  .veil{background:linear-gradient(180deg,rgba(5,6,11,.45) 0%,rgba(5,6,11,0) 16%,rgba(5,6,11,0) 52%,rgba(5,6,11,.35) 70%,rgba(5,6,11,.7) 100%)}
   .facts{grid-template-columns:1fr}
   .poz{grid-template-columns:1fr auto}
   .dane li{grid-template-columns:1fr;gap:2px}
@@ -513,9 +514,6 @@ var PZD_FRAMES = (Math.min(innerWidth, screen.width || innerWidth) * Math.min(de
     var imgs = new Array(N), ready = new Array(N), got = 0, last = -1;
     var ctx = cv.getContext('2d', {alpha:true});
     var CW = 0, CH = 0, dpr = 1, narrow = false;
-    /* mini-plotno: rozciagniete daje tanie rozmycie zamiast filtra blur */
-    var mini = document.createElement('canvas'); mini.width = 26; mini.height = 15;
-    var mctx = mini.getContext('2d');
     /* plotno pasa: pozwala wygasic gorna i dolna krawedz, nie kasujac tla */
     var bandCv = document.createElement('canvas'), bctx = bandCv.getContext('2d');
 
@@ -561,27 +559,27 @@ var PZD_FRAMES = (Math.min(innerWidth, screen.width || innerWidth) * Math.min(de
       var im = nearest(i); if (!im) return;
       ctx.clearRect(0,0,CW,CH);
       if (narrow){
-        var w = CW, h = w/AR, top = Math.round(CH*0.075);
-        /* 1. poswiata: ta sama klatka rozciagnieta z 26 px, przygaszona */
-        mctx.drawImage(im, 0, 0, 26, 15);
-        ctx.save(); ctx.globalAlpha = .55; ctx.imageSmoothingEnabled = true;
-        ctx.drawImage(mini, 0, 0, CW, CH); ctx.restore();
-        ctx.fillStyle = 'rgba(5,6,11,.62)'; ctx.fillRect(0, 0, CW, CH);
-        /* 2. ostry pas z wygaszonymi krawedziami (na osobnym plotnie) */
+        /* Pas 4:5 zamiast 16:9 — kadr przycinany pionowo (w poziomie nic nie ginie,
+           wiec neon z nazwa zostaje caly), a obraz zajmuje wiecej ekranu.
+           Tlo pod pasem daje gradient CSS na .stage — rozmyta klatka smuzyla. */
+        var PAS = 1.08;
+        var w = CW, h = Math.min(w/PAS, CH*0.60), top = Math.round(CH*0.04);
+        var srcH = Math.min(im.naturalHeight, im.naturalWidth / (w/h));
+        var sy = (im.naturalHeight - srcH)/2;
         if (bandCv.width !== Math.round(CW*dpr) || bandCv.height !== Math.round(h*dpr)){
           bandCv.width = Math.round(CW*dpr); bandCv.height = Math.round(h*dpr);
         }
         bctx.setTransform(dpr,0,0,dpr,0,0);
         bctx.clearRect(0,0,w,h);
         bctx.globalCompositeOperation = 'source-over';
-        bctx.drawImage(im, 0, 0, w, h);
+        bctx.drawImage(im, 0, sy, im.naturalWidth, srcH, 0, 0, w, h);
         bctx.globalCompositeOperation = 'destination-out';
         var g = bctx.createLinearGradient(0, 0, 0, h);
-        g.addColorStop(0,'rgba(0,0,0,1)'); g.addColorStop(.13,'rgba(0,0,0,0)');
-        g.addColorStop(.87,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,1)');
+        g.addColorStop(0,'rgba(0,0,0,1)'); g.addColorStop(.10,'rgba(0,0,0,0)');
+        g.addColorStop(.82,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,1)');
         bctx.fillStyle = g; bctx.fillRect(0, 0, w, h);
         ctx.drawImage(bandCv, 0, top, w, h);
-        stage.style.setProperty('--band', (top+h*0.93)+'px');
+        stage.style.setProperty('--band', (top+h*0.90)+'px');
       } else {
         var s = Math.max(CW/im.naturalWidth, CH/im.naturalHeight);
         var dw = im.naturalWidth*s, dh = im.naturalHeight*s;
