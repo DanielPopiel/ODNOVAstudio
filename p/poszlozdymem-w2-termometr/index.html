@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poszło z Dymem — pizzeria, Opole, Katowicka 48</title>
+<meta name="description" content="Włoska trattoria w Opolu. Ciasto z długiej fermentacji, piec opalany drewnem, 485 stopni, sześćdziesiąt sekund. Menu, dostawa, rezerwacja.">
+<style>
+@font-face{font-family:'PlexMono';src:url(assets/IBMPlexMono-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'PlexMono';src:url(assets/IBMPlexMono-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Archivo';src:url(assets/Archivo-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Archivo';src:url(assets/Archivo-700.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Archivo';src:url(assets/Archivo-800.woff2) format('woff2');font-weight:800;font-display:swap}
+
+:root{
+  --mono:'PlexMono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --disp:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --hot-ink:#1C0A02;
+  --cold-ink:#F7E6CF;
+  --paper:#F6EFE2;
+  --ember:#FF7A18;
+  --green:#2F6B34;
+  --gut:clamp(16px,4vw,64px);
+  --maxw:1320px;
+  --hdr-h:66px;
+}
+*{box-sizing:border-box}
+html{
+  -webkit-text-size-adjust:100%;
+  background:#0E0605;
+  background-image:linear-gradient(180deg,
+    #FFF8EC 0%, #FFE6B4 4%, #FFC96F 9%, #FFA337 15%,
+    #F97612 23%, #EA4A0C 33%, #C22608 45%,
+    #8A1706 57%, #560F05 68%, #2E0A05 79%, #170705 89%, #0C0504 100%);
+  background-attachment:scroll;
+  scroll-padding-top:calc(var(--hdr-h) + 24px);
+}
+body{margin:0;color:var(--hot-ink);font-family:var(--mono);font-size:16px;line-height:1.55;
+  background:transparent;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.mono{font-family:var(--mono)}
+h1,h2,h3{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;line-height:.92;margin:0}
+
+/* ---------- warstwa żaru ---------- */
+#heat{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
+  mix-blend-mode:screen;opacity:.85}
+#grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- pasek menu ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(255,248,236,.9);backdrop-filter:blur(16px) saturate(1.25);
+  border-bottom:1px solid rgba(28,10,2,.16);
+  transition:background .7s ease,border-color .7s ease,color .7s ease}
+header.cold{color:var(--cold-ink);background:rgba(16,7,5,.82);
+  border-bottom-color:rgba(247,230,207,.18)}
+.hdr{display:flex;align-items:center;gap:clamp(12px,2vw,30px);
+  padding:0 var(--gut);max-width:var(--maxw);margin:0 auto;height:var(--hdr-h)}
+
+/* logotyp */
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;
+  flex:0 0 auto}
+.logo .mark{width:40px;height:22.4px;flex:0 0 auto;
+  transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.logo:hover .mark{transform:translateY(-2px) rotate(-2deg)}
+.logo-txt{display:flex;flex-direction:column;line-height:1;gap:3px}
+.logo-txt b{font-family:var(--disp);font-weight:800;font-size:16.5px;letter-spacing:-.02em;word-spacing:.02em;
+  white-space:nowrap}
+.logo-txt span{font-size:8.5px;letter-spacing:.26em;text-transform:lowercase;opacity:.6;
+  white-space:nowrap}
+
+/* nawigacja z podkreśleniem aktywnej sekcji */
+.hdr nav{display:flex;gap:clamp(14px,2vw,26px);margin-left:auto;align-items:center;
+  position:relative}
+.hdr nav a{position:relative;text-decoration:none;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;padding:6px 0;opacity:.65;transition:opacity .35s}
+.hdr nav a:hover,.hdr nav a.act{opacity:1}
+.hdr nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.hdr nav a:hover::after,.hdr nav a.act::after{transform:scaleX(1)}
+
+.temp-pill{font-size:12px;letter-spacing:.04em;display:flex;align-items:center;gap:8px;
+  font-variant-numeric:tabular-nums;white-space:nowrap;opacity:.8}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:0 0 auto;
+  box-shadow:0 0 0 0 rgba(47,107,52,.6);animation:pulse 3.4s ease-out infinite}
+.dot.shut{background:#8A1706;animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,107,52,.55)}70%{box-shadow:0 0 0 12px rgba(47,107,52,0)}100%{box-shadow:0 0 0 0 rgba(47,107,52,0)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--mono);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 20px;border-radius:999px;text-decoration:none;border:1.5px solid currentColor;
+  background:none;color:inherit;cursor:pointer;
+  transition:background .45s cubic-bezier(.22,1,.36,1),color .45s,transform .45s cubic-bezier(.22,1,.36,1)}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--hot-ink);color:#FFE9C4;border-color:var(--hot-ink)}
+.btn-solid:hover{background:transparent;color:var(--hot-ink)}
+.cold .btn-solid{background:var(--ember);border-color:var(--ember);color:#210901}
+.cold .btn-solid:hover{background:transparent;color:var(--ember)}
+.hdr .btn{padding:10px 18px;font-size:11.5px}
+
+/* hamburger + szuflada na telefon */
+.burger{display:none;width:42px;height:42px;margin-left:auto;border:0;background:none;
+  color:inherit;cursor:pointer;padding:0;position:relative;flex:0 0 auto}
+.burger i{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;
+  transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
+.burger i:nth-child(1){top:15px}
+.burger i:nth-child(2){top:21px}
+.burger i:nth-child(3){top:27px}
+.burger.on i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.on i:nth-child(2){opacity:0}
+.burger.on i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#drawer{position:fixed;inset:var(--hdr-h) 0 0;z-index:45;display:flex;flex-direction:column;
+  justify-content:center;gap:6px;padding:0 var(--gut) 12vh;
+  background:rgba(255,246,232,.97);backdrop-filter:blur(20px);
+  opacity:0;visibility:hidden;transform:translateY(-12px);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),visibility .55s}
+#drawer.cold{background:rgba(12,5,4,.97);color:var(--cold-ink)}
+#drawer.open{opacity:1;visibility:visible;transform:none}
+#drawer>a{font-family:var(--disp);font-weight:800;font-size:clamp(30px,10vw,48px);
+  text-transform:uppercase;text-decoration:none;letter-spacing:-.03em;padding:10px 0;
+  border-bottom:1px solid currentColor;opacity:.25}
+#drawer.open>a{animation:drawin .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes drawin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+#drawer .d-foot{margin-top:26px;display:flex;flex-direction:column;gap:12px;
+  font-size:13px;letter-spacing:.04em}
+
+/* ---------- linijka temperatury ---------- */
+#rail{position:fixed;left:clamp(10px,2vw,30px);top:50%;transform:translateY(-50%);z-index:30;
+  pointer-events:none;display:flex;align-items:center;gap:14px;opacity:0;transition:opacity .8s ease}
+#rail.on{opacity:1}
+.rail-scale{position:relative;width:1px;height:min(56vh,420px);background:currentColor;opacity:.35}
+.rail-tick{position:absolute;left:0;width:9px;height:1px;background:currentColor}
+.rail-tick.big{width:16px}
+.rail-mark{position:absolute;left:-4px;width:9px;height:9px;border-radius:50%;
+  background:currentColor;transition:top .18s linear}
+.rail-read{font-size:12px;letter-spacing:.08em;font-variant-numeric:tabular-nums;line-height:1.35}
+.rail-read b{display:block;font-family:var(--disp);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.rail-read span{opacity:.6;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+#rail.cold{color:var(--cold-ink)}
+@media(max-width:1080px){#rail{display:none}}
+
+/* ---------- hero ---------- */
+main{position:relative;z-index:10}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:calc(var(--hdr-h) + clamp(30px,6vh,64px));padding-bottom:clamp(40px,6vh,80px);
+  position:relative;overflow:hidden}
+.ghost{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+  display:flex;align-items:center;justify-content:center}
+.ghost b{font-family:var(--disp);font-weight:800;font-size:min(58vw,700px);line-height:.8;
+  color:rgba(255,255,255,.34);letter-spacing:-.05em;white-space:nowrap;
+  display:flex;align-items:flex-start;
+  animation:drift 72s ease-in-out infinite alternate}
+/* stopień w znaku wodnym to koło pizzy — jeden znak łączy temperaturę z tym,
+   co z niej wychodzi; obraca się na tyle wolno, że widać to dopiero po chwili */
+.ghost .pz{width:.34em;height:.34em;margin:.045em 0 0 .03em;flex:0 0 auto;
+  animation:spin 190s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drift{from{transform:translate3d(-4%,2%,0) scale(1)}to{transform:translate3d(4%,-2%,0) scale(1.07)}}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(18px,3.4vh,48px);
+  margin-top:auto}
+.ticket-head{font-size:12.5px;line-height:1.85;letter-spacing:.02em;max-width:560px}
+.ticket-head div{display:flex;gap:12px}
+.ticket-head dt,.ticket-head .k{width:88px;flex:0 0 88px;opacity:.55;text-transform:uppercase;
+  font-size:10.5px;letter-spacing:.14em;padding-top:3px}
+.ticket-head .v{flex:1;min-width:0}
+.ticket-head a{text-decoration:none;border-bottom:1px solid rgba(28,10,2,.3)}
+h1.big{font-size:min(clamp(46px,13.2vw,205px),26vh);letter-spacing:-.045em;word-spacing:-.06em;text-transform:uppercase;
+  max-width:14ch}
+h1.big .l{display:block;overflow:hidden}
+h1.big .l i{display:block;font-style:normal;transform:translateY(105%);
+  animation:rise 1.5s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes rise{to{transform:translateY(0)}}
+.lede{font-size:clamp(15px,1.55vw,19px);max-width:46ch;line-height:1.6}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.scrollcue{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.6;margin-top:clamp(18px,4vh,44px)}
+.scrollcue .bar{width:52px;height:1px;background:currentColor;position:relative;overflow:hidden}
+.scrollcue .bar::after{content:'';position:absolute;inset:0;background:currentColor;
+  transform:translateX(-100%);animation:sweep 3.6s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* ---------- sekcje ---------- */
+section{position:relative;padding-block:clamp(80px,13vh,190px)}
+.eyebrow{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;
+  display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::after{content:'';flex:1;height:1px;background:currentColor;opacity:.3;max-width:180px}
+h2{font-size:clamp(30px,5.6vw,76px);text-transform:uppercase;max-width:18ch;word-spacing:-.045em}
+.cold-ink{color:var(--cold-ink)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* piec */
+.piec{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,64px);align-items:end}
+.piec p{font-size:clamp(15px,1.5vw,18.5px);max-width:52ch}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:38px;
+  border:1px solid rgba(28,10,2,.25)}
+.stat{padding:20px 18px;border:1px solid rgba(28,10,2,.25);margin:-1px 0 0 -1px}
+.stat b{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(28px,4.4vw,52px);
+  letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:9px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.62}
+.ovenshot{border:1px solid rgba(28,10,2,.3);overflow:hidden;position:relative}
+.ovenshot img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);
+  animation:breathe 34s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+.ovenshot figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#F7E6CF;
+  background:linear-gradient(0deg,rgba(10,4,2,.86),rgba(10,4,2,0))}
+
+/* ---------- paragon ---------- */
+.receipt-outer{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(26px,3vw,48px);
+  align-items:start}
+.receipt{background:var(--paper);color:#1B1512;padding:clamp(20px,3vw,40px) clamp(16px,2.6vw,34px);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.75);position:relative;
+  font-size:13.5px;line-height:1.6;max-width:100%}
+.receipt::before,.receipt::after{content:'';position:absolute;left:0;right:0;height:9px;
+  background:repeating-linear-gradient(-45deg,var(--paper) 0 9px,transparent 9px 18px)}
+.receipt::before{top:-8px;transform:scaleY(-1)}
+.receipt::after{bottom:-8px}
+.r-head{text-align:center;border-bottom:1px dashed rgba(27,21,18,.4);padding-bottom:16px;margin-bottom:18px}
+.r-head b{font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:.06em;text-transform:uppercase;display:block}
+.r-head small{display:block;margin-top:6px;font-size:11px;letter-spacing:.1em;opacity:.65;text-transform:uppercase}
+#rBody{max-height:min(64vh,660px);overflow-y:auto;overscroll-behavior:contain;
+  padding-right:10px;scrollbar-width:thin;scrollbar-color:rgba(27,21,18,.35) transparent;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22px,#000 calc(100% - 26px),transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0,#000 22px,#000 calc(100% - 26px),transparent 100%)}
+#rBody::-webkit-scrollbar{width:5px}
+#rBody::-webkit-scrollbar-thumb{background:rgba(27,21,18,.3);border-radius:9px}
+.r-cat{margin:26px 0 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  border-bottom:1px solid rgba(27,21,18,.3);padding-bottom:7px;display:flex;justify-content:space-between}
+.r-note{font-size:11.5px;opacity:.6;margin:-4px 0 12px}
+.r-item{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:9px 0;cursor:pointer;
+  border:0;background:none;font:inherit;color:inherit;text-align:left;width:100%;
+  border-bottom:1px dotted rgba(27,21,18,.28);
+  opacity:0;transform:translateY(8px);
+  transition:background .3s,opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.r-item.printed{opacity:1;transform:none}
+.r-item:hover{background:rgba(27,21,18,.05)}
+.r-item .n{font-weight:600;letter-spacing:.01em}
+.r-item .p{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.r-item .d{grid-column:1/-1;font-size:11.5px;opacity:.62;line-height:1.5}
+.r-item .tag{display:inline-block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:99px;padding:1px 7px;margin-left:8px;vertical-align:1px;opacity:.75}
+.r-item .tag.v{color:var(--green)}
+.r-item .tag.o{color:#B4300B}
+.r-item.picked{background:rgba(180,48,11,.09)}
+.r-item.picked .n::after{content:' ×' attr(data-qty);color:#B4300B}
+.r-total{margin-top:22px;border-top:1px dashed rgba(27,21,18,.45);padding-top:14px}
+.r-line{display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0}
+.r-sum{display:flex;justify-content:space-between;font-family:var(--disp);font-weight:800;
+  font-size:22px;letter-spacing:-.01em;margin-top:10px;font-variant-numeric:tabular-nums}
+.r-empty{font-size:12px;opacity:.55;text-align:center;padding:8px 0}
+.r-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.r-act .btn{border-color:#1B1512;color:#1B1512}
+.r-act .btn.go{background:#B4300B;border-color:#B4300B;color:#FFF0DE}
+.r-act .btn.go:hover{background:transparent;color:#B4300B}
+.r-foot{text-align:center;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  opacity:.5;margin-top:20px;border-top:1px dashed rgba(27,21,18,.35);padding-top:14px}
+.r-side{position:sticky;top:calc(var(--hdr-h) + 34px)}
+.r-shot{margin:0 0 26px;border:1px solid rgba(247,230,207,.3);overflow:hidden;position:relative}
+.r-shot img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;
+  object-position:50% 53%;transform:scale(1.01);
+  animation:breathe 44s ease-in-out infinite alternate}
+.r-shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:13px 15px;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#F7E6CF;
+  background:linear-gradient(0deg,rgba(10,4,2,.86),rgba(10,4,2,0))}
+.r-side p{font-size:14.5px;max-width:40ch}
+.r-cat:first-child{margin-top:4px}
+
+/* ---------- dostawa ---------- */
+.zones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:40px}
+.zone{border:1px solid rgba(247,230,207,.28);margin:-1px 0 0 -1px;padding:22px 18px 24px;
+  transition:background .5s ease}
+.zone:hover{background:rgba(255,122,24,.1)}
+.zone b{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(20px,2.4vw,30px);
+  letter-spacing:-.02em}
+.zone .cost{display:block;margin-top:14px;font-size:clamp(28px,3.6vw,46px);font-family:var(--disp);
+  font-weight:800;color:var(--ember);line-height:1;font-variant-numeric:tabular-nums}
+.zone ul{list-style:none;margin:16px 0 0;padding:0;font-size:12px;opacity:.72;line-height:1.75}
+.zone li::before{content:'— ';opacity:.6}
+
+/* ---------- lokal / kontakt ---------- */
+.two{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,70px)}
+.hours{border-top:1px solid rgba(247,230,207,.25);margin-top:26px}
+.hours div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;
+  border-bottom:1px solid rgba(247,230,207,.16);font-size:14px;font-variant-numeric:tabular-nums}
+.hours div.today{color:var(--ember);font-weight:600}
+.hours span:first-child{text-transform:capitalize}
+.contact-list{list-style:none;margin:26px 0 0;padding:0;font-size:clamp(16px,2vw,22px);line-height:2}
+.contact-list a{text-decoration:none;border-bottom:1px solid rgba(247,230,207,.3)}
+.contact-list a:hover{border-bottom-color:var(--ember);color:var(--ember)}
+.contact-list .k{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  opacity:.5;line-height:1.8;margin-top:12px}
+footer{padding:clamp(40px,6vh,80px) 0 clamp(30px,5vh,60px);
+  border-top:1px solid rgba(247,230,207,.16);font-size:11.5px;letter-spacing:.06em}
+.f-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;opacity:.65}
+
+@media(min-width:760px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .piec{grid-template-columns:1.05fr .95fr}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .receipt-outer{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+  .two{grid-template-columns:1fr 1fr}
+}
+@media(max-width:759px){
+  .zones{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r-side{position:static}
+}
+@media(max-width:1180px){
+  .logo-txt span{display:none}
+}
+@media(max-width:940px){
+  .hdr nav,.hdr .temp-pill{display:none}
+  .burger{display:block}
+  .hdr .btn{margin-left:14px}
+}
+@media(max-width:480px){
+  .hdr .btn{display:none}
+}
+@media(max-width:639px){
+  .zones{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  h1.big .l i{transform:none}
+}
+
+/* A — kadr przecięty.
+   Zdjęcie NIE jest prostokątnym panelem z nakładką: ma maskę alfa, więc po lewej
+   realnie zanika i przez spód widać gradient strony. Dzięki temu nie ma ani
+   mlecznego pasa, ani krawędzi u góry i u dołu — kadr jest wypuszczony poza
+   sekcję i przycięty jej obrysem. Szew jest lekko skośny, żeby nie czytał się
+   jak podział ekranu na pół. */
+.hero{position:relative;overflow:hidden}
+.hero-shot{position:absolute;top:-8%;bottom:-8%;right:0;width:62%;z-index:-2;pointer-events:none}
+.hero-shot img{width:100%;height:100%;object-fit:cover;object-position:40% 50%;
+  filter:saturate(1.04) contrast(1.02);
+  transform:scale(1.02);animation:slowzoom 52s ease-in-out infinite alternate;
+  -webkit-mask-image:
+    linear-gradient(97deg,transparent 2%,rgba(0,0,0,.18) 20%,rgba(0,0,0,.72) 38%,#000 54%),
+    linear-gradient(180deg,transparent 0,#000 13%,#000 84%,transparent 99%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(97deg,transparent 2%,rgba(0,0,0,.18) 20%,rgba(0,0,0,.72) 38%,#000 54%),
+    linear-gradient(180deg,transparent 0,#000 13%,#000 84%,transparent 99%);
+  mask-composite:intersect}
+/* ciepła poświata na styku — spina zdjęcie z paletą strony.
+   Ta sama maska co zdjęcie, inaczej jej prostokąt zostawiał pionową kreskę
+   dokładnie tam, gdzie miało nie być żadnej krawędzi */
+.hero-shot::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(56% 72% at 6% 50%,rgba(255,168,60,.46),transparent 60%);
+  -webkit-mask-image:
+    linear-gradient(97deg,transparent 2%,rgba(0,0,0,.18) 20%,rgba(0,0,0,.72) 38%,#000 54%),
+    linear-gradient(180deg,transparent 0,#000 13%,#000 84%,transparent 99%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(97deg,transparent 2%,rgba(0,0,0,.18) 20%,rgba(0,0,0,.72) 38%,#000 54%),
+    linear-gradient(180deg,transparent 0,#000 13%,#000 84%,transparent 99%);
+  mask-composite:intersect}
+@keyframes slowzoom{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+.hero-grid{max-width:none}
+.hero .ticket-head,.hero .lede{max-width:min(40ch,40%)}
+.hero h1.big{font-size:min(clamp(40px,7.2vw,112px),23vh);max-width:9ch}
+/* znak wodny znika — rolę plamy przejmuje zdjęcie, dwa duże elementy na raz
+   robiły bałagan dokładnie w miejscu szwu */
+.hero .ghost{display:none}
+@media(max-width:860px){
+  /* na telefonie ten sam zabieg, tylko obrócony: zdjęcie pod treścią,
+     zanika ku górze, treść ma nad nim zapas, żeby przyciski nie lądowały na pizzy */
+  .hero{padding-bottom:calc(40vh + 22px)}
+  .hero-shot{width:112%;left:-6%;right:auto;top:auto;bottom:-4%;height:46vh}
+  .hero-shot img{object-position:50% 42%;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.4) 22%,#000 46%);
+    -webkit-mask-composite:source-over;
+    mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.4) 22%,#000 46%);
+    mask-composite:add}
+  .hero-shot::after{background:radial-gradient(80% 60% at 50% 0%,rgba(255,168,60,.45),transparent 64%)}
+  .hero .ticket-head,.hero .lede{max-width:100%}
+}
+
+</style>
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:title" content="Poszło z Dymem — 485 stopni. Pizzeria w Opolu">
+<meta property="og:description" content="Całe tło strony to temperatura pieca. Menu jako paragon, który wypisuje się sam. Katowicka 48, Opole.">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:locale" content="pl_PL">
+<link rel="icon" href="assets/mark.svg">
+</head>
+<body>
+<canvas id="heat" aria-hidden="true"></canvas>
+<div id="grain" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="hdr">
+    <a class="logo" href="#top" aria-label="Poszło z Dymem — strona główna">
+      <svg class="mark" viewBox="0 0 100 56" role="img" aria-label="Piec opalany drewnem" focusable="false"><g stroke="#3F2312" stroke-width="1.1" stroke-linecap="round"><line x1="38" y1="44.6" x2="62" y2="50.4" stroke="#8A5D3B" stroke-width="4.6"/><line x1="38" y1="50.4" x2="62" y2="44.6" stroke="#74492C" stroke-width="4.6"/></g><ellipse cx="38.3" cy="44.8" rx=".9" ry="2.0" fill="#C79A6E" transform="rotate(-13 38.3 44.8)"/><ellipse cx="61.7" cy="44.8" rx=".9" ry="2.0" fill="#B3855C" transform="rotate(13 61.7 44.8)"/><g transform="translate(50 43.5) scale(1.12) translate(-50 -43.5)"><path d="M50 20.5c4.6 5.2 7.4 9 7.4 13.6 0 5.3-3.5 8.9-7.4 8.9s-7.4-3.6-7.4-8.9c0-3.2 1.5-5.6 3.3-8.2.6 2 1.7 3.2 2.7 3.6-.6-3.9.3-7 1.4-9z" fill="#E8391B"/><path d="M50 27.8c2.8 3.4 4.4 5.8 4.4 8.6 0 3.2-2 5.4-4.4 5.4s-4.4-2.2-4.4-5.4c0-2 1-3.6 2.1-5.2.4 1.3 1.1 2 1.7 2.3-.4-2.4.2-4.3.6-5.7z" fill="#F2700E"/><path d="M46.0 34.2c1.2 1.7 1.8 2.8 1.8 4.0 0 1.4-.8 2.3-1.8 2.3s-1.8-.9-1.8-2.3c0-1.1.6-2.1 1.8-4.0z" fill="#F7B01C"/></g><path d="M6.48 48.94 L7.66 40.71 L18.9 43.79 L18.12 49.16 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M8.82 36.76 L12.27 29.2 L22.19 35.32 L19.93 40.25 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M14.5 25.74 L19.94 19.46 L27.73 28.12 L24.18 32.22 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M23.06 16.76 L30.05 12.27 L35.08 22.77 L30.52 25.7 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M33.79 10.56 L41.77 8.21 L43.64 19.71 L38.43 21.24 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M45.84 7.63 L54.16 7.63 L52.71 19.19 L47.29 19.19 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M58.23 8.21 L66.21 10.56 L61.57 21.24 L56.36 19.71 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M69.95 12.27 L76.94 16.76 L69.48 25.7 L64.92 22.77 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M80.06 19.46 L85.5 25.74 L75.82 32.22 L72.27 28.12 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M87.73 29.2 L91.18 36.76 L80.07 40.25 L77.81 35.32 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M92.34 40.71 L93.52 48.94 L81.88 49.16 L81.1 43.79 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/></svg>
+      <span class="logo-txt"><b>Poszło z Dymem</b><span>pasta · pizza · panini</span></span>
+    </a>
+    <nav id="nav">
+      <a href="#piec">Piec</a><a href="#menu">Menu</a><a href="#dostawa">Dostawa</a><a href="#lokal">Lokal</a>
+    </nav>
+    <div class="temp-pill"><span class="dot" id="dot"></span><span id="openTxt">sprawdzam…</span></div>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+      <i></i><i></i><i></i>
+    </button>
+    <a class="btn btn-solid" id="orderTop" href="#" target="_blank" rel="noopener">Zamów online</a>
+  </div>
+</header>
+<div id="drawer" aria-hidden="true">
+  <a href="#piec">Piec</a><a href="#menu">Menu</a><a href="#dostawa">Dostawa</a><a href="#lokal">Lokal</a>
+  <div class="d-foot">
+    <a class="btn btn-solid" id="orderDrawer" href="#" target="_blank" rel="noopener" style="font-size:12.5px">Zamów online</a>
+    <a class="btn" href="tel:+48510265267" style="font-size:12.5px">510 265 267</a>
+    <span id="openTxt2" style="opacity:.6"></span>
+  </div>
+</div>
+
+<div id="rail" aria-hidden="true">
+  <div class="rail-scale" id="railScale"><div class="rail-mark" id="railMark" style="top:0"></div></div>
+  <div class="rail-read"><b id="railTemp">485°</b><span>temperatura</span></div>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-shot" aria-hidden="true">
+    <img src="assets/pizza-hero.webp" alt="" width="1800" height="1200">
+  </div>
+  <div class="ghost" aria-hidden="true"><b>485<svg class="pz" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g fill="currentColor"><circle cx="50" cy="50" r="43.5" fill="none" stroke="currentColor" stroke-width="13"/><circle cx="50" cy="50" r="33" opacity=".42"/><line x1="50" y1="50" x2="82.3" y2="56.9" stroke="currentColor" stroke-width="1.7" opacity=".38"/><line x1="50" y1="50" x2="60.2" y2="81.4" stroke="currentColor" stroke-width="1.7" opacity=".38"/><line x1="50" y1="50" x2="27.9" y2="74.5" stroke="currentColor" stroke-width="1.7" opacity=".38"/><line x1="50" y1="50" x2="17.7" y2="43.1" stroke="currentColor" stroke-width="1.7" opacity=".38"/><line x1="50" y1="50" x2="39.8" y2="18.6" stroke="currentColor" stroke-width="1.7" opacity=".38"/><line x1="50" y1="50" x2="72.1" y2="25.5" stroke="currentColor" stroke-width="1.7" opacity=".38"/><circle cx="59.0" cy="31.6" r="5.4" opacity=".85"/><circle cx="70.0" cy="45.5" r="5.4" opacity=".85"/><circle cx="66.0" cy="62.9" r="5.4" opacity=".85"/><circle cx="49.9" cy="70.5" r="5.4" opacity=".85"/><circle cx="33.9" cy="62.7" r="5.4" opacity=".85"/><circle cx="30.0" cy="45.3" r="5.4" opacity=".85"/><circle cx="41.2" cy="31.5" r="5.4" opacity=".85"/></g></svg></b></div>
+  <div class="wrap hero-grid">
+    <div class="ticket-head">
+      <div><span class="k">Pizzeria</span><span class="v">Poszło z Dymem · włoska trattoria w Opolu</span></div>
+      <div><span class="k">Adres</span><span class="v">ul. Katowicka 48, 45-061 Opole</span></div>
+      <div><span class="k">Telefon</span><span class="v"><a href="tel:+48510265267">510 265 267</a></span></div>
+      <div><span class="k">Piec</span><span class="v">opalany drewnem · 485 °C</span></div>
+      <div><span class="k">Wypiek</span><span class="v">60 sekund</span></div>
+    </div>
+    <h1 class="big">
+      <span class="l"><i style="animation-delay:.05s">Poszło</i></span>
+      <span class="l"><i style="animation-delay:.16s">z dymem</i></span>
+    </h1>
+    <p class="lede">Drewno, 485 stopni i sześćdziesiąt sekund. Tyle dzieli kulę ciasta od kolacji. Nic się nie przypaliło — tak ma być.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" id="orderHero" href="#" target="_blank" rel="noopener">Zamów online</a>
+      <a class="btn" href="#menu">Zobacz menu</a>
+      <a class="btn" href="tel:+48510265267">510 265 267</a>
+    </div>
+    <div class="scrollcue"><span class="bar"></span><span>Przewiń — piec stygnie</span></div>
+  </div>
+</section>
+
+<!-- ============ PIEC ============ -->
+<section id="piec">
+  <div class="wrap">
+    <div class="eyebrow rv">485 °C · serce lokalu</div>
+    <div class="piec">
+      <div>
+        <h2 class="rv">Sześćdziesiąt sekund i ani chwili dłużej</h2>
+        <p class="rv" style="margin-top:26px">Ciasto odpoczywa u nas dobę. Mąka, woda, sól, odrobina drożdży i czas —
+        nic poza tym. Potem trafia na kamień w piecu opalanym drewnem, gdzie w sześćdziesiąt sekund brzeg
+        wypełnia się powietrzem, a na spodzie pojawiają się ciemne plamy. Po włosku nazywa się to
+        <em>leopardatura</em>. U nas mówi się na to po prostu: poszło z dymem.</p>
+        <p class="rv">Składniki sprowadzamy z Włoch — mozzarella fior di latte, grana padano, salami z Neapolu,
+        pomidory z południa. Reszta to robota przy piecu.</p>
+        <div class="stats">
+          <div class="stat rv"><b>485°</b><span>temperatura pieca</span></div>
+          <div class="stat rv"><b>60 s</b><span>czas wypieku</span></div>
+          <div class="stat rv"><b>24 h</b><span>fermentacja ciasta</span></div>
+          <div class="stat rv"><b>5 lat</b><span>w Opolu</span></div>
+        </div>
+      </div>
+      <figure class="ovenshot rv" style="margin:0">
+        <img src="assets/piec.webp" alt="Wnętrze pieca opalanego drewnem" width="1400" height="788">
+        <figcaption>Piec · Katowicka 48</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU / PARAGON ============ -->
+<section id="menu">
+  <div class="wrap">
+    <div class="eyebrow rv">250 °C · menu</div>
+    <h2 class="rv" style="margin-bottom:40px">Karta wychodzi z drukarki</h2>
+    <div class="receipt-outer">
+      <div class="receipt" id="receipt">
+        <div class="r-head">
+          <b>Poszło z Dymem</b>
+          <small>ul. Katowicka 48 · Opole · tel. 510 265 267</small>
+        </div>
+        <div id="rBody"></div>
+        <div class="r-total">
+          <div id="rPicked"><div class="r-empty">Stuknij w danie — dopisze się do rachunku.</div></div>
+          <div class="r-sum"><span>Razem</span><span id="rSum">0,00 zł</span></div>
+          <div class="r-act">
+            <a class="btn go" id="rOrder" href="#" target="_blank" rel="noopener">Zamów online</a>
+            <button class="btn" type="button" id="rClear">Wyczyść</button>
+          </div>
+          <div class="r-foot">Ceny w złotych · „od" oznacza cenę najmniejszego rozmiaru</div>
+        </div>
+      </div>
+      <div class="r-side cold-ink">
+        <figure class="r-shot rv">
+          <img src="assets/pizza.webp" alt="Pizza Don Pietro prosto z pieca"
+               width="1320" height="880" decoding="async">
+          <figcaption>Don Pietro · prosto z pieca</figcaption>
+        </figure>
+        <p class="rv">Ceny i składy pochodzą z naszego systemu zamówień. Rachunek na paragonie jest podglądem —
+        przycisk przenosi do koszyka, gdzie wybierzesz rozmiar i dodatki.</p>
+        <p class="rv" style="opacity:.7;font-size:12.5px;margin-top:22px">
+        Vege i dania ostre są oznaczone przy nazwie. Alergeny podajemy na miejscu i telefonicznie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOSTAWA ============ -->
+<section id="dostawa" class="cold-ink">
+  <div class="wrap">
+    <div class="eyebrow rv">60 °C · w drodze do Ciebie</div>
+    <h2 class="rv">Dowozimy po Opolu</h2>
+    <div class="zones" id="zones"></div>
+    <p class="rv" style="margin-top:28px;font-size:13px;opacity:.7;max-width:60ch">
+      Zamówienia telefoniczne i przez system online. Czas dostawy zależy od ruchu w kuchni —
+      w piątkowy wieczór bywa dłuższy niż zwykle.</p>
+  </div>
+</section>
+
+<!-- ============ LOKAL ============ -->
+<section id="lokal" class="cold-ink">
+  <div class="wrap">
+    <div class="eyebrow rv">20 °C · lokal</div>
+    <div class="two">
+      <div>
+        <h2 class="rv">Katowicka 48</h2>
+        <figure class="ovenshot rv" style="margin:30px 0 0;border-color:rgba(247,230,207,.25)">
+          <img src="assets/lokal.webp" alt="Sala restauracyjna" width="1400" height="933">
+          <figcaption>Sala · Poszło z Dymem</figcaption>
+        </figure>
+      </div>
+      <div>
+        <div class="rv">
+          <div class="eyebrow" style="margin-bottom:10px">Godziny otwarcia</div>
+          <div class="hours" id="hours"></div>
+        </div>
+        <ul class="contact-list rv">
+          <li><span class="k">Telefon</span><a href="tel:+48510265267">510 265 267</a></li>
+          <li><span class="k">E-mail</span><a href="mailto:pizzeriaposzlozdymem@gmail.com">pizzeriaposzlozdymem@gmail.com</a></li>
+          <li><span class="k">Adres</span><a id="mapLink" href="#" target="_blank" rel="noopener">ul. Katowicka 48, Opole</a></li>
+          <li><span class="k">Instagram</span><a id="igLink" href="#" target="_blank" rel="noopener">@poszlozdymem</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cold-ink">
+  <div class="wrap f-grid">
+    <span>© <span id="yr"></span> Pizzeria Poszło z Dymem · ul. Katowicka 48, Opole</span>
+    <span>Makieta W2 „Termometr" · ODNOVA Studio</span>
+  </div>
+</footer>
+</main>
+
+<script src="menu-data.js"></script>
+<script>
+(function(){
+  'use strict';
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var INFO = window.PZD_INFO, MENU = window.PZD_MENU;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  /* ---------- linki ---------- */
+  ['orderTop','orderHero','rOrder','orderDrawer'].forEach(function(id){ var e=document.getElementById(id); if(e) e.href=INFO.order; });
+  $('#mapLink').href = INFO.maps; $('#igLink').href = INFO.ig;
+  $('#yr').textContent = new Date().getFullYear();
+
+  /* ---------- 1. ŻAR ZA KURSOREM ---------- */
+  (function heat(){
+    if (RM) { document.getElementById('heat').style.display='none'; return; }
+    var cv = document.getElementById('heat'), ctx = cv.getContext('2d', {alpha:true});
+    var CW, CH, W, H, field, tmp, img, S = 10;      // 1 komórka = 10 px
+    function size(){
+      CW = cv.width  = Math.ceil(innerWidth);
+      CH = cv.height = Math.ceil(innerHeight);
+      cv.style.width = innerWidth+'px'; cv.style.height = innerHeight+'px';
+      W = Math.ceil(innerWidth/S)+1; H = Math.ceil(innerHeight/S)+1;
+      field = new Float32Array(W*H);
+      tmp = document.createElement('canvas'); tmp.width=W; tmp.height=H;
+      img = tmp.getContext('2d').createImageData(W,H);
+    }
+    size(); addEventListener('resize', size);
+
+    var px=-999, py=-999, lx=-999, ly=-999, lastMove=-1e9, idle=0;
+    function inject(x,y,str){
+      var cx=x/S, cy=y/S, r=3.1, r2=r*r;
+      var x0=Math.max(0,(cx-r)|0), x1=Math.min(W-1,(cx+r+1)|0);
+      var y0=Math.max(0,(cy-r)|0), y1=Math.min(H-1,(cy+r+1)|0);
+      for(var j=y0;j<=y1;j++) for(var i=x0;i<=x1;i++){
+        var dx=i-cx, dy=j-cy, d2=dx*dx+dy*dy;
+        if(d2>r2) continue;
+        var v = str*Math.exp(-d2/(2*(r2/6)));
+        var k=j*W+i; field[k] = Math.min(1.6, field[k]+v);
+      }
+    }
+    function move(x,y){
+      if(lx>-900){ var n=Math.max(1,Math.round(Math.hypot(x-lx,y-ly)/6));
+        for(var i=1;i<=n;i++) inject(lx+(x-lx)*i/n, ly+(y-ly)*i/n, .085); }
+      lx=x; ly=y; px=x; py=y; lastMove=performance.now();
+    }
+    addEventListener('pointermove', function(e){ move(e.clientX, e.clientY); }, {passive:true});
+    addEventListener('pointerdown', function(e){ inject(e.clientX,e.clientY,.9); }, {passive:true});
+
+    var t0 = performance.now();
+    function frame(now){
+      var t = (now-t0)/1000;
+      /* gdy nikt nie rusza myszą, żar wędruje sam — bardzo powoli */
+      if (now-lastMove > 2600){
+        idle += .0016;
+        var ax = innerWidth *(.5+.32*Math.sin(idle*.9)+.1*Math.sin(idle*2.3));
+        var ay = innerHeight*(.5+.26*Math.cos(idle*.7)+.09*Math.cos(idle*1.7));
+        inject(ax, ay, .055);
+      }
+      /* stygnięcie + dyfuzja */
+      var nf = new Float32Array(W*H);
+      for(var j=0;j<H;j++) for(var i=0;i<W;i++){
+        var k=j*W+i, v=field[k];
+        var s = v*.62
+          + (i>0?field[k-1]:v)*.095 + (i<W-1?field[k+1]:v)*.095
+          + (j>0?field[k-W]:v)*.105 + (j<H-1?field[k+W]:v)*.085;
+        nf[k] = s*.9875;                      /* długie, powolne stygnięcie */
+      }
+      field = nf;
+      var d = img.data;
+      for(var k2=0,n=W*H;k2<n;k2++){
+        var v2 = field[k2]; if(v2<.004){ d[k2*4+3]=0; continue; }
+        var a = Math.min(1, v2*1.25);
+        var hot = Math.min(1, v2*.85);
+        d[k2*4]   = 255;
+        d[k2*4+1] = 150 + 95*hot;
+        d[k2*4+2] = 40 + 165*hot*hot;
+        d[k2*4+3] = (a*205)|0;
+      }
+      var tc = tmp.getContext('2d'); tc.putImageData(img,0,0);
+      ctx.clearRect(0,0,CW,CH);
+      ctx.filter = 'blur(16px)';
+      ctx.drawImage(tmp,0,0,W,H,0,0,CW,CH);
+      ctx.filter = 'none';
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  /* ---------- 2. TEMPERATURA ZWIĄZANA ZE SCROLLEM ---------- */
+  (function temp(){
+    var rail=$('#rail'), mark=$('#railMark'), read=$('#railTemp'), hdr=$('#hdr'), scale=$('#railScale');
+    [0,.2,.4,.6,.8,1].forEach(function(f,i){
+      var t=document.createElement('div');
+      t.className='rail-tick'+(i%2?'':' big'); t.style.top=(f*100)+'%'; scale.appendChild(t);
+    });
+    var shown=0, target=485;
+    function upd(){
+      var max = document.documentElement.scrollHeight - innerHeight;
+      var p = max>0 ? Math.min(1, Math.max(0, scrollY/max)) : 0;
+      target = Math.round(485 - p*(485-19));
+      mark.style.top = (p*100)+'%';
+      var cold = p > .46;
+      rail.classList.toggle('cold', cold);
+      hdr.classList.toggle('cold', cold);
+      $('#drawer').classList.toggle('cold', cold);
+      rail.classList.toggle('on', scrollY > 120);
+    }
+    function tick(){
+      shown += (target-shown)*.09;
+      read.textContent = Math.round(shown)+'°';
+      requestAnimationFrame(tick);
+    }
+    addEventListener('scroll', upd, {passive:true});
+    addEventListener('resize', upd); upd(); tick();
+  })();
+
+  /* ---------- 2b. PASEK: szuflada i aktywna sekcja ---------- */
+  (function bar(){
+    var burger = $('#burger'), drawer = $('#drawer');
+    function setOpen(v){
+      drawer.classList.toggle('open', v);
+      burger.classList.toggle('on', v);
+      burger.setAttribute('aria-expanded', v ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', v ? 'false' : 'true');
+      document.body.style.overflow = v ? 'hidden' : '';
+      if (v) $$('#drawer>a').forEach(function(a,i){ a.style.animationDelay = (i*70)+'ms'; });
+    }
+    burger.addEventListener('click', function(){ setOpen(!drawer.classList.contains('open')); });
+    $$('#drawer a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+    addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
+    addEventListener('resize', function(){ if(innerWidth > 940) setOpen(false); });
+
+    /* podkreślenie idzie za sekcją, w której jesteś */
+    var links = $$('#nav a');
+    var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+    function spy(){
+      var y = scrollY + innerHeight*0.32, act = -1;
+      secs.forEach(function(sec,i){ if(sec && sec.offsetTop <= y) act = i; });
+      links.forEach(function(a,i){ a.classList.toggle('act', i===act); });
+    }
+    addEventListener('scroll', spy, {passive:true}); spy();
+  })();
+
+  /* ---------- 3. STREFY DOSTAWY (przed odsłanianiem!) ---------- */
+  (function zones(){
+    var z = $('#zones');
+    INFO.strefy.forEach(function(s){
+      var d = document.createElement('div');
+      d.className = 'zone rv';
+      d.innerHTML = '<b>'+s.z+'</b><span class="cost">'+s.k+' zł</span><ul>'+
+        '<li>minimum '+s.min+' zł</li>'+
+        (s.free ? '<li>za darmo od '+s.free+' zł</li>' : '<li>bez progu darmowej dostawy</li>')+'</ul>';
+      z.appendChild(d);
+    });
+  })();
+
+  /* ---------- 4. ODSŁANIANIE ---------- */
+  (function reveal(){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e,i){
+        if(!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function(){ el.classList.add('in'); }, Math.min(i*90, 360));
+        io.unobserve(el);
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){ io.observe(e); });
+  })();
+
+  /* ---------- 4. PARAGON ---------- */
+  (function receipt(){
+    var body = $('#rBody'), picked = {}, order = [];
+    function zl(v){ return v.toFixed(2).replace('.',',')+' zł'; }
+
+    MENU.forEach(function(cat){
+      var h = document.createElement('div');
+      h.className='r-cat'; h.innerHTML = '<span>'+cat.name+'</span><span>cena</span>';
+      body.appendChild(h);
+      if(cat.note){ var nn=document.createElement('div'); nn.className='r-note'; nn.textContent=cat.note; body.appendChild(nn); }
+      cat.items.forEach(function(it){
+        var b = document.createElement('button');
+        b.className='r-item'; b.type='button'; b.dataset.qty='1';
+        var tag = it.tag ? '<span class="tag '+(it.tag==='Vege'?'v':it.tag==='Ostre'?'o':'')+'">'+it.tag+'</span>' : '';
+        b.innerHTML = '<span class="n">'+it.n+tag+'</span>'+
+                      '<span class="p">'+(it.od?'od ':'')+zl(it.p)+'</span>'+
+                      (it.d?'<span class="d">'+it.d+'</span>':'');
+        b.addEventListener('click', function(){ add(it, b); });
+        body.appendChild(b);
+      });
+    });
+
+    /* wydruk: linie pojawiają się po kolei, gdy kategoria wchodzi w kadr */
+    var lines = body.querySelectorAll('.r-item');
+    if (RM) { lines.forEach(function(l){ l.classList.add('printed'); }); }
+    else {
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(!e.isIntersecting) return;
+          var el = e.target, idx = +el.dataset.i;
+          setTimeout(function(){ el.classList.add('printed'); }, (idx%9)*85);
+          io.unobserve(el);
+        });
+      }, {root: body, threshold:0, rootMargin:'0px 0px -4% 0px'});
+      Array.prototype.forEach.call(lines, function(l,i){ l.dataset.i=i; io.observe(l); });
+    }
+
+    function add(it, btn){
+      var k = it.n;
+      if(!picked[k]){ picked[k] = {it:it, q:0}; order.push(k); }
+      picked[k].q++;
+      btn.classList.add('picked'); btn.querySelector('.n').dataset.qty = picked[k].q;
+      btn.animate?.([{transform:'translateX(0)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],
+                    {duration:280, easing:'cubic-bezier(.22,1,.36,1)'});
+      render();
+    }
+    function render(){
+      var box = $('#rPicked'), sum = 0, html = '';
+      order.forEach(function(k){
+        var e = picked[k]; if(!e.q) return;
+        var v = e.it.p*e.q; sum += v;
+        html += '<div class="r-line"><span>'+e.q+' × '+e.it.n+'</span><span>'+zl(v)+'</span></div>';
+      });
+      box.innerHTML = html || '<div class="r-empty">Stuknij w danie — dopisze się do rachunku.</div>';
+      $('#rSum').textContent = zl(sum);
+    }
+    $('#rClear').addEventListener('click', function(){
+      picked = {}; order = [];
+      body.querySelectorAll('.picked').forEach(function(b){ b.classList.remove('picked'); });
+      render();
+    });
+  })();
+
+  /* ---------- 6. GODZINY I „OTWARTE TERAZ" ---------- */
+  (function hours(){
+    var names = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+    var box = $('#hours'), now = new Date(), dow = now.getDay();
+    var wrap = document.createDocumentFragment();
+    for (var i=1;i<=7;i++){
+      var d = i%7, h = INFO.godziny[d];
+      var row = document.createElement('div');
+      if (d===dow) row.className='today';
+      row.innerHTML = '<span>'+names[d]+'</span><span>'+(h? h[0]+':00 – '+h[1]+':00' : 'nieczynne')+'</span>';
+      wrap.appendChild(row);
+    }
+    box.appendChild(wrap);
+
+    var h = INFO.godziny[dow], mins = now.getHours()*60+now.getMinutes(), open=false, txt;
+    if (h && mins >= h[0]*60 && mins < h[1]*60){
+      open = true;
+      var left = h[1]*60 - mins;
+      txt = left <= 60 ? 'otwarte — zamykamy za '+left+' min'
+                       : 'otwarte do '+h[1]+':00';
+    } else {
+      var nd = dow, add = 0;
+      do { nd = (nd+1)%7; add++; } while(!INFO.godziny[nd] && add<8);
+      txt = (h && mins < h[0]*60) ? 'otwieramy o '+h[0]+':00'
+           : 'zamknięte — '+(add===1?'jutro':names[nd].toLowerCase())+' od '+INFO.godziny[nd][0]+':00';
+    }
+    $('#openTxt').textContent = txt;
+    var o2 = document.getElementById('openTxt2'); if (o2) o2.textContent = txt;
+    $('#dot').classList.toggle('shut', !open);
+  })();
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Pizzeria Poszło z Dymem",
+"servesCuisine":["Włoska","Pizza"],"priceRange":"$$","telephone":"+48510265267",
+"email":"pizzeriaposzlozdymem@gmail.com","url":"https://www.poszlozdymem.pl/",
+"address":{"@type":"PostalAddress","streetAddress":"ul. Katowicka 48","postalCode":"45-061",
+"addressLocality":"Opole","addressCountry":"PL"},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"12:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],
+"acceptsReservations":"True"}
+</script>
+</body>
+</html>

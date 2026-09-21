@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Poszło z Dymem — pizzeria i kuchnia włoska, Opole, Katowicka 48</title>
+<meta name="description" content="Wieczorem przy Katowickiej 48 w Opolu. Piec opalany drewnem, ciasto z długiej fermentacji, sala, w której siedzi się dłużej. Karta z cenami, dostawa, rezerwacja.">
+<meta name="theme-color" content="#05060B">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:title" content="Poszło z Dymem — Opole, Katowicka 48">
+<meta property="og:description" content="Piec opalany drewnem, ciasto z długiej fermentacji. Karta, dostawa, rezerwacja.">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:locale" content="pl_PL">
+<link rel="icon" href="assets/mark.svg">
+
+<style>
+@font-face{font-family:Fraunces;src:url(assets/Fraunces-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Fraunces;src:url(assets/Fraunces-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Inter;src:url(assets/Inter-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Inter;src:url(assets/Inter-400.woff2) format('woff2');font-weight:400;font-display:swap}
+
+:root{
+  --noc:#05060B; --noc2:#0A0C14;
+  --ciemno:#120C09; --ciemno2:#1B120C; --drewno:#2C1E14;
+  --krem:#EFE3D2; --cicho:rgba(239,227,210,.62); --ciszej:rgba(239,227,210,.40);
+  --linia:rgba(239,227,210,.13);
+  --neon:#FF2545; --neonG:#FF6076; --neonD:#9D0D28;
+  --lazur:#2E6BFF; --lazurG:#8ED2FF;
+  --lampa:#F0AB5B;
+  --papier:#F2E6D3; --tusz:#2A1B11; --tusz2:rgba(42,27,17,.62); --tusz3:rgba(42,27,17,.30);
+  --hdr:64px;
+  --pad:clamp(20px,5vw,64px);
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--noc);color:var(--krem);
+  font:400 16px/1.62 Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.04;letter-spacing:-.015em}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{font:600 11px/1.5 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ciszej)}
+.lead{font-size:clamp(17px,2vw,20px);line-height:1.62;color:var(--cicho);max-width:60ch}
+
+/* ---------- pasek ---------- */
+header{position:fixed;inset:0 0 auto;height:var(--hdr);z-index:60;display:flex;align-items:center;
+  transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
+header.solid{background:rgba(9,7,5,.82);backdrop-filter:blur(14px) saturate(1.2);border-bottom-color:var(--linia)}
+.bar{display:flex;align-items:center;gap:18px;width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;opacity:0;transform:translateY(-4px);
+  transition:opacity .5s,transform .5s}
+.logo.show{opacity:1;transform:none}
+.logo img{width:34px;height:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.logo b{display:block;font:600 15px/1.1 Fraunces,Georgia,serif;letter-spacing:-.01em}
+.logo span{display:block;font:400 9.5px/1.4 Inter,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--ciszej);margin-top:2px}
+nav{margin-left:auto;display:flex;gap:26px}
+nav a{position:relative;text-decoration:none;font:600 12.5px/1 Inter,sans-serif;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--cicho);padding:6px 0;transition:color .25s}
+nav a:hover,nav a.act{color:var(--krem)}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--neon);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a.act::after{transform:scaleX(1)}
+.status{display:flex;align-items:center;gap:7px;font:400 12px/1 Inter,sans-serif;color:var(--cicho);white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:puls 2.6s infinite}
+.dot.shut{background:#8A8A8A;animation:none;box-shadow:none}
+@keyframes puls{0%{box-shadow:0 0 0 0 rgba(74,222,128,.45)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;
+  font:600 12.5px/1 Inter,sans-serif;letter-spacing:.06em;padding:12px 18px;border-radius:2px;
+  background:var(--neon);color:#fff;border:1px solid var(--neon);white-space:nowrap;
+  box-shadow:0 0 22px -6px rgba(255,37,69,.75);transition:transform .2s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 0 30px -4px rgba(255,37,69,.9)}
+.btn.ghost{background:transparent;color:var(--krem);border-color:rgba(239,227,210,.35);box-shadow:none}
+.btn.ghost:hover{border-color:var(--krem);background:rgba(239,227,210,.07)}
+.burger{display:none;margin-left:auto;width:42px;height:42px;border:1px solid var(--linia);background:rgba(0,0,0,.3);
+  border-radius:2px;position:relative;cursor:pointer}
+.burger i{position:absolute;left:11px;right:11px;height:1.5px;background:var(--krem);transition:.3s}
+.burger i:nth-child(1){top:15px}.burger i:nth-child(2){top:20px}.burger i:nth-child(3){top:25px}
+.burger.on i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger.on i:nth-child(2){opacity:0}
+.burger.on i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+#drawer{position:fixed;inset:0;z-index:55;background:rgba(6,5,4,.97);backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:var(--hdr) 30px 40px;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+#drawer.open{opacity:1;pointer-events:auto}
+#drawer a{text-decoration:none;font:600 28px/1.35 Fraunces,Georgia,serif;color:var(--krem);opacity:0;transform:translateY(12px)}
+#drawer.open a{animation:dr .45s forwards}
+@keyframes dr{to{opacity:1;transform:none}}
+#drawer .dbtns{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+#drawer .dbtns a{font:600 12.5px/1 Inter,sans-serif;letter-spacing:.06em;padding:14px 20px}
+
+/* ---------- film ---------- */
+.film{position:relative;height:620vh;background:var(--noc)}
+.stage{position:sticky;top:0;height:100svh;min-height:520px;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,6,11,.80) 0%,rgba(5,6,11,.15) 22%,rgba(5,6,11,0) 40%,rgba(5,6,11,.42) 72%,rgba(5,6,11,.93) 100%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.9) .5px,transparent .6px);background-size:3px 3px}
+.acts{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(64px,10vh,110px);max-width:640px;pointer-events:none}
+.scn{position:absolute;left:0;right:0;bottom:0;opacity:0;transform:translateY(22px);will-change:opacity,transform}
+.scn.on{pointer-events:auto}
+.scn h1{font:600 12px/1.5 Inter,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--krem);margin-bottom:6px}
+.scn h1 span{display:block;font-weight:400;letter-spacing:.2em;color:var(--ciszej);font-size:10.5px;margin-top:5px}
+.scn .big{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.02;
+  font-size:clamp(38px,6.6vw,76px);text-shadow:0 6px 40px rgba(0,0,0,.7)}
+.scn .sub{margin-top:14px;font-size:clamp(15px,1.7vw,18px);line-height:1.6;color:var(--cicho);max-width:46ch;
+  text-shadow:0 2px 16px rgba(0,0,0,.8)}
+.scn .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.rule{width:44px;height:1.5px;background:var(--neon);margin:0 0 16px;box-shadow:0 0 14px var(--neon)}
+.hint{margin-top:22px;display:flex;align-items:center;gap:10px;font:400 12px/1 Inter,sans-serif;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ciszej)}
+.hint i{width:14px;height:14px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);animation:nudge 1.9s infinite}
+@keyframes nudge{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.5}50%{transform:rotate(45deg) translate(3px,3px);opacity:1}}
+
+.rail{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:20px;
+  pointer-events:none}
+.rail div{display:flex;align-items:center;gap:10px;justify-content:flex-end;
+  font:600 9.5px/1 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,227,210,.30);transition:color .4s}
+.rail div s{width:18px;height:1px;background:currentColor;text-decoration:none;display:block;transition:width .4s}
+.rail div.on{color:var(--krem)}
+.rail div.on s{width:34px;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.skip{position:absolute;right:var(--pad);bottom:26px;font:400 11px/1 Inter,sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ciszej);text-decoration:none;border-bottom:1px solid var(--linia);padding-bottom:4px}
+.skip:hover{color:var(--krem)}
+.load{position:absolute;left:var(--pad);top:calc(var(--hdr) + 18px);font:400 10.5px/1 Inter,sans-serif;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ciszej);transition:opacity .5s}
+.load.done{opacity:0}
+
+/* ---------- sekcje ---------- */
+section{position:relative}
+.sec{padding:clamp(80px,12vh,150px) 0}
+.h2{font-size:clamp(30px,4.6vw,58px);max-width:18ch}
+.top{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(40px,6vh,72px)}
+
+#lokal{background:
+  linear-gradient(180deg,var(--noc) 0%,rgba(18,12,9,.94) 30%,rgba(18,12,9,.97) 100%),
+  url(assets/sala.webp) center 30%/cover no-repeat;}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linia);border:1px solid var(--linia);margin-top:56px}
+.facts div{background:var(--ciemno);padding:26px 22px}
+.facts b{display:block;font:600 clamp(28px,3.4vw,42px)/1 Fraunces,Georgia,serif;color:var(--lampa)}
+.facts span{display:block;margin-top:9px;font:400 12.5px/1.5 Inter,sans-serif;color:var(--cicho)}
+
+/* ---------- karta ---------- */
+#menu{background:linear-gradient(180deg,rgba(9,6,4,.90),rgba(9,6,4,.80) 40%,rgba(9,6,4,.94)),
+  url(assets/stol.webp) center/cover no-repeat;}
+.karta{background:var(--papier);color:var(--tusz);max-width:900px;margin:0 auto;
+  padding:clamp(28px,4.5vw,56px);border-radius:2px;
+  box-shadow:0 50px 90px -30px rgba(0,0,0,.85),0 2px 0 rgba(255,255,255,.25) inset;
+  background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(0,0,0,.02))}
+.karta-head{text-align:center;border-bottom:1.5px solid var(--tusz3);padding-bottom:22px;margin-bottom:8px}
+.karta-head img{width:44px;margin:0 auto 12px}
+.karta-head b{display:block;font:600 24px/1.2 Fraunces,Georgia,serif}
+.karta-head small{display:block;margin-top:7px;font:400 11px/1.5 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--tusz2)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:20px 0 6px}
+.tabs button{font:600 11px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 14px;border:1px solid var(--tusz3);background:transparent;color:var(--tusz2);cursor:pointer;border-radius:2px;transition:.2s}
+.tabs button:hover{border-color:var(--tusz)}
+.tabs button.on{background:var(--tusz);border-color:var(--tusz);color:var(--papier)}
+.kat{padding-top:26px}
+.kat > p{font:400 13.5px/1.6 Inter,sans-serif;color:var(--tusz2);margin-bottom:18px;max-width:58ch}
+.poz{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:13px 0;border-bottom:1px dotted var(--tusz3)}
+.poz:last-child{border-bottom:0}
+.poz .n{font:600 15.5px/1.3 Inter,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.poz .d{grid-column:1;font:400 13px/1.55 Inter,sans-serif;color:var(--tusz2);max-width:62ch}
+.poz .p{grid-row:1;grid-column:2;font:600 16px/1.3 Fraunces,Georgia,serif;white-space:nowrap;align-self:start}
+.poz .p i{font-style:normal;font:400 11px/1 Inter,sans-serif;color:var(--tusz2);margin-right:4px}
+.tag{font:600 9px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--tusz3);
+  padding:4px 6px;border-radius:2px;color:var(--tusz2)}
+.tag.ostre{color:#B3260F;border-color:rgba(179,38,15,.4)}
+.tag.vege{color:#3B6B2E;border-color:rgba(59,107,46,.4)}
+.karta-foot{margin-top:30px;padding-top:22px;border-top:1.5px solid var(--tusz3);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.karta-foot small{font:400 11.5px/1.5 Inter,sans-serif;color:var(--tusz2)}
+
+/* ---------- dostawa ---------- */
+#dostawa{background:linear-gradient(180deg,var(--ciemno) 0%,var(--drewno) 60%,var(--ciemno) 100%)}
+.strefy{margin-top:46px;border-top:1px solid var(--linia)}
+.strefa{display:grid;grid-template-columns:minmax(0,1.1fr) 104px minmax(0,1fr) minmax(0,1fr);gap:10px 22px;align-items:baseline;
+  padding:20px 0;border-bottom:1px solid var(--linia)}
+.strefa b{font:600 clamp(19px,2.3vw,26px)/1.2 Fraunces,Georgia,serif}
+.strefa .k{font:600 clamp(19px,2.3vw,26px)/1.2 Fraunces,Georgia,serif;color:var(--lampa)}
+.strefa span{font:400 13px/1.5 Inter,sans-serif;color:var(--cicho)}
+
+/* ---------- kontakt ---------- */
+#kontakt{background:linear-gradient(180deg,rgba(5,6,11,.97),rgba(5,6,11,.86) 55%,rgba(5,6,11,.97)),
+  url(assets/neon.webp) center 78%/cover no-repeat}
+.kgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,70px);margin-top:44px}
+.teraz{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--linia);padding:13px 18px;border-radius:2px;
+  background:rgba(0,0,0,.35);font:600 13px/1 Inter,sans-serif;letter-spacing:.05em}
+.godz{margin-top:24px;border-top:1px solid var(--linia)}
+.godz div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--linia);
+  font:400 14px/1.4 Inter,sans-serif;color:var(--cicho)}
+.godz div.today{color:var(--krem);font-weight:600}
+.dane{list-style:none;margin:0;padding:0}
+.dane li{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--linia);font-size:14.5px}
+.dane .k{font:600 10.5px/1.8 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--ciszej)}
+.dane a{text-decoration:none;border-bottom:1px solid var(--linia)}
+.dane a:hover{border-color:var(--neon)}
+
+/* ---------- stopka / neon ---------- */
+footer{background:var(--noc);padding:clamp(70px,10vh,120px) 0 40px;text-align:center;border-top:1px solid var(--linia)}
+.neonwrap{display:inline-block;padding:10px 4px}
+.neonsign{font:600 clamp(34px,6vw,68px)/1.1 Fraunces,Georgia,serif;letter-spacing:-.015em;color:#3A2026;
+  transition:color .6s;position:relative}
+.neonsign.lit{color:#FFE9EC;
+  text-shadow:0 0 6px #fff,0 0 14px var(--neonG),0 0 32px var(--neon),0 0 64px rgba(255,37,69,.6),0 0 110px rgba(255,37,69,.35);
+  animation:flick 3.6s .15s both}
+@keyframes flick{0%{opacity:.2}4%{opacity:1}7%{opacity:.25}11%{opacity:1}14%{opacity:.4}17%{opacity:1}100%{opacity:1}}
+.fsub{margin-top:18px;font:400 11px/1.8 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--ciszej)}
+.fline{margin-top:40px;padding-top:24px;border-top:1px solid var(--linia);display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;font:400 11.5px/1.6 Inter,sans-serif;color:var(--ciszej)}
+.fline a{text-decoration:none;border-bottom:1px solid var(--linia)}
+
+/* ---------- odsłanianie ---------- */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.7,.3,1),transform .7s cubic-bezier(.22,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- mobile ---------- */
+@media (max-width:940px){
+  nav,.bar .status,.bar > .btn{display:none}
+  .burger{display:block}
+  .facts{grid-template-columns:1fr 1fr}
+  .kgrid{grid-template-columns:1fr}
+  .strefa{grid-template-columns:1fr auto;gap:4px 16px}
+  .strefa span{grid-column:1/-1;color:var(--ciszej);font-size:12.5px}
+}
+@media (max-width:640px){
+  .film{height:540vh}
+  .acts{bottom:auto;top:calc(var(--band,52%) + 26px);max-width:none}
+  .scn{bottom:auto;top:0}
+  .rail{display:none}
+  .veil{background:linear-gradient(180deg,rgba(5,6,11,.55) 0%,rgba(5,6,11,0) 18%,rgba(5,6,11,0) 46%,rgba(5,6,11,.5) 60%,rgba(5,6,11,.95) 100%)}
+  .facts{grid-template-columns:1fr}
+  .poz{grid-template-columns:1fr auto}
+  .dane li{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html.rm .film{height:auto}
+html.rm .stage{position:static;height:auto;min-height:0;padding:calc(var(--hdr) + 40px) 0 70px;
+  background:linear-gradient(180deg,rgba(5,6,11,.55),rgba(5,6,11,.92)),url(assets/stol.webp) center/cover}
+html.rm #cv,html.rm .rail,html.rm .skip,html.rm .load,html.rm .veil,html.rm .hint{display:none}
+html.rm .acts{position:static;padding-inline:var(--pad);max-width:var(--maxw);margin:0 auto}
+html.rm .scn{position:static;opacity:1;transform:none;margin-bottom:44px}
+</style>
+<noscript><style>
+.film{height:auto}
+.stage{position:static;height:auto;min-height:0;padding:calc(var(--hdr) + 40px) 0 70px;
+  background:linear-gradient(180deg,rgba(5,6,11,.5),rgba(5,6,11,.93)),url(assets/kl/k001.webp) center/cover}
+#cv,.rail,.skip,.load,.hint{display:none}
+.acts{position:static;padding-inline:var(--pad);max-width:var(--maxw);margin:0 auto}
+.scn{position:static;opacity:1;transform:none;margin-bottom:40px}
+.logo{opacity:1;transform:none}
+.rv{opacity:1;transform:none}
+</style></noscript>
+<meta name="robots" content="noindex,nofollow">
+</head>
+<body id="top">
+
+<header id="hdr">
+  <div class="bar">
+    <a class="logo" id="logo" href="#top" aria-label="Poszło z Dymem — strona główna">
+      <img src="assets/mark.svg" alt="" width="34" height="19">
+      <span class="logo-txt"><b>Poszło z Dymem</b><span>pasta · pizza · panini</span></span>
+    </a>
+    <nav id="nav">
+      <a href="#lokal">Lokal</a><a href="#menu">Karta</a><a href="#dostawa">Dostawa</a><a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="status"><i class="dot" id="dot"></i><span id="openTxt">—</span></div>
+    <a class="btn" id="orderTop" href="#">Zamów online</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<div id="drawer" aria-hidden="true">
+  <a href="#lokal">Lokal</a><a href="#menu">Karta</a><a href="#dostawa">Dostawa</a><a href="#kontakt">Kontakt</a>
+  <div class="dbtns">
+    <a class="btn" id="orderDrawer" href="#">Zamów online</a>
+    <a class="btn ghost" href="tel:+48510265267">510 265 267</a>
+  </div>
+</div>
+
+<!-- ============ PRZELOT ============ -->
+<section class="film" id="film">
+  <div class="stage" id="stage">
+    <canvas id="cv"></canvas>
+    <div class="veil"></div>
+    <div class="grain"></div>
+    <div class="load" id="load">wchodzimy… <span id="loadPct">0</span>%</div>
+
+    <div class="rail" id="rail">
+      <div><span>Ulica</span><s></s></div>
+      <div><span>Drzwi</span><s></s></div>
+      <div><span>Sala</span><s></s></div>
+      <div><span>Stolik</span><s></s></div>
+    </div>
+
+    <div class="acts" id="acts">
+      <div class="scn" data-a="0">
+        <h1>Poszło z Dymem<span>pizzeria i kuchnia włoska · Opole, Katowicka 48</span></h1>
+        <div class="big">Wieczór<br>zaczyna się<br>tutaj.</div>
+        <p class="hint">przewiń, wejdziemy do środka <i></i></p>
+      </div>
+      <div class="scn" data-a="1">
+        <div class="rule"></div>
+        <div class="big">Za drzwiami<br>pachnie drewnem.</div>
+        <p class="sub">Piec opalany drewnem, 485 stopni, sześćdziesiąt sekund. Ciasto wyrasta u nas dobę, zanim w ogóle zobaczy ogień.</p>
+      </div>
+      <div class="scn" data-a="2">
+        <div class="rule"></div>
+        <div class="big">Sala, w której<br>siedzi się dłużej.</div>
+        <p class="sub">Ciepłe światło, drewno, dwadzieścia stolików. Kolacja we dwoje w środku tygodnia i cały długi stół w sobotę.</p>
+      </div>
+      <div class="scn" data-a="3">
+        <div class="rule"></div>
+        <div class="big">Stolik nakryty.</div>
+        <p class="sub">Zostało wybrać, co zamawiasz.</p>
+        <div class="cta">
+          <a class="btn ghost" href="#menu">Zobacz kartę</a>
+          <a class="btn" id="orderHero" href="#">Zamów online</a>
+          <a class="btn ghost" href="tel:+48510265267">510 265 267</a>
+        </div>
+      </div>
+    </div>
+
+    <a class="skip" href="#lokal">pomiń przelot</a>
+  </div>
+</section>
+
+<!-- ============ LOKAL ============ -->
+<section id="lokal" class="sec">
+  <div class="wrap">
+    <div class="top">
+      <p class="eyebrow rv">Wieczór u nas</p>
+      <h2 class="h2 rv">Dowozimy pizzę.<br>Po resztę trzeba przyjść.</h2>
+      <p class="lead rv">Katowicka 48 to jedna sala, otwarta kuchnia i piec, który słychać od progu.
+        Ciasto z długiej fermentacji, mozzarella fior di latte, prosciutto krojone na miejscu.
+        Wieczorem światło schodzi nisko i nikt nie pogania — dlatego ludzie zostają na kawę i cannoli,
+        chociaż przyszli „tylko na pizzę”.</p>
+    </div>
+    <div class="facts rv">
+      <div><b>485°</b><span>tyle ma piec w najgorętszym punkcie</span></div>
+      <div><b>24 h</b><span>tyle wyrasta ciasto, zanim trafi do pieca</span></div>
+      <div><b>60 s</b><span>tyle pizza siedzi w środku</span></div>
+      <div><b>44</b><span>tyle pozycji ma karta — cała jest niżej</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KARTA ============ -->
+<section id="menu" class="sec">
+  <div class="wrap">
+    <div class="top">
+      <p class="eyebrow rv">Karta</p>
+      <h2 class="h2 rv">Leży na stole.<br>Możesz ją przeczytać tutaj.</h2>
+      <p class="lead rv">Cała karta z cenami — bez przeskakiwania do zewnętrznego systemu.
+        Zamówienie online prowadzi do UpMenu, tak jak dotąd.</p>
+    </div>
+
+    <div class="karta rv">
+      <div class="karta-head">
+        <img src="assets/mark.svg" alt="" width="44" height="25">
+        <b>Poszło z Dymem</b>
+        <small>ul. Katowicka 48 · Opole</small>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div id="kat"></div>
+      <div class="karta-foot">
+        <small>Ceny w złotych. „od” oznacza cenę najmniejszego rozmiaru.<br>Stan karty: wrzesień 2026.</small>
+        <a class="btn" id="orderKarta" href="#">Zamów online</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOSTAWA ============ -->
+<section id="dostawa" class="sec">
+  <div class="wrap">
+    <div class="top">
+      <p class="eyebrow rv">Dostawa</p>
+      <h2 class="h2 rv">Jeśli wolisz<br>zostać w domu.</h2>
+      <p class="lead rv">Wozimy po Opolu i okolicy. Czas zależy od ruchu w kuchni — w piątek wieczorem
+        bywa dłużej niż zwykle, wtedy mówimy o tym przy zamówieniu.</p>
+    </div>
+    <div class="strefy" id="zones"></div>
+    <div style="margin-top:34px;display:flex;gap:12px;flex-wrap:wrap" class="rv">
+      <a class="btn" id="orderDost" href="#">Zamów online</a>
+      <a class="btn ghost" href="tel:+48510265267">Zamów telefonicznie</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section id="kontakt" class="sec">
+  <div class="wrap">
+    <div class="top">
+      <p class="eyebrow rv">Kontakt</p>
+      <h2 class="h2 rv">Katowicka 48,<br>Opole.</h2>
+    </div>
+    <div class="kgrid">
+      <div class="rv">
+        <div class="teraz"><i class="dot" id="dot2"></i><span id="openTxt2">—</span></div>
+        <div class="godz" id="hours"></div>
+      </div>
+      <div class="rv">
+        <ul class="dane">
+          <li><span class="k">Telefon</span><a href="tel:+48510265267">510 265 267</a></li>
+          <li><span class="k">E-mail</span><a href="mailto:pizzeriaposzlozdymem@gmail.com">pizzeriaposzlozdymem@gmail.com</a></li>
+          <li><span class="k">Adres</span><a id="mapLink" href="#" target="_blank" rel="noopener">ul. Katowicka 48, 45-061 Opole</a></li>
+          <li><span class="k">Instagram</span><a id="igLink" href="#" target="_blank" rel="noopener">@poszlozdymem</a></li>
+          <li><span class="k">Rezerwacja</span><a href="tel:+48510265267">telefonicznie, 510 265 267</a></li>
+        </ul>
+        <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" id="orderKontakt" href="#">Zamów online</a>
+          <a class="btn ghost" id="mapBtn" href="#" target="_blank" rel="noopener">Dojazd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="neonwrap"><div class="neonsign" id="neon">Poszło z Dymem</div></div>
+    <p class="fsub">pasta · pizza · panini</p>
+    <div class="fline">
+      <span>© <span id="yr"></span> Pizzeria Poszło z Dymem · ul. Katowicka 48, Opole</span>
+      <span>W1 · „Po zmroku” · makieta <a href="https://odnovastudio.com" target="_blank" rel="noopener">ODNOVA Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="menu-data.js"></script>
+<script>
+/* tempo przelotu: w ktorym miejscu przewijania pokazac ktora klatke.
+   Odcinki, w ktorych kamera leci szybko (i klatki sa rozmyte ruchem), dostaja
+   mniej przewijania; spokojne, ostre kadry dostaja wiecej i da sie im przyjrzec. */
+var PZD_TEMPO = [0.0000,0.0192,0.0379,0.0538,0.0707,0.0850,0.1008,0.1161,0.1285,0.1421,0.1518,0.1640,0.1758,0.1851,0.1954,0.2038,0.2133,0.2225,0.2300,0.2384,0.2446,0.2522,0.2599,0.2668,0.2753,0.2838,0.2939,0.3038,0.3126,0.3230,0.3318,0.3435,0.3556,0.3665,0.3794,0.3900,0.4015,0.4123,0.4211,0.4311,0.4379,0.4460,0.4537,0.4596,0.4667,0.4729,0.4805,0.4878,0.4931,0.4992,0.5047,0.5139,0.5232,0.5308,0.5403,0.5487,0.5594,0.5706,0.5801,0.5923,0.6014,0.6146,0.6279,0.6378,0.6480,0.6550,0.6624,0.6691,0.6739,0.6790,0.6822,0.6864,0.6904,0.6940,0.6985,0.7028,0.7082,0.7135,0.7183,0.7242,0.7294,0.7370,0.7453,0.7530,0.7629,0.7721,0.7839,0.7967,0.8081,0.8220,0.8333,0.8486,0.8663,0.8825,0.9009,0.9184,0.9383,0.9585,0.9783,1.0000];
+/*KLATKI*/
+var PZD_KL = (function(){
+  var duze = [], male = [];
+  for (var i = 1; i <= 100; i++){
+    var n = ('00' + i).slice(-3);
+    duze.push('assets/kl/k' + n + '.webp');
+    male.push('assets/kl-s/k' + n + '.webp');
+  }
+  return { duze: duze, male: male };
+})();
+/* na telefonie lzejszy komplet klatek */
+var PZD_FRAMES = (Math.min(innerWidth, screen.width || innerWidth) * Math.min(devicePixelRatio || 1, 2) <= 1000)
+  ? PZD_KL.male : PZD_KL.duze;
+</script>
+<script>
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (RM) document.documentElement.classList.add('rm');
+  var INFO = window.PZD_INFO, MENU = window.PZD_MENU;
+  var $ = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return [].slice.call((r||document).querySelectorAll(s)); };
+
+  /* ---------- 0. linki ---------- */
+  ['orderTop','orderHero','orderDrawer','orderKarta','orderDost','orderKontakt'].forEach(function(id){
+    var e = document.getElementById(id); if (e) e.href = INFO.order;
+  });
+  $('#mapLink').href = INFO.maps; $('#mapBtn').href = INFO.maps; $('#igLink').href = INFO.ig;
+  $('#yr').textContent = new Date().getFullYear();
+
+  /* ---------- 1. PASEK ---------- */
+  (function header(){
+    var hdr = $('#hdr'), logo = $('#logo'), burger = $('#burger'), drawer = $('#drawer');
+    function onScroll(){
+      var y = scrollY;
+      hdr.classList.toggle('solid', y > 40);
+      logo.classList.toggle('show', y > innerHeight * 0.45 || RM);
+    }
+    addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    function setOpen(v){
+      drawer.classList.toggle('open', v);
+      burger.classList.toggle('on', v);
+      burger.setAttribute('aria-expanded', v ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', v ? 'false' : 'true');
+      document.body.style.overflow = v ? 'hidden' : '';
+      if (v) $$('#drawer > a').forEach(function(a,i){ a.style.animationDelay = (i*70)+'ms'; });
+    }
+    burger.addEventListener('click', function(){ setOpen(!drawer.classList.contains('open')); });
+    $$('#drawer a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+    addEventListener('keydown', function(e){ if (e.key === 'Escape') setOpen(false); });
+    addEventListener('resize', function(){ if (innerWidth > 940) setOpen(false); });
+
+    var links = $$('#nav a');
+    var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+    function spy(){
+      var y = scrollY + innerHeight*0.34, act = -1;
+      secs.forEach(function(s,i){ if (s && s.offsetTop <= y) act = i; });
+      links.forEach(function(a,i){ a.classList.toggle('act', i === act); });
+    }
+    addEventListener('scroll', spy, {passive:true}); spy();
+  })();
+
+  /* ---------- 2. PRZELOT ---------- */
+  (function film(){
+    var sec = $('#film'), stage = $('#stage'), cv = $('#cv');
+    var acts = $$('#acts .scn'), rail = $$('#rail div');
+    var N = PZD_FRAMES.length, AR = 16/9;
+    var imgs = new Array(N), ready = new Array(N), got = 0, last = -1;
+    var ctx = cv.getContext('2d', {alpha:true});
+    var CW = 0, CH = 0, dpr = 1, narrow = false;
+    /* mini-plotno: rozciagniete daje tanie rozmycie zamiast filtra blur */
+    var mini = document.createElement('canvas'); mini.width = 26; mini.height = 15;
+    var mctx = mini.getContext('2d');
+    /* plotno pasa: pozwala wygasic gorna i dolna krawedz, nie kasujac tla */
+    var bandCv = document.createElement('canvas'), bctx = bandCv.getContext('2d');
+
+    /* zakresy aktow podane w klatkach; na postep przewijania przelicza je tabela tempa */
+    var RANGE_KL = [[0.00,0.15],[0.19,0.40],[0.46,0.68],[0.78,1.00]];
+    function doP(f){                       // ulamek klatek -> ulamek przewijania
+      var T = PZD_TEMPO, x = f*(T.length-1), i = Math.max(0, Math.min(T.length-2, Math.floor(x)));
+      return T[i] + (T[i+1]-T[i])*(x-i);
+    }
+    var RANGE = RANGE_KL.map(function(r,i){
+      return [doP(r[0]), i === RANGE_KL.length-1 ? 1.01 : doP(r[1])];
+    });
+
+    function size(){
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      CW = stage.clientWidth; CH = stage.clientHeight;
+      cv.width = Math.round(CW*dpr); cv.height = Math.round(CH*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      narrow = CW/CH < 0.9;
+      last = -1;
+    }
+
+    /* postep przewijania -> numer klatki, wg tabeli tempa */
+    var tp = PZD_TEMPO.length === N ? PZD_TEMPO : null, tpI = 0;
+    function klatkaDla(p){
+      if (!tp) return Math.min(N-1, Math.round(p*(N-1)));
+      if (tp[tpI] > p) tpI = 0;
+      while (tpI < N-1 && tp[tpI+1] <= p) tpI++;
+      while (tpI > 0 && tp[tpI] > p) tpI--;
+      return tpI;
+    }
+
+    function nearest(i){
+      if (ready[i]) return imgs[i];
+      for (var d=1; d<N; d++){
+        if (i-d >= 0 && ready[i-d]) return imgs[i-d];
+        if (i+d < N && ready[i+d]) return imgs[i+d];
+      }
+      return null;
+    }
+
+    function draw(i){
+      var im = nearest(i); if (!im) return;
+      ctx.clearRect(0,0,CW,CH);
+      if (narrow){
+        var w = CW, h = w/AR, top = Math.round(CH*0.075);
+        /* 1. poswiata: ta sama klatka rozciagnieta z 26 px, przygaszona */
+        mctx.drawImage(im, 0, 0, 26, 15);
+        ctx.save(); ctx.globalAlpha = .55; ctx.imageSmoothingEnabled = true;
+        ctx.drawImage(mini, 0, 0, CW, CH); ctx.restore();
+        ctx.fillStyle = 'rgba(5,6,11,.62)'; ctx.fillRect(0, 0, CW, CH);
+        /* 2. ostry pas z wygaszonymi krawedziami (na osobnym plotnie) */
+        if (bandCv.width !== Math.round(CW*dpr) || bandCv.height !== Math.round(h*dpr)){
+          bandCv.width = Math.round(CW*dpr); bandCv.height = Math.round(h*dpr);
+        }
+        bctx.setTransform(dpr,0,0,dpr,0,0);
+        bctx.clearRect(0,0,w,h);
+        bctx.globalCompositeOperation = 'source-over';
+        bctx.drawImage(im, 0, 0, w, h);
+        bctx.globalCompositeOperation = 'destination-out';
+        var g = bctx.createLinearGradient(0, 0, 0, h);
+        g.addColorStop(0,'rgba(0,0,0,1)'); g.addColorStop(.13,'rgba(0,0,0,0)');
+        g.addColorStop(.87,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,1)');
+        bctx.fillStyle = g; bctx.fillRect(0, 0, w, h);
+        ctx.drawImage(bandCv, 0, top, w, h);
+        stage.style.setProperty('--band', (top+h*0.93)+'px');
+      } else {
+        var s = Math.max(CW/im.naturalWidth, CH/im.naturalHeight);
+        var dw = im.naturalWidth*s, dh = im.naturalHeight*s;
+        ctx.drawImage(im, (CW-dw)/2, (CH-dh)/2, dw, dh);
+      }
+    }
+
+    var actsEl = $('#acts'), skipEl = $('.skip');
+    function tick(){
+      var r = sec.getBoundingClientRect();
+      var span = sec.offsetHeight - stage.offsetHeight;
+      var p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+      var i = klatkaDla(p);
+      if (i !== last){ last = i; draw(i); }
+
+      for (var a=0; a<acts.length; a++){
+        var R = RANGE[a], o = 0, ty = 22;
+        if (p >= R[0] && p <= R[1]){
+          var t = (p - R[0]) / (R[1] - R[0]);
+          var wejscie = a === 0 ? 1 : Math.min(1, t/0.22);
+          var fade = wejscie * Math.min(1, (1-t)/0.20);
+          o = Math.max(0, Math.min(1, fade));
+          ty = (1-o)*22 * (t > 0.5 ? -1 : 1);
+        }
+        acts[a].style.opacity = o;
+        acts[a].style.transform = 'translateY(' + ty.toFixed(1) + 'px)';
+        acts[a].classList.toggle('on', o > 0.5);
+        if (rail[a]) rail[a].classList.toggle('on', p >= R[0] && p <= R[1]);
+      }
+
+      /* wyjscie: gdy kadr zaczyna uciekac w gore, tekst gasnie razem z nim */
+      var st = stage.getBoundingClientRect().top;
+      var wyj = st < 0 ? Math.max(0, 1 + st / (stage.offsetHeight * 0.45)) : 1;
+      actsEl.style.opacity = wyj;
+      if (skipEl) skipEl.style.opacity = wyj;
+    }
+
+    function load(){
+      var el = $('#load'), pct = $('#loadPct');
+      PZD_FRAMES.forEach(function(src, i){
+        var im = new Image();
+        im.decoding = 'async';
+        im.onload = im.onerror = function(){
+          ready[i] = !!im.naturalWidth; imgs[i] = im; got++;
+          if (pct) pct.textContent = Math.round(got/N*100);
+          if (i === 0 || got === 1) { last = -1; tick(); }
+          if (got === N && el) el.classList.add('done');
+        };
+        im.src = src;
+      });
+    }
+
+    if (RM){
+      var still = new Image();
+      still.onload = function(){};
+      still.src = PZD_FRAMES[N-1];
+      return;
+    }
+
+    size(); load(); tick();
+    var raf = 0;
+    addEventListener('scroll', function(){
+      if (raf) return;
+      raf = requestAnimationFrame(function(){ raf = 0; tick(); });
+    }, {passive:true});
+    addEventListener('resize', function(){ size(); tick(); });
+  })();
+
+  /* ---------- 3. KARTA ---------- */
+  (function karta(){
+    var tabs = $('#tabs'), box = $('#kat'), cur = MENU[0].id;
+
+    function zl(v){ return v.toFixed(2).replace('.',',') + ' zł'; }
+
+    function render(){
+      var kat = MENU.filter(function(k){ return k.id === cur; })[0];
+      var html = '<div class="kat">';
+      if (kat.note) html += '<p>' + kat.note + '</p>';
+      kat.items.forEach(function(it){
+        var tag = it.tag ? '<span class="tag ' + (it.tag === 'Ostre' ? 'ostre' : it.tag === 'Vege' ? 'vege' : '') + '">' + it.tag + '</span>' : '';
+        html += '<div class="poz"><div class="n">' + it.n + tag + '</div>' +
+                '<div class="p">' + (it.od ? '<i>od</i>' : '') + zl(it.p) + '</div>' +
+                (it.d ? '<div class="d">' + it.d + '</div>' : '') + '</div>';
+      });
+      box.innerHTML = html + '</div>';
+      $$('#tabs button').forEach(function(b){ b.classList.toggle('on', b.dataset.id === cur); });
+    }
+
+    MENU.forEach(function(k){
+      var b = document.createElement('button');
+      b.textContent = k.name; b.dataset.id = k.id;
+      b.addEventListener('click', function(){ cur = k.id; render(); });
+      tabs.appendChild(b);
+    });
+    render();
+  })();
+
+  /* ---------- 4. STREFY ---------- */
+  (function zones(){
+    var z = $('#zones');
+    INFO.strefy.forEach(function(s){
+      var d = document.createElement('div');
+      d.className = 'strefa rv';
+      d.innerHTML = '<b>' + s.z + '</b><span class="k">' + s.k + ' zł</span>' +
+                    '<span>minimum ' + s.min + ' zł</span>' +
+                    '<span>' + (s.free ? 'za darmo od ' + s.free + ' zł' : 'bez progu darmowej dostawy') + '</span>';
+      z.appendChild(d);
+    });
+  })();
+
+  /* ---------- 5. GODZINY ---------- */
+  (function hours(){
+    var names = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+    var box = $('#hours'), now = new Date(), dow = now.getDay();
+    var frag = document.createDocumentFragment();
+    for (var i=1; i<=7; i++){
+      var d = i%7, h = INFO.godziny[d];
+      var row = document.createElement('div');
+      if (d === dow) row.className = 'today';
+      row.innerHTML = '<span>' + names[d] + '</span><span>' + (h ? h[0] + ':00 – ' + h[1] + ':00' : 'nieczynne') + '</span>';
+      frag.appendChild(row);
+    }
+    box.appendChild(frag);
+
+    var h = INFO.godziny[dow], mins = now.getHours()*60 + now.getMinutes(), open = false, txt;
+    if (h && mins >= h[0]*60 && mins < h[1]*60){
+      open = true;
+      var left = h[1]*60 - mins;
+      txt = left <= 60 ? 'otwarte — zamykamy za ' + left + ' min' : 'otwarte do ' + h[1] + ':00';
+    } else {
+      var nd = dow, add = 0;
+      do { nd = (nd+1)%7; add++; } while (!INFO.godziny[nd] && add < 8);
+      txt = (h && mins < h[0]*60) ? 'otwieramy o ' + h[0] + ':00'
+          : 'zamknięte — ' + (add === 1 ? 'jutro' : names[nd].toLowerCase()) + ' od ' + INFO.godziny[nd][0] + ':00';
+    }
+    $('#openTxt').textContent = txt;
+    $('#openTxt2').textContent = txt;
+    $('#dot').classList.toggle('shut', !open);
+    $('#dot2').classList.toggle('shut', !open);
+  })();
+
+  /* ---------- 6. ODSŁANIANIE + NEON ---------- */
+  (function reveal(){
+    if (!('IntersectionObserver' in window)){
+      $$('.rv').forEach(function(e){ e.classList.add('in'); });
+      $('#neon').classList.add('lit');
+      return;
+    }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e,i){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function(){ el.classList.add('in'); }, Math.min(i*90, 360));
+        io.unobserve(el);
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){ io.observe(e); });
+
+    var n = $('#neon');
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ n.classList.add('lit'); io2.unobserve(e.target); } });
+    }, {threshold:.6});
+    io2.observe(n);
+  })();
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Pizzeria Poszło z Dymem",
+"servesCuisine":["Włoska","Pizza"],"priceRange":"$$","telephone":"+48510265267",
+"email":"pizzeriaposzlozdymem@gmail.com","url":"https://www.poszlozdymem.pl/",
+"address":{"@type":"PostalAddress","streetAddress":"ul. Katowicka 48","postalCode":"45-061",
+"addressLocality":"Opole","addressCountry":"PL"},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"12:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],
+"acceptsReservations":"True"}
+</script>
+</body>
+</html>

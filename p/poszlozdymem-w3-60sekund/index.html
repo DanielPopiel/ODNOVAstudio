@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poszło z Dymem — 60 sekund. Pizzeria w Opolu</title>
+<meta name="description" content="Włoska trattoria w Opolu, Katowicka 48. Doba fermentacji, sześćdziesiąt sekund w piecu opalanym drewnem, dwadzieścia pięć minut do Twoich drzwi.">
+<style>
+@font-face{font-family:'PlexMono';src:url(assets/IBMPlexMono-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'PlexMono';src:url(assets/IBMPlexMono-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Archivo';src:url(assets/Archivo-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Archivo';src:url(assets/Archivo-700.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Archivo';src:url(assets/Archivo-800.woff2) format('woff2');font-weight:800;font-display:swap}
+
+:root{
+  --mono:'PlexMono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --disp:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --bg:#0A0908;
+  --bg2:#12100E;
+  --ink:#F4EDE2;
+  --dim:rgba(244,237,226,.58);
+  --line:rgba(244,237,226,.14);
+  --ember:#FF6A16;
+  --green:#7FB069;
+  --gut:clamp(16px,4vw,64px);
+  --maxw:1320px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--bg);scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);
+  font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--disp);font-weight:800;letter-spacing:-.035em;line-height:.92;
+  margin:0;text-transform:uppercase;word-spacing:-.02em}
+
+/* ---------- nagłówek ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .6s ease,border-color .6s}
+.hdr{display:flex;align-items:center;gap:clamp(10px,2vw,26px);flex-wrap:wrap;
+  padding:12px var(--gut);max-width:var(--maxw);margin:0 auto}
+header.stuck{background:rgba(10,9,8,.8);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;flex:0 0 auto}
+.logo .mark{width:40px;height:22.4px;flex:0 0 auto;
+  transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.logo:hover .mark{transform:translateY(-2px) rotate(-2deg)}
+.logo-txt{display:flex;flex-direction:column;line-height:1;gap:3px}
+.logo-txt b{font-family:var(--disp);font-weight:800;font-size:16.5px;letter-spacing:-.02em;
+  word-spacing:.02em;text-transform:none;white-space:nowrap}
+.logo-txt>span{font-size:8.5px;letter-spacing:.26em;text-transform:lowercase;opacity:.55;
+  white-space:nowrap}
+@media(max-width:1180px){.logo-txt>span{display:none}}
+.hdr nav{display:flex;gap:18px;margin-left:auto;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase}
+.hdr nav a{text-decoration:none;color:var(--dim);transition:color .3s}
+.hdr nav a:hover{color:var(--ink)}
+.open-pill{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--dim)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 3.4s ease-out infinite}
+.dot.shut{background:#8A2B10;animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(127,176,105,.5)}70%{box-shadow:0 0 0 12px rgba(127,176,105,0)}100%{box-shadow:0 0 0 0 rgba(127,176,105,0)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 20px;border-radius:999px;text-decoration:none;border:1.5px solid currentColor;
+  background:none;color:inherit;cursor:pointer;
+  transition:background .45s cubic-bezier(.22,1,.36,1),color .45s,transform .45s cubic-bezier(.22,1,.36,1)}
+.btn:hover{transform:translateY(-2px)}
+.btn-e{background:var(--ember);border-color:var(--ember);color:#1A0700}
+.btn-e:hover{background:transparent;color:var(--ember)}
+
+/* ---------- SCENA WYPIEKU ---------- */
+.stage{height:520vh;position:relative}
+.sticky{position:sticky;top:0;height:100svh;overflow:hidden}
+.frames{position:absolute;inset:0}
+.frames img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:50% 46%;will-change:opacity;opacity:0}
+.frames img:first-child{opacity:1}
+.vig{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(6,5,4,.86) 0%,rgba(6,5,4,.62) 24%,rgba(6,5,4,.12) 46%,transparent 62%),
+             radial-gradient(120% 90% at 50% 45%,transparent 30%,rgba(6,5,4,.5) 74%,rgba(6,5,4,.9) 100%),
+             linear-gradient(180deg,rgba(6,5,4,.74) 0%,transparent 24%,transparent 54%,rgba(6,5,4,.9) 100%)}
+.steam{position:absolute;left:0;right:0;bottom:0;height:70%;pointer-events:none;opacity:0;
+  background:radial-gradient(60% 55% at 50% 100%,rgba(255,236,208,.22),transparent 70%);
+  filter:blur(22px);animation:rise 14s ease-in-out infinite alternate}
+@keyframes rise{from{transform:translateY(8%) scaleX(1)}to{transform:translateY(-10%) scaleX(1.25)}}
+
+.stage-ui{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  padding:calc(78px + 2vh) 0 clamp(26px,5vh,58px)}
+.stage-top,.stage-bot{width:100%}
+.caption{max-width:min(640px,86vw)}
+.caption .step{display:none}
+.caption .step.on{display:block;animation:fade .9s cubic-bezier(.16,1,.3,1) both}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.caption h1{font-size:clamp(34px,7.4vw,104px)}
+.caption h2{font-size:clamp(30px,6.4vw,88px)}
+.caption p{color:var(--dim);max-width:44ch;font-size:clamp(14px,1.45vw,17px);margin:16px 0 0}
+
+.timer{display:flex;align-items:flex-end;gap:clamp(14px,2.6vw,34px);flex-wrap:wrap}
+.timer .num{font-family:var(--disp);font-weight:800;font-size:clamp(54px,11vw,150px);
+  line-height:.8;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.timer .lbl{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  padding-bottom:10px;line-height:1.7}
+.tbar{position:relative;flex:1;min-width:140px;height:2px;background:rgba(244,237,226,.2);margin-bottom:14px}
+.tbar i{position:absolute;left:0;top:-1px;height:4px;background:var(--ember);width:0}
+.hint{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);margin-top:22px}
+.hint .ln{width:46px;height:1px;background:currentColor;position:relative;overflow:hidden}
+.hint .ln::after{content:'';position:absolute;inset:0;background:var(--ember);
+  transform:translateX(-100%);animation:sweep 3.4s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* ---------- sekcje ---------- */
+section{position:relative;padding-block:clamp(84px,13vh,180px)}
+.eyebrow{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::after{content:'';flex:1;height:1px;background:currentColor;opacity:.35;max-width:160px}
+h2.sec{font-size:clamp(30px,5.6vw,74px);max-width:17ch}
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* oś czasu */
+.tl{display:grid;grid-template-columns:1fr;gap:1px;margin-top:52px;background:var(--line)}
+.tl>div{background:var(--bg);padding:clamp(22px,3vw,38px) clamp(18px,2.4vw,32px)}
+.tl b{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(40px,6.4vw,84px);
+  line-height:.85;letter-spacing:-.04em;color:var(--ember)}
+.tl .k{display:block;margin-top:14px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.tl p{margin:16px 0 0;font-size:14px;color:var(--dim);max-width:34ch}
+.tl figure{margin:22px 0 0;overflow:hidden}
+.tl figure img{width:100%;height:170px;object-fit:cover;filter:grayscale(.15)}
+
+/* ---------- POKRĘTŁO ---------- */
+.dial-wrap{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,72px);align-items:center;margin-top:48px}
+.dial{position:relative;width:min(340px,72vw);aspect-ratio:1;margin:0 auto;touch-action:none;
+  user-select:none;cursor:grab}
+.dial.drag{cursor:grabbing}
+.dial svg{width:100%;height:100%;display:block;overflow:visible}
+.dial .track{fill:none;stroke:rgba(244,237,226,.16);stroke-width:1.5}
+.dial .arc{fill:none;stroke:var(--ember);stroke-width:3;stroke-linecap:round;
+  transition:stroke-dasharray .5s cubic-bezier(.22,1,.36,1)}
+.dial .tickm{stroke:rgba(244,237,226,.34);stroke-width:1.5}
+.dial .tickm.act{stroke:var(--ember);stroke-width:2.5}
+.knob{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--ember);
+  box-shadow:0 0 0 6px rgba(255,106,22,.16),0 6px 22px rgba(255,106,22,.35);
+  left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+.dial-core{position:absolute;inset:22%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;pointer-events:none}
+.dial-core b{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,52px);line-height:.9;
+  letter-spacing:-.03em}
+.dial-core span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:10px}
+.dial-labels{display:flex;justify-content:space-between;gap:10px;margin-top:20px;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);max-width:min(340px,72vw);
+  margin-inline:auto}
+.dial-labels span{cursor:pointer;transition:color .4s}
+.dial-labels span.act{color:var(--ember)}
+.panel{min-height:280px;position:relative}
+.panel .p{position:absolute;inset:0;opacity:0;transform:translateY(18px);pointer-events:none;
+  transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.panel .p.on{opacity:1;transform:none;pointer-events:auto;position:relative}
+.panel h3{font-size:clamp(24px,3.4vw,42px);margin-bottom:16px;word-spacing:normal}
+.panel p{color:var(--dim);max-width:46ch}
+.zonebox{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);
+  margin:24px 0 0;border:1px solid var(--line)}
+.zonebox div{background:var(--bg);padding:16px 16px 18px}
+.zonebox b{font-family:var(--disp);font-weight:700;font-size:17px;display:block}
+.zonebox .c{color:var(--ember);font-family:var(--disp);font-weight:800;font-size:26px;
+  display:block;margin-top:6px;line-height:1}
+.zonebox small{display:block;color:var(--dim);font-size:11.5px;margin-top:8px;line-height:1.65}
+.panel .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+
+/* ---------- MENU ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:34px 0 30px}
+.tab{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--dim);
+  cursor:pointer;transition:all .4s cubic-bezier(.22,1,.36,1)}
+.tab:hover{color:var(--ink);border-color:rgba(244,237,226,.34)}
+.tab.act{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dishes{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.dish{background:var(--bg);padding:20px clamp(16px,2vw,26px);display:grid;
+  grid-template-columns:1fr auto;gap:6px 18px;align-items:baseline;
+  transition:background .45s ease}
+.dish:hover{background:var(--bg2)}
+.dish .n{font-family:var(--disp);font-weight:700;font-size:17px;letter-spacing:-.01em;
+  text-transform:none;word-spacing:normal}
+.dish .pr{font-family:var(--disp);font-weight:800;font-size:19px;white-space:nowrap;
+  font-variant-numeric:tabular-nums;color:var(--ember)}
+.dish .d{grid-column:1/-1;color:var(--dim);font-size:12.5px;line-height:1.6}
+.dish .tag{display:inline-block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:99px;padding:1px 7px;margin-left:9px;vertical-align:2px}
+.dish .tag.v{color:var(--green)}.dish .tag.o{color:#E4622F}
+.mnote{color:var(--dim);font-size:12.5px;margin-top:20px}
+
+/* ---------- LOKAL ---------- */
+.two{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,70px)}
+.hours{border-top:1px solid var(--line);margin-top:26px}
+.hours div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;
+  border-bottom:1px solid var(--line);font-size:14px;font-variant-numeric:tabular-nums}
+.hours div.today{color:var(--ember);font-weight:600}
+.clist{list-style:none;margin:28px 0 0;padding:0;font-size:clamp(16px,2vw,21px);line-height:2}
+.clist .k{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);line-height:1.8;margin-top:12px}
+.clist a{text-decoration:none;border-bottom:1px solid var(--line)}
+.clist a:hover{border-bottom-color:var(--ember);color:var(--ember)}
+.shot{overflow:hidden;border:1px solid var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);
+  animation:breathe 38s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(1.02)}to{transform:scale(1.14)}}
+footer{padding:clamp(40px,6vh,80px) 0 clamp(30px,5vh,58px);border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--dim)}
+.f-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media(min-width:760px){
+  .tl{grid-template-columns:repeat(3,1fr)}
+  .dial-wrap{grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
+  .dishes{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr 1fr}
+}
+@media(max-width:639px){
+  .hdr nav{display:none}
+  .hdr .btn{width:100%;order:5}
+  .zonebox{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  .stage{height:auto}.sticky{position:static;height:auto}
+}
+</style>
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:title" content="Poszło z Dymem — 60 sekund. Pizzeria w Opolu">
+<meta property="og:description" content="Przewijanie to czas w piecu: od surowego placka do gotowej pizzy. Doba fermentacji, sześćdziesiąt sekund, dwadzieścia pięć minut do drzwi.">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:locale" content="pl_PL">
+<link rel="icon" href="assets/mark.svg">
+</head>
+<body>
+
+<header id="hdr">
+  <div class="hdr">
+    <a class="logo" href="#top" aria-label="Poszło z Dymem — strona główna"><svg class="mark" viewBox="0 0 100 56" role="img" aria-label="Piec opalany drewnem" focusable="false"><g stroke="#3F2312" stroke-width="1.1" stroke-linecap="round"><line x1="38" y1="44.6" x2="62" y2="50.4" stroke="#8A5D3B" stroke-width="4.6"/><line x1="38" y1="50.4" x2="62" y2="44.6" stroke="#74492C" stroke-width="4.6"/></g><ellipse cx="38.3" cy="44.8" rx=".9" ry="2.0" fill="#C79A6E" transform="rotate(-13 38.3 44.8)"/><ellipse cx="61.7" cy="44.8" rx=".9" ry="2.0" fill="#B3855C" transform="rotate(13 61.7 44.8)"/><g transform="translate(50 43.5) scale(1.12) translate(-50 -43.5)"><path d="M50 20.5c4.6 5.2 7.4 9 7.4 13.6 0 5.3-3.5 8.9-7.4 8.9s-7.4-3.6-7.4-8.9c0-3.2 1.5-5.6 3.3-8.2.6 2 1.7 3.2 2.7 3.6-.6-3.9.3-7 1.4-9z" fill="#E8391B"/><path d="M50 27.8c2.8 3.4 4.4 5.8 4.4 8.6 0 3.2-2 5.4-4.4 5.4s-4.4-2.2-4.4-5.4c0-2 1-3.6 2.1-5.2.4 1.3 1.1 2 1.7 2.3-.4-2.4.2-4.3.6-5.7z" fill="#F2700E"/><path d="M46.0 34.2c1.2 1.7 1.8 2.8 1.8 4.0 0 1.4-.8 2.3-1.8 2.3s-1.8-.9-1.8-2.3c0-1.1.6-2.1 1.8-4.0z" fill="#F7B01C"/></g><path d="M6.48 48.94 L7.66 40.71 L18.9 43.79 L18.12 49.16 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M8.82 36.76 L12.27 29.2 L22.19 35.32 L19.93 40.25 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M14.5 25.74 L19.94 19.46 L27.73 28.12 L24.18 32.22 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M23.06 16.76 L30.05 12.27 L35.08 22.77 L30.52 25.7 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M33.79 10.56 L41.77 8.21 L43.64 19.71 L38.43 21.24 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M45.84 7.63 L54.16 7.63 L52.71 19.19 L47.29 19.19 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M58.23 8.21 L66.21 10.56 L61.57 21.24 L56.36 19.71 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M69.95 12.27 L76.94 16.76 L69.48 25.7 L64.92 22.77 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M80.06 19.46 L85.5 25.74 L75.82 32.22 L72.27 28.12 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/><path d="M87.73 29.2 L91.18 36.76 L80.07 40.25 L77.81 35.32 Z" fill="#A81410" stroke="#A81410" stroke-width="2.6" stroke-linejoin="round"/><path d="M92.34 40.71 L93.52 48.94 L81.88 49.16 L81.1 43.79 Z" fill="#F2700E" stroke="#F2700E" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="logo-txt"><b>Poszło z Dymem</b><span>pasta · pizza · panini</span></span></a>
+    <div class="open-pill"><span class="dot" id="dot"></span><span id="openTxt">sprawdzam…</span></div>
+    <nav>
+      <a href="#czas">Jak powstaje</a><a href="#ile">Ile masz czasu</a><a href="#menu">Menu</a><a href="#lokal">Lokal</a>
+    </nav>
+    <a class="btn btn-e" id="orderTop" href="#" target="_blank" rel="noopener">Zamów online</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= SCENA: 60 SEKUND ================= -->
+<div class="stage" id="stage">
+  <div class="sticky">
+    <div class="frames" id="frames">
+      <img src="assets/bake-1.webp" alt="Surowe ciasto z dodatkami tuż przed piecem" width="1320" height="880" fetchpriority="high">
+      <img src="assets/bake-2.webp" alt="Pierwsze sekundy w piecu" width="1320" height="880">
+      <img src="assets/bake-3.webp" alt="Rant zaczyna się napinać" width="1320" height="880">
+      <img src="assets/bake-4.webp" alt="Ciasto łapie pierwszy kolor" width="1320" height="880">
+      <img src="assets/bake-5.webp" alt="Rant się złoci, ser zaczyna się rozpływać" width="1320" height="880">
+      <img src="assets/bake-6.webp" alt="Złoty rant, sos się redukuje" width="1320" height="880">
+      <img src="assets/bake-7.webp" alt="Pierwsze ciemne plamy na rancie" width="1320" height="880">
+      <img src="assets/bake-8.webp" alt="Wyraźna leopardatura" width="1320" height="880">
+      <img src="assets/bake-9.webp" alt="Rant mocno wypieczony" width="1320" height="880">
+      <img src="assets/bake-10.webp" alt="Gotowa pizza po sześćdziesięciu sekundach" width="1320" height="880">
+    </div>
+    <div class="steam" id="steam" aria-hidden="true"></div>
+    <div class="vig" aria-hidden="true"></div>
+
+    <div class="stage-ui">
+      <div class="stage-top wrap">
+        <div class="caption" id="caption">
+          <div class="step on" data-from="0">
+            <h1>Wjeżdża<br>do pieca</h1>
+            <p>Ciasto odpoczywało dobę. Na wierzchu mozzarella fior di latte, sos z południowych pomidorów, salami. Przewijaj — od tej chwili liczy się każda sekunda.</p>
+          </div>
+          <div class="step" data-from=".16">
+            <h2>485<br>stopni</h2>
+            <p>Kamień rozgrzany do czerwoności, drewno pali się z boku. Rant napina się i łapie pierwszy kolor.</p>
+          </div>
+          <div class="step" data-from=".42">
+            <h2>Leo&shy;pardatura</h2>
+            <p>Ciemne plamy na brzegu nie są przypadkiem ani przypaleniem. To znak, że ciasto weszło do pieca odpowiednio wyrośnięte i wyszło w odpowiedniej chwili.</p>
+          </div>
+          <div class="step" data-from=".74">
+            <h2>Gotowe.<br>60 sekund.</h2>
+            <p>Brzeg pełen powietrza, ser rozpuszczony, spód suchy. Tyle dzieli kulę ciasta od kolacji.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-bot wrap">
+        <div class="timer">
+          <span class="num" id="tnum">0:00</span>
+          <span class="lbl">sekundy<br>w piecu</span>
+          <span class="tbar"><i id="tbar"></i></span>
+          <span class="lbl" style="text-align:right">485 °C<br>piec na drewno</span>
+        </div>
+        <div class="hint"><span class="ln"></span><span id="hintTxt">Przewijaj — pizza się piecze</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= OŚ CZASU ================= -->
+<section id="czas">
+  <div class="wrap">
+    <div class="eyebrow rv">Jak to powstaje</div>
+    <h2 class="sec rv">Doba, minuta i kwadrans z hakiem</h2>
+    <div class="tl">
+      <div class="rv">
+        <b>24 h</b><span class="k">fermentacja</span>
+        <p>Ciasto odpoczywa u nas dobę. Dzięki temu jest lekkie, chrupiące na zewnątrz i miękkie w środku — i nie leży ciężko po kolacji.</p>
+        <figure><img src="assets/ciasto.webp" alt="Kule ciasta w skrzynce po dobie fermentacji" width="1400" height="940" decoding="async"></figure>
+      </div>
+      <div class="rv">
+        <b>60 s</b><span class="k">piec na drewno</span>
+        <p>485 stopni, kamień i ogień z boku. Minuta — dłużej znaczyłoby spalone, krócej znaczyłoby surowe.</p>
+        <figure><img src="assets/piec.webp" alt="Wnętrze pieca opalanego drewnem" width="1600" height="896" decoding="async"></figure>
+      </div>
+      <div class="rv">
+        <b>25 min</b><span class="k">do Twoich drzwi</span>
+        <p>Tyle zwykle zajmuje dowóz w promieniu trzech kilometrów od Katowickiej. W piątkowy wieczór bywa dłużej — wtedy piszemy o tym przy zamówieniu.</p>
+        <figure><img src="assets/bake-10.webp" alt="Gotowa pizza na desce" width="1320" height="880" decoding="async"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POKRĘTŁO ================= -->
+<section id="ile" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow rv">Pokrętło</div>
+    <h2 class="sec rv">Ile masz czasu?</h2>
+    <div class="dial-wrap">
+      <div>
+        <div class="dial" id="dial" role="slider" tabindex="0" aria-label="Ile masz czasu"
+             aria-valuemin="0" aria-valuemax="2" aria-valuenow="0" aria-valuetext="25 minut">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="track" cx="100" cy="100" r="82"></circle>
+            <circle class="arc" id="arc" cx="100" cy="100" r="82"
+                    transform="rotate(-190 100 100)" stroke-dasharray="0 515"></circle>
+            <g id="ticks"></g>
+          </svg>
+          <div class="knob" id="knob"></div>
+          <div class="dial-core"><b id="dialNum">25</b><span id="dialUnit">minut</span></div>
+        </div>
+        <div class="dial-labels">
+          <span data-i="0" class="act">25 min</span><span data-i="1">godzina</span><span data-i="2">jestem obok</span>
+        </div>
+      </div>
+      <div class="panel" id="panel">
+        <div class="p on">
+          <h3>Zamawiasz na dowóz</h3>
+          <p>Zamów przez system online albo zadzwoń. Kierowca rusza, gdy pizza wychodzi z pieca — nie wcześniej.</p>
+          <div class="zonebox" id="zonebox"></div>
+          <div class="acts">
+            <a class="btn btn-e" id="orderDial" href="#" target="_blank" rel="noopener">Zamów online</a>
+            <a class="btn" href="tel:+48510265267">510 265 267</a>
+          </div>
+        </div>
+        <div class="p">
+          <h3>Siadasz u nas</h3>
+          <p>Godzina to dokładnie tyle, ile trzeba na przystawkę, pizzę prosto z pieca i kawę. Stolik rezerwujemy telefonicznie — odbieramy w godzinach otwarcia.</p>
+          <p style="margin-top:14px" id="hrsLine"></p>
+          <div class="acts">
+            <a class="btn btn-e" href="tel:+48510265267">Zarezerwuj telefonicznie</a>
+            <a class="btn" id="mapDial" href="#" target="_blank" rel="noopener">Dojazd</a>
+          </div>
+        </div>
+        <div class="p">
+          <h3>Odbierasz osobiście</h3>
+          <p>Katowicka 48, kilka kroków od centrum. Zamów online z odbiorem własnym albo zadzwoń — powiemy, o której czekać.</p>
+          <p style="margin-top:14px">Odbiór osobisty nie ma minimalnej kwoty zamówienia.</p>
+          <div class="acts">
+            <a class="btn btn-e" id="orderDial2" href="#" target="_blank" rel="noopener">Zamów z odbiorem</a>
+            <a class="btn" id="mapDial2" href="#" target="_blank" rel="noopener">ul. Katowicka 48</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu">
+  <div class="wrap">
+    <div class="eyebrow rv">Karta</div>
+    <h2 class="sec rv">Wszystko z jednego pieca</h2>
+    <div class="tabs" id="tabs"></div>
+    <div class="dishes" id="dishes"></div>
+    <p class="mnote">Ceny w złotych. „od" oznacza cenę najmniejszego rozmiaru — rozmiary i dodatki wybierzesz
+      w systemie zamówień. Alergeny podajemy na miejscu i telefonicznie.</p>
+  </div>
+</section>
+
+<!-- ================= LOKAL ================= -->
+<section id="lokal" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow rv">Lokal</div>
+    <div class="two">
+      <div>
+        <h2 class="sec rv">Katowicka 48,<br>Opole</h2>
+        <figure class="shot rv" style="margin:30px 0 0">
+          <img src="assets/lokal.webp" alt="Sala restauracyjna wieczorem" width="1400" height="940" decoding="async">
+        </figure>
+      </div>
+      <div>
+        <div class="rv">
+          <div class="eyebrow" style="margin-bottom:8px">Godziny otwarcia</div>
+          <div class="hours" id="hours"></div>
+        </div>
+        <ul class="clist rv">
+          <li><span class="k">Telefon</span><a href="tel:+48510265267">510 265 267</a></li>
+          <li><span class="k">E-mail</span><a href="mailto:pizzeriaposzlozdymem@gmail.com">pizzeriaposzlozdymem@gmail.com</a></li>
+          <li><span class="k">Adres</span><a id="mapLink" href="#" target="_blank" rel="noopener">ul. Katowicka 48, Opole</a></li>
+          <li><span class="k">Instagram</span><a id="igLink" href="#" target="_blank" rel="noopener">@poszlozdymem</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-grid">
+    <span>© <span id="yr"></span> Pizzeria Poszło z Dymem · ul. Katowicka 48, Opole</span>
+    <span>Makieta W3 „60 sekund" · ODNOVA Studio</span>
+  </div>
+</footer>
+</main>
+
+<script src="menu-data.js"></script>
+<script>
+(function(){
+  'use strict';
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var INFO = window.PZD_INFO, MENU = window.PZD_MENU;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  ['orderTop','orderDial','orderDial2'].forEach(function(id){var e=document.getElementById(id); if(e) e.href=INFO.order;});
+  ['mapDial','mapDial2','mapLink'].forEach(function(id){var e=document.getElementById(id); if(e) e.href=INFO.maps;});
+  $('#igLink').href = INFO.ig;
+  $('#yr').textContent = new Date().getFullYear();
+
+  /* ---------- 1. SCENA WYPIEKU ---------- */
+  (function bake(){
+    var stage = $('#stage'), imgs = $$('#frames img'), n = imgs.length;
+    var tnum = $('#tnum'), tbar = $('#tbar'), steam = $('#steam'), hint = $('#hintTxt');
+    var steps = $$('#caption .step').map(function(el){ return {el:el, from:parseFloat(el.dataset.from)}; });
+    var target = 0, cur = 0, raf = 0;
+
+    function progress(){
+      var r = stage.getBoundingClientRect();
+      var total = r.height - innerHeight;
+      if (total <= 0) return 0;
+      return Math.min(1, Math.max(0, (-r.top/total) / 0.86));
+    }
+    function paint(p){
+      /* miękkie przenikanie klatek */
+      var x = p*(n-1);
+      for (var i=0;i<n;i++){
+        var d = Math.abs(x-i);
+        var o = d >= 1 ? 0 : (1 - d);
+        o = o*o*(3-2*o);                      /* smoothstep — bez twardych cięć */
+        imgs[i].style.opacity = o.toFixed(3);
+      }
+      /* kadr stoi nieruchomo — zmienia się wyłącznie stopień wypieczenia */
+      /* licznik 0:00 → 1:00 */
+      var s = Math.round(p*60);
+      tnum.textContent = (s>=60?'1:00':'0:'+(s<10?'0':'')+s);
+      tbar.style.width = (p*100).toFixed(2)+'%';
+      steam.style.opacity = Math.max(0,(p-.38)/.62).toFixed(3);
+      hint.textContent = p > .93 ? 'Przewijaj dalej — reszta karty niżej' : 'Przewijaj — pizza się piecze';
+      /* podpisy */
+      var act = 0;
+      for (var j=0;j<steps.length;j++) if (p >= steps[j].from) act = j;
+      steps.forEach(function(s2,k){ s2.el.classList.toggle('on', k===act); });
+    }
+    function loop(){
+      cur += (target-cur)*0.14;              /* wygładzenie — animacja „ciągnie się" płynnie */
+      if (Math.abs(target-cur) < 0.0003) cur = target;
+      paint(cur);
+      raf = requestAnimationFrame(loop);
+    }
+    function onScroll(){ target = progress(); }
+    if (RM){ paint(1); }
+    else {
+      addEventListener('scroll', onScroll, {passive:true});
+      addEventListener('resize', onScroll);
+      onScroll(); cur = target; loop();
+    }
+  })();
+
+  /* ---------- 2. NAGŁÓWEK ---------- */
+  addEventListener('scroll', function(){
+    $('#hdr').classList.toggle('stuck', scrollY > 40);
+  }, {passive:true});
+
+  /* ---------- 3. STREFY ---------- */
+  (function zones(){
+    var z = $('#zonebox');
+    INFO.strefy.forEach(function(s){
+      var d = document.createElement('div');
+      d.innerHTML = '<b>'+s.z+'</b><span class="c">'+s.k+' zł</span>'+
+        '<small>minimum '+s.min+' zł'+(s.free?'<br>za darmo od '+s.free+' zł':'<br>bez progu darmowej dostawy')+'</small>';
+      z.appendChild(d);
+    });
+  })();
+
+  /* ---------- 4. MENU ---------- */
+  (function menu(){
+    var tabs = $('#tabs'), box = $('#dishes'), active = MENU[0].id;
+    MENU.forEach(function(cat){
+      var b = document.createElement('button');
+      b.className = 'tab'+(cat.id===active?' act':''); b.type='button';
+      b.textContent = cat.name; b.dataset.id = cat.id;
+      b.addEventListener('click', function(){ active = cat.id; draw(); });
+      tabs.appendChild(b);
+    });
+    function zl(v){ return v.toFixed(2).replace('.',',')+' zł'; }
+    function draw(){
+      $$('.tab', tabs).forEach(function(t){ t.classList.toggle('act', t.dataset.id===active); });
+      var cat = MENU.filter(function(c){ return c.id===active; })[0];
+      box.innerHTML = '';
+      cat.items.forEach(function(it,i){
+        var d = document.createElement('article');
+        d.className = 'dish';
+        d.style.opacity = 0; d.style.transform = 'translateY(14px)';
+        var tag = it.tag ? '<span class="tag '+(it.tag==='Vege'?'v':it.tag==='Ostre'?'o':'')+'">'+it.tag+'</span>' : '';
+        d.innerHTML = '<h3 class="n">'+it.n+tag+'</h3><span class="pr">'+(it.od?'od ':'')+zl(it.p)+'</span>'+
+                      (it.d?'<p class="d">'+it.d+'</p>':'');
+        box.appendChild(d);
+        if (RM){ d.style.opacity=1; d.style.transform='none'; return; }
+        setTimeout(function(){
+          d.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)';
+          d.style.opacity = 1; d.style.transform = 'none';
+        }, 40 + i*45);
+      });
+    }
+    draw();
+  })();
+
+  /* ---------- 5. POKRĘTŁO ---------- */
+  (function dial(){
+    var d = $('#dial'), knob = $('#knob'), arc = $('#arc'), core = $('#dialNum'), unit = $('#dialUnit');
+    var panels = $$('#panel .p'), labels = $$('.dial-labels span'), ticks = $('#ticks');
+    var STOPS = [
+      { a:-62, num:'25', unit:'minut',  text:'25 minut' },
+      { a:  0, num:'1',  unit:'godzina',text:'godzina'  },
+      { a: 62, num:'0',  unit:'jestem obok', text:'jestem obok' }
+    ];
+    var R = 82, C = 2*Math.PI*R;
+    STOPS.forEach(function(s){
+      var r = (s.a-90)*Math.PI/180;
+      var l = document.createElementNS('http://www.w3.org/2000/svg','line');
+      l.setAttribute('x1', 100+Math.cos(r)*(R-9)); l.setAttribute('y1', 100+Math.sin(r)*(R-9));
+      l.setAttribute('x2', 100+Math.cos(r)*(R+9)); l.setAttribute('y2', 100+Math.sin(r)*(R+9));
+      l.setAttribute('class','tickm'); ticks.appendChild(l);
+    });
+    var tickEls = $$('.tickm', ticks);
+
+    var angle = STOPS[0].a, shown = angle, idx = 0, dragging = false, raf;
+    function place(a){
+      var r = (a-90)*Math.PI/180, box = d.getBoundingClientRect(), rad = box.width/2*(R/100);
+      knob.style.left = (50 + Math.cos(r)*rad/box.width*100) + '%';
+      knob.style.top  = (50 + Math.sin(r)*rad/box.width*100) + '%';
+      var frac = (a+100)/360;
+      arc.setAttribute('stroke-dasharray', (Math.max(0,frac)*C).toFixed(1)+' '+C.toFixed(1));
+    }
+    function anim(){
+      shown += (angle-shown)*0.16;
+      if (Math.abs(angle-shown) < .05) { shown = angle; place(shown); raf = 0; return; }
+      place(shown); raf = requestAnimationFrame(anim);
+    }
+    function nudge(){ if(!raf) raf = requestAnimationFrame(anim); }
+    function select(i, snap){
+      idx = i; angle = STOPS[i].a;
+      core.textContent = STOPS[i].num; unit.textContent = STOPS[i].unit;
+      panels.forEach(function(p,k){ p.classList.toggle('on', k===i); });
+      labels.forEach(function(l,k){ l.classList.toggle('act', k===i); });
+      tickEls.forEach(function(t,k){ t.classList.toggle('act', k===i); });
+      d.setAttribute('aria-valuenow', i); d.setAttribute('aria-valuetext', STOPS[i].text);
+      if (snap === false) { shown = angle; place(shown); } else nudge();
+    }
+    function fromPointer(e){
+      var b = d.getBoundingClientRect();
+      var dx = e.clientX - (b.left+b.width/2), dy = e.clientY - (b.top+b.height/2);
+      var a = Math.atan2(dy,dx)*180/Math.PI + 90;
+      if (a > 180) a -= 360;
+      a = Math.max(-100, Math.min(100, a));
+      angle = a; nudge();
+      var best = 0, bd = 1e9;
+      STOPS.forEach(function(s,i){ var dd = Math.abs(s.a-a); if (dd<bd){bd=dd;best=i;} });
+      if (best !== idx) select(best, true);
+    }
+    d.addEventListener('pointerdown', function(e){
+      dragging = true; d.classList.add('drag'); d.setPointerCapture(e.pointerId); fromPointer(e);
+    });
+    d.addEventListener('pointermove', function(e){ if (dragging) fromPointer(e); });
+    ['pointerup','pointercancel'].forEach(function(t){
+      d.addEventListener(t, function(){ dragging=false; d.classList.remove('drag'); select(idx, true); });
+    });
+    d.addEventListener('keydown', function(e){
+      if (e.key==='ArrowRight'||e.key==='ArrowUp'){ select(Math.min(2,idx+1)); e.preventDefault(); }
+      if (e.key==='ArrowLeft' ||e.key==='ArrowDown'){ select(Math.max(0,idx-1)); e.preventDefault(); }
+    });
+    labels.forEach(function(l){ l.addEventListener('click', function(){ select(+l.dataset.i); }); });
+    addEventListener('resize', function(){ place(shown); });
+    select(0, false);
+  })();
+
+  /* ---------- 6. GODZINY ---------- */
+  (function hours(){
+    var names = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+    var box = $('#hours'), now = new Date(), dow = now.getDay(), frag = document.createDocumentFragment();
+    for (var i=1;i<=7;i++){
+      var dd = i%7, h = INFO.godziny[dd], row = document.createElement('div');
+      if (dd===dow) row.className = 'today';
+      row.innerHTML = '<span>'+names[dd]+'</span><span>'+(h? h[0]+':00 – '+h[1]+':00':'nieczynne')+'</span>';
+      frag.appendChild(row);
+    }
+    box.appendChild(frag);
+
+    var h2 = INFO.godziny[dow], mins = now.getHours()*60+now.getMinutes(), open=false, txt;
+    if (h2 && mins >= h2[0]*60 && mins < h2[1]*60){
+      open = true; var left = h2[1]*60 - mins;
+      txt = left<=60 ? 'otwarte — zamykamy za '+left+' min' : 'otwarte do '+h2[1]+':00';
+    } else {
+      var nd = dow, add = 0;
+      do { nd = (nd+1)%7; add++; } while(!INFO.godziny[nd] && add<8);
+      txt = (h2 && mins < h2[0]*60) ? 'otwieramy o '+h2[0]+':00'
+           : 'zamknięte — '+(add===1?'jutro':names[nd].toLowerCase())+' od '+INFO.godziny[nd][0]+':00';
+    }
+    $('#openTxt').textContent = txt;
+    $('#dot').classList.toggle('shut', !open);
+    $('#hrsLine').textContent = 'Dziś: ' + txt + '.';
+  })();
+
+  /* ---------- 7. ODSŁANIANIE ---------- */
+  (function reveal(){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e,i){
+        if(!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function(){ el.classList.add('in'); }, Math.min(i*100, 400));
+        io.unobserve(el);
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+    $$('.rv').forEach(function(e){ io.observe(e); });
+  })();
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Pizzeria Poszło z Dymem",
+"servesCuisine":["Włoska","Pizza"],"priceRange":"$$","telephone":"+48510265267",
+"email":"pizzeriaposzlozdymem@gmail.com","url":"https://www.poszlozdymem.pl/",
+"address":{"@type":"PostalAddress","streetAddress":"ul. Katowicka 48","postalCode":"45-061",
+"addressLocality":"Opole","addressCountry":"PL"},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"12:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}],
+"acceptsReservations":"True"}
+</script>
+<style>
+/* poprawka mobilna: nagłówek zawija się na telefonie na trzy rzędy, więc tytuł sceny
+   wchodził pod przycisk. Odstęp liczony od zmierzonej wysokości paska + tło od pierwszej klatki. */
+@media(max-width:639px){
+  header{background:rgba(10,9,8,.86);backdrop-filter:blur(14px) saturate(1.1);border-bottom:1px solid var(--line)}
+  .hdr{row-gap:8px;padding-top:10px;padding-bottom:10px}
+  .stage-ui{padding-top:calc(var(--hdr-h,150px) + 2vh)}
+}
+</style>
+<script>
+(function(){var h=document.getElementById('hdr');if(!h)return;
+ function m(){document.documentElement.style.setProperty('--hdr-h',h.offsetHeight+'px');}
+ m();addEventListener('resize',m);addEventListener('load',m);})();
+</script>
+</body>
+</html>
