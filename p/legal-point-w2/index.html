@@ -546,13 +546,38 @@ body[data-scroll="on"] .portrait img{
   html{scroll-behavior:auto}
 }
 
+/* ---------- Portret: najechanie zdejmuje czern i biel ----------
+   Na dotyku nie ma najechania, wiec kolor wraca w miare wjezdzania kadru
+   w ekran — silnik przewijania i tak liczy dla tej figury --p. */
+@media (hover:hover) and (pointer:fine){
+  .portrait img{transition:filter .55s cubic-bezier(.22,.61,.36,1)}
+  .portrait::after{transition:opacity .55s cubic-bezier(.22,.61,.36,1)}
+  .portrait:hover img{filter:grayscale(0) contrast(1.02) brightness(1.03) saturate(1.04)}
+  .portrait:hover::after{opacity:.72}
+}
+@media (hover:none),(pointer:coarse){
+  .portrait img{filter:grayscale(calc(1 - var(--p,0))) contrast(1.05) brightness(.97)}
+}
+
 /* ---------- Legal Point: lista branz na ciemnym tle ---------- */
 .dark .croles{border-top-color:var(--line-d2)}
 .dark .crole{border-bottom-color:var(--line-d2)}
 .dark .ck{color:var(--cream)}
 .dark .crole p{color:var(--cream-dim)}
-.croles.cols2{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+.croles.cols2{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+@media(min-width:1100px){.croles.cols2{grid-template-columns:repeat(3,1fr);column-gap:36px}}
 @media(max-width:760px){.croles.cols2{grid-template-columns:1fr}}
+/* wiersze bez akapitu nie potrzebuja swiatla wyliczonego dla dwuliniowych */
+.croles.cols2 .crole{padding:15px 2px}
+.croles.cols2 .ck{font-size:20px;line-height:1.3;margin-bottom:0}
+
+/* ---------- karta konsultacji: cena jest argumentem, nie punktem listy ---------- */
+.applyprice{font-family:"EB Garamond",Georgia,serif;font-size:40px;line-height:1;color:var(--cream);margin:-4px 0 16px}
+.applyprice span{display:block;font-family:"Archivo",sans-serif;font-size:13px;color:var(--cream-dim);margin-top:8px;letter-spacing:.02em}
+
+/* ---------- pytania: odpowiedz na pelna szerokosc, naglowki bez zmiany wygladu ---------- */
+#faqacc .svc-body{grid-template-columns:1fr}
+#faqacc h3{margin:0;font:inherit;font-weight:inherit;letter-spacing:inherit}
 
 </style>
 
@@ -560,7 +585,7 @@ body[data-scroll="on"] .portrait img{
   <span>Makieta · propozycja projektowa</span>
   <span><b>Odnova Studio</b> · wariant „Scripta”</span>
   <span class="rb-hide">strona demonstracyjna, nie jest witryną kancelarii</span>
-  <span class="rb-ver">wersja 3 · 22.09.2026</span>
+  <span class="rb-ver">wersja 4 · 22.09.2026</span>
   <button class="bgtoggle" id="bgt" hidden>Tło: zdjęcie</button>
 </div>
 
@@ -797,6 +822,29 @@ body[data-scroll="on"] .portrait img{
   </div>
 </section>
 
+<section class="dark" id="branze">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Dla kogo pracuję</span>
+        <h2>Branże, które znam od środka</h2>
+      </div>
+      <p>Wśród klientów są duże firmy i przedsiębiorcy, którzy dopiero rozwijają biznes. <a href="#zlecane">Zobacz usługi o stałym zakresie &#8599;</a></p>
+    </div>
+    <div class="croles cols2">
+        <div class="crole"><div class="ck">Producenci materiałów budowlanych (EPS, XPS)</div></div>
+        <div class="crole"><div class="ck">Domy mediowe</div></div>
+        <div class="crole"><div class="ck">Agencje reklamowe</div></div>
+        <div class="crole"><div class="ck">Dostawcy rozwiązań IT</div></div>
+        <div class="crole"><div class="ck">Domy produkcyjne filmów reklamowych</div></div>
+        <div class="crole"><div class="ck">Producenci kosmetyków i detergentów</div></div>
+        <div class="crole"><div class="ck">Wypożyczalnie samochodów</div></div>
+        <div class="crole"><div class="ck">Dealerzy samochodowi</div></div>
+        <div class="crole"><div class="ck">Sklepy internetowe</div></div>
+    </div>
+  </div>
+</section>
+
 <section class="alt" id="zlecane">
   <div class="wrap">
     <div class="sec-head">
@@ -816,13 +864,14 @@ body[data-scroll="on"] .portrait img{
 
       <aside class="applybox">
         <h3>Konsultacja online</h3>
+        <p class="applyprice">200 zł <span>netto · 246 zł brutto</span></p>
         <ul class="applylist">
           <li>30 minut, jedno wcześniej wskazane zagadnienie.</li>
           <li>Uporządkowanie ryzyk i rekomendacja dalszych kroków.</li>
-          <li>200 zł netto, 246 zł brutto. Termin wybierasz w kalendarzu.</li>
+          <li>Termin wybierasz sam w kalendarzu, rozmowa odbywa się online.</li>
           <li>Zlecisz związaną usługę w ciągu 30 dni? Odliczam 200 zł netto od jej ceny.</li>
         </ul>
-        <a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Wybierz termin</a>
+        <a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a>
         <p class="applynote">Rozmowa odbywa się online. Spotkanie w Mińsku Mazowieckim po wcześniejszym umówieniu.</p>
       </aside>
     </div>
@@ -883,28 +932,7 @@ body[data-scroll="on"] .portrait img{
   </div>
 </section>
 
-<section class="dark" id="branze">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow">Dla kogo pracuję</span>
-        <h2>Branże, które znam od środka</h2>
-      </div>
-      <p>Wśród klientów są duże firmy i przedsiębiorcy, którzy dopiero rozwijają biznes.</p>
-    </div>
-    <div class="croles cols2">
-        <div class="crole"><div class="ck">Producenci materiałów budowlanych (EPS, XPS)</div></div>
-        <div class="crole"><div class="ck">Domy mediowe</div></div>
-        <div class="crole"><div class="ck">Agencje reklamowe</div></div>
-        <div class="crole"><div class="ck">Dostawcy rozwiązań IT</div></div>
-        <div class="crole"><div class="ck">Domy produkcyjne filmów reklamowych</div></div>
-        <div class="crole"><div class="ck">Producenci kosmetyków i detergentów</div></div>
-        <div class="crole"><div class="ck">Wypożyczalnie samochodów</div></div>
-        <div class="crole"><div class="ck">Dealerzy samochodowi</div></div>
-        <div class="crole"><div class="ck">Sklepy internetowe</div></div>
-    </div>
-  </div>
-</section>
+
 
 <section class="alt" id="pytania">
   <div class="wrap">
@@ -913,56 +941,56 @@ body[data-scroll="on"] .portrait img{
         <span class="eyebrow">Pytania</span>
         <h2>Najczęstsze pytania</h2>
       </div>
-      <p>Jeśli Twojego pytania tu nie ma, zadaj je na konsultacji albo w wiadomości.</p>
+      <p>Jeśli Twojego pytania tu nie ma, zadaj je <a href="#zlecane">na konsultacji</a> albo <a href="#kontakt">w wiadomości</a>.</p>
     </div>
     <div class="services" id="faqacc">
-      <div class="svc" open-state="0">
-        <button class="svc-btn" aria-expanded="false">
+      <div class="svc" open-state="1">
+        <h3><button class="svc-btn" id="faqb1" aria-expanded="true" aria-controls="faqp1">
           <span class="svc-num">I</span>
           <span><span class="svc-name">Czy obsługujesz firmy z całej Polski?</span></span>
           <span class="svc-mark"></span>
-        </button>
-        <div class="svc-panel"><div><div class="svc-body">
+        </button></h3>
+        <div class="svc-panel" id="faqp1" role="region" aria-labelledby="faqb1"><div><div class="svc-body">
           <div><p>Tak. Konsultacje i większość projektów prowadzę online, więc siedziba firmy nie ma znaczenia. Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</p></div>
         </div></div></div>
       </div>
       <div class="svc" open-state="0">
-        <button class="svc-btn" aria-expanded="false">
+        <h3><button class="svc-btn" id="faqb2" aria-expanded="false" aria-controls="faqp2">
           <span class="svc-num">II</span>
           <span><span class="svc-name">Czy mogę zlecić tylko jedną sprawę?</span></span>
           <span class="svc-mark"></span>
-        </button>
-        <div class="svc-panel"><div><div class="svc-body">
+        </button></h3>
+        <div class="svc-panel" id="faqp2" role="region" aria-labelledby="faqb2"><div><div class="svc-body">
           <div><p>Tak. Współpraca może dotyczyć pojedynczej umowy, zmiany w KRS, wezwania do zapłaty albo uchwały. Stała obsługa jest jedną z możliwości, nie warunkiem.</p></div>
         </div></div></div>
       </div>
       <div class="svc" open-state="0">
-        <button class="svc-btn" aria-expanded="false">
+        <h3><button class="svc-btn" id="faqb3" aria-expanded="false" aria-controls="faqp3">
           <span class="svc-num">III</span>
           <span><span class="svc-name">Co obejmuje 30-minutowa konsultacja?</span></span>
           <span class="svc-mark"></span>
-        </button>
-        <div class="svc-panel"><div><div class="svc-body">
+        </button></h3>
+        <div class="svc-panel" id="faqp3" role="region" aria-labelledby="faqb3"><div><div class="svc-body">
           <div><p>Rozmowę o jednym, wcześniej wskazanym zagadnieniu, uporządkowanie najważniejszych ryzyk i rekomendację dalszych kroków. Pełna analiza dokumentów lub przygotowanie pisma to osobna usługa.</p></div>
         </div></div></div>
       </div>
       <div class="svc" open-state="0">
-        <button class="svc-btn" aria-expanded="false">
+        <h3><button class="svc-btn" id="faqb4" aria-expanded="false" aria-controls="faqp4">
           <span class="svc-num">IV</span>
           <span><span class="svc-name">Czy cena konsultacji pomniejszy koszt dalszej usługi?</span></span>
           <span class="svc-mark"></span>
-        </button>
-        <div class="svc-panel"><div><div class="svc-body">
+        </button></h3>
+        <div class="svc-panel" id="faqp4" role="region" aria-labelledby="faqb4"><div><div class="svc-body">
           <div><p>Tak. Jeżeli w ciągu 30 dni zlecisz usługę bezpośrednio związaną z konsultacją, a kancelaria przyjmie zlecenie, jej wynagrodzenie zostanie jednorazowo pomniejszone o 200 zł netto.</p></div>
         </div></div></div>
       </div>
       <div class="svc" open-state="0">
-        <button class="svc-btn" aria-expanded="false">
+        <h3><button class="svc-btn" id="faqb5" aria-expanded="false" aria-controls="faqp5">
           <span class="svc-num">V</span>
           <span><span class="svc-name">Jak ustalana jest cena pozostałych usług?</span></span>
           <span class="svc-mark"></span>
-        </button>
-        <div class="svc-panel"><div><div class="svc-body">
+        </button></h3>
+        <div class="svc-panel" id="faqp5" role="region" aria-labelledby="faqb5"><div><div class="svc-body">
           <div><p>Po poznaniu celu, dokumentów i terminu potwierdzam zakres oraz wynagrodzenie przed rozpoczęciem pracy.</p></div>
         </div></div></div>
       </div>
@@ -1340,7 +1368,7 @@ document.querySelectorAll('.credentials .cred').forEach(function(el,i){
 // services accordion
 ['svc','faqacc'].forEach(function(id){var host=document.getElementById(id); if(!host) return; host.addEventListener('click',function(e){
   var btn=e.target.closest('.svc-btn'); if(!btn) return;
-  var item=btn.parentElement, open=item.getAttribute('open-state')==='1';
+  var item=btn.closest('.svc'), open=item.getAttribute('open-state')==='1';
   this.querySelectorAll('.svc').forEach(function(s){
     s.setAttribute('open-state','0');
     s.querySelector('.svc-btn').setAttribute('aria-expanded','false');
