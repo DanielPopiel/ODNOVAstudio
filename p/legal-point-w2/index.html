@@ -546,18 +546,13 @@ body[data-scroll="on"] .portrait img{
   html{scroll-behavior:auto}
 }
 
-/* ---------- Portret: najechanie zdejmuje czern i biel ----------
-   Na dotyku nie ma najechania, wiec kolor wraca w miare wjezdzania kadru
-   w ekran — silnik przewijania i tak liczy dla tej figury --p. */
-@media (hover:hover) and (pointer:fine){
-  .portrait img{transition:filter .55s cubic-bezier(.22,.61,.36,1)}
-  .portrait::after{transition:opacity .55s cubic-bezier(.22,.61,.36,1)}
-  .portrait:hover img{filter:grayscale(0) contrast(1.02) brightness(1.03) saturate(1.04)}
-  .portrait:hover::after{opacity:.72}
-}
-@media (hover:none),(pointer:coarse){
-  .portrait img{filter:grayscale(calc(1 - var(--p,0))) contrast(1.05) brightness(.97)}
-}
+/* ---------- Portret: zawsze w kolorze ----------
+   Arkusz Pikuly zdejmuje z portretu kolor (grayscale(1)); tutaj zdjecie ma zostac
+   kolorowe, wiec nadpisujemy sam filtr i odrobine rozjasniamy dol zaslony,
+   zeby cieply odcien nie ginal pod gradientem pod podpisem. */
+.portrait img{filter:contrast(1.02) saturate(1.03)}
+.portrait::after{background:linear-gradient(180deg,
+  rgba(14,29,24,.10) 0%, rgba(14,29,24,.03) 44%, rgba(10,18,15,.80) 100%)}
 
 /* ---------- Legal Point: lista branz na ciemnym tle ---------- */
 .dark .croles{border-top-color:var(--line-d2)}
@@ -585,7 +580,7 @@ body[data-scroll="on"] .portrait img{
   <span>Makieta · propozycja projektowa</span>
   <span><b>Odnova Studio</b> · wariant „Scripta”</span>
   <span class="rb-hide">strona demonstracyjna, nie jest witryną kancelarii</span>
-  <span class="rb-ver">wersja 4 · 22.09.2026</span>
+  <span class="rb-ver">wersja 5 · 22.09.2026</span>
   <button class="bgtoggle" id="bgt" hidden>Tło: zdjęcie</button>
 </div>
 
