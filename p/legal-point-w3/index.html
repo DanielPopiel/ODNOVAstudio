@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#F5F5F2">
-<title>Adwokat dla firm | BRP Legal Point · makieta W3</title>
+<title>BRP Legal Point · obsługa prawna firm · makieta W3</title>
 <meta name="description" content="Makieta nowej odsłony strony BRP Legal Point, wariant W3 „Branże”, przygotowana przez Odnova Studio.">
 <meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W3">
 <meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
@@ -66,27 +66,27 @@ a{text-underline-offset:.22em;text-decoration-thickness:1px}
 .intro{padding:64px 0 40px}
 .intro .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:end}
 .intro h1{grid-column:1/9;font-size:clamp(44px,6.6vw,96px);line-height:1.02;font-weight:400;letter-spacing:-.02em;text-wrap:balance}
-.rl del,.rl ins{text-decoration:none;position:relative;display:inline-block}
-.rl del{color:var(--mute);margin-right:.08em}
-.rl del::after{content:"";position:absolute;left:-.04em;right:-.04em;top:54%;height:.055em;background:var(--signal-ink);transform-origin:left;transform:scaleX(1)}
-.rl ins{color:var(--signal-ink);clip-path:inset(0 0 -.2em 0)}
-.rl ins::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.045em;background:var(--signal-ink)}
-.js .rl del::after{animation:strike .7s cubic-bezier(.65,0,.35,1) .5s both}
-.js .rl ins{animation:insert .9s cubic-bezier(.16,1,.3,1) 1.25s both}
-@keyframes strike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes insert{from{clip-path:inset(0 100% -.2em 0)}to{clip-path:inset(0 0 -.2em 0)}}
+.rw{display:inline-block;position:relative}
+.rw .w{display:inline-block;position:relative;color:var(--signal-ink);transition:color .35s}
+.rw .w::before{content:"";position:absolute;left:-.04em;right:-.04em;top:55%;height:.055em;background:var(--signal-ink);transform-origin:left;transform:scaleX(0)}
+.rw .w::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.045em;background:var(--signal-ink);transition:opacity .25s}
+.rw.x .w{color:var(--mute)}
+.rw.x .w::before{transform:scaleX(1);transition:transform .5s cubic-bezier(.65,0,.35,1)}
+.rw.x .w::after{opacity:0}
+.rw.in .w{animation:insert .8s cubic-bezier(.16,1,.3,1) both}
+@keyframes insert{from{clip-path:inset(-.1em 100% -.2em 0)}to{clip-path:inset(-.1em 0 -.2em 0)}}
 .intro .side{grid-column:9/13;padding-bottom:10px}
 .intro .side p{color:var(--ink-2);font-size:17px;margin-bottom:22px}
 .intro .cta{display:flex;flex-wrap:wrap;gap:12px}
 
 /* ---------- hero: przelot ---------- */
-.stage{position:relative;height:290vh}
-.pin{position:sticky;top:calc(var(--hdr-h) + 29px);height:calc(100vh - var(--hdr-h) - 29px);display:flex;flex-direction:column;justify-content:center}
+.stage{position:relative;height:360vh}
+.pin{position:sticky;top:calc(var(--hdr-h) + 29px);height:calc(100vh - var(--hdr-h) - 29px);display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,2.4vh,28px) 0}
 .frame{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
-.view{position:relative;aspect-ratio:16/9;max-height:calc(100vh - var(--hdr-h) - 150px);margin:0 auto;background:#0b0f16;overflow:hidden}
+.view{position:relative;width:100%;height:clamp(300px,calc(100vh - var(--hdr-h) - 29px - 118px),820px);background:#0b0f16;overflow:hidden}
 .view canvas,.view .fb{position:absolute;inset:0;width:100%;height:100%}
 .view .fb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 64%;opacity:0;transform-origin:58% 64%}
-.view .fb img.s1{opacity:1}
+.view .fb img.f0{opacity:1}
 .dust{pointer-events:none}
 .paper{position:absolute;inset:0;background:var(--paper);opacity:0;display:flex;align-items:center;justify-content:center;padding:6%}
 .paper p{font-family:var(--serif);font-size:clamp(26px,3.4vw,48px);line-height:1.18;max-width:22ch;text-wrap:balance;text-align:center;margin:0;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
@@ -138,6 +138,17 @@ a{text-underline-offset:.22em;text-decoration-thickness:1px}
 html:not(.js) .tabs{display:none}
 html:not(.js) .panel{margin-bottom:64px}
 html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;margin-bottom:22px;grid-column:1/-1}
+
+/* ---------- zakres ---------- */
+.scope{background:var(--paper-2)}
+.areas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:56px;border-top:1px solid var(--ink);counter-reset:s}
+.areas li{border-bottom:1px solid var(--line)}
+.areas a{display:grid;grid-template-columns:2.6em 1fr auto;column-gap:12px;padding:20px 0 22px;text-decoration:none;color:inherit;align-items:baseline;min-height:44px}
+.areas a::before{counter-increment:s;content:"§\00a0" counter(s);font-family:var(--serif);color:var(--signal-ink);font-size:16px;grid-row:1}
+.areas b{grid-column:2;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.8vw,25px);line-height:1.2}
+.areas span{grid-column:2;color:var(--ink-2);font-size:15.5px;margin-top:6px;max-width:48ch}
+.areas .ar{grid-column:3;grid-row:1;align-self:center;width:14px;height:14px;color:var(--ink-2)}
+.areas a:hover b,.areas a:hover .ar{color:var(--signal-ink)}
 
 /* ---------- od srodka ---------- */
 .dark{background:var(--ink);color:var(--cream)}
@@ -223,8 +234,9 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
   .brand small{display:none}
   .intro{padding:40px 0 28px}
   .intro .cta .btn{flex:1 1 100%}
-  .stage{height:250vh}
-  .view{aspect-ratio:4/5;max-height:calc(100vh - var(--hdr-h) - 170px)}
+  .stage{height:310vh}
+  .view{height:calc(100svh - var(--hdr-h) - 29px - 64px - 150px);min-height:320px}
+  .pin{justify-content:flex-start}
   .cap{grid-template-columns:1fr auto;gap:8px 12px;font-size:14px}
   .cap .go-t{display:none}
   .sec{padding:84px 0}
@@ -239,9 +251,10 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
   .fixed li{grid-template-columns:1fr}
   .fixed li a{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
   .qa{grid-template-columns:1fr}
+  .areas{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .js .rl del::after,.js .rl ins{animation:none}
+  .rw .w,.rw.in .w{animation:none}
   .stage{height:auto}
   .pin{position:relative;top:0;height:auto;padding:0 0 20px}
   .tab::after{transition:none}
@@ -254,6 +267,7 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
   <nav class="nav" aria-label="Główna nawigacja">
     <a class="brand" href="#start"><svg class="mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="1" y="1" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="22" y="27.6" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.3" fill="currentColor" font-family="Schibsted Grotesk, Arial, sans-serif">BRP</text></svg><span><b>BRP Legal Point</b><small>adw. Beata Rogowska-Prus</small></span></a>
     <a class="lnk" href="#branza">Twoja branża</a>
+    <a class="lnk" href="#zakres">Zakres</a>
     <a class="lnk" href="#od-srodka">Od środka</a>
     <a class="lnk" href="#wejscie">Jak zacząć</a>
     <a class="lnk" href="#kontakt">Kontakt</a>
@@ -263,9 +277,9 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
 
 <header class="intro" id="start">
   <div class="wrap">
-    <h1><span class="sr">Branże się zmieniają. Umowa zostaje.</span><span class="h1v" aria-hidden="true"><span class="rl"><del>Reklama</del> <ins>Handel</ins></span> się&nbsp;zmienia.<br>Umowa zostaje.</span></h1>
+    <h1><span class="sr">Branże się zmieniają. Umowa zostaje.</span><span class="h1v" aria-hidden="true"><span class="rw" data-words="Produkcja|Budownictwo|Handel|Reklama|Technologia"><span class="w">Produkcja</span></span><br>się&nbsp;zmienia.<br>Umowa zostaje.</span></h1>
     <div class="side">
-      <p>Adwokat dla firm, które robią reklamę, media, handel i produkcję. Przez lata byłam w nich prawnikiem wewnętrznym, dziś pracuję online z firmami z całej Polski.</p>
+      <p>Bieżąca obsługa prawna spółek i przedsiębiorców. Od 2010 roku pracuję z zarządami i zespołami: w kancelariach i po stronie firm, jako prawnik wewnętrzny. Konsultacje online w całej Polsce.</p>
       <div class="cta">
         <a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a>
         <a class="btn line" href="#branza">Znajdź swoją branżę</a>
@@ -274,22 +288,18 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
   </div>
 </header>
 
-<div class="stage" aria-label="Trzy branże, jedna umowa">
+<div class="stage" aria-label="Cztery branże, jedna umowa">
   <div class="pin">
     <figure class="frame" style="margin:0 auto">
       <div class="view">
         <canvas id="gl" aria-hidden="true"></canvas>
-        <div class="fb">
-          <img class="s1" src="s1.webp" alt="Plan zdjęciowy reklamy, na stoliku produkcyjnym leży umowa z piórem" width="2200" height="1228">
-          <img class="s2" loading="lazy" src="s2.webp" alt="Stół w agencji reklamowej, ta sama umowa pod tą samą lampą" width="2200" height="1228">
-          <img class="s3" loading="lazy" src="s3.webp" alt="Stanowisko pakowania w magazynie sklepu internetowego, ta sama umowa" width="2200" height="1228">
-        </div>
+        <div class="fb"><img class="f0" src="s-produkcja.webp" alt="Hala produkcyjna, na stole warsztatowym leży umowa z piórem pod mosiężną lampą" width="2200" height="1228"><img class="f1" loading="lazy" src="s-budowa.webp" alt="Kontener biura budowy, ta sama umowa pod tą samą lampą" width="2200" height="1228"><img class="f2" loading="lazy" src="s-plan.webp" alt="Plan zdjęciowy reklamy, ta sama umowa na stoliku produkcyjnym" width="2200" height="1228"><img class="f3" loading="lazy" src="s-magazyn.webp" alt="Stanowisko pakowania w magazynie sklepu internetowego, ta sama umowa" width="2200" height="1228"></div>
         <canvas id="dust" class="dust" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
         <div class="paper"><p>Świat wokół się zmienia. Na stole zostaje ta sama umowa. <a href="#branza">Zobacz, jak wygląda w Twojej branży.</a></p></div>
       </div>
       <figcaption class="cap">
-                <span class="act"><a href="#branza" data-tab="0" style=""><b>Plan zdjęciowy reklamy.</b> Umowy z twórcami i prawa do materiału, zanim padnie pierwszy klaps. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="0" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Agencja i dom mediowy.</b> Kampania opiniowana od briefu po emisję. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="1" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Sklep internetowy.</b> Regulamin, marka własna i dostawcy, zanim ruszy wysyłka. <span class="go-t">Sprawy w tej branży</span></a></span>
-        <span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+                <span class="act"><a href="#branza" data-tab="0" style=""><b>Hala produkcyjna.</b> Kontrakty z odbiorcami, regulacje produktowe i zespół na zmiany. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="1" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Biuro budowy.</b> Umowy z inwestorem i podwykonawcami, zanim ruszą roboty. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="3" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Plan zdjęciowy reklamy.</b> Prawa do materiału i umowy z twórcami, zanim padnie pierwszy klaps. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="2" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Magazyn sklepu internetowego.</b> Regulamin, marka własna i dostawcy, zanim ruszy wysyłka. <span class="go-t">Sprawy w tej branży</span></a></span>
+        <span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
       </figcaption>
     </figure>
   </div>
@@ -302,9 +312,19 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
       <h2>Co zwykle leży na stole w&nbsp;Twojej branży</h2>
       <p>Wybierz, czym zajmuje się Twoja firma — zobaczysz sprawy, które w tej branży trafiają na stół najczęściej.</p>
     </div>
-    <div class="tabs" role="tablist" aria-label="Branże"><button class="tab" role="tab" id="t-reklama" aria-controls="p-reklama" aria-selected="true">Reklama i media</button><button class="tab" role="tab" id="t-handel" aria-controls="p-handel" aria-selected="false">Handel i e-commerce</button><button class="tab" role="tab" id="t-motoryzacja" aria-controls="p-motoryzacja" aria-selected="false">Motoryzacja</button><button class="tab" role="tab" id="t-produkcja" aria-controls="p-produkcja" aria-selected="false">Produkcja i technologia</button></div>
-    <div class="panel" role="tabpanel" id="p-reklama" aria-labelledby="t-reklama"><h3 class="no-js-name">Reklama i media</h3><div class="who"><p>Przez lata pracowałam wewnątrz agencji reklamowych i domów mediowych. Znam rytm briefu, akceptacji i emisji. Wiem też, w którym miejscu zwykle pęka umowa.</p><ul><li>Agencje reklamowe</li><li>Domy mediowe</li><li>Domy produkcyjne filmów reklamowych</li></ul></div><div class="cases"><div class="case"><h3>Kampania przed emisją</h3><p>Opinia prawna na etapie briefu, konceptu, produkcji i emisji, zanim kampania trafi do odbiorców.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Twórcy i influencerzy</h3><p>Umowy z twórcami i influencerami, przeniesienie praw i licencje do materiału.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Klient i podwykonawcy</h3><p>Umowy z klientami agencji i z podwykonawcami: zakres, akceptacje, odpowiedzialność.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-handel" aria-labelledby="t-handel"><h3 class="no-js-name">Handel i e-commerce</h3><div class="who"><p>Sprzedaż online i marki własne to regulaminy, znaki i łańcuch dostawców. Każdy z tych elementów potrafi zatrzymać wysyłkę.</p><ul><li>Sklepy internetowe</li><li>Producenci kosmetyków i detergentów</li></ul></div><div class="cases"><div class="case"><h3>Regulamin sklepu i promocji</h3><p>Regulamin, zasady promocji i komunikacja w sklepie, zanim ruszy sprzedaż.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Znak towarowy</h3><p>Badanie znaku i nieuczciwej konkurencji, zgłoszenie w EUIPO.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Opakowania i nowe regulacje</h3><p>PPWR i SUP przełożone na procedury i dokumenty firmy.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-motoryzacja" aria-labelledby="t-motoryzacja"><h3 class="no-js-name">Motoryzacja</h3><div class="who"><p>Dużo umów z klientami, finansowanie, zespół i płatności. Sprawy, które najtaniej zabezpieczyć, zanim pojawi się spór.</p><ul><li>Dealerzy samochodowi</li><li>Wypożyczalnie samochodów</li></ul></div><div class="cases"><div class="case"><h3>Należności</h3><p>Zabezpieczenie płatności już przy umowie, potem wezwanie, nakaz zapłaty albo EPU.</p><span class="svc">Usługa: Należności i spory gospodarcze</span><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Finansowanie i zabezpieczenia</h3><p>Kredyty, pożyczki, zastawy i poręczenia sprawdzone, zanim firma je podpisze.</p><span class="svc">Usługa: Finansowanie i zabezpieczenia</span><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Zespół</h3><p>Regulaminy pracy i wynagradzania, umowy o pracę i kontrakty menedżerskie.</p><span class="svc">Usługa: Prawo pracy dla pracodawców</span><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-produkcja" aria-labelledby="t-produkcja"><h3 class="no-js-name">Produkcja i technologia</h3><div class="who"><p>Kontrakty z dużymi odbiorcami, regulacje produktowe i zmiany w spółce. Często po angielsku, zawsze pod presją terminu.</p><ul><li>Producenci materiałów budowlanych (EPS, XPS)</li><li>Dostawcy rozwiązań IT</li></ul></div><div class="cases"><div class="case"><h3>Kontrakty handlowe</h3><p>Umowy z odbiorcami i dostawcami, negocjacje także po angielsku.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Regulacje produktowe</h3><p>PPWR, EUDR i CSRD przełożone na konkretne procedury i dokumenty.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Spółka i KRS</h3><p>Uchwały, zgromadzenia, zmiany w spółce, zgłoszenia do KRS i CRBR.</p><span class="svc">Usługa: Prawo spółek, KRS i CRBR</span><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div>
-    <p class="also">Twojej branży nie ma na liście? Pracuję także z firmami spoza tych grup. Najprościej <a href="#wejscie">zacząć od konsultacji</a>.</p>
+    <div class="tabs" role="tablist" aria-label="Branże"><button class="tab" role="tab" id="t-produkcja" aria-controls="p-produkcja" aria-selected="true">Produkcja</button><button class="tab" role="tab" id="t-budownictwo" aria-controls="p-budownictwo" aria-selected="false">Budownictwo</button><button class="tab" role="tab" id="t-handel" aria-controls="p-handel" aria-selected="false">FMCG i e-commerce</button><button class="tab" role="tab" id="t-reklama" aria-controls="p-reklama" aria-selected="false">Reklama i media</button><button class="tab" role="tab" id="t-it" aria-controls="p-it" aria-selected="false">Digital i IT</button></div>
+    <div class="panel" role="tabpanel" id="p-produkcja" aria-labelledby="t-produkcja"><h3 class="no-js-name">Produkcja</h3><div class="who"><p>Duzi odbiorcy, długie łańcuchy dostaw i regulacje produktowe, które zmieniają się szybciej niż linia produkcyjna.</p><ul><li>Zakłady produkcyjne</li><li>Producenci materiałów budowlanych</li></ul></div><div class="cases"><div class="case"><h3>Kontrakty z odbiorcami i dostawcami</h3><p>Umowy ramowe, zamówienia, kary umowne i odpowiedzialność, negocjowane także po angielsku.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Regulacje produktowe</h3><p>PPWR, EUDR i CSRD przełożone na procedury i dokumenty firmy.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Zespół na zmiany</h3><p>Regulaminy pracy i wynagradzania, umowy o pracę i kontrakty menedżerskie.</p><span class="svc">Usługa: Prawo pracy dla pracodawców</span><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-budownictwo" aria-labelledby="t-budownictwo"><h3 class="no-js-name">Budownictwo</h3><div class="who"><p>Harmonogram, podwykonawcy i płatności po odbiorach. Najtańszy spór to ten, który zamyka dobrze napisana umowa.</p><ul><li>Generalni wykonawcy i podwykonawcy</li><li>Dostawcy materiałów</li></ul></div><div class="cases"><div class="case"><h3>Umowy z inwestorem i podwykonawcami</h3><p>Zakres, terminy, odbiory, kary i odpowiedzialność ustalone, zanim ruszą roboty.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Płatności i zatory</h3><p>Wezwanie do zapłaty, nakaz zapłaty albo EPU, a przy sporze reprezentacja przed sądem.</p><span class="svc">Usługa: Należności i spory gospodarcze</span><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Gwarancje i zabezpieczenia</h3><p>Gwarancje, poręczenia, zastawy i umowy finansowania sprawdzone przed podpisem.</p><span class="svc">Usługa: Finansowanie i zabezpieczenia</span><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-handel" aria-labelledby="t-handel"><h3 class="no-js-name">FMCG i e-commerce</h3><div class="who"><p>Sprzedaż online i marki własne to regulaminy, znaki i łańcuch dostawców. Każdy z tych elementów potrafi zatrzymać wysyłkę.</p><ul><li>Sklepy internetowe</li><li>Producenci kosmetyków i detergentów</li></ul></div><div class="cases"><div class="case"><h3>Regulamin sklepu i promocji</h3><p>Regulamin, zasady promocji i komunikacja w sklepie, zanim ruszy sprzedaż.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Znak towarowy</h3><p>Badanie znaku i nieuczciwej konkurencji, zgłoszenie w EUIPO.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Opakowania i nowe regulacje</h3><p>PPWR i SUP przełożone na procedury i dokumenty firmy.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-reklama" aria-labelledby="t-reklama"><h3 class="no-js-name">Reklama i media</h3><div class="who"><p>Znam rytm briefu, akceptacji i emisji od środka, z pracy w agencjach i domach mediowych. Wiem, w którym miejscu zwykle pęka umowa.</p><ul><li>Agencje reklamowe</li><li>Domy mediowe</li><li>Domy produkcyjne filmów reklamowych</li></ul></div><div class="cases"><div class="case"><h3>Kampania przed emisją</h3><p>Opinia prawna na etapie briefu, konceptu, produkcji i emisji, zanim kampania trafi do odbiorców.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Twórcy i influencerzy</h3><p>Umowy z twórcami i influencerami, przeniesienie praw i licencje do materiału.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Klient i podwykonawcy</h3><p>Umowy z klientami agencji i z podwykonawcami: zakres, akceptacje, odpowiedzialność.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-it" aria-labelledby="t-it"><h3 class="no-js-name">Digital i IT</h3><div class="who"><p>Wdrożenia, dane klientów i szybko rosnąca spółka. Prawo musi nadążyć za sprintem, a nie go zatrzymać.</p><ul><li>Dostawcy rozwiązań IT</li><li>Software house’y i agencje digital</li></ul></div><div class="cases"><div class="case"><h3>Umowy wdrożeniowe i SLA</h3><p>Zakres, odbiory, poziom usług i odpowiedzialność w umowach z klientami i podwykonawcami.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>RODO w produkcie</h3><p>Umowy powierzenia, polityki i procedury, które da się wdrożyć w zespole.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Spółka, która rośnie</h3><p>Nowi wspólnicy, uchwały, zmiany w umowie spółki, zgłoszenia do KRS i CRBR.</p><span class="svc">Usługa: Prawo spółek, KRS i CRBR</span><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div>
+    <p class="also">Twojej branży nie ma na liście? Większość spraw jest wspólna dla każdej firmy: umowy, spółka, należności, zespół, dane. Najprościej <a href="#wejscie">zacząć od konsultacji</a>.</p>
+  </div>
+</section>
+
+<section class="sec scope" id="zakres">
+  <div class="wrap">
+    <div class="head">
+      <h2>Branże są różne. Zakres pracy prawnika firmy jest wspólny.</h2>
+      <p>Osiem obszarów, w których prowadzę sprawy firm. Każdy ma na legal-point.org osobną stronę z zakresem i listą dokumentów do przygotowania.</p>
+    </div>
+    <ol class="areas"><li><a href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener"><b>Bieżąca obsługa prawna firm</b><span>Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener"><b>Prawo spółek, KRS i CRBR</b><span>Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener"><b>Umowy B2B i negocjacje</b><span>Kontrakty handlowe, umowy z dostawcami i na marki własne.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener"><b>Należności i spory gospodarcze</b><span>Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener"><b>Prawo pracy dla pracodawców</b><span>Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener"><b>Compliance, RODO i regulacje</b><span>Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener"><b>E-commerce, reklama i IP</b><span>Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener"><b>Finansowanie i zabezpieczenia</b><span>Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li></ol>
   </div>
 </section>
 
@@ -369,7 +389,7 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
 
 <div class="callbar"><a class="c1" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów 30 min</a><a href="tel:+48662187462">Zadzwoń</a></div>
 
-<script>window.__W3={"aspect": 1.7916666666666667, "uc": 0.5784883720930233, "vc": 0.63671875, "dc": 0.66, "lu": 0.5377906976744186, "lv": 0.1953125, "worlds": [{"s": "g1.webp", "m": "g1-m.webp", "d": "g1-d.png"}, {"s": "g2.webp", "m": "g2-m.webp", "d": "g2-d.png"}, {"s": "g3.webp", "m": "g3-m.webp", "d": "g3-d.png"}], "fg": {"s": "fg.webp", "m": "fg-m.webp"}};</script>
+<script>window.__W3={"aspect": 1.7916666666666667, "uc": 0.5784883720930233, "vc": 0.63671875, "dc": 0.7, "lu": 0.5377906976744186, "lv": 0.1953125, "worlds": [{"s": "g-produkcja.webp", "m": "g-produkcja-m.webp", "d": "g-produkcja-d.png"}, {"s": "g-budowa.webp", "m": "g-budowa-m.webp", "d": "g-budowa-d.png"}, {"s": "g-plan.webp", "m": "g-plan-m.webp", "d": "g-plan-d.png"}, {"s": "g-magazyn.webp", "m": "g-magazyn-m.webp", "d": "g-magazyn-d.png"}], "vy": 0.44, "fg": {"s": "fg.webp", "m": "fg-m.webp"}};</script>
 <script>
 (function(){
   var d=document, root=d.documentElement;
@@ -393,6 +413,16 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
     });
   });
   if(tabs.length) sel(0);
+  // naglowek: slowo skreslane i wpisywane na nowo, jak poprawka w umowie
+  var rw=d.querySelector('.rw');
+  if(rw && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var words=rw.getAttribute('data-words').split('|'), wi=0, wEl=rw.querySelector('.w');
+    setInterval(function(){
+      if(d.hidden) return;
+      rw.classList.add('x');
+      setTimeout(function(){ wi=(wi+1)%words.length; wEl.textContent=words[wi]; rw.classList.remove('x','in'); void wEl.offsetWidth; rw.classList.add('in'); },720);
+    },3000);
+  }
   // podpis pod kadrem prowadzi do branzy, ktora widac w kadrze
   [].slice.call(d.querySelectorAll('.cap .act>a')).forEach(function(a){ a.addEventListener('click',function(){ var i=+a.getAttribute('data-tab'); if(tabs[i]) sel(i); }); });
 
@@ -421,22 +451,26 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
   function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
   var pinEl=d.querySelector('.pin'); var capEl=d.querySelector('.cap');
   function prog(){ var r=stage.getBoundingClientRect(), top=parseFloat(getComputedStyle(pinEl).top)||0; var h=(stage.offsetHeight-pinEl.offsetHeight)*.9; return cl((top-r.top)/(h>1?h:1)); }
-  // wagi swiatow: 1 -> 2 -> 3
+  // wagi swiatow: przenikanie kolejnych kadrow, rowno rozlozone do 80% przewijania
+  var NW=W.worlds.length;
   function weights(p){
-    var a=cl((p-.25)/.11), b=cl((p-.55)/.11);
-    return [1-a, a*(1-b), b];
+    var a=[0], w=[];
+    for(var k=1;k<NW;k++) a.push(cl((p-(.8*k/NW-.045))/.09));
+    a.push(0);
+    for(k=0;k<NW;k++) w.push((k===0?1:a[k])*(1-a[k+1]));
+    return w;
   }
   function camF(p){ return p<.82 ? .04+.30*ease(p/.82) : .34+.54*ease((p-.82)/.18); }
   function paperA(p){ return cl((p-.86)/.10); }
   var lastAct=-1;
   function ui(p,w){
-    var act=w[2]>.5?2:(w[1]>.5?1:0);
+    var act=0; for(var k=1;k<w.length;k++) if(w[k]>w[act]) act=k;
     if(act!==lastAct){ lastAct=act; actEls.forEach(function(s,k){ s.style.opacity=k===act?1:0; s.style.pointerEvents=k===act?'auto':'none'; s.tabIndex=k===act?0:-1; }); ticks.forEach(function(t,k){ t.classList.toggle('on',k<=act); }); }
     var pa=paperA(p); paper.style.opacity=pa; if(capEl) capEl.style.opacity=1-pa; paperTxt.classList.toggle('on',pa>.85);
     paper.style.pointerEvents=pa>.85?'auto':'none';
   }
 
-  if(reduce){ fb.forEach(function(im,k){ im.style.opacity=k===1?1:0; }); actEls.forEach(function(s,k){ s.style.opacity=1; s.style.position='static'; s.style.pointerEvents='auto'; }); return; }
+  if(reduce){ fb.forEach(function(im,k){ im.style.opacity=k===0?1:0; }); actEls.forEach(function(s,k){ s.style.opacity=1; s.style.position='static'; s.style.pointerEvents='auto'; }); return; }
 
   // --- WebGL: siatka z mapa glebi
   var gl=null;
@@ -478,21 +512,26 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
     meshes[k]={bp:bp,bu:bu,bi:bi,tx:tx,n:idx.length};
-    if(++ready===4){ view.classList.add('gl-on'); fb.forEach(function(im){ im.style.visibility='hidden'; }); onScroll(); }
+    if(++ready===NW+1){ view.classList.add('gl-on'); fb.forEach(function(im){ im.style.visibility='hidden'; }); onScroll(); }
   }
   W.worlds.forEach(function(w,k){
     loadImg(small?w.m:w.s,function(img){ loadImg(w.d,function(dep){ build(k,img,dep); }); });
   });
-  loadImg(small?W.fg.m:W.fg.s,function(img){ build(3,img,null); });   // umowa, pioro, lampa: jedna plaszczyzna, nie przenika
+  loadImg(small?W.fg.m:W.fg.s,function(img){ build(NW,img,null); });   // umowa, pioro, lampa: jedna plaszczyzna, nie przenika
 
   // punkt umowy w przestrzeni: kamera jedzie po promieniu przez niego, wiec umowa stoi w miejscu
   var Zc=Zof(W.dc), Rc=ray(UC,VC), Pc=[Rc[0]*Zc,Rc[1]*Zc,Rc[2]*Zc];
 
+  // okno kadru na plaszczyznie obrazu (z=-1): waski ekran tnie boki wokol umowy, szeroki tnie gore i dol
+  function win(AC){
+    var hw, hh, xc=0, yc=0;
+    if(AC<=AI){ hh=T; hw=T*AC; var xm=AI*T-hw; xc=Math.max(-xm,Math.min(xm,(UC-.5)*2*AI*T)); }
+    else { hw=AI*T; hh=AI*T/AC; var ym=T-hh; yc=Math.max(-ym,Math.min(ym,(.5-W.vy)*2*T)); }
+    return {xc:xc,yc:yc,hw:hw,hh:hh};
+  }
   function proj(){
-    var w=cv.width, h=cv.height, AC=w/h, near=.02, far=20;
-    var xc=(UC-.5)*2*AI*T, half=T*AC, xmax=AI*T-half;       // okno kadru przesuniete na umowe
-    if(xmax<0) xmax=0; if(xc>xmax) xc=xmax; if(xc<-xmax) xc=-xmax;
-    var l=(xc-half)*near, r=(xc+half)*near, b=-T*near, t=T*near;
+    var w=cv.width, h=cv.height, near=.02, far=20, o=win(w/h);
+    var l=(o.xc-o.hw)*near, r=(o.xc+o.hw)*near, b=(o.yc-o.hh)*near, t=(o.yc+o.hh)*near;
     return new Float32Array([2*near/(r-l),0,0,0, 0,2*near/(t-b),0,0, (r+l)/(r-l),(t+b)/(t-b),-(far+near)/(far-near),-1, 0,0,-2*far*near/(far-near),0]);
   }
   function size(){
@@ -501,14 +540,14 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
     if(cv.width!==w||cv.height!==h){ cv.width=w; cv.height=h; if(dust){ dust.width=Math.round(r.width); dust.height=Math.round(r.height);} }
   }
   function draw(p){
-    if(ready<4) return;
+    if(ready<NW+1) return;
     size(); gl.viewport(0,0,cv.width,cv.height);
     gl.clearColor(.04,.06,.09,1); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
     gl.uniformMatrix4fv(uP,false,proj());
     var f=camF(p); gl.uniform3f(uC,Pc[0]*f,Pc[1]*f,Pc[2]*f);
     var w=weights(p);
     gl.enable(gl.BLEND); gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA); gl.enable(gl.DEPTH_TEST);
-    var order=[0,1,2].filter(function(k){return w[k]>.002;}).sort(function(a,b){return w[b]-w[a];});
+    var order=W.worlds.map(function(x,k){return k;}).filter(function(k){return w[k]>.002;}).sort(function(a,b){return w[b]-w[a];});
     order.forEach(function(k,ix){
       var m=meshes[k]; gl.clear(gl.DEPTH_BUFFER_BIT);
       gl.bindBuffer(gl.ARRAY_BUFFER,m.bp); gl.enableVertexAttribArray(aP); gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
@@ -517,7 +556,7 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
       gl.uniform1f(uA, ix===0?1:w[k]/(w[k]+w[order[0]]));
       gl.drawElements(gl.TRIANGLES,m.n,gl.UNSIGNED_SHORT,0);
     });
-    var F=meshes[3]; gl.disable(gl.DEPTH_TEST);
+    var F=meshes[NW]; gl.disable(gl.DEPTH_TEST);
     gl.bindBuffer(gl.ARRAY_BUFFER,F.bp); gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
     gl.bindBuffer(gl.ARRAY_BUFFER,F.bu); gl.vertexAttribPointer(aUV,2,gl.FLOAT,false,0,0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,F.bi); gl.bindTexture(gl.TEXTURE_2D,F.tx);
@@ -535,7 +574,7 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
     var f=camF(P), mag=1/(1-f), a=(1-paperA(P))*.9;
     if(a<=0) return;
     // stozek swiatla pod klosza: od lampy do umowy, na ekranie
-    var cx=dw*screenU(UC), cy=dh*VC, lx=cx+(screenU(lampU)-screenU(UC))*dw*mag, ly=cy+(lampV-VC)*dh*mag;
+    var cx=dw*screenU(UC), cy=dh*screenV(VC), lx=cx+(screenU(lampU)-screenU(UC))*dw*mag, ly=cy+(screenV(lampV)-screenV(VC))*dh*mag;
     var g=dctx.createRadialGradient(lx,ly+dh*.05*mag,0,lx,ly+dh*.05*mag,dh*.42*mag);
     var br=.10+.025*Math.sin(t/1700)+.015*Math.sin(t/610);
     g.addColorStop(0,'rgba(255,214,160,'+(br*a)+')'); g.addColorStop(1,'rgba(255,214,160,0)');
@@ -548,10 +587,8 @@ html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;
       dctx.beginPath(); dctx.arc(mx,my,r,0,6.283); dctx.fill();
     });
   }
-  function screenU(u){ // pozycja punktu obrazu na ekranie przy przycietym kadrze
-    var r=view.getBoundingClientRect(), AC=r.width/r.height, xc=(UC-.5)*2*AI*T, half=T*AC, xmax=Math.max(0,AI*T-half);
-    xc=Math.max(-xmax,Math.min(xmax,xc)); var x=(u-.5)*2*AI*T; return .5+(x-xc)/(2*half);
-  }
+  function screenU(u){ var r=view.getBoundingClientRect(), o=win(r.width/r.height); return .5+((u-.5)*2*AI*T-o.xc)/(2*o.hw); }
+  function screenV(v){ var r=view.getBoundingClientRect(), o=win(r.width/r.height); return .5-((.5-v)*2*T-o.yc)/(2*o.hh); }
 
   var tick=false;
   function onScroll(){ if(!tick){ tick=true; requestAnimationFrame(function(){ tick=false; P=prog(); draw(P); }); } }
