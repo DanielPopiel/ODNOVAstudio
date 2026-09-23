@@ -4,608 +4,612 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#F5F5F2">
-<title>BRP Legal Point · obsługa prawna firm · makieta W3</title>
-<meta name="description" content="Makieta nowej odsłony strony BRP Legal Point, wariant W3 „Branże”, przygotowana przez Odnova Studio.">
+<title>Adwokat dla firm online | BRP Legal Point · makieta W3</title>
+<meta name="description" content="Makieta nowej odsłony strony BRP Legal Point, wariant W3 „Pacta”, przygotowana przez Odnova Studio.">
 <meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W3">
 <meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
 <meta property="og:image" content="https://www.odnovastudio.com/p/legal-point-w3/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F3F1EC'/%3E%3Crect x='8' y='8' width='48' height='48' fill='none' stroke='%230F1A2B' stroke-width='3'/%3E%3Ctext x='32' y='39' text-anchor='middle' fill='%230F1A2B' font-family='Arial' font-size='15' font-weight='700'%3EBRP%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2312382d'/%3E%3Ctext x='32' y='40' text-anchor='middle' fill='%23a8c7b8' font-family='Arial' font-size='18' font-weight='700'%3EBRP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
-  --paper:#F5F5F2; --paper-2:#EAEAE5; --ink:#0F1A2B; --ink-2:#394456; --mute:#586173;
-  --line:rgba(15,26,43,.16); --line-d:rgba(243,241,236,.16);
-  --signal:#C9401B; --signal-ink:#A4330F;
-  --cream:#EFECE4; --cream-dim:#B6BAC2;
-  --serif:"Brygada 1918",Georgia,"Times New Roman",serif;
-  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --maxw:1240px; --hdr-h:64px;
+  --night:#0A1A15; --night-2:#0F241D; --brand:#12382D; --brand-2:#1A4a3C;
+  --mint:#A8C7B8; --mint-2:#CFE2D8; --paper:#EEF1EC; --paper-2:#E3E8E2; --white:#FAFBF9;
+  --ink:#13201B; --ink-2:#3D4B44; --muted:#5E6D65;
+  --line:rgba(19,32,27,.14); --line-d:rgba(168,199,184,.20);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --maxw:1200px; --hdr-h:112px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+section[id],header[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 p{margin:0 0 1em}
-h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.015em;font-optical-sizing:auto}
-:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
-.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
-section[id]{scroll-margin-top:calc(var(--hdr-h) + 12px)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-::selection{background:#F2D3C7;color:var(--ink)}
-.dark ::selection{background:var(--signal-ink);color:#fff}
-html{scrollbar-color:#9AA0AA var(--paper);accent-color:var(--signal-ink);caret-color:var(--signal-ink)}
-a{text-underline-offset:.22em;text-decoration-thickness:1px}
-.ar{width:.72em;height:.72em;margin-left:.38em;vertical-align:-.02em;flex:none}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* ---------- pasek makiety + naglowek w jednym kontenerze ---------- */
-.top{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
-.ribbon{background:var(--ink);color:var(--cream-dim);font-size:12px;letter-spacing:.04em;text-align:center;padding:6px 16px}
-.ribbon b{color:var(--cream);font-weight:600}
-.nav{display:flex;align-items:center;gap:30px;height:var(--hdr-h);max-width:var(--maxw);margin:0 auto;padding:0 32px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;color:var(--ink)}
-.mark{width:36px;height:36px;flex:none}
-.brand b{display:block;font-size:15px;letter-spacing:.02em;line-height:1.1}
-.brand small{display:block;font-size:12.5px;color:var(--mute);line-height:1.2}
-.nav a.lnk{text-decoration:none;font-size:15px;color:var(--ink-2);padding:6px 0;border-bottom:1px solid transparent}
-.nav a.lnk:hover{border-bottom-color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 22px;
-  background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--ink);transition:background .2s,color .2s}
-.btn:hover{background:var(--signal-ink);border-color:var(--signal-ink)}
-.btn.line{background:transparent;color:var(--ink)}
-.btn.line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.dark .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.dark .btn:hover{background:var(--signal-ink);color:#fff;border-color:var(--signal-ink)}
-.nav .btn{min-height:40px;padding:0 16px;font-size:14px}
-.navtoggle{display:none}
+/* ---------- przyciski ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:.8em 1.4em;
+  font:600 15px/1.2 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-mint{background:var(--mint);color:var(--night)}
+.btn-mint:hover{background:var(--mint-2)}
+.btn-ghost{border-color:rgba(250,251,249,.35);color:var(--white)}
+.btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
+.btn-dark{background:var(--brand);color:var(--white)}
+.btn-dark:hover{background:var(--brand-2)}
 
-/* ---------- hero: tytul ---------- */
-.intro{padding:64px 0 40px}
-.intro .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:end}
-.intro h1{grid-column:1/9;font-size:clamp(44px,6.6vw,96px);line-height:1.02;font-weight:400;letter-spacing:-.02em;text-wrap:balance}
-.rw{display:inline-block;position:relative}
-.rw .w{display:inline-block;position:relative;color:var(--signal-ink);transition:color .35s}
-.rw .w::before{content:"";position:absolute;left:-.04em;right:-.04em;top:55%;height:.055em;background:var(--signal-ink);transform-origin:left;transform:scaleX(0)}
-.rw .w::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.045em;background:var(--signal-ink);transition:opacity .25s}
-.rw.x .w{color:var(--mute)}
-.rw.x .w::before{transform:scaleX(1);transition:transform .5s cubic-bezier(.65,0,.35,1)}
-.rw.x .w::after{opacity:0}
-.rw.in .w{animation:insert .8s cubic-bezier(.16,1,.3,1) both}
-@keyframes insert{from{clip-path:inset(-.1em 100% -.2em 0)}to{clip-path:inset(-.1em 0 -.2em 0)}}
-.intro .side{grid-column:9/13;padding-bottom:10px}
-.intro .side p{color:var(--ink-2);font-size:17px;margin-bottom:22px}
-.intro .cta{display:flex;flex-wrap:wrap;gap:12px}
+/* ---------- pasek makiety + nawigacja w jednym kontenerze ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.ribbon{background:var(--mint);color:var(--night);font-size:12.5px;line-height:1.35;padding:6px clamp(20px,4vw,40px);text-align:center}
+.ribbon b{font-weight:700}
+.nav{background:rgba(10,26,21,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-d);transition:background .25s}
+.top.is-scrolled .nav{background:rgba(10,26,21,.94)}
+.nav-in{display:flex;align-items:center;gap:28px;min-height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);margin-right:auto}
+.brand .mono{width:40px;height:40px;color:var(--mint);flex:none}
+.brand b{display:block;font:600 16px/1.1 var(--sans);letter-spacing:.01em}
+.brand small{display:block;font-size:12.5px;color:rgba(250,251,249,.62);margin-top:3px}
+.nav a.lnk{color:rgba(250,251,249,.8);text-decoration:none;font-size:15px}
+.nav a.lnk:hover{color:var(--mint)}
+.nav .tel{color:var(--white);text-decoration:none;font-weight:600;font-size:15px;font-variant-numeric:lining-nums tabular-nums;letter-spacing:.02em}
+.nav .btn{min-height:42px;padding:.6em 1.1em;font-size:14px}
+.navtoggle{display:none;background:none;border:1px solid var(--line-d);width:46px;height:46px;cursor:pointer;color:var(--white)}
+.navtoggle i{display:block;width:18px;height:1.5px;background:currentColor;margin:4px auto}
+.drawer{display:none}
+@media (max-width:1060px){ .nav a.lnk{display:none} }
+@media (max-width:760px){
+  .nav .tel,.nav .btn{display:none}
+  .navtoggle{display:block}
+  .top.menu-open .drawer{display:block;background:var(--night);border-bottom:1px solid var(--line-d)}
+  .drawer a{display:block;padding:14px clamp(20px,4vw,40px);color:var(--white);text-decoration:none;border-top:1px solid var(--line-d);font-size:17px}
+}
 
-/* ---------- hero: przelot ---------- */
-.stage{position:relative;height:360vh}
-.pin{position:sticky;top:calc(var(--hdr-h) + 29px);height:calc(100vh - var(--hdr-h) - 29px);display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,2.4vh,28px) 0}
-.frame{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
-.view{position:relative;width:100%;height:clamp(300px,calc(100vh - var(--hdr-h) - 29px - 118px),820px);background:#0b0f16;overflow:hidden}
-.view canvas,.view .fb{position:absolute;inset:0;width:100%;height:100%}
-.view .fb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 64%;opacity:0;transform-origin:58% 64%}
-.view .fb img.f0{opacity:1}
-.dust{pointer-events:none}
-.paper{position:absolute;inset:0;background:var(--paper);opacity:0;display:flex;align-items:center;justify-content:center;padding:6%}
-.paper p{font-family:var(--serif);font-size:clamp(26px,3.4vw,48px);line-height:1.18;max-width:22ch;text-wrap:balance;text-align:center;margin:0;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
-.paper p.on{opacity:1;transform:none}
-.paper p a{color:var(--signal-ink);text-underline-offset:4px}
-.rb-l{}
-@media(max-width:700px){.rb-l{display:none}}
-.cap{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;margin-top:14px;font-size:15px;color:var(--ink-2);min-height:48px}
-.cap .act{position:relative}
-.cap .act>a{display:block;transition:opacity .45s;text-decoration:none;color:var(--ink-2)}
-.cap .act b{font-weight:600;color:var(--ink)}
-.cap .go-t{white-space:nowrap;color:var(--signal-ink);text-decoration:underline;margin-left:.3em}
-.cap .act>a:hover .go-t{text-decoration-thickness:2px}
-.cap .ticks{display:flex;gap:6px}
-.cap .ticks i{display:block;width:28px;height:2px;background:var(--line);transition:background .3s}
-.cap .ticks i.on{background:var(--signal)}
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;background:var(--night);color:var(--white);display:flex;flex-direction:column;overflow:hidden}
+.hero-media{position:absolute;inset:0}
+.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.hero-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(10,26,21,.92) 0%,rgba(10,26,21,.72) 38%,rgba(10,26,21,.18) 72%,rgba(10,26,21,.35) 100%),
+             linear-gradient(0deg,rgba(10,26,21,.95) 0%,rgba(10,26,21,0) 38%)}
+.hero-in{position:relative;flex:1;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:clamp(32px,5vw,72px);align-items:center;
+  padding-top:calc(var(--hdr-h) + clamp(32px,6vh,72px));padding-bottom:clamp(28px,5vh,56px)}
+.motto{font:italic 400 clamp(20px,2vw,24px)/1.2 var(--serif);color:var(--mint);margin:0 0 22px;min-height:1.2em}
+.js .motto span{opacity:0;display:inline-block;transform:translateY(.35em);animation:letter .6s cubic-bezier(.22,.61,.36,1) forwards}
+@keyframes letter{to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(40px,5.6vw,78px);line-height:1.02;letter-spacing:-.022em;max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .lead{font-size:clamp(17px,1.35vw,19.5px);color:rgba(250,251,249,.84);max-width:54ch;margin:26px 0 30px;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.js .rise{opacity:0;transform:translateY(16px);animation:rise .9s cubic-bezier(.22,.61,.36,1) forwards}
+.js .rise.d1{animation-delay:.75s}.js .rise.d2{animation-delay:.95s}.js .rise.d3{animation-delay:1.15s}.js .rise.d4{animation-delay:1.35s}
+@keyframes rise{to{opacity:1;transform:none}}
 
-/* ---------- twoja branza ---------- */
-.sec{padding:112px 0}
-#branza{padding-top:40px}
-#od-srodka{padding:136px 0 128px}
-#wejscie{padding:104px 0 112px}
-.head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-bottom:48px}
-.head h2{grid-column:1/9;font-size:clamp(34px,4.4vw,60px);line-height:1.06;font-weight:400;text-wrap:balance}
-.head p{grid-column:9/13;align-self:end;color:var(--ink-2);margin:0}
-.tabs{display:flex;flex-wrap:wrap;gap:6px 36px;border-bottom:1px solid var(--line);margin-bottom:44px}
-.tab{appearance:none;background:none;border:0;padding:12px 0 16px;font:inherit;font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);
-  color:var(--mute);cursor:pointer;position:relative;letter-spacing:-.01em}
-.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
-.tab[aria-selected=true]{color:var(--ink)}
-.tab[aria-selected=true]::after{transform:scaleX(1)}
-.tab:hover{color:var(--ink)}
-.panel{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
-.js .panel[hidden]{display:none}
-.panel .who{grid-column:1/5}
-.panel .who p{font-family:var(--serif);font-size:22px;line-height:1.35;margin-bottom:26px}
-.panel .who ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.panel .who li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink-2)}
-.panel .cases{grid-column:6/13;border-top:1px solid var(--ink)}
-.case{display:grid;grid-template-columns:1fr auto;column-gap:24px;padding:24px 0 26px;border-bottom:1px solid var(--line)}
-.case h3{font-size:clamp(24px,2.3vw,31px);line-height:1.12;margin-bottom:8px;grid-column:1}
-.case p{grid-column:1;color:var(--ink-2);margin:0 0 10px;max-width:52ch}
-.case .svc{grid-column:1;font-size:13.5px;color:var(--mute)}
-.case a{grid-column:2;grid-row:1/4;align-self:start;display:inline-flex;align-items:center;min-height:40px;font-size:14.5px;font-weight:600;text-decoration:none;white-space:nowrap}
-.case a:hover{color:var(--signal-ink)}
-.also{margin-top:36px;color:var(--ink-2);max-width:68ch}
-.also a{font-weight:600}
-.no-js-name{display:none}
-html:not(.js) .tabs{display:none}
-html:not(.js) .panel{margin-bottom:64px}
-html:not(.js) .no-js-name{display:block;font-family:var(--serif);font-size:30px;margin-bottom:22px;grid-column:1/-1}
+.price{background:rgba(15,36,29,.58);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line-d);padding:30px 28px 26px}
+.price h2{font-size:30px;line-height:1.1;margin-bottom:6px}
+.price .min{color:var(--mint);font-size:15px;margin:0 0 18px}
+.price .amount{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);padding:14px 0;margin-bottom:20px}
+.price .amount strong{font:400 44px/1 var(--serif);font-variant-numeric:lining-nums}
+.price .amount strong small{font:500 15px var(--sans);color:rgba(250,251,249,.7);margin-left:6px}
+.price .amount span{font-size:14px;color:rgba(250,251,249,.7)}
+.price .btn{width:100%}
+.price .note{font-size:13px;line-height:1.5;color:rgba(250,251,249,.66);margin:16px 0 0}
 
-/* ---------- zakres ---------- */
-.scope{background:var(--paper-2)}
-.areas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:56px;border-top:1px solid var(--ink);counter-reset:s}
-.areas li{border-bottom:1px solid var(--line)}
-.areas a{display:grid;grid-template-columns:2.6em 1fr auto;column-gap:12px;padding:20px 0 22px;text-decoration:none;color:inherit;align-items:baseline;min-height:44px}
-.areas a::before{counter-increment:s;content:"§\00a0" counter(s);font-family:var(--serif);color:var(--signal-ink);font-size:16px;grid-row:1}
-.areas b{grid-column:2;font-family:var(--serif);font-weight:400;font-size:clamp(21px,1.8vw,25px);line-height:1.2}
-.areas span{grid-column:2;color:var(--ink-2);font-size:15.5px;margin-top:6px;max-width:48ch}
-.areas .ar{grid-column:3;grid-row:1;align-self:center;width:14px;height:14px;color:var(--ink-2)}
-.areas a:hover b,.areas a:hover .ar{color:var(--signal-ink)}
+.creds{position:relative;border-top:1px solid var(--line-d)}
+.creds dl{display:grid;grid-template-columns:repeat(4,1fr);margin:0}
+.creds dl>div{padding:22px 24px 26px 0}
+.creds dl>div+div{padding-left:24px;border-left:1px solid var(--line-d)}
+.creds dt{font:400 26px/1.1 var(--serif);color:var(--white);font-variant-numeric:lining-nums}
+.creds dd{margin:6px 0 0;font-size:14px;line-height:1.45;color:rgba(250,251,249,.68)}
 
-/* ---------- od srodka ---------- */
-.dark{background:var(--ink);color:var(--cream)}
-.inside .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
-.inside figure{grid-column:1/5;margin:0}
-.inside figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%}
-.inside figcaption{margin-top:12px;font-family:var(--serif);font-style:italic;color:var(--cream-dim);font-size:15px}
-.inside .txt{grid-column:6/13}
-.inside h2{font-size:clamp(34px,4vw,54px);line-height:1.08;font-weight:400;margin:0 0 30px;text-wrap:balance}
-.inside .txt p{color:#D5D8DD;max-width:58ch}
-.inside blockquote{margin:36px 0;padding:0;font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.4vw,32px);line-height:1.3;color:var(--cream);max-width:30ch}
-.inside blockquote::before{content:"„";color:var(--signal);margin-right:2px}
-.inside blockquote::after{content:"”";color:var(--signal)}
-.creds{border-top:1px solid var(--line-d);padding-top:18px;margin-top:10px;color:var(--cream-dim);font-size:14.5px;line-height:1.9}
+/* ---------- sekcje ---------- */
+.sec{padding:clamp(72px,10vw,128px) 0}
+.sec.dark{background:var(--night);color:var(--white)}
+.sec.brand{background:var(--brand);color:var(--white)}
+.sec.alt{background:var(--paper-2)}
+.head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.head h2{font-size:clamp(34px,4.2vw,58px);line-height:1.04;letter-spacing:-.02em;max-width:16ch}
+.head p{color:var(--muted);margin:0;max-width:46ch}
+.dark .head p,.brand .head p{color:rgba(250,251,249,.72)}
 
-/* ---------- wejscie ---------- */
-.price{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:end;padding:30px 0 34px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
-.price .what{grid-column:1/8;font-family:var(--serif);font-size:clamp(28px,3.2vw,42px);line-height:1.14;font-weight:400}
-.price .what em{font-style:normal;color:var(--signal-ink)}
-.price .amt{grid-column:8/10;font-family:var(--serif);font-size:clamp(34px,3.6vw,52px);line-height:1;font-variant-numeric:lining-nums}
-.price .amt small{display:block;font-family:var(--sans);font-size:13.5px;color:var(--mute);margin-top:8px}
-.price .go{grid-column:10/13;justify-self:end}
-.fine{color:var(--ink-2);margin-top:16px;max-width:70ch;font-size:15.5px}
-.fixed{margin-top:64px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
-.fixed h3{grid-column:1/5;font-size:28px;line-height:1.15}
-.fixed ul{grid-column:6/13;list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.fixed li{display:grid;grid-template-columns:1fr auto;column-gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
-.fixed li b{font-family:var(--serif);font-weight:400;font-size:22px}
-.fixed li span{grid-column:1;color:var(--ink-2);font-size:15.5px}
-.fixed li a{grid-column:2;grid-row:1/3;align-self:center;display:inline-flex;align-items:center;min-height:40px;font-size:14.5px;font-weight:600;text-decoration:none}
-.fixed li a:hover{color:var(--signal-ink)}
-.qa{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:24px 48px}
-.qa h3{font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:0;margin-bottom:8px}
-.qa p{color:var(--ink-2);margin:0;font-size:15.5px}
+/* usługi: akordeon z oznaczeniem paragrafu */
+.svc{border-top:1px solid var(--line)}
+.svc-item{border-bottom:1px solid var(--line)}
+.svc-item button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:72px minmax(0,1fr) 40px;gap:20px;align-items:start;width:100%;padding:28px 0}
+.svc-item button:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
+.svc-no{font:italic 400 22px/1.3 var(--serif);color:var(--brand-2)}
+.svc-t{display:block;font:400 clamp(24px,2.3vw,31px)/1.15 var(--serif);color:var(--ink)}
+.svc-l{display:block;margin-top:8px;color:var(--muted);font-size:16px;max-width:62ch}
+.svc-x{width:40px;height:40px;border:1px solid var(--line);position:relative;margin-top:4px;transition:background .2s,border-color .2s}
+.svc-x::before,.svc-x::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%);transition:transform .3s}
+.svc-x::after{transform:translate(-50%,-50%) rotate(90deg)}
+.svc-item.is-open .svc-x{background:var(--brand);border-color:var(--brand)}
+.svc-item.is-open .svc-x::before,.svc-item.is-open .svc-x::after{background:var(--white)}
+.svc-item.is-open .svc-x::after{transform:translate(-50%,-50%) rotate(0)}
+.svc-p{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,.61,.36,1)}
+.svc-item.is-open .svc-p{grid-template-rows:1fr}
+.svc-p>div{overflow:hidden}
+.svc-body{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:40px;padding:0 60px 34px 92px}
+.svc-body p{color:var(--ink-2)}
+.svc-body a.more{display:inline-flex;align-items:center;min-height:40px;font-weight:600;color:var(--brand);text-underline-offset:4px}
+.prep{background:var(--paper-2);padding:20px 22px}
+.alt .prep{background:var(--paper)}
+.prep h3{font:600 14px/1.3 var(--sans);color:var(--brand);margin-bottom:10px}
+.prep ul{margin:0;padding:0;list-style:none}
+.prep li{padding:7px 0 7px 18px;position:relative;font-size:15px;border-top:1px solid var(--line)}
+.prep li:first-child{border-top:0}
+.prep li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:1.5px;background:var(--brand-2)}
 
-/* ---------- kontakt ---------- */
-.contact .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
-.contact h2{grid-column:1/9;font-size:clamp(38px,5.2vw,76px);line-height:1.02;font-weight:400;margin:0 0 44px;text-wrap:balance}
-.lines{grid-column:1/8}
-.lines a.tel{display:block;font-family:var(--sans);font-weight:500;font-size:clamp(30px,3.6vw,50px);letter-spacing:.02em;
-  font-variant-numeric:lining-nums tabular-nums;text-decoration:none;line-height:1.1}
-.lines a.mail{display:inline-block;margin-top:14px;font-size:18px;color:var(--cream);overflow-wrap:anywhere;min-height:40px}
-.lines p{margin-top:26px;color:var(--cream-dim)}
-.contact .act{grid-column:9/13;align-self:end;border-top:1px solid var(--line-d);padding-top:22px}
-.contact .act p{color:var(--cream-dim);font-size:15.5px}
-.foot{grid-column:1/-1;margin-top:110px;padding-top:26px;border-top:1px solid var(--line-d);display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--cream-dim);font-size:13.5px}
-.foot a{color:var(--cream-dim)}
-.foot .grow{margin-right:auto;display:flex;align-items:center;gap:12px;color:var(--cream)}
-.foot .mark{width:28px;height:28px}
+/* najczęściej zlecane */
+.quick{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-d)}
+.quick a{display:flex;flex-direction:column;text-decoration:none;padding:32px 32px 30px 0;min-height:250px}
+.quick a+a{padding-left:32px;border-left:1px solid var(--line-d)}
+.quick h3{font-size:30px;line-height:1.1;margin-bottom:14px}
+.quick p{color:rgba(250,251,249,.74);font-size:16px}
+.quick span{margin-top:auto;color:var(--mint);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(168,199,184,.4)}
+.quick a:hover span{text-decoration-color:var(--mint)}
+
+/* o mnie */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:start}
+.portrait{margin:0;position:relative}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
+.portrait figcaption{margin-top:14px;font-size:14px;color:var(--muted)}
+.portrait figcaption b{display:block;font:400 22px var(--serif);color:var(--ink)}
+.about h2{font-size:clamp(34px,4vw,54px);line-height:1.05;letter-spacing:-.02em;margin-bottom:28px;max-width:15ch}
+.about p{font-size:18px;color:var(--ink-2);max-width:58ch}
+.quote{font:italic 400 clamp(24px,2.4vw,32px)/1.25 var(--serif);color:var(--brand);border-left:2px solid var(--mint);padding-left:24px;margin:34px 0;max-width:30ch}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:36px}
+.facts div{padding:16px 16px 16px 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+.facts dt{font-size:13.5px;color:var(--muted)}
+.facts dd{margin:4px 0 0;font-weight:600;font-size:16px}
+
+/* branże */
+.ind{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-d)}
+.ind li{list-style:none;padding:24px 24px 24px 0;border-bottom:1px solid var(--line-d);font:400 clamp(20px,1.8vw,25px)/1.25 var(--serif)}
+.ind li:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--line-d)}
+.ind{padding:0;margin:0}
+
+/* przebieg */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;border-top:2px solid var(--brand)}
+.steps li{list-style:none;padding:28px 32px 8px 0;position:relative}
+.steps li+li{padding-left:32px;border-left:1px solid var(--line)}
+.steps .n{font:400 64px/1 var(--serif);color:var(--brand);font-variant-numeric:lining-nums}
+.steps h3{font-size:27px;margin:16px 0 10px}
+.steps p{color:var(--ink-2);font-size:16px}
+.steps{padding:0;margin:0}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+.models div{background:var(--white);border:1px solid var(--line);padding:26px 26px 22px}
+.models h3{font-size:23px;margin-bottom:8px}
+.models p{font-size:15.5px;color:var(--muted);margin:0}
+.models-h{font:600 15px var(--sans);color:var(--brand);margin:64px 0 -44px}
+
+/* FAQ */
+.faq{max-width:880px}
+.faq details{border-bottom:1px solid var(--line-d)}
+.faq details:first-child{border-top:1px solid var(--line-d)}
+.faq summary{cursor:pointer;list-style:none;padding:24px 48px 24px 0;position:relative;font:400 clamp(21px,1.9vw,26px)/1.25 var(--serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:32px;width:12px;height:12px;border-right:1.5px solid var(--mint);border-bottom:1.5px solid var(--mint);transform:rotate(45deg);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(225deg);top:38px}
+.faq details p{color:rgba(250,251,249,.76);padding:0 48px 24px 0;margin:0;max-width:66ch}
+
+/* kontakt */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,88px)}
+.contact h2{font-size:clamp(34px,4vw,54px);line-height:1.05;letter-spacing:-.02em;margin-bottom:20px;max-width:14ch}
+.contact .intro{color:var(--ink-2);max-width:46ch}
+.book{background:var(--brand);color:var(--white);padding:26px 26px 24px;margin:30px 0}
+.book p{margin:0 0 16px;color:rgba(250,251,249,.8)}
+.book strong{font:400 34px/1 var(--serif);color:var(--white);display:block;margin-bottom:6px}
+.clist{margin:0;padding:0;list-style:none}
+.clist li{padding:14px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:12px}
+.clist span{color:var(--muted);font-size:14.5px}
+.clist a{font-weight:600;text-decoration:none;display:inline-block;padding:6px 0}
+.clist a:hover{color:var(--brand-2);text-decoration:underline}
+.clist .num{font-variant-numeric:lining-nums tabular-nums;letter-spacing:.03em}
+.form{background:var(--white);border:1px solid var(--line);padding:clamp(24px,3vw,38px)}
+.form h3{font-size:30px;margin-bottom:6px}
+.form .fh{color:var(--muted);font-size:15px}
+.form .lbl{font-weight:600;font-size:14.5px;margin:22px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 14.5px var(--sans);padding:9px 14px;min-height:40px;background:transparent;border:1px solid var(--line);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:var(--white)}
+.field{margin-top:18px}
+.field label{display:block;font-weight:600;font-size:14.5px;margin-bottom:6px}
+.field input,.field textarea{width:100%;font:16px var(--sans);padding:12px 14px;border:1px solid rgba(19,32,27,.26);background:var(--paper);color:var(--ink)}
+.field textarea{min-height:120px;resize:vertical}
+.rodo{font-size:13px;color:var(--muted);margin:16px 0}
+.form .btn{width:100%}
+.formmsg{font-size:14px;color:var(--brand);margin:12px 0 0;min-height:1em}
+
+/* stopka */
+.foot{background:var(--night);color:rgba(250,251,249,.7);padding:56px 0 40px;font-size:14.5px}
+.foot-in{display:grid;grid-template-columns:2fr 1fr 1.3fr;gap:32px}
+.foot b{color:var(--white);font:400 22px var(--serif);display:block;margin-bottom:8px}
+.foot a{color:rgba(250,251,249,.85);text-decoration:none}
+.foot a:hover{color:var(--mint)}
+.foot .small{grid-column:1/-1;border-top:1px solid var(--line-d);padding-top:22px;margin-top:10px;font-size:13px;color:rgba(250,251,249,.5)}
+
 .callbar{display:none}
 
-/* ---------- odslanianie ---------- */
+/* ---------- odsłanianie ---------- */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0) * 85ms)}
+.js .stagger.in>*{opacity:1;transform:none}
 
-
-/* ---------- telefon ---------- */
+/* ---------- responsywność ---------- */
 @media (max-width:980px){
-  .nav a.lnk{display:none}
-  .intro h1{grid-column:1/-1}
-  .intro .side{grid-column:1/-1;margin-top:28px}
-  .head h2,.head p{grid-column:1/-1}
-  .head p{margin-top:16px}
-  .panel .who,.panel .cases{grid-column:1/-1}
-  .panel .cases{margin-top:32px}
-  .inside figure{grid-column:1/-1;max-width:420px}
-  .inside .txt{grid-column:1/-1;margin-top:36px}
-  .price .what{grid-column:1/-1}
-  .price .amt{grid-column:1/7;margin-top:22px}
-  .price .go{grid-column:7/13;align-self:end}
-  .fixed h3,.fixed ul{grid-column:1/-1}
-  .fixed ul{margin-top:20px}
-  .contact h2,.lines,.contact .act{grid-column:1/-1}
-  .contact .act{margin-top:40px}
-  .callbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
-  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 8px;font-weight:600;font-size:15px;text-decoration:none;color:var(--paper);border:1px solid rgba(243,241,236,.3)}
-  .callbar a.c1{background:var(--signal-ink);border-color:var(--signal-ink);color:#fff}
-  body{padding-bottom:64px}
-  .nav .btn{display:none}
+  .hero-in{grid-template-columns:1fr;align-items:end}
+  .price{max-width:440px}
+  .creds dl{grid-template-columns:1fr 1fr}
+  .creds dl>div:nth-child(3){padding-left:0;border-left:0}
+  .creds dl>div:nth-child(n+3){border-top:1px solid var(--line-d)}
+  .head{grid-template-columns:1fr}
+  .about,.contact{grid-template-columns:1fr}
+  .portrait{max-width:420px}
+  .ind{grid-template-columns:1fr 1fr}
+  .ind li:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .ind li:nth-child(even){padding-left:24px;border-left:1px solid var(--line-d)}
+  .svc-body{grid-template-columns:1fr;padding:0 0 30px 92px}
 }
-@media (max-width:640px){
-  body{font-size:16px}
-  .wrap,.nav,.frame{padding-left:18px;padding-right:18px}
-  .nav{gap:14px}
-  .brand small{display:none}
-  .intro{padding:40px 0 28px}
-  .intro .cta .btn{flex:1 1 100%}
-  .stage{height:310vh}
-  .view{height:calc(100svh - var(--hdr-h) - 29px - 64px - 150px);min-height:320px}
-  .pin{justify-content:flex-start}
-  .cap{grid-template-columns:1fr auto;gap:8px 12px;font-size:14px}
-  .cap .go-t{display:none}
-  .sec{padding:84px 0}
-  .tabs{flex-wrap:nowrap;overflow-x:auto;gap:0 22px;margin:0 -18px 36px;padding:0 18px;scroll-snap-type:x proximity;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{font-size:22px;white-space:nowrap;scroll-snap-align:start;flex:none;color:var(--ink-2)}
-  .case{grid-template-columns:1fr}
-  .case a{grid-column:1;grid-row:auto;justify-self:start;margin-top:4px}
-  .price .amt,.price .go{grid-column:1/-1}
-  .price .go{justify-self:stretch;margin-top:20px}
-  .price .go .btn{width:100%}
-  .fixed li{grid-template-columns:1fr}
-  .fixed li a{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
-  .qa{grid-template-columns:1fr}
-  .areas{grid-template-columns:1fr}
+@media (max-width:760px){
+  body{font-size:16.5px}
+  .hero{min-height:auto}
+  .hero-media{position:relative;inset:auto;margin-top:var(--hdr-h);aspect-ratio:4/3;overflow:hidden}
+  .hero-media img{object-position:84% 70%}
+  .hero-media::after{background:linear-gradient(0deg,rgba(10,26,21,1) 0%,rgba(10,26,21,.35) 38%,rgba(10,26,21,0) 60%)}
+  .hero-in{padding-top:0;margin-top:-48px;gap:28px}
+  .hero-cta .btn{flex:1 1 100%}
+  .price{max-width:none;padding:24px 20px 20px}
+  .creds dl>div{padding:18px 12px 20px 0}
+  .creds dl>div+div{padding-left:12px}
+  .creds dl>div:nth-child(3){padding-left:0}
+  .creds dt{font-size:22px}
+  .svc-item button{grid-template-columns:44px minmax(0,1fr) 36px;gap:12px;padding:22px 0}
+  .svc-x{width:36px;height:36px}
+  .svc-body{padding:0 0 26px 0}
+  .quick{grid-template-columns:1fr}
+  .quick a,.quick a+a{padding:26px 0;border-left:0;min-height:0;border-bottom:1px solid var(--line-d)}
+  .quick span{margin-top:14px}
+  .ind{grid-template-columns:1fr}
+  .ind li,.ind li:nth-child(even){padding:18px 0;border-left:0}
+  .steps,.models{grid-template-columns:1fr}
+  .steps li,.steps li+li{padding:24px 0;border-left:0;border-top:1px solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .facts{grid-template-columns:1fr}
+  .facts div:nth-child(even){padding-left:0;border-left:0}
+  .clist li{grid-template-columns:1fr;gap:2px}
+  .foot-in{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--night);border-top:1px solid var(--line-d);padding-bottom:env(safe-area-inset-bottom)}
+  .callbar a{display:flex;align-items:center;justify-content:center;min-height:56px;text-decoration:none;font-weight:600;color:var(--white)}
+  .callbar a:first-child{background:var(--mint);color:var(--night)}
+  .foot{padding-bottom:96px}
+  .js .reveal{transform:translateY(16px);transition-duration:.7s}
+  .js .stagger>*{transform:translateY(16px);transition-duration:.7s;transition-delay:calc(var(--i,0) * 55ms)}
 }
 @media (prefers-reduced-motion:reduce){
-  .rw .w,.rw.in .w{animation:none}
-  .stage{height:auto}
-  .pin{position:relative;top:0;height:auto;padding:0 0 20px}
-  .tab::after{transition:none}
+  html{scroll-behavior:auto}
+  .js .reveal,.js .stagger>*,.js .rise,.js .motto span{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+  .hero-media .anim{display:none}
 }
 </style>
 </head>
 <body>
 <div class="top">
-  <div class="ribbon">Makieta<span class="rb-l"> nowej odsłony legal-point.org</span> · wariant <b>W3 „Branże”</b> · <b>Odnova Studio</b><span class="rb-l"> · strona demonstracyjna, nie witryna kancelarii</span></div>
+  <div class="ribbon">Makieta nowej odsłony legal-point.org · wariant <b>W3 „Pacta”</b> · przygotowała <b>Odnova Studio</b></div>
   <nav class="nav" aria-label="Główna nawigacja">
-    <a class="brand" href="#start"><svg class="mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="1" y="1" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="22" y="27.6" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.3" fill="currentColor" font-family="Schibsted Grotesk, Arial, sans-serif">BRP</text></svg><span><b>BRP Legal Point</b><small>adw. Beata Rogowska-Prus</small></span></a>
-    <a class="lnk" href="#branza">Twoja branża</a>
-    <a class="lnk" href="#zakres">Zakres</a>
-    <a class="lnk" href="#od-srodka">Od środka</a>
-    <a class="lnk" href="#wejscie">Jak zacząć</a>
-    <a class="lnk" href="#kontakt">Kontakt</a>
-    <a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów 30 min</a>
+    <div class="wrap nav-in">
+      <a class="brand" href="#start"><svg class="mono" viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="22" y="27.5" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="currentColor" font-family="Hanken Grotesk, Figtree, Arial, sans-serif">BRP</text></svg><span><b>BRP Legal Point</b><small>adw. Beata Rogowska-Prus</small></span></a>
+      <a class="lnk" href="#uslugi">Usługi</a>
+      <a class="lnk" href="#o-mnie">O kancelarii</a>
+      <a class="lnk" href="#wspolpraca">Współpraca</a>
+      <a class="lnk" href="#faq">Pytania</a>
+      <a class="tel" href="tel:+48662187462">+48 662 187 462</a>
+      <a class="btn btn-mint" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a>
+      <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
+    </div>
+    <div class="drawer" id="drawer">
+      <a href="#uslugi">Usługi</a><a href="#o-mnie">O kancelarii</a><a href="#wspolpraca">Współpraca</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a href="tel:+48662187462">+48 662 187 462</a>
+    </div>
   </nav>
 </div>
 
-<header class="intro" id="start">
-  <div class="wrap">
-    <h1><span class="sr">Branże się zmieniają. Umowa zostaje.</span><span class="h1v" aria-hidden="true"><span class="rw" data-words="Produkcja|Budownictwo|Handel|Reklama|Technologia"><span class="w">Produkcja</span></span><br>się&nbsp;zmienia.<br>Umowa zostaje.</span></h1>
-    <div class="side">
-      <p>Bieżąca obsługa prawna spółek i przedsiębiorców. Od 2010 roku pracuję z zarządami i zespołami: w kancelariach i po stronie firm, jako prawnik wewnętrzny. Konsultacje online w całej Polsce.</p>
-      <div class="cta">
-        <a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a>
-        <a class="btn line" href="#branza">Znajdź swoją branżę</a>
+<header class="hero" id="start">
+  <div class="hero-media" aria-hidden="true"><img src="hero_still.webp" alt=""><picture><source media="(max-width:760px)" srcset="hero-1000.webp"><img class="anim" src="hero-1440.webp" alt=""></picture></div>
+  <div class="wrap hero-in">
+    <div>
+      <p class="motto" id="motto" lang="la">Pacta sunt servanda</p>
+      <h1 class="rise d1">Adwokat dla firm, który zna je od&nbsp;środka.</h1>
+      <p class="lead rise d2">Umowy, spółki, pracownicy, należności i reklama. Piętnaście lat w kancelariach i działach prawnych agencji, domów mediowych i producentów. Obsługa online w całej Polsce.</p>
+      <div class="hero-cta rise d3">
+        <a class="btn btn-mint" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a>
+        <a class="btn btn-ghost" href="#uslugi">Zobacz, w czym pomagam</a>
       </div>
     </div>
+    <aside class="price rise d4" aria-label="Konsultacja prawna online">
+      <h2>Konsultacja online</h2>
+      <p class="min">30 minut, jedno zagadnienie, konkretne dalsze kroki</p>
+      <div class="amount"><strong>200 zł<small>netto</small></strong><span>246 zł brutto</span></div>
+      <a class="btn btn-mint" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Wybierz termin</a>
+      <p class="note">Jeśli w ciągu 30 dni zlecisz związaną z nią usługę, 200 zł netto odliczę od jej ceny.</p>
+    </aside>
   </div>
+  <div class="creds"><div class="wrap"><dl>
+    <div><dt>Od 2010</dt><dd>praktyka w kancelariach i działach prawnych firm</dd></div><div><dt>UW</dt><dd>prawo oraz podyplomowe prawo własności intelektualnej</dd></div><div><dt>IOD</dt><dd>certyfikat inspektora ochrony danych osobowych</dd></div><div><dt>PL / EN</dt><dd>umowy i negocjacje, certyfikat FCE Cambridge</dd></div>
+  </dl></div></div>
 </header>
 
-<div class="stage" aria-label="Cztery branże, jedna umowa">
-  <div class="pin">
-    <figure class="frame" style="margin:0 auto">
-      <div class="view">
-        <canvas id="gl" aria-hidden="true"></canvas>
-        <div class="fb"><img class="f0" src="s-produkcja.webp" alt="Hala produkcyjna, na stole warsztatowym leży umowa z piórem pod mosiężną lampą" width="2200" height="1228"><img class="f1" loading="lazy" src="s-budowa.webp" alt="Kontener biura budowy, ta sama umowa pod tą samą lampą" width="2200" height="1228"><img class="f2" loading="lazy" src="s-plan.webp" alt="Plan zdjęciowy reklamy, ta sama umowa na stoliku produkcyjnym" width="2200" height="1228"><img class="f3" loading="lazy" src="s-magazyn.webp" alt="Stanowisko pakowania w magazynie sklepu internetowego, ta sama umowa" width="2200" height="1228"></div>
-        <canvas id="dust" class="dust" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
-        <div class="paper"><p>Świat wokół się zmienia. Na stole zostaje ta sama umowa. <a href="#branza">Zobacz, jak wygląda w Twojej branży.</a></p></div>
-      </div>
-      <figcaption class="cap">
-                <span class="act"><a href="#branza" data-tab="0" style=""><b>Hala produkcyjna.</b> Kontrakty z odbiorcami, regulacje produktowe i zespół na zmiany. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="1" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Biuro budowy.</b> Umowy z inwestorem i podwykonawcami, zanim ruszą roboty. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="3" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Plan zdjęciowy reklamy.</b> Prawa do materiału i umowy z twórcami, zanim padnie pierwszy klaps. <span class="go-t">Sprawy w tej branży</span></a><a href="#branza" data-tab="2" style="position:absolute;inset:0;opacity:0;pointer-events:none"><b>Magazyn sklepu internetowego.</b> Regulamin, marka własna i dostawcy, zanim ruszy wysyłka. <span class="go-t">Sprawy w tej branży</span></a></span>
-        <span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
-      </figcaption>
-    </figure>
-  </div>
-</div>
-
 <main>
-<section class="sec" id="branza">
+<section class="sec" id="uslugi">
   <div class="wrap">
-    <div class="head">
-      <h2>Co zwykle leży na stole w&nbsp;Twojej branży</h2>
-      <p>Wybierz, czym zajmuje się Twoja firma — zobaczysz sprawy, które w tej branży trafiają na stół najczęściej.</p>
+    <div class="head reveal">
+      <h2>W czym pomagam firmom</h2>
+      <p>Osiem obszarów, w których prowadzę sprawy spółek i przedsiębiorców. Rozwiń obszar, żeby zobaczyć zakres i to, co warto przygotować przed rozmową.</p>
     </div>
-    <div class="tabs" role="tablist" aria-label="Branże"><button class="tab" role="tab" id="t-produkcja" aria-controls="p-produkcja" aria-selected="true">Produkcja</button><button class="tab" role="tab" id="t-budownictwo" aria-controls="p-budownictwo" aria-selected="false">Budownictwo</button><button class="tab" role="tab" id="t-handel" aria-controls="p-handel" aria-selected="false">FMCG i e-commerce</button><button class="tab" role="tab" id="t-reklama" aria-controls="p-reklama" aria-selected="false">Reklama i media</button><button class="tab" role="tab" id="t-it" aria-controls="p-it" aria-selected="false">Digital i IT</button></div>
-    <div class="panel" role="tabpanel" id="p-produkcja" aria-labelledby="t-produkcja"><h3 class="no-js-name">Produkcja</h3><div class="who"><p>Duzi odbiorcy, długie łańcuchy dostaw i regulacje produktowe, które zmieniają się szybciej niż linia produkcyjna.</p><ul><li>Zakłady produkcyjne</li><li>Producenci materiałów budowlanych</li></ul></div><div class="cases"><div class="case"><h3>Kontrakty z odbiorcami i dostawcami</h3><p>Umowy ramowe, zamówienia, kary umowne i odpowiedzialność, negocjowane także po angielsku.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Regulacje produktowe</h3><p>PPWR, EUDR i CSRD przełożone na procedury i dokumenty firmy.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Zespół na zmiany</h3><p>Regulaminy pracy i wynagradzania, umowy o pracę i kontrakty menedżerskie.</p><span class="svc">Usługa: Prawo pracy dla pracodawców</span><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-budownictwo" aria-labelledby="t-budownictwo"><h3 class="no-js-name">Budownictwo</h3><div class="who"><p>Harmonogram, podwykonawcy i płatności po odbiorach. Najtańszy spór to ten, który zamyka dobrze napisana umowa.</p><ul><li>Generalni wykonawcy i podwykonawcy</li><li>Dostawcy materiałów</li></ul></div><div class="cases"><div class="case"><h3>Umowy z inwestorem i podwykonawcami</h3><p>Zakres, terminy, odbiory, kary i odpowiedzialność ustalone, zanim ruszą roboty.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Płatności i zatory</h3><p>Wezwanie do zapłaty, nakaz zapłaty albo EPU, a przy sporze reprezentacja przed sądem.</p><span class="svc">Usługa: Należności i spory gospodarcze</span><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Gwarancje i zabezpieczenia</h3><p>Gwarancje, poręczenia, zastawy i umowy finansowania sprawdzone przed podpisem.</p><span class="svc">Usługa: Finansowanie i zabezpieczenia</span><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-handel" aria-labelledby="t-handel"><h3 class="no-js-name">FMCG i e-commerce</h3><div class="who"><p>Sprzedaż online i marki własne to regulaminy, znaki i łańcuch dostawców. Każdy z tych elementów potrafi zatrzymać wysyłkę.</p><ul><li>Sklepy internetowe</li><li>Producenci kosmetyków i detergentów</li></ul></div><div class="cases"><div class="case"><h3>Regulamin sklepu i promocji</h3><p>Regulamin, zasady promocji i komunikacja w sklepie, zanim ruszy sprzedaż.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Znak towarowy</h3><p>Badanie znaku i nieuczciwej konkurencji, zgłoszenie w EUIPO.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Opakowania i nowe regulacje</h3><p>PPWR i SUP przełożone na procedury i dokumenty firmy.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-reklama" aria-labelledby="t-reklama"><h3 class="no-js-name">Reklama i media</h3><div class="who"><p>Znam rytm briefu, akceptacji i emisji od środka, z pracy w agencjach i domach mediowych. Wiem, w którym miejscu zwykle pęka umowa.</p><ul><li>Agencje reklamowe</li><li>Domy mediowe</li><li>Domy produkcyjne filmów reklamowych</li></ul></div><div class="cases"><div class="case"><h3>Kampania przed emisją</h3><p>Opinia prawna na etapie briefu, konceptu, produkcji i emisji, zanim kampania trafi do odbiorców.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Twórcy i influencerzy</h3><p>Umowy z twórcami i influencerami, przeniesienie praw i licencje do materiału.</p><span class="svc">Usługa: E-commerce, reklama i IP</span><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Klient i podwykonawcy</h3><p>Umowy z klientami agencji i z podwykonawcami: zakres, akceptacje, odpowiedzialność.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div><div class="panel" role="tabpanel" id="p-it" aria-labelledby="t-it"><h3 class="no-js-name">Digital i IT</h3><div class="who"><p>Wdrożenia, dane klientów i szybko rosnąca spółka. Prawo musi nadążyć za sprintem, a nie go zatrzymać.</p><ul><li>Dostawcy rozwiązań IT</li><li>Software house’y i agencje digital</li></ul></div><div class="cases"><div class="case"><h3>Umowy wdrożeniowe i SLA</h3><p>Zakres, odbiory, poziom usług i odpowiedzialność w umowach z klientami i podwykonawcami.</p><span class="svc">Usługa: Umowy B2B i negocjacje</span><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>RODO w produkcie</h3><p>Umowy powierzenia, polityki i procedury, które da się wdrożyć w zespole.</p><span class="svc">Usługa: Compliance, RODO i regulacje</span><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div><div class="case"><h3>Spółka, która rośnie</h3><p>Nowi wspólnicy, uchwały, zmiany w umowie spółki, zgłoszenia do KRS i CRBR.</p><span class="svc">Usługa: Prawo spółek, KRS i CRBR</span><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Zakres usługi<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></div></div></div>
-    <p class="also">Twojej branży nie ma na liście? Większość spraw jest wspólna dla każdej firmy: umowy, spółka, należności, zespół, dane. Najprościej <a href="#wejscie">zacząć od konsultacji</a>.</p>
+    <div class="svc reveal">
+<div class="svc-item is-open" data-acc>
+  <button aria-expanded="true" aria-controls="svc0">
+    <span class="svc-no">§ 1</span>
+    <span><span class="svc-t">Bieżąca obsługa prawna firm</span><span class="svc-l">Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur. Jedna sprawa, projekt albo stała współpraca.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc0"><div><div class="svc-body">
+    <div><p>Pracuję z firmą tak, jak prawnik wewnętrzny: znam kontekst, kontrahentów i terminy, więc kolejna sprawa nie zaczyna się od zera. Zakres, termin i sposób rozliczenia ustalamy przed rozpoczęciem pracy.</p><a class="more" href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Krótki opis decyzji lub problemu</li><li>Dokumenty, których sprawa dotyczy</li><li>Termin, w którym firma musi działać</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc1">
+    <span class="svc-no">§ 2</span>
+    <span><span class="svc-t">Prawo spółek, KRS i CRBR</span><span class="svc-l">Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc1"><div><div class="svc-body">
+    <div><p>Obsługuję posiedzenia zarządu, zgromadzenia wspólników i walne zgromadzenia akcjonariuszy, przygotowuję dokumenty sprzedaży udziałów i aportów, zakładam i likwiduję spółki. Prowadzę postępowania przed KRS, zgłoszenia do CRBR i rejestr akcjonariuszy.</p><a class="more" href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Aktualny odpis z KRS</li><li>Umowa lub statut spółki</li><li>Lista wspólników i członków organów</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc2">
+    <span class="svc-no">§ 3</span>
+    <span><span class="svc-t">Umowy B2B i negocjacje</span><span class="svc-l">Kontrakty handlowe, umowy z dostawcami i na marki własne. Od szybkiej weryfikacji po negocjacje, także po angielsku.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc2"><div><div class="svc-body">
+    <div><p>Przygotowuję i opiniuję umowy, nanoszę zmiany i komentarze, biorę udział w rozmowach z kontrahentem. Negocjacje prowadzę po polsku i po angielsku.</p><a class="more" href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Projekt umowy albo wzór kontrahenta</li><li>Opis współpracy i jej wartości</li><li>Punkty, co do których nie ma zgody</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc3">
+    <span class="svc-no">§ 4</span>
+    <span><span class="svc-t">Należności i spory gospodarcze</span><span class="svc-l">Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc3"><div><div class="svc-body">
+    <div><p>Proponuję zabezpieczenia kontraktu, zanim firma go podpisze. Gdy kontrahent nie płaci: wezwanie do zapłaty, nakaz zapłaty, także w elektronicznym postępowaniu upominawczym, ugoda albo proces.</p><a class="more" href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Umowa lub zamówienie</li><li>Faktury i potwierdzenia wykonania</li><li>Korespondencja z dłużnikiem</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc4">
+    <span class="svc-no">§ 5</span>
+    <span><span class="svc-t">Prawo pracy dla pracodawców</span><span class="svc-l">Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc4"><div><div class="svc-body">
+    <div><p>Wdrażam regulaminy pracy, wynagradzania, pracy zdalnej, ZFŚS i kontroli trzeźwości. Przygotowuję kontrakty menedżerskie, umowy o pracę, zlecenia i dzieła, polityki równego traktowania i antymobbingowe, obsługuję zgłoszenia sygnalistów.</p><a class="more" href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Obecne regulaminy i wzory umów</li><li>Liczba i forma zatrudnienia pracowników</li><li>Opis sytuacji, jeśli sprawa jest sporna</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc5">
+    <span class="svc-no">§ 6</span>
+    <span><span class="svc-t">Compliance, RODO i regulacje</span><span class="svc-l">Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc5"><div><div class="svc-body">
+    <div><p>RODO prowadzę jako certyfikowany inspektor ochrony danych. Wdrażam procedury AML i ochrony sygnalistów, monitoruję nowe regulacje, w tym PPWR, EUDR, CSRD i SUP, i szkolę zespoły, żeby ryzyko zostawało na papierze.</p><a class="more" href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Obecna dokumentacja RODO</li><li>Opis procesów, których dotyczy regulacja</li><li>Termin wejścia obowiązku w życie</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc6">
+    <span class="svc-no">§ 7</span>
+    <span><span class="svc-t">E-commerce, reklama i IP</span><span class="svc-l">Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc6"><div><div class="svc-body">
+    <div><p>Przez lata pracowałam wewnątrz agencji reklamowych i domów mediowych. Opiniuję kampanie na etapie briefu, konceptu, produkcji i emisji, badam znaki towarowe i nieuczciwą konkurencję, zgłaszam znaki w EUIPO.</p><a class="more" href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Brief lub koncept kampanii</li><li>Regulamin sklepu albo promocji</li><li>Nazwa lub logo do sprawdzenia</li></ul></div>
+  </div></div></div>
+</div>
+<div class="svc-item" data-acc>
+  <button aria-expanded="false" aria-controls="svc7">
+    <span class="svc-no">§ 8</span>
+    <span><span class="svc-t">Finansowanie i zabezpieczenia</span><span class="svc-l">Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</span></span>
+    <span class="svc-x" aria-hidden="true"></span>
+  </button>
+  <div class="svc-p" id="svc7"><div><div class="svc-body">
+    <div><p>Sprawdzam i koordynuję dokumenty pożyczek i kredytów, hipotek, zastawów i poręczeń, razem z wymaganymi zgodami organów spółki.</p><a class="more" href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Pełny zakres usługi</a></div>
+    <div class="prep"><h3>Co przygotować na konsultację</h3><ul><li>Projekt umowy finansowania</li><li>Dokumenty zabezpieczeń</li><li>Umowa lub statut spółki</li></ul></div>
+  </div></div></div>
+</div></div>
   </div>
 </section>
 
-<section class="sec scope" id="zakres">
+<section class="sec brand" id="zlecane">
   <div class="wrap">
-    <div class="head">
-      <h2>Branże są różne. Zakres pracy prawnika firmy jest wspólny.</h2>
-      <p>Osiem obszarów, w których prowadzę sprawy firm. Każdy ma na legal-point.org osobną stronę z zakresem i listą dokumentów do przygotowania.</p>
+    <div class="head reveal">
+      <h2>Masz jedną, konkretną sprawę?</h2>
+      <p>Te trzy usługi mają stały, opisany zakres. Zlecasz je bez stałej umowy i bez długich ustaleń.</p>
     </div>
-    <ol class="areas"><li><a href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener"><b>Bieżąca obsługa prawna firm</b><span>Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener"><b>Prawo spółek, KRS i CRBR</b><span>Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener"><b>Umowy B2B i negocjacje</b><span>Kontrakty handlowe, umowy z dostawcami i na marki własne.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener"><b>Należności i spory gospodarcze</b><span>Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener"><b>Prawo pracy dla pracodawców</b><span>Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener"><b>Compliance, RODO i regulacje</b><span>Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener"><b>E-commerce, reklama i IP</b><span>Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener"><b>Finansowanie i zabezpieczenia</b><span>Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</span><svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li></ol>
+    <div class="quick stagger">
+      <a href="https://legal-point.org/weryfikacja-umowy-b2b/" target="_blank" rel="noopener"><h3>Weryfikacja umowy B2B</h3><p>Umowa do 3 stron przed podpisaniem: najważniejsze ryzyka, błędy i decyzja, co dalej, napisane językiem biznesu.</p><span>Sprawdź zakres</span></a><a href="https://legal-point.org/zmiana-w-krs/" target="_blank" rel="noopener"><h3>Zmiana w KRS</h3><p>Przygotowanie i złożenie zgłoszenia na podstawie dokumentów, które firma już ma.</p><span>Sprawdź zakres</span></a><a href="https://legal-point.org/wezwanie-do-zaplaty-b2b/" target="_blank" rel="noopener"><h3>Wezwanie do zapłaty B2B</h3><p>Pierwszy, uporządkowany krok w odzyskaniu wymagalnej należności.</p><span>Sprawdź zakres</span></a>
+    </div>
   </div>
 </section>
 
-<section class="sec dark inside" id="od-srodka">
-  <div class="wrap">
-    <figure><img src="portrait_w3.webp" alt="adw. Beata Rogowska-Prus" width="716" height="900" loading="lazy"><figcaption>adw. Beata Rogowska-Prus</figcaption></figure>
-    <div class="txt">
-      <h2>Pracowałam po tej samej stronie biurka co&nbsp;Ty.</h2>
+<section class="sec" id="o-mnie">
+  <div class="wrap about">
+    <figure class="portrait reveal">
+      <img src="portrait_w1.webp" alt="Adwokat Beata Rogowska-Prus" width="716" height="900">
+      <figcaption><b>Beata Rogowska-Prus</b>adwokat, nr wpisu SIE/Adw/286</figcaption>
+    </figure>
+    <div class="reveal">
+      <h2>Doświadczenie in‑house, perspektywa biznesu</h2>
       <p>Jestem adwokatem od ponad piętnastu lat. Pracowałam w kancelariach i jako prawnik wewnętrzny w agencjach reklamowych, domach mediowych i firmach produkcyjnych, więc znam pracę prawnika z obu stron biurka.</p><p>Dzięki temu rekomendacja nie kończy się na przepisie. Uwzględnia sposób działania firmy, termin projektu i realne konsekwencje decyzji dla sprzedaży, zakupów, HR i marketingu.</p>
-      <blockquote>Rekomendacja, którą można wdrożyć, wyjaśnić zespołowi i pogodzić z celem biznesowym.</blockquote>
-      <p class="creds">Prawo na Uniwersytecie Warszawskim · podyplomowo prawo własności intelektualnej, UW · certyfikowany inspektor ochrony danych · FCE Cambridge · w zawodzie od 2010 roku · Okręgowa Rada Adwokacka w Warszawie</p>
+      <p class="quote">Rekomendacja, którą można wdrożyć, wyjaśnić zespołowi i pogodzić z celem biznesowym.</p>
+      <dl class="facts">
+        <div><dt>Wykształcenie</dt><dd>Prawo, Uniwersytet Warszawski</dd></div>
+        <div><dt>Specjalizacja</dt><dd>Podyplomowe prawo własności intelektualnej, UW</dd></div>
+        <div><dt>Aplikacja</dt><dd>Okręgowa Rada Adwokacka w Warszawie</dd></div>
+        <div><dt>Certyfikaty</dt><dd>Inspektor ochrony danych, FCE Cambridge</dd></div>
+      </dl>
     </div>
   </div>
 </section>
 
-<section class="sec" id="wejscie">
+<section class="sec dark" id="branze">
   <div class="wrap">
-    <div class="head">
-      <h2>Pierwszy krok to 30&nbsp;minut rozmowy o&nbsp;jednej sprawie.</h2>
+    <div class="head reveal">
+      <h2>Dla kogo pracuję</h2>
+      <p>Duże firmy i przedsiębiorcy, którzy dopiero rozwijają biznes. Znam tempo tych branż od środka, bo w wielu z nich pracowałam jako prawnik wewnętrzny.</p>
     </div>
-    <div class="price">
-      <div class="what">Konsultacja online <em>—</em> termin wybierasz sam w kalendarzu</div>
-      <div class="amt">200 zł<small>netto · 246 zł brutto</small></div>
-      <div class="go"><a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a></div>
-    </div>
-    <p class="fine">Jeśli w ciągu 30 dni zlecisz usługę bezpośrednio związaną z konsultacją, jej wynagrodzenie pomniejszę o 200 zł netto.</p>
-    <div class="fixed">
-      <h3>Albo od razu jedna z trzech usług o stałym zakresie.</h3>
-      <ul><li><b>Weryfikacja umowy B2B</b><span>Umowa do 3 stron przed podpisaniem: najważniejsze ryzyka, błędy i decyzja, co dalej, napisane językiem biznesu.</span><a href="https://legal-point.org/weryfikacja-umowy-b2b/" target="_blank" rel="noopener">Szczegóły<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><b>Zmiana w KRS</b><span>Przygotowanie i złożenie zgłoszenia na podstawie dokumentów, które firma już ma.</span><a href="https://legal-point.org/zmiana-w-krs/" target="_blank" rel="noopener">Szczegóły<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li><li><b>Wezwanie do zapłaty B2B</b><span>Pierwszy, uporządkowany krok w odzyskaniu wymagalnej należności.</span><a href="https://legal-point.org/wezwanie-do-zaplaty-b2b/" target="_blank" rel="noopener">Szczegóły<svg class="ar" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li></ul>
-    </div>
-    <div class="qa">
-      <div><h3>Czy obsługujesz firmy z całej Polski?</h3><p>Tak. Konsultacje i większość projektów prowadzę online, więc siedziba firmy nie ma znaczenia. Spotkanie w Mińsku Mazowieckim można uzgodnić.</p></div>
-      <div><h3>Jak ustalana jest cena pozostałych usług?</h3><p>Po poznaniu celu, dokumentów i terminu potwierdzam zakres oraz wynagrodzenie — zanim zacznę pracę.</p></div>
-    </div>
+    <ul class="ind stagger"><li>Producenci materiałów budowlanych (EPS, XPS)</li><li>Domy mediowe</li><li>Agencje reklamowe</li><li>Dostawcy rozwiązań IT</li><li>Domy produkcyjne filmów reklamowych</li><li>Producenci kosmetyków i detergentów</li><li>Wypożyczalnie samochodów</li><li>Dealerzy samochodowi</li><li>Sklepy internetowe</li></ul>
   </div>
 </section>
 
-<section class="sec dark contact" id="kontakt">
+<section class="sec" id="wspolpraca">
   <div class="wrap">
-    <h2>Porozmawiajmy o&nbsp;Twojej umowie.</h2>
-    <div class="lines">
-      <a class="tel" href="tel:+48662187462">+48 662 187 462</a>
-      <a class="mail" href="mailto:beata.rogowska-prus@adwokatura.pl">beata.rogowska-prus@adwokatura.pl</a>
-      <p>Beata Rogowska-Prus, Kancelaria Adwokacka<br>ul. Małopolska 55, 05-300 Mińsk Mazowiecki</p>
+    <div class="head reveal">
+      <h2>Najpierw sytuacja, potem jasny plan</h2>
+      <p>Wystarczy, że opiszesz decyzję, dokument albo ryzyko, którym firma musi się zająć. Resztę porządkujemy razem.</p>
     </div>
-    <div class="act">
-      <p>Odpowiadam w ciągu jednego dnia roboczego. Najszybciej: zarezerwuj 30 minut w kalendarzu.</p>
-      <a class="btn" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a>
-    </div>
+    <ol class="steps stagger"><li><div class="n">1</div><h3>Konsultacja 30 minut</h3><p>Porządkujemy zagadnienie, pilność i oczekiwany rezultat. Nie musisz wiedzieć, jak nazwać problem prawny.</p></li><li><div class="n">2</div><h3>Zakres i wycena</h3><p>Przed rozpoczęciem pracy dostajesz na piśmie zakres, termin i wynagrodzenie. Wiesz, za jaki rezultat płacisz.</p></li><li><div class="n">3</div><h3>Realizacja</h3><p>Dokument, rekomendacja albo wsparcie projektu w uzgodnionej formie, z jasnym planem kolejnych kroków.</p></li></ol>
+    <p class="models-h reveal">Model współpracy dobieramy do częstotliwości zleceń</p>
+    <div class="models stagger"><div><h3>Konkretna usługa</h3><p>Umowa, uchwała, zgłoszenie rejestrowe, wezwanie albo inny jasno określony rezultat.</p></div><div><h3>Projekt prawny</h3><p>Negocjacje, transakcja, wdrożenie regulacji albo spór, który ma kilka etapów.</p></div><div><h3>Bieżąca obsługa</h3><p>Stała dostępność prawnika dla zarządu i zespołów, rozliczana według uzgodnionych zasad.</p></div></div>
   </div>
+</section>
+
+<section class="sec dark" id="faq">
   <div class="wrap">
-    <div class="foot">
-      <span class="grow"><svg class="mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false"><rect x="1" y="1" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="22" y="27.6" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.3" fill="currentColor" font-family="Schibsted Grotesk, Arial, sans-serif">BRP</text></svg> BRP Legal Point</span>
-      <span>NIP 8222176436</span>
-      <a href="https://legal-point.org/regulamin-uslug-online/">Regulamin usług online</a>
-      <a href="https://legal-point.org/polityka-prywatnosci/">Polityka prywatności</a>
-      <span>Makieta W3 „Branże” · Odnova Studio · odnovastudio.com</span>
+    <div class="head reveal"><h2>Najczęstsze pytania</h2><p>Jeśli Twojego pytania tu nie ma, zadaj je na konsultacji albo w wiadomości.</p></div>
+    <div class="faq reveal"><details><summary>Czy obsługujesz firmy z całej Polski?</summary><p>Tak. Konsultacje i większość projektów prowadzę online, więc siedziba firmy nie ma znaczenia. Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</p></details><details><summary>Czy mogę zlecić tylko jedną sprawę?</summary><p>Tak. Współpraca może dotyczyć pojedynczej umowy, zmiany w KRS, wezwania do zapłaty albo uchwały. Stała obsługa jest jedną z możliwości, nie warunkiem.</p></details><details><summary>Co obejmuje 30-minutowa konsultacja?</summary><p>Rozmowę o jednym, wcześniej wskazanym zagadnieniu, uporządkowanie najważniejszych ryzyk i rekomendację dalszych kroków. Pełna analiza dokumentów lub przygotowanie pisma to osobna usługa.</p></details><details><summary>Czy cena konsultacji pomniejszy koszt dalszej usługi?</summary><p>Tak. Jeżeli w ciągu 30 dni zlecisz usługę bezpośrednio związaną z konsultacją, a kancelaria przyjmie zlecenie, jej wynagrodzenie zostanie jednorazowo pomniejszone o 200 zł netto.</p></details><details><summary>Jak ustalana jest cena pozostałych usług?</summary><p>Po poznaniu celu, dokumentów i terminu potwierdzam zakres oraz wynagrodzenie przed rozpoczęciem pracy.</p></details></div>
+  </div>
+</section>
+
+<section class="sec alt" id="kontakt">
+  <div class="wrap contact">
+    <div class="reveal">
+      <h2>Porozmawiajmy o sprawie Twojej firmy</h2>
+      <p class="intro">Zarezerwuj 30 minut w kalendarzu albo opisz sprawę w kilku zdaniach. Odpowiadam w ciągu jednego dnia roboczego.</p>
+      <div class="book">
+        <strong>200 zł netto</strong>
+        <p>Konsultacja online, 30 minut. Termin wybierasz sam w kalendarzu.</p>
+        <a class="btn btn-mint" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Wybierz termin konsultacji</a>
+      </div>
+      <ul class="clist">
+        <li><span>Telefon</span><a class="num" href="tel:+48662187462">+48 662 187 462</a></li>
+        <li><span>E-mail</span><a href="mailto:beata.rogowska-prus@adwokatura.pl">beata.rogowska-prus@adwokatura.pl</a></li>
+        <li><span>Kancelaria</span><div>ul. Małopolska 55, 05-300 Mińsk Mazowiecki<br><small style="color:var(--muted)">Obsługa online w całej Polsce, spotkanie stacjonarne po umówieniu.</small></div></li>
+      </ul>
     </div>
+    <form class="form reveal" id="form" novalidate>
+      <h3>Opisz sprawę</h3>
+      <p class="fh">Kilka zdań wystarczy. Szczegóły omówimy na konsultacji.</p>
+      <p class="lbl">Czego dotyczy</p>
+      <div class="chips"><button type="button" class="chip" aria-pressed="false">Umowa</button><button type="button" class="chip" aria-pressed="false">Spółka i KRS</button><button type="button" class="chip" aria-pressed="false">Należność</button><button type="button" class="chip" aria-pressed="false">Pracownicy</button><button type="button" class="chip" aria-pressed="false">RODO</button><button type="button" class="chip" aria-pressed="false">Reklama i znaki</button><button type="button" class="chip" aria-pressed="false">Inne</button></div>
+      <div class="field"><label for="f1">Imię, nazwisko i firma</label><input id="f1" type="text" autocomplete="name"></div>
+      <div class="field"><label for="f2">E-mail lub telefon</label><input id="f2" type="text" autocomplete="email"></div>
+      <div class="field"><label for="f3">Krótki opis sprawy</label><textarea id="f3"></textarea></div>
+      <p class="rodo">Administratorem danych jest adw. Beata Rogowska-Prus, Kancelaria Adwokacka. Dane przetwarzamy wyłącznie w celu odpowiedzi na zapytanie, szczegóły w polityce prywatności.</p>
+      <button class="btn btn-dark" type="submit">Wyślij wiadomość</button>
+      <p class="formmsg" id="formmsg" role="status"></p>
+    </form>
   </div>
 </section>
 </main>
 
-<div class="callbar"><a class="c1" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów 30 min</a><a href="tel:+48662187462">Zadzwoń</a></div>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><b>BRP Legal Point</b>Beata Rogowska-Prus, Kancelaria Adwokacka<br>ul. Małopolska 55, 05-300 Mińsk Mazowiecki<br>NIP 8222176436</div>
+    <div><a href="#uslugi">Usługi</a><br><a href="#o-mnie">O kancelarii</a><br><a href="#wspolpraca">Współpraca</a><br><a href="#kontakt">Kontakt</a></div>
+    <div><a class="num" href="tel:+48662187462">+48 662 187 462</a><br><a href="mailto:beata.rogowska-prus@adwokatura.pl">beata.rogowska-prus@adwokatura.pl</a><br><a href="https://legal-point.org/regulamin-uslug" target="_blank" rel="noopener">Regulamin usług online</a><br><a href="https://legal-point.org/polityka-prywatnosci" target="_blank" rel="noopener">Polityka prywatności</a></div>
+    <p class="small">Makieta W3 „Pacta” przygotowana przez Odnova Studio, odnovastudio.com. Strona demonstracyjna, nie jest witryną kancelarii.</p>
+  </div>
+</footer>
 
-<script>window.__W3={"aspect": 1.7916666666666667, "uc": 0.5784883720930233, "vc": 0.63671875, "dc": 0.7, "lu": 0.5377906976744186, "lv": 0.1953125, "worlds": [{"s": "g-produkcja.webp", "m": "g-produkcja-m.webp", "d": "g-produkcja-d.png"}, {"s": "g-budowa.webp", "m": "g-budowa-m.webp", "d": "g-budowa-d.png"}, {"s": "g-plan.webp", "m": "g-plan-m.webp", "d": "g-plan-d.png"}, {"s": "g-magazyn.webp", "m": "g-magazyn-m.webp", "d": "g-magazyn-d.png"}], "vy": 0.44, "fg": {"s": "fg.webp", "m": "fg-m.webp"}};</script>
+<div class="callbar"><a href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a><a href="tel:+48662187462">Zadzwoń</a></div>
+
 <script>
+(function(){
+  var el=document.getElementById('motto'), txt=el.textContent;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  el.textContent='';
+  txt.split('').forEach(function(ch,i){ var s=document.createElement('span'); s.textContent=ch===' '?'\u00a0':ch; s.style.animationDelay=(120+i*42)+'ms'; el.appendChild(s); });
+  el.setAttribute('aria-label',txt);
+})();
+
 (function(){
   var d=document, root=d.documentElement;
   var top=d.querySelector('.top');
-  function hh(){ if(top) root.style.setProperty('--hdr-h', (top.querySelector('.nav').offsetHeight)+'px'); }
-  hh(); addEventListener('resize',hh);
+  function m(){ if(top) root.style.setProperty('--hdr-h', top.offsetHeight+'px'); }
+  m(); addEventListener('resize',m); addEventListener('load',m);
 
-  // --- przelacznik branz
-  var tabs=[].slice.call(d.querySelectorAll('.tab')), panels=[].slice.call(d.querySelectorAll('.panel'));
-  function sel(i,focus){
-    tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected',on?'true':'false'); t.tabIndex=on?0:-1; panels[k].hidden=!on; });
-    if(focus) tabs[i].focus();
+  // stan paska po przewinięciu
+  var sc=function(){ if(top) top.classList.toggle('is-scrolled', scrollY>40); };
+  sc(); addEventListener('scroll',sc,{passive:true});
+
+  // menu mobilne
+  var nt=d.getElementById('navtoggle'), dr=d.getElementById('drawer');
+  if(nt&&dr){
+    nt.addEventListener('click',function(){
+      var o=top.classList.toggle('menu-open'); nt.setAttribute('aria-expanded',o?'true':'false');
+    });
+    dr.addEventListener('click',function(ev){ if(ev.target.closest('a')){ top.classList.remove('menu-open'); nt.setAttribute('aria-expanded','false'); }});
+    d.addEventListener('keydown',function(ev){ if(ev.key==='Escape'){ top.classList.remove('menu-open'); nt.setAttribute('aria-expanded','false'); }});
   }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){ sel(i); });
-    t.addEventListener('keydown',function(ev){
-      if(ev.key==='ArrowRight'){ ev.preventDefault(); sel((i+1)%tabs.length,true); }
-      if(ev.key==='ArrowLeft'){ ev.preventDefault(); sel((i+tabs.length-1)%tabs.length,true); }
-      if(ev.key==='Home'){ ev.preventDefault(); sel(0,true); }
-      if(ev.key==='End'){ ev.preventDefault(); sel(tabs.length-1,true); }
+
+  // akordeony usług
+  d.querySelectorAll('[data-acc]').forEach(function(item){
+    var b=item.querySelector('button');
+    b.addEventListener('click',function(){
+      var open=item.classList.toggle('is-open');
+      b.setAttribute('aria-expanded',open?'true':'false');
     });
   });
-  if(tabs.length) sel(0);
-  // naglowek: slowo skreslane i wpisywane na nowo, jak poprawka w umowie
-  var rw=d.querySelector('.rw');
-  if(rw && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var words=rw.getAttribute('data-words').split('|'), wi=0, wEl=rw.querySelector('.w');
-    setInterval(function(){
-      if(d.hidden) return;
-      rw.classList.add('x');
-      setTimeout(function(){ wi=(wi+1)%words.length; wEl.textContent=words[wi]; rw.classList.remove('x','in'); void wEl.offsetWidth; rw.classList.add('in'); },720);
-    },3000);
-  }
-  // podpis pod kadrem prowadzi do branzy, ktora widac w kadrze
-  [].slice.call(d.querySelectorAll('.cap .act>a')).forEach(function(a){ a.addEventListener('click',function(){ var i=+a.getAttribute('data-tab'); if(tabs[i]) sel(i); }); });
 
-  // --- odslanianie
+  // chipsy w formularzu
+  d.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){ c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')==='true'?'false':'true'); });
+  });
+  var f=d.getElementById('form');
+  if(f) f.addEventListener('submit',function(ev){ ev.preventDefault();
+    var msg=d.getElementById('formmsg'); msg.textContent='To makieta: formularz niczego nie wysyła. Na stronie docelowej wiadomość trafi na adres kancelarii.'; });
+
+  // odsłanianie treści przy przewijaniu
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els=[].slice.call(d.querySelectorAll('.rv'));
+  var els=[].slice.call(d.querySelectorAll('.reveal,.stagger'));
+  d.querySelectorAll('.stagger').forEach(function(s){ [].forEach.call(s.children,function(c,i){ c.style.setProperty('--i',i); }); });
   function show(el){ el.classList.add('in'); }
-  if(reduce || !('IntersectionObserver' in window)) els.forEach(show);
-  else{
-    var fired=false;
-    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ fired=true; show(x.target); io.unobserve(x.target);} }); },{rootMargin:'0px 0px -8% 0px',threshold:.05});
-    els.forEach(function(el){ io.observe(el); });
-    var tm; addEventListener('scroll',function(){ clearTimeout(tm); tm=setTimeout(function(){ var vh=innerHeight; els.forEach(function(el){ if(!el.classList.contains('in') && el.getBoundingClientRect().top<vh*0.98) show(el); }); },140); },{passive:true});
-    setTimeout(function(){ if(!fired) els.forEach(show); },4000);
-  }
-
-  // --- przelot
-  var stage=d.querySelector('.stage'), view=d.querySelector('.view'), cv=d.getElementById('gl'),
-      fb=[].slice.call(d.querySelectorAll('.fb img')), paper=d.querySelector('.paper'), paperTxt=d.querySelector('.paper p'),
-      actEls=[].slice.call(d.querySelectorAll('.cap .act>a')), ticks=[].slice.call(d.querySelectorAll('.cap .ticks i')),
-      dust=d.getElementById('dust');
-  if(!stage) return;
-  var W=window.__W3, small=Math.min(innerWidth,screen.width||9999)*Math.min(devicePixelRatio||1,2)<=1100;
-
-  function cl(x){return x<0?0:x>1?1:x;}
-  function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
-  var pinEl=d.querySelector('.pin'); var capEl=d.querySelector('.cap');
-  function prog(){ var r=stage.getBoundingClientRect(), top=parseFloat(getComputedStyle(pinEl).top)||0; var h=(stage.offsetHeight-pinEl.offsetHeight)*.9; return cl((top-r.top)/(h>1?h:1)); }
-  // wagi swiatow: przenikanie kolejnych kadrow, rowno rozlozone do 80% przewijania
-  var NW=W.worlds.length;
-  function weights(p){
-    var a=[0], w=[];
-    for(var k=1;k<NW;k++) a.push(cl((p-(.8*k/NW-.045))/.09));
-    a.push(0);
-    for(k=0;k<NW;k++) w.push((k===0?1:a[k])*(1-a[k+1]));
-    return w;
-  }
-  function camF(p){ return p<.82 ? .04+.30*ease(p/.82) : .34+.54*ease((p-.82)/.18); }
-  function paperA(p){ return cl((p-.86)/.10); }
-  var lastAct=-1;
-  function ui(p,w){
-    var act=0; for(var k=1;k<w.length;k++) if(w[k]>w[act]) act=k;
-    if(act!==lastAct){ lastAct=act; actEls.forEach(function(s,k){ s.style.opacity=k===act?1:0; s.style.pointerEvents=k===act?'auto':'none'; s.tabIndex=k===act?0:-1; }); ticks.forEach(function(t,k){ t.classList.toggle('on',k<=act); }); }
-    var pa=paperA(p); paper.style.opacity=pa; if(capEl) capEl.style.opacity=1-pa; paperTxt.classList.toggle('on',pa>.85);
-    paper.style.pointerEvents=pa>.85?'auto':'none';
-  }
-
-  if(reduce){ fb.forEach(function(im,k){ im.style.opacity=k===0?1:0; }); actEls.forEach(function(s,k){ s.style.opacity=1; s.style.position='static'; s.style.pointerEvents='auto'; }); return; }
-
-  // --- WebGL: siatka z mapa glebi
-  var gl=null;
-  try{ gl=cv.getContext('webgl',{antialias:true,premultipliedAlpha:true,alpha:false}); }catch(e){}
-  if(!gl){ fallback(); return; }
-
-  var VS='attribute vec3 p;attribute vec2 uv;uniform mat4 P;uniform vec3 C;varying vec2 v;void main(){v=uv;gl_Position=P*vec4(p-C,1.0);}';
-  var FS='precision mediump float;varying vec2 v;uniform sampler2D t;uniform float a;void main(){vec4 c=texture2D(t,v);gl_FragColor=vec4(c.rgb*c.a*a,c.a*a);}';
-  function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
-  var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS)); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr);
-  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){ fallback(); return; }
-  gl.useProgram(pr);
-  var aP=gl.getAttribLocation(pr,'p'), aUV=gl.getAttribLocation(pr,'uv'), uP=gl.getUniformLocation(pr,'P'), uC=gl.getUniformLocation(pr,'C'), uA=gl.getUniformLocation(pr,'a');
-
-  var AI=W.aspect, FOV=36*Math.PI/180, T=Math.tan(FOV/2), NX=150, NY=84, UC=W.uc, VC=W.vc;
-  function Zof(dv){ return 1/(0.26+0.74*dv); }           // mapa glebi: 1 = blisko
-  function ray(u,v){ return [(u-.5)*2*AI*T, (.5-v)*2*T, -1]; }
-  var meshes=[], ready=0;
-
-  function loadImg(src,cb){ var im=new Image(); im.decoding='async'; im.onload=function(){cb(im);}; im.onerror=function(){ fallback(); }; im.src=src; }
-  function build(k,img,dep){
-    var flat=!dep, px, dw, dh;
-    if(!flat){ var c=d.createElement('canvas'); c.width=dep.width; c.height=dep.height; var x=c.getContext('2d'); x.drawImage(dep,0,0);
-    px=x.getImageData(0,0,c.width,c.height).data; dw=c.width; dh=c.height; }
-    function dv(u,v){ if(flat) return W.dc; var X=Math.min(dw-1,Math.max(0,Math.round(u*(dw-1)))), Y=Math.min(dh-1,Math.max(0,Math.round(v*(dh-1)))); return px[(Y*dw+X)*4]/255; }
-    var pos=new Float32Array((NX+1)*(NY+1)*3), uvs=new Float32Array((NX+1)*(NY+1)*2), n=0,m=0;
-    for(var j=0;j<=NY;j++) for(var i=0;i<=NX;i++){
-      var u=i/NX, v=j/NY, z=Zof(dv(u,v)), r=ray(u,v);
-      pos[n++]=r[0]*z; pos[n++]=r[1]*z; pos[n++]=r[2]*z; uvs[m++]=u; uvs[m++]=v;
-    }
-    var idx=new Uint16Array(NX*NY*6), q=0;
-    for(j=0;j<NY;j++) for(i=0;i<NX;i++){ var a=j*(NX+1)+i, b=a+1, c2=a+NX+1, e2=c2+1; idx[q++]=a;idx[q++]=c2;idx[q++]=b; idx[q++]=b;idx[q++]=c2;idx[q++]=e2; }
-    var bp=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,bp); gl.bufferData(gl.ARRAY_BUFFER,pos,gl.STATIC_DRAW);
-    var bu=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,bu); gl.bufferData(gl.ARRAY_BUFFER,uvs,gl.STATIC_DRAW);
-    var bi=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,bi); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,idx,gl.STATIC_DRAW);
-    var tx=gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D,tx);
-    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);
-    var fmt=flat?gl.RGBA:gl.RGB; gl.texImage2D(gl.TEXTURE_2D,0,fmt,fmt,gl.UNSIGNED_BYTE,img);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-    meshes[k]={bp:bp,bu:bu,bi:bi,tx:tx,n:idx.length};
-    if(++ready===NW+1){ view.classList.add('gl-on'); fb.forEach(function(im){ im.style.visibility='hidden'; }); onScroll(); }
-  }
-  W.worlds.forEach(function(w,k){
-    loadImg(small?w.m:w.s,function(img){ loadImg(w.d,function(dep){ build(k,img,dep); }); });
-  });
-  loadImg(small?W.fg.m:W.fg.s,function(img){ build(NW,img,null); });   // umowa, pioro, lampa: jedna plaszczyzna, nie przenika
-
-  // punkt umowy w przestrzeni: kamera jedzie po promieniu przez niego, wiec umowa stoi w miejscu
-  var Zc=Zof(W.dc), Rc=ray(UC,VC), Pc=[Rc[0]*Zc,Rc[1]*Zc,Rc[2]*Zc];
-
-  // okno kadru na plaszczyznie obrazu (z=-1): waski ekran tnie boki wokol umowy, szeroki tnie gore i dol
-  function win(AC){
-    var hw, hh, xc=0, yc=0;
-    if(AC<=AI){ hh=T; hw=T*AC; var xm=AI*T-hw; xc=Math.max(-xm,Math.min(xm,(UC-.5)*2*AI*T)); }
-    else { hw=AI*T; hh=AI*T/AC; var ym=T-hh; yc=Math.max(-ym,Math.min(ym,(.5-W.vy)*2*T)); }
-    return {xc:xc,yc:yc,hw:hw,hh:hh};
-  }
-  function proj(){
-    var w=cv.width, h=cv.height, near=.02, far=20, o=win(w/h);
-    var l=(o.xc-o.hw)*near, r=(o.xc+o.hw)*near, b=(o.yc-o.hh)*near, t=(o.yc+o.hh)*near;
-    return new Float32Array([2*near/(r-l),0,0,0, 0,2*near/(t-b),0,0, (r+l)/(r-l),(t+b)/(t-b),-(far+near)/(far-near),-1, 0,0,-2*far*near/(far-near),0]);
-  }
-  function size(){
-    var dpr=Math.min(devicePixelRatio||1,2), r=view.getBoundingClientRect();
-    var w=Math.round(r.width*dpr), h=Math.round(r.height*dpr);
-    if(cv.width!==w||cv.height!==h){ cv.width=w; cv.height=h; if(dust){ dust.width=Math.round(r.width); dust.height=Math.round(r.height);} }
-  }
-  function draw(p){
-    if(ready<NW+1) return;
-    size(); gl.viewport(0,0,cv.width,cv.height);
-    gl.clearColor(.04,.06,.09,1); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-    gl.uniformMatrix4fv(uP,false,proj());
-    var f=camF(p); gl.uniform3f(uC,Pc[0]*f,Pc[1]*f,Pc[2]*f);
-    var w=weights(p);
-    gl.enable(gl.BLEND); gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA); gl.enable(gl.DEPTH_TEST);
-    var order=W.worlds.map(function(x,k){return k;}).filter(function(k){return w[k]>.002;}).sort(function(a,b){return w[b]-w[a];});
-    order.forEach(function(k,ix){
-      var m=meshes[k]; gl.clear(gl.DEPTH_BUFFER_BIT);
-      gl.bindBuffer(gl.ARRAY_BUFFER,m.bp); gl.enableVertexAttribArray(aP); gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
-      gl.bindBuffer(gl.ARRAY_BUFFER,m.bu); gl.enableVertexAttribArray(aUV); gl.vertexAttribPointer(aUV,2,gl.FLOAT,false,0,0);
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,m.bi); gl.bindTexture(gl.TEXTURE_2D,m.tx);
-      gl.uniform1f(uA, ix===0?1:w[k]/(w[k]+w[order[0]]));
-      gl.drawElements(gl.TRIANGLES,m.n,gl.UNSIGNED_SHORT,0);
-    });
-    var F=meshes[NW]; gl.disable(gl.DEPTH_TEST);
-    gl.bindBuffer(gl.ARRAY_BUFFER,F.bp); gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
-    gl.bindBuffer(gl.ARRAY_BUFFER,F.bu); gl.vertexAttribPointer(aUV,2,gl.FLOAT,false,0,0);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,F.bi); gl.bindTexture(gl.TEXTURE_2D,F.tx);
-    gl.uniform1f(uA,1); gl.drawElements(gl.TRIANGLES,F.n,gl.UNSIGNED_SHORT,0);
-    ui(p,w);
-  }
-
-  // --- pyl w swietle lampy: jedyny ruch, ktory nie zalezy od przewijania
-  var motes=[], dctx=dust&&dust.getContext('2d'), lampU=W.lu, lampV=W.lv;
-  for(var i=0;i<46;i++) motes.push({x:Math.random(),y:Math.random(),s:.4+Math.random()*1.3,sp:.004+Math.random()*.01,ph:Math.random()*6.28});
-  var tlast=0, P=0;
-  function dustDraw(t){
-    if(!dctx) return;
-    var dw=dust.width, dh=dust.height; dctx.clearRect(0,0,dw,dh);
-    var f=camF(P), mag=1/(1-f), a=(1-paperA(P))*.9;
-    if(a<=0) return;
-    // stozek swiatla pod klosza: od lampy do umowy, na ekranie
-    var cx=dw*screenU(UC), cy=dh*screenV(VC), lx=cx+(screenU(lampU)-screenU(UC))*dw*mag, ly=cy+(screenV(lampV)-screenV(VC))*dh*mag;
-    var g=dctx.createRadialGradient(lx,ly+dh*.05*mag,0,lx,ly+dh*.05*mag,dh*.42*mag);
-    var br=.10+.025*Math.sin(t/1700)+.015*Math.sin(t/610);
-    g.addColorStop(0,'rgba(255,214,160,'+(br*a)+')'); g.addColorStop(1,'rgba(255,214,160,0)');
-    dctx.fillStyle=g; dctx.fillRect(0,0,dw,dh);
-    motes.forEach(function(m){
-      m.y-=m.sp*.02; if(m.y<0) m.y=1;
-      var mx=lx+(m.x-.5)*dh*.34*mag+Math.sin(t/2400+m.ph)*6, my=ly+(m.y*.62)*dh*mag;
-      var r=m.s*Math.min(2.2,mag*.8);
-      dctx.fillStyle='rgba(255,236,210,'+(.35*a*(.5+.5*Math.sin(t/900+m.ph)))+')';
-      dctx.beginPath(); dctx.arc(mx,my,r,0,6.283); dctx.fill();
-    });
-  }
-  function screenU(u){ var r=view.getBoundingClientRect(), o=win(r.width/r.height); return .5+((u-.5)*2*AI*T-o.xc)/(2*o.hw); }
-  function screenV(v){ var r=view.getBoundingClientRect(), o=win(r.width/r.height); return .5-((.5-v)*2*T-o.yc)/(2*o.hh); }
-
-  var tick=false;
-  function onScroll(){ if(!tick){ tick=true; requestAnimationFrame(function(){ tick=false; P=prog(); draw(P); }); } }
-  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
-  var visible=true;
-  if('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible=en[0].isIntersecting; },{threshold:0}).observe(view);
-  (function loop(t){ if(visible && !d.hidden) dustDraw(t); requestAnimationFrame(loop); })(0);
-  onScroll();
-
-  // --- zapas bez WebGL: przenikanie zdjec z powolnym najazdem
-  function fallback(){
-    if(view.classList.contains('fb-on')) return; view.classList.add('fb-on'); if(cv) cv.style.display='none';
-    function run(){ var p=prog(), w=weights(p), s=1+camF(p)*.9;
-      fb.forEach(function(im,k){ im.style.visibility='visible'; im.style.opacity=w[k]; im.style.transform='scale('+s+')'; }); ui(p,w); }
-    addEventListener('scroll',function(){ requestAnimationFrame(run); },{passive:true}); run();
-  }
+  if(reduce || !('IntersectionObserver' in window)){ els.forEach(show); return; }
+  var fired=false;
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){ if(x.isIntersecting){ fired=true; show(x.target); io.unobserve(x.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(el){ io.observe(el); });
+  function sweep(){ var vh=innerHeight; els.forEach(function(el){ if(!el.classList.contains('in') && el.getBoundingClientRect().top < vh*0.98) show(el); }); }
+  var t; addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sweep,140); },{passive:true});
+  setTimeout(function(){ if(!fired) els.forEach(show); },4000);
 })();
+
 </script>
 </body>
 </html>
