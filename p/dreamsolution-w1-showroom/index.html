@@ -111,6 +111,45 @@ legend{font-size:14px;color:var(--mut);margin-bottom:10px;padding:0}
 input,textarea{caret-color:var(--acc)}
 html{accent-color:var(--acc-solid)}
 .pillar .pt{padding-top:4px}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* standard W1: papierowy protokół na ciemnym zdjęciu */
+.std1{overflow:hidden}
+.std1-bg{position:absolute;inset:0}.std1-bg img{width:100%;height:100%;object-fit:cover;opacity:.35;filter:saturate(.6)}
+.std1-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--sbg) 20%,rgba(15,29,28,.55) 60%,rgba(15,29,28,.2)),linear-gradient(180deg,var(--sbg),transparent 25%,transparent 75%,var(--sbg))}
+.std1-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.paper{background:#F4EFE6;color:#1E2624;padding:clamp(24px,3vw,40px);box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.25);transform:rotate(-1.2deg);font-size:15px}
+.paper .phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #1E2624;padding-bottom:12px;font-family:var(--f-head);font-size:24px}
+.paper .pno{font-family:var(--f-body);font-size:13px;color:#5B4631;font-variant-numeric:tabular-nums}
+.paper .pmeta{font-size:13px;color:#555;margin:12px 0 8px}
+.paper ul{list-style:none;margin:0;padding:0}
+.paper li{display:grid;grid-template-columns:22px 150px 1fr;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(30,38,36,.15)}
+.paper li b{font-weight:600}.paper li em{font-style:normal;color:#4A4F4D}
+.tick{width:14px;height:8px;border-left:2px solid #74533A;border-bottom:2px solid #74533A;transform:rotate(-45deg) translate(2px,-2px)}
+.paper .pfoot{display:flex;align-items:end;gap:18px;margin-top:20px;font-size:13px;color:#555}
+.sig{flex:1;height:34px;border-bottom:1px solid #1E2624;background:no-repeat left bottom/170px 30px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 30'%3E%3Cpath d='M4 22c10-14 18-16 20-6s-6 10 2 2 14-14 18-4 8 6 16-6 10-4 14 6 12-2 20-10 10 8 18 4 22-10 30-8' fill='none' stroke='%231E3A5F' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")}
+/* standard W2: zdjęcie z podpisem + cytat + lista muzealna */
+.std2-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,110px);align-items:start}
+.std2-ph{margin:0}.std2-ph img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:40% 50%}
+.std2-ph figcaption{font-size:14px;color:var(--mut);margin-top:12px;max-width:360px}
+.std2 blockquote{margin:0 0 48px;padding:0}
+.std2 blockquote p{font-family:var(--f-head);font-size:clamp(34px,4vw,58px);line-height:1.08;letter-spacing:-.015em;margin:0}
+.std2-list{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin:0}
+.std2-list div{border-top:1px solid var(--lin);padding-top:14px}
+.std2-list dt{font-family:var(--f-head);font-size:22px;margin-bottom:4px}
+.std2-list dd{margin:0;color:var(--mut);font-size:16px}
+/* standard W3: karta parametrów */
+.std3-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:40px}.std3-head .lead{max-width:420px;margin:0}
+.spec{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.spec th,.spec td{text-align:left;padding:18px 16px;border-bottom:1px solid var(--lin);vertical-align:baseline}
+.spec thead th{font:600 13px var(--f-body);color:var(--mut);border-bottom:1px solid var(--acc)}
+.spec tbody th{font-family:var(--f-head);font-weight:600;font-stretch:105%;font-size:20px;width:30%}
+.spec td{color:var(--mut)}
+.spec .val{text-align:right;font-family:var(--f-head);font-stretch:118%;font-weight:650;font-size:clamp(20px,2vw,28px);color:var(--acc);white-space:nowrap}
+.spec tbody tr:hover{background:rgba(196,148,106,.06)}
+@media(max-width:900px){.std1-grid,.std2-grid{grid-template-columns:1fr}.paper{transform:none}.std3-head{display:block}}
+@media(max-width:560px){.paper li{grid-template-columns:20px 1fr}.paper li em{grid-column:2}.std2-list{grid-template-columns:1fr}
+ .spec thead{display:none}.spec tr{display:grid;grid-template-columns:1fr auto;padding:14px 0;border-bottom:1px solid var(--lin)}.spec th,.spec td{border:0;padding:2px 0}.spec td:not(.val){grid-column:1;grid-row:2;font-size:15px}.spec .val{grid-row:1/span 2;align-self:center}.spec tbody th{width:auto;font-size:18px}}
 /* filary: układ per wariant */
 .v1 .pillars{grid-template-columns:1fr;gap:0}
 .v1 .pillar{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,80px);align-items:center;border-top:0;padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--lin)}
@@ -248,16 +287,17 @@ html:not(.js) .load,html:not(.js) .cue{display:none}
  </div>
 </section>
 
-<section id="standard" class="sec ton-d band">
- <div class="band-bg" aria-hidden="true"><img class="" src="img/tablet-2000.webp" srcset="img/tablet-1000.webp 1000w, img/tablet-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>
- <div class="wrap">
-  <div class="head reveal"><h2>Detale, które widzi Twój klient</h2></div>
-  <ul class="std reveal">
-   <li><b>Ponad dziesięć lat</b> obsługi klientów, którzy nie akceptują „prawie dobrze”.</li>
-   <li><b>Jeden opiekun</b> prowadzi projekt od wyceny do protokołu ze zdjęciami.</li>
-   <li><b>Magazyn pod nadzorem całą dobę</b>, z dostępem i wydaniem na życzenie.</li>
-   <li><b>Białe rękawiczki, materiały klasy muzealnej</b> i pełne ubezpieczenie ładunku.</li>
-  </ul>
+<section id="standard" class="sec ton-d std1">
+ <div class="std1-bg" aria-hidden="true"><img class="" src="img/tablet-2000.webp" srcset="img/tablet-1000.webp 1000w, img/tablet-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>
+ <div class="wrap std1-grid">
+  <div class="reveal std1-txt"><h2>Każda dostawa kończy się protokołem</h2>
+   <p class="lead">Salon dostaje zdjęcia i podpis klienta, zanim ekipa zdąży wrócić do auta. Tak wygląda standard, którego pilnujemy od ponad dziesięciu lat.</p></div>
+  <article class="paper reveal" aria-label="Przykładowy protokół dostawy">
+   <div class="phead"><span>Protokół dostawy</span><span class="pno">DS / 0412</span></div>
+   <p class="pmeta">Salon: kolekcja wypoczynkowa · Klient końcowy: Warszawa, Wilanów</p>
+   <ul><li><span class="tick" aria-hidden="true"></span><b>Opiekun projektu</b><em>jedna osoba od wyceny do protokołu</em></li><li><span class="tick" aria-hidden="true"></span><b>Dokumentacja</b><em>zdjęcia przy przyjęciu, wydaniu i montażu</em></li><li><span class="tick" aria-hidden="true"></span><b>Magazyn</b><em>nadzór całą dobę, wydanie na życzenie</em></li><li><span class="tick" aria-hidden="true"></span><b>Zabezpieczenie</b><em>białe rękawiczki, materiały klasy muzealnej</em></li><li><span class="tick" aria-hidden="true"></span><b>Ubezpieczenie</b><em>pełne, na każdym odcinku łańcucha</em></li></ul>
+   <div class="pfoot"><span>Podpis klienta</span><i class="sig" aria-hidden="true"></i></div>
+  </article>
  </div>
 </section>
 
@@ -322,7 +362,7 @@ html:not(.js) .load,html:not(.js) .cue{display:none}
 })();
 
 (function(){
- var N=100, TEMPO=[0.0, 0.017, 0.0332, 0.049, 0.0654, 0.0807, 0.0967, 0.1123, 0.1268, 0.1421, 0.1565, 0.1718, 0.1876, 0.2029, 0.2188, 0.2336, 0.2489, 0.264, 0.2782, 0.293, 0.3067, 0.3209, 0.3346, 0.3477, 0.3617, 0.3758, 0.3907, 0.4055, 0.4194, 0.4337, 0.4471, 0.461, 0.4747, 0.4874, 0.5008, 0.5137, 0.5283, 0.5424, 0.5554, 0.5689, 0.5808, 0.5929, 0.6044, 0.6148, 0.6258, 0.6352, 0.6457, 0.6559, 0.665, 0.6747, 0.6834, 0.6933, 0.7038, 0.7132, 0.723, 0.7315, 0.7406, 0.7495, 0.7573, 0.7657, 0.7735, 0.7823, 0.7911, 0.7989, 0.8074, 0.8146, 0.8223, 0.8297, 0.8364, 0.8439, 0.8507, 0.858, 0.8648, 0.8704, 0.8768, 0.8825, 0.8891, 0.8954, 0.9005, 0.9059, 0.9103, 0.9161, 0.9214, 0.925, 0.9293, 0.9323, 0.9359, 0.9393, 0.9416, 0.9451, 0.9482, 0.953, 0.958, 0.9619, 0.9673, 0.9715, 0.9771, 0.9828, 0.9873, 0.9937, 1.0];
+ var N=100, TEMPO=[0.0, 0.0173, 0.0337, 0.0497, 0.0664, 0.0819, 0.0981, 0.1139, 0.1287, 0.1441, 0.1584, 0.1739, 0.1898, 0.2052, 0.2212, 0.2361, 0.2517, 0.2669, 0.2812, 0.296, 0.3097, 0.324, 0.3379, 0.3509, 0.3649, 0.379, 0.3941, 0.409, 0.4229, 0.4373, 0.4507, 0.4647, 0.4784, 0.4911, 0.5043, 0.5169, 0.5315, 0.5458, 0.5588, 0.5723, 0.5842, 0.5963, 0.6076, 0.6178, 0.6288, 0.6382, 0.6487, 0.6589, 0.668, 0.6777, 0.6863, 0.6962, 0.7069, 0.7163, 0.7263, 0.7349, 0.7442, 0.7531, 0.7609, 0.7694, 0.7772, 0.786, 0.7949, 0.8027, 0.8111, 0.8183, 0.826, 0.8334, 0.84, 0.8475, 0.8542, 0.8614, 0.8682, 0.8736, 0.8798, 0.8854, 0.8918, 0.898, 0.9028, 0.9081, 0.9123, 0.9179, 0.923, 0.9264, 0.9305, 0.9333, 0.9367, 0.94, 0.9422, 0.9456, 0.9486, 0.9533, 0.9583, 0.9621, 0.9674, 0.9715, 0.9771, 0.9829, 0.9874, 0.9937, 1.0];
  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
  var hero=document.querySelector('.hero1'),cv=document.getElementById('cv'),cx=cv.getContext('2d'),ld=document.getElementById('ld');
  var scns=[].slice.call(document.querySelectorAll('.scn')),acts=document.querySelector('.acts');

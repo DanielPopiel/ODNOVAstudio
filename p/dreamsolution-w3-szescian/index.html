@@ -111,6 +111,45 @@ legend{font-size:14px;color:var(--mut);margin-bottom:10px;padding:0}
 input,textarea{caret-color:var(--acc)}
 html{accent-color:var(--acc-solid)}
 .pillar .pt{padding-top:4px}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* standard W1: papierowy protokół na ciemnym zdjęciu */
+.std1{overflow:hidden}
+.std1-bg{position:absolute;inset:0}.std1-bg img{width:100%;height:100%;object-fit:cover;opacity:.35;filter:saturate(.6)}
+.std1-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--sbg) 20%,rgba(15,29,28,.55) 60%,rgba(15,29,28,.2)),linear-gradient(180deg,var(--sbg),transparent 25%,transparent 75%,var(--sbg))}
+.std1-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.paper{background:#F4EFE6;color:#1E2624;padding:clamp(24px,3vw,40px);box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.25);transform:rotate(-1.2deg);font-size:15px}
+.paper .phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #1E2624;padding-bottom:12px;font-family:var(--f-head);font-size:24px}
+.paper .pno{font-family:var(--f-body);font-size:13px;color:#5B4631;font-variant-numeric:tabular-nums}
+.paper .pmeta{font-size:13px;color:#555;margin:12px 0 8px}
+.paper ul{list-style:none;margin:0;padding:0}
+.paper li{display:grid;grid-template-columns:22px 150px 1fr;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(30,38,36,.15)}
+.paper li b{font-weight:600}.paper li em{font-style:normal;color:#4A4F4D}
+.tick{width:14px;height:8px;border-left:2px solid #74533A;border-bottom:2px solid #74533A;transform:rotate(-45deg) translate(2px,-2px)}
+.paper .pfoot{display:flex;align-items:end;gap:18px;margin-top:20px;font-size:13px;color:#555}
+.sig{flex:1;height:34px;border-bottom:1px solid #1E2624;background:no-repeat left bottom/170px 30px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 30'%3E%3Cpath d='M4 22c10-14 18-16 20-6s-6 10 2 2 14-14 18-4 8 6 16-6 10-4 14 6 12-2 20-10 10 8 18 4 22-10 30-8' fill='none' stroke='%231E3A5F' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")}
+/* standard W2: zdjęcie z podpisem + cytat + lista muzealna */
+.std2-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,110px);align-items:start}
+.std2-ph{margin:0}.std2-ph img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:40% 50%}
+.std2-ph figcaption{font-size:14px;color:var(--mut);margin-top:12px;max-width:360px}
+.std2 blockquote{margin:0 0 48px;padding:0}
+.std2 blockquote p{font-family:var(--f-head);font-size:clamp(34px,4vw,58px);line-height:1.08;letter-spacing:-.015em;margin:0}
+.std2-list{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin:0}
+.std2-list div{border-top:1px solid var(--lin);padding-top:14px}
+.std2-list dt{font-family:var(--f-head);font-size:22px;margin-bottom:4px}
+.std2-list dd{margin:0;color:var(--mut);font-size:16px}
+/* standard W3: karta parametrów */
+.std3-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:40px}.std3-head .lead{max-width:420px;margin:0}
+.spec{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.spec th,.spec td{text-align:left;padding:18px 16px;border-bottom:1px solid var(--lin);vertical-align:baseline}
+.spec thead th{font:600 13px var(--f-body);color:var(--mut);border-bottom:1px solid var(--acc)}
+.spec tbody th{font-family:var(--f-head);font-weight:600;font-stretch:105%;font-size:20px;width:30%}
+.spec td{color:var(--mut)}
+.spec .val{text-align:right;font-family:var(--f-head);font-stretch:118%;font-weight:650;font-size:clamp(20px,2vw,28px);color:var(--acc);white-space:nowrap}
+.spec tbody tr:hover{background:rgba(196,148,106,.06)}
+@media(max-width:900px){.std1-grid,.std2-grid{grid-template-columns:1fr}.paper{transform:none}.std3-head{display:block}}
+@media(max-width:560px){.paper li{grid-template-columns:20px 1fr}.paper li em{grid-column:2}.std2-list{grid-template-columns:1fr}
+ .spec thead{display:none}.spec tr{display:grid;grid-template-columns:1fr auto;padding:14px 0;border-bottom:1px solid var(--lin)}.spec th,.spec td{border:0;padding:2px 0}.spec td:not(.val){grid-column:1;grid-row:2;font-size:15px}.spec .val{grid-row:1/span 2;align-self:center}.spec tbody th{width:auto;font-size:18px}}
 /* filary: układ per wariant */
 .v1 .pillars{grid-template-columns:1fr;gap:0}
 .v1 .pillar{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,80px);align-items:center;border-top:0;padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--lin)}
@@ -244,16 +283,12 @@ html:not(.js) .scn3:not(.on),html:not(.js) .g-rack,html:not(.js) .g-sofa{display
  </div>
 </section>
 
-<section id="standard" class="sec ton-j band">
- <div class="band-bg" aria-hidden="true"><img class="" src="img/tablet-2000.webp" srcset="img/tablet-1000.webp 1000w, img/tablet-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>
+<section id="standard" class="sec ton-j std3">
  <div class="wrap">
-  <div class="head reveal"><h2>Detale, które widzi Twój klient</h2></div>
-  <ul class="std reveal">
-   <li><b>Ponad dziesięć lat</b> obsługi klientów, którzy nie akceptują „prawie dobrze”.</li>
-   <li><b>Jeden opiekun</b> prowadzi projekt od wyceny do protokołu ze zdjęciami.</li>
-   <li><b>Magazyn pod nadzorem całą dobę</b>, z dostępem i wydaniem na życzenie.</li>
-   <li><b>Białe rękawiczki, materiały klasy muzealnej</b> i pełne ubezpieczenie ładunku.</li>
-  </ul>
+  <div class="std3-head reveal"><h2>Karta standardu</h2><p class="lead">Parametry, które podajemy marce na piśmie, zanim przyjmiemy pierwszą paletę.</p></div>
+  <table class="spec reveal"><caption class="sr">Standard obsługi Dream Solution</caption>
+   <thead><tr><th scope="col">Parametr</th><th scope="col">Zakres</th><th scope="col">Wartość</th></tr></thead>
+   <tbody><tr><th scope="row">Warunki w magazynie</th><td>stała temperatura i wilgotność, strefy wydzielone</td><td class="val">kontrolowane</td></tr><tr><th scope="row">Nadzór</th><td>monitoring i kontrola dostępu</td><td class="val">24 / 7</td></tr><tr><th scope="row">Ewidencja</th><td>kod i zdjęcie każdej pozycji przy przyjęciu</td><td class="val">100% pozycji</td></tr><tr><th scope="row">Opiekun projektu</th><td>od wyceny do protokołu</td><td class="val">1 osoba</td></tr><tr><th scope="row">Ubezpieczenie ładunku</th><td>na każdym odcinku łańcucha</td><td class="val">pełne</td></tr><tr><th scope="row">Doświadczenie</th><td>obsługa klientów premium</td><td class="val">10+ lat</td></tr></tbody></table>
  </div>
 </section>
 
