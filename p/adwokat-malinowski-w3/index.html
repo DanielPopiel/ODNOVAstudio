@@ -142,6 +142,7 @@ h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
 .lines path{fill:none;stroke-width:30;stroke-linecap:round;stroke-linejoin:miter}
 .lines .la{stroke:#C8A04A}
 .lines .lb{stroke:#9CC7B2}
+.lines .ghost path{stroke:rgba(238,241,236,.34);stroke-width:2;stroke-dasharray:6 10;opacity:var(--gh,1);vector-effect:non-scaling-stroke}
 .lines .gl{stroke:#F6E2A6;stroke-width:14;stroke-dasharray:.04 .96;opacity:calc(var(--gl,0)*.7);animation:glint 7.5s linear infinite;mix-blend-mode:screen}
 .lines .gl.g2{animation-delay:-3.75s;stroke:#E6FFF3}
 @keyframes glint{from{stroke-dashoffset:1}to{stroke-dashoffset:-1}}
@@ -261,7 +262,7 @@ html:not(.js) .tp{margin-bottom:50px}
 <div class="top">
   <div class="mockbar">Makieta W3 „Porozumienie” · propozycja nowej strony od Odnova Studio · <a href="https://www.adwokatminskmazowiecki.pl" rel="nofollow">obecna strona</a></div>
   <header class="hdr">
-    <a class="brand" href="#start" aria-label="Kancelaria Adwokacka Marcin Malinowski — początek strony"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk3" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#9CC7B2" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk3)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#C8A04A" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span class="brand-t"><b>Marcin Malinowski</b><small>Kancelaria Adwokacka</small></span></a>
+    <a class="brand" href="#start" aria-label="Kancelaria Adwokacka Marcin Malinowski — początek strony"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk2" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#9CC7B2" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk2)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#C8A04A" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span class="brand-t"><b>Marcin Malinowski</b><small>Kancelaria Adwokacka</small></span></a>
     <nav class="nav" aria-label="Sekcje"><a href="#dziedziny">Dziedziny</a><a href="#mediacja">Mediacja</a><a href="#o-adwokacie">O adwokacie</a><a href="#online">Współpraca</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
     <a class="hdr-call" href="tel:+48603891980"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg><span>603 891 980</span></a>
     <details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#dziedziny">Dziedziny</a><a href="#mediacja">Mediacja</a><a href="#o-adwokacie">O adwokacie</a><a href="#online">Współpraca</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a><a class="mnav-call" href="tel:+48603891980">Zadzwoń: 603 891 980</a></nav></details>
@@ -272,7 +273,7 @@ html:not(.js) .tp{margin-bottom:50px}
 <section class="hero" id="start" aria-label="Wprowadzenie">
  <div class="pin">
   <div class="photo" aria-hidden="true"></div>
-  <svg class="lines" viewBox="20 -30 840 700" aria-hidden="true"><defs><mask id="hx" maskUnits="userSpaceOnUse" x="-4000" y="-500" width="9000" height="2000"><rect x="-4000" y="-500" width="9000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path class="lb" d="M3200 590 L815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><path class="la" d="M-2400 585 L60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl" d="M60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl g2" d="M815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><circle class="cross" cx="443" cy="430" r="60"/></svg>
+  <svg class="lines" viewBox="20 -30 840 700" aria-hidden="true"><defs><mask id="hx" maskUnits="userSpaceOnUse" x="-4000" y="-500" width="9000" height="2000"><rect x="-4000" y="-500" width="9000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><g class="ghost"><path d="M60 585 L280 20 L495 560 L590 320 L700 605"/><path d="M180 600 L285 320 L380 585 L595 25 L815 590"/></g><path class="lb" d="M3200 590 L815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><path class="la" d="M-2400 585 L60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl" d="M60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl g2" d="M815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><circle class="cross" cx="443" cy="430" r="60"/></svg>
   <div class="h-copy">
    <div>
     <h1>Kancelaria Adwokacka Marcin Malinowski · adwokat w Mińsku Mazowieckim</h1>
@@ -440,13 +441,16 @@ const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>1-Math.pow(1-t,3);
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){hero.classList.add('rm');la.style.strokeDashoffset=lb.style.strokeDashoffset='0';pin.style.setProperty('--s2',1);pin.style.setProperty('--ph',.55);pin.style.setProperty('--gl',0);return}
 // długość „wejścia” linii: część ścieżki poza znakiem (od krawędzi) — na starcie widać tylko ją
 const L0=.34;
-let tick=false;
+let tick=false,base=.45;
+/* wejście po załadowaniu: linie same dochodzą do pierwszych szczytów, szkic znaku czeka na złożenie */
+const t0=performance.now(),intro=now=>{const k=Math.min(1,(now-t0)/2400);base=.45+(.72-.45)*ease(k);frame();if(k<1)requestAnimationFrame(intro)};requestAnimationFrame(intro);
 function frame(){
  tick=false;
  const r=hero.getBoundingClientRect(),span=hero.offsetHeight-pin.offsetHeight;
  const p=clamp(-r.top/(span*.94),0,1);
  const d=ease(clamp(p/.48,0,1));
- const drawn=.6+.4*d;
+ const drawn=base+(1-base)*d;
+ pin.style.setProperty('--gh',(1-d).toFixed(3));
  la.style.strokeDashoffset=String(1-drawn);lb.style.strokeDashoffset=String(1-drawn);
  const meet=clamp((p-.38)/.1,0,1);
  pin.style.setProperty('--cx',(Math.sin(meet*Math.PI)*.55).toFixed(3));
