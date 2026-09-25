@@ -31,7 +31,7 @@ p{margin:0 0 1em}
 .mk{background:var(--mk-bg);color:var(--mk-ink);font-size:12.5px;line-height:1.35;padding:6px 16px;text-align:center}
 .mk a{color:inherit}
 .hdr{background:var(--hdr-bg);border-bottom:1px solid var(--line);transition:background .3s}
-.hdr.sc{background:var(--hdr-bg2)}
+.hdr.hdr-sc{background:var(--hdr-bg2)}
 .hdr .wrap{display:flex;align-items:center;gap:20px;min-height:66px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
 .brand svg{flex:none}
@@ -82,49 +82,48 @@ p{margin:0 0 1em}
 .form .note{font-size:13px;opacity:.75;margin-top:10px}
 footer{font-size:14px}
 
-:root{--bg:#F2F1EE;--ink:#141414;--dark:#141516;--light:#F2F1EE;--oak:#A9835A;--oak-bg:#C09A6E;
+:root{--bg:#ECEAE4;--ink:#1C1B19;--dark:#262B27;--light:#ECEAE4;--oak:#B98A55;--sage:#5B6B5A;--oak-bg:#5B6B5A;
 --f-head:'Sofia Sans Extra Condensed',Impact,sans-serif;--f-body:'Sofia Sans',system-ui,sans-serif;--f-tel:'Sofia Sans',system-ui,sans-serif;--w-head:800;
---line:rgba(20,20,20,.16);--line-strong:rgba(20,20,20,.35);--sel:#A9835A;--sel-ink:#141414;--focus:#8A6537;
---mk-bg:#141414;--mk-ink:#E8E6E1;--hdr-bg:rgba(242,241,238,.95);--hdr-bg2:#F2F1EE;--menu-bg:#fff;--menu-ink:#141414;
---cta-bg:#141414;--cta-ink:#F2F1EE;--cta2-bg:#A9835A;--cta2-ink:#141414;--thumb-bg:#F2F1EE;--field-bg:#fff;--r:0px;--sb:#A9835A}
+--line:rgba(28,27,25,.16);--line-strong:rgba(28,27,25,.35);--sel:#B98A55;--sel-ink:#1C1B19;--focus:#7A5A36;
+--mk-bg:#1C1B19;--mk-ink:#E8E2D8;--hdr-bg:rgba(236,234,228,.95);--hdr-bg2:#ECEAE4;--menu-bg:#fff;--menu-ink:#1C1B19;
+--cta-bg:#1C1B19;--cta-ink:#ECEAE4;--cta2-bg:#5B6B5A;--cta2-ink:#fff;--thumb-bg:#ECEAE4;--field-bg:#fff;--r:0px;--sb:#B98A55}
 body{font-size:17.5px}
 h1,h2{text-transform:uppercase;line-height:.9;letter-spacing:0}
 h1{font-size:clamp(52px,7.4vw,118px)}
 h2{font-size:clamp(46px,6vw,96px)}
 h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
 .brand b{text-transform:uppercase;font-size:26px}
-.hero{background:var(--light)}
-.pin{position:relative;overflow:hidden}
-.js .hero .stage{height:270vh}
+.hero{background:#ECEAE4}
+.pin{position:relative;overflow:hidden;min-height:100vh}
+.js .hero .stage{height:420vh}
 .js .hero .pin{position:sticky;top:0;height:100vh}
-.inside{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center;min-height:100vh;padding-top:calc(var(--hdr-h,100px) + 30px);padding-bottom:40px}
-.lead{font-size:clamp(18px,1.4vw,20px);max-width:44ch;margin:24px 0 30px}
+.hero-fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-fb::after{content:""}
+.gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .6s}
+.gl.on{opacity:1}
+.js:not(.nogl) .hero-fb{visibility:hidden}
+.intro{position:absolute;left:0;right:0;top:calc(var(--hdr-h,100px) + 4vh);z-index:3}
+.intro h1{font-size:clamp(46px,6.2vw,104px);max-width:11ch;color:#1C1B19;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.hint{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#1C1B19;color:#ECEAE4;padding:10px 14px;font-size:14.5px}
+.hint .wh{animation:wh 1.6s ease-in-out infinite}@keyframes wh{0%{transform:translateY(0);opacity:1}70%{transform:translateY(7px);opacity:0}100%{opacity:0}}
+.outro{position:absolute;left:0;right:0;bottom:0;z-index:3;padding-bottom:clamp(36px,8vh,90px);color:#fff;opacity:0;visibility:hidden}
+.outro::before{content:"";position:absolute;left:-50vw;right:-50vw;bottom:0;height:150%;background:linear-gradient(to top,rgba(20,22,19,.86),rgba(20,22,19,.55) 55%,transparent);z-index:-1}
+.o-h{font-family:var(--f-head);font-weight:800;text-transform:uppercase;line-height:.92;font-size:clamp(40px,5.2vw,86px);max-width:16ch;margin:0 0 18px}
+.outro .lead{color:#F1ECE4;max-width:46ch}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 22px;background:#ECEAE4;color:#1C1B19;text-decoration:none;font-weight:600}
+.btn.b2{background:var(--sage);color:#fff}
+.lead{font-size:clamp(18px,1.4vw,20px);max-width:44ch;margin:0 0 26px}
 .ctas{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 22px;background:#141414;color:#F2F1EE;text-decoration:none;font-weight:600}
-.btn.b2{background:var(--oak);color:#141414}
-.in-img{margin:0}
-.in-img img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:38% 50%;border:10px solid #1b1b1b}
-.in-img figcaption{font-size:14px;margin-top:10px;opacity:.7}
-.doors{display:none}
-.js .doors{display:block;position:absolute;left:0;right:0;bottom:0;top:var(--hdr-h,100px);z-index:5;pointer-events:none}
-.rm .doors{display:none!important}
-.rail-t{position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(#2a2a2a,#111);z-index:4}
-.door{position:absolute;top:0;bottom:0;width:calc(100% / 3 + 6px);will-change:transform}
-.d1{left:0;z-index:1}.d2{left:calc(100% / 3 - 3px);z-index:3}.d3{left:calc(200% / 3 - 6px);z-index:2}
-.doors{--bw:11px}
-.pnl{position:absolute;inset:14px 0 0 0;border:var(--bw) solid #161616;border-top-width:8px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),6px 0 18px rgba(0,0,0,.18)}
-.pnl::after{content:"";position:absolute;top:0;bottom:0;right:0;width:16px;background:linear-gradient(90deg,#0e0e0e,#2b2b2b 45%,#0e0e0e)}
-.lac{background:linear-gradient(170deg,#FBFAF7 0%,#EEEDE8 60%,#E6E4DE 100%)}
-.band{position:absolute;left:0;right:0;top:46%;height:14%;background:url(img/fornir-1200.jpg) center/cover;box-shadow:0 1px 0 #161616,0 -1px 0 #161616;filter:saturate(.8) brightness(.95)}
-.mir{background:linear-gradient(115deg,#9aa0a3 0%,#c9cdcf 32%,#e9ecec 45%,#b7bcbf 58%,#8e9497 100%)}
-.glint{position:absolute;top:-10%;bottom:-10%;width:36%;left:var(--gx,10%);background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 45%,rgba(255,255,255,.1) 60%,transparent);transform:skewX(-12deg)}
-.dw{position:absolute;left:0;width:100vw;bottom:5vh;text-align:center;font-family:var(--f-head);font-weight:800;font-size:25vw;line-height:.8;color:#141414;letter-spacing:-.01em;white-space:nowrap}
-.d2 .dw{left:calc(-100vw / 3 + 3px - var(--bw))}.d3 .dw{left:calc(-200vw / 3 + 6px - var(--bw))}.d1 .dw{left:calc(0px - var(--bw))}
-.mir .dw{color:rgba(20,20,20,.82);mix-blend-mode:multiply}
-.hint{position:absolute;left:50%;top:32%;transform:translateX(-50%);z-index:6;background:#141414;color:#F2F1EE;padding:10px 16px;font-size:14px;margin:0;white-space:nowrap}
+.nogl .intro,.no-js .intro{position:relative}
+html:not(.js) .hero .pin,.nogl .hero .pin{display:flex;flex-direction:column;justify-content:space-between;min-height:100vh}
+html:not(.js) .outro,.nogl .outro{position:relative;opacity:1;visibility:visible}
+html:not(.js) .hint,.nogl .hint{display:none}
+html:not(.js) .intro,.nogl .intro{position:relative;top:auto;padding-top:calc(var(--hdr-h,100px) + 4vh)}
+html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.nogl .hero .stage{height:auto!important}
 .s-dark{background:var(--dark);color:#EDEBE6;padding:clamp(84px,10vw,140px) 0;--line:rgba(237,235,230,.18)}
 .s-light{background:var(--light);padding:clamp(84px,10vw,140px) 0}
-.s-oak{background:var(--oak-bg);color:#141414;padding:clamp(84px,10vw,140px) 0;--line:rgba(20,20,20,.28)}
+.s-oak a{color:#fff}.s-oak{background:var(--sage);color:#fff;padding:clamp(84px,10vw,140px) 0;--line:rgba(20,20,20,.28)}
 .sh{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px;flex-wrap:wrap}
 .sh p{max-width:44ch;margin:0;font-size:18px}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(200px,22vw,330px);gap:14px}
@@ -143,7 +142,7 @@ h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
 .dc p{padding:0 18px;font-size:15.5px}
 .dc-m{margin-top:auto!important;padding-bottom:18px!important;font-size:13.5px!important;opacity:.7}
 .oqs{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(24px,calc((100vw - 1240px)/2 + 24px)) 18px}
-.oq{flex:0 0 min(420px,84vw);scroll-snap-align:start;margin:0;background:#F2F1EE;padding:28px 26px;border:8px solid #161616;display:flex;flex-direction:column;justify-content:space-between}
+.oq{flex:0 0 min(420px,84vw);scroll-snap-align:start;margin:0;background:#ECEAE4;color:#1C1B19;padding:28px 26px;border:8px solid #161616;display:flex;flex-direction:column;justify-content:space-between}
 .oq p{font-size:17.5px}
 .oq footer{font-weight:600;font-size:15px}
 .track{list-style:none;margin:0;padding:34px 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px;border-top:12px solid #2b2b2b;position:relative}
@@ -177,15 +176,12 @@ h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
 .ft .wrap>span:first-child{display:flex;align-items:center;gap:10px}
 @media (max-width:1100px){.dcs{grid-template-columns:repeat(3,minmax(0,1fr))}.track{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:48px;border-top:0;padding-top:0}.track li::before{display:none}}
 @media (max-width:860px){
- .inside,.about,.faqw,.kontakt{grid-template-columns:1fr;gap:26px}
- .inside{align-content:start}
- .in-img img{aspect-ratio:16/10}
+ .about,.faqw,.kontakt{grid-template-columns:1fr;gap:26px}
  .hero .ctas{display:none}
- .js .hero .stage{height:230vh}
+ .js .hero .stage{height:380vh}.intro h1{font-size:44px}
  .grid{grid-template-columns:1fr 1fr;grid-auto-rows:190px}
  .g0{grid-column:span 2;grid-row:span 1}.g3{grid-column:span 2}
  .dcs{grid-template-columns:1fr 1fr}
- .dw{font-size:25.5vw;bottom:9vh}.doors{--bw:6px}.pnl::after{width:9px}
  .k-map{min-height:320px}
 }
 @media (max-width:520px){h1{font-size:50px}.dcs,.track{grid-template-columns:1fr}.kt{grid-template-columns:1fr}.dc-img{aspect-ratio:16/10}}
@@ -203,20 +199,16 @@ h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
 <main id="main">
 <section class="hero" id="start">
 <div class="stage"><div class="pin">
-<div class="inside wrap">
-<div class="in-txt">
-<h1>Szafa, która przesuwa się tak, jak chcesz.</h1>
-<p class="lead">Szafy przesuwne, garderoby i kuchnie na wymiar z Gliwic. Robimy je od 1980 roku: pomiar i projekt za darmo, 36 miesięcy gwarancji na wszystko.</p>
+<img class="hero-fb" src="img/w3-warsztat-2048.jpg" srcset="img/w3-warsztat-1280.jpg 1280w, img/w3-warsztat-2048.jpg 2048w" sizes="100vw" alt="Wnętrze pracowni stolarskiej: piła formatowa, stół stolarski, płyty" decoding="async">
+<canvas class="gl" aria-hidden="true"></canvas>
+<div class="intro wrap">
+<h1>Szafy przesuwne i meble na wymiar. Gliwice, od&nbsp;1980.</h1>
+<p class="hint"><svg width="14" height="22" viewBox="0 0 14 22" aria-hidden="true"><rect x="1" y="1" width="12" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle class="wh" cx="7" cy="7" r="1.8" fill="currentColor"/></svg>Przewiń, żeby otworzyć szafę</p>
+</div>
+<div class="outro wrap">
+<p class="o-h">Każdy mebel powstaje u&nbsp;nas, od pierwszej płyty do ostatniego zawiasu.</p>
+<p class="lead">Mierzymy, projektujemy, produkujemy i montujemy sami. Pomiar i projekt są bezpłatne, a na wszystko dajemy 36 miesięcy gwarancji.</p>
 <div class="ctas"><a class="btn" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Szafy <span class="tel">796 796 770</span></span></a><a class="btn b2" href="tel:+48603166206"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Kuchnie <span class="tel">603 166 206</span></span></a></div>
-</div>
-<figure class="in-img"><img src="img/skos-lustro-1800.jpg" srcset="img/skos-lustro-900.jpg 900w, img/skos-lustro-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 50vw" alt="Szafa przesuwna z lustrem pod skosem poddasza — realizacja Meble Świerkosz" decoding="async"><figcaption>Szafa przesuwna z lustrem pod skosem, obok otwarty regał</figcaption></figure>
-</div>
-<div class="doors" aria-hidden="true">
-<div class="rail-t"></div>
-<div class="door d1"><div class="pnl lac"><i class="band"></i><span class="dw" aria-hidden="true">ŚWIERKOSZ</span></div></div>
-<div class="door d2"><div class="pnl mir"><i class="glint"></i><span class="dw" aria-hidden="true">ŚWIERKOSZ</span></div></div>
-<div class="door d3"><div class="pnl lac"><i class="band"></i><span class="dw" aria-hidden="true">ŚWIERKOSZ</span></div></div>
-<p class="hint">Przewiń, a szafa się otworzy</p>
 </div>
 </div></div>
 </section>
@@ -292,7 +284,7 @@ h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
  var top=d.querySelector('.top'),hdr=d.querySelector('.hdr');
  function m(){root.style.setProperty('--hdr-h',top.offsetHeight+'px')}
  m();addEventListener('resize',m);addEventListener('load',m);
- addEventListener('scroll',function(){hdr.classList.toggle('sc',scrollY>40)},{passive:true});
+ addEventListener('scroll',function(){hdr.classList.toggle('hdr-sc',scrollY>40)},{passive:true});
  d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').removeAttribute('open')})});
  d.querySelectorAll('.stagger').forEach(function(g){[].forEach.call(g.children,function(c,i){c.style.setProperty('--i',i)})});
  var els=[].slice.call(d.querySelectorAll('.reveal,.stagger')),fired=false;
@@ -306,35 +298,83 @@ h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
  }
  window.__prog=function(stage,pin){var r=stage.getBoundingClientRect(),h=stage.offsetHeight-pin.offsetHeight;return h>0?Math.min(1,Math.max(0,-r.top/h)):0};
 })();
-
 (function(){
  var d=document,root=d.documentElement,RM=root.classList.contains('rm');
- var stage=d.querySelector('.hero .stage'),pin=d.querySelector('.hero .pin');
- var d1=d.querySelector('.d1'),d2=d.querySelector('.d2'),d3=d.querySelector('.d3'),gl=d.querySelector('.glint'),hint=d.querySelector('.hint'),doors=d.querySelector('.doors');
- var auto=0,t0=null,raf=0;
+ var stage=d.querySelector('.hero .stage'),pin=d.querySelector('.hero .pin'),cv=d.querySelector('.hero canvas');
+ var intro=d.querySelector('.hero .intro'),outro=d.querySelector('.hero .outro');
+ if(RM||!cv){root.classList.add('nogl');return}
+ var gl=cv.getContext('webgl',{antialias:true,alpha:false,premultipliedAlpha:false});
+ if(!gl){root.classList.add('nogl');return}
+ // --- geometria świata: ściana z szafą w z=0, szerokość 16 j. (zdjęcie 1376x768)
+ var IW=1376,IH=768,PW=16,PH=PW*IH/IW,FOV=50*Math.PI/180,T=Math.tan(FOV/2);
+ function px(x){return (x/IW-.5)*PW} function py(y){return (.5-y/IH)*PH}
+ var D0=(PH/2)/T;                         // kamera startowa: ściana wypełnia kadr w pionie
+ var DOOR={x0:536,x1:848,y0:56,y1:712},DW=px(DOOR.x1)-px(DOOR.x0),ZD=0.12; // drzwi 2 na przedniej prowadnicy
+ var C=-0.6,K=5;                           // pozycja „aparatu” zdjęcia warsztatu i skala głębi
+ var mob=Math.min(innerWidth,screen.width)<=760;
+ var VS='attribute vec3 p;attribute vec2 t;uniform mat4 m;varying vec2 v;void main(){v=t;gl_Position=m*vec4(p,1.);}';
+ var FS='precision mediump float;varying vec2 v;uniform sampler2D a;uniform sampler2D b;uniform float ua,sh,fog;void main(){vec4 c=texture2D(a,v);float al=1.;if(ua>.5){al=texture2D(b,v).r;if(al<.5)discard;}c.rgb*=sh;gl_FragColor=vec4(c.rgb,al);}';
+ var FSS='precision mediump float;varying vec2 v;uniform float o;void main(){vec2 q=abs(v-.5)*2.;float e=smoothstep(1.,.62,max(q.x*1.,q.y*.94));gl_FragColor=vec4(0.,0.,0.,e*o);}';
+ function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o}
+ function prog(fs){var p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,VS));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);return p}
+ var P=prog(FS),PS=prog(FSS);
+ function buf(arr,el){var b=gl.createBuffer();gl.bindBuffer(el?gl.ELEMENT_ARRAY_BUFFER:gl.ARRAY_BUFFER,b);gl.bufferData(el?gl.ELEMENT_ARRAY_BUFFER:gl.ARRAY_BUFFER,arr,gl.STATIC_DRAW);return b}
+ function quad(x0,y0,x1,y1,z){return {v:buf(new Float32Array([x0,y0,z,0,1, x1,y0,z,1,1, x1,y1,z,1,0, x0,y1,z,0,0])),i:buf(new Uint16Array([0,1,2,0,2,3]),1),n:6}}
+ function tex(src,cb){var t=gl.createTexture(),im=new Image();im.onload=function(){gl.bindTexture(gl.TEXTURE_2D,t);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);t.im=im;cb&&cb(im)};im.src=src;return t}
+ var wall=quad(px(0),py(IH),px(IW),py(0),0),door=quad(px(DOOR.x0),py(DOOR.y1),px(DOOR.x1),py(DOOR.y0),ZD);
+ var shq=quad(px(DOOR.x0)-.35,py(DOOR.y1)-.1,px(DOOR.x1)+.1,py(DOOR.y0)+.12,0.02);
+ var FY=-5.33,floor={v:buf(new Float32Array([-14,FY,0,0,0, 14,FY,0,7,0, 14,FY,-16,7,4, -14,FY,-16,0,4])),i:buf(new Uint16Array([0,1,2,0,2,3]),1),n:6};
+ var ws=null,ready=0,need=6;
+ function done(){ready++;if(ready>=need){cv.classList.add('on');frame()}}
+ var tW=tex('img/w3-wall.jpg',done),tA=tex('img/w3-wall-a.png',done),tD=tex('img/w3-door.jpg',done);
+ var tF=tex('img/w3-floor.jpg',function(){gl.bindTexture(gl.TEXTURE_2D,tF);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.MIRRORED_REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.MIRRORED_REPEAT);done()});
+ var tS=tex(mob?'img/w3-warsztat-1280.jpg':'img/w3-warsztat-2048.jpg',done);
+ // siatka warsztatu z mapy głębi
+ tex('img/w3-depth.png',function(im){
+  var c=d.createElement('canvas'),w=im.width,h=im.height;c.width=w;c.height=h;var x=c.getContext('2d');x.drawImage(im,0,0);var dd=x.getImageData(0,0,w,h).data;
+  var NU=mob?120:170,EU=Math.round(NU*.18),NX=NU+2*EU,NB=mob?68:96,EX=Math.round(NB*.35),NY=NB+EX,V=new Float32Array((NX+1)*(NY+1)*5),I=new Uint16Array(NX*NY*6),k=0,a=16/9;
+  for(var j=0;j<=NY;j++)for(var i=0;i<=NX;i++){var u=(i-EU)/NU,uc=Math.max(0,Math.min(1,u)),v=j/NB,vc=Math.min(1,v);var sx=Math.min(w-1,Math.round(uc*(w-1))),sy=Math.min(h-1,Math.round(vc*(h-1)));var dv=dd[(sy*w+sx)*4]/255;var Z=K/(0.12+0.88*dv);
+   V[k++]=(u-.5)*2*T*a*Z;V[k++]=(.5-v)*2*T*Z;V[k++]=C-Z;V[k++]=uc;V[k++]=vc}
+  k=0;for(j=0;j<NY;j++)for(i=0;i<NX;i++){var q=j*(NX+1)+i;I[k++]=q;I[k++]=q+1;I[k++]=q+NX+2;I[k++]=q;I[k++]=q+NX+2;I[k++]=q+NX+1}
+  ws={v:buf(V),i:buf(I,1),n:I.length};done()});
+ function persp(f,a,n,fa){var t=1/Math.tan(f/2);return [t/a,0,0,0, 0,t,0,0, 0,0,(fa+n)/(n-fa),-1, 0,0,2*fa*n/(n-fa),0]}
+ function mul(a,b){var o=new Array(16);for(var r=0;r<4;r++)for(var c=0;c<4;c++){o[c*4+r]=0;for(var k=0;k<4;k++)o[c*4+r]+=a[k*4+r]*b[c*4+k]}return o}
+ function draw(o,t,ta,m,shade){gl.useProgram(P);gl.bindBuffer(gl.ARRAY_BUFFER,o.v);var lp=gl.getAttribLocation(P,'p'),lt=gl.getAttribLocation(P,'t');gl.enableVertexAttribArray(lp);gl.enableVertexAttribArray(lt);gl.vertexAttribPointer(lp,3,gl.FLOAT,false,20,0);gl.vertexAttribPointer(lt,2,gl.FLOAT,false,20,12);
+  gl.uniformMatrix4fv(gl.getUniformLocation(P,'m'),false,m);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,t);gl.uniform1i(gl.getUniformLocation(P,'a'),0);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,ta||t);gl.uniform1i(gl.getUniformLocation(P,'b'),1);gl.uniform1f(gl.getUniformLocation(P,'ua'),ta?1:0);gl.uniform1f(gl.getUniformLocation(P,'sh'),shade||1);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,o.i);gl.drawElements(gl.TRIANGLES,o.n,gl.UNSIGNED_SHORT,0)}
+ function drawSh(o,m,op){gl.useProgram(PS);gl.bindBuffer(gl.ARRAY_BUFFER,o.v);var lp=gl.getAttribLocation(PS,'p'),lt=gl.getAttribLocation(PS,'t');gl.enableVertexAttribArray(lp);gl.enableVertexAttribArray(lt);gl.vertexAttribPointer(lp,3,gl.FLOAT,false,20,0);gl.vertexAttribPointer(lt,2,gl.FLOAT,false,20,12);gl.uniformMatrix4fv(gl.getUniformLocation(PS,'m'),false,m);gl.uniform1f(gl.getUniformLocation(PS,'o'),op);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,o.i);gl.drawElements(gl.TRIANGLES,6,gl.UNSIGNED_SHORT,0)}
+ function tr(x,y,z){return [1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1]}
+ // --- ruch: cel z przewijania, wygładzony sprężyną (masa drzwi i wózka kamery)
  function cl(x){return x<0?0:x>1?1:x}
- function io(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
- function render(p,a){
-  // pokaz na starcie: lustro odjeżdża o ćwierć skrzydła i wraca na 30%
-  var s1=io(cl(p/0.35)), s2=io(cl((p-0.3)/0.5));
-  var w=d1.offsetWidth-6;
-  var demo=a;
-  var x2=-Math.max(s1,demo)*w - s2*w*1.1;
-  var x1=-s2*w*1.1;
-  var x3=s2*w*1.1+ s1*w*0.08;
-  d1.style.transform='translate3d('+x1+'px,0,0)';
-  d2.style.transform='translate3d('+x2+'px,0,0)';
-  d3.style.transform='translate3d('+x3+'px,0,0)';
-  gl.style.setProperty('--gx',(10+p*120+demo*40)+'%');
-  hint.style.opacity=1-cl(p/0.12);
-  doors.style.visibility=s2>=1?'hidden':'visible';
+ function sio(x){return x*x*(3-2*x)}
+ var door_t=0,door_x=0,door_v=0,cam_t=D0,cam_z=D0,cam_v=0,auto=0,last=0,run=false;
+ function targets(){var p=window.__prog(stage,pin);
+  door_t=Math.max(auto,sio(cl((p-0.03)/0.27)));                 // drzwi: 0..1 szerokości skrzydła
+  var e=sio(cl((p-0.24)/0.70));cam_t=D0+(C+0.25-D0)*e;          // wózek: od ściany w głąb alejki
+  var io=cl(1-p/0.12);intro.style.opacity=io;intro.style.visibility=io<=0?'hidden':'visible';
+  var oo=cl((p-0.84)/0.1);outro.style.opacity=oo;outro.style.visibility=oo<=0?'hidden':'visible';outro.style.transform='translateY('+(1-oo)*24+'px)';
  }
- if(RM)return;
- function sp(){return window.__prog(stage,pin)}
- function tick(ts){if(t0===null)t0=ts;var t=(ts-t0-500)/1000;auto=t<0?0:t<1.1?io(t/1.1)*0.42:t<2.4?0.42-io((t-1.1)/1.3)*0.42:0;render(sp(),auto);if(t<2.4)raf=requestAnimationFrame(tick);else raf=0}
- requestAnimationFrame(tick);
- addEventListener('scroll',function(){if(!raf)requestAnimationFrame(function(){render(sp(),auto)})},{passive:true});
- addEventListener('resize',function(){render(sp(),auto)});
+ function frame(ts){ts=ts||performance.now();var dt=Math.min(.05,(ts-(last||ts))/1000)||.016;last=ts;
+  targets();
+  // drzwi: sprężyna krytycznie tłumiona (miękkie domknięcie przy końcu toru)
+  var k1=38,c1=2*Math.sqrt(k1);var a1=k1*(door_t-door_x)-c1*door_v;door_v+=a1*dt;door_x+=door_v*dt;if(door_x>1){door_x=1;door_v=0}if(door_x<0){door_x=0;door_v=0}
+  var k2=44,c2=2*Math.sqrt(k2);var a2=k2*(cam_t-cam_z)-c2*cam_v;cam_v+=a2*dt;cam_z+=cam_v*dt;
+  var W=cv.clientWidth,H=cv.clientHeight,dpr=Math.min(devicePixelRatio||1,mob?1.5:2);if(cv.width!==Math.round(W*dpr)||cv.height!==Math.round(H*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  gl.viewport(0,0,cv.width,cv.height);gl.clearColor(.925,.918,.894,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);
+  var asp=W/H,f=FOV;if(asp>16/9)f=2*Math.atan(T*(16/9)/asp);
+  var cx=px(692)*Math.min(1,cl((D0-cam_z)/D0)*1.2);                  // kamera celuje w środek otworu
+  var M=persp(f,asp,.02,120);var MV=mul(M,tr(-cx,0,-cam_z));
+  draw(floor,tF,null,MV,.97);if(ws)draw(ws,tS,null,MV,1);
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+  if(cam_z>0.03){draw(wall,tW,tA,MV,1);
+   var DM=mul(MV,tr(-door_x*DW,0,0));drawSh(shq,DM,.30*cl(door_x*6));draw(door,tD,null,DM,1)}
+  gl.disable(gl.BLEND);
+  var moving=Math.abs(door_t-door_x)>.0005||Math.abs(door_v)>.0005||Math.abs(cam_t-cam_z)>.001||Math.abs(cam_v)>.001;
+  if(moving||auto_run){run=true;requestAnimationFrame(frame)}else run=false}
+ function kick(){if(!run&&ready>=need){run=true;last=0;requestAnimationFrame(frame)}}
+ addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);
+ // pokaz na starcie: ktoś uchyla środkowe skrzydło
+ var auto_run=true;setTimeout(function(){auto=0.34;kick();setTimeout(function(){auto_run=false},2600)},700);
 })();
 </script>
 </body></html>
