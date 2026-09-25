@@ -102,13 +102,14 @@ h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
 .gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .6s}
 .gl.on{opacity:1}
 .js:not(.nogl) .hero-fb{visibility:hidden}
-.intro{position:absolute;left:0;right:0;top:calc(var(--hdr-h,100px) + 4vh);z-index:3}
-.intro h1{font-size:clamp(46px,6.2vw,104px);max-width:11ch;color:#1C1B19;text-shadow:0 1px 0 rgba(255,255,255,.35)}
-.hint{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#1C1B19;color:#ECEAE4;padding:10px 14px;font-size:14.5px}
+.intro{position:absolute;left:0;right:0;top:0;bottom:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding-top:var(--hdr-h,100px)}
+.intro h1{font-size:clamp(44px,4.9vw,84px);max-width:9.5ch;color:#1C1B19}
+.intro .sub{font-size:18px;max-width:30ch;margin:18px 0 0;color:#3a3935}
+.hint{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#1C1B19;color:#ECEAE4;padding:10px 14px;font-size:14.5px}
 .hint .wh{animation:wh 1.6s ease-in-out infinite}@keyframes wh{0%{transform:translateY(0);opacity:1}70%{transform:translateY(7px);opacity:0}100%{opacity:0}}
-.outro{position:absolute;left:0;right:0;bottom:0;z-index:3;padding-bottom:clamp(36px,8vh,90px);color:#fff;opacity:0;visibility:hidden}
+.outro{position:absolute;left:0;right:0;top:calc(var(--hdr-h,100px) + 36px);bottom:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(36px,8vh,90px);color:#fff;opacity:0;visibility:hidden}
 .outro::before{content:"";position:absolute;left:-50vw;right:-50vw;bottom:0;height:150%;background:linear-gradient(to top,rgba(20,22,19,.86),rgba(20,22,19,.55) 55%,transparent);z-index:-1}
-.o-h{font-family:var(--f-head);font-weight:800;text-transform:uppercase;line-height:.92;font-size:clamp(40px,5.2vw,86px);max-width:16ch;margin:0 0 18px}
+.o-h{font-family:var(--f-head);font-weight:800;text-transform:uppercase;line-height:.92;font-size:clamp(38px,4.4vw,72px);max-width:17ch;margin:0 0 18px}
 .outro .lead{color:#F1ECE4;max-width:46ch}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 22px;background:#ECEAE4;color:#1C1B19;text-decoration:none;font-weight:600}
 .btn.b2{background:var(--sage);color:#fff}
@@ -141,6 +142,38 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 .dc h3{padding:18px 18px 8px}
 .dc p{padding:0 18px;font-size:15.5px}
 .dc-m{margin-top:auto!important;padding-bottom:18px!important;font-size:13.5px!important;opacity:.7}
+
+.gal-ctl{display:flex;align-items:center;gap:16px;margin:-20px 0 28px}
+.gbtn{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:inherit;border:1.5px solid currentColor;cursor:pointer;flex:none}
+.gbtn:hover{background:#ECEAE4;color:#1C1B19}
+.gbar{flex:1;height:2px;background:rgba(237,235,230,.2);position:relative}
+.gbar i{position:absolute;left:0;top:0;bottom:0;width:var(--w,20%);transform:translateX(var(--x,0));background:var(--oak)}
+.gal{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(24px,calc((100vw - 1240px)/2 + 24px)) 6px;cursor:grab;overscroll-behavior-x:contain}
+.gal::-webkit-scrollbar{display:none}
+.gal.drag{cursor:grabbing;scroll-snap-type:none}
+.sl{flex:0 0 min(62vw,860px);margin:0;scroll-snap-align:start}
+.sl img{width:100%;aspect-ratio:3/2;object-fit:cover;border:8px solid #111;pointer-events:none;user-select:none}
+.sl figcaption{display:flex;gap:14px;align-items:baseline;padding-top:14px;font-size:15.5px;color:#C9CCC4}
+.sl figcaption b{font-family:var(--f-head);font-weight:800;text-transform:uppercase;font-size:26px;color:#EDEBE6;line-height:1}
+.op3{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(40px,6vw,96px);align-items:center}
+.op-n{font-family:var(--f-head);font-weight:800;font-size:clamp(120px,14vw,210px);line-height:.8;margin:0}
+.stars{display:flex;gap:4px;margin:18px 0 10px}
+.op-c{font-size:17px;margin:0 0 26px;opacity:.9}
+.op-btn{background:#ECEAE4!important;color:#1C1B19!important}
+.op-btn svg{margin-left:4px}
+.qs-box{position:relative;background:#ECEAE4;color:#1C1B19;border:8px solid #161616;min-height:300px;overflow:hidden}
+.qs-it{margin:0;padding:clamp(28px,4vw,52px);position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;transition:transform .7s cubic-bezier(.22,.61,.36,1),opacity .5s}
+.qs-it p{font-size:clamp(19px,1.7vw,24px);line-height:1.45;margin:0 0 20px}
+.qs-it footer{font-size:15px}
+.qs-it footer b{font-weight:600}
+.js .qs-it{transform:translateX(104%);opacity:0}
+.js .qs-it.on{transform:none;opacity:1}
+.js .qs-it.out{transform:translateX(-104%);opacity:0}
+html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
+.qs-nav{display:flex;align-items:center;gap:18px;margin-top:18px}
+.qs-cnt{font-size:15px;min-width:4ch;text-align:center}
+.rm .qs-it{transition:none}
+
 .oqs{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(24px,calc((100vw - 1240px)/2 + 24px)) 18px}
 .oq{flex:0 0 min(420px,84vw);scroll-snap-align:start;margin:0;background:#ECEAE4;color:#1C1B19;padding:28px 26px;border:8px solid #161616;display:flex;flex-direction:column;justify-content:space-between}
 .oq p{font-size:17.5px}
@@ -158,7 +191,7 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 .cl{border-top:1px solid var(--line);padding-top:16px;font-size:15.5px}
 .team{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .team figure{margin:0}
-.team img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.05);border:8px solid #161616}
+.team img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border:8px solid #161616}
 .team figcaption{margin-top:8px;font-size:14px}
 .faqw{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
 .faq summary{font-family:var(--f-body);font-weight:600;font-size:19px}
@@ -178,8 +211,8 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 @media (max-width:860px){
  .about,.faqw,.kontakt{grid-template-columns:1fr;gap:26px}
  .hero .ctas{display:none}
- .js .hero .stage{height:380vh}.intro h1{font-size:44px}
- .grid{grid-template-columns:1fr 1fr;grid-auto-rows:190px}
+ .js .hero .stage{height:380vh}.intro{justify-content:flex-start;padding-top:calc(var(--hdr-h,100px) + 3vh)}.intro h1{font-size:40px;max-width:12ch}.intro .sub{display:none}.hint{position:absolute;left:22px;bottom:96px;margin:0}.o-h{font-size:34px}.outro .lead{font-size:16px;margin-bottom:18px}
+ .op3{grid-template-columns:1fr;gap:34px}.op-n{font-size:110px}.sl{flex-basis:86vw}.qs-box{min-height:380px}.gal-ctl{margin-top:-6px}
  .g0{grid-column:span 2;grid-row:span 1}.g3{grid-column:span 2}
  .dcs{grid-template-columns:1fr 1fr}
  .k-map{min-height:320px}
@@ -203,6 +236,7 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 <canvas class="gl" aria-hidden="true"></canvas>
 <div class="intro wrap">
 <h1>Szafy przesuwne i meble na wymiar. Gliwice, od&nbsp;1980.</h1>
+<p class="sub">Rodzinna pracownia. Pomiar i projekt za darmo, 36 miesięcy gwarancji.</p>
 <p class="hint"><svg width="14" height="22" viewBox="0 0 14 22" aria-hidden="true"><rect x="1" y="1" width="12" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle class="wh" cx="7" cy="7" r="1.8" fill="currentColor"/></svg>Przewiń, żeby otworzyć szafę</p>
 </div>
 <div class="outro wrap">
@@ -215,7 +249,10 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 
 <section class="s-dark" id="realizacje"><div class="wrap">
 <div class="sh reveal"><h2>Realizacje</h2><p>Wszystko na tych zdjęciach zmierzyliśmy, zrobiliśmy i zamontowaliśmy sami.</p></div>
-<div class="grid stagger"><figure class="g0"><img src="img/szafa-tv-1800.jpg" srcset="img/szafa-tv-900.jpg 900w, img/szafa-tv-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 66vw" alt="Szafa z wnęką RTV" loading="lazy" decoding="async"><figcaption>Szafa z wnęką RTV</figcaption></figure><figure class="g1"><img src="img/kuchnia-wyspa-1800.jpg" srcset="img/kuchnia-wyspa-900.jpg 900w, img/kuchnia-wyspa-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 33vw" alt="Kuchnia z wyspą" loading="lazy" decoding="async"><figcaption>Kuchnia z wyspą</figcaption></figure><figure class="g2"><img src="img/skos-lustro-1800.jpg" srcset="img/skos-lustro-900.jpg 900w, img/skos-lustro-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 33vw" alt="Szafa pod skosem" loading="lazy" decoding="async"><figcaption>Szafa pod skosem</figcaption></figure><figure class="g3"><img src="img/kuchnia-dab-1800.jpg" srcset="img/kuchnia-dab-900.jpg 900w, img/kuchnia-dab-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 66vw" alt="Kuchnia w dębie i bieli" loading="lazy" decoding="async"><figcaption>Kuchnia w dębie i bieli</figcaption></figure><figure class="g4"><img src="img/przedpokoj-lustro-1800.jpg" srcset="img/przedpokoj-lustro-900.jpg 900w, img/przedpokoj-lustro-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 33vw" alt="Przedpokój" loading="lazy" decoding="async"><figcaption>Przedpokój</figcaption></figure><figure class="g5"><img src="img/tv-dab-1800.jpg" srcset="img/tv-dab-900.jpg 900w, img/tv-dab-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 33vw" alt="Ściana RTV" loading="lazy" decoding="async"><figcaption>Ściana RTV</figcaption></figure></div>
+<div class="gal-ctl reveal"><button class="gbtn gprev" type="button" aria-label="Poprzednia realizacja"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><div class="gbar" aria-hidden="true"><i></i></div><button class="gbtn gnext" type="button" aria-label="Następna realizacja"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+</div>
+<div class="gal" tabindex="0" aria-label="Galeria realizacji, przesuń w bok"><figure class="sl"><img src="img/kuchnia-wyspa-1800.jpg" srcset="img/kuchnia-wyspa-900.jpg 900w, img/kuchnia-wyspa-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Kuchnia z wyspą" loading="lazy" decoding="async"><figcaption><b>Kuchnia z wyspą</b><span>Zabudowa pod sufit w dębie, wyspa z blatem w kamieniu.</span></figcaption></figure><figure class="sl"><img src="img/szafa-tv-1800.jpg" srcset="img/szafa-tv-900.jpg 900w, img/szafa-tv-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Szafa z wnęką RTV" loading="lazy" decoding="async"><figcaption><b>Szafa z wnęką RTV</b><span>Cztery skrzydła przesuwne z pasem czarnego szkła.</span></figcaption></figure><figure class="sl"><img src="img/skos-lustro-1800.jpg" srcset="img/skos-lustro-900.jpg 900w, img/skos-lustro-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Szafa pod skosem" loading="lazy" decoding="async"><figcaption><b>Szafa pod skosem</b><span>Drzwi przesuwne z lustrem, regał na końcu zabudowy.</span></figcaption></figure><figure class="sl"><img src="img/kuchnia-dab-1800.jpg" srcset="img/kuchnia-dab-900.jpg 900w, img/kuchnia-dab-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Kuchnia w dębie i bieli" loading="lazy" decoding="async"><figcaption><b>Kuchnia w dębie i bieli</b><span>Wyspa z półkami otwartymi od strony salonu.</span></figcaption></figure><figure class="sl"><img src="img/przedpokoj-lustro-1800.jpg" srcset="img/przedpokoj-lustro-900.jpg 900w, img/przedpokoj-lustro-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Przedpokój" loading="lazy" decoding="async"><figcaption><b>Przedpokój</b><span>Szafa przesuwna z lustrem i zabudowa narożna.</span></figcaption></figure><figure class="sl"><img src="img/tv-dab-1800.jpg" srcset="img/tv-dab-900.jpg 900w, img/tv-dab-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Ściana RTV" loading="lazy" decoding="async"><figcaption><b>Ściana RTV</b><span>Biel z dębem, szafka wisząca z blatem w kamieniu.</span></figcaption></figure><figure class="sl"><img src="img/kuchnia-szara-1800.jpg" srcset="img/kuchnia-szara-900.jpg 900w, img/kuchnia-szara-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Kuchnia w szarości" loading="lazy" decoding="async"><figcaption><b>Kuchnia w szarości</b><span>Słupki z piekarnikiem i lodówką pod zabudowę.</span></figcaption></figure><figure class="sl"><img src="img/skos-biala-1800.jpg" srcset="img/skos-biala-900.jpg 900w, img/skos-biala-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Zabudowa skosu" loading="lazy" decoding="async"><figcaption><b>Zabudowa skosu</b><span>Białe fronty z frezowanym uchwytem, pod linię dachu.</span></figcaption></figure><figure class="sl"><img src="img/regal-1800.jpg" srcset="img/regal-900.jpg 900w, img/regal-1800.jpg 1800w" sizes="(max-width:760px) 86vw, 62vw" alt="Regał na książki" loading="lazy" decoding="async"><figcaption><b>Regał na książki</b><span>Na wymiar wnęki, z szafką na dole.</span></figcaption></figure></div>
+<div class="wrap">
 <p class="more reveal">Więcej na <a href="https://www.facebook.com/szafygliwice">Facebooku</a> i w <a href="https://www.google.com/maps/place/MEBLE+NA+WYMIAR+%C5%9AWIERKOSZ/@50.301808,18.680953,17z/data=!4m6!3m5!1s0x471131e04fd6e6c5:0xe69b8acaed1b5e9b!8m2!3d50.301808!4d18.680953?hl=pl">wizytówce Google</a>.</p>
 </div></section>
 
@@ -229,11 +266,18 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 <h3>Inne meble na wymiar</h3><p>Regały na książki, ściany RTV, szafki łazienkowe, meble do biur i instytucji.</p><p class="dc-m">Płyty laminowane, fronty lakierowane, szkło i lustra z folią</p></article></div>
 </div></section>
 
-<section class="s-oak" id="opinie"><div class="wrap">
-<div class="sh reveal"><h2>4,9 / 5 w Google</h2><p>Ze 133 opinii. Kilka z nich poniżej, słowo w słowo, a resztę przeczytasz w <a href="https://www.google.com/maps/place/MEBLE+NA+WYMIAR+%C5%9AWIERKOSZ/@50.301808,18.680953,17z/data=!4m6!3m5!1s0x471131e04fd6e6c5:0xe69b8acaed1b5e9b!8m2!3d50.301808!4d18.680953?hl=pl">wizytówce Google</a>.</p></div>
+<section class="s-oak" id="opinie"><div class="wrap op3">
+<div class="op-l reveal">
+<p class="op-n num">4,9</p>
+<div class="stars" aria-label="Ocena 4,9 na 5"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="#E9C46A"/></svg><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="#E9C46A"/></svg><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="#E9C46A"/></svg><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="#E9C46A"/></svg><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="#E9C46A"/></svg></div>
+<p class="op-c">średnia ze 133 opinii w Google</p>
+<a class="btn op-btn" href="https://www.google.com/maps/place/MEBLE+NA+WYMIAR+%C5%9AWIERKOSZ/@50.301808,18.680953,17z/data=!4m6!3m5!1s0x471131e04fd6e6c5:0xe69b8acaed1b5e9b!8m2!3d50.301808!4d18.680953?hl=pl">Wszystkie opinie <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
-<div class="oqs reveal" tabindex="0" aria-label="Opinie klientów, przewiń w bok"><blockquote class="oq"><p>„Zamówiłem szafę do zabudowy wnęki przedpokoju i muszę przyznać że jakość wykonania i użytych materiałów przerosła moje oczekiwania.”</p><footer>Jan Sobek</footer></blockquote><blockquote class="oq"><p>„Garderoba walk-in - świetna robota! (…) Garderoba wykonana w terminie, bez żadnych usterek, czyściutko łącznie z … końcowym odkurzaniem podłóg”</p><footer>Kornelia Frey</footer></blockquote><blockquote class="oq"><p>„zamówiona przez nas kuchnia  została wykonana przepięknie każdy centymetr idealnie wymierzony pasujący do siebie. To samo dotyczy dotrzymania terminu montażu.”</p><footer>Barbara Kocur</footer></blockquote><blockquote class="oq"><p>„Firma wykonała dla mnie szafę będącą przedłużeniem istniejącej zabudowy, szafę wolnostojącą oraz biurko z nadbudówką. Każdy element został perfekcyjnie dopasowany i wykonany z ogromną starannością.”</p><footer>Wiesława Piotrowska</footer></blockquote><blockquote class="oq"><p>„Od pomiarów przez informacje o postępie w produkcji do samego montażu. Szybko,  sprawnie, czysto i w pełni profesjonalnie. Tak to powinno wyglądać w każdej firmie.”</p><footer>Adam Matyjaszek</footer></blockquote><blockquote class="oq"><p>„wykorzystali całą przestrzeń szafki optymalnie jeśli chodzi o dodatkowe półki. To kawał dobrej roboty zważywszy, że ściany w łazience są bardzo krzywe.”</p><footer>Anna Sowa</footer></blockquote></div>
-</section>
+<div class="op-r reveal">
+<div class="qs-box" aria-live="polite"><blockquote class="qs-it" data-i="0"><p>„Pan przyjechał na wymiary, zaraz potem podał wycenę. (…) Panowie byli terminowi co do dnia. W dniu montażu przyjechali złożyli wszystko w ok 3 godzinki (…) Panowie pozostawili po sobie porządek, wszystko zostało poodkurzane oraz poodkładane na miejsce.”</p><footer><b>Karolina Pawlik</b> · opinia w Google</footer></blockquote><blockquote class="qs-it" data-i="1"><p>„Zamówiłem szafę do zabudowy wnęki przedpokoju i muszę przyznać że jakość wykonania i użytych materiałów przerosła moje oczekiwania.”</p><footer><b>Jan Sobek</b> · opinia w Google</footer></blockquote><blockquote class="qs-it" data-i="2"><p>„zamówiona przez nas kuchnia  została wykonana przepięknie każdy centymetr idealnie wymierzony pasujący do siebie. To samo dotyczy dotrzymania terminu montażu.”</p><footer><b>Barbara Kocur</b> · opinia w Google</footer></blockquote><blockquote class="qs-it" data-i="3"><p>„Garderoba walk-in - świetna robota! (…) Garderoba wykonana w terminie, bez żadnych usterek, czyściutko łącznie z … końcowym odkurzaniem podłóg”</p><footer><b>Kornelia Frey</b> · opinia w Google</footer></blockquote><blockquote class="qs-it" data-i="4"><p>„Od pomiarów przez informacje o postępie w produkcji do samego montażu. Szybko,  sprawnie, czysto i w pełni profesjonalnie. Tak to powinno wyglądać w każdej firmie.”</p><footer><b>Adam Matyjaszek</b> · opinia w Google</footer></blockquote><blockquote class="qs-it" data-i="5"><p>„wykorzystali całą przestrzeń szafki optymalnie jeśli chodzi o dodatkowe półki. To kawał dobrej roboty zważywszy, że ściany w łazience są bardzo krzywe.”</p><footer><b>Anna Sowa</b> · opinia w Google</footer></blockquote><blockquote class="qs-it" data-i="6"><p>„Firma wykonała dla mnie szafę będącą przedłużeniem istniejącej zabudowy, szafę wolnostojącą oraz biurko z nadbudówką. Każdy element został perfekcyjnie dopasowany i wykonany z ogromną starannością.”</p><footer><b>Wiesława Piotrowska</b> · opinia w Google</footer></blockquote></div>
+<div class="qs-nav"><button class="gbtn qprev" type="button" aria-label="Poprzednia opinia"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><span class="qs-cnt num">1 / 7</span><button class="gbtn qnext" type="button" aria-label="Następna opinia"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+</div>
+</div></section>
 
 <section class="s-dark" id="wspolpraca"><div class="wrap">
 <div class="sh reveal"><h2>Jak to wygląda</h2><p>Od telefonu do montażu. Za pomiar i projekt nie płacisz.</p></div>
@@ -321,12 +365,12 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
  function buf(arr,el){var b=gl.createBuffer();gl.bindBuffer(el?gl.ELEMENT_ARRAY_BUFFER:gl.ARRAY_BUFFER,b);gl.bufferData(el?gl.ELEMENT_ARRAY_BUFFER:gl.ARRAY_BUFFER,arr,gl.STATIC_DRAW);return b}
  function quad(x0,y0,x1,y1,z){return {v:buf(new Float32Array([x0,y0,z,0,1, x1,y0,z,1,1, x1,y1,z,1,0, x0,y1,z,0,0])),i:buf(new Uint16Array([0,1,2,0,2,3]),1),n:6}}
  function tex(src,cb){var t=gl.createTexture(),im=new Image();im.onload=function(){gl.bindTexture(gl.TEXTURE_2D,t);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,im);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);t.im=im;cb&&cb(im)};im.src=src;return t}
- var wall=quad(px(0),py(IH),px(IW),py(0),0),door=quad(px(DOOR.x0),py(DOOR.y1),px(DOOR.x1),py(DOOR.y0),ZD);
+ var EXL=-1.0,EXR=2.0,EXT=-0.7,EXB=1.7;var wall=quad(px(0),py(IH),px(IW),py(0),0),ext={v:buf(new Float32Array([px(EXL*IW),py(EXB*IH),-0.003,0,1, px(EXR*IW),py(EXB*IH),-0.003,1,1, px(EXR*IW),py(EXT*IH),-0.003,1,0, px(EXL*IW),py(EXT*IH),-0.003,0,0])),i:buf(new Uint16Array([0,1,2,0,2,3]),1),n:6},door=quad(px(DOOR.x0),py(DOOR.y1),px(DOOR.x1),py(DOOR.y0),ZD);
  var shq=quad(px(DOOR.x0)-.35,py(DOOR.y1)-.1,px(DOOR.x1)+.1,py(DOOR.y0)+.12,0.02);
  var FY=-5.33,floor={v:buf(new Float32Array([-14,FY,0,0,0, 14,FY,0,7,0, 14,FY,-16,7,4, -14,FY,-16,0,4])),i:buf(new Uint16Array([0,1,2,0,2,3]),1),n:6};
- var ws=null,ready=0,need=6;
+ var ws=null,ready=0,need=8;
  function done(){ready++;if(ready>=need){cv.classList.add('on');frame()}}
- var tW=tex('img/w3-wall.jpg',done),tA=tex('img/w3-wall-a.png',done),tD=tex('img/w3-door.jpg',done);
+ var tE=tex('img/w3-ext.jpg',done),tEA=tex('img/w3-ext-a.png',done),tW=tex('img/w3-wall.jpg',done),tA=tex('img/w3-wall-a.png',done),tD=tex('img/w3-door.jpg',done);
  var tF=tex('img/w3-floor.jpg',function(){gl.bindTexture(gl.TEXTURE_2D,tF);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.MIRRORED_REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.MIRRORED_REPEAT);done()});
  var tS=tex(mob?'img/w3-warsztat-1280.jpg':'img/w3-warsztat-2048.jpg',done);
  // siatka warsztatu z mapy głębi
@@ -347,10 +391,11 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
  // --- ruch: cel z przewijania, wygładzony sprężyną (masa drzwi i wózka kamery)
  function cl(x){return x<0?0:x>1?1:x}
  function sio(x){return x*x*(3-2*x)}
- var door_t=0,door_x=0,door_v=0,cam_t=D0,cam_z=D0,cam_v=0,auto=0,last=0,run=false;
+ var port=innerHeight>innerWidth;var DS=D0*(port?1.75:1.42),X0=port?0:-PW*0.25,Y0=port?PH*0.47:PH*0.2;
+ var door_t=0,door_x=0,door_v=0,cam_t=DS,cam_z=DS,cam_v=0,auto=0,last=0,run=false;
  function targets(){var p=window.__prog(stage,pin);
   door_t=Math.max(auto,sio(cl((p-0.03)/0.27)));                 // drzwi: 0..1 szerokości skrzydła
-  var e=sio(cl((p-0.24)/0.70));cam_t=D0+(C+0.25-D0)*e;          // wózek: od ściany w głąb alejki
+  var e=sio(cl((p-0.24)/0.70));cam_t=DS+(C+0.25-DS)*e;          // wózek: od ściany w głąb alejki
   var io=cl(1-p/0.12);intro.style.opacity=io;intro.style.visibility=io<=0?'hidden':'visible';
   var oo=cl((p-0.84)/0.1);outro.style.opacity=oo;outro.style.visibility=oo<=0?'hidden':'visible';outro.style.transform='translateY('+(1-oo)*24+'px)';
  }
@@ -362,11 +407,11 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
   var W=cv.clientWidth,H=cv.clientHeight,dpr=Math.min(devicePixelRatio||1,mob?1.5:2);if(cv.width!==Math.round(W*dpr)||cv.height!==Math.round(H*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
   gl.viewport(0,0,cv.width,cv.height);gl.clearColor(.925,.918,.894,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);
   var asp=W/H,f=FOV;if(asp>16/9)f=2*Math.atan(T*(16/9)/asp);
-  var cx=px(692)*Math.min(1,cl((D0-cam_z)/D0)*1.2);                  // kamera celuje w środek otworu
-  var M=persp(f,asp,.02,120);var MV=mul(M,tr(-cx,0,-cam_z));
+  var kk=sio(cl((DS-cam_z)/(DS-D0*0.35)));var cx=X0+(px(692)-X0)*kk,cy=Y0*(1-kk);                  // kamera celuje w środek otworu
+  var M=persp(f,asp,.02,120);var MV=mul(M,tr(-cx,-cy,-cam_z));
   draw(floor,tF,null,MV,.97);if(ws)draw(ws,tS,null,MV,1);
   gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
-  if(cam_z>0.03){draw(wall,tW,tA,MV,1);
+  if(cam_z>0.03){draw(ext,tE,tEA,MV,1);draw(wall,tW,tA,MV,1);
    var DM=mul(MV,tr(-door_x*DW,0,0));drawSh(shq,DM,.30*cl(door_x*6));draw(door,tD,null,DM,1)}
   gl.disable(gl.BLEND);
   var moving=Math.abs(door_t-door_x)>.0005||Math.abs(door_v)>.0005||Math.abs(cam_t-cam_z)>.001||Math.abs(cam_v)>.001;
@@ -375,6 +420,30 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
  addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);
  // pokaz na starcie: ktoś uchyla środkowe skrzydło
  var auto_run=true;setTimeout(function(){auto=0.34;kick();setTimeout(function(){auto_run=false},2600)},700);
+})();
+
+(function(){
+ var d=document,RM=d.documentElement.classList.contains('rm');
+ // galeria: przeciąganie, strzałki, pasek postępu
+ var g=d.querySelector('.gal'),bar=d.querySelector('.gbar i'),sls=[].slice.call(d.querySelectorAll('.sl'));
+ function upd(){var m=g.scrollWidth-g.clientWidth,w=g.clientWidth/g.scrollWidth;bar.style.setProperty('--w',(w*100)+'%');var tr=bar.parentNode.clientWidth*(1-w)*(m>0?g.scrollLeft/m:0);bar.style.setProperty('--x',tr+'px')}
+ g.addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);upd();
+ function step(dir){var w=sls[0].getBoundingClientRect().width+22;g.scrollBy({left:dir*w,behavior:RM?'auto':'smooth'})}
+ d.querySelector('.gprev').addEventListener('click',function(){step(-1)});d.querySelector('.gnext').addEventListener('click',function(){step(1)});
+ var down=false,sx=0,sl=0,moved=0;
+ g.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=g.scrollLeft;g.classList.add('drag')});
+ addEventListener('pointermove',function(e){if(!down)return;moved=Math.abs(e.clientX-sx);g.scrollLeft=sl-(e.clientX-sx)});
+ addEventListener('pointerup',function(){if(!down)return;down=false;g.classList.remove('drag');var w=sls[0].getBoundingClientRect().width+22;g.scrollTo({left:Math.round(g.scrollLeft/w)*w,behavior:'smooth'})});
+ // opinie: karty wjeżdżają jak skrzydło szafy
+ var q=[].slice.call(d.querySelectorAll('.qs-it')),cnt=d.querySelector('.qs-cnt'),box=d.querySelector('.qs-box'),i=0,timer;
+ function fit(){var h=0;q.forEach(function(e){var s=e.style.position;e.style.position='relative';h=Math.max(h,e.offsetHeight);e.style.position=s});box.style.minHeight=h+'px'}
+ function show(n,dir){var old=q[i];i=(n+q.length)%q.length;q.forEach(function(e){e.classList.remove('out');if(e!==old&&e!==q[i])e.classList.remove('on')});
+  if(old!==q[i]){old.classList.remove('on');old.classList.add('out');var nw=q[i];nw.style.transition='none';nw.style.transform='translateX('+(dir<0?'-104%':'104%')+')';void nw.offsetWidth;nw.style.transition='';nw.style.transform='';nw.classList.add('on')}
+  cnt.textContent=(i+1)+' / '+q.length}
+ q[0].classList.add('on');fit();addEventListener('resize',fit);addEventListener('load',fit);
+ d.querySelector('.qprev').addEventListener('click',function(){show(i-1,-1);rst()});d.querySelector('.qnext').addEventListener('click',function(){show(i+1,1);rst()});
+ function rst(){clearInterval(timer);if(!RM)timer=setInterval(function(){show(i+1,1)},8000)}
+ box.addEventListener('mouseenter',function(){clearInterval(timer)});box.addEventListener('mouseleave',rst);rst();
 })();
 </script>
 </body></html>

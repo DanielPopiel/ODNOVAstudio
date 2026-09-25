@@ -91,30 +91,35 @@ h1{font-size:clamp(38px,3.9vw,62px);letter-spacing:-.028em;font-weight:600;line-
 h2{font-size:clamp(34px,4.4vw,64px);letter-spacing:-.025em;line-height:1.02}
 h3{font-size:22px;letter-spacing:-.01em}
 .num,.mono{font-family:var(--f-mono)}
-.gtape{position:fixed;left:0;right:0;top:var(--hdr-h,100px);height:18px;z-index:49;background:#FFA400;box-shadow:0 1px 0 rgba(0,0,0,.25);overflow:hidden}
-.gt-strip{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,#1D1E1B 0 1.2px,transparent 1.2px 100px),repeating-linear-gradient(90deg,#1D1E1B 0 1px,transparent 1px 50px),repeating-linear-gradient(90deg,rgba(29,30,27,.75) 0 1px,transparent 1px 10px);background-size:100% 12px,100% 8px,100% 5px;background-repeat:repeat-x;background-position:0 0}
-.gt-read{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding:0 12px 0 14px;background:#1D1E1B;color:#FFA400;font-size:11.5px;font-weight:500;letter-spacing:.02em}
-section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 .hero{background:var(--paper)}
+.scene{margin:0}
+.scene-box{position:relative;aspect-ratio:3/2;max-height:calc(100vh - var(--hdr-h,100px) - 150px);overflow:hidden;background:#ddd;perspective:1400px}
+.scene-box>img,.pcs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.interior,.carcass{position:absolute;inset:0;width:100%;height:100%}
+.pcs{position:absolute;inset:0;transform-style:preserve-3d}
+.pc{will-change:transform,opacity;backface-visibility:hidden}
+.js .pc,.js .in{opacity:0}
+.js .sc-b{opacity:0}
+html:not(.js) .interior,html:not(.js) .pcs,html:not(.js) .carcass{display:none}
+.rm .pc,.rm .interior,.rm .carcass{display:none}.rm .sc-b{opacity:1!important}
+.steps-cap{margin-top:14px;padding-right:24px}
+.stp{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.stp li{height:4px;background:rgba(29,30,27,.14);font-size:0;overflow:hidden;position:relative}
+.stp li::after{content:"";position:absolute;inset:0;background:#FFA400;transform:scaleX(var(--f,0));transform-origin:left}
+.stp .num{display:none}
+.stp-now{margin:0;font-size:15px;color:#3b3c38;display:flex;gap:10px;align-items:baseline}
+.stp-now .num{font-family:var(--f-mono);font-size:13px;color:#8A4F00}
+.stp-now b{font-weight:600}
+@media (max-width:860px){.scene-box{max-height:none}.steps-cap{padding:0 22px}}
+
 .pin{padding:calc(var(--hdr-h,100px) + 44px) 0 34px}
-.js .hero .stage{height:300vh}
+.js .hero .stage{height:420vh}
 .js .hero .pin{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
 .hero-grid{display:grid;grid-template-columns:minmax(0,4.4fr) minmax(0,7.6fr);gap:52px;align-items:center;width:100%;padding-left:max(24px,calc((100vw - 1240px)/2 + 24px))}
 .lead{font-size:clamp(18px,1.4vw,20px);max-width:36ch;margin:22px 0 28px;color:#3b3c38}
 .ctas{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px;border-radius:3px;background:var(--dark);color:var(--paper);text-decoration:none;font-weight:600}
 .btn.b2{background:var(--tape);color:var(--dark)}
-.scene{margin:0}
-.scene-box{position:relative;aspect-ratio:3/2;max-height:calc(100vh - var(--hdr-h,100px) - 110px);overflow:hidden;background:#ddd}
-.scene-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.sc-svg{position:absolute;inset:0;width:100%;height:100%}
-.ticks path{stroke:#1D1E1B;stroke-width:2}
-.ticks text{font-family:'IBM Plex Mono',monospace;font-size:23px;font-weight:600;fill:#1D1E1B}
-.rd{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;fill:#FFA400}
-.pencil path{stroke:#555;stroke-width:3;stroke-linecap:round;opacity:0;transition:opacity .4s}
-.scene figcaption{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-top:12px;color:#55564f;padding-right:24px}
-.js .sc-b{clip-path:inset(0 100% 0 0)}
-.js .st2{opacity:.35}
 .s-dark{background:var(--dark);color:#EDEDE7;padding:clamp(84px,10vw,140px) 0;--line:rgba(237,237,231,.18)}
 .s-dark a{color:#FFC24D}
 .s-light{background:var(--paper);padding:clamp(84px,10vw,140px) 0}
@@ -133,12 +138,6 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 .fig{position:absolute;inset:0;opacity:0;transition:opacity .6s}
 .fig.on{opacity:1}
 .fig img{width:100%;height:100%;object-fit:cover}
-.dims{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.dims path{fill:none;stroke:#FFA400;stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-dasharray:1 1;stroke-dashoffset:0;transition:stroke-dashoffset .9s cubic-bezier(.22,.61,.36,1)}
-.dims.redraw path{transition:none;stroke-dashoffset:1}
-.dim-w,.dim-h{position:absolute;font-family:var(--f-mono);font-size:12.5px;color:#FFA400;white-space:nowrap;background:#1D1E1B;padding:0 10px;line-height:18px}
-.dim-w{top:calc(-3% - 9px);left:50%;transform:translateX(-50%)}
-.dim-h{left:calc(-3% );top:50%;transform:translate(-50%,-50%) rotate(-90deg)}
 .proc{padding-bottom:0}
 .p-stage{position:relative}
 .js .p-stage{height:260vh}
@@ -174,7 +173,7 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 .team{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .team figure{margin:0}
 .team figure:nth-child(2){margin-top:60px}
-.team img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.04)}
+.team img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;}
 .team figcaption{font-size:14px;margin-top:8px}
 .onas-txt p{font-size:18.5px;max-width:54ch}
 .onas-txt h2{margin-bottom:24px}
@@ -198,16 +197,13 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 .ft svg{display:inline;vertical-align:-8px;margin-right:6px;width:24px;height:24px}
 @media (max-width:1100px){.p-steps li{width:300px}}
 @media (max-width:860px){
- .gtape{height:14px}.gt-read{font-size:10.5px}
  .hero-grid{grid-template-columns:1fr;gap:24px;padding-left:0}
  .hero-txt{padding:0 22px}
- .js .hero .stage{height:230vh}
+ .js .hero .stage{height:360vh}
  .js .hero .pin{align-items:flex-start}
  .lead{margin:14px 0 0}
  .hero .ctas{display:none}
- .scene-box{max-height:none}
- .scene figcaption{padding:0 22px}
- .sh,.onas,.faq-grid,.kontakt,.of-wrap{grid-template-columns:1fr;gap:22px}
+   .sh,.onas,.faq-grid,.kontakt,.of-wrap{grid-template-columns:1fr;gap:22px}
  .sh{margin-bottom:36px}
  .of-stick{display:none}
  .of{min-height:0;opacity:1;padding:26px 0}
@@ -237,7 +233,6 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 <a class="hcta" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="tel">796 796 770</span></a>
 <details class="mnav"><summary aria-label="Menu">Menu</summary><nav aria-label="Menu mobilne"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a class="mcta" href="tel:+48796796770">Zadzwoń: <span class="tel">796 796 770</span></a></nav></details>
 </div></header></div>
-<div class="gtape" aria-hidden="true"><div class="gt-strip"></div><span class="gt-read num">0 cm</span></div>
 <main id="main">
 <section class="hero" id="start">
 <div class="stage"><div class="pin"><div class="hero-grid">
@@ -246,32 +241,15 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 <p class="lead">Szafy przesuwne, garderoby i kuchnie na wymiar z Gliwic. Pomiar i projekt są bezpłatne, meble robimy we własnej pracowni.</p>
 <div class="ctas"><a class="btn" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Szafy <span class="tel">796 796 770</span></span></a><a class="btn b2" href="tel:+48603166206"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Kuchnie <span class="tel">603 166 206</span></span></a></div>
 </div>
-<figure class="scene" aria-label="Pusta ściana, miarka i ta sama ściana z gotową szafą">
+<figure class="scene" aria-label="Montaż szafy krok po kroku: od pustej ściany do gotowej zabudowy">
 <div class="scene-box">
 <img class="sc-a" src="img/w1-pusta-1680.jpg" srcset="img/w1-pusta-900.jpg 900w, img/w1-pusta-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="Pusta ściana przed montażem" decoding="async">
-<img class="sc-b" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="Ta sama ściana z szafą przesuwną z wnęką RTV — realizacja Meble Świerkosz" decoding="async">
-<svg class="sc-svg" viewBox="0 0 1680 1120" aria-hidden="true">
-<defs><clipPath id="blade"><rect class="bl-clip" x="88" y="544" width="1412" height="76"/></clipPath>
-<linearGradient id="cs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3b37"/><stop offset=".5" stop-color="#1D1E1B"/><stop offset="1" stop-color="#111"/></linearGradient>
-<linearGradient id="bs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC24D"/><stop offset=".45" stop-color="#FFA400"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs>
-<g class="pencil"><path d="M88 504v26M88 632v26" /><path d="M1508 504v26M1508 632v26" /></g>
-<g clip-path="url(#blade)"><g class="blade">
-<rect x="88" y="548" width="1452" height="64" fill="url(#bs)"/>
-<g class="ticks" transform="translate(88 548)"><path d="M0.0 0v34" /><path d="M3.8 0v12" /><path d="M7.6 0v12" /><path d="M11.3 0v12" /><path d="M15.1 0v12" /><path d="M18.9 0v21" /><path d="M22.7 0v12" /><path d="M26.4 0v12" /><path d="M30.2 0v12" /><path d="M34.0 0v12" /><path d="M37.8 0v34" /><path d="M41.5 0v12" /><path d="M45.3 0v12" /><path d="M49.1 0v12" /><path d="M52.9 0v12" /><path d="M56.6 0v21" /><path d="M60.4 0v12" /><path d="M64.2 0v12" /><path d="M68.0 0v12" /><path d="M71.7 0v12" /><path d="M75.5 0v34" /><text x="79.5" y="50">20</text><path d="M79.3 0v12" /><path d="M83.1 0v12" /><path d="M86.8 0v12" /><path d="M90.6 0v12" /><path d="M94.4 0v21" /><path d="M98.2 0v12" /><path d="M101.9 0v12" /><path d="M105.7 0v12" /><path d="M109.5 0v12" /><path d="M113.3 0v34" /><path d="M117.0 0v12" /><path d="M120.8 0v12" /><path d="M124.6 0v12" /><path d="M128.4 0v12" /><path d="M132.1 0v21" /><path d="M135.9 0v12" /><path d="M139.7 0v12" /><path d="M143.5 0v12" /><path d="M147.2 0v12" /><path d="M151.0 0v34" /><text x="155.0" y="50">40</text><path d="M154.8 0v12" /><path d="M158.6 0v12" /><path d="M162.3 0v12" /><path d="M166.1 0v12" /><path d="M169.9 0v21" /><path d="M173.7 0v12" /><path d="M177.4 0v12" /><path d="M181.2 0v12" /><path d="M185.0 0v12" /><path d="M188.8 0v34" /><path d="M192.5 0v12" /><path d="M196.3 0v12" /><path d="M200.1 0v12" /><path d="M203.9 0v12" /><path d="M207.6 0v21" /><path d="M211.4 0v12" /><path d="M215.2 0v12" /><path d="M219.0 0v12" /><path d="M222.7 0v12" /><path d="M226.5 0v34" /><text x="230.5" y="50">60</text><path d="M230.3 0v12" /><path d="M234.1 0v12" /><path d="M237.9 0v12" /><path d="M241.6 0v12" /><path d="M245.4 0v21" /><path d="M249.2 0v12" /><path d="M253.0 0v12" /><path d="M256.7 0v12" /><path d="M260.5 0v12" /><path d="M264.3 0v34" /><path d="M268.1 0v12" /><path d="M271.8 0v12" /><path d="M275.6 0v12" /><path d="M279.4 0v12" /><path d="M283.2 0v21" /><path d="M286.9 0v12" /><path d="M290.7 0v12" /><path d="M294.5 0v12" /><path d="M298.3 0v12" /><path d="M302.0 0v34" /><text x="306.0" y="50">80</text><path d="M305.8 0v12" /><path d="M309.6 0v12" /><path d="M313.4 0v12" /><path d="M317.1 0v12" /><path d="M320.9 0v21" /><path d="M324.7 0v12" /><path d="M328.5 0v12" /><path d="M332.2 0v12" /><path d="M336.0 0v12" /><path d="M339.8 0v34" /><path d="M343.6 0v12" /><path d="M347.3 0v12" /><path d="M351.1 0v12" /><path d="M354.9 0v12" /><path d="M358.7 0v21" /><path d="M362.4 0v12" /><path d="M366.2 0v12" /><path d="M370.0 0v12" /><path d="M373.8 0v12" /><path d="M377.5 0v34" /><text x="381.5" y="50">100</text><path d="M381.3 0v12" /><path d="M385.1 0v12" /><path d="M388.9 0v12" /><path d="M392.6 0v12" /><path d="M396.4 0v21" /><path d="M400.2 0v12" /><path d="M404.0 0v12" /><path d="M407.7 0v12" /><path d="M411.5 0v12" /><path d="M415.3 0v34" /><path d="M419.1 0v12" /><path d="M422.8 0v12" /><path d="M426.6 0v12" /><path d="M430.4 0v12" /><path d="M434.2 0v21" /><path d="M437.9 0v12" /><path d="M441.7 0v12" /><path d="M445.5 0v12" /><path d="M449.3 0v12" /><path d="M453.0 0v34" /><text x="457.0" y="50">120</text><path d="M456.8 0v12" /><path d="M460.6 0v12" /><path d="M464.4 0v12" /><path d="M468.1 0v12" /><path d="M471.9 0v21" /><path d="M475.7 0v12" /><path d="M479.5 0v12" /><path d="M483.3 0v12" /><path d="M487.0 0v12" /><path d="M490.8 0v34" /><path d="M494.6 0v12" /><path d="M498.4 0v12" /><path d="M502.1 0v12" /><path d="M505.9 0v12" /><path d="M509.7 0v21" /><path d="M513.5 0v12" /><path d="M517.2 0v12" /><path d="M521.0 0v12" /><path d="M524.8 0v12" /><path d="M528.6 0v34" /><text x="532.6" y="50">140</text><path d="M532.3 0v12" /><path d="M536.1 0v12" /><path d="M539.9 0v12" /><path d="M543.7 0v12" /><path d="M547.4 0v21" /><path d="M551.2 0v12" /><path d="M555.0 0v12" /><path d="M558.8 0v12" /><path d="M562.5 0v12" /><path d="M566.3 0v34" /><path d="M570.1 0v12" /><path d="M573.9 0v12" /><path d="M577.6 0v12" /><path d="M581.4 0v12" /><path d="M585.2 0v21" /><path d="M589.0 0v12" /><path d="M592.7 0v12" /><path d="M596.5 0v12" /><path d="M600.3 0v12" /><path d="M604.1 0v34" /><text x="608.1" y="50">160</text><path d="M607.8 0v12" /><path d="M611.6 0v12" /><path d="M615.4 0v12" /><path d="M619.2 0v12" /><path d="M622.9 0v21" /><path d="M626.7 0v12" /><path d="M630.5 0v12" /><path d="M634.3 0v12" /><path d="M638.0 0v12" /><path d="M641.8 0v34" /><path d="M645.6 0v12" /><path d="M649.4 0v12" /><path d="M653.1 0v12" /><path d="M656.9 0v12" /><path d="M660.7 0v21" /><path d="M664.5 0v12" /><path d="M668.2 0v12" /><path d="M672.0 0v12" /><path d="M675.8 0v12" /><path d="M679.6 0v34" /><text x="683.6" y="50">180</text><path d="M683.3 0v12" /><path d="M687.1 0v12" /><path d="M690.9 0v12" /><path d="M694.7 0v12" /><path d="M698.4 0v21" /><path d="M702.2 0v12" /><path d="M706.0 0v12" /><path d="M709.8 0v12" /><path d="M713.6 0v12" /><path d="M717.3 0v34" /><path d="M721.1 0v12" /><path d="M724.9 0v12" /><path d="M728.7 0v12" /><path d="M732.4 0v12" /><path d="M736.2 0v21" /><path d="M740.0 0v12" /><path d="M743.8 0v12" /><path d="M747.5 0v12" /><path d="M751.3 0v12" /><path d="M755.1 0v34" /><text x="759.1" y="50">200</text><path d="M758.9 0v12" /><path d="M762.6 0v12" /><path d="M766.4 0v12" /><path d="M770.2 0v12" /><path d="M774.0 0v21" /><path d="M777.7 0v12" /><path d="M781.5 0v12" /><path d="M785.3 0v12" /><path d="M789.1 0v12" /><path d="M792.8 0v34" /><path d="M796.6 0v12" /><path d="M800.4 0v12" /><path d="M804.2 0v12" /><path d="M807.9 0v12" /><path d="M811.7 0v21" /><path d="M815.5 0v12" /><path d="M819.3 0v12" /><path d="M823.0 0v12" /><path d="M826.8 0v12" /><path d="M830.6 0v34" /><text x="834.6" y="50">220</text><path d="M834.4 0v12" /><path d="M838.1 0v12" /><path d="M841.9 0v12" /><path d="M845.7 0v12" /><path d="M849.5 0v21" /><path d="M853.2 0v12" /><path d="M857.0 0v12" /><path d="M860.8 0v12" /><path d="M864.6 0v12" /><path d="M868.3 0v34" /><path d="M872.1 0v12" /><path d="M875.9 0v12" /><path d="M879.7 0v12" /><path d="M883.4 0v12" /><path d="M887.2 0v21" /><path d="M891.0 0v12" /><path d="M894.8 0v12" /><path d="M898.5 0v12" /><path d="M902.3 0v12" /><path d="M906.1 0v34" /><text x="910.1" y="50">240</text><path d="M909.9 0v12" /><path d="M913.6 0v12" /><path d="M917.4 0v12" /><path d="M921.2 0v12" /><path d="M925.0 0v21" /><path d="M928.7 0v12" /><path d="M932.5 0v12" /><path d="M936.3 0v12" /><path d="M940.1 0v12" /><path d="M943.9 0v34" /><path d="M947.6 0v12" /><path d="M951.4 0v12" /><path d="M955.2 0v12" /><path d="M959.0 0v12" /><path d="M962.7 0v21" /><path d="M966.5 0v12" /><path d="M970.3 0v12" /><path d="M974.1 0v12" /><path d="M977.8 0v12" /><path d="M981.6 0v34" /><text x="985.6" y="50">260</text><path d="M985.4 0v12" /><path d="M989.2 0v12" /><path d="M992.9 0v12" /><path d="M996.7 0v12" /><path d="M1000.5 0v21" /><path d="M1004.3 0v12" /><path d="M1008.0 0v12" /><path d="M1011.8 0v12" /><path d="M1015.6 0v12" /><path d="M1019.4 0v34" /><path d="M1023.1 0v12" /><path d="M1026.9 0v12" /><path d="M1030.7 0v12" /><path d="M1034.5 0v12" /><path d="M1038.2 0v21" /><path d="M1042.0 0v12" /><path d="M1045.8 0v12" /><path d="M1049.6 0v12" /><path d="M1053.3 0v12" /><path d="M1057.1 0v34" /><text x="1061.1" y="50">280</text><path d="M1060.9 0v12" /><path d="M1064.7 0v12" /><path d="M1068.4 0v12" /><path d="M1072.2 0v12" /><path d="M1076.0 0v21" /><path d="M1079.8 0v12" /><path d="M1083.5 0v12" /><path d="M1087.3 0v12" /><path d="M1091.1 0v12" /><path d="M1094.9 0v34" /><path d="M1098.6 0v12" /><path d="M1102.4 0v12" /><path d="M1106.2 0v12" /><path d="M1110.0 0v12" /><path d="M1113.7 0v21" /><path d="M1117.5 0v12" /><path d="M1121.3 0v12" /><path d="M1125.1 0v12" /><path d="M1128.8 0v12" /><path d="M1132.6 0v34" /><text x="1136.6" y="50">300</text><path d="M1136.4 0v12" /><path d="M1140.2 0v12" /><path d="M1143.9 0v12" /><path d="M1147.7 0v12" /><path d="M1151.5 0v21" /><path d="M1155.3 0v12" /><path d="M1159.0 0v12" /><path d="M1162.8 0v12" /><path d="M1166.6 0v12" /><path d="M1170.4 0v34" /><path d="M1174.1 0v12" /><path d="M1177.9 0v12" /><path d="M1181.7 0v12" /><path d="M1185.5 0v12" /><path d="M1189.3 0v21" /><path d="M1193.0 0v12" /><path d="M1196.8 0v12" /><path d="M1200.6 0v12" /><path d="M1204.4 0v12" /><path d="M1208.1 0v34" /><text x="1212.1" y="50">320</text><path d="M1211.9 0v12" /><path d="M1215.7 0v12" /><path d="M1219.5 0v12" /><path d="M1223.2 0v12" /><path d="M1227.0 0v21" /><path d="M1230.8 0v12" /><path d="M1234.6 0v12" /><path d="M1238.3 0v12" /><path d="M1242.1 0v12" /><path d="M1245.9 0v34" /><path d="M1249.7 0v12" /><path d="M1253.4 0v12" /><path d="M1257.2 0v12" /><path d="M1261.0 0v12" /><path d="M1264.8 0v21" /><path d="M1268.5 0v12" /><path d="M1272.3 0v12" /><path d="M1276.1 0v12" /><path d="M1279.9 0v12" /><path d="M1283.6 0v34" /><text x="1287.6" y="50">340</text><path d="M1287.4 0v12" /><path d="M1291.2 0v12" /><path d="M1295.0 0v12" /><path d="M1298.7 0v12" /><path d="M1302.5 0v21" /><path d="M1306.3 0v12" /><path d="M1310.1 0v12" /><path d="M1313.8 0v12" /><path d="M1317.6 0v12" /><path d="M1321.4 0v34" /><path d="M1325.2 0v12" /><path d="M1328.9 0v12" /><path d="M1332.7 0v12" /><path d="M1336.5 0v12" /><path d="M1340.3 0v21" /><path d="M1344.0 0v12" /><path d="M1347.8 0v12" /><path d="M1351.6 0v12" /><path d="M1355.4 0v12" /><path d="M1359.1 0v34" /><text x="1363.1" y="50">360</text><path d="M1362.9 0v12" /><path d="M1366.7 0v12" /><path d="M1370.5 0v12" /><path d="M1374.2 0v12" /><path d="M1378.0 0v21" /><path d="M1381.8 0v12" /><path d="M1385.6 0v12" /><path d="M1389.3 0v12" /><path d="M1393.1 0v12" /><path d="M1396.9 0v34" /><path d="M1400.7 0v12" /><path d="M1404.4 0v12" /><path d="M1408.2 0v12" /><path d="M1412.0 0v12" /></g>
-<rect x="88" y="610" width="1452" height="2" fill="rgba(0,0,0,.25)"/>
-</g></g>
-<g class="hook"><rect x="-12" y="540" width="14" height="80" rx="2" fill="#B9BDC0"/><rect x="-12" y="540" width="3" height="80" fill="#8B9094"/></g>
-<g class="case" transform="translate(1500 505)">
-<rect x="0" y="0" width="150" height="150" rx="34" fill="url(#cs)"/>
-<rect x="10" y="10" width="130" height="130" rx="26" fill="none" stroke="#FFA400" stroke-width="5"/>
-<circle cx="75" cy="75" r="30" fill="#2a2b27" stroke="#FFA400" stroke-width="4"/>
-<rect x="-8" y="68" width="14" height="60" rx="3" fill="#2a2b27"/>
-<rect x="118" y="112" width="42" height="20" rx="6" fill="#FFA400"/>
-</g>
-<g class="read" transform="translate(1575 456)"><rect x="-92" y="-30" width="184" height="52" rx="26" fill="#1D1E1B"/><text class="rd" x="0" y="6" text-anchor="middle">0,0 cm</text></g>
-</svg>
+<svg class="interior" viewBox="0 0 1680 1120" aria-hidden="true" data-n="18"><defs><linearGradient id="shd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(0,0,0,.22)"/><stop offset="1" stop-color="rgba(0,0,0,0)"/></linearGradient><linearGradient id="shr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(0,0,0,.18)"/><stop offset="1" stop-color="rgba(0,0,0,0)"/></linearGradient><linearGradient id="chr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f5f6"/><stop offset=".5" stop-color="#9ea3a7"/><stop offset="1" stop-color="#d7dadc"/></linearGradient></defs><g class="in" data-k="0"><rect x="382" y="124" width="16" height="888" fill="#E6E5E1"/><rect x="398" y="124" width="8" height="888" fill="url(#shr)"/></g><g class="in" data-k="1"><rect x="104" y="262" width="278" height="14" fill="#EDECE8"/><rect x="104" y="276" width="278" height="10" fill="url(#shd)"/><rect x="104" y="262" width="278" height="2" fill="#fff"/></g><g class="in" data-k="2"><rect x="104" y="420" width="278" height="14" fill="#EDECE8"/><rect x="104" y="434" width="278" height="10" fill="url(#shd)"/><rect x="104" y="420" width="278" height="2" fill="#fff"/></g><g class="in" data-k="3"><rect x="104" y="578" width="278" height="14" fill="#EDECE8"/><rect x="104" y="592" width="278" height="10" fill="url(#shd)"/><rect x="104" y="578" width="278" height="2" fill="#fff"/></g><g class="in" data-k="4"><rect x="104" y="736" width="278" height="14" fill="#EDECE8"/><rect x="104" y="750" width="278" height="10" fill="url(#shd)"/><rect x="104" y="736" width="278" height="2" fill="#fff"/></g><g class="in" data-k="5"><rect x="104" y="894" width="278" height="14" fill="#EDECE8"/><rect x="104" y="908" width="278" height="10" fill="url(#shd)"/><rect x="104" y="894" width="278" height="2" fill="#fff"/></g><g class="in" data-k="6"><rect x="398" y="262" width="278" height="14" fill="#EDECE8"/><rect x="398" y="276" width="278" height="10" fill="url(#shd)"/><rect x="398" y="262" width="278" height="2" fill="#fff"/></g><g class="in" data-k="7"><rect x="402" y="318" width="270" height="7" rx="3.5" fill="url(#chr)"/><rect x="402" y="308" width="6" height="12" fill="#bfc3c6"/><rect x="666" y="308" width="6" height="12" fill="#bfc3c6"/></g><g class="in" data-k="8"><rect x="398" y="820" width="278" height="14" fill="#EDECE8"/><rect x="398" y="834" width="278" height="10" fill="url(#shd)"/><rect x="398" y="820" width="278" height="2" fill="#fff"/></g><g class="in" data-k="9"><rect x="1278" y="124" width="16" height="888" fill="#E6E5E1"/><rect x="1294" y="124" width="8" height="888" fill="url(#shr)"/></g><g class="in" data-k="10"><rect x="1294" y="262" width="276" height="14" fill="#EDECE8"/><rect x="1294" y="276" width="276" height="10" fill="url(#shd)"/><rect x="1294" y="262" width="276" height="2" fill="#fff"/></g><g class="in" data-k="11"><rect x="1294" y="420" width="276" height="14" fill="#EDECE8"/><rect x="1294" y="434" width="276" height="10" fill="url(#shd)"/><rect x="1294" y="420" width="276" height="2" fill="#fff"/></g><g class="in" data-k="12"><rect x="1294" y="578" width="276" height="14" fill="#EDECE8"/><rect x="1294" y="592" width="276" height="10" fill="url(#shd)"/><rect x="1294" y="578" width="276" height="2" fill="#fff"/></g><g class="in" data-k="13"><rect x="1294" y="736" width="276" height="14" fill="#EDECE8"/><rect x="1294" y="750" width="276" height="10" fill="url(#shd)"/><rect x="1294" y="736" width="276" height="2" fill="#fff"/></g><g class="in" data-k="14"><rect x="1294" y="894" width="276" height="14" fill="#EDECE8"/><rect x="1294" y="908" width="276" height="10" fill="url(#shd)"/><rect x="1294" y="894" width="276" height="2" fill="#fff"/></g><g class="in" data-k="15"><rect x="1002" y="262" width="276" height="14" fill="#EDECE8"/><rect x="1002" y="276" width="276" height="10" fill="url(#shd)"/><rect x="1002" y="262" width="276" height="2" fill="#fff"/></g><g class="in" data-k="16"><rect x="1006" y="318" width="268" height="7" rx="3.5" fill="url(#chr)"/><rect x="1006" y="308" width="6" height="12" fill="#bfc3c6"/><rect x="1268" y="308" width="6" height="12" fill="#bfc3c6"/></g><g class="in" data-k="17"><rect x="1002" y="820" width="276" height="14" fill="#EDECE8"/><rect x="1002" y="834" width="276" height="10" fill="url(#shd)"/><rect x="1002" y="820" width="276" height="2" fill="#fff"/></g></svg>
+<svg class="carcass" viewBox="0 0 1680 1120" aria-hidden="true"><g class="pc cb" data-s="1" data-k="0" data-n="4" data-m="grow" data-w="0.0119" style="transform-box:fill-box;transform-origin:50% 100%"><rect x="84" y="98" width="20" height="914" fill="#E9E8E4"/><rect x="84" y="98" width="4" height="914" fill="#F6F6F3"/><rect x="101" y="98" width="3" height="914" fill="rgba(0,0,0,.12)"/></g><g class="pc cb" data-s="1" data-k="1" data-n="4" data-m="grow" data-w="0.0095" style="transform-box:fill-box;transform-origin:50% 100%"><rect x="676" y="98" width="16" height="914" fill="#E9E8E4"/><rect x="676" y="98" width="3" height="914" fill="#F6F6F3"/><rect x="689" y="98" width="3" height="914" fill="rgba(0,0,0,.12)"/></g><g class="pc cb" data-s="1" data-k="2" data-n="4" data-m="grow" data-w="0.0107" style="transform-box:fill-box;transform-origin:50% 100%"><rect x="984" y="98" width="18" height="914" fill="#E9E8E4"/><rect x="984" y="98" width="3" height="914" fill="#F6F6F3"/><rect x="999" y="98" width="3" height="914" fill="rgba(0,0,0,.12)"/></g><g class="pc cb" data-s="1" data-k="3" data-n="4" data-m="grow" data-w="0.0131" style="transform-box:fill-box;transform-origin:50% 100%"><rect x="1572" y="98" width="22" height="914" fill="#E9E8E4"/><rect x="1572" y="98" width="4" height="914" fill="#F6F6F3"/><rect x="1591" y="98" width="3" height="914" fill="rgba(0,0,0,.12)"/></g><g class="pc cb" data-s="2" data-k="0" data-n="1" data-m="drop" data-w="0.8988" style="transform-box:fill-box;transform-origin:50% 0%"><rect x="84" y="96" width="1510" height="26" fill="#E9E8E4"/><rect x="84" y="96" width="302" height="26" fill="#F6F6F3"/><rect x="1591" y="96" width="3" height="26" fill="rgba(0,0,0,.12)"/></g></svg>
+<div class="pcs"><img class="pc" data-s="0" data-k="0" data-n="1" data-m="rise" data-w="0.9167" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(90.179% 4.167% 6.071% 4.167%);transform-origin:50.0% 93.929%"><img class="pc" data-s="2" data-k="0" data-n="3" data-m="fade" data-w="0.9345" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(5.536% 3.452% 91.25% 3.095%);transform-origin:49.821% 7.143%"><img class="pc" data-s="2" data-k="1" data-n="3" data-m="fade" data-w="0.0202" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(5.536% 94.881% 6.071% 3.095%);transform-origin:4.107% 49.732%"><img class="pc" data-s="2" data-k="2" data-n="3" data-m="fade" data-w="0.019" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(5.536% 3.333% 6.071% 94.762%);transform-origin:95.714% 49.732%"><img class="pc" data-s="4" data-k="0" data-n="5" data-m="swingL" data-w="0.0893" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(8.75% 50.238% 64.643% 40.833%);transform-origin:40.833% 50%"><img class="pc" data-s="4" data-k="1" data-n="5" data-m="swingR" data-w="0.0917" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(8.75% 41.071% 64.643% 49.762%);transform-origin:58.929% 50%"><img class="pc" data-s="4" data-k="2" data-n="5" data-m="shelf" data-w="0.181" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(35.357% 41.071% 28.571% 40.833%);transform-origin:49.881% 71.429%"><img class="pc" data-s="4" data-k="3" data-n="5" data-m="drawer" data-w="0.181" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(71.429% 41.071% 18.571% 40.833%);transform-origin:49.881% 81.429%"><img class="pc" data-s="4" data-k="4" data-n="5" data-m="drawer" data-w="0.181" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(81.429% 41.071% 9.643% 40.833%);transform-origin:49.881% 90.357%"><img class="pc" data-s="5" data-k="0" data-n="2" data-m="wipe" data-w="0.8786" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(10.536% 6.19% 88.393% 5.952%);transform-origin:49.881% 11.071%"><img class="pc" data-s="5" data-k="1" data-n="2" data-m="wipe" data-w="0.8786" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(88.75% 6.19% 9.643% 5.952%);transform-origin:49.881% 89.554%"><img class="pc" data-s="6" data-k="0" data-n="4" data-m="slideR" data-w="0.1738" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(10.357% 59.286% 10.357% 23.333%);transform-origin:32.024% 50.0%"><img class="pc" data-s="6" data-k="1" data-n="4" data-m="slideL" data-w="0.1702" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(10.357% 23.452% 10.357% 59.524%);transform-origin:68.036% 50.0%"><img class="pc" data-s="6" data-k="2" data-n="4" data-m="slideL" data-w="0.1774" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(10.179% 76.429% 10.179% 5.833%);transform-origin:14.702% 50.0%"><img class="pc" data-s="6" data-k="3" data-n="4" data-m="slideR" data-w="0.1774" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="" style="clip-path:inset(10.179% 5.952% 10.179% 76.31%);transform-origin:85.179% 50.0%"></div>
+<img class="sc-b" src="img/w1-szafa-1680.jpg" srcset="img/w1-szafa-900.jpg 900w, img/w1-szafa-1680.jpg 1680w" sizes="(max-width:860px) 100vw, 62vw" alt="Gotowa szafa przesuwna z wnęką RTV — realizacja Meble Świerkosz" decoding="async">
 </div>
-<figcaption><span class="st st1">Pusta ściana i pomiar</span><span class="st st2">Ta sama ściana po montażu</span></figcaption>
+<figcaption class="steps-cap"><ol class="stp" aria-label="Kolejność montażu"><li data-i="0"><span class="num">1</span>Cokół i wieniec dolny</li><li data-i="1"><span class="num">2</span>Boki i przegrody</li><li data-i="2"><span class="num">3</span>Wieniec górny i blenda do sufitu</li><li data-i="3"><span class="num">4</span>Półki i drążki</li><li data-i="4"><span class="num">5</span>Moduł RTV: fronty, półki, szuflady</li><li data-i="5"><span class="num">6</span>Prowadnice drzwi</li><li data-i="6"><span class="num">7</span>Drzwi przesuwne na torach</li></ol><p class="stp-now" aria-live="polite"><span class="num">1/7</span> <b>Cokół i wieniec dolny</b></p></figcaption>
 </figure>
 </div></div></div>
 </section>
@@ -286,8 +264,7 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 <div class="of-img"><img src="img/kuchnia-wyspa-1800.jpg" srcset="img/kuchnia-wyspa-900.jpg 900w, img/kuchnia-wyspa-1800.jpg 1800w" sizes="(max-width:860px) 92vw, 1px" alt="Kuchnie na wymiar" loading="lazy" decoding="async"></div></article><article class="of" data-i="4"><h3>Inne meble na wymiar</h3><p>Regały na książki, ściany RTV, szafki łazienkowe, meble do biur i instytucji.</p><p class="of-m">Płyty laminowane, fronty lakierowane, szkło i lustra z folią</p>
 <div class="of-img"><img src="img/regal-1800.jpg" srcset="img/regal-900.jpg 900w, img/regal-1800.jpg 1800w" sizes="(max-width:860px) 92vw, 1px" alt="Inne meble na wymiar" loading="lazy" decoding="async"></div></article></div>
 <div class="of-stick" aria-hidden="true"><div class="of-frame"><div class="fig on" data-i="0"><img src="img/szafa-dab-pas-1800.jpg" srcset="img/szafa-dab-pas-900.jpg 900w, img/szafa-dab-pas-1800.jpg 1800w" sizes="(max-width:860px) 1px, 46vw" alt="Szafy z drzwiami przesuwnymi" loading="lazy" decoding="async"></div><div class="fig" data-i="1"><img src="img/skos-biala-1800.jpg" srcset="img/skos-biala-900.jpg 900w, img/skos-biala-1800.jpg 1800w" sizes="(max-width:860px) 1px, 46vw" alt="Szafy z drzwiami otwieranymi" loading="lazy" decoding="async"></div><div class="fig" data-i="2"><img src="img/przedpokoj-dab-1800.jpg" srcset="img/przedpokoj-dab-900.jpg 900w, img/przedpokoj-dab-1800.jpg 1800w" sizes="(max-width:860px) 1px, 46vw" alt="Garderoby" loading="lazy" decoding="async"></div><div class="fig" data-i="3"><img src="img/kuchnia-wyspa-1800.jpg" srcset="img/kuchnia-wyspa-900.jpg 900w, img/kuchnia-wyspa-1800.jpg 1800w" sizes="(max-width:860px) 1px, 46vw" alt="Kuchnie na wymiar" loading="lazy" decoding="async"></div><div class="fig" data-i="4"><img src="img/regal-1800.jpg" srcset="img/regal-900.jpg 900w, img/regal-1800.jpg 1800w" sizes="(max-width:860px) 1px, 46vw" alt="Inne meble na wymiar" loading="lazy" decoding="async"></div>
-<svg class="dims" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="d1" pathLength="1" d="M0 -3H100M0 -6V0M100 -6V0"/><path class="d2" pathLength="1" d="M-3 0V100M-6 0H0M-6 100H0"/></svg>
-<span class="dim-w">szerokość: na wymiar</span><span class="dim-h">wysokość: na wymiar</span></div></div>
+</div></div>
 </div>
 </div></section>
 
@@ -377,45 +354,52 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 26px)}
 
 (function(){
  var d=document,root=d.documentElement,RM=root.classList.contains('rm');
- var gs=d.querySelector('.gt-strip'),gr=d.querySelector('.gt-read');
- function gt(){var y=scrollY;gs.style.backgroundPosition=(-y%100)+'px 0,'+(-y%50)+'px 0,'+(-y%10)+'px 0';gr.textContent=Math.round(y/10)+' cm'}
- addEventListener('scroll',function(){requestAnimationFrame(gt)},{passive:true});gt();
- var stage=d.querySelector('.hero .stage'),pin=d.querySelector('.hero .pin');
- var X0=88,X1=1500,CMX=374,VW=1680;
- var blade=d.querySelector('.blade'),clip=d.querySelector('.bl-clip'),hook=d.querySelector('.hook'),rd=d.querySelector('.rd'),sb=d.querySelector('.sc-b'),pen=d.querySelectorAll('.pencil path'),s1=d.querySelector('.st1'),s2=d.querySelector('.st2');
- function cl(x){return x<0?0:x>1?1:x}
- var ext=0,ev=0,r=0,auto=0,last=0,run=false,autoRun=true,seen=false;
- function set(){
-  var hx=X1-(X1-X0)*ext;                      // zaczep; 0 cm taśmy jest na zaczepie
-  blade.setAttribute('transform','translate('+(hx-X0)+' 0)');
-  clip.setAttribute('x',hx);clip.setAttribute('width',Math.max(0,X1-hx));
-  hook.setAttribute('transform','translate('+hx+' 0)');
-  rd.textContent=(CMX*ext).toFixed(1).replace('.',',')+' cm';
-  if(ext>0.985)seen=true;
-  pen.forEach(function(p){p.style.opacity=seen?0.8:0});
-  var rev=r>0?cl(hx/VW+(VW-X1)/VW*r):0;        // szafa odsłania się tylko za zwijającym się zaczepem
-  sb.style.clipPath='inset(0 '+(100-rev*100).toFixed(2)+'% 0 0)';
-  s1.style.opacity=1-rev*0.65;s2.style.opacity=0.35+rev*0.65;
- }
- if(RM){ext=0;r=1;seen=true;set();sb.style.clipPath='none';return}
- function tick(ts){ts=ts||performance.now();var dt=Math.min(.05,(ts-(last||ts))/1000)||.016;last=ts;
-  var p=window.__prog(stage,pin);r=cl((p-0.12)/0.68);
-  var tExt=r>0?1-r:auto;
-  var k=r>0?140:28,c=2*Math.sqrt(k);var a=k*(tExt-ext)-c*ev;ev+=a*dt;ext=cl(ext+ev*dt);
-  set();
-  var mv=Math.abs(tExt-ext)>.0005||Math.abs(ev)>.0005;
-  if(mv||autoRun){run=true;requestAnimationFrame(tick)}else run=false}
- function kick(){if(!run){run=true;last=0;requestAnimationFrame(tick)}}
- set();requestAnimationFrame(tick);
- setTimeout(function(){auto=1;kick();setTimeout(function(){autoRun=false},2800)},450);
- addEventListener('scroll',kick,{passive:true});
- var ofs=[].slice.call(d.querySelectorAll('.of')),figs=[].slice.call(d.querySelectorAll('.fig')),dims=d.querySelector('.dims'),cur=-1;
- function act(i){if(i===cur)return;cur=i;ofs.forEach(function(o,k){o.classList.toggle('on',k===i)});figs.forEach(function(f,k){f.classList.toggle('on',k===i)});dims.classList.add('redraw');void dims.getBoundingClientRect();dims.classList.remove('redraw')}
+ var ofs=[].slice.call(d.querySelectorAll('.of')),figs=[].slice.call(d.querySelectorAll('.fig')),cur=-1;
+ function act(i){if(i===cur)return;cur=i;ofs.forEach(function(o,k){o.classList.toggle('on',k===i)});figs.forEach(function(f,k){f.classList.toggle('on',k===i)})}
  function ofScan(){var c=innerHeight*0.5,best=0,bd=1e9;ofs.forEach(function(o,k){var q=o.getBoundingClientRect(),m=Math.abs(q.top+q.height/2-c);if(m<bd){bd=m;best=k}});act(best)}
  addEventListener('scroll',function(){requestAnimationFrame(ofScan)},{passive:true});ofScan();
  var ps=d.querySelector('.p-stage'),pp=d.querySelector('.p-pin'),tr=d.querySelector('.p-track');
  function pt(){if(innerWidth<=860){tr.style.transform='';return}var p=window.__prog(ps,pp);var max=tr.scrollWidth-innerWidth+60;tr.style.transform='translate3d('+(-p*max)+'px,0,0)'}
  addEventListener('scroll',function(){requestAnimationFrame(pt)},{passive:true});addEventListener('resize',pt);pt();
+})();
+
+(function(){
+ var d=document,root=d.documentElement,RM=root.classList.contains('rm');
+ var stage=d.querySelector('.hero .stage'),pin=d.querySelector('.hero .pin');
+ var pcs=[].slice.call(d.querySelectorAll('.pc')),ins=[].slice.call(d.querySelectorAll('.in')),fin=d.querySelector('.sc-b');
+ var lis=[].slice.call(d.querySelectorAll('.stp li')),now=d.querySelector('.stp-now'),NS=lis.length,names=["Cokół i wieniec dolny","Boki i przegrody","Wieniec górny i blenda do sufitu","Półki i drążki","Moduł RTV: fronty, półki, szuflady","Prowadnice drzwi","Drzwi przesuwne na torach"];
+ if(RM||!pcs.length)return;
+ function cl(x){return x<0?0:x>1?1:x}
+ function eo(x){return 1-Math.pow(1-x,3)}
+ function eb(x){var c=1.3;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)}   // lekkie dobicie (drzwi na torze)
+ var NIN=ins.length,last=-1,auto=0,t0=null,cur=-1;
+ function part(g,k,n){var a=k/Math.max(n,1)*0.55;return cl((g-a)/0.45)}   // kolejne elementy w obrębie kroku
+ function render(G){                                           // G: 0..NS (+1 = gotowe)
+  pcs.forEach(function(e){var s=+e.dataset.s,g=cl(G-s),t=part(g,+e.dataset.k,+e.dataset.n),m=e.dataset.m,tr='',op=1,w=+e.dataset.w;
+   if(t<=0){e.style.opacity=0;return}
+   switch(m){
+    case 'rise':tr='translateY('+((1-eo(t))*40)+'px)';op=cl(t*3);break;
+    case 'grow':tr='scaleY('+(0.02+0.98*eo(t))+')';op=cl(t*6);break;
+    case 'drop':tr='translateY('+(-(1-eo(t))*60)+'px)';op=cl(t*3);break;
+    case 'fade':op=eo(t);break;
+    case 'swingL':tr='rotateY('+(-(1-eo(t))*78)+'deg)';op=cl(t*4);break;
+    case 'swingR':tr='rotateY('+((1-eo(t))*78)+'deg)';op=cl(t*4);break;
+    case 'shelf':tr='scale('+(0.94+0.06*eo(t))+')';op=eo(t);break;
+    case 'drawer':tr='translateY('+((1-eo(t))*14)+'px) scale('+(1.05-0.05*eo(t))+')';op=cl(t*2.5);break;
+    case 'wipe':e.style.opacity=1;e.style.transform='';e.style.webkitMaskImage=e.style.maskImage='linear-gradient(90deg,#000 '+(t*100)+'%,transparent '+(t*100+0.01)+'%)';return;
+    case 'slideR':tr='translateX('+((1-eb(t))*w*140)+'%) translateY('+(t<.85?-6:(-6+(t-.85)/.15*6))+'px)';op=cl(t*5);break;
+    case 'slideL':tr='translateX('+(-(1-eb(t))*w*140)+'%) translateY('+(t<.85?-6:(-6+(t-.85)/.15*6))+'px)';op=cl(t*5);break;
+   }
+   e.style.opacity=op;e.style.transform=tr});
+  var gi=cl(G-3);ins.forEach(function(e,i){var t=cl((gi-i/NIN*0.6)/0.4);var hide=cl((G-6)*1.2);e.style.opacity=eo(t)*(1-hide);e.style.transform='translateY('+((1-eo(t))*-10)+'px)'});
+  fin.style.opacity=cl((G-NS+0.05)/0.25);
+  var si=Math.min(NS-1,Math.floor(G)),key=G>=NS?'done':si;lis.forEach(function(l,i){l.style.setProperty('--f',cl(G-i).toFixed(3))});
+  if(key!==cur){cur=key;now.innerHTML=key==='done'?'<span class="num">7/7</span> <b>Gotowe. Sprzątamy i oddajemy szafę.</b>':'<span class="num">'+(si+1)+'/7</span> <b>'+names[si]+'</b>'}
+  last=G}
+ function G(){var p=window.__prog(stage,pin);return Math.max(auto,p*(NS+0.3))}
+ function loop(ts){if(t0===null)t0=ts;auto=eo(cl((ts-t0-400)/2600))*1.9;render(G());if(ts-t0<3200)requestAnimationFrame(loop)}
+ requestAnimationFrame(loop);
+ addEventListener('scroll',function(){requestAnimationFrame(function(){render(G())})},{passive:true});
 })();
 </script>
 </body></html>
