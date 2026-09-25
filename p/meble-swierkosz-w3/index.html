@@ -76,8 +76,8 @@ p{margin:0 0 1em}
 .faq details p{max-width:62ch;padding-bottom:20px;margin:0}
 .map{border:0;width:100%;height:100%;min-height:320px;display:block}
 .form label{display:block;font-size:14px;margin-bottom:6px}
-.form input,.form textarea,.form select{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line-strong);border-radius:var(--r,4px);background:var(--field-bg);color:inherit}
-.form .row{margin-bottom:14px}
+.form input,.form textarea,.form select{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line-strong);border-radius:min(var(--r,4px),8px);background:var(--field-bg);color:inherit}
+.form .frow{margin-bottom:14px}
 .form button{font:inherit;font-weight:600;border:0;cursor:pointer;padding:14px 20px;border-radius:var(--r,4px);background:var(--cta-bg);color:var(--cta-ink);min-height:48px}
 .form .note{font-size:13px;opacity:.75;margin-top:10px}
 footer{font-size:14px}
@@ -92,7 +92,12 @@ h1,h2{text-transform:uppercase;line-height:.9;letter-spacing:0}
 h1{font-size:clamp(52px,7.4vw,118px)}
 h2{font-size:clamp(46px,6vw,96px)}
 h3{font-family:var(--f-body);font-weight:600;font-size:20px;line-height:1.25}
-.brand b{text-transform:uppercase;font-size:26px}
+.lg3{gap:14px}.lg3 svg{flex:none}
+.lg3-t{display:flex;flex-direction:column;padding-left:14px;border-left:1px solid rgba(28,27,25,.25)}
+.lg3-t b{font-family:var(--f-head);font-weight:800;font-size:25px;letter-spacing:.03em;line-height:1;text-transform:uppercase}
+.lg3-t small{font-size:12px;margin-top:4px;opacity:.7}
+.hdr .wrap{min-height:74px}
+@media (max-width:440px){.lg3-t b{font-size:21px}.lg3-t small{display:none}.lg3 svg{width:32px;height:32px}}
 .hero{background:#ECEAE4}
 .pin{position:relative;overflow:hidden;min-height:100vh}
 .js .hero .stage{height:420vh}
@@ -122,6 +127,8 @@ html:not(.js) .hint,.nogl .hint{display:none}
 html:not(.js) .intro,.nogl .intro{position:relative;top:auto;padding-top:calc(var(--hdr-h,100px) + 4vh)}
 html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.5)}
 .nogl .hero .stage{height:auto!important}
+.gal-sec{padding-top:clamp(64px,7vw,96px)!important}
+.gal-sec .sh{margin-bottom:30px}
 .s-dark{background:var(--dark);color:#EDEBE6;padding:clamp(84px,10vw,140px) 0;--line:rgba(237,235,230,.18)}
 .s-light{background:var(--light);padding:clamp(84px,10vw,140px) 0}
 .s-oak a{color:#fff}.s-oak{background:var(--sage);color:#fff;padding:clamp(84px,10vw,140px) 0;--line:rgba(20,20,20,.28)}
@@ -135,7 +142,7 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 .g0{grid-column:span 2;grid-row:span 2}.g3{grid-column:span 2}
 .more{margin-top:30px}
 .dcs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-.dc{border:8px solid #161616;background:#fff;display:flex;flex-direction:column}
+.dc{border:1px solid rgba(28,27,25,.14);border-radius:3px;box-shadow:0 22px 44px -28px rgba(0,0,0,.45);background:#fff;display:flex;flex-direction:column}
 .dc-img{aspect-ratio:3/4;overflow:hidden;position:relative}
 .dc-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,.61,.36,1)}
 .dc:hover .dc-img img{transform:translateX(-8%) scale(1.12)}
@@ -143,16 +150,16 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 .dc p{padding:0 18px;font-size:15.5px}
 .dc-m{margin-top:auto!important;padding-bottom:18px!important;font-size:13.5px!important;opacity:.7}
 
-.gal-ctl{display:flex;align-items:center;gap:16px;margin:-20px 0 28px}
-.gbtn{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:inherit;border:1.5px solid currentColor;cursor:pointer;flex:none}
+.gal-ctl{display:flex;align-items:center;gap:16px;margin:0 0 26px}
+.gbtn{width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:transparent;color:inherit;border:1.5px solid currentColor;cursor:pointer;flex:none}
 .gbtn:hover{background:#ECEAE4;color:#1C1B19}
 .gbar{flex:1;height:2px;background:rgba(237,235,230,.2);position:relative}
 .gbar i{position:absolute;left:0;top:0;bottom:0;width:var(--w,20%);transform:translateX(var(--x,0));background:var(--oak)}
 .gal{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(24px,calc((100vw - 1240px)/2 + 24px)) 6px;cursor:grab;overscroll-behavior-x:contain}
 .gal::-webkit-scrollbar{display:none}
 .gal.drag{cursor:grabbing;scroll-snap-type:none}
-.sl{flex:0 0 min(62vw,860px);margin:0;scroll-snap-align:start}
-.sl img{width:100%;aspect-ratio:3/2;object-fit:cover;border:8px solid #111;pointer-events:none;user-select:none}
+.sl{flex:0 0 min(46vw,640px);margin:0;scroll-snap-align:start}
+.sl img{width:100%;aspect-ratio:3/2;max-height:56vh;object-fit:cover;border:1px solid rgba(28,27,25,.14);border-radius:3px;box-shadow:0 22px 44px -28px rgba(0,0,0,.45);pointer-events:none;user-select:none}
 .sl figcaption{display:flex;gap:14px;align-items:baseline;padding-top:14px;font-size:15.5px;color:#C9CCC4}
 .sl figcaption b{font-family:var(--f-head);font-weight:800;text-transform:uppercase;font-size:26px;color:#EDEBE6;line-height:1}
 .op3{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(40px,6vw,96px);align-items:center}
@@ -161,7 +168,7 @@ html:not(.js) .intro h1,.nogl .intro h1{color:#fff;text-shadow:0 2px 20px rgba(0
 .op-c{font-size:17px;margin:0 0 26px;opacity:.9}
 .op-btn{background:#ECEAE4!important;color:#1C1B19!important}
 .op-btn svg{margin-left:4px}
-.qs-box{position:relative;background:#ECEAE4;color:#1C1B19;border:8px solid #161616;min-height:300px;overflow:hidden}
+.qs-box{position:relative;background:#F4F2EE;color:#1C1B19;border:1px solid rgba(28,27,25,.14);border-radius:3px;box-shadow:0 22px 44px -28px rgba(0,0,0,.45);min-height:300px;overflow:hidden}
 .qs-it{margin:0;padding:clamp(28px,4vw,52px);position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;transition:transform .7s cubic-bezier(.22,.61,.36,1),opacity .5s}
 .qs-it p{font-size:clamp(19px,1.7vw,24px);line-height:1.45;margin:0 0 20px}
 .qs-it footer{font-size:15px}
@@ -175,7 +182,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 .rm .qs-it{transition:none}
 
 .oqs{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(24px,calc((100vw - 1240px)/2 + 24px)) 18px}
-.oq{flex:0 0 min(420px,84vw);scroll-snap-align:start;margin:0;background:#ECEAE4;color:#1C1B19;padding:28px 26px;border:8px solid #161616;display:flex;flex-direction:column;justify-content:space-between}
+.oq{flex:0 0 min(420px,84vw);scroll-snap-align:start;margin:0;background:#ECEAE4;color:#1C1B19;padding:28px 26px;border:1px solid rgba(28,27,25,.14);border-radius:3px;box-shadow:0 22px 44px -28px rgba(0,0,0,.45);display:flex;flex-direction:column;justify-content:space-between}
 .oq p{font-size:17.5px}
 .oq footer{font-weight:600;font-size:15px}
 .track{list-style:none;margin:0;padding:34px 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px;border-top:12px solid #2b2b2b;position:relative}
@@ -212,7 +219,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
  .about,.faqw,.kontakt{grid-template-columns:1fr;gap:26px}
  .hero .ctas{display:none}
  .js .hero .stage{height:380vh}.intro{justify-content:flex-start;padding-top:calc(var(--hdr-h,100px) + 3vh)}.intro h1{font-size:40px;max-width:12ch}.intro .sub{display:none}.hint{position:absolute;left:22px;bottom:96px;margin:0}.o-h{font-size:34px}.outro .lead{font-size:16px;margin-bottom:18px}
- .op3{grid-template-columns:1fr;gap:34px}.op-n{font-size:110px}.sl{flex-basis:86vw}.qs-box{min-height:380px}.gal-ctl{margin-top:-6px}
+ .op3{grid-template-columns:1fr;gap:34px}.op-n{font-size:110px}.sl{flex-basis:82vw}.qs-box{min-height:380px}.gal-ctl{margin-top:-6px}
  .g0{grid-column:span 2;grid-row:span 1}.g3{grid-column:span 2}
  .dcs{grid-template-columns:1fr 1fr}
  .k-map{min-height:320px}
@@ -224,7 +231,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 <div class="top">
 <div class="mk">Makieta W3 „Szafa” · projekt strony dla Meble Świerkosz przygotowany przez <a href="https://www.odnovastudio.com/">ODNOVA Studio</a></div>
 <header class="hdr"><div class="wrap">
-<a class="brand" href="#start" aria-label="Meble Świerkosz — początek strony"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1.5" y="3" width="27" height="24" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10.5 3v24M19.5 3v24" stroke="currentColor" stroke-width="2.2"/><rect x="2.6" y="13" width="7" height="4" fill="#A9835A"/><rect x="20.6" y="13" width="7" height="4" fill="#A9835A"/></svg><span><b>Świerkosz</b><small>szafy i meble na wymiar</small></span></a>
+<a class="brand lg3" href="#start" aria-label="Meble Świerkosz — początek strony"><svg width="40" height="40" viewBox="0 0 30 30" aria-hidden="true"><rect x="1.5" y="3" width="27" height="24" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10.5 3v24M19.5 3v24" stroke="currentColor" stroke-width="2.2"/><rect x="2.6" y="13" width="7" height="4" fill="#A9835A"/><rect x="20.6" y="13" width="7" height="4" fill="#A9835A"/></svg><span class="lg3-t"><b>MEBLE ŚWIERKOSZ</b><small>szafy i meble na wymiar · od 1980</small></span></a>
 <nav class="nav" aria-label="Sekcje"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a></nav>
 <a class="hcta" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="tel">796 796 770</span></a>
 <details class="mnav"><summary aria-label="Menu">Menu</summary><nav aria-label="Menu mobilne"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a class="mcta" href="tel:+48796796770">Zadzwoń: <span class="tel">796 796 770</span></a></nav></details>
@@ -247,7 +254,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 </div></div>
 </section>
 
-<section class="s-dark" id="realizacje"><div class="wrap">
+<section class="s-dark gal-sec" id="realizacje"><div class="wrap">
 <div class="sh reveal"><h2>Realizacje</h2><p>Wszystko na tych zdjęciach zmierzyliśmy, zrobiliśmy i zamontowaliśmy sami.</p></div>
 <div class="gal-ctl reveal"><button class="gbtn gprev" type="button" aria-label="Poprzednia realizacja"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><div class="gbar" aria-hidden="true"><i></i></div><button class="gbtn gnext" type="button" aria-label="Następna realizacja"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
 </div>
@@ -311,10 +318,10 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 </div>
 <p>ul. Staromiejska 15, 44-109 Gliwice (Łabędy) · pon.–pt. 8:00–16:00<br><a href="mailto:mebleswierkosz@gmail.com">mebleswierkosz@gmail.com</a></p>
 <form class="form" onsubmit="event.preventDefault();this.querySelector('.note').textContent='To makieta: formularz nie wysyła jeszcze wiadomości. Zadzwoń: 796 796 770 (szafy) lub 603 166 206 (kuchnie).'">
-<div class="row"><label for="f-im">Imię</label><input id="f-im" name="imie" autocomplete="given-name"></div>
-<div class="row"><label for="f-tel">Telefon</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
-<div class="row"><label for="f-co">Czego szukasz?</label><select id="f-co" name="co"><option>Szafa przesuwna</option><option>Szafa z drzwiami otwieranymi</option><option>Garderoba</option><option>Kuchnia</option><option>Inne meble na wymiar</option></select></div>
-<div class="row"><label for="f-msg">Kilka słów o pomieszczeniu (opcjonalnie)</label><textarea id="f-msg" name="msg" rows="3"></textarea></div>
+<div class="frow"><label for="f-im">Imię</label><input id="f-im" name="imie" autocomplete="given-name"></div>
+<div class="frow"><label for="f-tel">Telefon</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+<div class="frow"><label for="f-co">Czego szukasz?</label><select id="f-co" name="co"><option>Szafa przesuwna</option><option>Szafa z drzwiami otwieranymi</option><option>Garderoba</option><option>Kuchnia</option><option>Inne meble na wymiar</option></select></div>
+<div class="frow"><label for="f-msg">Kilka słów o pomieszczeniu (opcjonalnie)</label><textarea id="f-msg" name="msg" rows="3"></textarea></div>
 <button type="submit">Umów bezpłatny pomiar</button><p class="note" aria-live="polite">Oddzwonimy i umówimy termin pomiaru.</p></form>
 </div>
 <div class="k-map reveal"><iframe class="map" title="Mapa dojazdu: Meble Świerkosz, Staromiejska 15, Gliwice" src="https://maps.google.com/maps?q=Meble%20%C5%9Awierkosz%2C%20Staromiejska%2015%2C%2044-109%20Gliwice&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
@@ -397,7 +404,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
   door_t=Math.max(auto,sio(cl((p-0.03)/0.27)));                 // drzwi: 0..1 szerokości skrzydła
   var e=sio(cl((p-0.24)/0.70));cam_t=DS+(C+0.25-DS)*e;          // wózek: od ściany w głąb alejki
   var io=cl(1-p/0.12);intro.style.opacity=io;intro.style.visibility=io<=0?'hidden':'visible';
-  var oo=cl((p-0.84)/0.1);outro.style.opacity=oo;outro.style.visibility=oo<=0?'hidden':'visible';outro.style.transform='translateY('+(1-oo)*24+'px)';
+  var sb=stage.getBoundingClientRect().bottom,fo=cl((sb-innerHeight*0.55)/(innerHeight*0.45));var oo=cl((p-0.84)/0.1)*fo;outro.style.opacity=oo;outro.style.visibility=oo<=0?'hidden':'visible';outro.style.transform='translateY('+(1-oo)*24+'px)';
  }
  function frame(ts){ts=ts||performance.now();var dt=Math.min(.05,(ts-(last||ts))/1000)||.016;last=ts;
   targets();

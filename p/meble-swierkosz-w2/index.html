@@ -76,8 +76,8 @@ p{margin:0 0 1em}
 .faq details p{max-width:62ch;padding-bottom:20px;margin:0}
 .map{border:0;width:100%;height:100%;min-height:320px;display:block}
 .form label{display:block;font-size:14px;margin-bottom:6px}
-.form input,.form textarea,.form select{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line-strong);border-radius:var(--r,4px);background:var(--field-bg);color:inherit}
-.form .row{margin-bottom:14px}
+.form input,.form textarea,.form select{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line-strong);border-radius:min(var(--r,4px),8px);background:var(--field-bg);color:inherit}
+.form .frow{margin-bottom:14px}
 .form button{font:inherit;font-weight:600;border:0;cursor:pointer;padding:14px 20px;border-radius:var(--r,4px);background:var(--cta-bg);color:var(--cta-ink);min-height:48px}
 .form .note{font-size:13px;opacity:.75;margin-top:10px}
 footer{font-size:14px}
@@ -138,7 +138,7 @@ h3{font-size:clamp(22px,2vw,28px);line-height:1.3}
 .js .sh-band{display:block}
 .sh-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,9,7,.9) 0%,rgba(12,9,7,.45) 38%,transparent 62%),linear-gradient(to bottom,rgba(12,9,7,.55),transparent 30%);pointer-events:none}
 .sh-txt{position:absolute;left:0;right:0;bottom:0;padding-bottom:clamp(40px,8vh,86px);z-index:3}
-.sh-txt h2{font-size:clamp(28px,3vw,44px);max-width:22ch;margin-bottom:26px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.sh-txt h2{transition:none;font-size:clamp(28px,3vw,44px);max-width:22ch;margin-bottom:26px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
 .sh-caps{position:relative;min-height:clamp(160px,21vh,200px)}
 .shc{max-width:46ch}
 .js .shc{position:absolute;left:0;bottom:0;opacity:0;transform:translateY(12px);transition:opacity .45s,transform .45s}
@@ -163,10 +163,16 @@ html:not(.js) .sh-pin{height:auto}html:not(.js) .si{position:relative;height:70v
 .more{margin-top:70px}
 .of-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:54px;flex-wrap:wrap}
 .of-head p{max-width:40ch;font-size:18px;margin:0}
-.ofs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 44px}
-.of{border-top:2px solid #B78A4A;padding:24px 0 36px}
-.of h3{margin-bottom:12px}
-.of-m{font-size:14.5px;opacity:.72}
+.ofs{border-bottom:1px solid rgba(36,27,19,.2)}
+.of{display:grid;grid-template-columns:220px minmax(0,4fr) minmax(0,5fr);gap:clamp(24px,3.5vw,56px);align-items:center;padding:26px 0;border-top:1px solid rgba(36,27,19,.2)}
+.of-img{aspect-ratio:4/3;overflow:hidden;border-radius:2px}
+.of-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,.61,.36,1)}
+.of:hover .of-img img{transform:scale(1.05)}
+.of h3{margin:0;font-size:clamp(24px,2.2vw,32px)}
+.of-t p{margin:0 0 8px;font-size:17px;max-width:48ch}
+.of-m{font-size:14.5px!important;color:#6E4712;margin:0!important}
+.js .of{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.js .of.on{opacity:1;transform:none}.rm .of{opacity:1!important;transform:none!important}
 .op-top{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3fr);gap:56px;align-items:start;margin-bottom:70px}
 .big-q{margin:0}
 .big-q p{font-family:var(--f-head);font-size:clamp(20px,1.75vw,26px);line-height:1.42;max-width:40ch;color:#F4ECDF}
@@ -203,12 +209,14 @@ html:not(.js) .sh-pin{height:auto}html:not(.js) .si{position:relative;height:70v
 .tels small{display:block;font-size:14px;opacity:.75}
 .tels .tel{font-size:clamp(26px,2.6vw,36px);font-weight:600;letter-spacing:-.01em}
 .k-map{height:340px;margin-top:22px;filter:sepia(.25) saturate(.8)}
-.k-form{background:#fff;padding:32px;align-self:start}
+.k-form{background:#fff;padding:32px;align-self:start;border-radius:4px;--r:6px}
+.k-form .form input,.k-form .form textarea,.k-form .form select{border-radius:6px;background:#FBFAF8}
+.k-form .form button{border-radius:999px;width:100%}
 .k-form h3{margin-bottom:20px}
 .ft{background:#0C0907;color:#A89A86;padding:28px 0;font-size:14px}
 .ft .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .ft .wrap>span:first-child{display:flex;align-items:center;gap:10px}
-@media (max-width:980px){.ofs{grid-template-columns:1fr 1fr}.qs{grid-template-columns:1fr 1fr}}
+@media (max-width:980px){.of{grid-template-columns:160px minmax(0,1fr)}.of-t{grid-column:2}.of-img{grid-row:span 2}.qs{grid-template-columns:1fr 1fr}}
 @media (max-width:860px){
  .onas,.row,.row:nth-child(even),.op-top,.proc,.kontakt{grid-template-columns:1fr}
  .row:nth-child(even) .row-img{order:0}
@@ -220,7 +228,7 @@ html:not(.js) .sh-pin{height:auto}html:not(.js) .si{position:relative;height:70v
  .hero .ctas{display:none}
 }
 @media (max-width:760px){.v{background-image:url(img/fornir-1200.jpg)}}
-@media (max-width:560px){.ofs,.qs,.tels{grid-template-columns:1fr}h1{font-size:40px}.k-form{padding:22px}.pp figure:first-child{margin-bottom:30px}}
+@media (max-width:560px){.of{grid-template-columns:1fr;gap:14px}.of-img{grid-row:auto}.of-t{grid-column:auto}.qs,.tels{grid-template-columns:1fr}h1{font-size:40px}.k-form{padding:22px}.pp figure:first-child{margin-bottom:30px}}
 </style>
 </head><body>
 <a class="skip" href="#main">Przejdź do treści</a>
@@ -277,7 +285,7 @@ html:not(.js) .sh-pin{height:auto}html:not(.js) .si{position:relative;height:70v
 
 <section class="s-light" id="oferta"><div class="wrap">
 <div class="of-head reveal"><h2>Co dla Ciebie zrobimy</h2><p>Pomiar i projekt są bezpłatne, w cenie mebli. Na wszystko dajemy 36 miesięcy gwarancji.</p></div>
-<div class="ofs stagger"><div class="of"><h3>Szafy z drzwiami przesuwnymi</h3><p>Od wnęki w przedpokoju po całą ścianę pod skosem. Drzwi z lustrem, lakobelem albo płytą, także łączone pasami.</p><p class="of-m">Systemy Laguna, Bimak, Indeco, Bonari</p></div><div class="of"><h3>Szafy z drzwiami otwieranymi</h3><p>Tradycyjne otwieranie z nowoczesnym frontem: frezowany uchwyt, lakier, dąb. Dobrze znoszą skosy i nietypowe wnęki.</p><p class="of-m">Zawiasy i prowadnice Blum, GTV</p></div><div class="of"><h3>Garderoby</h3><p>Wnętrze rozplanowane pod to, co naprawdę w niej trzymasz: drążki, szuflady, półki na buty, miejsce na walizki.</p><p class="of-m">Szuflady z cichym domykiem Blum, Häfele, Sevroll</p></div><div class="of"><h3>Kuchnie na wymiar</h3><p>Zabudowy pod sufit, wyspy, aneksy w kawalerce. Płyty, blaty i uchwyty dobieramy razem z Tobą.</p><p class="of-m">Płyty i blaty Kronospan, okucia Blum</p></div><div class="of"><h3>Inne meble na wymiar</h3><p>Regały na książki, ściany RTV, szafki łazienkowe, meble do biur i instytucji.</p><p class="of-m">Płyty laminowane, fronty lakierowane, szkło i lustra z folią</p></div></div>
+<div class="ofs"><article class="of"><div class="of-img"><img src="img/szafa-dab-pas-1800.jpg" srcset="img/szafa-dab-pas-900.jpg 900w, img/szafa-dab-pas-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 240px" alt="Szafy z drzwiami przesuwnymi" loading="lazy" decoding="async"></div><h3>Szafy z drzwiami przesuwnymi</h3><div class="of-t"><p>Od wnęki w przedpokoju po całą ścianę pod skosem. Drzwi z lustrem, lakobelem albo płytą, także łączone pasami.</p><p class="of-m">Systemy Laguna, Bimak, Indeco, Bonari</p></div></article><article class="of"><div class="of-img"><img src="img/skos-biala-1800.jpg" srcset="img/skos-biala-900.jpg 900w, img/skos-biala-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 240px" alt="Szafy z drzwiami otwieranymi" loading="lazy" decoding="async"></div><h3>Szafy z drzwiami otwieranymi</h3><div class="of-t"><p>Tradycyjne otwieranie z nowoczesnym frontem: frezowany uchwyt, lakier, dąb. Dobrze znoszą skosy i nietypowe wnęki.</p><p class="of-m">Zawiasy i prowadnice Blum, GTV</p></div></article><article class="of"><div class="of-img"><img src="img/przedpokoj-dab-1800.jpg" srcset="img/przedpokoj-dab-900.jpg 900w, img/przedpokoj-dab-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 240px" alt="Garderoby" loading="lazy" decoding="async"></div><h3>Garderoby</h3><div class="of-t"><p>Wnętrze rozplanowane pod to, co naprawdę w niej trzymasz: drążki, szuflady, półki na buty, miejsce na walizki.</p><p class="of-m">Szuflady z cichym domykiem Blum, Häfele, Sevroll</p></div></article><article class="of"><div class="of-img"><img src="img/kuchnia-wyspa-1800.jpg" srcset="img/kuchnia-wyspa-900.jpg 900w, img/kuchnia-wyspa-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 240px" alt="Kuchnie na wymiar" loading="lazy" decoding="async"></div><h3>Kuchnie na wymiar</h3><div class="of-t"><p>Zabudowy pod sufit, wyspy, aneksy w kawalerce. Płyty, blaty i uchwyty dobieramy razem z Tobą.</p><p class="of-m">Płyty i blaty Kronospan, okucia Blum</p></div></article><article class="of"><div class="of-img"><img src="img/regal-1800.jpg" srcset="img/regal-900.jpg 900w, img/regal-1800.jpg 1800w" sizes="(max-width:760px) 100vw, 240px" alt="Inne meble na wymiar" loading="lazy" decoding="async"></div><h3>Inne meble na wymiar</h3><div class="of-t"><p>Regały na książki, ściany RTV, szafki łazienkowe, meble do biur i instytucji.</p><p class="of-m">Płyty laminowane, fronty lakierowane, szkło i lustra z folią</p></div></article></div>
 </div></section>
 
 <section class="s-dark" id="opinie"><div class="wrap">
@@ -309,10 +317,10 @@ html:not(.js) .sh-pin{height:auto}html:not(.js) .si{position:relative;height:70v
 <div class="k-map"><iframe class="map" title="Mapa dojazdu: Meble Świerkosz, Staromiejska 15, Gliwice" src="https://maps.google.com/maps?q=Meble%20%C5%9Awierkosz%2C%20Staromiejska%2015%2C%2044-109%20Gliwice&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div>
 <div class="reveal k-form"><h3>Wolisz, żebyśmy oddzwonili?</h3><form class="form" onsubmit="event.preventDefault();this.querySelector('.note').textContent='To makieta: formularz nie wysyła jeszcze wiadomości. Zadzwoń: 796 796 770 (szafy) lub 603 166 206 (kuchnie).'">
-<div class="row"><label for="f-im">Imię</label><input id="f-im" name="imie" autocomplete="given-name"></div>
-<div class="row"><label for="f-tel">Telefon</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
-<div class="row"><label for="f-co">Czego szukasz?</label><select id="f-co" name="co"><option>Szafa przesuwna</option><option>Szafa z drzwiami otwieranymi</option><option>Garderoba</option><option>Kuchnia</option><option>Inne meble na wymiar</option></select></div>
-<div class="row"><label for="f-msg">Kilka słów o pomieszczeniu (opcjonalnie)</label><textarea id="f-msg" name="msg" rows="3"></textarea></div>
+<div class="frow"><label for="f-im">Imię</label><input id="f-im" name="imie" autocomplete="given-name"></div>
+<div class="frow"><label for="f-tel">Telefon</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+<div class="frow"><label for="f-co">Czego szukasz?</label><select id="f-co" name="co"><option>Szafa przesuwna</option><option>Szafa z drzwiami otwieranymi</option><option>Garderoba</option><option>Kuchnia</option><option>Inne meble na wymiar</option></select></div>
+<div class="frow"><label for="f-msg">Kilka słów o pomieszczeniu (opcjonalnie)</label><textarea id="f-msg" name="msg" rows="3"></textarea></div>
 <button type="submit">Proszę o telefon</button><p class="note" aria-live="polite">Oddzwonimy i umówimy termin pomiaru.</p></form></div>
 </div></section>
 </main>
@@ -357,16 +365,17 @@ html:not(.js) .sh-pin{height:auto}html:not(.js) .si{position:relative;height:70v
   if(fine)pin.addEventListener('pointermove',function(e){var r=pin.getBoundingClientRect();mouse=true;tx=(e.clientX-r.left)/r.width*100;ty=(e.clientY-r.top)/r.height*100;kick()});
  }
  // pokaz realizacji: pas forniru przesuwa się i zmienia kadr
- var ss=d.querySelector('.sh-stage'),sp=d.querySelector('.sh-pin'),si=[].slice.call(d.querySelectorAll('.si')),sc=[].slice.call(d.querySelectorAll('.shc')),band=d.querySelector('.sh-band'),bar=d.querySelector('.sh-bar i'),N=si.length;
+ var ss=d.querySelector('.sh-stage'),sp=d.querySelector('.sh-pin'),si=[].slice.call(d.querySelectorAll('.si')),sc=[].slice.call(d.querySelectorAll('.shc')),band=d.querySelector('.sh-band'),ttl=d.querySelector('.sh-txt h2'),bar=d.querySelector('.sh-bar i'),N=si.length;
  function show(){var p=window.__prog(ss,sp),seg=Math.min(N-1-1e-6,p*(N-1)*1.08),i=Math.floor(seg),f=cl((seg-i)*1.25-0.12);
   si.forEach(function(e,k){e.classList.toggle('cur',k<=i);e.style.clipPath=k===i+1?'inset(0 0 0 '+((1-f)*100).toFixed(2)+'%)':''});
   var bx=(1-f)*innerWidth;band.style.transform='translateX('+(bx-band.offsetWidth/2)+'px)';band.style.opacity=(f>0&&f<1)?1:0;
-  var on=f>0.5?i+1:i;sc.forEach(function(e,k){e.classList.toggle('on',k===on)});bar.style.width=(p*100)+'%'}
+  var on=f>0.5?i+1:i;ttl.style.opacity=Math.max(0,1-seg*2.2);ttl.style.transform='translateY('+(-Math.min(1,seg*2.2)*18)+'px)';sc.forEach(function(e,k){e.classList.toggle('on',k===on)});bar.style.width=(p*100)+'%'}
  if(RM){si.forEach(function(e,k){e.classList.toggle('cur',k===0)});sc.forEach(function(e,k){e.classList.toggle('on',k===0)});
   // bez ruchu: przełączanie co kilka sekund przenikaniem
   var k=0;setInterval(function(){k=(k+1)%N;si.forEach(function(e,j){e.classList.toggle('cur',j===k)});sc.forEach(function(e,j){e.classList.toggle('on',j===k)})},4000)}
  else{addEventListener('scroll',function(){requestAnimationFrame(show)},{passive:true});addEventListener('resize',show);show()}
 
+ var ofr=[].slice.call(d.querySelectorAll('.of'));function ofv(){ofr.forEach(function(o){if(RM||o.getBoundingClientRect().top<innerHeight*0.88)o.classList.add('on')})}addEventListener('scroll',function(){requestAnimationFrame(ofv)},{passive:true});ofv();
  // „Jak pracujemy”: linia rośnie razem z przewijaniem, kroki pojawiają się po kolei
  var tw=d.querySelector('.tlw'),tf=d.querySelector('.tl-line i'),tli=[].slice.call(d.querySelectorAll('.tl li'));
  function tl(){var r=tw.getBoundingClientRect(),f=Math.max(0,Math.min(r.height,innerHeight*0.62-r.top));tf.style.setProperty('--fill',f+'px');tli.forEach(function(l){l.classList.toggle('on',RM||l.offsetTop+20<f)})}
