@@ -19,3 +19,21 @@ kino-src/
 # pliki robocze podglądu, nie idą na produkcję
 demo-3d-hero.html
 demo-hero-kino.html
+
+# eksperymenty z hero i materiały źródłowe z lipca/sierpnia 2026 — zostają lokalnie, nie idą na serwer
+# (strona używa już zakodowanych wersji .webp/.webm w img/)
+Demo fyzjer materialy/
+Demo pensjonat/
+Materiały/
+budmax-hero-warianty.dc.html
+hero-warianty.html
+hero-warianty/
+pedzel-warianty/
+sezon-preview/
+img/bud-hero-poster.jpg
+img/bud-hero.mp4
+img/bud-hero.webm
+img/bud-raw.jpg
+img/fryzjer-hero-model.png
+img/pens-tlo2.mp4
+img/pens-tlo2.webm
