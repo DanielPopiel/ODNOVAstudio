@@ -18,9 +18,9 @@
 &lt;/svg&gt;">
 <script>document.documentElement.className='js'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Familjen+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@500;700;800&family=Familjen+Grotesk:wght@400;500;600&display=swap">
 <style>
-:root{--fh:'Zilla Slab',sans-serif;--fb:'Familjen Grotesk',sans-serif;--hdr-h:110px;--wrap:1180px;--sbg:#eceee9;--sbg2:#f7f8f5;--sink:#2a2c2e;--smut:#62665e;--sline:#c9cdc3;--sacc:#4a7c3b;--saccs:#e2ead9}
+:root{--fh:'Chivo',sans-serif;--fb:'Familjen Grotesk',sans-serif;--hdr-h:110px;--wrap:1180px;--sbg:#eceee9;--sbg2:#f7f8f5;--sink:#2a2c2e;--smut:#62665e;--sline:#c9cdc3;--sacc:#4a7c3b;--saccs:#e2ead9}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -227,38 +227,34 @@ nav.main a{padding:8px 0;display:inline-block}
 .gsum a,.cinfo dd a{display:inline-block;padding:6px 0}
 
 .hero{padding:0;position:relative}
-.js .hero{height:340vh}
-.stage{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;padding-top:var(--hdr-h);padding-bottom:40px}
-.hero-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:center;width:100%}
-.lead{font-size:1.15rem;color:var(--smut);max-width:520px}
-.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 22px}
-.hcap{font-size:.95rem;color:var(--smut);min-height:1.6em;position:relative;margin:0}
-.hcap span{position:absolute;left:0;top:0;opacity:0;transition:opacity .4s}
-.hcap span.on{opacity:1}
-.no-js .hcap span{position:static}.no-js .hcap span:not(:last-child){display:none}
-.sheet{position:relative;aspect-ratio:8/5;width:100%;background:var(--sbg2);border:1px solid var(--sink);overflow:hidden;background-image:linear-gradient(var(--sline) 1px,transparent 1px),linear-gradient(90deg,var(--sline) 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px}
-.sheet .ph{position:absolute;inset:0;opacity:0;transition:opacity 1s}
-.sheet .ph.on{opacity:1}
-.sheet .ph img{width:100%;height:100%;object-fit:cover}
-.no-js .sheet .ph{opacity:1}
-.dr{position:absolute;inset:0;width:100%;height:100%}
-.dr .ln{fill:none;stroke:var(--sink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.dr .thin{stroke-width:1;stroke:var(--smut)}
-.dr .acc{stroke:var(--sacc);stroke-width:3}
-.dr .dt{font:500 13px var(--fb);fill:var(--smut)}
-.dr .dt.s{font-size:11px;fill:var(--sink)}
-.dr .tb{fill:var(--sbg2);stroke:var(--sink);stroke-width:1}
-.js .dr .ln{stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1)}
-.js .dr g.on .ln{stroke-dashoffset:0}
-.js .dr .dt,.js .dr .tb{opacity:0;transition:opacity .5s .3s}
-.js .dr g.on .dt,.js .dr g.on .tb{opacity:1}
-.js .dr.over .ln{stroke:#fff;opacity:.55}.js .dr.over .thin{opacity:.35}.js .dr.over .acc{stroke:var(--sacc);opacity:1}
-.js .dr.over .dt{fill:#fff}.js .dr.over .tb{fill:rgba(0,0,0,.55);stroke:#fff}
-.dr{transition:opacity .6s}
-.hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:.8rem;color:var(--smut);letter-spacing:.04em;white-space:nowrap}
+.js .hero{height:420vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#eceee9}
+.kadr{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ld{position:absolute;right:16px;top:calc(var(--hdr-h) + 12px);font-size:.75rem;color:var(--smut);display:flex;gap:8px;align-items:center;opacity:0;transition:opacity .3s}
+.ld.on{opacity:1}.ld i{width:64px;height:3px;background:var(--sline);display:block;position:relative;overflow:hidden}.ld i::after{content:"";position:absolute;inset:0;background:var(--sacc);transform:scaleX(var(--p,0));transform-origin:left}
+.hero-in{position:absolute;left:0;right:0;top:var(--hdr-h);bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding-top:clamp(20px,5vh,64px);padding-bottom:clamp(56px,8vh,80px);transition:opacity .3s}
+.ht{max-width:560px;background:color-mix(in srgb,#eceee9 86%,transparent);padding:clamp(20px,3vw,36px);border-radius:8px;box-shadow:0 20px 60px -30px rgba(0,0,0,.35)}
+.hero h1{font-size:clamp(2rem,3.9vw,3.3rem)}
+.lead{font-size:1.1rem;color:var(--smut);max-width:520px;margin-bottom:0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 0}
+.caps{position:relative;min-height:4.6em;max-width:560px}
+.cap{position:absolute;left:0;top:0;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s;background:color-mix(in srgb,#eceee9 86%,transparent);padding:14px 20px;border-radius:6px;border-left:0}
+.cap.on{opacity:1;transform:none}
+.cap b{display:block;font-family:var(--fh);font-size:1.35rem;line-height:1.15;margin-bottom:2px}
+.cap span{color:var(--smut);font-size:.95rem}
+.no-js .caps{display:none}.no-js .kadr{display:none}.no-js .stage{height:auto;min-height:0}.no-js .hero-in{position:static;padding-top:calc(var(--hdr-h) + 40px)}
+.no-js .hero{background:#eceee9}
+.hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:.8rem;color:var(--smut);letter-spacing:.04em;white-space:nowrap;background:color-mix(in srgb,#eceee9 70%,transparent);padding:4px 12px;border-radius:20px}
 .no-js .hint{display:none}
-@media(max-width:860px){.hero-in{grid-template-columns:1fr;gap:16px}.stage{align-items:flex-start;padding-top:calc(var(--hdr-h) + 12px);min-height:100svh}.hint{display:none}.ctas .btn-s{display:none}.lead{font-size:1.02rem}.sheet{max-height:calc(100svh - var(--hdr-h) - 400px);min-height:170px;width:auto;max-width:100%;margin:0 auto}}
-@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.js .dr .ln{stroke-dashoffset:0}.js .dr .dt,.js .dr .tb{opacity:1}.js .sheet .ph{opacity:1}}
+@media(max-width:860px){
+ .kadr{top:var(--hdr-h);height:calc(100vw * 0.78);bottom:auto;-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}
+ .hero-in{top:calc(var(--hdr-h) + 100vw * 0.78 - 24px);justify-content:flex-start;gap:12px;padding-top:0;padding-bottom:80px}
+ .ht{background:none;padding:0;box-shadow:none;max-width:none}
+ .hero h1{font-size:clamp(1.7rem,7.2vw,2.4rem)}.lead{font-size:.98rem}.ctas .btn-s{display:none}.ctas{margin-top:14px}
+ .caps{min-height:3.6em}.cap{padding:0;background:none}.cap b{font-size:1.1rem}.cap span{font-size:.88rem}
+ .hint,.ld{display:none}
+}
+@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative}.cap{transition:none}}
 </style>
 </head>
 <body>
@@ -275,20 +271,12 @@ nav.main a{padding:8px 0;display:inline-block}
 <details class="mnav"><summary aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg> Menu</summary><nav><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#o-firmie">O firmie</a><a href="#proces">Współpraca</a><a href="#opinie">Opinie</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a><a href="tel:+48500864472">Zadzwoń: 500 864 472</a></nav></details>
 </div></header></div>
 <main>
-<section id="start" class="hero t-light"><div class="stage"><div class="wrap hero-in">
-<div class="ht"><h1>Budujemy domy od fundamentów po stan surowy otwarty</h1><p class="lead">Własne brygady, zero podwykonawców, stan surowy w 8–14 tygodni. Warszawa i okolice, ponad 100 zrealizowanych domów.</p>
-<div class="ctas"><a class="btn btn-p" href="tel:+48500864472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span class="tel">Zadzwoń: 500 864 472</span></a><a class="btn btn-s" href="#kontakt">Poproś o wycenę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-<p class="hcap"><span data-cap="0">Rysunek: elewacja z projektu inwestora</span><span data-cap="1">Wymiary, poziomy, zakres prac ustalone przed startem</span><span data-cap="2">Tak wygląda ten etap naprawdę: stan surowy otwarty</span></p></div>
-<div class="sheet" aria-hidden="true"><div class="ph"><img src="img/dom-sso-1600.webp" srcset="img/dom-sso-800.webp 800w, img/dom-sso-1600.webp 1600w" sizes="(max-width:760px) 100vw, 50vw" alt="Dom w stanie surowym otwartym — silikat, dwie kondygnacje" width="1600" height="1200"></div><svg class="dr" viewBox="0 0 800 500" aria-hidden="true">
-<g class="d1"><path pathLength="1" class="ln" d="M80 440 H720"/><path pathLength="1" class="ln" d="M120 440 V250 H400 V440 M400 250 V120 H680 V440"/></g>
-<g class="d2"><path pathLength="1" class="ln" d="M150 290 h70 v110 h-70z M250 290 h110 v70 h-110z M430 160 h80 v80 h-80z M540 160 h110 v80 h-110z M430 290 h60 v150 h-60z M520 290 h130 v90 h-130z M340 380 h40 v60 h-40 M470 200 h40 M595 200 h55 M585 335 h65"/><path pathLength="1" class="ln thin" d="M80 448 l12 -8 M110 448 l12 -8 M140 448 l12 -8 M170 448 l12 -8 M200 448 l12 -8 M230 448 l12 -8 M260 448 l12 -8 M290 448 l12 -8 M320 448 l12 -8 M350 448 l12 -8 M380 448 l12 -8 M410 448 l12 -8 M440 448 l12 -8 M470 448 l12 -8 M500 448 l12 -8 M530 448 l12 -8 M560 448 l12 -8 M590 448 l12 -8 M620 448 l12 -8 M650 448 l12 -8 M680 448 l12 -8 M710 448 l12 -8"/><path pathLength="1" class="ln thin" d="M120 250 H400 M400 120 H680 M100 440 H740"/></g>
-<g class="d3"><path pathLength="1" class="ln thin" d="M120 470 H400 M400 470 H680 M120 462 V478 M400 462 V478 M680 462 V478"/><text x="260" y="492" class="dt" text-anchor="middle">9,60</text><text x="540" y="492" class="dt" text-anchor="middle">12,20</text>
-<path pathLength="1" class="ln thin" d="M740 120 V440 M732 120 H748 M732 440 H748 M732 250 H748"/><text x="756" y="290" class="dt" writing-mode="tb">7,10</text>
-<path pathLength="1" class="ln acc" d="M80 440 H720"/>
-<path pathLength="1" class="ln thin" d="M60 240 H120 M60 240 l-8 -6 M60 240 l-8 6"/><text x="12" y="234" class="dt">±0,00</text></g>
-<g class="d4"><rect x="600" y="400" width="130" height="36" class="tb"/><text x="608" y="415" class="dt s">JAS-BUD · rys. 01</text><text x="608" y="430" class="dt s">Elewacja frontowa · SSO</text></g>
-</svg></div>
-</div><div class="hint">Przewiń — od rysunku do domu</div></div></section>
+<section id="start" class="hero t-light"><div class="stage">
+<canvas class="kadr" aria-hidden="true"></canvas><div class="ld" aria-hidden="true"><i></i><span>wczytywanie</span></div>
+<div class="wrap hero-in"><div class="ht"><h1>Budujemy domy od fundamentów po stan surowy otwarty</h1><p class="lead">Własne brygady, zero podwykonawców, stan surowy w 8–14 tygodni. Warszawa i okolice, ponad 100 zrealizowanych domów.</p>
+<div class="ctas"><a class="btn btn-p" href="tel:+48500864472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span class="tel">Zadzwoń: 500 864 472</span></a><a class="btn btn-s" href="#kontakt">Poproś o wycenę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+<div class="caps" aria-live="polite"><div class="cap" data-f="0"><b>Rzut z projektu</b><span>Wymiary, poziomy, zakres prac ustalone przed startem</span></div><div class="cap" data-f="10"><b>Ławy i ściany fundamentowe</b><span>Dokładnie po liniach z rysunku</span></div><div class="cap" data-f="30"><b>Ściany parteru</b><span>Silikat, wieńce żelbetowe</span></div><div class="cap" data-f="50"><b>Strop i piętro</b><span>Żelbet, ściany, nadproża</span></div><div class="cap" data-f="70"><b>Stan surowy otwarty</b><span>Tu kończy się nasz zakres</span></div><div class="cap" data-f="85"><b>Gotowy dom</b><span>Tak wygląda projekt, kiedy stanie na działce</span></div></div></div>
+<div class="hint">Przewiń, żeby zobaczyć, jak powstaje dom</div></div></section>
 <section id="realizacje" class="t-dark"><div class="wrap"><div class="sh reveal"><h2>Wybrane realizacje</h2><p>Ponad sto budów na Mazowszu. Trzy z nich opisujemy dokładniej, z zakresem prac i tym, co było w nich wymagające.</p></div><div class="draw stagger"><div class="real"><div class="pic"><img src="img/dom-garaz-800.webp" srcset="img/dom-garaz-800.webp 800w, img/dom-garaz-1600.webp 1600w" sizes="(max-width:760px) 100vw, 50vw" alt="Dom jednorodzinny z piwnicą, Warszawa, Wilanów" width="1600" height="1200" loading="lazy"></div><div class="txt"><h3>Warszawa, Wilanów</h3><dl class="kv"><dt>Lokalizacja</dt><dd>Warszawa, Wilanów</dd><dt>Typ</dt><dd>Dom jednorodzinny z piwnicą</dd><dt>Powierzchnia</dt><dd>290 m²</dd><dt>Zakres</dt><dd>Stan surowy otwarty, z materiałem</dd></dl><p class="mut" style="margin:0">Nowoczesny dom z piwnicą. Nietypowe rozwiązanie konstrukcyjne: schodkowa ława łącząca płytę fundamentową części podpiwniczonej z resztą budynku. Realizacja wymagała ścisłej współpracy brygad i szczegółowego nadzoru technicznego.</p></div></div><div class="real"><div class="pic"><img src="img/lawy-izolacja-800.webp" srcset="img/lawy-izolacja-800.webp 800w, img/lawy-izolacja-1600.webp 1600w" sizes="(max-width:760px) 100vw, 50vw" alt="Budynek czterolokalowy, Janki k. Warszawy" width="1600" height="1200" loading="lazy"></div><div class="txt"><h3>Janki k. Warszawy</h3><dl class="kv"><dt>Lokalizacja</dt><dd>Janki k. Warszawy</dd><dt>Typ</dt><dd>Budynek czterolokalowy</dd><dt>Powierzchnia</dt><dd>450 m²</dd><dt>Zakres</dt><dd>Stan surowy otwarty</dd></dl><p class="mut" style="margin:0">Część osiedla 18 lokali mieszkalnych. Zadaniem JAS-BUD była solidna konstrukcja nośna i harmonijne połączenie z pozostałymi segmentami. Prace szły równolegle z sąsiednimi budynkami, co wymagało dokładnej organizacji i logistyki.</p></div></div><div class="real"><div class="pic"><img src="img/dom-sso-800.webp" srcset="img/dom-sso-800.webp 800w, img/dom-sso-1600.webp 1600w" sizes="(max-width:760px) 100vw, 50vw" alt="Dom jednorodzinny, Habdzin k. Konstancina-Jeziorny" width="1600" height="1200" loading="lazy"></div><div class="txt"><h3>Habdzin k. Konstancina-Jeziorny</h3><dl class="kv"><dt>Lokalizacja</dt><dd>Habdzin k. Konstancina-Jeziorny</dd><dt>Typ</dt><dd>Dom jednorodzinny</dd><dt>Powierzchnia</dt><dd>ponad 270 m²</dd><dt>Zakres</dt><dd>Stan surowy otwarty</dd></dl><p class="mut" style="margin:0">Duży, nowoczesny dom w technologii murowanej z silikatów i konstrukcji żelbetowych. Rozbudowana bryła i wymagające rozwiązania konstrukcyjne. Inwestor planuje dalszą rozbudowę i wykończenie w standardzie premium.</p></div></div></div></div></section><section id="oferta" class="t-light"><div class="wrap"><div class="sh reveal"><h2>Co budujemy</h2><p>Trzy rodzaje zleceń, jeden sposób pracy: własne brygady, materiał po naszej stronie, harmonogram ustalony przed startem.</p></div><div class="olist"><div class="oi reveal"><h3>Budowa domów jednorodzinnych</h3><div><p>Od fundamentów po stan surowy otwarty, a na życzenie do stanu deweloperskiego. Każdy etap wykonujemy własnymi brygadami i z materiałów, które sami zamawiamy i odbieramy na budowie.</p><ul><li>Fundamenty, ściany, stropy, konstrukcja dachu</li><li>Technologia murowana (silikat, ceramika) i konstrukcje żelbetowe</li><li>Harmonogram ustalany przed startem i pilnowany do odbioru</li></ul></div></div><div class="oi reveal"><h3>Osiedla i domy w zabudowie szeregowej</h3><div><p>Małe i średnie osiedla: od pojedynczych segmentów po pełne szeregowce. Współpracujemy z inwestorami prywatnymi, którzy budują kilka domów lub bliźniaków naraz i potrzebują jednego wykonawcy, który dopilnuje całości.</p><ul><li>Etapowanie prac i dostaw dla całej inwestycji</li><li>Doświadczenie z osiedla 18 lokali w Jankach i 5 szeregówek dla jednego inwestora</li><li>Jedna ekipa, jeden odpowiedzialny za każdy segment</li></ul></div></div><div class="oi reveal"><h3>Budowa z materiałem i wsparcie inwestora</h3><div><p>Specjalizujemy się w realizacjach z materiałem: to my organizujemy zakupy, dostawy i logistykę, pilnujemy jakości i kosztów. W trakcie budowy doradzamy przy zmianach projektowych i rozwiązaniach technicznych.</p><ul><li>Materiał na budowie na czas, bez pilnowania transportów</li><li>Doradztwo przy zmianach w projekcie</li><li>Kontakt z kierownikiem budowy i kolejnymi ekipami</li></ul></div></div></div></div></section><section id="proces" class="t-dark"><div class="wrap"><div class="sh reveal"><h2>Jak wygląda współpraca</h2><p>Od wyceny do odbioru stanu surowego: trzy etapy, na każdym wiesz, co się dzieje i kto za to odpowiada.</p></div>
 <div class="steps stagger"><div class="step"><div class="n">01</div><h3>Planowanie i wycena</h3><p class="mut" style="margin:0">Analizujemy projekt i przygotowujemy szczegółową wycenę. Doradzamy przy wyborze materiałów i pomagamy dopasować zakres prac do budżetu. Wiesz, ile kosztuje budowa i ile potrwa, zanim podpiszesz umowę.</p></div><div class="step"><div class="n">02</div><h3>Budowa z materiałem</h3><p class="mut" style="margin:0">Każdy etap realizują nasze brygady. Zamawiamy materiał, pilnujemy dostaw, logistyki i porządku na placu budowy. Pracujemy zgodnie z harmonogramem: stan surowy otwarty zamykamy średnio w 8–14 tygodni.</p></div><div class="step"><div class="n">03</div><h3>Odbiór i dalsze etapy</h3><p class="mut" style="margin:0">Po zakończeniu stanu surowego otwartego przekazujemy budynek gotowy do dalszych prac. Na życzenie kontynuujemy do stanu deweloperskiego. Współpraca nie kończy się na odbiorze, doradzamy także po zakończeniu budowy.</p></div></div></div></section><section id="o-firmie" class="t-light"><div class="wrap"><div class="about ">
 <div class="reveal"><h2>Solidny dom zaczyna się od solidnej ekipy</h2><p>JAS-BUD to firma budowlana, która od ponad siedmiu lat realizuje domy jednorodzinne od fundamentów po stan surowy otwarty. Zaczynaliśmy jako podwykonawca dużych deweloperów, dziś budujemy przede wszystkim dla klientów indywidualnych w Warszawie i okolicach.</p><p>Mamy pięć własnych brygad. Nie korzystamy z podwykonawców, więc możemy dokładnie planować każdy etap i odpowiadamy za każdy detal. Siedziba firmy jest w Ostrołęce, brygady pracują na budowach na Mazowszu, a dojazd i logistyka są po naszej stronie.</p><ul class="facts"><li><b>Pięć własnych brygad</b><span class="mut">Ci sami ludzie od pierwszej ławy do ostatniego stropu. Wiesz, kto buduje Twój dom i kto za niego odpowiada.</span></li><li><b>Zawsze terminowi</b><span class="mut">Słowo dane klientowi jest zobowiązaniem. Wstępny termin podajemy już przy wycenie, harmonogram ustalamy po podpisaniu umowy.</span></li><li><b>Ponad 100 domów, 7 lat</b><span class="mut">Domy jednorodzinne, bliźniaki, szeregówki i budynek czterolokalowy, z materiałem i bez.</span></li></ul></div>
@@ -334,12 +322,25 @@ function sweep(){els.forEach(function(e){if(!e.classList.contains('in')){var r=e
 var t;addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sweep,140)},{passive:true});
 setTimeout(function(){if(!fired)els.forEach(function(e){e.classList.add('in')})},4000);})();
 
-(function(){var hero=document.querySelector('.hero');if(!hero)return;
-var gs=[1,2,3,4].map(function(i){return document.querySelector('.dr .d'+i)}),dr=document.querySelector('.dr'),ph=document.querySelector('.sheet .ph'),caps=[].slice.call(document.querySelectorAll('.hcap span')),last=-1;
-var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-function show(k){if(k===last)return;last=k;gs.forEach(function(g,i){g.classList.toggle('on',i<k)});ph.classList.toggle('on',k>=5);dr.classList.toggle('over',k>=5);var c=k<2?0:(k<5?1:2);caps.forEach(function(s,i){s.classList.toggle('on',i===c)})}
-if(rm){show(5);return}
-function upd(){var r=hero.getBoundingClientRect(),H=hero.offsetHeight-innerHeight,p=Math.min(1,Math.max(0,-r.top/H));show(p<.06?1:Math.min(5,1+Math.floor(p*5.6)))}
-addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd()})();
+(function(){var hero=document.querySelector('.hero'),stage=hero&&hero.querySelector('.stage'),cv=hero&&hero.querySelector('.kadr');if(!cv)return;
+var N=100,C=[0.0, 0.0214, 0.0425, 0.0627, 0.0828, 0.1014, 0.1191, 0.1288, 0.1331, 0.1385, 0.142, 0.1473, 0.153, 0.1583, 0.1662, 0.1727, 0.1821, 0.1922, 0.2013, 0.2123, 0.2205, 0.2275, 0.2345, 0.2437, 0.2545, 0.2631, 0.2737, 0.2846, 0.2933, 0.3021, 0.309, 0.3182, 0.327, 0.3338, 0.3425, 0.3495, 0.3575, 0.3658, 0.372, 0.3807, 0.388, 0.3965, 0.4048, 0.4113, 0.4175, 0.4209, 0.4244, 0.4285, 0.432, 0.4373, 0.4423, 0.4479, 0.4552, 0.461, 0.4681, 0.4737, 0.4808, 0.488, 0.4934, 0.4991, 0.5032, 0.5091, 0.5151, 0.5206, 0.5293, 0.5377, 0.5488, 0.5602, 0.5696, 0.5814, 0.5912, 0.6027, 0.6139, 0.6229, 0.6339, 0.6428, 0.6548, 0.6667, 0.6739, 0.6836, 0.6923, 0.7042, 0.7167, 0.7271, 0.7402, 0.751, 0.7655, 0.7815, 0.7967, 0.8143, 0.8304, 0.8483, 0.8663, 0.8837, 0.9033, 0.9224, 0.9426, 0.9624, 0.9807, 1.0],FR=null/*INLINE*/,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000&&!FR;
+var ctx=cv.getContext('2d'),imgs=new Array(N),ok=new Array(N),loaded=0,cur=-1,ld=hero.querySelector('.ld'),hin=hero.querySelector('.hero-in'),caps=[].slice.call(hero.querySelectorAll('.cap')),capOn=-1;
+function src(i){var s=('00'+(i+1)).slice(-3);return FR?FR[i]:'img/k/'+(small?'male':'duze')+'/'+s+'.webp'}
+function pad(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d)}
+function draw(i){var im=imgs[i];if(!im||!ok[i])return;var W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;ctx.drawImage(im,(W-w)/2,(H-h)*0.5,w,h);cur=i}
+function nearest(i){for(var d=0;d<N;d++){if(ok[i-d])return i-d;if(ok[i+d])return i+d}return -1}
+function frameFor(p){if(C&&C.length===N+1){var lo=0,hi=N-1;while(lo<hi){var m=(lo+hi+1)>>1;if(C[m]<=p)lo=m;else hi=m-1}return lo}return Math.min(N-1,Math.floor(p*N))}
+function setCap(f){var k=-1;for(var i=0;i<caps.length;i++){if(f>=+caps[i].getAttribute('data-f'))k=i}if(k!==capOn){capOn=k;caps.forEach(function(c,i){c.classList.toggle('on',i===k)})}}
+var want=0;
+function upd(){var H=hero.offsetHeight-stage.offsetHeight,p=rm?1:Math.min(1,Math.max(0,-hero.getBoundingClientRect().top/Math.max(1,H)));var f=frameFor(p);want=f;var n=nearest(f);if(n>=0&&n!==cur)draw(n);setCap(f);
+ var t=stage.getBoundingClientRect().top;hin.style.opacity=t<0?Math.max(0,1+t/(innerHeight*0.5)):1}
+function load(i){if(imgs[i])return;var im=new Image();imgs[i]=im;im.onload=function(){ok[i]=true;loaded++;ld.style.setProperty('--p',loaded/N);if(loaded>=N)ld.classList.remove('on');if(cur<0||Math.abs(i-want)<Math.abs(cur-want))draw(nearest(want))};im.src=src(i)}
+pad();ld.classList.add('on');
+// kolejność: pierwsza klatka, potem co 10., potem reszta
+var order=[0];for(var i=10;i<N;i+=10)order.push(i);for(var i=0;i<N;i++)if(order.indexOf(i)<0)order.push(i);
+var qi=0;function pump(){for(var k=0;k<6&&qi<order.length;k++)load(order[qi++]);if(qi<order.length)setTimeout(pump,40)}pump();
+addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});addEventListener('resize',function(){pad();cur=-1;upd()});upd();
+})();
 </script>
 </body></html>
