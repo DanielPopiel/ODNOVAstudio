@@ -414,7 +414,7 @@ function nearest(i){for(var d=0;d<N;d++){if(ok[i-d])return i-d;if(ok[i+d])return
 function frameFor(p){if(C&&C.length===N+1){var lo=0,hi=N-1;while(lo<hi){var m=(lo+hi+1)>>1;if(C[m]<=p)lo=m;else hi=m-1}return lo}return Math.min(N-1,Math.floor(p*N))}
 function setCap(f){var k=-1;for(var i=0;i<caps.length;i++){if(f>=+caps[i].getAttribute('data-f'))k=i}if(k!==capOn){capOn=k;caps.forEach(function(c,i){c.classList.toggle('on',i===k)})}}
 var want=0;
-function upd(){var H=hero.offsetHeight-stage.offsetHeight,p=rm?1:Math.min(1,Math.max(0,-hero.getBoundingClientRect().top/Math.max(1,H)));var f=frameFor(p);want=f;var n=nearest(f);if(n>=0&&n!==cur)draw(n);setCap(f);if(!mob)ht.classList.toggle('off',p>0.25&&p<0.97);
+function upd(){var H=hero.offsetHeight-stage.offsetHeight,p=rm?1:Math.min(1,Math.max(0,-hero.getBoundingClientRect().top/Math.max(1,H)));var f=frameFor(p);want=f;var n=nearest(f);if(n>=0&&n!==cur)draw(n);setCap(f);if(!mob)ht.classList.toggle('off',p>0.33&&p<0.97);
  var t=stage.getBoundingClientRect().top;hin.style.opacity=t<0?Math.max(0,1+t/(innerHeight*0.5)):1}
 function load(i){if(imgs[i])return;var im=new Image();imgs[i]=im;im.onload=function(){ok[i]=true;loaded++;ld.style.setProperty('--p',loaded/N);if(loaded>=N)ld.classList.remove('on');if(cur<0||Math.abs(i-want)<Math.abs(cur-want))draw(nearest(want))};im.src=src(i)}
 pad();ld.classList.add('on');
