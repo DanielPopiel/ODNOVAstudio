@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20880%20640%27%3E%3Crect%20width%3D%27880%27%20height%3D%27640%27%20rx%3D%27120%27%20fill%3D%27%23F4F5F2%27/%3E%3Cg%20transform%3D%27translate%2860%2050%29%20scale%28.86%29%27%3E%3Cpath%20d%3D%27M180%20600%20L285%20320%20L380%20585%20L595%2025%20L815%20590%27%20fill%3D%27none%27%20stroke%3D%27%2313294B%27%20stroke-width%3D%2752%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M60%20585%20L280%2020%20L495%20560%20L590%20320%20L700%20605%27%20fill%3D%27none%27%20stroke%3D%27%23A17500%27%20stroke-width%3D%2752%27%20stroke-linecap%3D%27round%27/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Mrs+Saint+Delafield&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 *,*::before,*::after{box-sizing:border-box}
@@ -56,6 +56,15 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 8px)}
 .mnav-call{font-weight:700}
 .callbar{display:none}
 @media(max-width:1060px){.nav{display:none}.mnav{display:block}}
+/* === odsłanianie: nagłówki linia po linii spod maski, teksty słowo po słowie, rysujące się linie === */
+.js .sl .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em .02em .16em;margin:-.1em -.02em -.16em}
+.js .sl .w>span{display:inline-block;transform:translate3d(0,112%,0);transition:transform 1.05s cubic-bezier(.2,.75,.12,1) calc(var(--l,0)*.13s + .08s)}
+.js .sl.in .w>span,.js .in .sl .w>span{transform:none}
+.js .swd .w>span{display:inline-block;opacity:0;filter:blur(6px);transform:translate3d(0,.22em,0);transition:opacity .8s ease calc(var(--k,0)*.06s + .35s),filter .8s ease calc(var(--k,0)*.06s + .35s),transform .9s cubic-bezier(.2,.7,.2,1) calc(var(--k,0)*.06s + .35s)}
+.js .swd.in .w>span{opacity:1;filter:none;transform:none}
+.js .swd::before,.js .swd::after{transition:opacity .8s ease .3s;opacity:0}.js .swd.in::before,.js .swd.in::after{opacity:1}
+.js .swd.in::after{transition-delay:calc(var(--n,12)*.06s + .5s)}
+@media(prefers-reduced-motion:reduce){.js .sl .w>span,.js .swd .w>span{transform:none!important;opacity:1!important;filter:none!important;transition:none!important}.js .swd::before,.js .swd::after{opacity:1!important}}
 @media(max-width:760px){
  body{padding-bottom:64px}
  .callbar{display:grid;grid-template-columns:1.6fr 1fr;position:fixed;inset:auto 0 0 0;z-index:60;background:var(--hdr-bg2);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}
@@ -213,8 +222,13 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
 .letter .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 34px;margin:34px 0;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .letter .facts div{font-size:15px;color:var(--mute)}
 .letter .facts b{display:block;color:var(--ink);font-weight:600;font-size:15.5px}
-.sign{font-family:var(--hf);font-size:28px;margin:30px 0 0}
-.sign small{display:block;font:500 13.5px var(--bf);color:var(--mute);margin-top:6px}
+.sign{margin:34px 0 0}
+.sign .ink{display:inline-block;font-family:'Mrs Saint Delafield',cursive;font-size:clamp(50px,5.4vw,70px);line-height:1;color:#1d3470;padding:.05em .35em .12em .05em;transform:rotate(-4deg);transform-origin:left bottom}
+.sign small{display:block;font:500 13.5px var(--bf);color:var(--mute);margin-top:4px}
+/* podpis pisany piórem: atrament odsłania się od lewej z miękką krawędzią */
+.js .sign .ink{-webkit-mask:linear-gradient(90deg,#000 40%,transparent 60%) 100% 0/250% 100% no-repeat;mask:linear-gradient(90deg,#000 40%,transparent 60%) 100% 0/250% 100% no-repeat;transition:-webkit-mask-position 2.6s cubic-bezier(.45,.05,.4,.95) .5s,mask-position 2.6s cubic-bezier(.45,.05,.4,.95) .5s}
+.js .sign.in .ink{-webkit-mask-position:0 0;mask-position:0 0}
+.js .sign small{opacity:0;transition:opacity .9s ease 2.6s}.js .sign.in small{opacity:1}
 @media(max-width:680px){.letter .facts{grid-template-columns:1fr}}
 
 /* PYTANIA + OPINIE */
@@ -240,16 +254,15 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
 .js .stagger>*{opacity:0;transform:translate3d(0,30px,0) scale(.985);filter:blur(4px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1.15s cubic-bezier(.2,.7,.2,1),filter 1s ease;transition-delay:calc(var(--i,0)*120ms)}
 .js .stagger.in>*{opacity:1;transform:none;filter:none}
 /* nagłówki wyłaniają się spod linii */
-.js .reveal h2,.js h2.reveal{clip-path:inset(0 0 102% 0);transform:translateY(.35em);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1) .12s,transform 1.2s cubic-bezier(.2,.7,.2,1) .12s}
-.js .reveal.in h2,.js h2.reveal.in{clip-path:inset(-10% 0 -25% 0);transform:none}
 /* żółta zakładka kart „wysuwa się” po pojawieniu */
 .js .cards .card::before{width:0;transition:width .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*120ms + .45s)}
 .js .cards.in .card::before{width:46px}
 .card{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .5s}
-@media(hover:hover){.card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(19,41,75,.35);border-color:rgba(19,41,75,.28)}}
+@media(hover:hover){.card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(0,0,0,.22);border-color:rgba(19,41,75,.28)}}
 /* certyfikat: lekko się obraca na miejsce */
-.js .cert.reveal img{transform:rotate(5deg) translateY(30px);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .15s}
-.js .cert.reveal.in img{transform:rotate(1.6deg)}
+.js .cert.reveal img{clip-path:inset(0 0 100% 0);transform:rotate(5deg) translateY(30px);transition:clip-path 1.7s cubic-bezier(.7,0,.2,1) .25s,transform 1.5s cubic-bezier(.2,.7,.2,1) .15s}
+.js .cert.reveal.in img{clip-path:inset(-20% -30% -30% -30%);transform:rotate(1.6deg)}
+.js .cert figcaption{opacity:0;transition:opacity 1s ease 1.4s}.js .cert.in figcaption{opacity:1}
 /* list: wysuwa się jak kartka z teczki */
 .js .letter.reveal{transform:translate3d(0,70px,0) rotate(-.8deg);filter:none;transition:opacity 1.2s cubic-bezier(.2,.7,.2,1),transform 1.5s cubic-bezier(.2,.7,.2,1)}
 .js .letter.reveal.in{transform:none}
@@ -263,14 +276,20 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
  .js .stagger>*{transform:translate3d(0,22px,0);filter:blur(3px);transition-delay:calc(var(--i,0)*90ms)}
  .js .letter.reveal{transform:translate3d(0,44px,0) rotate(-.6deg)}
 }
-@media(prefers-reduced-motion:reduce){.js .reveal,.js .stagger>*,.js .reveal h2,.js h2.reveal,.js .letter.reveal,.js .cert.reveal img{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;transition:none!important}.js .cards .card::before{width:46px}.js .h-txt>*,.js .h-note{animation:none}}
-</style>
+@media(prefers-reduced-motion:reduce){.js .sign .ink{-webkit-mask:none;mask:none}.js .sign small,.js .cert figcaption{opacity:1!important;transition:none!important}.js .reveal,.js .stagger>*,.js .reveal h2,.js h2.reveal,.js .letter.reveal,.js .cert.reveal img{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;transition:none!important}.js .cards .card::before{width:46px}.js .h-txt>*,.js .h-note{animation:none}}
+.js .card .area,.js .med li,.js .steps li,.js .letter .facts,.js .towns{border-top-color:transparent!important;background-image:linear-gradient(var(--line),var(--line));background-repeat:no-repeat;background-origin:border-box;background-position:0 0;background-size:0 1px;transition:background-size 1.4s cubic-bezier(.65,0,.25,1) calc(var(--i,0)*.12s + .15s)}
+.js .in .card .area,.js .card .area.in,.js .in .med li,.js .med li.in,.js .in .steps li,.js .steps li.in,.js .in .letter .facts,.js .letter .facts.in,.js .in .towns,.js .towns.in{background-size:100% 1px}
+@media(prefers-reduced-motion:reduce){.js .card .area,.js .med li,.js .steps li,.js .letter .facts,.js .towns{background-size:100% 1px!important;transition:none!important}}.js .lh2{border-bottom-color:transparent!important;background-image:linear-gradient(var(--line),var(--line));background-repeat:no-repeat;background-origin:border-box;background-position:0 100%;background-size:0 1px;transition:background-size 1.4s cubic-bezier(.65,0,.25,1) calc(var(--i,0)*.12s + .15s)}
+.js .in .lh2,.js .lh2.in{background-size:100% 1px}
+@media(prefers-reduced-motion:reduce){.js .lh2{background-size:100% 1px!important;transition:none!important}}.js .lh{border-bottom-color:transparent!important;background-image:linear-gradient(var(--ink),var(--ink));background-repeat:no-repeat;background-origin:border-box;background-position:0 100%;background-size:0 1.5px;transition:background-size 1.6s cubic-bezier(.65,0,.25,1) calc(var(--i,0)*.12s + .15s)}
+.js .in .lh,.js .lh.in{background-size:100% 1.5px}
+@media(prefers-reduced-motion:reduce){.js .lh{background-size:100% 1.5px!important;transition:none!important}}</style>
 </head>
 <body>
 <div class="top">
   <div class="mockbar">Makieta W2 „Papier” · propozycja nowej strony od Odnova Studio · <a href="https://www.adwokatminskmazowiecki.pl" rel="nofollow">obecna strona</a></div>
   <header class="hdr">
-    <a class="brand" href="#start" aria-label="Kancelaria Adwokacka Marcin Malinowski — początek strony"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk1" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#13294B" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk1)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#A17500" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span class="brand-t"><b>Marcin Malinowski</b><small>Kancelaria Adwokacka</small></span></a>
+    <a class="brand" href="#start" aria-label="Kancelaria Adwokacka Marcin Malinowski — początek strony"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk3" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#13294B" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk3)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#A17500" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span class="brand-t"><b>Marcin Malinowski</b><small>Kancelaria Adwokacka</small></span></a>
     <nav class="nav" aria-label="Sekcje"><a href="#dziedziny">Dziedziny</a><a href="#mediacja">Mediacja</a><a href="#o-adwokacie">O adwokacie</a><a href="#online">Współpraca</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
     <a class="hdr-call" href="tel:+48603891980"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg><span>603 891 980</span></a>
     <details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#dziedziny">Dziedziny</a><a href="#mediacja">Mediacja</a><a href="#o-adwokacie">O adwokacie</a><a href="#online">Współpraca</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a><a class="mnav-call" href="tel:+48603891980">Zadzwoń: 603 891 980</a></nav></details>
@@ -327,7 +346,7 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
 <section class="sec lt-wrap" id="o-adwokacie">
  <div class="wrap">
   <article class="letter reveal">
-   <div class="lh"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk2" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#13294B" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk2)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#A17500" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span>KANCELARIA ADWOKACKA · MARCIN MALINOWSKI</span></div><div class="lh2"></div>
+   <div class="lh"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk4" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#13294B" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk4)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#A17500" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span>KANCELARIA ADWOKACKA · MARCIN MALINOWSKI</span></div><div class="lh2"></div>
    <h2>Szanowni Państwo,</h2>
    <p>prowadzę kancelarię adwokacką w Mińsku Mazowieckim. Pomagam osobom prywatnym i firmom — w sądzie i poza nim, przed organami ścigania i w urzędach. Na co dzień zajmuję się prawem karnym, cywilnym i rodzinnym.</p>
    <p>Relacje z klientami buduję na bliskiej współpracy, partnerstwie i pełnej przejrzystości — także w sprawie kosztów. Kompetentny adwokat nie gwarantuje końcowego sukcesu, ale znacznie zwiększa jego prawdopodobieństwo.</p>
@@ -337,7 +356,7 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
     <div><b>Aplikacja adwokacka</b>pod patronatem adw. Henryka Malinowskiego</div>
     <div><b>Wydział Prawa i Administracji</b>Uniwersytet im. Adama Mickiewicza w Poznaniu</div>
    </div>
-   <p class="sign">Marcin Malinowski<small>adwokat</small></p>
+   <p class="sign draw"><span class="ink" aria-hidden="true">Marcin Malinowski</span><small>adw. Marcin Malinowski</small></p>
   </article>
  </div>
 </section>
@@ -395,7 +414,13 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
 const root=document.documentElement,top=document.querySelector('.top');
 const mh=()=>root.style.setProperty('--hdr-h',top.offsetHeight+'px');mh();addEventListener('resize',mh);addEventListener('load',mh);
 addEventListener('scroll',()=>top.classList.toggle('scrolled',scrollY>30),{passive:true});
-const els=[...document.querySelectorAll('.reveal,.stagger')];
+// podział nagłówków na słowa w maskach (linia po linii) i tekstów słowo po słowie
+const splitW=(h)=>{const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(p=>{if(!p)return;if(/^\s+$/.test(p)){f.append(' ');return}const o=document.createElement('span');o.className='w';const i=document.createElement('span');i.textContent=p;o.append(i);f.append(o)});c.replaceWith(f)}else if(c.nodeType===1&&c.tagName!=='BR')walk(c)})};walk(h)};
+const lines=h=>{let li=0,t0=null;[...h.querySelectorAll('.w')].forEach((w,k)=>{const t=w.getBoundingClientRect().top;if(t0!==null&&t>t0+4)li++;t0=t;w.style.setProperty('--l',li);w.style.setProperty('--k',k)});h.style.setProperty('--n',h.querySelectorAll('.w').length)};
+const sl=[...document.querySelectorAll('main h2,.sw')];
+sl.forEach(h=>{splitW(h);h.classList.add(h.classList.contains('sw')?'swd':'sl');lines(h)});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>sl.forEach(lines),200)});
+const els=[...document.querySelectorAll('.reveal,.stagger,.sl,.swd,.draw')];
 document.querySelectorAll('.stagger').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i)));
 let fired=false;
 if('IntersectionObserver' in window){

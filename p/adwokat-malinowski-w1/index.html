@@ -56,6 +56,15 @@ section[id]{scroll-margin-top:calc(var(--hdr-h,90px) + 8px)}
 .mnav-call{font-weight:700}
 .callbar{display:none}
 @media(max-width:1060px){.nav{display:none}.mnav{display:block}}
+/* === odsłanianie: nagłówki linia po linii spod maski, teksty słowo po słowie, rysujące się linie === */
+.js .sl .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em .02em .16em;margin:-.1em -.02em -.16em}
+.js .sl .w>span{display:inline-block;transform:translate3d(0,112%,0);transition:transform 1.05s cubic-bezier(.2,.75,.12,1) calc(var(--l,0)*.13s + .08s)}
+.js .sl.in .w>span,.js .in .sl .w>span{transform:none}
+.js .swd .w>span{display:inline-block;opacity:0;filter:blur(6px);transform:translate3d(0,.22em,0);transition:opacity .8s ease calc(var(--k,0)*.06s + .35s),filter .8s ease calc(var(--k,0)*.06s + .35s),transform .9s cubic-bezier(.2,.7,.2,1) calc(var(--k,0)*.06s + .35s)}
+.js .swd.in .w>span{opacity:1;filter:none;transform:none}
+.js .swd::before,.js .swd::after{transition:opacity .8s ease .3s;opacity:0}.js .swd.in::before,.js .swd.in::after{opacity:1}
+.js .swd.in::after{transition-delay:calc(var(--n,12)*.06s + .5s)}
+@media(prefers-reduced-motion:reduce){.js .sl .w>span,.js .swd .w>span{transform:none!important;opacity:1!important;filter:none!important;transition:none!important}.js .swd::before,.js .swd::after{opacity:1!important}}
 @media(max-width:760px){
  body{padding-bottom:64px}
  .callbar{display:grid;grid-template-columns:1.6fr 1fr;position:fixed;inset:auto 0 0 0;z-index:60;background:var(--hdr-bg2);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}
@@ -254,6 +263,16 @@ html:not(.js) .mx:not(:first-child){display:none}
 .map{height:380px}
 @media(max-width:860px){.kt-grid{grid-template-columns:1fr}.map{height:300px}}
 .ftr{background:#080f17;border-top:1px solid var(--line)}
+.js .par,.js .zas div,.js .on-foot{border-top-color:transparent!important;background-image:linear-gradient(var(--line),var(--line));background-repeat:no-repeat;background-origin:border-box;background-position:0 0;background-size:0 1px;transition:background-size 1.4s cubic-bezier(.65,0,.25,1) calc(var(--i,0)*.12s + .15s)}
+.js .in .par,.js .par.in,.js .in .zas div,.js .zas div.in,.js .in .on-foot,.js .on-foot.in{background-size:100% 1px}
+@media(prefers-reduced-motion:reduce){.js .par,.js .zas div,.js .on-foot{background-size:100% 1px!important;transition:none!important}}
+.js .facts p{border-bottom-color:transparent!important;background-image:linear-gradient(var(--line),var(--line));background-repeat:no-repeat;background-origin:border-box;background-position:0 100%;background-size:0 1px;transition:background-size 1.4s cubic-bezier(.65,0,.25,1) calc(var(--i,0)*.12s + .15s)}
+.js .in .facts p,.js .facts p.in{background-size:100% 1px}
+@media(prefers-reduced-motion:reduce){.js .facts p{background-size:100% 1px!important;transition:none!important}}
+/* ramka portretu rysuje się od narożników */
+.js .portrait::after{border:0;--c:rgba(201,162,74,.5);background:linear-gradient(var(--c),var(--c)) 0 0/0 1px no-repeat,linear-gradient(var(--c),var(--c)) 100% 0/1px 0 no-repeat,linear-gradient(var(--c),var(--c)) 100% 100%/0 1px no-repeat,linear-gradient(var(--c),var(--c)) 0 100%/1px 0 no-repeat;transition:background-size 1.8s cubic-bezier(.65,0,.25,1) .35s}
+.js .portrait.in::after{background-size:100% 1px,1px 100%,100% 1px,1px 100%}
+@media(prefers-reduced-motion:reduce){.js .portrait::after{background-size:100% 1px,1px 100%,100% 1px,1px 100%;transition:none}}
 </style>
 </head>
 <body>
@@ -310,7 +329,7 @@ html:not(.js) .mx:not(:first-child){display:none}
   <div>
   <div class="reveal">
    <h2>O adwokacie</h2>
-   <p class="ab-q">Kompetentny adwokat nie gwarantuje końcowego sukcesu, ale znacznie zwiększa jego prawdopodobieństwo.</p>
+   <p class="ab-q sw">Kompetentny adwokat nie gwarantuje końcowego sukcesu, ale znacznie zwiększa jego prawdopodobieństwo.</p>
    <p class="ab-who">— adw. Marcin Malinowski</p>
   </div>
   <div class="facts stagger">
@@ -388,7 +407,13 @@ html:not(.js) .mx:not(:first-child){display:none}
 const root=document.documentElement,top=document.querySelector('.top');
 const mh=()=>root.style.setProperty('--hdr-h',top.offsetHeight+'px');mh();addEventListener('resize',mh);addEventListener('load',mh);
 addEventListener('scroll',()=>top.classList.toggle('scrolled',scrollY>30),{passive:true});
-const els=[...document.querySelectorAll('.reveal,.stagger')];
+// podział nagłówków na słowa w maskach (linia po linii) i tekstów słowo po słowie
+const splitW=(h)=>{const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(p=>{if(!p)return;if(/^\s+$/.test(p)){f.append(' ');return}const o=document.createElement('span');o.className='w';const i=document.createElement('span');i.textContent=p;o.append(i);f.append(o)});c.replaceWith(f)}else if(c.nodeType===1&&c.tagName!=='BR')walk(c)})};walk(h)};
+const lines=h=>{let li=0,t0=null;[...h.querySelectorAll('.w')].forEach((w,k)=>{const t=w.getBoundingClientRect().top;if(t0!==null&&t>t0+4)li++;t0=t;w.style.setProperty('--l',li);w.style.setProperty('--k',k)});h.style.setProperty('--n',h.querySelectorAll('.w').length)};
+const sl=[...document.querySelectorAll('main h2,.sw')];
+sl.forEach(h=>{splitW(h);h.classList.add(h.classList.contains('sw')?'swd':'sl');lines(h)});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>sl.forEach(lines),200)});
+const els=[...document.querySelectorAll('.reveal,.stagger,.sl,.swd,.draw')];
 document.querySelectorAll('.stagger').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i)));
 let fired=false;
 if('IntersectionObserver' in window){
