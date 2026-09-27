@@ -140,38 +140,64 @@ body{font-size:16px;line-height:1.65}
 h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
 .lead{font-size:17px;line-height:1.7;max-width:58ch;opacity:.82}
 
-/* HERO */
-.hero{position:relative;background:var(--bg)}
-.js .hero{height:420vh}
-.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.photo{position:absolute;inset:0;background:#15342A url(assets/stol-1920.webp) center 60%/cover;opacity:calc(var(--ph,0)*1.2);transform:scale(calc(1.12 - var(--ph,0)*.12));clip-path:circle(calc(var(--ph,0)*95%) at 50% 40%)}
-@media(max-width:900px){.photo{background-image:url(assets/stol-900.webp)}}
-.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,52,42,.42) 0%,rgba(21,52,42,.3) 38%,rgba(18,44,35,.94) 72%,#15342A 100%)}
-.lines{position:absolute;left:50%;top:calc(var(--hdr-h,90px) + (100svh - var(--hdr-h,90px) - 330px)/2);width:min(52vw,560px,calc((100svh - var(--hdr-h,90px) - 370px)*1.25));transform:translate(-50%,-50%) scale(var(--ms,1));transform-origin:50% 50%;overflow:visible}
-.lines path{fill:none;stroke-width:30;stroke-linecap:round;stroke-linejoin:miter}
-.lines .la{stroke:#C8A04A}
-.lines .lb{stroke:#9CC7B2}
-.lines .ghost path{stroke:rgba(238,241,236,.34);stroke-width:2;stroke-dasharray:6 10;opacity:var(--gh,1);vector-effect:non-scaling-stroke}
-.lines .gl{stroke:#F6E2A6;stroke-width:14;stroke-dasharray:.04 .96;opacity:calc(var(--gl,0)*.7);animation:glint 7.5s linear infinite;mix-blend-mode:screen}
-.lines .gl.g2{animation-delay:-3.75s;stroke:#E6FFF3}
-@keyframes glint{from{stroke-dashoffset:1}to{stroke-dashoffset:-1}}
-.cross{fill:#FFF1C9;opacity:var(--cx,0);filter:blur(10px)}
-.h-copy{position:absolute;left:0;right:0;bottom:0;padding:26px clamp(18px,4vw,48px) clamp(26px,4.5vh,48px);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;border-top:1px solid rgba(238,241,236,.14);max-width:1320px;margin:0 auto}
-.h-copy h1{font-size:13.5px;font-family:var(--bf);font-weight:500;letter-spacing:.01em;opacity:.72;margin-bottom:12px}
-.say{font-family:var(--hf);font-weight:400;font-size:clamp(24px,2.5vw,36px);line-height:1.16;margin:0;letter-spacing:-.015em}
+/* HERO: biblioteka w smudze światła (pętla wideo) + znak MM z dwóch linii */
+.hero{position:relative;min-height:100vh;min-height:100svh;background:#0B1C16;color:var(--fg);overflow:hidden;isolation:isolate;display:flex;align-items:flex-end}
+.h-media{position:absolute;top:0;bottom:0;right:0;left:30%;z-index:-3;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%),linear-gradient(180deg,#000 66%,transparent 98%);-webkit-mask-composite:source-in;
+ mask-image:linear-gradient(90deg,transparent 0%,#000 40%),linear-gradient(180deg,#000 66%,transparent 98%);mask-composite:intersect;
+ transform:translate3d(0,calc(var(--hp,0)*70px),0) scale(calc(1 + var(--hp,0)*.05));will-change:transform}
+.h-zoom{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.01)}to{transform:scale(1.08)}}
+.h-zoom img,.h-zoom video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.h-zoom video{opacity:0;transition:opacity 1.6s ease}
+.h-zoom video.on{opacity:1}
+.h-media::after{content:"";position:absolute;inset:0;background:linear-gradient(92deg,rgba(11,28,22,.84) 0%,rgba(12,32,25,.42) 42%,rgba(14,38,29,.18) 100%);mix-blend-mode:multiply}
+.h-tint{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(90% 70% at 80% 10%,rgba(200,160,74,.10),transparent 60%),linear-gradient(180deg,transparent 60%,rgba(11,28,22,.95) 100%)}
+/* znak: dwie linie wychodzą z ciemności i składają się w monogram */
+.mm{position:absolute;z-index:-1;right:clamp(28px,7vw,120px);top:calc(var(--hdr-h,90px) + (100svh - var(--hdr-h,90px))*.40);width:min(34vw,520px);transform:translate3d(0,calc(-50% - var(--hp,0)*60px),0);opacity:calc(1 - var(--hp,0)*.7);overflow:visible;pointer-events:none}
+.mm path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.mm .la{stroke:url(#ga);stroke-width:5.5}
+.mm .lb{stroke:url(#gb);stroke-width:5.5}
+.mm .gl{stroke:#FFF3D0;stroke-width:4;stroke-dasharray:.05 .95;stroke-dashoffset:1;opacity:0;mix-blend-mode:screen}
+.js .mm .la,.js .mm .lb{stroke-dasharray:1 1;stroke-dashoffset:1;animation:draw 3.6s cubic-bezier(.55,.05,.25,1) .5s forwards}
+.js .mm .lb{animation-delay:.9s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.js .mm .gl{animation:glint 10.3s linear 4.4s infinite}
+.js .mm .gl.g2{animation-delay:9.55s}
+@keyframes glint{0%{stroke-dashoffset:1;opacity:0}6%{opacity:.9}44%{opacity:.9}50%{stroke-dashoffset:-.05;opacity:0}100%{stroke-dashoffset:-.05;opacity:0}}
+.h-in{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:calc(var(--hdr-h,90px) + 40px) clamp(18px,4vw,48px) clamp(30px,5vh,56px);transform:translate3d(0,calc(var(--hp,0)*-52px),0);opacity:calc(1 - var(--hp,0)*.9)}
+.h-in h1{font-size:13.5px;font-family:var(--bf);font-weight:500;letter-spacing:.01em;opacity:.72;margin-bottom:18px;max-width:none}
+.say{font-family:var(--hf);font-weight:400;font-size:clamp(30px,3.4vw,50px);line-height:1.1;margin:0;letter-spacing:-.018em;max-width:19ch}
 .say span{display:block}
 .say .s2{color:var(--acc)}
-.js .say .s2{opacity:var(--s2,0);transform:translateY(calc((1 - var(--s2,0))*20px))}
-.h-side p{margin:0 0 18px;max-width:42ch;opacity:.86;font-size:15px;line-height:1.6}
-.h-copy .btn{min-height:44px;font-size:15px;padding:0 20px}
-.hcta{display:flex;gap:12px;flex-wrap:wrap}
-@media(max-width:900px){
- .lines{width:min(72vw,420px,calc((100svh - var(--hdr-h,90px) - 390px)*1.25))}
- .h-copy{grid-template-columns:1fr;gap:16px}
- .h-side p{display:none}
+.js .say span{clip-path:inset(0 0 102% 0);opacity:.001;animation:unveil 1.2s cubic-bezier(.16,.84,.3,1) .45s forwards}
+.js .say .s2{animation-delay:1.35s}
+@keyframes unveil{0%{clip-path:inset(0 0 102% 0);opacity:.001;transform:translateY(14px)}100%{clip-path:inset(0 0 -8% 0);opacity:1;transform:none}}
+.h-lead{margin:24px 0 0;max-width:46ch;opacity:.84;font-size:16.5px;line-height:1.65}
+.hcta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.h-in .btn{min-height:46px;font-size:15px;padding:0 22px}
+.js .h-lead,.js .hcta{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards}
+.js .h-lead{animation-delay:1.9s}.js .hcta{animation-delay:2.1s}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.creds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:clamp(40px,7vh,72px);padding-top:22px;border-top:1px solid var(--line)}
+.creds div{font-size:13.5px;line-height:1.45;opacity:.78}
+.creds b{display:block;font-family:var(--hf);font-weight:400;font-size:22px;color:var(--acc);opacity:1;margin-bottom:4px;font-variant-numeric:lining-nums}
+.js .creds>div{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards;animation-delay:calc(2.4s + var(--i,0)*.12s)}
+@media(max-width:900px){.creds{grid-template-columns:1fr 1fr;gap:18px 24px}}
+@media(max-width:760px){
+ .h-media{left:0;-webkit-mask-image:none;mask-image:none}
+ .h-zoom img,.h-zoom video{object-position:60% 30%}
+ .h-media::after{background:linear-gradient(180deg,rgba(11,28,22,.50) 0%,rgba(11,28,22,.62) 45%,rgba(11,28,22,.97) 78%)}
+ .mm .la,.mm .lb{stroke-width:8}.mm .gl{stroke-width:6}
+ .mm{right:50%;width:min(58vw,300px);top:calc(var(--hdr-h,70px) + 16vh);transform:translate3d(50%,calc(-50% - var(--hp,0)*40px),0)}
+ .h-in{padding-bottom:92px}
+ .say{font-size:clamp(28px,8vw,38px)}
+ .h-lead{font-size:15.5px;margin-top:18px}
+ .hcta .btn{flex:1}.hcta .btn-line{display:none}
+ .creds{display:none}
 }
-@media(max-width:760px){.h-copy{padding-bottom:84px}.hcta .btn{flex:1}.hcta .btn-line{display:none}}
-.hero.rm{height:auto}.hero.rm .pin{position:relative;min-height:100vh}
+@media(max-height:760px) and (min-width:761px){.creds{display:none}}
+@media(prefers-reduced-motion:reduce){.h-zoom{animation:none}.js .mm .la,.js .mm .lb{animation:none;stroke-dashoffset:0}.js .mm .gl{animation:none}.js .say span,.js .h-lead,.js .hcta,.js .creds>div{animation:none;opacity:1;clip-path:none}}
 
 /* DWIE DROGI */
 .dd-head{max-width:760px;margin-bottom:60px}
@@ -296,7 +322,7 @@ html:not(.js) .tp{margin-bottom:50px}
 <div class="top">
   <div class="mockbar">Makieta W3 „Porozumienie” · propozycja nowej strony od Odnova Studio · <a href="https://www.adwokatminskmazowiecki.pl" rel="nofollow">obecna strona</a></div>
   <header class="hdr">
-    <a class="brand" href="#start" aria-label="Kancelaria Adwokacka Marcin Malinowski — początek strony"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk5" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#9CC7B2" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk5)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#C8A04A" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span class="brand-t"><b>Marcin Malinowski</b><small>Kancelaria Adwokacka</small></span></a>
+    <a class="brand" href="#start" aria-label="Kancelaria Adwokacka Marcin Malinowski — początek strony"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk1" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#9CC7B2" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk1)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#C8A04A" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><span class="brand-t"><b>Marcin Malinowski</b><small>Kancelaria Adwokacka</small></span></a>
     <nav class="nav" aria-label="Sekcje"><a href="#dziedziny">Dziedziny</a><a href="#mediacja">Mediacja</a><a href="#o-adwokacie">O adwokacie</a><a href="#online">Współpraca</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
     <a class="hdr-call" href="tel:+48603891980"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg><span>603 891 980</span></a>
     <details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#dziedziny">Dziedziny</a><a href="#mediacja">Mediacja</a><a href="#o-adwokacie">O adwokacie</a><a href="#online">Współpraca</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a><a class="mnav-call" href="tel:+48603891980">Zadzwoń: 603 891 980</a></nav></details>
@@ -305,19 +331,15 @@ html:not(.js) .tp{margin-bottom:50px}
 
 <main>
 <section class="hero" id="start" aria-label="Wprowadzenie">
- <div class="pin">
-  <div class="photo" aria-hidden="true"></div>
-  <svg class="lines" viewBox="20 -30 840 700" aria-hidden="true"><defs><mask id="hx" maskUnits="userSpaceOnUse" x="-4000" y="-500" width="9000" height="2000"><rect x="-4000" y="-500" width="9000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><g class="ghost"><path d="M60 585 L280 20 L495 560 L590 320 L700 605"/><path d="M180 600 L285 320 L380 585 L595 25 L815 590"/></g><path class="lb" d="M3200 590 L815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><path class="la" d="M-2400 585 L60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl" d="M60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl g2" d="M815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><circle class="cross" cx="443" cy="430" r="60"/></svg>
-  <div class="h-copy">
-   <div>
-    <h1>Kancelaria Adwokacka Marcin Malinowski · adwokat w Mińsku Mazowieckim</h1>
-    <p class="say"><span class="s1">Spór można zakończyć w sądzie.</span><span class="s2">Albo przy stole.</span></p>
-   </div>
-   <div class="h-side">
-    <p>Reprezentujemy klientów przed sądami i urzędami, a tam, gdzie to możliwe, pomagamy dojść do porozumienia — szybciej i z mniejszym kosztem niż w procesie.</p>
-    <div class="hcta"><a class="btn btn-main" href="tel:+48603891980">Zadzwoń: 603 891 980</a><a class="btn btn-line" href="#mediacja">Dwie drogi</a></div>
-   </div>
-  </div>
+ <div class="h-media" aria-hidden="true"><div class="h-zoom"><img src="assets/w3-hero-poster.jpg" alt="" data-pm="assets/w3-hero-poster-m.jpg" width="1920" height="1080"><video muted loop playsinline preload="none" tabindex="-1" data-d="assets/w3-hero.mp4" data-m="assets/w3-hero-m.mp4" data-dw="assets/w3-hero.webm" data-mw="assets/w3-hero-m.webm"></video></div></div>
+ <div class="h-tint" aria-hidden="true"></div>
+ <svg class="mm" viewBox="20 -30 840 700" aria-hidden="true"><defs><linearGradient id="ga" gradientUnits="userSpaceOnUse" x1="-500" y1="0" x2="700" y2="0"><stop offset="0" stop-color="#C8A04A" stop-opacity="0"/><stop offset=".45" stop-color="#C8A04A"/><stop offset="1" stop-color="#E2C27A"/></linearGradient><linearGradient id="gb" gradientUnits="userSpaceOnUse" x1="1400" y1="0" x2="180" y2="0"><stop offset="0" stop-color="#9CC7B2" stop-opacity="0"/><stop offset=".45" stop-color="#9CC7B2"/><stop offset="1" stop-color="#CFE6DA"/></linearGradient><mask id="hx" maskUnits="userSpaceOnUse" x="-4000" y="-500" width="9000" height="2000"><rect x="-4000" y="-500" width="9000" height="2000" fill="#fff"/><path d="M428 392 L459 469" stroke="#000" stroke-width="20"/></mask></defs><path class="la" d="M-500 585 L60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="lb" d="M1400 590 L815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><path class="gl" d="M60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl g2" d="M815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/></svg>
+ <div class="h-in">
+  <h1>Kancelaria Adwokacka Marcin Malinowski · adwokat w Mińsku Mazowieckim</h1>
+  <p class="say"><span class="s1">Spór można zakończyć w sądzie.</span><span class="s2">Albo przy stole.</span></p>
+  <p class="h-lead">Reprezentujemy klientów przed sądami i urzędami, a tam, gdzie to możliwe, pomagamy dojść do porozumienia — szybciej i z mniejszym kosztem niż w procesie.</p>
+  <div class="hcta"><a class="btn btn-main" href="tel:+48603891980">Zadzwoń: 603 891 980</a><a class="btn btn-line" href="#mediacja">Dwie drogi</a></div>
+  <div class="creds stagger-h"><div><b>2013</b>wpis do Izby Adwokackiej w Siedlcach</div><div><b>177</b>numer wpisu na listę adwokatów</div><div><b>432/2019</b>certyfikat mediatora, Centrum Mediacyjne przy NRA</div><div><b>24 h</b>odpowiedź na poradę online z wyceną</div></div>
  </div>
 </section>
 
@@ -492,34 +514,20 @@ function side(){
 }
 addEventListener('scroll',()=>{if(!tk2){tk2=true;requestAnimationFrame(side)}},{passive:true});addEventListener('resize',side);side();
 
-const hero=document.querySelector('.hero'),pin=hero.querySelector('.pin');
-const la=hero.querySelector('.la'),lb=hero.querySelector('.lb');
-[la,lb].forEach(p=>p.style.strokeDasharray='1 1');
-const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),ease=t=>1-Math.pow(1-t,3);
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){hero.classList.add('rm');la.style.strokeDashoffset=lb.style.strokeDashoffset='0';pin.style.setProperty('--s2',1);pin.style.setProperty('--ph',.55);pin.style.setProperty('--gl',0);return}
-// długość „wejścia” linii: część ścieżki poza znakiem (od krawędzi) — na starcie widać tylko ją
-const L0=.34;
-let tick=false,base=.45;
-/* wejście po załadowaniu: linie same dochodzą do pierwszych szczytów, szkic znaku czeka na złożenie */
-const t0=performance.now(),intro=now=>{const k=Math.min(1,(now-t0)/2400);base=.45+(.72-.45)*ease(k);frame();if(k<1)requestAnimationFrame(intro)};requestAnimationFrame(intro);
-function frame(){
- tick=false;
- const r=hero.getBoundingClientRect(),span=hero.offsetHeight-pin.offsetHeight;
- const p=clamp(-r.top/(span*.94),0,1);
- const d=ease(clamp(p/.48,0,1));
- const drawn=base+(1-base)*d;
- pin.style.setProperty('--gh',(1-d).toFixed(3));
- la.style.strokeDashoffset=String(1-drawn);lb.style.strokeDashoffset=String(1-drawn);
- const meet=clamp((p-.38)/.1,0,1);
- pin.style.setProperty('--cx',(Math.sin(meet*Math.PI)*.55).toFixed(3));
- pin.style.setProperty('--gl',clamp((p-.46)/.08,0,1).toFixed(3));
- const z=ease(clamp((p-.52)/.3,0,1));
- pin.style.setProperty('--ph',z.toFixed(3));
- pin.style.setProperty('--ms',(1-z*.3).toFixed(3));
- pin.style.setProperty('--s2',clamp((p-.72)/.18,0,1).toFixed(3));
-}
-addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(frame)}},{passive:true});
-addEventListener('resize',frame);frame();
+const hero=document.querySelector('.hero'),v=hero.querySelector('video'),im=hero.querySelector('.h-zoom img');
+hero.querySelectorAll('.creds>div').forEach((d,i)=>d.style.setProperty('--i',i));
+const mob=Math.min(innerWidth,screen.width)<=760;
+if(mob&&im.dataset.pm)im.src=im.dataset.pm;
+if(rmM)return;
+/* pętla wideo: zwolniona do ~10 s, pauza poza ekranem */
+const mp4=v.canPlayType('video/mp4; codecs="avc1.640028"');
+v.src=mp4?(mob?v.dataset.m:v.dataset.d):(mob?v.dataset.mw:v.dataset.dw);
+let vis=true;const play=()=>{if(!vis||document.hidden)return;v.playbackRate=.8;const p=v.play();if(p&&p.catch)p.catch(()=>{})};
+v.addEventListener('loadeddata',()=>{v.classList.add('on');play()});v.load();
+document.addEventListener('visibilitychange',()=>document.hidden?v.pause():play());
+/* przewijanie: płynna paralaksa zamiast przypiętej sceny */
+let tk=false;const hp=()=>{tk=false;const h=hero.offsetHeight,p=Math.min(1,Math.max(0,scrollY/h));hero.style.setProperty('--hp',p.toFixed(3));const nv=p<.98;if(nv!==vis){vis=nv;nv?play():v.pause()}};
+addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(hp)}},{passive:true});hp();
 })();
 </script>
 </body>
