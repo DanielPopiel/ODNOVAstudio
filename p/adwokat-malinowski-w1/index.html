@@ -205,15 +205,24 @@ html:not(.js) .mx:not(:first-child){display:none}
 @media(max-width:860px){.med-grid{grid-template-columns:1fr}.zas div{grid-template-columns:1fr;gap:6px}}
 
 /* O ADWOKACIE */
-.ab-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(40px,7vw,120px);align-items:start}
+.ab-grid{display:grid;grid-template-columns:minmax(260px,.8fr) 1.4fr;gap:clamp(40px,6vw,96px);align-items:start}
+.portrait{position:relative;margin:0;aspect-ratio:4/5;background:#0e1823 url(assets/kamien-1000.webp) center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;color:#ECE6D8;overflow:hidden}
+.portrait::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 30%,rgba(14,24,35,.55),rgba(9,15,22,.92))}
+.portrait::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,162,74,.45);pointer-events:none}
+.portrait>*{position:relative}
+.portrait .mark{width:74px;opacity:.9}
+.portrait figcaption{font-family:var(--hf);font-size:19px;line-height:1.3;max-width:18ch}
+.portrait small{display:block;font-family:var(--bf);font-size:12.5px;opacity:.65;margin-top:8px;letter-spacing:.01em}
+.facts{grid-template-columns:1fr 1fr;column-gap:34px}
+.facts p:nth-last-child(2){border:0}
 .ab-q{font-family:var(--hf);font-size:clamp(21px,2vw,29px);line-height:1.12;margin:26px 0 22px;text-wrap:pretty}
 .ab-q::before{content:"„"}.ab-q::after{content:"”"}
 .ab-who{font-size:15px;opacity:.7}
 .facts{display:grid;gap:22px;padding-top:12px}
-.facts p{margin:0;padding-bottom:22px;border-bottom:1px solid var(--line);font-size:17px}
+.facts p{margin:0;padding-bottom:20px;border-bottom:1px solid var(--line);font-size:15.5px}
 .facts p:last-child{border:0}
 .facts b{font-family:var(--hf);font-weight:400;font-size:18px;display:block;line-height:1.15;margin-bottom:4px}
-@media(max-width:860px){.ab-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.ab-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/3;max-width:460px}.facts{grid-template-columns:1fr}.facts p:nth-last-child(2){border-bottom:1px solid var(--line)}}
 
 /* ONLINE */
 .on-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:64px}
@@ -234,10 +243,15 @@ html:not(.js) .mx:not(:first-child){display:none}
 @media(max-width:860px){.qf{grid-template-columns:1fr}}
 
 /* KONTAKT */
-.kt{background:#0b141e}
+.stone-s{position:relative;isolation:isolate;background:#0e1823 url(assets/kamien-1000.webp) center/cover}
+.stone-s::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,15,22,.9),rgba(9,15,22,.86) 50%,rgba(9,15,22,.92))}
+.lit{position:relative;isolation:isolate}
+.lit::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(640px circle at var(--mx,50%) var(--my,40%),rgba(236,206,140,.10),rgba(236,206,140,.03) 38%,transparent 62%);opacity:0;transition:opacity .9s ease}
+.lit.hov::after{opacity:1}
+@media(hover:none),(prefers-reduced-motion:reduce){.lit::after{display:none}}
 .kt-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,100px);margin-bottom:60px}
 .kt h2{margin-bottom:34px}
-.map{filter:grayscale(1) invert(.92) hue-rotate(180deg) contrast(.9) brightness(.95);height:380px}
+.map{height:380px}
 @media(max-width:860px){.kt-grid{grid-template-columns:1fr}.map{height:300px}}
 .ftr{background:#080f17;border-top:1px solid var(--line)}
 </style>
@@ -277,7 +291,7 @@ html:not(.js) .mx:not(:first-child){display:none}
  </div>
 </section>
 
-<section class="sec med" id="mediacja">
+<section class="sec med lit" id="mediacja">
  <div class="wrap med-grid">
   <div class="reveal">
    <h2>Nie każdy spór musi skończyć się wyrokiem.</h2>
@@ -292,6 +306,8 @@ html:not(.js) .mx:not(:first-child){display:none}
 
 <section class="sec light-s" id="o-adwokacie">
  <div class="wrap ab-grid">
+  <figure class="portrait reveal"><svg class="mark" viewBox="20 -30 840 700" aria-hidden="true" role="img"><defs><mask id="mmk2" maskUnits="userSpaceOnUse" x="-2000" y="-500" width="5000" height="2000"><rect x="-2000" y="-500" width="5000" height="2000" fill="#fff"/><path d="M426 387 L461 474" stroke="#000" stroke-width="58"/></mask></defs><path d="M180 600 L285 320 L380 585 L595 25 L815 590" fill="none" stroke="#6d8fc4" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter" mask="url(#mmk2)"/><path d="M60 585 L280 20 L495 560 L590 320 L700 605" fill="none" stroke="#C9A24A" stroke-width="30" stroke-linecap="round" stroke-linejoin="miter"/></svg><figcaption>Miejsce na portret adw. Marcina Malinowskiego<small>krótka sesja w kancelarii przy wdrożeniu</small></figcaption></figure>
+  <div>
   <div class="reveal">
    <h2>O adwokacie</h2>
    <p class="ab-q">Kompetentny adwokat nie gwarantuje końcowego sukcesu, ale znacznie zwiększa jego prawdopodobieństwo.</p>
@@ -303,10 +319,11 @@ html:not(.js) .mx:not(:first-child){display:none}
    <p><b>Od 2013 roku w Izbie Adwokackiej w Siedlcach</b>Numer wpisu 177. Prawo karne, cywilne i rodzinne na co dzień.</p>
    <p><b>Blisko, partnersko, jawnie</b>Relację z klientem opieramy na współpracy i pełnej przejrzystości — także w sprawie kosztów.</p>
   </div>
+  </div>
  </div>
 </section>
 
-<section class="sec" id="online">
+<section class="sec stone-s lit" id="online">
  <div class="wrap">
   <div class="on-head reveal"><h2>Porada bez wychodzenia z domu</h2><p class="lead" style="margin:0">Nie ma Pan czasu na spotkanie? Nie ma Pani jak dojechać? Sprawę da się zacząć od opisu i zdjęć dokumentów.</p></div>
   <ol class="steps stagger">
@@ -330,7 +347,7 @@ html:not(.js) .mx:not(:first-child){display:none}
  </div>
 </section>
 
-<section class="sec kt" id="kontakt">
+<section class="sec kt stone-s lit" id="kontakt">
  <div class="wrap">
   <div class="kt-grid">
    <div class="reveal"><h2>Umówmy się na rozmowę</h2><dl class="cl">
@@ -387,6 +404,7 @@ document.querySelectorAll('form.kf').forEach(f=>f.addEventListener('submit',ev=>
 })();
 
 (()=>{
+document.querySelectorAll('.lit').forEach(sec=>{let raf=0,ev=null;sec.addEventListener('pointerenter',()=>sec.classList.add('hov'));sec.addEventListener('pointerleave',()=>sec.classList.remove('hov'));sec.addEventListener('pointermove',e=>{ev=e;if(!raf)raf=requestAnimationFrame(()=>{raf=0;const r=sec.getBoundingClientRect();sec.style.setProperty('--mx',(ev.clientX-r.left)+'px');sec.style.setProperty('--my',(ev.clientY-r.top)+'px')})})});
 const hero=document.querySelector('.hero'),pin=hero.querySelector('.pin'),acts=[...hero.querySelectorAll('.mx')],prog=[...hero.querySelectorAll('.prog li')];
 const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(rm){hero.classList.add('rm');acts.forEach(a=>a.classList.add('on','done'));return}
