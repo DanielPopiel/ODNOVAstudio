@@ -233,6 +233,37 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
 .map{margin-top:60px;height:360px;filter:grayscale(.2)}
 @media(max-width:860px){.kt-grid{grid-template-columns:1fr}.map{height:300px}}
 .ftr{background:#0e1f3a;color:#F4F5F2;--line:rgba(244,245,242,.14)}
+
+/* === premium: odsłanianie treści przy przewijaniu === */
+.js .reveal{opacity:0;transform:translate3d(0,38px,0);filter:blur(5px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.25s cubic-bezier(.2,.7,.2,1),filter 1.1s ease}
+.js .reveal.in{opacity:1;transform:none;filter:none}
+.js .stagger>*{opacity:0;transform:translate3d(0,30px,0) scale(.985);filter:blur(4px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1.15s cubic-bezier(.2,.7,.2,1),filter 1s ease;transition-delay:calc(var(--i,0)*120ms)}
+.js .stagger.in>*{opacity:1;transform:none;filter:none}
+/* nagłówki wyłaniają się spod linii */
+.js .reveal h2,.js h2.reveal{clip-path:inset(0 0 102% 0);transform:translateY(.35em);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1) .12s,transform 1.2s cubic-bezier(.2,.7,.2,1) .12s}
+.js .reveal.in h2,.js h2.reveal.in{clip-path:inset(-10% 0 -25% 0);transform:none}
+/* żółta zakładka kart „wysuwa się” po pojawieniu */
+.js .cards .card::before{width:0;transition:width .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*120ms + .45s)}
+.js .cards.in .card::before{width:46px}
+.card{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .5s}
+@media(hover:hover){.card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(19,41,75,.35);border-color:rgba(19,41,75,.28)}}
+/* certyfikat: lekko się obraca na miejsce */
+.js .cert.reveal img{transform:rotate(5deg) translateY(30px);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .15s}
+.js .cert.reveal.in img{transform:rotate(1.6deg)}
+/* list: wysuwa się jak kartka z teczki */
+.js .letter.reveal{transform:translate3d(0,70px,0) rotate(-.8deg);filter:none;transition:opacity 1.2s cubic-bezier(.2,.7,.2,1),transform 1.5s cubic-bezier(.2,.7,.2,1)}
+.js .letter.reveal.in{transform:none}
+/* hero: tekst wchodzi po kolei po załadowaniu */
+@keyframes heroIn{from{opacity:0;transform:translate3d(0,26px,0);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.js .h-txt>*{animation:heroIn 1.2s cubic-bezier(.2,.7,.2,1) both}
+.js .h-txt>*:nth-child(2){animation-delay:.15s}.js .h-txt>*:nth-child(3){animation-delay:.3s}.js .h-txt>*:nth-child(4){animation-delay:.45s}
+.js .h-note{animation:heroIn 1.2s cubic-bezier(.2,.7,.2,1) .6s both}
+@media(max-width:760px){
+ .js .reveal{transform:translate3d(0,26px,0);filter:blur(3px);transition-duration:.95s,1.05s,.95s}
+ .js .stagger>*{transform:translate3d(0,22px,0);filter:blur(3px);transition-delay:calc(var(--i,0)*90ms)}
+ .js .letter.reveal{transform:translate3d(0,44px,0) rotate(-.6deg)}
+}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .stagger>*,.js .reveal h2,.js h2.reveal,.js .letter.reveal,.js .cert.reveal img{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;transition:none!important}.js .cards .card::before{width:46px}.js .h-txt>*,.js .h-note{animation:none}}
 </style>
 </head>
 <body>
@@ -275,7 +306,7 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
    
    <h2>Adwokat i mediator</h2>
    <p class="lead">Porozumienie zamiast wyroku: taniej, szybciej i bez stania naprzeciw siebie na sali sądowej. Celem mediacji nie jest ustalenie, kto ma rację, tylko zakończenie sporu.</p>
-   <ul><li><b>Dobrowolność</b>strony przystępują z własnej woli i w każdej chwili mogą się wycofać</li><li><b>Bezstronność</b>obie strony są traktowane jednakowo</li><li><b>Poufność</b>przebieg mediacji objęty jest tajemnicą</li><li><b>Neutralność</b>mediator nie korzysta na wyniku rozmów</li></ul>
+   <ul class="stagger"><li><b>Dobrowolność</b>strony przystępują z własnej woli i w każdej chwili mogą się wycofać</li><li><b>Bezstronność</b>obie strony są traktowane jednakowo</li><li><b>Poufność</b>przebieg mediacji objęty jest tajemnicą</li><li><b>Neutralność</b>mediator nie korzysta na wyniku rozmów</li></ul>
    <a class="btn btn-main" href="#kontakt">Zapytaj o mediację</a>
   </div>
   <figure class="cert reveal"><img src="assets/certyfikat-520.webp" alt="Certyfikat mediatora nr 432/2019 wystawiony adw. Marcinowi Malinowskiemu" width="520" height="742" loading="lazy"><figcaption>Certyfikat mediatora nr 432/2019 · Centrum Mediacyjne przy Naczelnej Radzie Adwokackiej</figcaption></figure>
@@ -300,7 +331,7 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
    <h2>Szanowni Państwo,</h2>
    <p>prowadzę kancelarię adwokacką w Mińsku Mazowieckim. Pomagam osobom prywatnym i firmom — w sądzie i poza nim, przed organami ścigania i w urzędach. Na co dzień zajmuję się prawem karnym, cywilnym i rodzinnym.</p>
    <p>Relacje z klientami buduję na bliskiej współpracy, partnerstwie i pełnej przejrzystości — także w sprawie kosztów. Kompetentny adwokat nie gwarantuje końcowego sukcesu, ale znacznie zwiększa jego prawdopodobieństwo.</p>
-   <div class="facts">
+   <div class="facts stagger">
     <div><b>Izba Adwokacka w Siedlcach</b>od 2013 r., nr wpisu 177</div>
     <div><b>Mediator</b>certyfikat Centrum Mediacyjnego przy NRA, 2019</div>
     <div><b>Aplikacja adwokacka</b>pod patronatem adw. Henryka Malinowskiego</div>
@@ -319,7 +350,7 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
   <p class="rev-txt">Opinie publikujemy wyłącznie prawdziwe, prosto z profilu Google — bez wybierania i poprawiania. Jeśli pomogliśmy Państwu w sprawie, będziemy wdzięczni za kilka słów.</p>
   <p class="rev-links"><a href="https://www.google.com/maps/place/Kancelaria+Adwokacka+Marcin+Malinowski+Adwokat+Mi%C5%84sk+Mazowiecki/@52.1831248,21.5582079,17z/data=!4m6!3m5!1s0x471f2e83e0468177:0xc3e048c1dae757dc!8m2!3d52.1831248!4d21.5582079!16s%2Fg%2F11h48x1zyl" rel="nofollow noopener" target="_blank">Zobacz profil w Google</a><a href="https://www.google.com/maps/place/Kancelaria+Adwokacka+Marcin+Malinowski+Adwokat+Mi%C5%84sk+Mazowiecki/@52.1831248,21.5582079,17z/data=!4m6!3m5!1s0x471f2e83e0468177:0xc3e048c1dae757dc!8m2!3d52.1831248!4d21.5582079!16s%2Fg%2F11h48x1zyl" rel="nofollow noopener" target="_blank">Wystaw opinię</a></p>
 </div></div>
-  <div class="reveal"><details class="qa"><summary>Ile kosztuje porada lub prowadzenie sprawy?</summary><p>Wynagrodzenie ustalamy indywidualnie — zależy od zawiłości sprawy, potrzebnego nakładu pracy i wartości przedmiotu sporu. Podstawą mogą być też stawki z rozporządzenia Ministra Sprawiedliwości w sprawie opłat za czynności adwokackie. Kwotę znają Państwo, zanim zaczniemy pracę.</p></details><details class="qa"><summary>Czy muszę przyjechać do kancelarii?</summary><p>Nie zawsze. Wystarczy opisać sprawę w formularzu albo mailem i dołączyć dokumenty. W ciągu 24 godzin odpowiadamy z propozycją ceny i terminem. Jeśli ją Państwo zaakceptują, zaczynamy.</p></details><details class="qa"><summary>Co zabrać na pierwsze spotkanie?</summary><p>Wszystko, co dotyczy sprawy: pisma z sądu lub urzędu (z kopertą, bo liczy się data doręczenia), umowy, korespondencję i notatkę z najważniejszymi datami. Im pełniejszy obraz, tym konkretniejsza porada.</p></details><details class="qa"><summary>Czy prowadzicie sprawy poza Mińskiem Mazowieckim?</summary><p>Tak, w całym kraju. Najczęściej w powiecie mińskim i okolicach: od Sulejówka i Halinowa po Siedlce, Węgrów i Garwolin, a także w Warszawie.</p></details><details class="qa"><summary>W jakich godzinach działa kancelaria?</summary><p>Od poniedziałku do piątku w godz. 9:00–16:00. Po wcześniejszym telefonie spotkamy się także w innym terminie.</p></details><details class="qa"><summary>Czym mediacja różni się od sprawy w sądzie?</summary><p>W sądzie ktoś rozstrzyga za strony. W mediacji strony same wypracowują porozumienie, a mediator pomaga im rozmawiać. Celem nie jest ustalenie, kto ma rację, tylko zakończenie sporu — zwykle szybciej, taniej i z mniejszym stresem.</p></details></div>
+  <div class="stagger"><details class="qa"><summary>Ile kosztuje porada lub prowadzenie sprawy?</summary><p>Wynagrodzenie ustalamy indywidualnie — zależy od zawiłości sprawy, potrzebnego nakładu pracy i wartości przedmiotu sporu. Podstawą mogą być też stawki z rozporządzenia Ministra Sprawiedliwości w sprawie opłat za czynności adwokackie. Kwotę znają Państwo, zanim zaczniemy pracę.</p></details><details class="qa"><summary>Czy muszę przyjechać do kancelarii?</summary><p>Nie zawsze. Wystarczy opisać sprawę w formularzu albo mailem i dołączyć dokumenty. W ciągu 24 godzin odpowiadamy z propozycją ceny i terminem. Jeśli ją Państwo zaakceptują, zaczynamy.</p></details><details class="qa"><summary>Co zabrać na pierwsze spotkanie?</summary><p>Wszystko, co dotyczy sprawy: pisma z sądu lub urzędu (z kopertą, bo liczy się data doręczenia), umowy, korespondencję i notatkę z najważniejszymi datami. Im pełniejszy obraz, tym konkretniejsza porada.</p></details><details class="qa"><summary>Czy prowadzicie sprawy poza Mińskiem Mazowieckim?</summary><p>Tak, w całym kraju. Najczęściej w powiecie mińskim i okolicach: od Sulejówka i Halinowa po Siedlce, Węgrów i Garwolin, a także w Warszawie.</p></details><details class="qa"><summary>W jakich godzinach działa kancelaria?</summary><p>Od poniedziałku do piątku w godz. 9:00–16:00. Po wcześniejszym telefonie spotkamy się także w innym terminie.</p></details><details class="qa"><summary>Czym mediacja różni się od sprawy w sądzie?</summary><p>W sądzie ktoś rozstrzyga za strony. W mediacji strony same wypracowują porozumienie, a mediator pomaga im rozmawiać. Celem nie jest ustalenie, kto ma rację, tylko zakończenie sporu — zwykle szybciej, taniej i z mniejszym stresem.</p></details></div>
  </div>
 </section>
 
@@ -332,7 +363,7 @@ h2{font-size:clamp(36px,4.4vw,60px);line-height:1.06}
   <div><dt>Adres</dt><dd>ul. Warszawska 111, lok. U22<br>05-300 Mińsk Mazowiecki<br><span class="cl-note">lokal na parterze</span></dd></div>
   <div><dt>Godziny</dt><dd>pon.–pt. 9:00–16:00<br><span class="cl-note">inny termin po telefonie</span></dd></div>
 </dl><p class="towns"><b>Dojeżdżają do nas m.in. z:</b> Cegłów, Dobre, Dębe Wielkie, Garwolin, Halinów, Jakubów, Józefów, Kałuszyn, Latowicz, Mrozy, Otwock, Siedlce, Siennica, Stanisławów, Sulejówek, Warszawa, Wołomin, Węgrów.</p></div>
-   <div class="reveal"><form class="kf" action="#" novalidate>
+   <div class="reveal" style="transition-delay:.15s"><form class="kf" action="#" novalidate>
   <label>Imię i nazwisko<input name="n" autocomplete="name" required></label>
   <label>Telefon lub e-mail<input name="t" autocomplete="tel" required></label>
   <label>Czego dotyczy sprawa<select name="d"><option>Prawo karne</option><option>Prawo cywilne</option><option>Prawo rodzinne i opiekuńcze</option><option>Prawo spadkowe</option><option>Prawo pracy i ubezpieczeń</option><option>Prawo administracyjne</option><option>Mediacja</option><option>Nie wiem / inna</option></select></label>
