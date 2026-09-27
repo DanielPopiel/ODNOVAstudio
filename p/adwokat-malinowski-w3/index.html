@@ -142,29 +142,17 @@ h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
 
 /* HERO: biblioteka w smudze światła (pętla wideo) + znak MM z dwóch linii */
 .hero{position:relative;min-height:100vh;min-height:100svh;background:#0B1C16;color:var(--fg);overflow:hidden;isolation:isolate;display:flex;align-items:flex-end}
-.h-media{position:absolute;top:0;bottom:0;right:0;left:30%;z-index:-3;
- -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 40%),linear-gradient(180deg,#000 66%,transparent 98%);-webkit-mask-composite:source-in;
- mask-image:linear-gradient(90deg,transparent 0%,#000 40%),linear-gradient(180deg,#000 66%,transparent 98%);mask-composite:intersect;
+.h-media{position:absolute;top:0;bottom:0;right:0;left:14%;z-index:-3;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(180deg,#000 66%,transparent 98%);-webkit-mask-composite:source-in;
+ mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(180deg,#000 66%,transparent 98%);mask-composite:intersect;
  transform:translate3d(0,calc(var(--hp,0)*70px),0) scale(calc(1 + var(--hp,0)*.05));will-change:transform}
 .h-zoom{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1.01)}to{transform:scale(1.08)}}
-.h-zoom img,.h-zoom video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.h-zoom img,.h-zoom video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 40%}
 .h-zoom video{opacity:0;transition:opacity 1.6s ease}
 .h-zoom video.on{opacity:1}
 .h-media::after{content:"";position:absolute;inset:0;background:linear-gradient(92deg,rgba(11,28,22,.84) 0%,rgba(12,32,25,.42) 42%,rgba(14,38,29,.18) 100%);mix-blend-mode:multiply}
 .h-tint{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(90% 70% at 80% 10%,rgba(200,160,74,.10),transparent 60%),linear-gradient(180deg,transparent 60%,rgba(11,28,22,.95) 100%)}
-/* znak: dwie linie wychodzą z ciemności i składają się w monogram */
-.mm{position:absolute;z-index:-1;right:clamp(28px,7vw,120px);top:calc(var(--hdr-h,90px) + (100svh - var(--hdr-h,90px))*.40);width:min(34vw,520px);transform:translate3d(0,calc(-50% - var(--hp,0)*60px),0);opacity:calc(1 - var(--hp,0)*.7);overflow:visible;pointer-events:none}
-.mm path{fill:none;stroke-linecap:round;stroke-linejoin:round}
-.mm .la{stroke:url(#ga);stroke-width:5.5}
-.mm .lb{stroke:url(#gb);stroke-width:5.5}
-.mm .gl{stroke:#FFF3D0;stroke-width:4;stroke-dasharray:.05 .95;stroke-dashoffset:1;opacity:0;mix-blend-mode:screen}
-.js .mm .la,.js .mm .lb{stroke-dasharray:1 1;stroke-dashoffset:1;animation:draw 3.6s cubic-bezier(.55,.05,.25,1) .5s forwards}
-.js .mm .lb{animation-delay:.9s}
-@keyframes draw{to{stroke-dashoffset:0}}
-.js .mm .gl{animation:glint 10.3s linear 4.4s infinite}
-.js .mm .gl.g2{animation-delay:9.55s}
-@keyframes glint{0%{stroke-dashoffset:1;opacity:0}6%{opacity:.9}44%{opacity:.9}50%{stroke-dashoffset:-.05;opacity:0}100%{stroke-dashoffset:-.05;opacity:0}}
 .h-in{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:calc(var(--hdr-h,90px) + 40px) clamp(18px,4vw,48px) clamp(30px,5vh,56px);transform:translate3d(0,calc(var(--hp,0)*-52px),0);opacity:calc(1 - var(--hp,0)*.9)}
 .h-in h1{font-size:13.5px;font-family:var(--bf);font-weight:500;letter-spacing:.01em;opacity:.72;margin-bottom:18px;max-width:none}
 .say{font-family:var(--hf);font-weight:400;font-size:clamp(30px,3.4vw,50px);line-height:1.1;margin:0;letter-spacing:-.018em;max-width:19ch}
@@ -187,9 +175,7 @@ h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
 @media(max-width:760px){
  .h-media{left:0;-webkit-mask-image:none;mask-image:none}
  .h-zoom img,.h-zoom video{object-position:60% 30%}
- .h-media::after{background:linear-gradient(180deg,rgba(11,28,22,.50) 0%,rgba(11,28,22,.62) 45%,rgba(11,28,22,.97) 78%)}
- .mm .la,.mm .lb{stroke-width:8}.mm .gl{stroke-width:6}
- .mm{right:50%;width:min(58vw,300px);top:calc(var(--hdr-h,70px) + 16vh);transform:translate3d(50%,calc(-50% - var(--hp,0)*40px),0)}
+ .h-media::after{background:linear-gradient(180deg,rgba(11,28,22,.18) 0%,rgba(11,28,22,.34) 38%,rgba(11,28,22,.9) 62%,rgba(11,28,22,.97) 80%)}
  .h-in{padding-bottom:92px}
  .say{font-size:clamp(28px,8vw,38px)}
  .h-lead{font-size:15.5px;margin-top:18px}
@@ -197,7 +183,7 @@ h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
  .creds{display:none}
 }
 @media(max-height:760px) and (min-width:761px){.creds{display:none}}
-@media(prefers-reduced-motion:reduce){.h-zoom{animation:none}.js .mm .la,.js .mm .lb{animation:none;stroke-dashoffset:0}.js .mm .gl{animation:none}.js .say span,.js .h-lead,.js .hcta,.js .creds>div{animation:none;opacity:1;clip-path:none}}
+@media(prefers-reduced-motion:reduce){.h-zoom{animation:none}.js .say span,.js .h-lead,.js .hcta,.js .creds>div{animation:none;opacity:1;clip-path:none}}
 
 /* DWIE DROGI */
 .dd-head{max-width:760px;margin-bottom:60px}
@@ -331,9 +317,8 @@ html:not(.js) .tp{margin-bottom:50px}
 
 <main>
 <section class="hero" id="start" aria-label="Wprowadzenie">
- <div class="h-media" aria-hidden="true"><div class="h-zoom"><img src="assets/w3-hero-poster.jpg" alt="" data-pm="assets/w3-hero-poster-m.jpg" width="1920" height="1080"><video muted loop playsinline preload="none" tabindex="-1" data-d="assets/w3-hero.mp4" data-m="assets/w3-hero-m.mp4" data-dw="assets/w3-hero.webm" data-mw="assets/w3-hero-m.webm"></video></div></div>
+ <div class="h-media" aria-hidden="true"><div class="h-zoom"><img src="assets/w3-hero-poster.jpg" alt="" data-pm="assets/w3-hero-poster-m.jpg" data-lit="assets/w3-hero-lit.jpg" data-litm="assets/w3-hero-lit-m.jpg" width="1920" height="1080"><video muted loop playsinline preload="none" tabindex="-1" data-d="assets/w3-hero.mp4" data-m="assets/w3-hero-m.mp4" data-dw="assets/w3-hero.webm" data-mw="assets/w3-hero-m.webm"></video></div></div>
  <div class="h-tint" aria-hidden="true"></div>
- <svg class="mm" viewBox="20 -30 840 700" aria-hidden="true"><defs><linearGradient id="ga" gradientUnits="userSpaceOnUse" x1="-500" y1="0" x2="700" y2="0"><stop offset="0" stop-color="#C8A04A" stop-opacity="0"/><stop offset=".45" stop-color="#C8A04A"/><stop offset="1" stop-color="#E2C27A"/></linearGradient><linearGradient id="gb" gradientUnits="userSpaceOnUse" x1="1400" y1="0" x2="180" y2="0"><stop offset="0" stop-color="#9CC7B2" stop-opacity="0"/><stop offset=".45" stop-color="#9CC7B2"/><stop offset="1" stop-color="#CFE6DA"/></linearGradient><mask id="hx" maskUnits="userSpaceOnUse" x="-4000" y="-500" width="9000" height="2000"><rect x="-4000" y="-500" width="9000" height="2000" fill="#fff"/><path d="M428 392 L459 469" stroke="#000" stroke-width="20"/></mask></defs><path class="la" d="M-500 585 L60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="lb" d="M1400 590 L815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/><path class="gl" d="M60 585 L280 20 L495 560 L590 320 L700 605" pathLength="1"/><path class="gl g2" d="M815 590 L595 25 L380 585 L285 320 L180 600" pathLength="1" mask="url(#hx)"/></svg>
  <div class="h-in">
   <h1>Kancelaria Adwokacka Marcin Malinowski · adwokat w Mińsku Mazowieckim</h1>
   <p class="say"><span class="s1">Spór można zakończyć w sądzie.</span><span class="s2">Albo przy stole.</span></p>
@@ -517,8 +502,8 @@ addEventListener('scroll',()=>{if(!tk2){tk2=true;requestAnimationFrame(side)}},{
 const hero=document.querySelector('.hero'),v=hero.querySelector('video'),im=hero.querySelector('.h-zoom img');
 hero.querySelectorAll('.creds>div').forEach((d,i)=>d.style.setProperty('--i',i));
 const mob=Math.min(innerWidth,screen.width)<=760;
+if(rmM){im.src=mob?im.dataset.litm:im.dataset.lit;return}
 if(mob&&im.dataset.pm)im.src=im.dataset.pm;
-if(rmM)return;
 /* pętla wideo: zwolniona do ~10 s, pauza poza ekranem */
 const mp4=v.canPlayType('video/mp4; codecs="avc1.640028"');
 v.src=mp4?(mob?v.dataset.m:v.dataset.d):(mob?v.dataset.mw:v.dataset.dw);
