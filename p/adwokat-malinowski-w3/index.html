@@ -142,18 +142,18 @@ h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
 
 /* HERO: biblioteka w smudze światła (pętla wideo) + znak MM z dwóch linii */
 .hero{position:relative;min-height:100vh;min-height:100svh;background:#0B1C16;color:var(--fg);overflow:hidden;isolation:isolate;display:flex;align-items:flex-end}
-.h-media{position:absolute;top:0;bottom:0;right:0;left:14%;z-index:-3;
- -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(180deg,#000 66%,transparent 98%);-webkit-mask-composite:source-in;
- mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(180deg,#000 66%,transparent 98%);mask-composite:intersect;
- transform:translate3d(0,calc(var(--hp,0)*70px),0) scale(calc(1 + var(--hp,0)*.05));will-change:transform}
-.h-zoom{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate}
-@keyframes kb{from{transform:scale(1.01)}to{transform:scale(1.08)}}
-.h-zoom img,.h-zoom video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 40%}
-.h-zoom video{opacity:0;transition:opacity 1.6s ease}
+.h-media{position:absolute;top:0;bottom:0;right:0;left:34%;z-index:-3;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 42%),linear-gradient(180deg,#000 62%,transparent 96%);-webkit-mask-composite:source-in;
+ mask-image:linear-gradient(90deg,transparent 0%,#000 42%),linear-gradient(180deg,#000 62%,transparent 96%);mask-composite:intersect;
+ transform:translate3d(0,calc(var(--hp,0)*70px*var(--pk,1)),0) scale(calc(1 + var(--hp,0)*.05));will-change:transform}
+.h-zoom{position:absolute;inset:0;transform:scale(1.005);transform-origin:72% 45%;animation:kb 34s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.005)}to{transform:scale(1.085)}}
+.h-zoom img,.h-zoom video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 38%}
+.h-zoom video{opacity:0;transition:opacity 1.4s ease}
 .h-zoom video.on{opacity:1}
-.h-media::after{content:"";position:absolute;inset:0;background:linear-gradient(92deg,rgba(11,28,22,.84) 0%,rgba(12,32,25,.42) 42%,rgba(14,38,29,.18) 100%);mix-blend-mode:multiply}
-.h-tint{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(90% 70% at 80% 10%,rgba(200,160,74,.10),transparent 60%),linear-gradient(180deg,transparent 60%,rgba(11,28,22,.95) 100%)}
-.h-in{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:calc(var(--hdr-h,90px) + 40px) clamp(18px,4vw,48px) clamp(30px,5vh,56px);transform:translate3d(0,calc(var(--hp,0)*-52px),0);opacity:calc(1 - var(--hp,0)*.9)}
+.h-media::after{content:"";position:absolute;inset:0;background:linear-gradient(92deg,rgba(8,18,14,.86) 0%,rgba(9,23,18,.50) 40%,rgba(10,28,21,.26) 100%)}
+.h-tint{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,transparent 64%,rgba(8,17,14,.94) 100%);opacity:calc(.62 + var(--hp,0)*.38)}
+.h-in{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:calc(var(--hdr-h,90px) + 40px) clamp(18px,4vw,48px) clamp(30px,5vh,56px);transform:translate3d(0,calc(var(--hp,0)*-52px*var(--pk,1)),0);opacity:calc(1 - var(--hp,0)*.9)}
 .h-in h1{font-size:13.5px;font-family:var(--bf);font-weight:500;letter-spacing:.01em;opacity:.72;margin-bottom:18px;max-width:none}
 .say{font-family:var(--hf);font-weight:400;font-size:clamp(30px,3.4vw,50px);line-height:1.1;margin:0;letter-spacing:-.018em;max-width:19ch}
 .say span{display:block}
@@ -173,9 +173,11 @@ h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12}
 .js .creds>div{opacity:0;animation:rise .9s cubic-bezier(.2,.7,.3,1) forwards;animation-delay:calc(2.4s + var(--i,0)*.12s)}
 @media(max-width:900px){.creds{grid-template-columns:1fr 1fr;gap:18px 24px}}
 @media(max-width:760px){
- .h-media{left:0;-webkit-mask-image:none;mask-image:none}
- .h-zoom img,.h-zoom video{object-position:60% 30%}
- .h-media::after{background:linear-gradient(180deg,rgba(11,28,22,.18) 0%,rgba(11,28,22,.34) 38%,rgba(11,28,22,.9) 62%,rgba(11,28,22,.97) 80%)}
+ .hero{--pk:.55}
+ .h-media{left:0;-webkit-mask-image:none;mask-image:none;transform:translate3d(0,calc(var(--hp,0)*70px*var(--pk)),0)}
+ .h-zoom img,.h-zoom video{object-position:70% 30%}
+ .h-media::after{background:linear-gradient(180deg,rgba(8,18,14,.62) 0%,rgba(8,18,14,.80) 55%,rgba(8,18,14,.96) 100%)}
+ .h-tint{background:linear-gradient(180deg,rgba(8,17,14,.55) 0%,rgba(8,17,14,.35) 40%,rgba(8,17,14,.96) 100%)}
  .h-in{padding-bottom:92px}
  .say{font-size:clamp(28px,8vw,38px)}
  .h-lead{font-size:15.5px;margin-top:18px}
@@ -347,7 +349,7 @@ html:not(.js) .tp{margin-bottom:50px}
 
 <main>
 <section class="hero" id="start" aria-label="Wprowadzenie">
- <div class="h-media" aria-hidden="true"><div class="h-zoom"><img src="assets/w3-hero-poster.jpg" alt="" data-pm="assets/w3-hero-poster-m.jpg" data-lit="assets/w3-hero-lit.jpg" data-litm="assets/w3-hero-lit-m.jpg" width="1920" height="1080"><video muted loop playsinline preload="none" tabindex="-1" data-d="assets/w3-hero.mp4" data-m="assets/w3-hero-m.mp4" data-dw="assets/w3-hero.webm" data-mw="assets/w3-hero-m.webm"></video></div></div>
+ <div class="h-media" aria-hidden="true"><div class="h-zoom"><img src="assets/w3-hero-poster.jpg" alt="" width="2000" height="1116"><video muted loop playsinline preload="none" tabindex="-1" data-d="assets/w3-hero.mp4" data-m="assets/w3-hero-m.mp4" data-dw="assets/w3-hero.webm" data-mw="assets/w3-hero-m.webm"></video></div></div>
  <div class="h-tint" aria-hidden="true"></div>
  <div class="h-in">
   <h1>Kancelaria Adwokacka Marcin Malinowski · adwokat w Mińsku Mazowieckim</h1>
@@ -529,20 +531,26 @@ function side(){
 }
 addEventListener('scroll',()=>{if(!tk2){tk2=true;requestAnimationFrame(side)}},{passive:true});addEventListener('resize',side);side();
 
-const hero=document.querySelector('.hero'),v=hero.querySelector('video'),im=hero.querySelector('.h-zoom img');
+const hero=document.querySelector('.hero'),v=hero.querySelector('video'),zoom=hero.querySelector('.h-zoom'),media=hero.querySelector('.h-media');
 hero.querySelectorAll('.creds>div').forEach((d,i)=>d.style.setProperty('--i',i));
-const mob=Math.min(innerWidth,screen.width)<=760;
-if(rmM){im.src=mob?im.dataset.litm:im.dataset.lit;return}
-if(mob&&im.dataset.pm)im.src=im.dataset.pm;
-/* pętla wideo: zwolniona do ~10 s, pauza poza ekranem */
-const mp4=v.canPlayType('video/mp4; codecs="avc1.640028"');
-v.src=mp4?(mob?v.dataset.m:v.dataset.d):(mob?v.dataset.mw:v.dataset.dw);
-let vis=true;const play=()=>{if(!vis||document.hidden)return;v.playbackRate=.8;const p=v.play();if(p&&p.catch)p.catch(()=>{})};
-v.addEventListener('loadeddata',()=>{v.classList.add('on');play()});v.load();
-document.addEventListener('visibilitychange',()=>document.hidden?v.pause():play());
-/* przewijanie: płynna paralaksa zamiast przypiętej sceny */
-let tk=false;const hp=()=>{tk=false;const h=hero.offsetHeight,p=Math.min(1,Math.max(0,scrollY/h));hero.style.setProperty('--hp',p.toFixed(3));const nv=p<.98;if(nv!==vis){vis=nv;nv?play():v.pause()}};
-addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(hp)}},{passive:true});hp();
+/* przewijanie: paralaksa jak w hero Pikuli */
+let tk=false;const hp=()=>{tk=false;hero.style.setProperty('--hp',Math.min(1,Math.max(0,scrollY/hero.offsetHeight)).toFixed(3))};
+if(!rmM){addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(hp)}},{passive:true});hp()}
+/* film (pętla z makiety Pikuli): dociągany po załadowaniu strony, nie przy oszczędzaniu danych i wolnym łączu */
+const c=navigator.connection||{};
+if(rmM||c.saveData||/(^|-)2g$/.test(c.effectiveType||''))return;
+let ready=false,visible=!document.hidden,inView=true;
+const sync=()=>{if(!ready)return;if(visible&&inView){const p=v.play();if(p&&p.catch)p.catch(()=>{})}else if(!v.paused)v.pause()};
+const freeze=()=>{const cur=getComputedStyle(zoom).transform;zoom.style.animation='none';if(cur&&cur!=='none')zoom.style.transform=cur;void zoom.offsetWidth;zoom.style.transition='transform 1.4s ease';zoom.style.transform='scale(1.02)'};
+const start=()=>{const w=Math.min(innerWidth||9999,(screen&&screen.width)||9999),mob=w<=820;
+ const mp4=v.canPlayType('video/mp4; codecs="avc1.640028"');
+ v.src=mp4?(mob?v.dataset.m:v.dataset.d):(mob?v.dataset.mw:v.dataset.dw);
+ v.addEventListener('playing',()=>{if(v.classList.contains('on'))return;v.classList.add('on');freeze()});
+ v.addEventListener('error',()=>v.removeAttribute('src'),{once:true});
+ v.addEventListener('loadeddata',()=>{ready=true;sync()},{once:true});v.load()};
+if(document.readyState==='complete')start();else addEventListener('load',start);
+document.addEventListener('visibilitychange',()=>{visible=!document.hidden;sync()});
+if('IntersectionObserver' in window)new IntersectionObserver(e=>{inView=e[0].isIntersecting;sync()},{threshold:0}).observe(media);
 })();
 </script>
 </body>
