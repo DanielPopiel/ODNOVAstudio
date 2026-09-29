@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Transport — przewóz z windą, Warszawa · makieta W1 „Winda”</title>
+<meta name="description" content="Marcin Jaśkiewicz — bus z windą (podnośnikiem) i pasami. Meble, AGD, RTV, palety i przeprowadzki w Warszawie i okolicach.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="MJ Transport — przewóz z windą, Warszawa · makieta W1 „Winda”"><meta property="og:description" content="Marcin Jaśkiewicz — bus z windą (podnośnikiem) i pasami. Meble, AGD, RTV, palety i przeprowadzki w Warszawie i okolicach."><meta property="og:type" content="website">
+<meta property="og:image" content="https://www.odnovastudio.com/p/mj-transport-w1-winda/og.jpg"><meta property="og:url" content="https://www.odnovastudio.com/p/mj-transport-w1-winda/">
+<meta name="theme-color" content="#1F2327">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='6' fill='%2316191C'/%3E%3Crect x='5' y='6' width='15' height='18' rx='1.5' fill='none' stroke='%23E8EAEC' stroke-width='2.4'/%3E%3Cpath d='M20 24h10' stroke='%23E4B43C' stroke-width='3.4' stroke-linecap='round'/%3E%3Crect x='22' y='16' width='6' height='6' fill='%23E4B43C'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16191C; --steel:#1F2327; --steel2:#2A2F34; --line:#3A4046;
+  --sheet:#E9EBED; --sheet2:#DCDFE2; --paper:#F6F7F8;
+  --txt:#E8EAEC; --mute:#A7AEB5; --dark:#1A1D20; --darkmute:#4C545C;
+  --strap:#E4B43C; --strap-d:#8A6412;
+  --f-d:'Big Shoulders Display',Impact,sans-serif; --f-t:'Atkinson Hyperlegible',system-ui,sans-serif;
+  --hdr-h:104px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-t);background:var(--steel);color:var(--txt);font-size:17px;line-height:1.55;accent-color:var(--strap);caret-color:var(--strap)}
+::selection{background:var(--strap);color:var(--ink)}
+:focus-visible{outline:3px solid var(--strap);outline-offset:3px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
+.tn{font-variant-numeric:tabular-nums lining-nums}
+
+/* ——— pasek makiety + nagłówek (jeden kontener fixed) ——— */
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mk{background:var(--strap);color:var(--ink);font-size:13.5px;text-align:center;padding:6px 16px;line-height:1.35}
+.mk b{font-weight:700}
+.hdr{background:rgba(22,25,28,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px);transition:background .3s}
+.hdr.sc{background:rgba(16,18,20,.98)}
+.hdr .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.brand svg{width:34px;height:34px;flex:none}
+.brand span{font-family:var(--f-d);font-weight:800;font-size:27px;letter-spacing:.01em;line-height:1}
+.brand small{display:block;font-family:var(--f-t);font-size:12.5px;color:var(--mute);letter-spacing:0;font-weight:400;margin-top:2px}
+.nav{display:flex;gap:22px}
+.nav a{text-decoration:none;font-size:15.5px;color:var(--mute);padding:8px 0}
+.nav a:hover{color:var(--txt)}
+.call{display:inline-flex;align-items:center;gap:9px;background:var(--strap);color:var(--ink);text-decoration:none;font-weight:700;padding:11px 16px;border-radius:4px;font-size:16px;white-space:nowrap}
+.call svg{width:17px;height:17px}
+.call:hover{background:#F0C451}
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 14px;border:1px solid var(--line);border-radius:4px;font-size:15px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:52px;background:var(--ink);border:1px solid var(--line);min-width:220px;padding:8px 0;border-radius:4px}
+.mnav nav a{display:block;padding:12px 18px;text-decoration:none;font-size:16px}
+.mnav nav a.mcall{color:var(--strap);font-weight:700}
+
+/* ——— hero ——— */
+.hero{position:relative;background:var(--steel);padding-top:var(--hdr-h)}
+.js .hero{height:330vh}
+.pin{position:relative;min-height:calc(100vh - var(--hdr-h));display:flex;align-items:center}
+.js .pin{position:sticky;top:var(--hdr-h);height:calc(100vh - var(--hdr-h))}
+.hero .wrap{display:grid;grid-template-columns:5fr 8fr;gap:48px;align-items:center}
+.h1{font-family:var(--f-d);font-weight:900;font-size:clamp(48px,6.4vw,100px);line-height:.9;letter-spacing:-.005em;text-transform:none}
+.h1 em{font-style:normal;color:var(--strap)}
+.lead{margin-top:22px;font-size:19px;color:#CDD2D7;max-width:34ch}
+.lead b{color:var(--txt)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.ghost{display:inline-flex;align-items:center;gap:9px;border:1.5px solid #6B737B;color:var(--txt);text-decoration:none;padding:10px 16px;border-radius:4px;font-size:16px}
+.ghost:hover{border-color:var(--txt)}
+.ghost svg{width:18px;height:18px}
+.stage{position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.cap{display:flex;gap:14px;align-items:baseline;margin-top:10px;min-height:52px;border-top:1px solid var(--line);padding-top:12px}
+.cap .n{font-family:var(--f-d);font-weight:800;font-size:28px;color:var(--strap);line-height:1;min-width:26px}
+.cap p{color:#CDD2D7;font-size:16px}
+.scrollhint{transition:opacity .4s;position:absolute;left:28px;bottom:18px;font-size:13.5px;color:var(--mute);display:flex;gap:8px;align-items:center}
+.scrollhint i{display:block;width:1px;height:26px;background:var(--mute);animation:hint 1.8s infinite}
+@keyframes hint{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(.2);transform-origin:bottom}}
+.drw .ln{stroke:#A9B0B7;stroke-width:2.4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.drw .lt{stroke:#5C646C;stroke-width:1.2;fill:none;stroke-dasharray:4 5}
+.drw .hi{stroke:var(--strap);stroke-width:2.4;fill:none;stroke-linejoin:round}
+.drw .fillb{fill:#262B30}
+.drw text{font-family:var(--f-t);font-size:15px;fill:#98A0A8;paint-order:stroke;stroke:#1F2327;stroke-width:6px}
+
+/* ——— sekcje ——— */
+.sec{padding:110px 0}
+.light{background:var(--sheet);color:var(--dark)}
+.paper{background:var(--paper);color:var(--dark)}
+.dark{background:var(--steel);color:var(--txt)}
+.ink{background:var(--ink);color:var(--txt)}
+.h2{font-family:var(--f-d);font-weight:800;font-size:clamp(38px,4.6vw,64px);line-height:.96;letter-spacing:.002em;max-width:18ch}
+.intro{font-size:18.5px;max-width:52ch;margin-top:18px}
+.light .intro,.paper .intro{color:#3B4248}
+.dark .intro,.ink .intro{color:#C3C9CF}
+
+/* tabela ładunków */
+.cargo{display:grid;grid-template-columns:4fr 8fr;gap:56px;margin-top:56px;align-items:start}
+.cargo figure{position:sticky;top:calc(var(--hdr-h) + 28px)}
+.cargo figure img{border-radius:3px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.cargo figcaption{font-size:14.5px;color:#4C545C;margin-top:10px}
+table.spec{width:100%;border-collapse:collapse;font-size:16.5px}
+.spec th{text-align:left;font-weight:700;font-size:14.5px;color:#4C545C;padding:0 12px 12px 0;border-bottom:2px solid var(--dark)}
+.spec td{padding:17px 12px 17px 0;border-bottom:1px solid #C2C7CC;vertical-align:top}
+.spec td:first-child{font-family:var(--f-d);font-weight:800;font-size:25px;line-height:1.05;width:32%}
+.spec td:last-child{white-space:nowrap;width:1%}
+.tag{display:inline-block;font-size:13.5px;font-weight:700;padding:3px 9px;border-radius:3px;background:var(--dark);color:var(--strap)}
+.tag.no{background:transparent;color:#4C545C;border:1px solid #9AA2AA;font-weight:400}
+.spec tr.more td{font-family:var(--f-t);font-size:16.5px;font-weight:400;color:#3B4248}
+.spec tr.more td:first-child{font-family:var(--f-d);font-weight:800;font-size:25px;color:var(--dark)}
+
+/* bus od środka */
+.bus{display:grid;grid-template-columns:6fr 5fr;gap:56px;margin-top:56px;align-items:start}
+.inside{position:relative;border-radius:3px;overflow:hidden}
+.inside img{width:100%}
+.pt{position:absolute;transform:translate(-9px,-9px);display:flex;align-items:center;gap:8px}
+.pt i{width:18px;height:18px;border-radius:50%;background:var(--strap);box-shadow:0 0 0 5px rgba(228,180,60,.28);flex:none}
+.pt span{background:rgba(16,18,20,.88);padding:6px 10px;border-radius:3px;font-size:14.5px;line-height:1.25;white-space:nowrap}
+.pt.l{flex-direction:row-reverse;transform:translate(calc(-100% + 9px),-9px)}
+.facts{display:grid;gap:26px}
+.facts p{font-size:17.5px;color:#C3C9CF;border-top:1px solid var(--line);padding-top:18px}
+.facts p b{display:block;font-family:var(--f-d);font-weight:800;font-size:27px;color:var(--txt);line-height:1.05;margin-bottom:6px}
+.busout{margin-top:26px;border-radius:3px}
+
+/* Marcin */
+.me{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:center}
+.me figure img{border-radius:3px;width:100%;max-width:440px;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%}
+.me .txt p{font-size:18.5px;color:#3B4248;margin-top:18px;max-width:54ch}
+.me .txt p b{color:var(--dark)}
+.sig{font-family:var(--f-d);font-weight:800;font-size:26px;margin-top:26px;color:var(--dark)}
+
+/* kroki */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:2px solid var(--strap)}
+.step{padding:28px 30px 8px 0}
+.step+.step{padding-left:30px;border-left:1px solid var(--line)}
+.step .n{font-family:var(--f-d);font-weight:900;font-size:64px;line-height:1;color:var(--strap)}
+.step h3{font-family:var(--f-d);font-weight:800;font-size:30px;line-height:1.05;margin:12px 0 10px}
+.step p{color:#C3C9CF;font-size:17px}
+
+/* kontakt */
+.contact{display:grid;grid-template-columns:6fr 6fr;gap:64px;align-items:start}
+.bigtel{font-family:var(--f-t);font-weight:700;font-size:clamp(38px,5vw,64px);line-height:1;text-decoration:none;display:inline-block;margin-top:26px;color:var(--dark);font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em}
+.bigtel:hover{color:var(--strap-d)}
+.alt{margin-top:18px;font-size:17px;color:#3B4248}
+.alt a{color:var(--dark);font-weight:700}
+.btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn-d{display:inline-flex;align-items:center;gap:9px;background:var(--dark);color:#fff;text-decoration:none;font-weight:700;padding:13px 18px;border-radius:4px}
+.btn-d svg{width:18px;height:18px}
+.btn-o{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--dark);color:var(--dark);text-decoration:none;padding:12px 18px;border-radius:4px}
+form.f{display:grid;gap:14px;background:#fff;padding:30px;border-radius:4px;border:1px solid #C9CED3}
+.f label{display:grid;gap:6px;font-size:15px;color:#3B4248}
+.f input,.f textarea{font:inherit;font-size:16.5px;padding:12px 13px;border:1px solid #9AA2AA;border-radius:3px;background:#fff;color:var(--dark)}
+.f textarea{min-height:110px;resize:vertical}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f button{font:inherit;font-weight:700;background:var(--strap);color:var(--ink);border:0;padding:14px;border-radius:4px;cursor:pointer;font-size:16.5px}
+.f button:hover{background:#F0C451}
+.f small{color:#4C545C;font-size:13.5px}
+
+footer{background:var(--ink);color:var(--mute);padding:44px 0 110px;font-size:15px}
+footer a{display:inline-block;padding:12px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
+footer .brand span{color:var(--txt)}
+
+.mbar{display:none}
+
+/* odsłanianie */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*85ms)}
+.js .stagger.in>*{opacity:1;transform:none}
+
+@media(max-width:1060px){
+  .nav{display:none}.mnav{display:block}
+  .hero .wrap{grid-template-columns:1fr;gap:18px}
+  .js .hero{height:300vh}
+  .pin{align-items:flex-start;padding-top:18px}
+  .h1{font-size:clamp(40px,9vw,64px)}
+  .lead{font-size:17px;margin-top:14px}
+  .ctas{margin-top:18px}
+  .cargo,.bus,.me,.contact{grid-template-columns:1fr;gap:34px}
+  .cargo figure{position:static;max-width:520px}
+  .cargo figure img{aspect-ratio:4/3}
+}
+@media(max-width:760px){
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .sec{padding:76px 0}
+  .hdr .wrap{height:58px;gap:10px}
+  .brand span{font-size:24px}.brand small{display:none}
+  .scrollhint{display:none}
+  .lead{max-width:none}
+  .js .pin{min-height:0;height:calc(100svh - var(--hdr-h) - 68px)}
+  .hero .ctas{display:none}
+  .lead{font-size:16px}
+  #lbl1,#lbl2,.drw .ptxt{display:none}
+  .pt.fl{flex-direction:row;transform:translate(-9px,-9px)}
+  .stage{margin-top:4px}
+  .cap{min-height:64px}
+  .cap p{font-size:15px}
+  .spec thead{display:none}
+  .spec tr{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:16px 0;border-bottom:1px solid #C2C7CC}
+  .spec td{border:0;padding:0}
+  .spec td:first-child{width:auto;font-size:23px}
+  .spec td:nth-child(2){grid-column:1/-1;grid-row:2;color:#3B4248}
+  .spec td:last-child{grid-column:2;grid-row:1;align-self:center}
+  .pt span{font-size:12.5px;padding:4px 7px}
+  .steps{grid-template-columns:1fr}
+  .step,.step+.step{padding:24px 0 10px;border-left:0}
+  .step+.step{border-top:1px solid var(--line)}
+  .f .two{grid-template-columns:1fr}
+  form.f{padding:20px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--ink);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px}
+  .mbar a{display:flex;justify-content:center;align-items:center;gap:8px;min-height:46px;border-radius:4px;text-decoration:none;font-weight:700;font-size:16px}
+  .mbar a:first-child{background:var(--strap);color:var(--ink)}
+  .mbar a:last-child{border:1.5px solid #6B737B;color:var(--txt)}
+  .mbar svg{width:18px;height:18px}
+  .js .reveal{transform:translateY(16px);transition-duration:.7s}
+  .js .stagger>*{transform:translateY(16px);transition-duration:.7s;transition-delay:calc(var(--i,0)*55ms)}
+}
+@media(max-width:420px){
+  .hdr .call{display:none}
+  .mk{font-size:12.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .hero{height:auto}
+  .js .pin{position:relative;top:0;height:auto;min-height:calc(100vh - var(--hdr-h));padding:30px 0}
+  .js .reveal,.js .stagger>*{opacity:1!important;transform:none!important;transition:none!important}
+  .scrollhint i{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="top" id="top">
+  <div class="mk"><b>Makieta</b> — propozycja nowej strony dla MJ Transport · wariant W1 „Winda” · ODNOVA Studio</div>
+  <header class="hdr" id="hdr">
+    <div class="wrap">
+      <a class="brand" href="#start" aria-label="MJ Transport — na górę strony">
+        <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="4" width="17" height="21" rx="1.5" fill="none" stroke="#E8EAEC" stroke-width="2.2"/><path d="M20 25h11" stroke="#E4B43C" stroke-width="3.2" stroke-linecap="round"/><rect x="23" y="17" width="6" height="6" fill="#E4B43C"/><circle cx="9" cy="28" r="2.6" fill="#E8EAEC"/></svg>
+        <span>MJ Transport<small>Marcin Jaśkiewicz · Warszawa</small></span>
+      </a>
+      <nav class="nav" aria-label="Sekcje">
+        <a href="#ladunki">Co przewożę</a><a href="#bus">Bus</a><a href="#marcin">O mnie</a><a href="#jak">Jak zamówić</a><a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="call tn" href="tel:+48503641330"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>503 641 330</a>
+      <details class="mnav"><summary>Menu</summary><nav aria-label="Sekcje (telefon)">
+        <a href="#ladunki">Co przewożę</a><a href="#bus">Bus</a><a href="#marcin">O mnie</a><a href="#jak">Jak zamówić</a><a href="#kontakt">Kontakt</a><a class="mcall tn" href="tel:+48503641330">Zadzwoń: 503 641 330</a>
+      </nav></details>
+    </div>
+  </header>
+</div>
+
+<main id="start">
+<section class="hero" id="hero" aria-label="Przewóz z windą">
+  <div class="pin">
+    <div class="wrap">
+      <div>
+        <h1 class="h1">Pralka jedzie windą, nie na&nbsp;plecach.</h1>
+        <p class="lead">Jestem Marcin. Od <b>10 lat wożę po Warszawie</b>. Mam busa z podnośnikiem i pasami: pralka, szafa czy paleta jadą bez szarpania i bez ryzyka.</p>
+        <div class="ctas">
+          <a class="call tn" href="tel:+48503641330"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>Zadzwoń: 503 641 330</a>
+          <a class="ghost" href="sms:+48503641330?body=Dzie%C5%84%20dobry%2C%20prosz%C4%99%20o%20wycen%C4%99%20przewozu%3A%20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>Wyślij zdjęcie ładunku</a>
+        </div>
+      </div>
+      <div class="stage">
+        <svg class="drw" id="drw" viewBox="10 20 800 480" role="img" aria-label="Rysunek: winda busa podnosi ładunek z chodnika na pakę">
+          <!-- ziemia -->
+          <path class="ln" d="M10 468H810"/>
+          <g class="hatch"><path class="lt" d="M20 468l-12 14M60 468l-12 14M100 468l-12 14M140 468l-12 14M180 468l-12 14M220 468l-12 14M260 468l-12 14M300 468l-12 14M340 468l-12 14M380 468l-12 14M420 468l-12 14M460 468l-12 14M500 468l-12 14M540 468l-12 14M580 468l-12 14M620 468l-12 14M660 468l-12 14M700 468l-12 14M740 468l-12 14M780 468l-12 14" style="stroke-dasharray:none"/></g>
+          <!-- nadwozie (tył busa, przekrój) -->
+          <path class="fillb" d="M52 378V96Q54 70 84 68L508 62Q530 62 530 84V378Z"/>
+          <path class="ln" d="M60 378H530V84Q530 62 508 62L84 68Q54 70 52 96V110l10 14-18 16 18 16-10 14V378"/>
+          <path class="ln" d="M52 378V404H320M440 404H536V384"/>
+          <rect class="ln" x="524" y="404" width="22" height="10" rx="2"/>
+          <!-- szyny na ścianie -->
+          <path class="lt" d="M70 160H516M70 260H516"/>
+          <!-- ładunek w środku -->
+          <g><rect class="ln" x="76" y="262" width="96" height="116"/><rect class="ln" x="182" y="300" width="70" height="78"/><rect class="ln" x="182" y="238" width="58" height="62"/><path class="lt" d="M76 320H172M124 262V378"/></g>
+          <!-- koło -->
+          <path class="ln" d="M320 404Q322 380 380 378Q438 380 440 404"/>
+          <circle class="ln" cx="380" cy="428" r="40" style="fill:#1F2327"/><circle class="ln" cx="380" cy="428" r="15"/>
+          <!-- lampa tylna i drzwi -->
+          <rect class="ln" x="530" y="236" width="10" height="54" style="fill:#3a2226"/>
+          
+          <!-- ramię podnośnika -->
+          <g id="arm"><path class="ln" id="arm1" d="M500 406L540 460" style="stroke-width:3"/><path class="ln" id="arm2" d="M514 398L552 452" style="stroke-width:3"/><circle cx="500" cy="406" r="4" fill="#9AA2AA"/><circle cx="514" cy="398" r="4" fill="#9AA2AA"/></g>
+          <!-- platforma -->
+          <g id="plat"><rect class="hi" x="0" y="-7" width="176" height="9" rx="1" style="fill:#2A2F34"/><path d="M8 2.5h160" stroke="#E4B43C" stroke-width="1" stroke-dasharray="6 6"/></g>
+          <!-- pralka -->
+          <g id="load">
+            <rect class="hi" x="0" y="-88" width="70" height="88" rx="3" style="fill:#2A2F34"/>
+            <path class="hi" d="M0 -74H70" style="stroke-width:1.6"/>
+            <circle class="hi" cx="35" cy="-36" r="21" style="stroke-width:2"/><circle class="hi" cx="35" cy="-36" r="12" style="stroke-width:1.4"/>
+            <circle cx="12" cy="-81" r="2.6" fill="#E4B43C"/><circle cx="22" cy="-81" r="2.6" fill="#E4B43C"/>
+          </g>
+          <!-- pasy -->
+          <g id="straps">
+            <path class="hi" id="strap1" d="M306 312H424" pathLength="1" style="stroke-dasharray:1 1;stroke-dashoffset:1;stroke-width:3.4"/>
+            <path class="hi" id="strap2" d="M306 352H424" pathLength="1" style="stroke-dasharray:1 1;stroke-dashoffset:1;stroke-width:3.4"/>
+            <g id="ratch" style="opacity:0"><rect x="300" y="304" width="10" height="16" fill="#E4B43C"/><rect x="420" y="304" width="10" height="16" fill="#E4B43C"/><rect x="300" y="344" width="10" height="16" fill="#E4B43C"/><rect x="420" y="344" width="10" height="16" fill="#E4B43C"/></g>
+          </g>
+          <!-- podpisy techniczne -->
+          <g id="lbl1"><path class="lt" d="M690 420V318"/><text x="640" y="308">winda (podnośnik)</text></g>
+          <g id="lbl2"><path class="lt" d="M428 312H470V160"/><text x="476" y="150">pasy do szyn</text></g>
+          <text class="ptxt" x="64" y="54">paka, przekrój</text>
+        </svg>
+        <div class="cap" aria-live="polite"><span class="n" id="capn">1</span><p id="capt">Pralka staje na opuszczonej platformie. Nikt jej nie dźwiga.</p></div>
+      </div>
+    </div>
+    <div class="scrollhint" aria-hidden="true"><i></i>przewiń</div>
+  </div>
+</section>
+
+<section class="sec light" id="ladunki">
+  <div class="wrap">
+    <h2 class="h2 reveal">Co wchodzi na pakę</h2>
+    <p class="intro reveal">Przewożę rzeczy, z którymi nie da się pojechać taksówką. Przy każdym ładunku wiem, jak go zabezpieczyć, zanim ruszę.</p>
+    <div class="cargo">
+      <figure class="reveal"><img src="img/pasy-agd-800.webp" srcset="img/pasy-agd-800.webp 800w, img/pasy-agd-1600.webp 1600w" sizes="(max-width:1060px) 520px, 34vw" width="800" height="1067" alt="Lodówka owinięta folią, przypięta pasami do ściany paki, obok wózek paletowy"><figcaption>Lodówka w pionie, spięta dwoma pasami do szyny.</figcaption></figure>
+      <table class="spec">
+        <thead><tr><th>Ładunek</th><th>Jak zabezpieczam</th><th>Winda</th></tr></thead>
+        <tbody class="stagger">
+          <tr><td>Meble</td><td>Szafy, sofy, łóżka, komody. Koce i folia na narożniki, pasy do szyn.</td><td><span class="tag">tak</span></td></tr>
+          <tr><td>AGD i RTV</td><td>Pralki, lodówki, telewizory. Zawsze w pionie, z pasem u góry i u dołu.</td><td><span class="tag">tak</span></td></tr>
+          <tr><td>Przeprowadzki</td><td>Mieszkanie albo biuro: kartony, meble, wniesienie na miejsce.</td><td><span class="tag">tak</span></td></tr>
+          <tr><td>Palety</td><td>Na pokładzie jest wózek paletowy, więc paleta wjeżdża windą i od razu na miejsce.</td><td><span class="tag">tak</span></td></tr>
+          <tr><td>Pianina i instrumenty</td><td>Wolno, na windzie, bez przechylania.</td><td><span class="tag">tak</span></td></tr>
+          <tr><td>Sprzęt medyczny</td><td>Łóżka, wózki, aparatura. Delikatnie i w ustalonym terminie.</td><td><span class="tag">tak</span></td></tr>
+          <tr><td>Rowery i sprzęt sportowy</td><td>Przypięte, oddzielone kocem od reszty ładunku.</td><td><span class="tag no">nie trzeba</span></td></tr>
+          <tr><td>Materiały budowlane</td><td>Worki, płyty, profile, na paletach albo luzem.</td><td><span class="tag">tak</span></td></tr>
+          <tr class="more"><td>Coś nietypowego?</td><td>Wyślij zdjęcie, a powiem od razu, czy wejdzie i jak to przewiozę.</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="bus">
+  <div class="wrap">
+    <h2 class="h2 reveal">Bus od środka</h2>
+    <p class="intro reveal">Tak wygląda paka po kursie z paletami. Wszystko, czego potrzebuję do bezpiecznego przewozu, jeździ ze mną.</p>
+    <div class="bus">
+      <div class="inside reveal">
+        <img src="img/wnetrze-wozek-800.webp" srcset="img/wnetrze-wozek-800.webp 800w, img/wnetrze-wozek-1600.webp 1600w" sizes="(max-width:1060px) 100vw, 55vw" width="800" height="1067" alt="Wnętrze paki: paleta spięta pasami, wózek paletowy, koce i folia">
+        <div class="pt" style="left:12%;top:40%"><i></i><span>Koce na meble</span></div>
+        <div class="pt l" style="left:49%;top:48.5%"><i></i><span>Pasy do szyn</span></div>
+        <div class="pt" style="left:51%;top:61%"><i></i><span>Wózek paletowy</span></div>
+        <div class="pt l fl" style="left:64%;top:56%"><i></i><span>Folia i tektura</span></div>
+      </div>
+      <div>
+        <div class="facts stagger">
+          <p><b>Winda z tyłu busa.</b>Opuszcza się do chodnika, więc ciężki ładunek nie jest dźwigany na wysokość paki.</p>
+          <p><b>Szyny na obu ścianach.</b>Każdą rzecz przypinam pasem, żeby nic nie przesunęło się na zakręcie ani przy hamowaniu.</p>
+          <p><b>Trzy auta.</b>Gdy ładunek jest większy albo liczy się czas, bierzemy drugie auto i robimy to w jeden kurs.</p>
+        </div>
+        <img class="busout reveal" src="img/bus-winda-800.webp" srcset="img/bus-winda-800.webp 800w, img/bus-winda-1600.webp 1600w" sizes="(max-width:1060px) 100vw, 45vw" width="800" height="528" alt="Biały Mercedes Sprinter z opuszczoną windą na parkingu">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec paper" id="marcin">
+  <div class="wrap me">
+    <figure class="reveal"><img src="img/marcin-800.webp" width="720" height="909" alt="Marcin Jaśkiewicz"></figure>
+    <div class="txt">
+      <h2 class="h2 reveal">Przyjeżdżam sam, nie wysyłam „kogoś z firmy”</h2>
+      <div class="stagger">
+        <p><b>Wożę od 10 lat.</b> Na co dzień jeżdżę na stałym kontrakcie i zaopatruję sklepy. Warszawę znam z codziennych kursów.</p>
+        <p><b>Zawsze zostaje mi kilka godzin.</b> Dlatego biorę dodatkowe zlecenia: przeprowadzki, dowóz kupionego sprzętu, kursy dla stałych klientów. Także w weekendy.</p>
+        <p><b>Poza Warszawę też pojadę.</b> Trasę i termin ustalamy przez telefon, a cenę znasz przed wyjazdem, bez dopisków na miejscu.</p>
+        <p class="sig">Marcin Jaśkiewicz</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ink" id="jak">
+  <div class="wrap">
+    <h2 class="h2 reveal">Jak zamówić kurs</h2>
+    <div class="steps stagger">
+      <div class="step"><div class="n">1</div><h3>Wyślij zdjęcie</h3><p>SMS-em albo na WhatsAppie: co jedzie, skąd, dokąd i które piętro. Napisz, czy w budynku jest winda.</p></div>
+      <div class="step"><div class="n">2</div><h3>Oddzwaniam z ceną</h3><p>Wyceniam po rodzaju i wielkości ładunku. Wszystko ustalamy w rozmowie, bez pustych kosztów.</p></div>
+      <div class="step"><div class="n">3</div><h3>Ładuję i wnoszę</h3><p>Przyjeżdżam o umówionej porze, zabezpieczam ładunek, wiozę i wnoszę na miejsce.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec light" id="kontakt">
+  <div class="wrap contact">
+    <div>
+      <h2 class="h2 reveal">Zadzwoń albo wyślij zdjęcie</h2>
+      <a class="bigtel reveal" href="tel:+48503641330">503 641 330</a>
+      <div class="btnrow reveal">
+        <a class="btn-d" href="sms:+48503641330"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>SMS ze zdjęciem</a>
+        <a class="btn-o" href="https://wa.me/48503641330">WhatsApp</a>
+      </div>
+      <p class="alt reveal">E-mail: <a href="mailto:mjfilip36@gmail.com">mjfilip36@gmail.com</a><br>Warszawa i okolice, dalej po uzgodnieniu. Również w weekendy.</p>
+    </div>
+    <form class="f reveal" onsubmit="event.preventDefault();this.querySelector('button').textContent='Dziękuję, oddzwonię (makieta)'">
+      <div class="two"><label>Imię<input name="imie" autocomplete="given-name" required></label><label>Telefon<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label></div>
+      <div class="two"><label>Skąd<input name="skad" placeholder="np. Mokotów, 3 piętro"></label><label>Dokąd<input name="dokad" placeholder="np. Wola, parter"></label></div>
+      <label>Co przewieźć<textarea name="co" placeholder="np. pralka i dwie szafy, winda w budynku jest"></textarea></label>
+      <button type="submit">Poproś o wycenę</button>
+      <small>Oddzwonię, żeby ustalić szczegóły i cenę.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="4" width="17" height="21" rx="1.5" fill="none" stroke="#E8EAEC" stroke-width="2.2"/><path d="M20 25h11" stroke="#E4B43C" stroke-width="3.2" stroke-linecap="round"/><rect x="23" y="17" width="6" height="6" fill="#E4B43C"/><circle cx="9" cy="28" r="2.6" fill="#E8EAEC"/></svg><span>MJ Transport</span></span>
+    <span>Marcin Jaśkiewicz · Warszawa · <a href="tel:+48503641330" class="tn">503 641 330</a></span>
+    <span>Makieta W1 „Winda” · ODNOVA Studio</span>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="Szybki kontakt">
+  <a href="tel:+48503641330" class="tn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>Zadzwoń</a>
+  <a href="sms:+48503641330?body=Dzie%C5%84%20dobry%2C%20prosz%C4%99%20o%20wycen%C4%99%20(zdj%C4%99cie%20w%20za%C5%82%C4%85czniku)%3A%20">Wyślij zdjęcie</a>
+</div>
+
+<script>
+(()=>{
+/* na komputerze sms: nie działa — kieruj na WhatsApp (do potwierdzenia z klientem) */
+if(matchMedia('(hover:hover) and (pointer:fine)').matches)document.querySelectorAll('a[href^="sms:"]').forEach(a=>{a.href='https://wa.me/48503641330';a.target='_blank';a.rel='noopener'});
+const root=document.documentElement, top=document.getElementById('top'), hdr=document.getElementById('hdr');
+const m=()=>root.style.setProperty('--hdr-h',top.offsetHeight+'px'); m(); addEventListener('resize',m); addEventListener('load',m);
+addEventListener('scroll',()=>hdr.classList.toggle('sc',scrollY>20),{passive:true});
+document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
+
+/* odsłanianie */
+document.querySelectorAll('.stagger').forEach(s=>[...s.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+const els=[...document.querySelectorAll('.reveal,.stagger')]; let fired=false;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+els.forEach(e=>io.observe(e));
+const sweep=()=>els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingClientRect().top<innerHeight*.95){e.classList.add('in');io.unobserve(e)}});
+let st; addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
+setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
+
+/* hero: winda */
+const hero=document.getElementById('hero'), pin=hero.querySelector('.pin');
+const plat=document.getElementById('plat'), load=document.getElementById('load'), a1=document.getElementById('arm1'), a2=document.getElementById('arm2');
+const hint=document.querySelector('.scrollhint'), ratch=document.getElementById('ratch'), s1=document.getElementById('strap1'), s2=document.getElementById('strap2'), capn=document.getElementById('capn'), capt=document.getElementById('capt');
+const caps=[[.0,'1','Pralka staje na opuszczonej platformie. Nikt jej nie dźwiga.'],[.24,'2','Winda podnosi ją równo do poziomu paki.'],[.5,'3','Wjeżdża do środka na wózku, bez przechylania.'],[.68,'4','Dwa pasy spinają ją do szyn na ścianie.'],[.84,'5','Platforma się składa. Jedziemy.']];
+const cl=v=>Math.max(0,Math.min(1,v)), seg=(p,a,b)=>cl((p-a)/(b-a)), ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const HX=530, GY=466, FY=380;
+let lastCap=-1;
+function draw(p){
+  const rise=ease(seg(p,.24,.48)), inx=ease(seg(p,.5,.66)), onx=ease(seg(p,.04,.2)), sp=ease(seg(p,.68,.82)), fold=ease(seg(p,.84,.98));
+  const py=GY-(GY-FY)*rise;
+  const ang=-90*fold;
+  plat.setAttribute('transform',`translate(${HX} ${py}) rotate(${ang})`);
+  // ramię: od podwozia do spodu platformy
+  const ey=py+4, ex=HX+18;
+  a1.setAttribute('d',`M500 406L${ex} ${ey+2}`); a2.setAttribute('d',`M514 398L${ex+14} ${ey}`);
+  // ładunek
+  let lx=700-(700-560)*onx; let ly=GY-6;
+  if(p>=.24){lx=560; ly=py-6}
+  if(p>=.5){lx=560-(560-330)*inx; ly=FY}
+  load.setAttribute('transform',`translate(${lx} ${ly})`);
+  hint.style.opacity=p>.04?0:1;
+  s1.style.strokeDashoffset=1-cl(sp*1.4); s2.style.strokeDashoffset=1-cl(sp*1.4-.4); ratch.style.opacity=sp>.98?1:0;
+  let k=0; caps.forEach((c,i)=>{if(p>=c[0])k=i});
+  if(k!==lastCap){lastCap=k;capn.textContent=caps[k][1];capt.textContent=caps[k][2]}
+}
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(reduce){draw(1)}else{
+  let raf=0;
+  const upd=()=>{raf=0;const r=hero.getBoundingClientRect(), ph=pin.offsetHeight, span=(r.height-ph-parseFloat(getComputedStyle(pin).top||0))*.92;
+    const p=span>0?cl(-r.top/span):0; draw(p)};
+  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true}); addEventListener('resize',upd); upd();
+}
+})();
+</script>
+</body>
+</html>
