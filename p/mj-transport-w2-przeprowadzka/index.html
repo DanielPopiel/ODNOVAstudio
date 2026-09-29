@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Transport — przeprowadzki Warszawa, Marcin Jaśkiewicz · makieta W2 „Przeprowadzka”</title>
+<meta name="description" content="Przeprowadzki mieszkań i biur w Warszawie. Marcin Jaśkiewicz, MJ Transport: pakowanie, znoszenie, bus z windą, wniesienie na miejsce. Także w weekendy.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="MJ Transport — przeprowadzki Warszawa, Marcin Jaśkiewicz · makieta W2 „Przeprowadzka”"><meta property="og:description" content="Przeprowadzki mieszkań i biur w Warszawie. Marcin Jaśkiewicz, MJ Transport: pakowanie, znoszenie, bus z windą, wniesienie na miejsce. Także w weekendy."><meta property="og:type" content="website">
+<meta property="og:image" content="https://www.odnovastudio.com/p/mj-transport-w2-przeprowadzka/og.jpg"><meta property="og:url" content="https://www.odnovastudio.com/p/mj-transport-w2-przeprowadzka/">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='8' fill='%232F2219'/%3E%3Ccircle cx='13' cy='17' r='5.2' fill='none' stroke='%23C98A3E' stroke-width='2.6'/%3E%3Cpath d='M18 17h10M24 17v4M27 17v3' stroke='%23C98A3E' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Petrona:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wal:#2F2219; --wal2:#3E2F24; --wal3:#54402F;
+  --honey:#C98A3E; --honey-d:#8F5A1E; --honey-l:#F2DDB9;
+  --wall:#FBFAF7; --wall2:#F1ECE4; --ink:#1F1B17; --mute:#5E554C;
+  --onw:#F6EFE6; --onwm:#CDBCA9;
+  --f-d:'Petrona',Georgia,serif; --f-t:'Hanken Grotesk',system-ui,sans-serif;
+  --hdr-h:100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-t);background:var(--wall);color:var(--ink);font-size:17px;line-height:1.6;accent-color:var(--honey-d);caret-color:var(--honey-d)}
+::selection{background:var(--honey-l);color:var(--ink)}
+:focus-visible{outline:3px solid var(--honey-d);outline-offset:3px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+.wrap{width:100%;max-width:1220px;margin:0 auto;padding:0 28px}
+.tn{font-variant-numeric:tabular-nums lining-nums}
+
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mk{background:var(--honey-l);color:var(--wal);font-size:13.5px;text-align:center;padding:6px 16px;line-height:1.35}
+.hdr{background:rgba(251,250,247,.96);border-bottom:1px solid #E4DCCF;backdrop-filter:blur(8px)}
+.hdr .wrap{display:flex;align-items:center;gap:26px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;min-height:44px}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-family:var(--f-d);font-weight:600;font-size:22px;line-height:1.1;display:block;color:var(--wal)}
+.brand small{display:block;font-size:12.5px;color:var(--mute)}
+.nav{display:flex;gap:24px}
+.nav a{text-decoration:none;font-size:15.5px;color:var(--mute);padding:8px 0}
+.nav a:hover{color:var(--wal)}
+.call{display:inline-flex;align-items:center;gap:9px;background:var(--wal);color:#fff;text-decoration:none;font-weight:600;padding:11px 17px;border-radius:8px;font-size:16px;white-space:nowrap}
+.call svg{width:17px;height:17px}
+.call:hover{background:var(--wal3)}
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 16px;border:1px solid #D9CFC0;border-radius:8px;font-size:15px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:52px;background:#fff;border:1px solid #D9CFC0;min-width:230px;padding:8px 0;border-radius:10px}
+.mnav nav a{display:block;padding:12px 20px;text-decoration:none;font-size:16px}
+.mnav nav a.mcall{color:var(--honey-d);font-weight:700}
+
+/* hero: film przeprowadzki sterowany przewijaniem */
+.hero{position:relative;background:var(--wall2);padding-top:var(--hdr-h)}
+.js .hero{height:400vh}
+.pin{position:relative;min-height:calc(100vh - var(--hdr-h));overflow:hidden}
+.js .pin{position:sticky;top:var(--hdr-h);height:calc(100vh - var(--hdr-h))}
+.film{position:absolute;inset:0}
+.film img,.film canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.film canvas{display:none}.js .film canvas{display:block}.js .film img{display:none}
+.film::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(251,250,247,.93) 0%,rgba(251,250,247,.8) 27%,rgba(251,250,247,.25) 42%,rgba(251,250,247,0) 52%);pointer-events:none}
+.htxt{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:20px;padding-bottom:110px}
+.h1{font-family:var(--f-d);font-weight:600;font-size:clamp(40px,4.6vw,68px);line-height:1.04;letter-spacing:-.015em;color:var(--wal);max-width:13ch}
+.lead{margin-top:20px;font-size:18.5px;color:#43392F;max-width:36ch}
+.lead b{color:var(--wal);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--wal);color:#fff;text-decoration:none;font-weight:600;padding:13px 19px;border-radius:8px;font-size:16.5px}
+.btn:hover{background:var(--wal3)}
+.btn svg,.btn2 svg{width:18px;height:18px}
+.btn2{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.7);border:1.5px solid var(--wal);color:var(--wal);text-decoration:none;font-weight:600;padding:12px 18px;border-radius:8px;font-size:16.5px}
+.btn2:hover{background:#fff}
+.steps{position:absolute;z-index:3;left:0;right:0;bottom:22px}
+.steps .wrap{display:flex;justify-content:flex-end}
+.bar{display:grid;grid-template-columns:repeat(4,auto);gap:0;background:rgba(47,34,25,.88);color:var(--onwm);border-radius:10px;overflow:hidden;backdrop-filter:blur(6px)}
+.bar span{position:relative;padding:12px 18px;font-size:14.5px;white-space:nowrap;transition:color .3s}
+.bar span+span{border-left:1px solid rgba(255,255,255,.1)}
+.bar span::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--p,0%);background:var(--honey)}
+.bar span.on{color:#fff}
+.bar b{font-weight:600}
+.load{position:absolute;right:28px;top:18px;z-index:3;font-size:13px;color:var(--mute);background:rgba(255,255,255,.8);padding:4px 10px;border-radius:6px;transition:opacity .4s}
+
+/* sekcje */
+.sec{padding:110px 0}
+.h2{font-family:var(--f-d);font-weight:600;font-size:clamp(32px,3.5vw,50px);line-height:1.1;letter-spacing:-.01em;max-width:20ch}
+.dark{background:var(--wal);color:var(--onw)}
+.dark .h2{color:#fff}
+.soft{background:var(--wall2)}
+
+.keys{display:grid;grid-template-columns:6fr 5fr;gap:64px;align-items:center}
+.keys .big{font-family:var(--f-d);font-weight:500;font-size:clamp(24px,2.3vw,32px);line-height:1.35;color:var(--wal);margin-top:22px;max-width:28ch}
+.keys p.t{color:var(--mute);margin-top:18px;max-width:50ch}
+.keys figure img{border-radius:12px;aspect-ratio:4/3;object-fit:cover;width:100%}
+.keys figcaption{font-size:14px;color:var(--mute);margin-top:10px}
+
+/* dzień przeprowadzki — oś */
+.day{margin-top:60px;position:relative}
+.day::before{content:"";position:absolute;left:calc(33.33% - 1px);top:0;bottom:0;width:2px;background:rgba(201,138,62,.35)}
+.mv{display:grid;grid-template-columns:1fr 2fr;gap:0 56px;padding:0 0 64px}
+.mv:last-child{padding-bottom:0}
+.mv .l{text-align:right;position:relative;padding-right:28px}
+.mv .l .n{font-family:var(--f-d);font-weight:600;font-size:15px;color:var(--honey);letter-spacing:.02em}
+.mv .l h3{font-family:var(--f-d);font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.15;color:#fff;margin-top:4px}
+.mv .l::after{content:"";position:absolute;right:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--honey);box-shadow:0 0 0 6px rgba(201,138,62,.18)}
+.mv .r{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
+.mv .r p{color:var(--onwm);font-size:17px}
+.mv .r p b{color:#fff;font-weight:600}
+.mv .r img{border-radius:10px;aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* co przewożę */
+.what{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.what ul{list-style:none;columns:2;column-gap:40px}
+.what li{break-inside:avoid;padding:14px 0;border-bottom:1px solid #DED5C8;font-size:17.5px}
+.what li b{font-family:var(--f-d);font-weight:600;font-size:21px;display:block;color:var(--wal)}
+.what li span{color:var(--mute);font-size:15.5px}
+.what .note{color:var(--mute);margin-top:18px;max-width:36ch}
+
+/* Marcin */
+.me{display:grid;grid-template-columns:4fr 7fr;gap:64px;align-items:center}
+.me img{border-radius:12px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;width:100%;max-width:400px}
+.me blockquote{font-family:var(--f-d);font-style:italic;font-weight:500;font-size:clamp(24px,2.3vw,32px);line-height:1.35;color:#fff;max-width:28ch}
+.me cite{display:block;font-style:normal;color:var(--onwm);margin-top:14px}
+.me .facts{display:grid;grid-template-columns:1fr 1fr;gap:22px 36px;margin-top:36px}
+.me .facts p{color:var(--onwm);font-size:16.5px;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.me .facts b{display:block;color:#fff;font-weight:600;font-size:17px}
+
+/* pytania */
+.faq{display:grid;grid-template-columns:4fr 8fr;gap:64px;align-items:start}
+.faq .side p{color:var(--mute);margin-top:16px;max-width:30ch}
+.qa details{border-top:1px solid #DED5C8}
+.qa details:last-child{border-bottom:1px solid #DED5C8}
+.qa summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-family:var(--f-d);font-weight:600;font-size:clamp(19px,1.7vw,23px);line-height:1.35;color:var(--wal);min-height:44px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary svg{width:22px;height:22px;flex:none;color:var(--honey-d);transition:transform .3s}
+.qa details[open] summary svg{transform:rotate(45deg)}
+.qa details p{padding:0 44px 22px 0;color:var(--mute);max-width:62ch}
+
+/* kontakt */
+.contact{display:grid;grid-template-columns:6fr 5fr;gap:64px;align-items:start}
+.contact .lead2{color:var(--onwm);font-size:18.5px;margin-top:18px;max-width:40ch}
+.bigtel{display:inline-block;font-family:var(--f-t);font-weight:700;font-size:clamp(36px,4.4vw,58px);line-height:1;text-decoration:none;margin-top:28px;color:#fff;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em}
+.bigtel:hover{color:var(--honey-l)}
+.btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn-h{display:inline-flex;align-items:center;gap:9px;background:var(--honey);color:var(--wal);text-decoration:none;font-weight:700;padding:13px 19px;border-radius:8px}
+.btn-h:hover{background:#D99A4E}
+.btn-h svg{width:18px;height:18px}
+.alt{color:var(--onwm);margin-top:20px}
+.alt a{color:#fff;display:inline-block;padding:10px 0}
+form.f{display:grid;gap:14px;background:var(--wall);color:var(--ink);padding:30px;border-radius:12px}
+.f h3{font-family:var(--f-d);font-weight:600;font-size:24px;line-height:1.3;color:var(--wal)}
+.f label{display:grid;gap:6px;font-size:15px;color:var(--mute)}
+.f input,.f textarea,.f select{font:inherit;font-size:16.5px;padding:12px 14px;border:1px solid #CFC4B4;border-radius:8px;background:#fff;color:var(--ink)}
+.f textarea{min-height:100px;resize:vertical}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f button{font:inherit;font-weight:700;background:var(--wal);color:#fff;border:0;padding:14px;border-radius:8px;cursor:pointer;font-size:16.5px}
+.f button:hover{background:var(--wal3)}
+
+footer{background:var(--wall2);color:var(--mute);padding:40px 0 110px;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:center}
+footer b{font-family:var(--f-d);font-weight:600;color:var(--wal);font-size:19px}
+footer a{display:inline-block;padding:10px 0}
+.mbar{display:none}
+
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*85ms)}
+.js .stagger.in>*{opacity:1;transform:none}
+
+@media(max-width:1060px){
+  .nav{display:none}.mnav{display:block}
+  .keys,.what,.me,.faq,.contact{grid-template-columns:1fr;gap:40px}
+  .day::before{left:9px}
+  .mv{grid-template-columns:1fr;gap:14px;padding-left:40px}
+  .mv .l{text-align:left;padding-right:0}
+  .mv .l::after{left:-38px;right:auto}
+  .me img{max-width:320px}
+}
+@media(max-width:760px){
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .sec{padding:76px 0}
+  .hdr .wrap{height:58px;gap:10px}
+  .brand small{display:none}.brand b{font-size:20px}
+  .js .pin{height:calc(100svh - var(--hdr-h) - 68px)}
+  .pin{min-height:calc(100svh - var(--hdr-h) - 68px)}
+  .film img,.film canvas{object-position:62% 50%}
+  .film::after{background:linear-gradient(180deg,rgba(251,250,247,.95) 0%,rgba(251,250,247,.88) 26%,rgba(251,250,247,.2) 44%,rgba(251,250,247,0) 54%)}
+  .htxt{justify-content:flex-start;padding-top:22px;padding-bottom:0}
+  .h1{font-size:32px;max-width:15ch}
+  .hero .lead{font-size:15.5px;margin-top:10px;max-width:32ch}
+  .hero .ctas{display:none}
+  .steps{bottom:12px}
+  .steps .wrap{justify-content:stretch}
+  .bar{width:100%;grid-template-columns:repeat(4,1fr)}
+  .bar span{padding:10px 6px;font-size:12.5px;text-align:center}
+  .load{right:18px;display:none}
+  .mv .r{grid-template-columns:1fr}
+  .what ul{columns:1}
+  .me .facts{grid-template-columns:1fr}
+  .f .two{grid-template-columns:1fr}
+  form.f{padding:20px}
+  .qa details p{padding-right:0}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--wall);border-top:1px solid #E4DCCF;padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px}
+  .mbar a{display:flex;justify-content:center;align-items:center;gap:8px;min-height:46px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px}
+  .mbar a:first-child{background:var(--wal);color:#fff}
+  .mbar a:last-child{background:var(--honey);color:var(--wal)}
+  .mbar svg{width:18px;height:18px}
+  .js .reveal{transform:translateY(16px);transition-duration:.7s}
+  .js .stagger>*{transform:translateY(16px);transition-duration:.7s;transition-delay:calc(var(--i,0)*55ms)}
+}
+@media(max-width:420px){.hdr .call{display:none}.mk{font-size:12.5px}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .hero{height:auto}
+  .js .pin{position:relative;top:0}
+  .js .film canvas{display:none}.js .film img{display:block}
+  .js .reveal,.js .stagger>*{opacity:1!important;transform:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="top" id="top">
+  <div class="mk"><b>Makieta</b> — propozycja nowej strony dla MJ Transport · wariant W2 „Przeprowadzka” · ODNOVA Studio</div>
+  <header class="hdr">
+    <div class="wrap">
+      <a class="brand" href="#start" aria-label="MJ Transport — na górę strony">
+        <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="8" fill="#2F2219"/><circle cx="13" cy="17" r="5.2" fill="none" stroke="#C98A3E" stroke-width="2.6"/><path d="M18 17h10M24 17v4M27 17v3" stroke="#C98A3E" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <span><b>MJ Transport</b><small>przeprowadzki · Marcin Jaśkiewicz</small></span>
+      </a>
+      <nav class="nav" aria-label="Sekcje"><a href="#dzien">Dzień przeprowadzki</a><a href="#co">Co przewożę</a><a href="#marcin">O mnie</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
+      <a class="call tn" href="tel:+48503641330"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>503 641 330</a>
+      <details class="mnav"><summary>Menu</summary><nav aria-label="Sekcje (telefon)"><a href="#dzien">Dzień przeprowadzki</a><a href="#co">Co przewożę</a><a href="#marcin">O mnie</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a><a class="mcall tn" href="tel:+48503641330">Zadzwoń: 503 641 330</a></nav></details>
+    </div>
+  </header>
+</div>
+
+<main id="start">
+<section class="hero" id="hero" aria-label="Pokój, który pustoszeje w dniu przeprowadzki">
+  <div class="pin">
+    <div class="film" aria-hidden="true">
+      <img src="img/f/000.webp" width="1280" height="720" alt="">
+      <canvas id="cv"></canvas>
+    </div>
+    <div class="load" id="load" aria-hidden="true">wczytywanie 0%</div>
+    <div class="wrap htxt">
+      <h1 class="h1">Ty oddajesz klucze. Resztą zajmę się ja.</h1>
+      <p class="lead">Przeprowadzki mieszkań i biur w Warszawie. Pakuję w koce i folię, znoszę, <b>wiozę busem z windą</b> i wnoszę na miejsce. Także w weekendy.</p>
+      <div class="ctas">
+        <a class="btn tn" href="tel:+48503641330"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>Zadzwoń: 503 641 330</a>
+        <a class="btn2" href="sms:+48503641330?body=Dzie%C5%84%20dobry%2C%20przeprowadzka%3A%20sk%C4%85d%2C%20dok%C4%85d%2C%20pi%C4%99tro%3A%20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Wyślij zdjęcia mieszkania</a>
+      </div>
+    </div>
+    <div class="steps" aria-hidden="true"><div class="wrap"><div class="bar" id="bar"><span><b>Regał</b></span><span><b>Kartony</b></span><span><b>Fotel</b></span><span><b>Klucze</b></span></div></div></div>
+  </div>
+</section>
+
+<section class="sec" id="klucze">
+  <div class="wrap keys">
+    <div>
+      <h2 class="h2 reveal">Przeprowadzka to jeden dzień, jeśli ktoś ma plan</h2>
+      <p class="big reveal">Przyjeżdżam o umówionej godzinie, z kocami, folią, pasami i wózkiem. Wieczorem śpisz już u siebie.</p>
+      <p class="t reveal">Od 10 lat wożę po Warszawie. Na co dzień jeżdżę na stałym kontrakcie i zaopatruję sklepy, a wolne godziny i weekendy biorę na przeprowadzki. Gdy rzeczy jest dużo, jedziemy dwoma autami i kończymy w jeden dzień.</p>
+    </div>
+    <figure class="reveal"><img src="img/bus-winda-1600.webp" srcset="img/bus-winda-800.webp 800w, img/bus-winda-1600.webp 1600w" sizes="(max-width:1060px) 100vw, 44vw" width="1600" height="1056" alt="Bus Marcina z opuszczoną windą"><figcaption>Bus z windą: ciężkie rzeczy nie są dźwigane na pakę.</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec dark" id="dzien">
+  <div class="wrap">
+    <h2 class="h2 reveal">Jak wygląda dzień przeprowadzki</h2>
+    <div class="day">
+      <div class="mv reveal"><div class="l"><span class="n">Krok 1</span><h3>Wycena ze zdjęć</h3></div><div class="r"><p><b>Wysyłasz kilka zdjęć</b> pokoi i adresy: skąd, dokąd, które piętro i czy jest winda. Oddzwaniam z ceną i terminem, bez pustych kosztów na miejscu.</p><img src="img/przeprowadzka-paka-800.webp" width="800" height="600" alt="Rzeczy z przeprowadzki w busie" loading="lazy"></div></div>
+      <div class="mv reveal"><div class="l"><span class="n">Krok 2</span><h3>Pakowanie i znoszenie</h3></div><div class="r"><p><b>Meble owijam kocami i folią</b>, narożniki zabezpieczam. Ciężkie rzeczy jadą na wózku, a nie na plecach po schodach.</p><img src="img/meble-folia-800.webp" width="800" height="1067" alt="Meble owinięte folią na palecie" loading="lazy"></div></div>
+      <div class="mv reveal"><div class="l"><span class="n">Krok 3</span><h3>Winda i pasy</h3></div><div class="r"><p><b>Platforma zjeżdża do chodnika</b> i podnosi ładunek na pakę. W środku każda rzecz jest przypięta pasem do szyny na ścianie.</p><img src="img/pasy-agd-800.webp" width="800" height="1067" alt="Lodówka przypięta pasami w busie" loading="lazy"></div></div>
+      <div class="mv reveal"><div class="l"><span class="n">Krok 4</span><h3>Wniesienie na miejsce</h3></div><div class="r"><p><b>Rozładowuję i wnoszę</b> tam, gdzie wskażesz. Ty sprawdzasz, czy wszystko dojechało całe, i oddajesz stare klucze.</p><img src="img/paka-kartony-800.webp" width="528" height="451" alt="Kartony i sprzęt na pace busa" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="co">
+  <div class="wrap what">
+    <div><h2 class="h2 reveal">Co jeszcze przewożę</h2><p class="note reveal">Nie tylko całe mieszkania. Jedna pralka ze sklepu też jest dla mnie kursem.</p></div>
+    <ul class="stagger">
+      <li><b>Meble</b><span>szafy, sofy, łóżka, komody</span></li>
+      <li><b>AGD i RTV</b><span>w pionie, na pasach</span></li>
+      <li><b>Biura</b><span>biurka, szafy, kartony z dokumentami</span></li>
+      <li><b>Palety</b><span>wózek paletowy na pokładzie</span></li>
+      <li><b>Pianina</b><span>i inne instrumenty, na windzie</span></li>
+      <li><b>Sprzęt medyczny</b><span>łóżka, wózki, aparatura</span></li>
+      <li><b>Rowery</b><span>i sprzęt sportowy</span></li>
+      <li><b>Materiały budowlane</b><span>worki, płyty, profile</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec dark" id="marcin">
+  <div class="wrap me">
+    <img class="reveal" src="img/marcin-800.webp" width="720" height="909" alt="Marcin Jaśkiewicz">
+    <div>
+      <blockquote class="reveal">Zawsze zostaje mi kilka godzin, dlatego często przyjmuję dodatkowe zlecenia.</blockquote>
+      <cite class="reveal">Marcin Jaśkiewicz, MJ Transport</cite>
+      <div class="facts stagger">
+        <p><b>10 lat w przewozach</b>To moja praca od dekady, nie dorywcze zajęcie.</p>
+        <p><b>Trzy auta</b>Przy dużej przeprowadzce jedziemy dwoma naraz.</p>
+        <p><b>Weekendy</b>Dostosowuję się do Twojego terminu.</p>
+        <p><b>Poza Warszawę</b>Trasę i cenę ustalamy przez telefon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec soft" id="pytania">
+  <div class="wrap faq">
+    <div class="side"><h2 class="h2 reveal">Pytania przed przeprowadzką</h2><p class="reveal">Jeśli Twojego tu nie ma, zadzwoń. Odpowiem od razu.</p></div>
+    <div class="qa stagger">
+      <details open><summary>Ile kosztuje przeprowadzka?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Zależy od ilości rzeczy, trasy i pięter. Cenę ustalamy w rozmowie, zanim przyjadę. Bez niespodzianek i pustych kosztów na miejscu.</p></details>
+      <details><summary>Czy muszę sam pakować kartony?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Drobne rzeczy najlepiej spakować wcześniej. Meble i sprzęt zabezpieczam sam: koce, folia, pasy i wózek jeżdżą ze mną.</p></details>
+      <details><summary>Wniesie Pan rzeczy na piętro?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Tak. Robię cały kurs: załadunek, przewóz, rozładunek i wniesienie na miejsce. Napisz, które piętro i czy w budynku jest winda.</p></details>
+      <details><summary>A jeśli wszystko nie zmieści się do jednego busa?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Mam trzy auta. Przy większej przeprowadzce jedziemy dwoma naraz i kończymy w jeden dzień.</p></details>
+      <details><summary>Pracuje Pan w weekendy?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Tak. Dostosowuję się do Twojego harmonogramu, także w soboty i niedziele.</p></details>
+      <details><summary>Jeździ Pan poza Warszawę?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Tak, po uzgodnieniu. Podaj skąd i dokąd, a ustalimy termin i cenę.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="kontakt">
+  <div class="wrap contact">
+    <div>
+      <h2 class="h2 reveal">Kiedy się przeprowadzasz?</h2>
+      <p class="lead2 reveal">Zadzwoń albo wyślij kilka zdjęć mieszkania i dwa adresy. Oddzwonię z ceną i terminem.</p>
+      <a class="bigtel reveal" href="tel:+48503641330">503 641 330</a>
+      <div class="btnrow reveal"><a class="btn-h" href="sms:+48503641330"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>SMS ze zdjęciami</a></div>
+      <p class="alt reveal">E-mail: <a href="mailto:mjfilip36@gmail.com">mjfilip36@gmail.com</a><br>Warszawa i okolice, dalej po uzgodnieniu.</p>
+    </div>
+    <form class="f reveal" onsubmit="event.preventDefault();this.querySelector('button').textContent='Dziękuję, oddzwonię (makieta)'">
+      <h3>Zapytaj o termin</h3>
+      <div class="two"><label>Imię<input name="imie" autocomplete="given-name" required></label><label>Telefon<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label></div>
+      <div class="two"><label>Skąd<input name="skad" placeholder="dzielnica, piętro"></label><label>Dokąd<input name="dokad" placeholder="dzielnica, piętro"></label></div>
+      <label>Data przeprowadzki<input name="data" type="date"></label>
+      <label>Co jedzie<textarea name="co" placeholder="np. kawalerka: 15 kartonów, szafa, łóżko, pralka"></textarea></label>
+      <button type="submit">Poproś o wycenę</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><b>MJ Transport · Marcin Jaśkiewicz</b><span>Przeprowadzki i przewozy · Warszawa · <a class="tn" href="tel:+48503641330">503 641 330</a></span><span>Makieta W2 „Przeprowadzka” · ODNOVA Studio</span></div></footer>
+
+<div class="mbar" aria-label="Szybki kontakt">
+  <a class="tn" href="tel:+48503641330"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>Zadzwoń</a>
+  <a href="sms:+48503641330"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Wyślij zdjęcia</a>
+</div>
+
+<script>
+(()=>{
+if(matchMedia('(hover:hover) and (pointer:fine)').matches)document.querySelectorAll('a[href^="sms:"]').forEach(a=>{a.href='https://wa.me/48503641330';a.target='_blank';a.rel='noopener'});
+const root=document.documentElement, top=document.getElementById('top');
+const m=()=>root.style.setProperty('--hdr-h',top.offsetHeight+'px'); m(); addEventListener('resize',m); addEventListener('load',m);
+document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
+document.querySelectorAll('.stagger').forEach(s=>[...s.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+const els=[...document.querySelectorAll('.reveal,.stagger')]; let fired=false;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+els.forEach(e=>io.observe(e));
+const sweep=()=>els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingClientRect().top<innerHeight*.95){e.classList.add('in');io.unobserve(e)}});
+let st; addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
+setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
+
+/* hero: klatki filmu sterowane przewijaniem */
+if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+const N=100, small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000;
+const dir=small?'img/fm/':'img/f/';
+const FR=["000.webp", "001.webp", "002.webp", "003.webp", "004.webp", "005.webp", "006.webp", "007.webp", "008.webp", "009.webp", "010.webp", "011.webp", "012.webp", "013.webp", "014.webp", "015.webp", "016.webp", "017.webp", "018.webp", "019.webp", "020.webp", "021.webp", "022.webp", "023.webp", "024.webp", "025.webp", "026.webp", "027.webp", "028.webp", "029.webp", "030.webp", "031.webp", "032.webp", "033.webp", "034.webp", "035.webp", "036.webp", "037.webp", "038.webp", "039.webp", "040.webp", "041.webp", "042.webp", "043.webp", "044.webp", "045.webp", "046.webp", "047.webp", "048.webp", "049.webp", "050.webp", "051.webp", "052.webp", "053.webp", "054.webp", "055.webp", "056.webp", "057.webp", "058.webp", "059.webp", "060.webp", "061.webp", "062.webp", "063.webp", "064.webp", "065.webp", "066.webp", "067.webp", "068.webp", "069.webp", "070.webp", "071.webp", "072.webp", "073.webp", "074.webp", "075.webp", "076.webp", "077.webp", "078.webp", "079.webp", "080.webp", "081.webp", "082.webp", "083.webp", "084.webp", "085.webp", "086.webp", "087.webp", "088.webp", "089.webp", "090.webp", "091.webp", "092.webp", "093.webp", "094.webp", "095.webp", "096.webp", "097.webp", "098.webp", "099.webp"]; // lista plików (zamieniana na data-URI w wersji PREZENTACJA)
+const SEG=[50,62,84,99];    // klatki, w których kończą się etapy: kartony, regał, fotel, klucze
+const hero=document.getElementById('hero'), pin=hero.querySelector('.pin'), cv=document.getElementById('cv'), cx=cv.getContext('2d');
+const load=document.getElementById('load'), spans=[...document.querySelectorAll('#bar span')];
+const imgs=new Array(N); let got=0;
+function size(){const d=Math.min(devicePixelRatio||1,2);cv.width=pin.clientWidth*d;cv.height=pin.clientHeight*d}
+function nearest(i){for(let k=0;k<N;k++){if(imgs[i-k]&&imgs[i-k].ok)return imgs[i-k];if(imgs[i+k]&&imgs[i+k].ok)return imgs[i+k]}return null}
+const TEMPO=[0.0, 0.0131, 0.0225, 0.0307, 0.0406, 0.0521, 0.0656, 0.0789, 0.0916, 0.1072, 0.1188, 0.1274, 0.1357, 0.1454, 0.1586, 0.1712, 0.1834, 0.1956, 0.2027, 0.2088, 0.2152, 0.2248, 0.236, 0.2474, 0.2605, 0.2718, 0.2849, 0.2994, 0.3128, 0.3259, 0.3367, 0.3477, 0.3574, 0.3674, 0.3789, 0.3887, 0.3975, 0.4061, 0.416, 0.4289, 0.4404, 0.4521, 0.4633, 0.4731, 0.483, 0.492, 0.5015, 0.512, 0.5223, 0.5343, 0.5459, 0.559, 0.5735, 0.5879, 0.5928, 0.6027, 0.6155, 0.6297, 0.6409, 0.6517, 0.6606, 0.6702, 0.6805, 0.692, 0.7046, 0.7184, 0.7232, 0.7332, 0.7424, 0.7509, 0.7589, 0.7687, 0.7786, 0.7877, 0.7979, 0.8088, 0.8215, 0.8343, 0.8466, 0.8602, 0.8737, 0.8887, 0.9043, 0.92, 0.9249, 0.9298, 0.9348, 0.9398, 0.9447, 0.9498, 0.9547, 0.9598, 0.9648, 0.9698, 0.9749, 0.9798, 0.9849, 0.9899, 0.9949, 1.0]; // przewijanie → klatka: ruch przelatuje szybciej, spokojne kadry dostają czas
+function frameAt(p){ if(TEMPO.length!==N) return p*(N-1); let lo=0,hi=N-1; while(hi-lo>1){const m=(lo+hi)>>1; if(TEMPO[m]<=p)lo=m; else hi=m} const a=TEMPO[lo],b=TEMPO[hi]; return lo+(b>a?(p-a)/(b-a):0)}
+let cur=-1;
+function place(im){const W=cv.width,H=cv.height,iw=im.naturalWidth,ih=im.naturalHeight, mob=pin.clientWidth<761, k=Math.max(W/iw,H/ih), w=iw*k, h=ih*k; return [(W-w)*(mob?.62:.6),(H-h)/2,w,h]}
+function drawFrame(f){const i=Math.floor(f), t=f-i, a=nearest(i); if(!a)return; cx.globalAlpha=1; cx.drawImage(a,...place(a));
+  const b=imgs[i+1]; if(t>.02&&b&&b.ok){cx.globalAlpha=t; cx.drawImage(b,...place(b)); cx.globalAlpha=1}}
+FR.forEach((f,i)=>{const im=new Image(); im.decoding='async'; im.onload=()=>{im.ok=1;got++;load.textContent='wczytywanie '+Math.round(got/N*100)+'%';if(got===N)load.style.opacity=0;if(i===0||Math.abs(i-cur)<3)drawFrame(cur<0?0:cur)}; im.src=(f.startsWith('data:')?'':dir)+f; imgs[i]=im});
+let raf=0;
+function upd(){raf=0;const r=hero.getBoundingClientRect(), span=(r.height-pin.offsetHeight-parseFloat(getComputedStyle(pin).top||0))*.95;
+  const p=span>0?Math.max(0,Math.min(1,-r.top/span)):0, f=frameAt(p), i=Math.round(f);
+  if(Math.abs(f-cur)>.01){cur=f;drawFrame(f)}
+  let prev=0; spans.forEach((s,k)=>{const end=SEG[k], t=Math.max(0,Math.min(1,(i-prev)/(end-prev))); s.style.setProperty('--p',(t*100)+'%'); s.classList.toggle('on',t>=1); prev=end});
+}
+addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true});
+addEventListener('resize',()=>{size();cur=-1;upd()});
+size(); upd();
+})();
+</script>
+</body>
+</html>
