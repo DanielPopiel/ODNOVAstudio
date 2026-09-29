@@ -104,7 +104,8 @@ h3{font-family:var(--f-body);font-weight:600;font-size:18px;line-height:1.3}
 .js .hero .pin{position:sticky;top:0;height:100vh}
 .hero-fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-fb::after{content:""}
-.gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .6s}
+.js:not(.nogl) .hero .pin{background:radial-gradient(120% 90% at 62% 55%,#d8ccbb 0%,#c7b7a0 55%,#b9a68b 100%)}
+.gl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .45s ease-out}
 .gl.on{opacity:1}
 .js:not(.nogl) .hero-fb{visibility:hidden}
 .intro{position:absolute;left:0;right:0;top:0;bottom:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding-top:var(--hdr-h,100px)}
@@ -387,7 +388,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
  var shq=quad(px(DOOR.x0)-.35,py(DOOR.y1)-.1,px(DOOR.x1)+.1,py(DOOR.y0)+.12,0.02);
  var FY=-5.33,floor={v:buf(new Float32Array([-14,FY,0,0,0, 14,FY,0,7,0, 14,FY,-16,7,4, -14,FY,-16,0,4])),i:buf(new Uint16Array([0,1,2,0,2,3]),1),n:6};
  var ws=null,ready=0,need=8;
- function done(){ready++;if(ready>=need){cv.classList.add('on');frame()}}
+ function done(){ready++;if(ready>=need){frame();requestAnimationFrame(function(){cv.classList.add('on');startAuto()})}}
  var tE=tex('img/w3-ext.jpg',done),tEA=tex('img/w3-ext-a.png',done),tW=tex('img/w3-wall.jpg',done),tA=tex('img/w3-wall-a.png',done),tD=tex('img/w3-door.jpg',done);
  var tF=tex('img/w3-floor.jpg',function(){gl.bindTexture(gl.TEXTURE_2D,tF);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.MIRRORED_REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.MIRRORED_REPEAT);done()});
  var tS=tex(mob?'img/w3-warsztat-1280.jpg':'img/w3-warsztat-2048.jpg',done);
@@ -437,7 +438,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
  function kick(){if(!run&&ready>=need){run=true;last=0;requestAnimationFrame(frame)}}
  addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);
  // pokaz na starcie: ktoś uchyla środkowe skrzydło
- var auto_run=true;setTimeout(function(){auto=0.34;kick();setTimeout(function(){auto_run=false},2600)},700);
+ var auto_run=false,autoStarted=false;function startAuto(){if(autoStarted)return;autoStarted=true;auto_run=true;setTimeout(function(){auto=0.34;kick();setTimeout(function(){auto_run=false},2600)},900)}
 })();
 
 (function(){
@@ -473,7 +474,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
  box.addEventListener('mouseenter',function(){clearInterval(timer)});box.addEventListener('mouseleave',rst);rst();
  // „Jak to wygląda”: linia rośnie z przewijaniem, kroki zapalają się po kolei
  var trk=d.querySelector('.trk');
- if(trk&&!RM){var tl=[].slice.call(trk.children);function trkU(){var r=trk.getBoundingClientRect(),vh=innerHeight,p=Math.min(1,Math.max(0,(vh*0.88-r.top)/(vh*0.55)));trk.style.setProperty('--tp',p.toFixed(3));tl.forEach(function(l,k){l.classList.toggle('on',p>=(k+0.5)/tl.length)})}
+ if(trk&&!RM){var tl=[].slice.call(trk.children);function trkU(){var r=trk.getBoundingClientRect(),vh=innerHeight,p=Math.min(1,Math.max(0,(vh*0.62-r.top)/(vh*0.32+r.height*0.5)));trk.style.setProperty('--tp',p.toFixed(3));tl.forEach(function(l,k){l.classList.toggle('on',p>=(k+0.5)/tl.length)})}
   addEventListener('scroll',function(){requestAnimationFrame(trkU)},{passive:true});addEventListener('resize',trkU);trkU();setTimeout(trkU,400)}
 })();
 </script>
