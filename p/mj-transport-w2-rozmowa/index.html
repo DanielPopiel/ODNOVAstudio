@@ -56,13 +56,9 @@ section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
 .mnav nav a{display:block;padding:12px 20px;text-decoration:none;font-size:16px}
 .mnav nav a.mcall{color:var(--or-d);font-weight:700}
 
-/* hero */
-.hero{background:var(--g);color:var(--ontxt);padding-top:var(--hdr-h);position:relative}
-.js .hero{height:300vh}
-.pin{min-height:calc(100vh - var(--hdr-h));display:flex;align-items:center;padding:40px 0}
-.js .pin{position:sticky;top:var(--hdr-h);height:calc(100vh - var(--hdr-h))}
-.hero .wrap{display:grid;grid-template-columns:6fr 5fr;gap:64px;align-items:center}
-.h1{font-family:var(--f-d);font-weight:400;font-size:clamp(42px,5.2vw,76px);line-height:1.02;letter-spacing:-.01em}
+
+/* hero: pralka z góry */
+.h1{font-family:var(--f-d);font-weight:400;font-size:clamp(38px,4.3vw,64px);line-height:1.02;letter-spacing:-.01em}
 .lead{margin-top:22px;font-size:19px;color:#CFE0D8;max-width:40ch}
 .lead b{color:#fff;font-weight:500}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
@@ -71,7 +67,27 @@ section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
 .btn-or svg,.btn-ln svg{width:19px;height:19px}
 .btn-ln{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #6E9A87;color:#fff;text-decoration:none;padding:12px 19px;border-radius:999px;font-size:16.5px}
 .btn-ln:hover{border-color:#fff}
-
+.hero{background:var(--g);color:var(--ontxt);padding-top:var(--hdr-h);position:relative}
+.js .hero{height:420vh}
+.pin{position:relative;min-height:calc(100vh - var(--hdr-h));overflow:hidden;display:flex;align-items:center}
+.js .pin{position:sticky;top:var(--hdr-h);height:calc(100vh - var(--hdr-h))}
+.scene{position:absolute;inset:0;background:var(--g)}
+.scene .still{position:absolute;right:0;top:0;height:100%;width:72%;object-fit:cover;object-position:50% 52%}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%;display:none}
+.js .scene canvas{display:block}.js .scene .still{display:none}
+.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--g) 0%,var(--g) 30%,rgba(23,57,45,.9) 38%,rgba(23,57,45,.35) 52%,rgba(23,57,45,0) 66%);pointer-events:none}
+.htxt{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:40px;height:100%}
+.hcol{max-width:520px}
+.bub{align-self:flex-end;margin-bottom:6vh;display:flex;gap:12px;align-items:flex-end;max-width:360px;transition:opacity .35s}
+.bub img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none;border:2px solid #fff}
+.bub p{background:#fff;color:var(--ink);border-radius:18px 18px 18px 5px;padding:11px 15px;font-size:15.5px;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.bub b{display:block;font-family:var(--f-d);font-weight:400;font-size:17px;color:var(--g);margin-bottom:2px}
+.bub.fade{opacity:0}
+.scrollhint{position:absolute;left:28px;bottom:18px;z-index:2;font-size:13.5px;color:var(--onmute);display:flex;gap:8px;align-items:center;transition:opacity .4s}
+.scrollhint i{display:block;width:1px;height:26px;background:var(--onmute);animation:hint 1.8s infinite}
+@keyframes hint{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(.2);transform-origin:bottom}}
+.chat.static{height:auto;box-shadow:none;border:1px solid rgba(255,255,255,.1)}
+.chat.static .thread{overflow:visible}
 .chat{background:var(--g2);border-radius:22px;padding:0;overflow:hidden;display:flex;flex-direction:column;height:min(500px,calc(100vh - var(--hdr-h) - 80px));box-shadow:0 24px 50px rgba(0,0,0,.22)}
 .chat-h{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.1);background:var(--g3)}
 .chat-h img{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:50% 18%}
@@ -114,8 +130,8 @@ section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
 .me figcaption{font-size:14.5px;color:var(--mute);margin-top:12px}
 
 /* pytania */
-.faq-grid{display:grid;grid-template-columns:4fr 8fr;gap:64px;align-items:start}
-.faq-grid .side{position:sticky;top:calc(var(--hdr-h) + 30px)}
+.faq-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.faq-grid .side{position:static}
 .faq-grid .side p{color:var(--onmute);margin-top:18px;max-width:30ch}
 .faq details{border-top:1px solid rgba(255,255,255,.16)}
 .faq details:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
@@ -175,14 +191,14 @@ footer b{font-family:var(--f-d);font-weight:400;color:var(--g);font-size:20px}
 
 @media(max-width:1060px){
   .nav{display:none}.mnav{display:block}
-  .hero .wrap{grid-template-columns:1fr;gap:22px}
-  .pin{align-items:flex-start;padding:22px 0}
   .me,.faq-grid,.contact{grid-template-columns:1fr;gap:40px}
   .faq-grid .side{position:static}
   .me figure{max-width:420px}
-  .js .pin .wrap{height:100%;grid-template-rows:auto minmax(0,1fr);align-items:stretch}
-  .js .chatwrap{min-height:0;display:flex;flex-direction:column}
-  .js .chat{flex:1;min-height:0;height:auto}
+  .htxt{flex-direction:column;align-items:flex-start;justify-content:space-between;padding-top:26px;padding-bottom:22px}
+  .scene .still{width:100%;height:78%;top:auto;bottom:0}
+  .scene::after{background:linear-gradient(180deg,var(--g) 0%,var(--g) 24%,rgba(23,57,45,.6) 31%,rgba(23,57,45,0) 40%)}
+  .bub{align-self:flex-start;margin-bottom:0}
+  .scrollhint{display:none}
 }
 @media(max-width:760px){
   body{font-size:16.5px}
@@ -193,8 +209,9 @@ footer b{font-family:var(--f-d);font-weight:400;color:var(--g);font-size:20px}
   .h1{font-size:34px}
   .hero .lead{display:none}
   .hero .ctas{display:none}
-  .js .pin{min-height:0;height:calc(100svh - var(--hdr-h) - 68px);padding:16px 0}
-  .hero .wrap{gap:14px}
+  .js .pin{min-height:0;height:calc(100svh - var(--hdr-h) - 68px)}
+  .pin{min-height:calc(100svh - var(--hdr-h) - 68px)}
+  .bub p{font-size:14.5px;padding:9px 13px}.bub b{font-size:16px}
   .msg{font-size:14.5px}
   .chat-h{padding:10px 14px}.chat-h img{width:34px;height:34px}
   .thread{padding:12px;gap:8px}
@@ -219,9 +236,9 @@ footer b{font-family:var(--f-d);font-weight:400;color:var(--g);font-size:20px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .hero{height:auto}
-  .js .pin{position:relative;top:0;height:auto}
-  .js .thread .h{display:block}.js .thread .typing.h{display:none}
-  .chat{height:auto}
+  .js .pin{position:relative;top:0}
+  .js .scene canvas{display:none}.js .scene .still{display:block}
+  .scrollhint i{animation:none}
   .js .reveal,.js .stagger>*{opacity:1!important;transform:none!important;transition:none!important}
   .typing i{animation:none}
 }
@@ -241,10 +258,14 @@ footer b{font-family:var(--f-d);font-weight:400;color:var(--g);font-size:20px}
 </div>
 
 <main id="start">
-<section class="hero" id="hero" aria-label="Wycena przez SMS">
+<section class="hero" id="hero" aria-label="Pralka w drodze z mieszkania do busa">
   <div class="pin">
-    <div class="wrap">
-      <div>
+    <div class="scene" aria-hidden="true">
+      <img class="still" src="img/hero-s1-2000.webp" srcset="img/hero-s1-1100.webp 1100w, img/hero-s1-2000.webp 2000w" sizes="100vw" width="2000" height="1116" alt="">
+      <canvas id="cv"></canvas>
+    </div>
+    <div class="wrap htxt">
+      <div class="hcol">
         <h1 class="h1">Wyślij zdjęcie. Powiem, czy wejdzie i&nbsp;kiedy przyjadę.</h1>
         <p class="lead">Jestem Marcin, <b>przewożę po Warszawie od 10 lat</b>. Meble, pralki, lodówki, przeprowadzki, palety. Mam busa z windą i pasami. Rozmawiasz ze mną, nie z infolinią.</p>
         <div class="ctas">
@@ -252,24 +273,9 @@ footer b{font-family:var(--f-d);font-weight:400;color:var(--g);font-size:20px}
           <a class="btn-ln tn" href="tel:+48503641330"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 16.6l-2.7-2.7a1.4 1.4 0 0 0-2 0l-1.3 1.3a1 1 0 0 1-1.2.2 13 13 0 0 1-4.5-4.5 1 1 0 0 1 .2-1.2l1.3-1.3a1.4 1.4 0 0 0 0-2L7.4 3.7a1.4 1.4 0 0 0-2 0L4 5.1c-1 1-1.3 2.5-.8 3.8a19 19 0 0 0 11.9 11.9c1.3.5 2.8.2 3.8-.8l1.4-1.4a1.4 1.4 0 0 0 0-2z"/></svg>503 641 330</a>
         </div>
       </div>
-      <div class="chatwrap">
-        <div class="chat" role="img" aria-label="Przykładowa rozmowa: klient pyta o przewóz szafy i pralki, Marcin potwierdza termin">
-          <div class="chat-h"><img src="img/marcin-800.webp" width="42" height="42" alt=""><div><b>Marcin · MJ Transport</b><small>odpisuje między kursami</small></div></div>
-          <div class="thread" id="thread">
-            <div class="msg c">Dzień dobry, szafa trzydrzwiowa i pralka, z Mokotowa na Bielany. 3 piętro, winda w bloku jest. Da Pan radę w sobotę?<time>9:12</time></div>
-            <div class="msg m">Dzień dobry, da radę. Sobota 10:00 pasuje?<time>9:20</time></div>
-            <div class="msg c h" data-t=".14">Pasuje. A szafa nie ucierpi? Jest dość delikatna.<time>9:21</time></div>
-            <div aria-hidden="true" class="typing h" data-t=".22" data-until=".34"><i></i><i></i><i></i></div>
-            <div class="msg m h" data-t=".34">Owinę ją kocami i folią, pralka jedzie w pionie przypięta pasami. Tak to u mnie wygląda:<time>9:24</time></div>
-            <div class="msg m ph h" data-t=".46"><img src="img/pasy-agd-800.webp" width="800" height="600" alt="Lodówka spięta pasami w busie"><span>Wjeżdża windą, bez dźwigania.</span></div>
-            <div class="msg m h" data-t=".6">Zadzwonię za chwilę, ustalimy cenę.<time>9:25</time></div>
-            <div class="msg c h" data-t=".72">Super, dziękuję!<time>9:25</time></div>
-            <div class="ok h" data-t=".84">Sobota, 10:00 — umówione</div>
-          </div>
-        </div>
-        <p class="note">Przykładowa rozmowa. Tak wygląda umawianie kursu, bez formularzy.</p>
-      </div>
+      <div class="bub" aria-live="polite"><img src="img/marcin-800.webp" width="40" height="40" alt=""><p><b id="bt">Przedpokój</b><span id="bw">Pralka czeka na koc i wózek. Resztę biorę na siebie.</span></p></div>
     </div>
+    <div class="scrollhint" aria-hidden="true"><i></i>przewiń</div>
   </div>
 </section>
 
@@ -291,7 +297,20 @@ footer b{font-family:var(--f-d);font-weight:400;color:var(--g);font-size:20px}
 
 <section class="sec green" id="pytania">
   <div class="wrap faq-grid">
-    <div class="side"><h2 class="h2 reveal">O to pytacie mnie najczęściej</h2><p class="reveal">Jeśli Twojego pytania tu nie ma, zadzwoń, odpowiem od razu.</p></div>
+    <div class="side"><h2 class="h2 reveal">O to pytacie mnie najczęściej</h2><p class="reveal">A tak zwykle wygląda umawianie kursu. Bez formularzy.</p>
+      <div class="reveal" style="margin-top:26px"><div class="chat static" role="img" aria-label="Przykładowa rozmowa: klient pyta o przewóz szafy i pralki, Marcin potwierdza termin">
+          <div class="chat-h"><img src="img/marcin-800.webp" width="42" height="42" alt=""><div><b>Marcin · MJ Transport</b><small>odpisuje między kursami</small></div></div>
+          <div class="thread" id="thread">
+            <div class="msg c">Dzień dobry, szafa trzydrzwiowa i pralka, z Mokotowa na Bielany. 3 piętro, winda w bloku jest. Da Pan radę w sobotę?<time>9:12</time></div>
+            <div class="msg m">Dzień dobry, da radę. Sobota 10:00 pasuje?<time>9:20</time></div>
+            <div class="msg c">Pasuje. A szafa nie ucierpi? Jest dość delikatna.<time>9:21</time></div>
+            <div class="msg m">Owinę ją kocami i folią, pralka jedzie w pionie przypięta pasami. Tak to u mnie wygląda:<time>9:24</time></div>
+            <div class="msg m ph"><img src="img/pasy-agd-800.webp" width="800" height="600" alt="Lodówka spięta pasami w busie"><span>Wjeżdża windą, bez dźwigania.</span></div>
+            <div class="msg m">Zadzwonię za chwilę, ustalimy cenę.<time>9:25</time></div>
+            <div class="msg c">Super, dziękuję!<time>9:25</time></div>
+            <div class="ok">Sobota, 10:00 — umówione</div>
+          </div>
+        </div></div></div>
     <div class="faq stagger">
       <details open><summary>Ile kosztuje kurs?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Zależy od rodzaju i wielkości ładunku, trasy i piętra. Cenę ustalamy w rozmowie, zanim przyjadę. Bez niespodzianek i pustych kosztów na miejscu.</p></details>
       <details><summary>Wniesie Pan rzeczy do mieszkania?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><p>Tak. Robię cały kurs: załadunek, przewóz, rozładunek i wniesienie na miejsce. Napisz, które piętro i czy w budynku jest winda.</p></details>
@@ -367,21 +386,51 @@ const sweep=()=>els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingCli
 let st; addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
 setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
 
-/* hero: rozmowa */
-if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-const hero=document.getElementById('hero'), pin=hero.querySelector('.pin');
-const thread=document.getElementById('thread'), items=[...thread.querySelectorAll('[data-t]')];
-const cl=v=>Math.max(0,Math.min(1,v));
-let raf=0;
-function upd(){raf=0;
-  const r=hero.getBoundingClientRect(), span=(r.height-pin.offsetHeight-parseFloat(getComputedStyle(pin).top||0))*.92;
-  const p=span>0?cl(-r.top/span):0;
-  items.forEach(el=>{const t=+el.dataset.t, u=el.dataset.until?+el.dataset.until:2, on=p>=t&&p<u;
-    if(on&&el.classList.contains('h')){el.classList.remove('h');el.classList.add('show')}
-    else if(!on&&!el.classList.contains('h')){el.classList.add('h');el.classList.remove('show')}});
-  thread.scrollTop=thread.scrollHeight;
+/* hero: pralka z góry — cztery kadry, pralka zablokowana w kadrze */
+const hero=document.getElementById('hero'), pin=hero.querySelector('.pin'), cv=document.getElementById('cv'), cx=cv.getContext('2d');
+const hint=hero.querySelector('.scrollhint'), bub=hero.querySelector('.bub'), bt=document.getElementById('bt'), bw=document.getElementById('bw');
+const small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000;
+// pudełko pralki w każdym kadrze: środek (x,y) i szerokość górnej płyty, jako ułamki obrazu
+const W=[{n:'s1',b:[.4997,.5143,.1817],t:'Przedpokój',w:'Pralka czeka na koc i wózek. Resztę biorę na siebie.'},
+         {n:'s2',b:[.4997,.5143,.1817],t:'Klatka schodowa',w:'Znoszę ją na wózku, bez obijania ścian i schodów.'},
+         {n:'s3',b:[.5,.5417,.2511],t:'Winda busa',w:'Platforma zjeżdża do chodnika i podnosi ją na pakę.'},
+         {n:'s4',b:[.5,.651,.201],t:'Paka',w:'Dwa pasy do szyn i jedziemy. Tak samo z szafą czy lodówką.'}];
+const SRC={s1:['img/hero-s1-1100.webp','img/hero-s1-2000.webp'],s2:['img/hero-s2-1100.webp','img/hero-s2-2000.webp'],s3:['img/hero-s3-1100.webp','img/hero-s3-2000.webp'],s4:['img/hero-s4-1100.webp','img/hero-s4-2000.webp']};
+W.forEach(o=>{o.img=new Image();o.img.decoding='async';o.img.src=SRC[o.n][small?0:1];o.img.onload=()=>{o.ok=1;upd()}});
+const cl=v=>Math.max(0,Math.min(1,v)), ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, lerp=(a,b,t)=>a+(b-a)*t;
+// oś czasu: [start przejścia, koniec przejścia] między kadrami
+const X=[[.2,.3],[.44,.54],[.66,.76]];
+let cw=0,ch=0,dpr=1;
+function size(){dpr=Math.min(devicePixelRatio||1,2);cw=pin.clientWidth;ch=pin.clientHeight;cv.width=cw*dpr;cv.height=ch*dpr}
+function target(){ // gdzie ma stać pralka na ekranie
+  const mob=cw<1061; 
+  return mob?{x:cw*.5,y:ch*.56,w:Math.min(cw*.4,ch*.22)}:{x:cw*.68,y:ch*.5,w:Math.min(cw*.15,ch*.27)};
 }
-addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true}); addEventListener('resize',upd); upd();
+function drawW(o,T,wf,a,dy){ if(!o.ok||a<=0)return; const im=o.img, k=(T.w*wf)/(o.b[2]*im.naturalWidth);
+  const w=im.naturalWidth*k,h=im.naturalHeight*k, x=T.x-o.b[0]*w, y=T.y-o.b[1]*h+dy;
+  cx.globalAlpha=a; cx.drawImage(im,x*dpr,y*dpr,w*dpr,h*dpr);}
+let last=-1;
+function draw(p){
+  if(!cw)size(); cx.setTransform(1,0,0,1,0,0); cx.globalAlpha=1; cx.fillStyle='#17392D'; cx.fillRect(0,0,cv.width,cv.height);
+  const T=target();
+  // powolne opadanie kamery przez cały przelot + wjazd w pakę na końcu
+  let wf=1+p*.35; const end=ease(cl((p-.84)/.16)); wf*=1+end*2.6;
+  let i=0,t=0; X.forEach((r,j)=>{if(p>=r[0])i=j+1; if(p>=r[0]&&p<r[1]){i=j;t=ease((p-r[0])/(r[1]-r[0]))}});
+  if(t>0&&i<3){const dy=ch*.14; drawW(W[i],T,wf,1,-dy*t); drawW(W[i+1],T,wf,t,dy*(1-t));}
+  else drawW(W[Math.min(i,3)],T,wf,1,0);
+  if(end>0){cx.globalAlpha=end*.92;cx.fillStyle='#17392D';cx.fillRect(0,0,cv.width,cv.height)}
+  const k=t>.5?Math.min(i+1,3):Math.min(i,3);
+  if(k!==last){last=k;bub.classList.add('fade');setTimeout(()=>{bt.textContent=W[k].t;bw.textContent=W[k].w;bub.classList.remove('fade')},180)}
+  bub.style.opacity=end>.4?0:'';
+  hint.style.opacity=p>.03?0:1;
+}
+let raf=0;
+function upd(){raf=0;const r=hero.getBoundingClientRect(), span=(r.height-pin.offsetHeight-parseFloat(getComputedStyle(pin).top||0))*.95;
+  draw(span>0?cl(-r.top/span):0)}
+addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true});
+addEventListener('resize',()=>{size();upd()});
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){return}
+size(); upd();
 })();
 </script>
 </body>
