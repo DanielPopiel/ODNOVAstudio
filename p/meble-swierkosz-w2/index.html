@@ -100,7 +100,7 @@ h3{font-family:var(--f-body);font-weight:600;font-size:18px;line-height:1.3}
 @media (max-width:440px){.lg3-t b{font-size:21px}.lg3-t small{display:none}.lg3 svg{width:32px;height:32px}}
 .hero{background:#ECEAE4}
 .pin{position:relative;overflow:hidden;min-height:100vh}
-.js .hero .stage{height:420vh}
+.js .hero .stage{height:540vh}
 .js .hero .pin{position:sticky;top:0;height:100vh}
 .hero-fb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-fb::after{content:""}
@@ -187,9 +187,16 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 .oq{flex:0 0 min(420px,84vw);scroll-snap-align:start;margin:0;background:#ECEAE4;color:#1C1B19;padding:28px 26px;border:1px solid rgba(28,27,25,.14);border-radius:3px;box-shadow:0 22px 44px -28px rgba(0,0,0,.45);display:flex;flex-direction:column;justify-content:space-between}
 .oq p{font-size:17.5px}
 .oq footer{font-weight:600;font-size:15px}
-.track{list-style:none;margin:0;padding:26px 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px;border-top:3px solid #3a403b;position:relative}
+.track{list-style:none;margin:0;padding:26px 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px;position:relative}
+.track::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:#3a403b}
+.track::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--oak);transform:scaleX(var(--tp,1));transform-origin:left}
 .track li{position:relative}
 .track li::before{content:"";position:absolute;top:-31px;left:0;width:22px;height:8px;border-radius:2px;background:var(--oak)}
+.js .trk li{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+.js .trk li.on{opacity:1;transform:none}
+.js .trk li::before{transform:scaleY(0);transform-origin:bottom;transition:transform .35s .1s}
+.js .trk li.on::before{transform:none}
+.rm .trk li{opacity:1;transform:none;transition:none}.rm .trk li::before{transform:none}.rm .track::after{transform:none}
 .k-n{display:block;font-family:var(--f-head);font-weight:800;font-size:28px;line-height:1;color:var(--oak);margin-bottom:10px}
 .track h3{margin-bottom:8px}
 .track p{font-size:14px;line-height:1.5;opacity:.82;margin:0}
@@ -203,7 +210,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 .team figure{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 24px 50px -30px rgba(28,27,25,.55)}
 .team figure:nth-child(2){margin-top:44px}
 .team img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block}
-.team figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(to top,rgba(28,27,25,.72),transparent);color:#fff;font-weight:600;font-size:15px}
+.team figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;background:rgba(242,241,238,.92);color:#1C1B19;font-weight:600;font-size:14px;border-radius:2px;backdrop-filter:blur(4px)}
 .faqw{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
 .faq summary{font-family:var(--f-body);font-weight:600;font-size:17px;padding:16px 0}
 .faq summary svg{color:var(--oak)}
@@ -214,15 +221,15 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 .kt small{display:block;font-size:13.5px;opacity:.85}
 .kt .tel{font-size:clamp(21px,1.9vw,26px);font-weight:600}
 .kontakt .form{margin-top:26px}
-.k-map{min-height:460px;border:8px solid #161616}
+.k-map{min-height:460px;border-radius:4px;overflow:hidden}
 .ft{background:#0d0d0e;color:#bdbab3;padding:26px 0;font-size:14px}
 .ft .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .ft .wrap>span:first-child{display:flex;align-items:center;gap:10px}
-@media (max-width:1100px){.dcs{grid-template-columns:repeat(3,minmax(0,1fr))}.track{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:48px;border-top:0;padding-top:0}.track li::before{display:none}}
+@media (max-width:1100px){.dcs{grid-template-columns:repeat(3,minmax(0,1fr))}.track{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:48px;padding-top:0}.track::before,.track::after,.track li::before{display:none}}
 @media (max-width:860px){
  .about,.faqw,.kontakt{grid-template-columns:1fr;gap:26px}
  .hero .ctas{display:none}
- .js .hero .stage{height:380vh}.intro{justify-content:flex-start;padding-top:calc(var(--hdr-h,100px) + 3vh)}.intro h1{font-size:40px;max-width:12ch}.intro .sub{display:none}.hint{position:absolute;left:22px;bottom:96px;margin:0}.o-h{font-size:34px}.outro .lead{font-size:16px;margin-bottom:18px}
+ .js .hero .stage{height:480vh}.intro{justify-content:flex-start;padding-top:calc(var(--hdr-h,100px) + 3vh)}.intro h1{font-size:40px;max-width:12ch}.intro .sub{display:none}.hint{position:absolute;left:22px;bottom:96px;margin:0}.o-h{font-size:34px}.outro .lead{font-size:16px;margin-bottom:18px}
  .op3{grid-template-columns:1fr;gap:34px}.op-n{font-size:110px}.sl{flex-basis:82vw}.qs-box{min-height:380px}.gal-ctl{margin-top:-6px}
  .g0{grid-column:span 2;grid-row:span 1}.g3{grid-column:span 2}
  .dcs{grid-template-columns:1fr 1fr}
@@ -292,7 +299,7 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
 
 <section class="s-dark" id="wspolpraca"><div class="wrap">
 <div class="sh reveal"><h2>Jak to wygląda</h2><p>Od telefonu do montażu. Za pomiar i projekt nie płacisz.</p></div>
-<ol class="track stagger"><li><span class="k-n num">01</span><h3>Telefon i pomiar</h3><p>Umawiamy termin, przyjeżdżamy i mierzymy pomieszczenie. Pomiar jest bezpłatny i do niczego nie zobowiązuje.</p></li><li><span class="k-n num">02</span><h3>Projekt i wycena</h3><p>Mówisz, czego potrzebujesz. To Ty jesteś pierwszym projektantem, my podpowiadamy materiały i rozwiązania. Potem podajemy cenę i termin.</p></li><li><span class="k-n num">03</span><h3>Produkcja</h3><p>Meble powstają u nas, z płyt i okuć, które razem wybraliśmy. W trakcie możesz zapytać, na jakim etapie jest Twoje zamówienie.</p></li><li><span class="k-n num">04</span><h3>Transport</h3><p>Przywozimy meble i wnosimy je na każde piętro.</p></li><li><span class="k-n num">05</span><h3>Montaż</h3><p>W umówionym dniu. Szafę czy zabudowę przedpokoju zwykle składamy w kilka godzin, a po montażu sprzątamy.</p></li><li><span class="k-n num">06</span><h3>Gwarancja i serwis</h3><p>36 miesięcy gwarancji na wszystko. Po jej zakończeniu nadal pomagamy i serwisujemy.</p></li></ol>
+<ol class="track trk"><li><span class="k-n num">01</span><h3>Telefon i pomiar</h3><p>Umawiamy termin, przyjeżdżamy i mierzymy pomieszczenie. Pomiar jest bezpłatny i do niczego nie zobowiązuje.</p></li><li><span class="k-n num">02</span><h3>Projekt i wycena</h3><p>Mówisz, czego potrzebujesz. To Ty jesteś pierwszym projektantem, my podpowiadamy materiały i rozwiązania. Potem podajemy cenę i termin.</p></li><li><span class="k-n num">03</span><h3>Produkcja</h3><p>Meble powstają u nas, z płyt i okuć, które razem wybraliśmy. W trakcie możesz zapytać, na jakim etapie jest Twoje zamówienie.</p></li><li><span class="k-n num">04</span><h3>Transport</h3><p>Przywozimy meble i wnosimy je na każde piętro.</p></li><li><span class="k-n num">05</span><h3>Montaż</h3><p>W umówionym dniu. Szafę czy zabudowę przedpokoju zwykle składamy w kilka godzin, a po montażu sprzątamy.</p></li><li><span class="k-n num">06</span><h3>Gwarancja i serwis</h3><p>36 miesięcy gwarancji na wszystko. Po jej zakończeniu nadal pomagamy i serwisujemy.</p></li></ol>
 </div></section>
 
 <section class="s-light" id="o-nas"><div class="wrap about">
@@ -405,10 +412,10 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
  var port=innerHeight>innerWidth;var DS=D0*(port?1.75:1.42),X0=port?0:-PW*0.25,Y0=port?PH*0.47:PH*0.2;
  var door_t=0,door_x=0,door_v=0,cam_t=DS,cam_z=DS,cam_v=0,auto=0,last=0,run=false;
  function targets(){var p=window.__prog(stage,pin);
-  door_t=Math.max(auto,sio(cl((p-0.03)/0.27)));                 // drzwi: 0..1 szerokości skrzydła
-  var e=sio(cl((p-0.24)/0.70));cam_t=DS+(C+0.25-DS)*e;          // wózek: od ściany w głąb alejki
-  var io=cl(1-(p-0.17)/0.09);intro.style.opacity=io;intro.style.visibility=io<=0?'hidden':'visible';
-  var sb=stage.getBoundingClientRect().bottom,fo=cl((sb-innerHeight*0.55)/(innerHeight*0.45));var oo=cl((p-0.84)/0.1)*fo;outro.style.opacity=oo;outro.style.visibility=oo<=0?'hidden':'visible';outro.style.transform='translateY('+(1-oo)*24+'px)';
+  door_t=Math.max(auto,sio(cl((p-0.08)/0.24)));                 // drzwi: 0..1 szerokości skrzydła
+  var e=sio(cl((p-0.34)/0.48));cam_t=DS+(C+0.25-DS)*e;          // wózek: od ściany w głąb alejki
+  var io=cl(1-(p-0.30)/0.08);intro.style.opacity=io;intro.style.visibility=io<=0?'hidden':'visible';
+  var sb=stage.getBoundingClientRect().bottom,fo=cl((sb-innerHeight*0.25)/(innerHeight*0.5));var oo=cl((p-0.78)/0.08)*fo;outro.style.opacity=oo;outro.style.visibility=oo<=0?'hidden':'visible';outro.style.transform='translateY('+(1-oo)*24+'px)';
  }
  function frame(ts){ts=ts||performance.now();var dt=Math.min(.05,(ts-(last||ts))/1000)||.016;last=ts;
   targets();
@@ -464,6 +471,10 @@ html:not(.js) .qs-it{position:relative}html:not(.js) .qs-box{min-height:0}
  d.querySelector('.qprev').addEventListener('click',function(){show(i-1,-1);rst()});d.querySelector('.qnext').addEventListener('click',function(){show(i+1,1);rst()});
  function rst(){clearInterval(timer);if(!RM)timer=setInterval(function(){show(i+1,1)},8000)}
  box.addEventListener('mouseenter',function(){clearInterval(timer)});box.addEventListener('mouseleave',rst);rst();
+ // „Jak to wygląda”: linia rośnie z przewijaniem, kroki zapalają się po kolei
+ var trk=d.querySelector('.trk');
+ if(trk&&!RM){var tl=[].slice.call(trk.children);function trkU(){var r=trk.getBoundingClientRect(),vh=innerHeight,p=Math.min(1,Math.max(0,(vh*0.88-r.top)/(vh*0.55)));trk.style.setProperty('--tp',p.toFixed(3));tl.forEach(function(l,k){l.classList.toggle('on',p>=(k+0.5)/tl.length)})}
+  addEventListener('scroll',function(){requestAnimationFrame(trkU)},{passive:true});addEventListener('resize',trkU);trkU();setTimeout(trkU,400)}
 })();
 </script>
 </body></html>
