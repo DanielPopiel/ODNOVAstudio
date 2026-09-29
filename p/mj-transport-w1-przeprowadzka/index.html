@@ -13,19 +13,19 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;600;700&family=Poltawski+Nowy:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --wal:#2F2219; --wal2:#3E2F24; --wal3:#54402F;
   --honey:#C98A3E; --honey-d:#8F5A1E; --honey-l:#F2DDB9;
   --wall:#FBFAF7; --wall2:#F1ECE4; --ink:#1F1B17; --mute:#5E554C;
   --onw:#F6EFE6; --onwm:#CDBCA9;
-  --f-d:'Poltawski Nowy',Georgia,serif; --f-t:'Commissioner',system-ui,sans-serif;
+  --f-d:'Young Serif',Georgia,serif; --f-t:'Onest',system-ui,sans-serif;
   --hdr-h:100px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--f-t);background:var(--wall);color:var(--ink);font-size:17px;line-height:1.6;accent-color:var(--honey-d);caret-color:var(--honey-d)}
+body{font-synthesis:none;font-family:var(--f-t);background:var(--wall);color:var(--ink);font-size:17px;line-height:1.6;accent-color:var(--honey-d);caret-color:var(--honey-d)}
 ::selection{background:var(--honey-l);color:var(--ink)}
 :focus-visible{outline:3px solid var(--honey-d);outline-offset:3px}
 img{max-width:100%;height:auto;display:block}
@@ -120,7 +120,7 @@ section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
 /* Marcin */
 .me{display:grid;grid-template-columns:4fr 7fr;gap:64px;align-items:center}
 .me img{border-radius:12px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;width:100%;max-width:400px}
-.me blockquote{font-family:var(--f-d);font-style:italic;font-weight:500;font-size:clamp(24px,2.3vw,32px);line-height:1.35;color:#fff;max-width:28ch}
+.me blockquote{font-family:var(--f-d);font-style:normal;font-weight:500;font-size:clamp(24px,2.3vw,32px);line-height:1.35;color:#fff;max-width:28ch}
 .me cite{display:block;font-style:normal;color:var(--onwm);margin-top:14px}
 .me .facts{display:grid;grid-template-columns:1fr 1fr;gap:22px 36px;margin-top:36px}
 .me .facts p{color:var(--onwm);font-size:16.5px;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
@@ -364,7 +364,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=
 els.forEach(e=>io.observe(e));
 const sweep=()=>els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingClientRect().top<innerHeight*.95){e.classList.add('in');io.unobserve(e)}});
 let st; addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
-setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
+
 
 /* hero: film przeprowadzki odtwarzany sam, w pętli (klatki na canvasie) */
 const N=100, small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000;
