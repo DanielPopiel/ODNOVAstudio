@@ -13,14 +13,14 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Rethink+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --wal:#2F2219; --wal2:#3E2F24; --wal3:#54402F;
   --honey:#C98A3E; --honey-d:#8F5A1E; --honey-l:#F2DDB9;
   --wall:#FBFAF7; --wall2:#F1ECE4; --ink:#1F1B17; --mute:#5E554C;
   --onw:#F6EFE6; --onwm:#CDBCA9;
-  --f-d:'Young Serif',Georgia,serif; --f-t:'Onest',system-ui,sans-serif;
+  --f-d:'Bricolage Grotesque',system-ui,sans-serif; --f-t:'Rethink Sans',system-ui,sans-serif;
   --hdr-h:100px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -163,9 +163,9 @@ footer b{font-family:var(--f-d);font-weight:600;color:var(--wal);font-size:19px}
 footer a{display:inline-block;padding:10px 0}
 .mbar{display:none}
 
-.js .reveal{opacity:0;transform:translateY(22px);filter:blur(4px);transition:opacity 1.3s cubic-bezier(.16,.7,.24,1),transform 1.4s cubic-bezier(.16,.7,.24,1),filter 1.1s ease}
+.js .reveal{opacity:0;transform:translateY(22px);filter:blur(1.5px);transition:opacity 1.3s cubic-bezier(.16,.7,.24,1),transform 1.4s cubic-bezier(.16,.7,.24,1),filter .8s ease}
 .js .reveal.in{opacity:1;transform:none;filter:none}
-.js .stagger>*{opacity:0;transform:translateY(20px);filter:blur(3px);transition:opacity 1.2s cubic-bezier(.16,.7,.24,1),transform 1.3s cubic-bezier(.16,.7,.24,1),filter 1s ease;transition-delay:calc(var(--i,0)*130ms)}
+.js .stagger>*{opacity:0;transform:translateY(20px);filter:blur(1px);transition:opacity 1.2s cubic-bezier(.16,.7,.24,1),transform 1.3s cubic-bezier(.16,.7,.24,1),filter .7s ease;transition-delay:calc(var(--i,0)*130ms)}
 .js .stagger.in>*{opacity:1;transform:none;filter:none}
 .js .reveal img,.js figure.reveal img{transform:scale(1.04);transition:transform 1.8s cubic-bezier(.16,.7,.24,1)}
 .js .reveal.in img{transform:none}
