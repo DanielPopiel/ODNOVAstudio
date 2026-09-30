@@ -375,6 +375,37 @@ html{accent-color:var(--acc-solid)}
 @media(max-width:420px){.ig-top{margin-left:auto}.mnav{margin-left:0}}
 @media(max-width:400px){.v2 .btn{font-size:14px;letter-spacing:0}}
 @media(prefers-reduced-motion:reduce){.js .rz figure{opacity:1;transform:none;transition:none}.rz img{transition:none}}
+/* odsłanianie przy przewijaniu — spokojne, „premium” */
+:root{--ease:cubic-bezier(.16,1,.3,1)}
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease),filter 1.1s var(--ease)}
+.js .reveal:not(figure){filter:blur(6px)}
+.js .reveal.in{opacity:1;transform:none;filter:none}
+.js .stagger>*{opacity:0;transform:translateY(18px);filter:blur(4px);transition:opacity 1s var(--ease),transform 1.2s var(--ease),filter 1s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.js .stagger.in>*{opacity:1;transform:none;filter:none}
+.js .prod.stagger>*,.js .part.stagger>*{transition-delay:calc(var(--i,0)*38ms)}
+/* nagłówki wysuwają się spod maski */
+.js .reveal h2{clip-path:inset(0 0 100% 0);transform:translateY(38%);transition:clip-path 1.25s var(--ease) .08s,transform 1.25s var(--ease) .08s}
+.js .reveal.in h2{clip-path:inset(-25% -4% -35% -4%);transform:none}
+/* zdjęcia: kurtyna od dołu i powolne oddalenie kadru */
+.js figure.reveal{opacity:1;transform:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.5s var(--ease)}
+.js figure.reveal.in{clip-path:inset(0 0 -2px 0)}
+.js figure.reveal img{transform:scale(1.12);transition:transform 2s var(--ease)}
+.js figure.reveal.in img{transform:none}
+.js .zk-side .zk-ph,.js .sl-ph figure{clip-path:inset(100% 0 0 0);transition:clip-path 1.5s var(--ease) .2s}
+.js .zk-side .zk-ph img,.js .sl-ph figure img{transform:scale(1.12);transition:transform 2s var(--ease) .2s}
+.js .zk-side.in .zk-ph,.js .sl-ph.in figure{clip-path:inset(0)}
+.js .zk-side.in .zk-ph img,.js .sl-ph.in figure img{transform:none}
+.js .sl-ph.reveal{opacity:1;transform:none;filter:none}
+.js .sl-ph figure:nth-child(2),.js .sl-ph figure:nth-child(2) img{transition-delay:.38s}
+.js .sl-ph figure:nth-child(3),.js .sl-ph figure:nth-child(3) img{transition-delay:.52s}
+.js .rz figure{transform:translateY(18px)}
+.js .rz figure .im{clip-path:inset(100% 0 0 0);transition:clip-path 1.5s var(--ease)}
+.js .rz figure.in .im{clip-path:inset(0)}
+.js .rz figure:not(.in) .im img{transform:scale(1.12)}
+.js .rz figure .im img{transition:transform 2s var(--ease)}
+.js .rz figure.in:hover .im img{transform:scale(1.035);transition-duration:1.4s}
+@media(max-width:760px){.js .reveal:not(figure){filter:blur(4px)}.js .reveal{transform:translateY(14px);transition-duration:.9s}.js .reveal h2{transform:translateY(25%)}}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .stagger>*,.js .reveal h2,.js figure.reveal,.js figure.reveal img,.js .zk-ph,.js .zk-ph img,.js .sl-ph figure,.js .sl-ph figure img,.js .rz figure,.js .rz figure .im,.js .rz figure .im img{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;transition:none!important}}
 
 @media(max-width:980px){.ig-top{margin-left:auto}.hdr .btn{margin-left:0}}</style></head>
 <body class="v2">
@@ -443,7 +474,7 @@ html{accent-color:var(--acc-solid)}
  <div class="wrap">
   <div class="head reveal"><h2>Marki, których produkty obsługujemy</h2>
    <p class="lead">Doświadczenie w obsłudze produktów najbardziej wymagających europejskich marek wyposażenia wnętrz.</p></div>
-  <ul class="prod reveal" aria-label="Marki, których produkty obsługujemy"><li>MINOTTI</li><li>MOLTENI&amp;C</li><li>CASSINA</li><li>B&amp;B ITALIA</li><li>POLIFORM</li><li>LIVING DIVANI</li><li>GIORGETTI</li><li>FLEXFORM</li><li>BAXTER</li><li>HENGE</li><li>CATTELAN ITALIA</li><li>FIAM ITALIA</li><li>MODULNOVA</li><li>BONALDO</li><li>DITRE ITALIA</li><li>SANGIACOMO</li><li>NOVAMOBILI</li><li>NATUZZI</li><li>CALLIGARIS</li><li>OPINION CIATTI</li><li>DAVIDE GROPPI</li><li>PROMEMORIA</li><li>EDRA</li><li>LEMA</li><li>ARKETIPO</li><li>MERIDIANI</li></ul>
+  <ul class="prod stagger" aria-label="Marki, których produkty obsługujemy"><li>MINOTTI</li><li>MOLTENI&amp;C</li><li>CASSINA</li><li>B&amp;B ITALIA</li><li>POLIFORM</li><li>LIVING DIVANI</li><li>GIORGETTI</li><li>FLEXFORM</li><li>BAXTER</li><li>HENGE</li><li>CATTELAN ITALIA</li><li>FIAM ITALIA</li><li>MODULNOVA</li><li>BONALDO</li><li>DITRE ITALIA</li><li>SANGIACOMO</li><li>NOVAMOBILI</li><li>NATUZZI</li><li>CALLIGARIS</li><li>OPINION CIATTI</li><li>DAVIDE GROPPI</li><li>PROMEMORIA</li><li>EDRA</li><li>LEMA</li><li>ARKETIPO</li><li>MERIDIANI</li></ul>
   <p class="disc">Lista pokazuje nasze doświadczenie w profesjonalnej obsłudze produktów tych marek. Dream Solution nie jest autoryzowanym przedstawicielem wymienionych producentów.</p>
  </div>
 </section>
@@ -466,7 +497,7 @@ html{accent-color:var(--acc-solid)}
     <div><dt>Profesjonalny montaż</dt><dd>Stelaże, systemy regulacji i wezgłowia złożone według instrukcji producenta.</dd></div>
    </dl>
    <p class="sl-lab">Doświadczenie m.in. z markami</p>
-   <ul class="sl-brands reveal" aria-label="Marki łóżek i materacy"><li>TRÉCA PARIS</li><li>DUX / DUXIANA</li><li>MATTSONS</li><li>HARRISON SPINKS</li><li>HYPNOS</li><li>SIMMONS</li></ul>
+   <ul class="sl-brands stagger" aria-label="Marki łóżek i materacy"><li>TRÉCA PARIS</li><li>DUX / DUXIANA</li><li>MATTSONS</li><li>HARRISON SPINKS</li><li>HYPNOS</li><li>SIMMONS</li></ul>
   </div>
  </div>
 </section>
@@ -475,7 +506,7 @@ html{accent-color:var(--acc-solid)}
  <div class="wrap">
   <div class="head reveal"><h2>Salony i partnerzy</h2>
    <p class="lead">Zaplecze logistyczne i montażowe dla salonów, showroomów i firm z branży premium.</p></div>
-  <ul class="part reveal" aria-label="Salony i partnerzy"><li>MAXFLIZ</li><li>MESMETRIC</li><li>H&amp;H / HH SHOWROOM</li><li>LUSSO CASA</li><li>DOMIO</li><li>PROMEMORIA</li><li>CLUE STUDIO</li><li>NOTI</li><li>EYE ON DESIGN</li><li>MATERACE I SYPIALNIE</li><li>DEKORIA</li><li>LEGARDERE / LEVEL 360</li><li>CARPETS &amp; MORE</li><li>ARCHIDZIEŁO</li><li>DUXIANA</li><li>LINIE STUDIO</li><li>BB HOME</li><li>MIRAD</li></ul>
+  <ul class="part stagger" aria-label="Salony i partnerzy"><li>MAXFLIZ</li><li>MESMETRIC</li><li>H&amp;H / HH SHOWROOM</li><li>LUSSO CASA</li><li>DOMIO</li><li>PROMEMORIA</li><li>CLUE STUDIO</li><li>NOTI</li><li>EYE ON DESIGN</li><li>MATERACE I SYPIALNIE</li><li>DEKORIA</li><li>LEGARDERE / LEVEL 360</li><li>CARPETS &amp; MORE</li><li>ARCHIDZIEŁO</li><li>DUXIANA</li><li>LINIE STUDIO</li><li>BB HOME</li><li>MIRAD</li></ul>
  </div>
 </section>
 
