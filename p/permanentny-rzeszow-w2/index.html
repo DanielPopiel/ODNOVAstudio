@@ -57,8 +57,8 @@ header{background:rgba(251,251,252,.94);backdrop-filter:blur(10px);-webkit-backd
 
 /* HERO */
 .hero{padding:calc(var(--hdr-h) + clamp(24px,4vw,56px)) 0 0;background:var(--white)}
-.hero .wrap:first-child{display:grid;grid-template-columns:5fr 6fr;grid-template-areas:'h s' 't s';grid-template-rows:auto 1fr;column-gap:clamp(28px,4vw,64px);align-items:start}
-.hero h1{grid-area:h}.hero .tl{grid-area:t}.hero .stage{grid-area:s;align-self:stretch}
+.hero .pin>.wrap{display:grid;grid-template-columns:5fr 6fr;grid-template-areas:'h s' 't s';grid-template-rows:auto 1fr;column-gap:clamp(28px,4vw,64px);align-items:start}
+.hero h1{grid-area:h}.hero .tl{grid-area:t}.hero .strack{grid-area:s;align-self:stretch;display:flex;flex-direction:column}.hero .stage{flex:1}
 .hero h1{font-size:clamp(3.4rem,7.6vw,7.6rem);line-height:.86;margin-bottom:clamp(20px,3vw,34px)}
 .hero h1 span{display:block;color:var(--sw);transition:color .5s}
 .tabs{display:grid;gap:0;border-top:2px solid var(--ink)}
@@ -78,14 +78,28 @@ header{background:rgba(251,251,252,.94);backdrop-filter:blur(10px);-webkit-backd
 .stage{position:relative;margin:0;align-self:stretch;display:flex;flex-direction:column;min-height:560px}
 .vbox{position:relative;flex:1;min-height:0;overflow:hidden;background:#f6f6f6}
 .vbox video,.vbox img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.vbox::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 60px 30px var(--white)}
+.vbox::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 36px 14px var(--white);z-index:2}
 .stage .tag{position:relative;margin:14px 0 0;min-height:2.1em;font:800 clamp(1.5rem,2.3vw,2.2rem)/1.02 var(--disp);text-transform:uppercase;color:var(--ink);opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s;z-index:2}
 .stage .tag span{color:var(--coral-d)}
 .stage.done .tag{opacity:1;transform:none}
-.replay{position:absolute;right:16px;top:16px;z-index:3;display:flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:rgba(251,251,252,.9);color:var(--ink);font:600 14px var(--sans);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s}
-.stage.done .replay{opacity:1;pointer-events:auto}
-.replay svg{width:16px;height:16px}
-.replay[hidden]{display:none}
+.vbox canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hint{position:absolute;left:50%;bottom:18px;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(251,251,252,.92);color:var(--ink);font:600 14px/1.2 var(--sans);white-space:nowrap;transform:translateX(-50%);opacity:0;transition:opacity .4s;pointer-events:none;box-shadow:0 4px 18px rgba(23,21,26,.08)}
+.hint svg{width:15px;height:15px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(3px)}}
+.scrub .hint.on{opacity:1}
+/* scena przewijana: desktop przypina cały hero, telefon przypina sam kadr */
+@media (min-width:901px){
+ .scrub .hero{padding-top:0}
+ .scrub .scr{height:calc(100vh + 170vh)}
+ .scrub .pin{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hdr-h) + 20px) 0 28px}
+ .scrub .stage{min-height:0;height:min(calc(100vh - var(--hdr-h) - 110px),700px)}
+ .scrub .vbox{flex:1}
+}
+@media (min-width:901px) and (max-height:820px){.hero h1{font-size:clamp(3rem,6vw,5.6rem)}.tab{padding:10px 0}.hero .cta{margin-top:18px}}
+@media (max-width:900px){
+ .scrub .pin{height:calc(var(--wh,900px) + 150vh)}
+ .scrub .pin>.wrap{position:sticky;top:calc(var(--hdr-h) + 10px - var(--h1h,0px))}
+}
 html:not(.js) .stage .tag{opacity:1;transform:none}
 .tab.lit .nm{color:var(--ink)}
 .tab.lit .chip{transform:none}
@@ -223,7 +237,7 @@ html:not(.js) .mbar{transform:none}
 
 @media (max-width:1100px){.nav{display:none}.mnav{display:block}.hd .tel{margin-left:auto}}
 @media (max-width:900px){
- .hero .wrap:first-child{grid-template-columns:1fr;grid-template-areas:'h' 's' 't';row-gap:22px}
+ .hero .pin>.wrap{grid-template-columns:1fr;grid-template-areas:'h' 's' 't';row-gap:22px}
  .ba .wrap,.who .wrap,.faq .wrap,.contact .wrap,.kor{grid-template-columns:1fr}
  .stage{min-height:0}
  .vbox{flex:none;aspect-ratio:4/3.2}
@@ -271,6 +285,7 @@ html:not(.js) .mbar{transform:none}
 
 <main>
 <section class="hero" id="hero">
+ <div class="scr" id="scr"><div class="pin">
  <div class="wrap">
   <h1>Makijaż permanentny <span>Rzeszów</span></h1>
   <div class="tl">
@@ -281,15 +296,16 @@ html:not(.js) .mbar{transform:none}
    </div>
    <div class="cta"><a class="btn" href="#kontakt">Umów konsultację, 100 zł</a><a class="btn line" href="#cennik">Pełny cennik</a></div>
   </div>
-  <figure class="stage" id="stage">
+  <div class="strack" id="strack"><figure class="stage" id="stage">
    <div class="vbox">
-   <img class="poster" src="assets/w2h-koniec.webp" width="1280" height="720" alt="Pigment z palety staje się makijażem permanentnym: brwi, kreska i usta">
-   <video id="hv" muted playsinline preload="auto" poster="assets/w2h-start.webp" aria-hidden="true" hidden><source src="assets/w2h-film.mp4" type="video/mp4"><source src="assets/w2h-film.webm" type="video/webm"></video>
-   <button class="replay" id="replay" type="button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.5M13 2v3h-3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Odtwórz ponownie</button>
+   <img class="poster" src="assets/w2h-koniec.webp" width="960" height="720" alt="Pigment z palety staje się makijażem permanentnym: brwi, kreska i usta">
+   <canvas id="hc" aria-hidden="true" hidden></canvas>
+   <span class="hint" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Przewiń: pigment zamieni się w makijaż</span>
    </div>
    <figcaption class="tag">Kolor dobieramy na papierze. <span>Efekt nosisz na twarzy.</span></figcaption>
-  </figure>
+  </figure></div>
  </div>
+ </div></div>
  <div class="wrap"><p class="facts"><span><b>Korekta 4–10 tyg.</b> w cenie zabiegu</span><span><b>Konsultacja z rysunkiem</b> 100 zł</span><span><b>al. Kopisto 8B</b>, Rzeszów</span><span><b>Wt–Pt</b> 10–18 · <b>Sob</b> 9–12</span></p></div>
 </section>
 
@@ -446,21 +462,42 @@ const R=document.documentElement,hdr=document.getElementById('top');
 const mh=()=>R.style.setProperty('--hdr-h',hdr.offsetHeight+'px');mh();addEventListener('resize',mh);addEventListener('load',mh);
 document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-// hero: film „z palety na twarz” — odtwarza się raz sam, potem stoi na twarzy
-const stage=document.getElementById('stage'),hv=document.getElementById('hv'),tabsEl=[...document.querySelectorAll('.tab')],rep=document.getElementById('replay');
-const order=[0,2,1];               // kolejność pociągnięć w filmie: brew, kreska, usta
-const marks=[0.19,0.28,0.40];       // ułamek filmu, w którym dane pociągnięcie jest gotowe
-function lit(p){order.forEach((ti,k)=>tabsEl[ti].classList.toggle('lit',p>=marks[k]))}
+// hero: scena „z palety na twarz” sterowana przewijaniem (klatki na canvas)
+const stage=document.getElementById('stage'),cv=document.getElementById('hc'),tabsEl=[...document.querySelectorAll('.tab')],hint=stage.querySelector('.hint');
+const FR=['assets/hs-000.webp','assets/hs-001.webp','assets/hs-002.webp','assets/hs-003.webp','assets/hs-004.webp','assets/hs-005.webp','assets/hs-006.webp','assets/hs-007.webp','assets/hs-008.webp','assets/hs-009.webp','assets/hs-010.webp','assets/hs-011.webp','assets/hs-012.webp','assets/hs-013.webp','assets/hs-014.webp','assets/hs-015.webp','assets/hs-016.webp','assets/hs-017.webp','assets/hs-018.webp','assets/hs-019.webp','assets/hs-020.webp','assets/hs-021.webp','assets/hs-022.webp','assets/hs-023.webp','assets/hs-024.webp','assets/hs-025.webp','assets/hs-026.webp','assets/hs-027.webp','assets/hs-028.webp','assets/hs-029.webp','assets/hs-030.webp','assets/hs-031.webp','assets/hs-032.webp','assets/hs-033.webp','assets/hs-034.webp','assets/hs-035.webp','assets/hs-036.webp','assets/hs-037.webp','assets/hs-038.webp','assets/hs-039.webp','assets/hs-040.webp','assets/hs-041.webp','assets/hs-042.webp','assets/hs-043.webp','assets/hs-044.webp','assets/hs-045.webp','assets/hs-046.webp','assets/hs-047.webp','assets/hs-048.webp','assets/hs-049.webp','assets/hs-050.webp','assets/hs-051.webp','assets/hs-052.webp','assets/hs-053.webp','assets/hs-054.webp','assets/hs-055.webp','assets/hs-056.webp','assets/hs-057.webp','assets/hs-058.webp','assets/hs-059.webp','assets/hs-060.webp','assets/hs-061.webp','assets/hs-062.webp','assets/hs-063.webp','assets/hs-064.webp','assets/hs-065.webp','assets/hs-066.webp','assets/hs-067.webp','assets/hs-068.webp','assets/hs-069.webp','assets/hs-070.webp','assets/hs-071.webp','assets/hs-072.webp','assets/hs-073.webp','assets/hs-074.webp','assets/hs-075.webp','assets/hs-076.webp','assets/hs-077.webp','assets/hs-078.webp','assets/hs-079.webp','assets/hs-080.webp','assets/hs-081.webp','assets/hs-082.webp','assets/hs-083.webp','assets/hs-084.webp','assets/hs-085.webp','assets/hs-086.webp','assets/hs-087.webp','assets/hs-088.webp','assets/hs-089.webp','assets/hs-090.webp','assets/hs-091.webp','assets/hs-092.webp','assets/hs-093.webp','assets/hs-094.webp','assets/hs-095.webp','assets/hs-096.webp','assets/hs-097.webp','assets/hs-098.webp','assets/hs-099.webp','assets/hs-100.webp','assets/hs-101.webp','assets/hs-102.webp','assets/hs-103.webp','assets/hs-104.webp','assets/hs-105.webp','assets/hs-106.webp','assets/hs-107.webp','assets/hs-108.webp','assets/hs-109.webp','assets/hs-110.webp','assets/hs-111.webp','assets/hs-112.webp','assets/hs-113.webp','assets/hs-114.webp','assets/hs-115.webp','assets/hs-116.webp','assets/hs-117.webp','assets/hs-118.webp','assets/hs-119.webp','assets/hs-120.webp','assets/hs-121.webp','assets/hs-122.webp','assets/hs-123.webp','assets/hs-124.webp','assets/hs-125.webp','assets/hs-126.webp','assets/hs-127.webp','assets/hs-128.webp','assets/hs-129.webp','assets/hs-130.webp','assets/hs-131.webp','assets/hs-132.webp','assets/hs-133.webp','assets/hs-134.webp','assets/hs-135.webp','assets/hs-136.webp','assets/hs-137.webp','assets/hs-138.webp','assets/hs-139.webp','assets/hs-140.webp','assets/hs-141.webp','assets/hs-142.webp','assets/hs-143.webp','assets/hs-144.webp','assets/hs-145.webp','assets/hs-146.webp','assets/hs-147.webp','assets/hs-148.webp','assets/hs-149.webp','assets/hs-150.webp','assets/hs-151.webp','assets/hs-152.webp','assets/hs-153.webp','assets/hs-154.webp','assets/hs-155.webp','assets/hs-156.webp','assets/hs-157.webp','assets/hs-158.webp','assets/hs-159.webp','assets/hs-160.webp','assets/hs-161.webp','assets/hs-162.webp','assets/hs-163.webp','assets/hs-164.webp','assets/hs-165.webp','assets/hs-166.webp','assets/hs-167.webp','assets/hs-168.webp','assets/hs-169.webp','assets/hs-170.webp','assets/hs-171.webp','assets/hs-172.webp','assets/hs-173.webp','assets/hs-174.webp','assets/hs-175.webp','assets/hs-176.webp','assets/hs-177.webp'];
+const order=[0,2,1];                  // kolejność pociągnięć: brew, kreska, usta
+const marks=[0.17,0.31,0.53];         // ułamek klatek, w którym dane pociągnięcie jest gotowe
+const END=0.9;                        // ostatnie 10% przewijania stoi na twarzy
+function lit(f){order.forEach((ti,k)=>tabsEl[ti].classList.toggle('lit',f>=marks[k]))}
 function finish(){stage.classList.add('done');lit(1)}
-if(reduce||!(hv.canPlayType('video/mp4')||hv.canPlayType('video/webm'))){finish();rep.hidden=true}
+if(reduce||!cv.getContext){finish()}
 else{
-  hv.hidden=false;stage.querySelector('.poster').style.visibility='hidden';
-  hv.addEventListener('timeupdate',()=>{if(hv.duration)lit(hv.currentTime/hv.duration)});
-  hv.addEventListener('ended',finish);
-  const go=()=>{hv.play().catch(()=>{hv.hidden=true;rep.hidden=true;stage.querySelector('.poster').style.visibility='';finish()})};
-  if(hv.readyState>=2)go();else hv.addEventListener('canplay',go,{once:true});
-  setTimeout(()=>{if(hv.paused&&hv.currentTime===0){hv.hidden=true;rep.hidden=true;stage.querySelector('.poster').style.visibility='';finish()}},6000);
-  rep.addEventListener('click',()=>{stage.classList.remove('done');lit(0);hv.currentTime=0;hv.play()});
+  R.classList.add('scrub');
+  const ctx=cv.getContext('2d'),N=FR.length,img=new Array(N),ok=new Array(N).fill(false);
+  const strack=document.getElementById('strack'),scr=document.getElementById('scr'),pin=scr.querySelector('.pin');
+  const mob=matchMedia('(max-width:900px)'),wrap=pin.querySelector('.wrap'),h1=wrap.querySelector('h1');
+  let tgt=0,cur=-1,raf=0,W=0,H=0;
+  function size(){const b=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=Math.round(b.width*d);H=Math.round(b.height*d);if(cv.width!==W||cv.height!==H){cv.width=W;cv.height=H}
+    R.style.setProperty('--h1h',(h1.offsetHeight+parseFloat(getComputedStyle(wrap).rowGap||0))+'px');R.style.setProperty('--wh',wrap.offsetHeight+'px');cur=-1;tgt=prog();req()}
+  function near(i){for(let k=0;k<N;k++){if(i-k>=0&&ok[i-k])return i-k;if(i+k<N&&ok[i+k])return i+k}return -1}
+  function blit(i,a){const im=img[i],s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;ctx.globalAlpha=a;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
+  function draw(f){const x=f*(N-1),i=Math.floor(x),a=x-i,j=near(i);if(j<0||!W)return;
+    ctx.globalAlpha=1;blit(j,1);if(a>0.02&&i+1<N&&ok[i+1]&&j===i)blit(i+1,a);ctx.globalAlpha=1;
+    if(cv.hidden){cv.hidden=false;stage.querySelector('.poster').style.visibility='hidden'}}
+  function prog(){const tr=mob.matches?pin:scr,st=mob.matches?wrap:pin,top=mob.matches?parseFloat(getComputedStyle(wrap).top)||0:0;
+    const b=tr.getBoundingClientRect(),len=b.height-st.offsetHeight;return len>0?Math.min(1,Math.max(0,(top-b.top)/len)):1}
+  function tick(){raf=0;const d=tgt-cur;cur=Math.abs(d)<0.0015||cur<0?tgt:cur+d*0.2;
+    const f=Math.min(1,cur/END);draw(f);lit(f);stage.classList.toggle('done',cur>=END-0.01);hint.classList.toggle('on',cur<0.03);
+    if(cur!==tgt)req()}
+  function req(){if(!raf)raf=requestAnimationFrame(tick)}
+  addEventListener('scroll',()=>{tgt=prog();req()},{passive:true});
+  addEventListener('resize',size);if(window.ResizeObserver)new ResizeObserver(size).observe(cv);addEventListener('load',size);
+  // wczytywanie: najpierw pierwsza i ostatnia klatka, potem coraz gęściej
+  const q=[0,N-1];for(const st of [16,8,4,2,1])for(let i=0;i<N;i+=st)if(!q.includes(i))q.push(i);
+  let qi=0;function load(){if(qi>=q.length)return;const i=q[qi++],im=new Image();im.decoding='async';
+    im.onload=()=>{img[i]=im;ok[i]=true;if(i===0||Math.abs(i-Math.round(Math.min(1,cur/END)*(N-1)))<3){cur=-1;req()}load()};im.onerror=load;im.src=FR[i]}
+  for(let k=0;k<4;k++)load();
+  size();tgt=prog();
 }
 // przed/po
 const cmp=document.getElementById('cmp'),rg=cmp.querySelector('input');rg.addEventListener('input',()=>cmp.style.setProperty('--x',rg.value+'%'));
