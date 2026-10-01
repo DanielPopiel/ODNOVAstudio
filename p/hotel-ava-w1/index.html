@@ -1,0 +1,216 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hotel AVA Gliwice — makieta W1 „Pod Areną”</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Hotel AVA w Gliwicach — 400 m od Areny Gliwice, parking w cenie, restauracja i sale konferencyjne. Propozycja nowej strony.">
+<meta property="og:title" content="Hotel AVA Gliwice — Pod Areną"><meta property="og:description" content="Propozycja nowej strony hotelu AVA — makieta W1."><meta property="og:image" content="https://www.odnovastudio.com/p/hotel-ava-w1/og.jpg"><meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%224%22%20fill%3D%22%2315181d%22/%3E%3Cpath%20d%3D%22M16%205l3.3%207.6%208.2.7-6.2%205.4%201.9%208.1L16%2022.6l-7.2%204.2%201.9-8.1-6.2-5.4%208.2-.7z%22%20fill%3D%22%23e8962e%22/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+::selection{background:var(--acc);color:var(--sel)} :focus-visible{outline:2px solid var(--acc);outline-offset:3px} html{caret-color:var(--acc);accent-color:var(--acc)}
+.mk{font:500 12.5px/1.4 var(--fs);background:var(--mkbg);color:var(--mkfg);text-align:center;padding:7px 14px}
+.fix{position:fixed;inset:0 0 auto 0;z-index:50}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px clamp(16px,4vw,48px);background:var(--hbg);border-bottom:1px solid var(--hline);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.top nav{display:flex;gap:clamp(14px,2vw,28px)} .top nav a{color:var(--htxt);text-decoration:none;font:500 15px/1 var(--fs);padding:11px 0;border-bottom:1px solid transparent} .top nav a.navon{border-bottom-color:var(--acc)}
+.top .cta{display:flex;align-items:center;gap:18px} .top .tel{color:var(--htxt);text-decoration:none;font:600 15px/1 var(--fs);padding:11px 0;font-variant-numeric:lining-nums tabular-nums}
+.btn{display:inline-block;text-decoration:none;font:600 15px/1 var(--fs);padding:13px 20px;border-radius:var(--r);background:var(--acc);color:var(--onacc);border:1px solid var(--acc);cursor:pointer;transition:transform .15s,background .2s} .btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.logo{padding:6px 0} footer a{display:inline-block;padding:9px 0}
+.mnav{display:none} .mnav summary{list-style:none;cursor:pointer;font:600 15px/1 var(--fs);color:var(--htxt);padding:12px 14px;border:1px solid var(--hline);border-radius:var(--r);min-height:44px;display:flex;align-items:center;gap:8px} .mnav summary::-webkit-details-marker{display:none} .mnav summary::after{content:"Menu"} .mnav[open] summary::after{content:"Zamknij"} .mnav[open] summary{color:var(--acc);border-color:var(--acc)}
+.mnav nav{position:fixed;left:0;right:0;top:var(--hdr-h,112px);background:var(--mbg);border-top:1px solid var(--hline);border-bottom:1px solid var(--hline);padding:12px 16px 22px;display:flex;flex-direction:column;box-shadow:0 30px 60px rgba(0,0,0,.3)} .mnav nav a{color:var(--htxt);text-decoration:none;font:500 18px/1 var(--fs);padding:15px 8px;border-bottom:1px solid var(--hline)} .mnav nav a:last-child{border:0}
+.mnav[open]::before{content:"";position:fixed;inset:0;background:rgba(10,12,14,.55);z-index:-1} body.menu-open{overflow:hidden}
+section[id]{scroll-margin-top:var(--hdr-h,112px)}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.js .reveal{opacity:0;transition:opacity .55s cubic-bezier(.22,.61,.36,1)} .js .reveal.in{opacity:1}
+.js .reveal.up{transform:translateY(16px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)} .js .reveal.up.in{transform:none}
+.js .stagger>*{opacity:0;transform:translateY(8px);transition:opacity .5s cubic-bezier(.22,.61,.36,1),transform .5s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*60ms)} .js .stagger.in>*{opacity:1;transform:none}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--mbg);border-top:1px solid var(--hline)} .mbar a{text-align:center}
+.ok{margin-top:14px;font:500 15px/1.5 var(--fs)}
+.chk{display:flex;gap:10px;align-items:flex-start;font:400 14px/1.45 var(--fs);margin:4px 0 14px} .form .chk input{width:18px;height:18px;min-height:0;margin-top:2px;flex:none;padding:0} .chk a{color:inherit}
+.trust{display:flex;gap:14px 32px;flex-wrap:wrap;padding:18px 0;border-top:1px solid var(--tl,rgba(0,0,0,.15));border-bottom:1px solid var(--tl,rgba(0,0,0,.15));font:500 15px/1.4 var(--fs)} .trust span i{font-style:normal;opacity:.6}
+@media (max-width:980px){.top>nav{display:none}.mnav{display:block}.top .tel{display:none}}
+@media (max-width:640px){.mbar{display:grid}}
+@media (max-width:420px){.top .cta .btn{display:none}}
+@media (prefers-reduced-motion:reduce){.js .reveal,.js .reveal.up,.js .stagger>*{opacity:1;transform:none;transition:none} html{scroll-behavior:auto}}
+
+:root{--bg:#15181d;--bg2:#1c2026;--sand:#efe6d8;--acc:#e8962e;--acc2:#9a5c0f;--onacc:#1a1208;--txt:#f1ede6;--mut:#aaa49a;--ink:#1a1a18;--ink2:#5a554c;--line:rgba(255,255,255,.14);--line2:rgba(26,26,24,.16);--r:4px;--fh:'Big Shoulders Display',Impact,sans-serif;--fs:'Figtree',system-ui,sans-serif;
+--mkbg:#1c2026;--mkfg:#aaa49a;--hbg:rgba(21,24,29,.84);--hline:rgba(255,255,255,.12);--htxt:#f1ede6;--mbg:#1c2026;--sel:#1a1208}
+body{background:var(--bg);color:var(--txt);font:400 17px/1.6 var(--fs)}
+h1,h2,h3{font-family:var(--fh);font-weight:800;letter-spacing:.005em;line-height:.95;margin:0}
+h2{font-size:clamp(2.6rem,5.2vw,4rem);max-width:16ch} h3{font-size:1.5rem;font-weight:700}
+p{margin:0}
+.logo{display:flex;align-items:baseline;gap:8px;color:var(--htxt);text-decoration:none;font:800 24px/1 var(--fh);letter-spacing:.02em} .logo b{font-weight:800;color:var(--acc)} .logo svg{width:22px;height:11px;fill:var(--acc)}
+/* hero */
+.hero{position:relative;background:#0e1013} .js .stage{height:260vh} .pin{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+html:not(.js) .pin{position:relative;height:auto;min-height:100vh}
+.frames{position:absolute;inset:0} .scn{position:absolute;inset:0;opacity:0;transform:scale(1.05);transition:opacity .55s} .scn img{width:100%;height:100%;object-fit:cover;object-position:60% 50%} .scn.on{opacity:1}
+html:not(.js) .scn:first-child{opacity:1;transform:none;position:relative;height:100vh}
+.scn::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,19,.4) 0,rgba(14,16,19,0) 28%,rgba(14,16,19,.45) 55%,rgba(14,16,19,.9) 100%),linear-gradient(90deg,rgba(14,16,19,.55),rgba(14,16,19,0) 55%)}
+.route{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:hidden;transition:opacity .3s}
+.route path{fill:none;stroke:var(--acc);stroke-width:3;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(232,150,46,.6))} .route circle{fill:var(--acc);stroke:#0e1013;stroke-width:3} .route text{font:700 16px var(--fs);fill:#fff;letter-spacing:.02em;paint-order:stroke;stroke:#0e1013;stroke-width:4px;stroke-linejoin:round}
+.acts{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(16px,4vw,48px) clamp(40px,7vh,84px);display:grid}
+.hact{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .22s,transform .22s,visibility 0s .22s;max-width:760px}
+.hact.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s .18s,transform .5s .18s,visibility 0s} html:not(.js) .hact:first-child{opacity:1;visibility:visible;transform:none}
+.hact h1,.hact .h1{font:800 clamp(2.6rem,6.2vw,5.4rem)/.92 var(--fh);margin:0 0 14px;text-shadow:0 2px 24px rgba(0,0,0,.5)} .hact p{font-size:clamp(1.05rem,1.4vw,1.3rem);max-width:600px;color:#e7e1d7;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.hact .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;align-items:center} .hact .row a.tel{color:#fff;text-decoration:none;font:600 1.05rem var(--fs);padding:10px 0;font-variant-numeric:lining-nums tabular-nums}
+.prog{position:absolute;left:clamp(16px,4vw,48px);right:clamp(16px,4vw,48px);top:calc(var(--hdr-h,112px) + 22px);display:flex;align-items:center;justify-content:space-between;gap:12px;font:700 14px var(--fh);letter-spacing:.08em;color:#fff} .prog .adr{font:500 14px var(--fs);letter-spacing:0;color:#d8d2c7} .prog .adr b{color:var(--acc)} .prog em{display:flex;align-items:center;gap:12px;font-style:normal} .prog i{display:block;width:120px;height:2px;background:rgba(255,255,255,.25);position:relative} .prog i b{position:absolute;left:0;top:0;bottom:0;background:var(--acc);width:0}
+html:not(.js) .prog em{display:none}
+/* sections */
+section{padding:clamp(72px,9vw,120px) 0} .sand{background:var(--sand);color:var(--ink);padding:clamp(56px,7vw,96px) 0} .dark{background:var(--bg);color:var(--txt);padding:clamp(88px,11vw,144px) 0} .dark2{background:var(--bg2);color:var(--txt)}
+.lead{font-size:clamp(1.1rem,1.4vw,1.3rem);max-width:640px;margin-top:20px} .sand .lead{color:var(--ink2)} .dark .lead,.dark2 .lead{color:var(--mut)}
+.head{margin-bottom:clamp(36px,5vw,64px)}
+.dark .trust,.dark2 .trust{--tl:var(--line);color:var(--mut)} .sand .trust{--tl:var(--line2);color:var(--ink2)}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:start}
+/* pokoje */
+.price-big{font:800 clamp(4.4rem,9vw,7.6rem)/.9 var(--fh);white-space:nowrap;color:var(--acc);letter-spacing:-.01em;margin:clamp(20px,3vw,36px) 0 8px;font-variant-numeric:tabular-nums} .price-big small{font-size:clamp(1.2rem,2.2vw,1.9rem);color:var(--txt);letter-spacing:.02em;font-weight:700;margin-left:.2em}
+.price-sub{color:var(--mut);font-size:1.05rem;max-width:520px}
+.plist{border-top:1px solid var(--line);margin-top:clamp(28px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;column-gap:40px} .plist .rw{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline} .plist .n{font:700 clamp(1.3rem,2vw,1.7rem)/1 var(--fh)} .plist .z{font:800 clamp(1.4rem,2.2vw,1.9rem)/1 var(--fh);color:var(--acc);font-variant-numeric:tabular-nums} .plist .s{grid-column:1/-1;color:var(--mut);font-size:15px}
+.pfot{display:grid;grid-template-columns:7fr 5fr;grid-template-rows:auto auto;gap:12px} .pfot figure{margin:0;position:relative} .pfot img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);filter:saturate(.85) contrast(1.04)} .pfot .a{grid-row:1/3} .pfot .a img{aspect-ratio:3/4;object-position:50% 40%} .pfot .b img,.pfot .c img{aspect-ratio:5/4}
+.pfot figcaption{font-size:13px;color:var(--mut);margin-top:8px}
+.extras{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px 32px;border-top:1px solid var(--line);padding-top:24px} .extras p{font-size:15.5px;color:var(--mut)} .extras b{display:block;color:var(--txt);font:600 15px/1.3 var(--fs);letter-spacing:.01em;margin-bottom:6px}
+/* form */
+.form{background:#fff;color:var(--ink);padding:clamp(22px,3vw,36px);border-radius:var(--r);border:1px solid var(--line2)} .form .g{display:grid;grid-template-columns:1fr 1fr;gap:14px} .form label.l{display:block;font:500 14px/1.3 var(--fs);color:var(--ink2);margin-bottom:6px} .form .f{margin-bottom:14px} .form .f.full{grid-column:1/-1}
+.form input,.form select,.form textarea{width:100%;font:400 16px var(--fs);padding:12px 12px;border:1px solid #cfc7b8;border-radius:var(--r);background:#fff;color:var(--ink);min-height:46px} .form textarea{min-height:92px;resize:vertical} .form .btn{width:100%;margin-top:6px;font-size:16px;padding:15px}
+.side p{margin-top:16px} .side .big{font:800 clamp(2rem,3.4vw,2.8rem)/1 var(--fh);color:var(--ink);text-decoration:none;display:inline-block;margin-top:10px;font-variant-numeric:lining-nums tabular-nums} .side .big:hover{color:var(--acc2)}
+.hours{margin-top:26px;border-top:1px solid var(--line2);padding-top:18px;font-size:15.5px;color:var(--ink2)} .hours b{color:var(--ink);font-weight:600}
+/* restauracja */
+.bleed{aspect-ratio:21/9;overflow:hidden;margin-bottom:clamp(36px,5vw,64px);border-radius:var(--r)} .bleed img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.04)}
+.menu{columns:3;column-gap:48px;margin-top:8px} .menu .grp{break-inside:avoid;margin-bottom:28px} .menu h3{font:700 1.5rem/1 var(--fh);color:var(--txt);margin:0 0 10px;letter-spacing:.01em} .menu .rw{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px} .menu .rw span:last-child{font:700 1.2rem/1 var(--fh);color:var(--txt);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cap{font-size:14px;color:var(--mut);margin-top:10px}
+.fig{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3} .fig img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.04)}
+/* sale */
+.slist{border-top:2px solid var(--ink)} .slist .rw{display:grid;grid-template-columns:1.4fr 1fr auto;gap:16px;padding:20px 0;border-bottom:1px solid var(--line2);align-items:baseline} .slist .n{font:700 clamp(1.3rem,2vw,1.8rem)/1 var(--fh)} .slist .o{color:var(--ink2);font-size:15.5px} .slist .z{font:800 clamp(1.4rem,2.2vw,2rem)/1 var(--fh);color:var(--ink);font-variant-numeric:tabular-nums}
+/* dojazd i kontakt */
+.kont{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:start}
+.board{border-top:2px solid var(--txt);margin-top:10px} .board .rw{display:grid;grid-template-columns:1.4fr auto 1fr;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)} .board .d{font:700 clamp(1.4rem,2.4vw,2rem)/1 var(--fh)} .board .m{font:800 clamp(1.4rem,2.4vw,2rem)/1 var(--fh);color:var(--txt);font-variant-numeric:tabular-nums;justify-self:end;text-align:right} .board .t{font:400 15px var(--fs);color:var(--mut)}
+.adr{font-size:1.1rem;line-height:1.7} .adr b{font:700 1.75rem/1.2 var(--fh);display:block;margin-bottom:10px} .adr a{color:var(--txt);text-decoration:none;border-bottom:1px solid var(--line);display:inline-block;padding:6px 0} .adr a.tel{font:800 clamp(1.8rem,3vw,2.6rem)/1.1 var(--fh);border:0;display:block;margin-top:14px;font-variant-numeric:lining-nums tabular-nums} .adr a.tel:hover{color:var(--acc)} .adr .hrs{margin-top:18px;font-size:15.5px;color:var(--mut)} .adr .hrs b{display:inline;font:600 15.5px var(--fs);color:var(--txt)}
+.map{aspect-ratio:4/3;border-radius:var(--r);background:#1c2026;border:1px solid var(--line);position:relative;overflow:hidden;margin-top:28px} .map svg{width:100%;height:100%} .map text{font:600 14px var(--fs);fill:#d8d2c7} .map .rd{stroke:#3a404a;stroke-width:10;fill:none;stroke-linecap:round} .map .rd2{stroke:#2c3139;stroke-width:6;fill:none} .map .pt{fill:var(--acc);stroke:#15181d;stroke-width:3} .map .hw{stroke:#4a5160;stroke-width:14;fill:none}
+footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--mut)} footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap} footer a{color:var(--mut)}
+@media (max-width:900px){.two,.kont{grid-template-columns:1fr} .plist{grid-template-columns:1fr} .pfot{grid-template-columns:1fr 1fr} .pfot .a{grid-row:auto;grid-column:1/-1} .pfot .a img{aspect-ratio:16/10} .extras{grid-template-columns:1fr} .board .rw{grid-template-columns:1fr auto} .board .t{grid-column:1/-1} .slist .rw{grid-template-columns:1fr auto} .slist .o{grid-column:1/-1} .menu{columns:2}}
+@media (max-width:640px){.form .g{grid-template-columns:1fr} .hact h1,.hact .h1{font-size:clamp(2.4rem,11vw,3.4rem)} .acts{padding-bottom:calc(64px + 72px)} .prog{display:none} .prog.m{display:flex;position:static;margin-top:18px;justify-content:flex-start;left:auto;right:auto;top:auto} .prog.m i{width:72px} .scn img{object-position:62% 50%} .pin{min-height:620px} .menu{columns:1} .bleed{aspect-ratio:4/3} .mbar{transform:none}}
+@media (min-width:641px){.prog.m{display:none} .mbar{transform:translateY(110%);transition:transform .35s} .past-hero .mbar{transform:none}}
+@media (prefers-reduced-motion:reduce){.js .stage{height:auto} .pin{position:relative;height:auto;min-height:0} .frames{position:relative;height:70vh} .scn{transition:none} .scn:first-child{opacity:1;transform:none} .acts{position:static;display:grid;gap:36px;padding-top:40px;padding-bottom:48px} .hact{opacity:1;visibility:visible;transform:none;transition:none} .prog em,.route{display:none}}
+</style></head><body>
+<div class="fix"><div class="mk"><span>Makieta W1 „Pod Areną” · propozycja nowej strony hotelava.pl · ODNOVA Studio</span></div>
+<header class="top"><a class="logo" href="#start" aria-label="Hotel AVA — strona główna">HOTEL <b>AVA</b><svg viewBox="0 0 44 22" aria-hidden="true"><path d="M11 0l3.2 7.3 7.8.7-5.9 5.2 1.8 7.8L11 17l-6.9 4 1.8-7.8L0 8l7.8-.7z"/><path d="M33 0l3.2 7.3 7.8.7-5.9 5.2 1.8 7.8L33 17l-6.9 4 1.8-7.8L22 8l7.8-.7z"/></svg></a><nav aria-label="Główna"><a href="#pokoje">Pokoje</a><a href="#restauracja">Restauracja</a><a href="#sale">Sale</a><a href="#dojazd">Dojazd i kontakt</a></nav>
+<div class="cta"><a class="tel" href="tel:+48322301371">+48 32 230 13 71</a><a class="btn" href="#rezerwacja">Zapytaj o termin</a>
+<details class="mnav"><summary aria-label="Menu"></summary><nav aria-label="Menu mobilne"><a href="#pokoje">Pokoje</a><a href="#restauracja">Restauracja</a><a href="#sale">Sale</a><a href="#dojazd">Dojazd i kontakt</a><a href="#rezerwacja">Zapytaj o termin</a><a href="tel:+48322301371">+48 32 230 13 71</a></nav></details></div></header></div>
+
+<section class="hero" id="start"><div class="stage"><div class="pin">
+<div class="frames">
+ <div class="scn on"><img src="img/hero-1-1920.webp" srcset="img/hero-1-1000.webp 1000w, img/hero-1-1920.webp 1920w" sizes="100vw" alt="Wejście do hotelu nocą, parking dla gości" fetchpriority="high"></div>
+ <div class="scn"><img src="img/hero-2-1920.webp" srcset="img/hero-2-1000.webp 1000w, img/hero-2-1920.webp 1920w" sizes="100vw" alt="Pokój hotelowy nocą" loading="lazy"></div>
+ <div class="scn"><img src="img/hero-3-1920.webp" srcset="img/hero-3-1000.webp 1000w, img/hero-3-1920.webp 1920w" sizes="100vw" alt="Śniadanie w restauracji hotelowej rano" loading="lazy"></div>
+</div>
+<svg class="route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path pathLength="1" d="M 120 300 C 360 250, 640 380, 960 520"/><circle cx="960" cy="520" r="7"/><text x="150" y="282">← Arena Gliwice · 400 m</text><text x="985" y="560">Hotel AVA</text></svg>
+<div class="prog"><span class="adr"><b>ul. Pszczyńska 113, Gliwice</b> · 400 m od Areny · 3 min od A1/A4</span><em><span>01 / 03</span><i><b></b></i></em></div>
+<div class="acts">
+ <div class="hact on"><h1>Nocleg 400 metrów od Areny Gliwice</h1><p>Przed koncertem spokojnie zjesz, po koncercie wrócisz pieszo w pięć minut. Parking dla gości w cenie pobytu.</p><div class="prog m"><span class="adr"><b>ul. Pszczyńska 113, Gliwice</b> · 400 m od Areny · 3 min od A1/A4</span><em><span>01 / 03</span><i><b></b></i></em></div></div>
+ <div class="hact"><p class="h1">Pokój od 200 zł za dobę. Za pokój, nie za osobę.</p><p>Odnowione w 2022 roku. Własna łazienka, TV, lodówka, cisza. Bez dopłat za parking.</p></div>
+ <div class="hact"><p class="h1">Rano śniadanie od 7:00, potem trzy minuty do A4</p><p>Węzeł Sośnica bez wjeżdżania do miasta, w stronę Katowic, Krakowa, Wrocławia. Albo pięć minut do centrum Gliwic.</p><div class="row"><a class="btn" href="#rezerwacja">Zapytaj o termin</a><a class="tel" href="tel:+48322301371">+48 32 230 13 71</a></div></div>
+</div>
+</div></div></section>
+
+<section class="dark" id="pokoje"><div class="wrap">
+ <div class="head reveal"><h2>Pokoje i cennik</h2><p class="lead">Ceny za pokój za dobę. Dla firm i pobytów od czterech dób mamy rabaty, wystarczy zapytać.</p>
+ <p class="trust" style="margin-top:28px"><span>W Gliwicach od <i>[rok — uzupełnić]</i></span><span><i>[n]</i> pokoi, recepcja całą dobę</span><span>Ocena <i>[x,x]</i> na Booking.com, <i>[n]</i> opinii</span><span>Odnowione w 2022</span></p></div>
+ <div class="two">
+  <div class="reveal"><p class="price-big">od 200 zł<small>/ doba</small></p><p class="price-sub">Pokój jednoosobowy z łazienką, TV i lodówką. Parking i Wi-Fi w cenie.</p>
+   <div class="plist stagger"><div class="rw"><span class="n">Pokój 1-osobowy</span><span class="z">200 zł</span><span class="s">1 łóżko, biurko, TV, lodówka</span></div><div class="rw"><span class="n">Pokój 2-osobowy</span><span class="z">260 zł</span><span class="s">dwa łóżka albo jedno podwójne</span></div><div class="rw"><span class="n">Pokój 3-osobowy</span><span class="z">350 zł</span><span class="s">trzy łóżka, stolik</span></div><div class="rw"><span class="n">Pokój 4-osobowy</span><span class="z">450 zł</span><span class="s">cztery łóżka, dla ekip i rodzin</span></div></div></div>
+  <div class="pfot reveal"><figure class="a"><img src="img/pokoj2.webp" alt="Pokój dwuosobowy z dużym łóżkiem"><figcaption>Pokój 2-osobowy, I piętro · zdjęcia z obecnej strony, do odświeżenia</figcaption></figure><figure class="b"><img src="img/pokoj3b.webp" alt="Pokój trzyosobowy" loading="lazy"></figure><figure class="c"><img src="img/lazienka.webp" alt="Łazienka z prysznicem" loading="lazy"></figure></div>
+ </div>
+ <div class="extras stagger">
+  <p><b>Ze zwierzakiem</b>Mały pies lub kot 30 zł za dobę, duży pies 50 zł.</p>
+  <p><b>Dostawki i inne ustawienie</b>Na życzenie przestawimy meble albo dodamy łóżko.</p>
+  <p><b>Płatność przy zameldowaniu</b>Gotówka w złotych lub euro, karta, albo przelew zaksięgowany przed przyjazdem.</p>
+ </div>
+</div></section>
+
+<section class="sand" id="rezerwacja"><div class="wrap two">
+ <div class="side reveal"><h2>Zapytaj o termin</h2><p class="lead">Napisz, kiedy przyjeżdżasz i w ile osób. Odpowiadamy tego samego dnia. Albo po prostu zadzwoń:</p><a class="big" href="tel:+48322301371">+48 32 230 13 71</a>
+  <div class="hours"><p><b>Recepcja</b> czynna całą dobę. <b>Doba hotelowa</b> od 14:00 do 11:00. Grupy na wydarzenia w Arenie: napisz wcześniej, zarezerwujemy pokoje obok siebie.</p></div></div>
+ <form class="form reveal" action="#" method="post">
+  <div class="g"><div class="f"><label class="l" for="od">Przyjazd</label><input id="od" type="date" name="od" required></div><div class="f"><label class="l" for="do">Wyjazd</label><input id="do" type="date" name="do" required></div>
+  <div class="f"><label class="l" for="os">Liczba osób</label><select id="os" name="os"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5 i więcej (grupa)</option></select></div>
+  <div class="f"><label class="l" for="cel">Powód przyjazdu</label><select id="cel" name="cel"><option>Koncert / mecz w Arenie</option><option>Praca</option><option>Przejazd</option><option>Turystyka</option><option>Inny</option></select></div>
+  <div class="f"><label class="l" for="imie">Imię</label><input id="imie" type="text" name="imie" autocomplete="given-name" required></div>
+  <div class="f"><label class="l" for="telf">Telefon</label><input id="telf" type="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="600 000 000" required></div>
+  <div class="f full"><label class="l" for="uw">Uwagi</label><textarea id="uw" name="uw" placeholder="np. przyjazd po 23:00, pies, dwa pokoje obok siebie"></textarea></div></div>
+  <label class="chk"><input type="checkbox" name="rodo" required> <span>Zgadzam się na kontakt w sprawie tego zapytania. <a href="#">Polityka prywatności</a></span></label>
+  <button class="btn" type="submit">Wyślij zapytanie</button><p class="ok" hidden>Dziękujemy — w makiecie formularz nie wysyła wiadomości. W gotowej stronie trafi ona na hotelava@interia.pl.</p>
+ </form>
+</div></section>
+
+<section class="dark2" id="restauracja"><div class="wrap">
+ <div class="head reveal"><h2>Śniadanie od 7:00, obiad po śląsku</h2><p class="lead">Rolada z kluskami i modrą kapustą, żurek, schabowy. Obiady <i>[12:00–20:00 — potwierdzić]</i>, także dla gości z zewnątrz, po koncercie w Arenie albo w drodze.</p></div>
+ <div class="bleed reveal"><img src="img/bufet.webp" alt="Bufet śniadaniowy w restauracji hotelowej" loading="lazy"></div>
+ <div class="menu stagger"><div class="grp"><h3>Śniadania</h3><div class="rw"><span>Jajecznica z 3 jaj ze szczypiorkiem, pieczywo</span><span>12 zł</span></div><div class="rw"><span>Omlet z 3 jaj, ser topiony, dżem</span><span>12 zł</span></div><div class="rw"><span>Zimna płyta: wędlina, ser, pieczywo</span><span>15 zł</span></div></div><div class="grp"><h3>Zupy</h3><div class="rw"><span>Żurek z jajkiem</span><span>8 zł</span></div><div class="rw"><span>Rosół z makaronem</span><span>7 zł</span></div><div class="rw"><span>Barszcz z krokietem</span><span>8 zł</span></div></div><div class="grp"><h3>Dania główne</h3><div class="rw"><span>Rolada wołowa, kluski śląskie, modra kapusta</span><span>22 zł</span></div><div class="rw"><span>Kotlet schabowy z pieczarkami</span><span>18 zł</span></div><div class="rw"><span>Filet drobiowy z pieczarkami</span><span>17 zł</span></div></div></div>
+ <p class="cap">Ceny z obecnej karty hotelu, do potwierdzenia przy wdrożeniu. Pełna karta w gotowej stronie.</p>
+</div></section>
+
+<section class="sand" id="sale"><div class="wrap">
+ <div class="head reveal"><h2>Dwie sale, jedna doba, jedna cena</h2><p class="lead">Mała sala na spotkanie zarządu, duża na szkolenie dla czterdziestu osób. Ekran, flipcharty, catering z własnej kuchni i noclegi dla uczestników pod jednym dachem.</p></div>
+ <div class="two"><div class="slist stagger"><div class="rw"><span class="n">Sala mała, parter</span><span class="o">8–10 osób</span><span class="z">250 zł / doba</span></div><div class="rw"><span class="n">Sala duża, I piętro</span><span class="o">do 40 osób</span><span class="z">650 zł / doba</span></div><div class="rw"><span class="n">Hol wystawienniczy</span><span class="o">prezentacje</span><span class="z">50 zł / m²</span></div></div>
+ <div class="reveal"><div class="fig"><img src="img/sala40.webp" alt="Duża sala konferencyjna na 40 osób" loading="lazy" style="object-position:70% 50%"></div><p class="cap" style="color:var(--ink2)">Duża sala na I piętrze · zdjęcie z obecnej strony, przy wdrożeniu sesja we wszystkich wnętrzach.</p></div></div>
+</div></section>
+
+<section class="dark" id="dojazd"><div class="wrap">
+ <div class="head reveal"><h2>Dojazd i kontakt</h2><p class="lead">Hotel stoi przy ulicy Pszczyńskiej, która prowadzi prosto do węzła Sośnica. Dlatego nocują u nas ci, którzy przyjeżdżają na wydarzenie, do pracy albo przejazdem.</p></div>
+ <div class="kont">
+  <div><div class="board stagger">
+  <div class="rw"><span class="d">Arena Gliwice</span><span class="m">400 m</span><span class="t">5 minut pieszo: koncerty, mecze, targi</span></div>
+  <div class="rw"><span class="d">Węzeł Sośnica (A1 / A4)</span><span class="m">3 km</span><span class="t">w stronę Katowic, Krakowa, Wrocławia i Warszawy</span></div>
+  <div class="rw"><span class="d">Centrum Gliwic</span><span class="m">2 km</span><span class="t">ok. 5 minut samochodem, Rynek i Politechnika</span></div>
+  <div class="rw"><span class="d">Katowice</span><span class="m">25 km</span><span class="t">ok. 25 minut autostradą A4</span></div>
+  <div class="rw"><span class="d">Lotnisko Katowice-Pyrzowice</span><span class="m">50 km</span><span class="t">ok. 45 minut, A1 i S1</span></div>
+  </div><div class="map reveal" aria-label="Schemat dojazdu"><svg viewBox="0 0 400 300"><path class="hw" d="M0 250 L400 250"/><text x="12" y="282">A4 → Katowice</text><text x="290" y="282">A1 → Łódź</text><path class="rd" d="M300 250 C 300 180, 250 150, 230 120 S 200 60, 190 10"/><text x="238" y="200">ul. Pszczyńska</text><path class="rd2" d="M190 60 L60 40"/><circle class="pt" cx="80" cy="42" r="9"/><text x="18" y="24">Arena Gliwice</text><circle class="pt" cx="222" cy="118" r="9"/><text x="238" y="112">Hotel AVA</text><text x="280" y="140" style="fill:#e8962e">400 m</text><text x="296" y="232">węzeł Sośnica</text></svg></div><p class="cap">Schemat, nie mapa. Odległości orientacyjne.</p></div>
+  <div class="adr reveal"><b>Hotel AVA</b><p>ul. Pszczyńska 113<br>44-100 Gliwice<br><span style="color:var(--mut)">obok stacji paliw, dojazd od strony węzła Sośnica</span></p>
+  <a class="tel" href="tel:+48322301371">+48 32 230 13 71</a><a class="tel" href="tel:+48721887388" style="margin-top:4px">+48 721 887 388</a><p style="margin-top:12px"><a href="mailto:hotelava@interia.pl">hotelava@interia.pl</a></p>
+  <p class="hrs"><b>Recepcja</b> całą dobę · <b>doba hotelowa</b> 14:00–11:00 · <b>restauracja</b> <i>[7:00–22:00 — potwierdzić]</i></p>
+  <p style="margin-top:14px"><a href="https://maps.google.com/?q=Hotel+AVA,+Pszczyńska+113,+Gliwice" target="_blank" rel="noopener">Otwórz w Google Maps →</a></p>
+  <p style="margin-top:22px;font-size:15px;color:var(--mut)">Parking w cenie, miejsce dla każdego gościa. Obiekt wyciszony, okna wymieniono przy modernizacji.</p></div>
+ </div>
+</div></section>
+<footer><div class="wrap"><span>© 2026 Hotel AVA, ul. Pszczyńska 113, 44-100 Gliwice · obiekt kategorii ** · NIP [uzupełnić] · REGON [uzupełnić]</span><span><a href="#">Regulamin hotelu</a> · <a href="#">Polityka prywatności</a></span></div></footer>
+<div class="mbar"><a class="btn ghost" href="tel:+48322301371">Zadzwoń</a><a class="btn" href="#rezerwacja">Zapytaj o termin</a></div>
+<script>
+(function(){
+var d=document, h=d.documentElement;
+var hdr=d.querySelector('.fix'); function m(){h.style.setProperty('--hdr-h',hdr.offsetHeight+'px')} m(); addEventListener('resize',m); addEventListener('load',m);
+var els=[].slice.call(d.querySelectorAll('.reveal,.stagger')); var fired=false;
+els.forEach(function(e){ if(e.classList.contains('stagger')) [].forEach.call(e.children,function(c,i){c.style.setProperty('--i',i)}); });
+if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(en){en.forEach(function(x){ if(x.isIntersecting){fired=true;x.target.classList.add('in');io.unobserve(x.target)} })},{rootMargin:'0px 0px -8% 0px',threshold:0.08}); els.forEach(function(e){io.observe(e)});
+ setTimeout(function(){ if(!fired) els.forEach(function(e){e.classList.add('in')}) },4000);
+ var t; function sweep(){ els.forEach(function(e){ if(!e.classList.contains('in')){var r=e.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0) e.classList.add('in')} }) } addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sweep,160)},{passive:true});
+} else els.forEach(function(e){e.classList.add('in')});
+var hero=d.querySelector('.hero'); function pb(){ d.body.classList.toggle('past-hero', hero.getBoundingClientRect().bottom < innerHeight*0.5) } addEventListener('scroll',pb,{passive:true}); pb();
+var mn=d.querySelector('.mnav'); if(mn){ mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open')})}); mn.addEventListener('toggle',function(){ d.body.classList.toggle('menu-open', mn.open) }); }
+// linki z nagłówka: bez przewijania przez całą animację hero
+d.querySelectorAll('.top a[href^="#"],.mnav a[href^="#"],.mbar a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ var s=d.querySelector(a.getAttribute('href')); if(!s) return; e.preventDefault(); var y=s.getBoundingClientRect().top+scrollY-(hdr.offsetHeight); scrollTo({top:y,behavior:'auto'}); history.replaceState(null,'',a.getAttribute('href')); }) });
+var secs=[].slice.call(d.querySelectorAll('section[id]')); var links=[].slice.call(d.querySelectorAll('.top nav a[href^="#"]'));
+function act(){ var y=scrollY+innerHeight*0.35; var cur=null; secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id }); links.forEach(function(a){ a.classList.toggle('navon', a.getAttribute('href')==='#'+cur) }) } addEventListener('scroll',act,{passive:true}); act();
+// daty od dziś
+var today=new Date().toISOString().slice(0,10); d.querySelectorAll('input[type=date]').forEach(function(i){i.min=today});
+d.querySelectorAll('form').forEach(function(f){ f.addEventListener('submit',function(e){ e.preventDefault(); var ok=f.querySelector('.ok'); if(ok){ok.hidden=false} f.querySelectorAll('input,textarea,select,button').forEach(function(i){i.disabled=true}) }) });
+})();
+
+(function(){
+var stage=document.querySelector('.stage'),pin=document.querySelector('.pin');
+var scn=[].slice.call(document.querySelectorAll('.scn')),acts=[].slice.call(document.querySelectorAll('.hact')),bars=[].slice.call(document.querySelectorAll('.prog i b')),cnts=[].slice.call(document.querySelectorAll('.prog em span')),route=document.querySelector('.route path'),actsBox=document.querySelector('.acts');
+if(!stage||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+var N=scn.length,cur=-1;
+function upd(){
+  var sr=stage.getBoundingClientRect(),pr=pin.getBoundingClientRect();
+  var p=(pr.top-sr.top)/((sr.height-pr.height)*0.9); p=Math.max(0,Math.min(1,p));
+  var i=Math.min(N-1,Math.floor(p*N));
+  if(i!==cur){ cur=i; scn.forEach(function(s,k){s.classList.toggle('on',k===i)}); acts.forEach(function(a,k){a.classList.toggle('on',k===i)}); cnts.forEach(function(c){c.textContent='0'+(i+1)+' / 0'+N}); }
+  scn.forEach(function(s,k){ var loc=p*N-k; s.style.transform='scale('+(1.06-0.06*Math.max(0,Math.min(1,loc)))+')'; });
+  bars.forEach(function(b){b.style.width=(p*100)+'%'});
+  if(route){ var d=Math.max(0,Math.min(1,p*N*2.4)); route.style.strokeDashoffset=1-d; route.parentNode.style.opacity= p*N<0.85 ? 1 : Math.max(0,1-(p*N-0.85)*6); }
+  var out=Math.max(0,-sr.bottom+pr.height)/pr.height; actsBox.style.opacity=1-Math.min(1,out*2.5);
+}
+addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+})();
+</script></body></html>
