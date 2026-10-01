@@ -449,7 +449,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // hero: film „z palety na twarz” — odtwarza się raz sam, potem stoi na twarzy
 const stage=document.getElementById('stage'),hv=document.getElementById('hv'),tabsEl=[...document.querySelectorAll('.tab')],rep=document.getElementById('replay');
 const order=[0,2,1];               // kolejność pociągnięć w filmie: brew, kreska, usta
-const marks=[0.15,0.30,0.43];       // ułamek filmu, w którym dane pociągnięcie jest gotowe
+const marks=[0.19,0.28,0.40];       // ułamek filmu, w którym dane pociągnięcie jest gotowe
 function lit(p){order.forEach((ti,k)=>tabsEl[ti].classList.toggle('lit',p>=marks[k]))}
 function finish(){stage.classList.add('done');lit(1)}
 if(reduce||!(hv.canPlayType('video/mp4')||hv.canPlayType('video/webm'))){finish();rep.hidden=true}
