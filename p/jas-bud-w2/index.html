@@ -78,7 +78,8 @@ nav.main a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
 .mbar{display:none}
 @media(max-width:760px){
  body{padding-bottom:74px}
- .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:49;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#15171a;border-top:1px solid #2c3034}
+ .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:49;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#15171a;border-top:1px solid #2c3034;transform:translateY(110%);transition:transform .35s ease}
+ .js body.past-hero .mbar,.no-js .mbar{transform:none}
  .mbar a{min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:6px;text-decoration:none;font-weight:600;font-size:1rem}
  .mbar .a1{background:#8fcf7a;color:#0f1410}
  .mbar .a2{background:transparent;color:#ecebe6;border:1.5px solid #2c3034}
@@ -90,7 +91,7 @@ nav.main a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
 .js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*85ms)}
 .js .stagger.in>*{opacity:1;transform:none}
 @media(max-width:760px){.js .reveal{transform:translateY(16px);transition-duration:.7s}.js .stagger>*{transform:translateY(16px);transition-delay:calc(var(--i,0)*55ms);transition-duration:.7s}}
-@media(prefers-reduced-motion:reduce){.js .reveal,.js .stagger>*{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.mbar{transition:none}.js .reveal,.js .stagger>*{opacity:1;transform:none;transition:none}}
 /* nagłówek sekcji */
 .sh{max-width:760px;margin-bottom:clamp(32px,5vw,56px)}
 .sh p{font-size:1.1rem;color:var(--smut);max-width:620px}
@@ -424,6 +425,8 @@ section.t-dark .liczby{color:#0f1410}
 </div><div class="lic"><span>© JAS-BUD Justyna Jaster</span><span>Makieta: ODNOVA Studio · odnovastudio.com</span></div></div></footer>
 <div class="mbar"><a class="a1" href="tel:+48500864472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg> Zadzwoń</a><a class="a2" href="#kontakt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Wycena</a></div>
 <script>
+/* pasek dolny na telefonie: dopiero pod hero */
+(function(){var hero=document.querySelector('.hero'),b=document.body;if(!hero){b.classList.add('past-hero');return}function f(){b.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*0.5)}addEventListener('scroll',function(){requestAnimationFrame(f)},{passive:true});addEventListener('resize',f);f()})();
 (function(){var hdr=document.querySelector('.top');function m(){document.documentElement.style.setProperty('--hdr-h',hdr.offsetHeight+'px')}m();addEventListener('resize',m);addEventListener('load',m);
 var h=document.querySelector('header');addEventListener('scroll',function(){h.classList.toggle('sc',scrollY>40)},{passive:true});
 var mn=document.querySelector('.mnav');if(mn){mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open')})})}
