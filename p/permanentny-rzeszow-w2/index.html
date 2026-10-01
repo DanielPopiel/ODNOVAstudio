@@ -149,6 +149,9 @@ html:not(.js) .steps .ln i{transform:none}
 .who h2{margin-bottom:28px}
 .who .pt{display:grid;gap:18px;max-width:640px}
 .who .pt p{margin:0;font-size:1.1rem;padding-top:16px;border-top:1px solid var(--line)}
+.dark.who .pt p{border-color:rgba(239,236,239,.18);color:var(--on-dark-m)}
+.dark.who .pt b{color:var(--on-dark)}
+.dark.who q{color:#ff8f86}
 .who .pt b{font-weight:600}
 .who q{display:block;margin-top:30px;font:800 clamp(1.8rem,2.6vw,2.4rem)/1.05 var(--disp);color:var(--coral-d)}
 
@@ -247,7 +250,7 @@ html:not(.js) .mbar{transform:none}
  <header>
   <div class="wrap hd">
    <a class="logo" href="#hero" aria-label="Permanentny Make Up — Maria Wyszyńska, strona główna"><img src="assets/logo-ciemne.png" width="360" height="80" alt="Permanentny Make Up — Maria Wyszyńska"></a>
-   <nav class="nav" aria-label="Główne"><a href="#cennik">Cennik</a><a href="#przed-po">Przed i po</a><a href="#gojenie">Gojenie</a><a href="#kto">O mnie</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
+   <nav class="nav" aria-label="Główne"><a href="#kto">O mnie</a><a href="#przed-po">Przed i po</a><a href="#cennik">Cennik</a><a href="#gojenie">Gojenie</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
    <a class="tel" href="tel:+48733889459">733 889 459</a>
    <a class="btn" href="#kontakt">Umów konsultację</a>
    <details class="mnav"><summary>Menu</summary>
@@ -276,6 +279,39 @@ html:not(.js) .mbar{transform:none}
   </div>
  </div>
  <div class="wrap"><p class="facts"><span><b>Korekta 4–10 tyg.</b> w cenie zabiegu</span><span><b>Konsultacja z rysunkiem</b> 100 zł</span><span><b>al. Kopisto 8B</b>, Rzeszów</span><span><b>Wt–Pt</b> 10–18 · <b>Sob</b> 9–12</span></p></div>
+</section>
+
+<section class="sec dark who" id="kto">
+ <div class="wrap">
+  <figure><img src="assets/p-bialy.webp" loading="lazy" width="1200" height="1800" alt="Maria Wyszyńska w salonie w Rzeszowie"></figure>
+  <div>
+   <h2 class="rv">Maria Wyszyńska</h2>
+   <div class="pt">
+    <p><b>Jurorka mistrzostw PMU.</b> W marcu 2026 oceniała prace linergistek w Warszawie, w październiku 2026 zasiada w jury w Dżakarcie.</p>
+    <p><b>III miejsce w Monachium 2024.</b> Wcześniej półfinał Mistrzostw Świata WULOP i finał PMU GOLD.</p>
+    <p><b>Trenerka.</b> Instruktor Regionalny TINITAPRO i INLEI Polska, wcześniej Trener Regionalny Long-Time-Liner. Prowadzi szkolenia z henny pudrowej, laminacji brwi i Lash Filler.</p>
+   </div>
+   <q>Efekt ma podkreślać, nie zmieniać.</q>
+  </div>
+ </div>
+</section>
+
+<section class="sec ba" id="przed-po">
+ <div class="wrap">
+  <div class="cmp" id="cmp">
+   <img src="assets/pp-przed.webp" width="450" height="506" alt="Usta przed makijażem permanentnym — blizna po rozszczepie wargi">
+   <img class="after" src="assets/pp-po.webp" width="450" height="506" alt="Te same usta po makijażu permanentnym">
+   <span class="lb l">Przed</span><span class="lb r">Po</span>
+   <div class="hand"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M9 7 3 13l6 6M17 7l6 6-6 6" fill="none" stroke="#17151a" stroke-width="2"/></svg></div>
+   <input type="range" min="0" max="100" value="50" aria-label="Porównaj przed i po">
+  </div>
+  <div>
+   <h2 class="rv">Przed i po</h2>
+   <p>Przesuń suwak. Te usta to praca z akcji <b>Sercem malowane</b>: bezpłatnie odtwarzam kontur i kolor ust osobom po rozszczepie wargi, a brwi osobom z łysieniem plackowatym i po leczeniu onkologicznym.</p>
+   <p class="note"><b>Uwaga do makiety:</b> na wdrożonej stronie suwak obejmie też brwi i kreskę, ze zdjęć z Pani archiwum.</p>
+   <div class="thumbs"><img src="assets/m-usta2.webp" loading="lazy" width="1024" height="748" alt="Usta po pigmentacji"><img src="assets/m-brew2.webp" loading="lazy" width="820" height="798" alt="Brwi metodą cienia"><img src="assets/m-kreska1.webp" loading="lazy" width="859" height="778" alt="Kreska górna"></div>
+  </div>
+ </div>
 </section>
 
 <section class="sec dark price" id="cennik">
@@ -319,20 +355,15 @@ html:not(.js) .mbar{transform:none}
  </div>
 </section>
 
-<section class="sec ba" id="przed-po">
+<section class="sec faq" id="pytania">
  <div class="wrap">
-  <div class="cmp" id="cmp">
-   <img src="assets/pp-przed.webp" width="450" height="506" alt="Usta przed makijażem permanentnym — blizna po rozszczepie wargi">
-   <img class="after" src="assets/pp-po.webp" width="450" height="506" alt="Te same usta po makijażu permanentnym">
-   <span class="lb l">Przed</span><span class="lb r">Po</span>
-   <div class="hand"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M9 7 3 13l6 6M17 7l6 6-6 6" fill="none" stroke="#17151a" stroke-width="2"/></svg></div>
-   <input type="range" min="0" max="100" value="50" aria-label="Porównaj przed i po">
-  </div>
+  <div><h2 class="rv">Pytania</h2><p class="mute" style="margin-top:14px">Nie ma tu Twojego pytania? Zadzwoń.</p><a class="bigtel" href="tel:+48733889459">733 889 459</a></div>
   <div>
-   <h2 class="rv">Przed i po</h2>
-   <p>Przesuń suwak. Te usta to praca z akcji <b>Sercem malowane</b>: bezpłatnie odtwarzam kontur i kolor ust osobom po rozszczepie wargi, a brwi osobom z łysieniem plackowatym i po leczeniu onkologicznym.</p>
-   <p class="note"><b>Uwaga do makiety:</b> na wdrożonej stronie suwak obejmie też brwi i kreskę, ze zdjęć z Pani archiwum.</p>
-   <div class="thumbs"><img src="assets/m-usta2.webp" loading="lazy" width="1024" height="748" alt="Usta po pigmentacji"><img src="assets/m-brew2.webp" loading="lazy" width="820" height="798" alt="Brwi metodą cienia"><img src="assets/m-kreska1.webp" loading="lazy" width="859" height="778" alt="Kreska górna"></div>
+   <details><summary>Czy to boli?</summary><p>Przed i w trakcie zabiegu stosuję preparaty znieczulające. Większość klientek mówi o dyskomforcie, nie o bólu. Najbardziej wrażliwe są usta.</p></details>
+   <details><summary>Ile trwa wizyta?</summary><p>Zwykle 2–3 godziny. Sporą część zajmuje rysunek i dobór koloru. Pigmentację zaczynam dopiero, gdy kształt Ci się podoba.</p></details>
+   <details><summary>Mam stary makijaż permanentny z innego salonu. Da się coś z tym zrobić?</summary><p>Tak, to duża część mojej pracy. Oceniam pigment i proponuję korektę, rozjaśnienie removerem (400 zł) albo laser (350 zł).</p></details>
+   <details><summary>Kiedy nie mogę zrobić zabiegu?</summary><p>M.in. w ciąży i podczas karmienia, przy aktywnych zmianach skórnych w miejscu zabiegu i w trakcie niektórych terapii. Przy wątpliwościach umawiamy konsultację lub próbę uczuleniową (200 zł).</p></details>
+   <details><summary>Czy prowadzisz szkolenia?</summary><p>Tak: henna pudrowa i geometria brwi, laminacja brwi Inlei, Lash Filler. Zadzwoń, podam najbliższe terminy.</p></details>
   </div>
  </div>
 </section>
@@ -348,34 +379,6 @@ html:not(.js) .mbar{transform:none}
    <li style="--c:#d15650"><span class="n">docelowy</span><span class="ln"><i></i></span><h3>Tygodnie 4–10</h3><p>Kolor jest już stały. Wtedy robimy korektę, w cenie zabiegu.</p></li>
    <li style="--c:#dc8a84"><span class="n">delikatnie jaśniejszy</span><span class="ln"><i></i></span><h3>Po roku–dwóch</h3><p>Odświeżenie od 600 zł utrzymuje kształt i kolor.</p></li>
   </ol>
- </div>
-</section>
-
-<section class="sec who" id="kto">
- <div class="wrap">
-  <figure><img src="assets/p-bialy.webp" loading="lazy" width="1200" height="1800" alt="Maria Wyszyńska w salonie w Rzeszowie"></figure>
-  <div>
-   <h2 class="rv">Maria Wyszyńska</h2>
-   <div class="pt">
-    <p><b>Jurorka mistrzostw PMU.</b> W marcu 2026 oceniała prace linergistek w Warszawie, w październiku 2026 zasiada w jury w Dżakarcie.</p>
-    <p><b>III miejsce w Monachium 2024.</b> Wcześniej półfinał Mistrzostw Świata WULOP i finał PMU GOLD.</p>
-    <p><b>Trenerka.</b> Instruktor Regionalny TINITAPRO i INLEI Polska, wcześniej Trener Regionalny Long-Time-Liner. Prowadzi szkolenia z henny pudrowej, laminacji brwi i Lash Filler.</p>
-   </div>
-   <q>Efekt ma podkreślać, nie zmieniać.</q>
-  </div>
- </div>
-</section>
-
-<section class="sec faq" id="pytania">
- <div class="wrap">
-  <div><h2 class="rv">Pytania</h2><p class="mute" style="margin-top:14px">Nie ma tu Twojego pytania? Zadzwoń.</p><a class="bigtel" href="tel:+48733889459">733 889 459</a></div>
-  <div>
-   <details><summary>Czy to boli?</summary><p>Przed i w trakcie zabiegu stosuję preparaty znieczulające. Większość klientek mówi o dyskomforcie, nie o bólu. Najbardziej wrażliwe są usta.</p></details>
-   <details><summary>Ile trwa wizyta?</summary><p>Zwykle 2–3 godziny. Sporą część zajmuje rysunek i dobór koloru. Pigmentację zaczynam dopiero, gdy kształt Ci się podoba.</p></details>
-   <details><summary>Mam stary makijaż permanentny z innego salonu. Da się coś z tym zrobić?</summary><p>Tak, to duża część mojej pracy. Oceniam pigment i proponuję korektę, rozjaśnienie removerem (400 zł) albo laser (350 zł).</p></details>
-   <details><summary>Kiedy nie mogę zrobić zabiegu?</summary><p>M.in. w ciąży i podczas karmienia, przy aktywnych zmianach skórnych w miejscu zabiegu i w trakcie niektórych terapii. Przy wątpliwościach umawiamy konsultację lub próbę uczuleniową (200 zł).</p></details>
-   <details><summary>Czy prowadzisz szkolenia?</summary><p>Tak: henna pudrowa i geometria brwi, laminacja brwi Inlei, Lash Filler. Zadzwoń, podam najbliższe terminy.</p></details>
-  </div>
  </div>
 </section>
 
