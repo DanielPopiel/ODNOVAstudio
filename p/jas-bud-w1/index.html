@@ -54,13 +54,13 @@ section{padding:clamp(56px,7vw,104px) 0;scroll-margin-top:var(--hdr-h);position:
 .top{position:fixed;inset:0 0 auto 0;z-index:50}
 .mk{background:var(--dark);color:#e9efe6;font-size:.8rem;text-align:center;padding:6px 12px;line-height:1.3}
 .mk b{font-weight:700;color:#9fd18f}
-header{background:color-mix(in srgb,var(--cream) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+header{background:color-mix(in srgb,var(--cream) 55%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
 header.sc{background:color-mix(in srgb,var(--cream) 94%,transparent);border-bottom-color:var(--line)}
 .hdr{display:flex;align-items:center;gap:18px;min-height:64px;padding:6px var(--gut);max-width:1320px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--fh);font-weight:700;font-size:1.15rem;letter-spacing:.08em;margin-right:auto;min-height:44px}
 .brand svg{width:38px;height:32px}
 nav.main{display:flex;gap:2px}
-nav.main a{text-decoration:none;font-size:.92rem;font-weight:500;padding:10px 12px;border-radius:999px;transition:background .2s}
+nav.main a{text-decoration:none;font-size:.92rem;font-weight:500;padding:12px 14px;border-radius:999px;transition:background .2s}
 nav.main a:hover{background:var(--grnl)}
 .hdr .cta-h{display:inline-flex;align-items:center;gap:.5em;text-decoration:none;font-weight:600;font-size:.92rem;padding:11px 18px;background:var(--grn);color:#fff;border-radius:999px;font-variant-numeric:tabular-nums}
 .hdr .cta-h:hover{background:var(--grn2)}.hdr .cta-h svg{width:1em;height:1em}
@@ -189,20 +189,38 @@ nav.main a:hover{background:var(--grnl)}
 .kt-d dt{font-size:.8rem;color:#d4e8c8;padding-top:3px}
 .kt-d dd{margin:0;font-weight:600}.kt-d dd a{text-decoration:none;display:inline-block;padding:6px 0;color:#fff}
 .kt-l .lnk1{color:#fff}
-.kt-f{background:var(--cream);border-radius:var(--r);padding:clamp(22px,3vw,36px);display:grid;gap:16px}
-.kt-f h3{margin:0}
-.kt-f label{display:grid;gap:6px;font-size:.88rem;font-weight:600}
-.kt-f input,.kt-f textarea{font:inherit;font-weight:400;font-size:1rem;padding:12px 14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);width:100%;border-radius:10px}
-.kt-f input:focus,.kt-f textarea:focus{border-color:var(--grn);outline:none;box-shadow:0 0 0 3px var(--grnl)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.kt-f fieldset{border:0;padding:0;margin:0}
-.kt-f legend{font-size:.88rem;font-weight:600;margin-bottom:8px}
-.radios{display:flex;flex-wrap:wrap;gap:8px}
-.radios label{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font-weight:500}
-.radios input{width:auto}
-.kt-f .file input{border:0;padding:6px 0;font-size:.85rem;background:none}
-.rodo{font-size:.78rem;color:var(--mut);line-height:1.45;font-weight:400!important;display:block!important}
-.rodo input{width:auto;margin-right:6px}
+.kt-f{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,40px);display:grid;gap:18px;box-shadow:0 30px 70px -50px rgba(28,38,32,.35)}
+.kt-fh h3{margin:0 0 4px}.kt-fh p{margin:0;color:var(--mut);font-size:.95rem}
+.fld{position:relative}
+.fld input,.fld textarea{font:inherit;font-size:1rem;padding:22px 14px 8px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);width:100%;border-radius:12px;transition:border-color .2s,background .2s,box-shadow .2s}
+.fld textarea{min-height:110px;resize:vertical}
+.fld label{position:absolute;left:14px;top:15px;font-size:.95rem;color:var(--mut);pointer-events:none;transition:top .18s,font-size .18s,color .18s;white-space:nowrap;overflow:hidden;max-width:calc(100% - 28px);text-overflow:ellipsis}
+.fld label span{font-weight:400;opacity:.8}
+@media(max-width:420px){.fld label span{display:none}}
+.fld input:focus,.fld textarea:focus{border-color:var(--grn);background:#fff;outline:none;box-shadow:0 0 0 4px var(--grnl)}
+.fld input:focus+label,.fld input:not(:placeholder-shown)+label,.fld textarea:focus+label,.fld textarea:not(:placeholder-shown)+label{top:7px;font-size:.74rem;color:var(--grn2);font-weight:600}
+.fld input:user-invalid{border-color:#b3412f}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.seg{border:0;padding:0;margin:0}
+.seg legend{font-size:.88rem;font-weight:600;margin-bottom:10px;color:var(--ink)}
+.seg-g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.seg-g label{position:relative;cursor:pointer}
+.seg-g input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.seg-g span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:8px 10px;border:1.5px solid var(--line);background:var(--cream);border-radius:12px;font-size:.9rem;font-weight:500;transition:background .2s,border-color .2s,color .2s}
+.seg-g input:checked+span{background:var(--grn);border-color:var(--grn);color:#fff;font-weight:600}
+.seg-g input:focus-visible+span{box-shadow:0 0 0 4px var(--grnl)}
+.seg-g label:hover span{border-color:var(--grn)}
+.drop{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1.5px dashed var(--line);border-radius:12px;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.drop:hover,.drop:focus-within{border-color:var(--grn);background:var(--grnl)}
+.drop input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}
+.drop>svg{width:26px;height:26px;color:var(--grn);flex:none}
+.drop span{display:grid;gap:2px;font-size:.92rem}.drop b{font-weight:600}.drop em{font-style:normal;color:var(--mut);font-size:.8rem}
+.rodo{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--mut);line-height:1.45;cursor:pointer}
+.rodo input{width:18px;height:18px;margin:2px 0 0;flex:none}
+.kt-fb{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.kt-note{font-size:.85rem;color:var(--mut)}
+.kt-ok{display:grid;gap:4px;padding:16px 18px;border-radius:12px;background:var(--grnl);color:var(--grn2);font-size:.95rem}.kt-ok b{font-weight:600}.kt-ok a{color:inherit;font-weight:600}
+.kt-f.sent .kt-fb,.kt-f.sent .rodo{display:none}
 /* stopka */
 footer.ft{background:var(--dark);color:#e9efe6;padding:48px 0 24px}
 .f-g{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px 48px;align-items:start}
@@ -229,14 +247,14 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:48px 0 24px}
 @media(max-width:640px){
  .kts,.rzs,.oqs,.bento{grid-template-columns:1fr}.oq:nth-child(2){margin-top:0}.bx-foto{grid-column:auto}
  .pas-l{justify-content:flex-start;gap:4px 24px}
- .g2,.f-g{grid-template-columns:1fr}
+ .g2,.f-g{grid-template-columns:1fr}.seg-g{grid-template-columns:1fr 1fr}.kt-fb .btn1{width:100%;justify-content:center}
  .et-p{max-width:none}
 }
 /* bez JS */
 .no-js .rv{opacity:1;transform:none}.no-js .et .et-pin{border-color:var(--grn);background:var(--grn);color:#fff}.no-js .et-line{display:none}
 
 .hero{padding:0;position:relative}
-.js .hero{height:540vh}
+.js .hero{height:560vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#faf7f0}
 .kadr{position:absolute;inset:0;width:100%;height:100%;display:block}
 .ld{position:absolute;right:16px;top:calc(var(--hdr-h) + 12px);font-size:.75rem;color:var(--smut);display:flex;gap:8px;align-items:center;opacity:0;transition:opacity .3s}
@@ -285,7 +303,7 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:48px 0 24px}
 <canvas class="kadr" aria-hidden="true"></canvas><div class="ld" aria-hidden="true"><i></i><span>wczytywanie</span></div>
 <div class="wrap hero-in"><div class="ht"><h1>Twój dom, od pierwszego wykopu do kluczy.</h1><p class="lead">Własne brygady, materiał po naszej stronie i termin, którego pilnujemy. Domy jednorodzinne w Warszawie i okolicach, ponad sto zbudowanych.</p>
 <div class="ctas"><a class="btn btn-p" href="tel:+48500864472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span class="tel">Zadzwoń: 500 864 472</span></a><a class="btn btn-s" href="#kontakt">Poproś o wycenę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
-<div class="caps" aria-live="polite"><div class="cap" data-f="0"><b>Działka</b><span>Geodeta wytycza obrys, zaczynamy</span></div><div class="cap" data-f="28"><b>Wykop</b><span>Koparka schodzi do poziomu ław</span></div><div class="cap" data-f="46"><b>Ławy i płyta</b><span>Zbrojenie, beton, izolacja przeciwwilgociowa</span></div><div class="cap" data-f="62"><b>Ściany parteru</b><span>Silikat, warstwa po warstwie</span></div><div class="cap" data-f="86"><b>Strop</b><span>Żelbet nad parterem</span></div><div class="cap" data-f="108"><b>Piętro</b><span>Ściany i wieńce, ta sama brygada</span></div><div class="cap" data-f="144"><b>Dach i okna</b><span>Stan surowy otwarty: 8–14 tygodni od wykopu</span></div><div class="cap" data-f="160"><b>Elewacja i taras</b><span>Tynk, kostka, obrzeża</span></div><div class="cap" data-f="170"><b>Ogród</b><span>Trawnik i nasadzenia</span></div><div class="cap" data-f="184"><b>Gotowy dom</b><span>Od pierwszego wykopu do kluczy, w jednym ujęciu</span></div></div></div>
+<div class="caps" aria-live="polite"><div class="cap" data-f="0"><b>Działka</b><span>Geodeta wytycza obrys, zaczynamy</span></div><div class="cap" data-f="34"><b>Wykop</b><span>Koparka schodzi do poziomu ław</span></div><div class="cap" data-f="55"><b>Ławy i płyta</b><span>Zbrojenie, beton, izolacja przeciwwilgociowa</span></div><div class="cap" data-f="74"><b>Ściany parteru</b><span>Silikat, warstwa po warstwie</span></div><div class="cap" data-f="103"><b>Strop</b><span>Żelbet nad parterem</span></div><div class="cap" data-f="130"><b>Piętro</b><span>Ściany i wieńce, ta sama brygada</span></div><div class="cap" data-f="173"><b>Dach i okna</b><span>Stan surowy otwarty: 8–14 tygodni od wykopu</span></div><div class="cap" data-f="192"><b>Elewacja i taras</b><span>Tynk, kostka, obrzeża</span></div><div class="cap" data-f="204"><b>Ogród</b><span>Trawnik i nasadzenia</span></div><div class="cap" data-f="221"><b>Gotowy dom</b><span>Od pierwszego wykopu do kluczy, w jednym ujęciu</span></div></div></div>
 <div class="hint">Przewiń, żeby zobaczyć, jak powstaje dom</div></div></section>
 <div class="pas"><ul class="wrap1 pas-l" aria-label="W skrócie"><li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.5 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><span><b>5,0</b> w Google, 14 opinii</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>100+</b> zbudowanych domów</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span><b>5</b> własnych brygad, zero podwykonawców</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg><span>Stan surowy otwarty w <b>8–14 tygodni</b></span></li></ul></div><section id="oferta"><div class="wrap1">
 <div class="sh1"><span class="ov">Co budujemy</span><h2>Dom, bliźniak albo cała szeregówka. Od wykopu po stan surowy otwarty.</h2>
@@ -299,11 +317,11 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:48px 0 24px}
 <ol class="ets"><span class="et-line" aria-hidden="true"><i></i></span><li class="et" style="--i:0"><span class="et-pin" aria-hidden="true">1</span><span class="et-w">Tydzień 0–2</span><h3>Wykop i ławy</h3><p>Geodeta, koparka, chudy beton, zbrojenie i betonowanie ław.</p><div class="et-p"><img src="img/koparka-1600.webp" srcset="img/koparka-800.webp 800w, img/koparka-1600.webp 1600w" sizes="(max-width:760px) 100vw, 20vw" alt="Wykop i ławy" width="1600" height="1200" loading="lazy"></div></li><li class="et" style="--i:1"><span class="et-pin" aria-hidden="true">2</span><span class="et-w">Tydzień 2–4</span><h3>Ściany fundamentowe i płyta</h3><p>Bloczki, izolacja, zasypka warstwami, zbrojenie i wylanie płyty.</p><div class="et-p"><img src="img/lawa-folia-1600.webp" srcset="img/lawa-folia-800.webp 800w, img/lawa-folia-1600.webp 1600w" sizes="(max-width:760px) 100vw, 20vw" alt="Ściany fundamentowe i płyta" width="1600" height="1200" loading="lazy"></div></li><li class="et" style="--i:2"><span class="et-pin" aria-hidden="true">3</span><span class="et-w">Tydzień 4–8</span><h3>Ściany parteru i strop</h3><p>Silikat warstwa po warstwie, nadproża, wieniec, szalunek i strop.</p><div class="et-p"><img src="img/parter-1600.webp" srcset="img/parter-800.webp 800w, img/parter-1600.webp 1600w" sizes="(max-width:760px) 100vw, 20vw" alt="Ściany parteru i strop" width="1600" height="1200" loading="lazy"></div></li><li class="et" style="--i:3"><span class="et-pin" aria-hidden="true">4</span><span class="et-w">Tydzień 8–12</span><h3>Piętro i wieńce</h3><p>Ściany piętra, kominy, wieniec pod dach.</p><div class="et-p"><img src="img/dom-sso-1600.webp" srcset="img/dom-sso-800.webp 800w, img/dom-sso-1600.webp 1600w" sizes="(max-width:760px) 100vw, 20vw" alt="Piętro i wieńce" width="1600" height="1200" loading="lazy"></div></li><li class="et" style="--i:4"><span class="et-pin" aria-hidden="true">5</span><span class="et-w">Tydzień 12–14</span><h3>Dach i odbiór</h3><p>Więźba lub stropodach, odbiór stanu surowego otwartego.</p><div class="et-p"><img src="img/dom-garaz-1600.webp" srcset="img/dom-garaz-800.webp 800w, img/dom-garaz-1600.webp 1600w" sizes="(max-width:760px) 100vw, 20vw" alt="Dach i odbiór" width="1600" height="1200" loading="lazy"></div></li></ol></div></section><section id="dlaczego" class="dl-s"><div class="wrap1">
 <div class="sh1"><span class="ov">Dlaczego JAS-BUD</span><h2>Solidny dom zaczyna się od solidnej ekipy</h2><p>JAS-BUD to firma budowlana, która od ponad siedmiu lat realizuje domy jednorodzinne od fundamentów po stan surowy otwarty. Zaczynaliśmy jako podwykonawca dużych deweloperów, dziś budujemy przede wszystkim dla klientów indywidualnych w Warszawie i okolicach.</p></div>
 <div class="bento rv">
-<div class="bx bx-foto"><img src="img/ekipa-1600.webp" srcset="img/ekipa-800.webp 800w, img/ekipa-1600.webp 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="Ekipa JAS-BUD na budowie" width="1600" height="1067" loading="lazy"><div class="bx-cap"><b>Pięć własnych brygad, zero podwykonawców</b><span>Ci sami ludzie od pierwszej ławy do ostatniego stropu.</span></div></div>
+<div class="bx bx-foto"><img src="img/ekipa-1600.webp" srcset="img/ekipa-800.webp 800w, img/ekipa-1600.webp 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="Murarze JAS-BUD stawiają ścianę z silikatu" width="1600" height="893" loading="lazy"><div class="bx-cap"><b>Pięć własnych brygad, zero podwykonawców</b><span>Ci sami ludzie od pierwszej ławy do ostatniego stropu.</span></div></div>
 <div class="bx bx-n"><b data-n="100" data-s="+">100+</b><span>zbudowanych domów w 7 lat</span></div>
 <div class="bx bx-g"><b>Zawsze terminowi</b><p>Wstępny termin podajemy już przy wycenie, harmonogram ustalamy po podpisaniu umowy. Słowo dane klientowi jest zobowiązaniem.</p></div>
 <div class="bx bx-m"><b>Gdzie budujemy</b><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Warszawa Wilanów</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Janki</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Konstancin-Jeziorna</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Ostrołęka i okolice</li></ul></div>
-<div class="bx bx-n"><b data-n="14" data-p="8–">8–14</b><span>tygodni do stanu surowego otwartego</span></div>
+<div class="bx bx-n"><b>8–14</b><span>tygodni do stanu surowego otwartego</span></div>
 </div>
 <p class="dl-p">Mamy pięć własnych brygad. Nie korzystamy z podwykonawców, więc możemy dokładnie planować każdy etap i odpowiadamy za każdy detal. Siedziba firmy jest w Ostrołęce, brygady pracują na budowach na Mazowszu, a dojazd i logistyka są po naszej stronie.</p></div></section><section id="realizacje"><div class="wrap1">
 <div class="sh1"><span class="ov">Realizacje</span><h2>Ponad sto domów na Mazowszu. Trzy z bliska.</h2></div>
@@ -319,14 +337,15 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:48px 0 24px}
 <a class="kt-tel" href="tel:+48500864472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>500 864 472</span></a>
 <dl class="kt-d"><div><dt>E-mail</dt><dd><a href="mailto:biuro@jas-bud.pl">biuro@jas-bud.pl</a></dd></div><div><dt>Siedziba</dt><dd>Jarzębinowa 12, 07-410 Ostrołęka</dd></div><div><dt>Budujemy</dt><dd>Warszawa i okolice, całe Mazowsze</dd></div></dl>
 <a class="lnk1" href="https://www.google.com/maps/search/?api=1&query=JAS-BUD+Jarz%C4%99binowa+12+Ostro%C5%82%C4%99ka" target="_blank" rel="noopener">Siedziba w Mapach Google <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-<form class="kt-f rv" action="#" onsubmit="return false"><h3>Poproś o wycenę</h3>
-<div class="g2"><label>Imię i nazwisko<input type="text" name="imie" autocomplete="name" required></label><label>Telefon<input type="tel" name="tel" autocomplete="tel" required></label></div>
-<div class="g2"><label>E-mail<input type="email" name="mail" autocomplete="email" required></label><label>Lokalizacja inwestycji<input type="text" name="lok" placeholder="np. Wilanów, Janki, Konstancin"></label></div>
-<fieldset><legend>Pozwolenie na budowę</legend><div class="radios"><label><input type="radio" name="pnb" value="tak">Mam</label><label><input type="radio" name="pnb" value="nie">Nie mam</label><label><input type="radio" name="pnb" value="w trakcie">W trakcie</label></div></fieldset>
-<label>Wiadomość<textarea name="msg" rows="3" placeholder="Etap, na którym jesteś; kiedy chcesz zacząć; czy masz projekt"></textarea></label>
-<label class="file">Projekt lub zdjęcie działki (PDF, JPG)<input type="file" name="plik"></label>
-<label class="rodo"><input type="checkbox" required>Zgoda na przetwarzanie danych w celu odpowiedzi na zapytanie. Administrator: JAS-BUD Justyna Jaster, Ostrołęka.</label>
-<button class="btn1" type="submit">Wyślij zapytanie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form></div></section>
+<form class="kt-f rv" action="#" novalidate><div class="kt-fh"><h3>Poproś o wycenę</h3><p>Dwie minuty. Oddzwaniamy w ciągu jednego dnia roboczego.</p></div>
+<div class="g2"><div class="fld"><input type="text" id="f-imie" name="imie" autocomplete="name" placeholder=" " required><label for="f-imie">Imię i nazwisko</label></div><div class="fld"><input type="tel" id="f-tel" name="tel" autocomplete="tel" inputmode="tel" placeholder=" " required><label for="f-tel">Telefon</label></div></div>
+<div class="g2"><div class="fld"><input type="email" id="f-mail" name="mail" autocomplete="email" placeholder=" "><label for="f-mail">E-mail <span>(opcjonalnie)</span></label></div><div class="fld"><input type="text" id="f-lok" name="lok" placeholder=" "><label for="f-lok">Gdzie jest działka?</label></div></div>
+<fieldset class="seg"><legend>Na jakim etapie jesteś?</legend><div class="seg-g"><label><input type="radio" name="etap" value="dzialka"><span>Mam działkę</span></label><label><input type="radio" name="etap" value="projekt"><span>Mam projekt</span></label><label><input type="radio" name="etap" value="pnb"><span>Mam pozwolenie</span></label><label><input type="radio" name="etap" value="wybor"><span>Dopiero wybieram</span></label></div></fieldset>
+<div class="fld"><textarea id="f-msg" name="msg" rows="3" placeholder=" "></textarea><label for="f-msg">O domu <span>(metraż, termin startu)</span></label></div>
+<label class="drop"><input type="file" name="plik" accept=".pdf,.jpg,.jpeg,.png,.dwg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg><span><b>Dodaj projekt albo zdjęcie działki</b><em>PDF, JPG, DWG · do 20 MB · nieobowiązkowo</em></span></label>
+<label class="rodo"><input type="checkbox" required><span>Zgadzam się na kontakt w sprawie wyceny. Dane trafiają tylko do JAS-BUD Justyna Jaster, Ostrołęka.</span></label>
+<div class="kt-fb"><button class="btn1" type="submit">Wyślij zapytanie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="kt-note">Bez zobowiązań. Wycena jest bezpłatna.</span></div>
+<div class="kt-ok" hidden><b>Dziękujemy, zapytanie dotarło.</b><span>Odezwiemy się w ciągu jednego dnia roboczego. Jeśli to pilne: <a href="tel:+48500864472" style="display:inline-block;padding:8px 0">500 864 472</a>.</span></div></form></div></section>
 </main>
 <footer class="ft"><div class="wrap1"><div class="f-g"><div><a class="brand" href="#start"><svg class="" viewBox="0 0 100 84" width="44" height="37" aria-hidden="true">
 <path d="M8 58 V33 L50 6 L76 23" fill="none" stroke="#e9efe6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -336,7 +355,7 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:48px 0 24px}
 <path d="M60 44 V68 H70 a6 6 0 0 0 0 -12 H60 M60 56 H69 a6 6 0 0 0 0 -12 H60" fill="none" stroke="#e9efe6" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg><span>JAS-BUD</span></a><p style="margin:12px 0 0;max-width:340px;color:#a9b8ad">Budujemy domy, w których chce się mieszkać. Terminowo, własnymi brygadami, na lata.</p></div>
 <nav aria-label="Stopka"><a href="#oferta">Oferta</a><a href="#etapy">Etapy budowy</a><a href="#dlaczego">Dlaczego my</a><a href="#realizacje">Realizacje</a><a href="#opinie">Opinie</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a></nav>
-<div><a class="tel" href="tel:+48500864472" style="font-weight:700;font-size:1.15rem">+48 500 864 472</a><br><a href="mailto:biuro@jas-bud.pl" style="display:inline-block;padding:8px 0">biuro@jas-bud.pl</a><br><span style="color:#a9b8ad">Jarzębinowa 12, 07-410 Ostrołęka</span></div>
+<div><a class="tel" href="tel:+48500864472" style="font-weight:700;font-size:1.15rem;display:inline-block;padding:8px 0">+48 500 864 472</a><br><a href="mailto:biuro@jas-bud.pl" style="display:inline-block;padding:8px 0">biuro@jas-bud.pl</a><br><span style="color:#a9b8ad">Jarzębinowa 12, 07-410 Ostrołęka</span></div>
 </div><div class="f-lic"><span>© JAS-BUD Justyna Jaster</span><span>Makieta: ODNOVA Studio · odnovastudio.com</span></div></div></footer>
 <div class="mbar"><a class="a1" href="tel:+48500864472"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg> Zadzwoń</a><a class="a2" href="#kontakt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Wycena</a></div>
 <script>
@@ -351,6 +370,8 @@ var els=[].slice.call(d.querySelectorAll('.rv'));
 function on(e){e.classList.add('in');if(e.querySelector('[data-n]'))count(e)}
 if(!('IntersectionObserver' in window)){els.forEach(on)}else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){on(x.target);io.unobserve(x.target)}})},{rootMargin:'120px 0px -6% 0px',threshold:.02});els.forEach(function(e){io.observe(e)});
 setTimeout(function(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)on(e)})},3500)}
+/* formularz (makieta): walidacja i podziękowanie */
+var fm=d.querySelector('.kt-f');if(fm){fm.addEventListener('submit',function(e){e.preventDefault();if(!fm.checkValidity()){fm.reportValidity();return}fm.classList.add('sent');var ok=fm.querySelector('.kt-ok');ok.hidden=false;ok.scrollIntoView({block:'nearest',behavior:'smooth'})})}
 /* droga do domu: linia wypełnia się, kolejne etapy zapalają się przy przewijaniu */
 var ets=d.querySelector('.ets'),et=[].slice.call(d.querySelectorAll('.et')),line=d.querySelector('.et-line');
 if(ets&&et.length){function upd(){var r=ets.getBoundingClientRect(),vert=innerWidth<=1000,p;
@@ -360,24 +381,30 @@ if(ets&&et.length){function upd(){var r=ets.getBoundingClientRect(),vert=innerWi
 })();
 
 (function(){var hero=document.querySelector('.hero'),stage=hero&&hero.querySelector('.stage'),cv=hero&&hero.querySelector('.kadr');if(!cv)return;
-var N=196,C=[0.0, 0.0076, 0.0157, 0.0226, 0.0304, 0.0371, 0.0445, 0.052, 0.0581, 0.0652, 0.0709, 0.0776, 0.0844, 0.0901, 0.0967, 0.1023, 0.1088, 0.1154, 0.1209, 0.1277, 0.1336, 0.1402, 0.1469, 0.1523, 0.1584, 0.1632, 0.1688, 0.1746, 0.1793, 0.1852, 0.1907, 0.1972, 0.2036, 0.2098, 0.2167, 0.2224, 0.2275, 0.2315, 0.2355, 0.2413, 0.2426, 0.2479, 0.2552, 0.2609, 0.2657, 0.269, 0.2753, 0.2816, 0.2868, 0.2933, 0.2985, 0.3035, 0.3087, 0.3124, 0.3178, 0.323, 0.3293, 0.336, 0.3406, 0.3452, 0.3499, 0.356, 0.3628, 0.3678, 0.3712, 0.3741, 0.3786, 0.384, 0.3879, 0.3941, 0.3992, 0.4029, 0.4053, 0.4086, 0.4126, 0.418, 0.424, 0.4288, 0.4335, 0.4389, 0.4444, 0.448, 0.452, 0.4556, 0.4613, 0.4675, 0.4752, 0.482, 0.4885, 0.4935, 0.4987, 0.5059, 0.5122, 0.5181, 0.5242, 0.5295, 0.5365, 0.5423, 0.5478, 0.5534, 0.558, 0.5648, 0.5701, 0.5752, 0.5803, 0.5846, 0.5907, 0.5955, 0.6003, 0.6053, 0.6094, 0.6153, 0.6197, 0.6241, 0.6283, 0.6322, 0.638, 0.6429, 0.6476, 0.6527, 0.6567, 0.6623, 0.6671, 0.6719, 0.6771, 0.681, 0.6867, 0.6916, 0.6961, 0.7008, 0.705, 0.7105, 0.7151, 0.7194, 0.724, 0.7279, 0.7333, 0.7382, 0.743, 0.7477, 0.7502, 0.7542, 0.7588, 0.7617, 0.7653, 0.769, 0.7749, 0.7796, 0.7833, 0.7871, 0.7905, 0.7955, 0.7999, 0.8044, 0.8122, 0.8169, 0.8241, 0.8313, 0.8371, 0.8423, 0.8471, 0.8544, 0.8612, 0.8678, 0.8755, 0.8812, 0.8888, 0.8948, 0.8958, 0.8997, 0.9024, 0.9065, 0.9095, 0.912, 0.9159, 0.9186, 0.9229, 0.9264, 0.9293, 0.9337, 0.9368, 0.9415, 0.9453, 0.9486, 0.9534, 0.9567, 0.9618, 0.966, 0.9696, 0.9746, 0.9782, 0.9833, 0.9876, 0.9913, 0.9964, 1.0],FR=null/*INLINE*/,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var N=235,C=[0.0, 0.0057, 0.0122, 0.0182, 0.0245, 0.0306, 0.0367, 0.0426, 0.0484, 0.0542, 0.0597, 0.0653, 0.0706, 0.0759, 0.0812, 0.0864, 0.0917, 0.0969, 0.1021, 0.1072, 0.1124, 0.1175, 0.1227, 0.1279, 0.1334, 0.1388, 0.144, 0.1491, 0.1541, 0.1589, 0.1635, 0.1679, 0.1723, 0.1767, 0.1811, 0.1857, 0.1907, 0.1957, 0.2006, 0.2058, 0.2114, 0.2167, 0.2217, 0.2263, 0.2293, 0.2321, 0.2354, 0.2398, 0.2407, 0.2441, 0.2492, 0.2547, 0.2597, 0.2635, 0.266, 0.2714, 0.2761, 0.2808, 0.2861, 0.2912, 0.296, 0.3004, 0.3045, 0.3086, 0.3116, 0.3158, 0.3202, 0.3257, 0.331, 0.3366, 0.3405, 0.344, 0.3481, 0.3526, 0.3575, 0.363, 0.3672, 0.3697, 0.3718, 0.3745, 0.3784, 0.3829, 0.386, 0.3908, 0.3951, 0.3981, 0.3995, 0.4025, 0.4056, 0.4086, 0.4132, 0.4178, 0.4215, 0.426, 0.4302, 0.4344, 0.4392, 0.4442, 0.4464, 0.45, 0.4538, 0.4581, 0.4643, 0.4698, 0.4758, 0.4812, 0.4871, 0.4909, 0.4962, 0.5012, 0.5067, 0.5117, 0.5172, 0.5219, 0.5274, 0.5322, 0.5376, 0.542, 0.5471, 0.5514, 0.5562, 0.56, 0.5643, 0.5684, 0.5732, 0.5771, 0.5819, 0.5858, 0.5904, 0.5942, 0.5989, 0.6027, 0.6073, 0.6112, 0.6153, 0.6187, 0.6232, 0.6263, 0.6306, 0.6343, 0.6387, 0.6426, 0.647, 0.6509, 0.6554, 0.659, 0.6631, 0.6671, 0.6717, 0.6756, 0.6798, 0.6835, 0.6881, 0.6919, 0.696, 0.6996, 0.7042, 0.7079, 0.7124, 0.7159, 0.7202, 0.7237, 0.7283, 0.7319, 0.7359, 0.7396, 0.744, 0.7476, 0.7519, 0.7537, 0.7576, 0.7604, 0.7634, 0.7661, 0.7701, 0.7738, 0.7782, 0.7815, 0.785, 0.7879, 0.7916, 0.7948, 0.7987, 0.8021, 0.8067, 0.8129, 0.8195, 0.8231, 0.8293, 0.8348, 0.8396, 0.8436, 0.8486, 0.853, 0.8587, 0.8642, 0.87, 0.876, 0.8812, 0.8869, 0.892, 0.897, 0.8978, 0.9007, 0.9033, 0.9063, 0.9088, 0.9116, 0.9139, 0.9169, 0.9193, 0.9224, 0.9251, 0.9283, 0.9311, 0.9344, 0.9373, 0.9407, 0.9437, 0.9472, 0.9502, 0.9538, 0.9569, 0.9607, 0.9639, 0.9677, 0.971, 0.9749, 0.9781, 0.982, 0.9853, 0.9893, 0.9927, 0.9966, 1.0],FR=null/*INLINE*/,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 var small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000&&!FR;
-var ctx=cv.getContext('2d'),imgs=new Array(N),ok=new Array(N),loaded=0,cur=-1,ld=hero.querySelector('.ld'),hin=hero.querySelector('.hero-in'),ht=hero.querySelector('.ht'),caps=[].slice.call(hero.querySelectorAll('.cap')),capOn=-1,mob=innerWidth<=860;
+var ctx=cv.getContext('2d',{alpha:false}),imgs=new Array(N),ok=new Array(N),loaded=0,cur=-1,ld=hero.querySelector('.ld'),hin=hero.querySelector('.hero-in'),ht=hero.querySelector('.ht'),caps=[].slice.call(hero.querySelectorAll('.cap')),capOn=-1,mob=innerWidth<=860;
 function src(i){var s=('00'+(i+1)).slice(-3);return FR?FR[i]:'img/k/'+(small?'male':'duze')+'/'+s+'.webp'}
-function pad(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d)}
-function draw(i){var im=imgs[i];if(!im||!ok[i])return;var W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;ctx.drawImage(im,(W-w)/2,(H-h)*0.5,w,h);cur=i}
+function pad(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high'}
+function put(im,a){var W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;ctx.globalAlpha=a;ctx.drawImage(im,(W-w)/2,(H-h)*0.5,w,h)}
+function draw(i){var im=imgs[i];if(!im||!ok[i])return;put(im,1);cur=i}
+/* pozycja ułamkowa: klatka i + przenikanie do i+1 (płynność między klatkami) */
+function drawF(f){var i=Math.floor(f),fr=f-i;if(i>=N-1){i=N-1;fr=0}var a=nearest(i);if(a<0)return;put(imgs[a],1);cur=a;if(fr>0.03&&ok[i+1]&&a===i){put(imgs[i+1],fr)}ctx.globalAlpha=1}
 function nearest(i){for(var d=0;d<N;d++){if(ok[i-d])return i-d;if(ok[i+d])return i+d}return -1}
-function frameFor(p){if(C&&C.length===N+1){var lo=0,hi=N-1;while(lo<hi){var m=(lo+hi+1)>>1;if(C[m]<=p)lo=m;else hi=m-1}return lo}return Math.min(N-1,Math.floor(p*N))}
+function frameFor(p){if(C&&C.length===N+1){var lo=0,hi=N-1;while(lo<hi){var m=(lo+hi+1)>>1;if(C[m]<=p)lo=m;else hi=m-1}var d=C[lo+1]-C[lo];return lo+(d>0?Math.min(1,(p-C[lo])/d):0)}return Math.min(N-1,p*N)}
 function setCap(f){var k=-1;for(var i=0;i<caps.length;i++){if(f>=+caps[i].getAttribute('data-f'))k=i}if(k!==capOn){capOn=k;caps.forEach(function(c,i){c.classList.toggle('on',i===k)})}}
 var want=0;
-function upd(){var H=hero.offsetHeight-stage.offsetHeight,p=rm?1:Math.min(1,Math.max(0,-hero.getBoundingClientRect().top/Math.max(1,H)));var f=frameFor(p);want=f;var n=nearest(f);if(n>=0&&n!==cur)draw(n);setCap(f);if(!mob)ht.classList.toggle('off',p>0.33&&p<0.97);
- var t=stage.getBoundingClientRect().top;hin.style.opacity=t<0?Math.max(0,1+t/(innerHeight*0.5)):1}
-function load(i){if(imgs[i])return;var im=new Image();imgs[i]=im;im.onload=function(){ok[i]=true;loaded++;ld.style.setProperty('--p',loaded/N);if(loaded>=N)ld.classList.remove('on');if(cur<0||Math.abs(i-want)<Math.abs(cur-want))draw(nearest(want))};im.src=src(i)}
+var pos=-1,goal=0,anim=false;
+function upd(){var H=hero.offsetHeight-stage.offsetHeight,p=rm?1:Math.min(1,Math.max(0,-hero.getBoundingClientRect().top/Math.max(1,H)));goal=frameFor(p);want=Math.round(goal);setCap(Math.floor(goal));if(!mob)ht.classList.toggle('off',p>0.33&&p<0.97);
+ var t=stage.getBoundingClientRect().top;hin.style.opacity=t<0?Math.max(0,1+t/(innerHeight*0.5)):1;if(pos<0||rm){pos=goal;drawF(pos)}else if(!anim){anim=true;requestAnimationFrame(tick)}}
+/* wygładzanie: pozycja dogania cel (łagodny ruch zamiast skoków przy przewijaniu kółkiem) */
+function tick(){var d=goal-pos;if(Math.abs(d)<0.01){pos=goal;drawF(pos);anim=false;return}pos+=d*0.22;drawF(pos);requestAnimationFrame(tick)}
+function load(i){if(imgs[i])return;var im=new Image();imgs[i]=im;im.onload=function(){ok[i]=true;loaded++;ld.style.setProperty('--p',loaded/N);if(loaded>=N)ld.classList.remove('on');if(cur<0||Math.abs(i-want)<=Math.abs(cur-want)+1)drawF(pos<0?want:pos)};im.src=src(i)}
 pad();ld.classList.add('on');
 // kolejność: pierwsza klatka, potem co 10., potem reszta
 var order=[0];for(var i=10;i<N;i+=10)order.push(i);for(var i=0;i<N;i++)if(order.indexOf(i)<0)order.push(i);
 var qi=0;function pump(){for(var k=0;k<6&&qi<order.length;k++)load(order[qi++]);if(qi<order.length)setTimeout(pump,40)}pump();
-addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});addEventListener('resize',function(){pad();cur=-1;upd()});upd();
+addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});addEventListener('resize',function(){pad();cur=-1;pos=-1;upd()});upd();
 })();
 </script>
 </body></html>
