@@ -50,6 +50,7 @@ html:not(.js) .scn:first-child{opacity:1;transform:none;position:relative;height
 .scn::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,19,.4) 0,rgba(14,16,19,0) 28%,rgba(14,16,19,.45) 55%,rgba(14,16,19,.9) 100%),linear-gradient(90deg,rgba(14,16,19,.55),rgba(14,16,19,0) 55%)}
 .route{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:hidden;transition:opacity .3s}
 .route path{fill:none;stroke:var(--acc);stroke-width:3;stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(232,150,46,.6))} .route circle{fill:var(--acc);stroke:#0e1013;stroke-width:3} .route text{font:700 16px var(--fs);fill:#fff;letter-spacing:.02em;paint-order:stroke;stroke:#0e1013;stroke-width:4px;stroke-linejoin:round}
+.hnote{position:absolute;right:clamp(16px,4vw,48px);bottom:14px;font:400 12.5px var(--fs);color:rgba(255,255,255,.6);z-index:2} @media (max-width:640px){.hnote{bottom:auto;top:calc(var(--hdr-h,112px) + 10px);left:16px;right:auto}}
 .acts{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(16px,4vw,48px) clamp(40px,7vh,84px);display:grid}
 .hact{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .22s,transform .22s,visibility 0s .22s;max-width:760px}
 .hact.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s .18s,transform .5s .18s,visibility 0s} html:not(.js) .hact:first-child{opacity:1;visibility:visible;transform:none}
@@ -90,7 +91,7 @@ section{padding:clamp(72px,9vw,120px) 0} .sand{background:var(--sand);color:var(
 .gmap{display:block;width:100%;aspect-ratio:21/9;min-height:320px;border:0;border-radius:var(--r);margin-top:clamp(36px,5vw,64px);filter:grayscale(.25) contrast(1.05)} @media (max-width:640px){.gmap{aspect-ratio:4/3}}
 footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--mut)} footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap} footer a{color:var(--mut)}
 @media (max-width:900px){.two,.kont{grid-template-columns:1fr} .plist{grid-template-columns:1fr} .pfot{grid-template-columns:1fr 1fr} .pfot .a{grid-row:auto;grid-column:1/-1} .pfot .a img{aspect-ratio:16/10} .extras{grid-template-columns:1fr} .board .rw{grid-template-columns:1fr auto} .board .t{grid-column:1/-1} .slist .rw{grid-template-columns:1fr auto} .slist .o{grid-column:1/-1} .menu{columns:2}}
-@media (max-width:640px){.form .g{grid-template-columns:1fr} .hact h1,.hact .h1{font-size:clamp(2.4rem,11vw,3.4rem)} .acts{padding-bottom:calc(64px + 72px)} .prog{display:none} .prog.m{display:flex;position:static;margin-top:18px;justify-content:flex-start;left:auto;right:auto;top:auto} .prog.m i{width:72px} .scn img{object-position:62% 50%} .pin{min-height:620px} .menu{columns:1} .bleed{aspect-ratio:4/3} .mbar{transform:none}}
+@media (max-width:640px){.form .g{grid-template-columns:1fr} .hact h1,.hact .h1{font-size:clamp(2.4rem,11vw,3.4rem)} .acts{padding-bottom:calc(64px + 72px)} .prog{display:none} .prog.m{display:flex;position:static;margin-top:18px;justify-content:flex-start;left:auto;right:auto;top:auto} .prog.m i{width:72px} .prog.m .adr{display:none} .scn img{object-position:62% 50%} .pin{min-height:620px} .menu{columns:1} .bleed{aspect-ratio:4/3} .mbar{transform:none}}
 @media (min-width:641px){.prog.m{display:none} .mbar{transform:translateY(110%);transition:transform .35s} .past-hero .mbar{transform:none}}
 @media (prefers-reduced-motion:reduce){.js .stage{height:auto} .pin{position:relative;height:auto;min-height:0} .frames{position:relative;height:70vh} .scn{transition:none} .scn:first-child{opacity:1;transform:none} .acts{position:static;display:grid;gap:36px;padding-top:40px;padding-bottom:48px} .hact{opacity:1;visibility:visible;transform:none;transition:none} .prog em,.route{display:none}}
 </style></head><body>
@@ -101,12 +102,12 @@ footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:14px;color
 
 <section class="hero" id="start"><div class="stage"><div class="pin">
 <div class="frames">
- <div class="scn on"><img src="img/hero-1-1920.webp" srcset="img/hero-1-1000.webp 1000w, img/hero-1-1920.webp 1920w" sizes="100vw" alt="Wejście do hotelu nocą, parking dla gości" fetchpriority="high"></div>
+ <div class="scn on"><img src="img/hero-1-1920.webp" srcset="img/hero-1-1000.webp 1000w, img/hero-1-1920.webp 1920w" sizes="100vw" alt="Hala Arena Gliwice nocą" fetchpriority="high"></div>
  <div class="scn"><img src="img/hero-2-1920.webp" srcset="img/hero-2-1000.webp 1000w, img/hero-2-1920.webp 1920w" sizes="100vw" alt="Pokój hotelowy nocą" loading="lazy"></div>
  <div class="scn"><img src="img/hero-3-1920.webp" srcset="img/hero-3-1000.webp 1000w, img/hero-3-1920.webp 1920w" sizes="100vw" alt="Śniadanie w restauracji hotelowej rano" loading="lazy"></div>
 </div>
-<svg class="route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path pathLength="1" d="M 120 300 C 360 250, 640 380, 960 520"/><circle cx="960" cy="520" r="7"/><text x="150" y="282">← Arena Gliwice · 400 m</text><text x="985" y="560">Hotel AVA</text></svg>
 <div class="prog"><span class="adr"><b>ul. Pszczyńska 113, Gliwice</b> · 400 m od Areny · 3 min od A1/A4</span><em><span>01 / 03</span><i><b></b></i></em></div>
+<p class="hnote">Kadry poglądowe — przy wdrożeniu zdjęcia hotelu.</p>
 <div class="acts">
  <div class="hact on"><h1>Nocleg 400 metrów od Areny Gliwice</h1><p>Przed koncertem spokojnie zjesz, po koncercie wrócisz pieszo w pięć minut. Parking dla gości w cenie pobytu.</p><div class="prog m"><span class="adr"><b>ul. Pszczyńska 113, Gliwice</b> · 400 m od Areny · 3 min od A1/A4</span><em><span>01 / 03</span><i><b></b></i></em></div></div>
  <div class="hact"><p class="h1">Pokój od 200 zł za dobę. Za pokój, nie za osobę.</p><p>Odnowione w 2022 roku. Własna łazienka, TV, lodówka, cisza. Bez dopłat za parking.</p></div>
