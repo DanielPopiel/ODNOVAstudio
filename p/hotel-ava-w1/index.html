@@ -43,7 +43,7 @@ h2{font-size:clamp(2.6rem,5.2vw,4rem);max-width:16ch} h3{font-size:1.5rem;font-w
 p{margin:0}
 .logo{display:flex;align-items:baseline;gap:8px;color:var(--htxt);text-decoration:none;font:800 24px/1 var(--fh);letter-spacing:.02em} .logo b{font-weight:800;color:var(--acc)} .logo svg{width:22px;height:11px;fill:var(--acc)}
 /* hero */
-.hero{position:relative;background:#0e1013} .js .stage{height:260vh} .pin{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+.hero{position:relative;background:#0e1013;padding:0} .js .stage{height:260vh} .pin{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden}
 html:not(.js) .pin{position:relative;height:auto;min-height:100vh}
 .frames{position:absolute;inset:0} .scn{position:absolute;inset:0;opacity:0;transform:scale(1.05);transition:opacity .55s} .scn img{width:100%;height:100%;object-fit:cover;object-position:60% 50%} .scn.on{opacity:1}
 html:not(.js) .scn:first-child{opacity:1;transform:none;position:relative;height:100vh}
@@ -116,9 +116,9 @@ footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:14px;color
 
 <section class="dark" id="pokoje"><div class="wrap">
  <div class="head reveal"><h2>Pokoje i cennik</h2><p class="lead">Ceny za pokój za dobę. Dla firm i pobytów od czterech dób mamy rabaty, wystarczy zapytać.</p>
- <p class="trust" style="margin-top:28px"><span>W Gliwicach od <i>[rok — uzupełnić]</i></span><span><i>[n]</i> pokoi, recepcja całą dobę</span><span>Ocena <i>[x,x]</i> na Booking.com, <i>[n]</i> opinii</span><span>Odnowione w 2022</span></p></div>
+ <p class="trust" style="margin-top:28px"><span>W Gliwicach od <i>[rok — uzupełnić]</i></span><span><i>[n]</i> pokoi</span><span>Ocena <i>[x,x]</i> na Booking.com, <i>[n]</i> opinii</span><span>Odnowione w 2022</span></p></div>
  <div class="two">
-  <div class="reveal"><p class="price-big">od 200 zł<small>/ doba</small></p><p class="price-sub">Pokój jednoosobowy z łazienką, TV i lodówką. Parking i Wi-Fi w cenie.</p>
+  <div class="reveal"><p class="price-big">od 200 zł<small>/ doba</small></p><p class="price-sub">Pokój jednoosobowy z łazienką, TV i lodówką. Parking w cenie.</p>
    <div class="plist stagger"><div class="rw"><span class="n">Pokój 1-osobowy</span><span class="z">200 zł</span><span class="s">1 łóżko, biurko, TV, lodówka</span></div><div class="rw"><span class="n">Pokój 2-osobowy</span><span class="z">260 zł</span><span class="s">dwa łóżka albo jedno podwójne</span></div><div class="rw"><span class="n">Pokój 3-osobowy</span><span class="z">350 zł</span><span class="s">trzy łóżka, stolik</span></div><div class="rw"><span class="n">Pokój 4-osobowy</span><span class="z">450 zł</span><span class="s">cztery łóżka, dla ekip i rodzin</span></div></div></div>
   <div class="pfot reveal"><figure class="a"><img src="img/pokoj2.webp" alt="Pokój dwuosobowy z dużym łóżkiem"><figcaption>Pokój 2-osobowy, I piętro · zdjęcia z obecnej strony, do odświeżenia</figcaption></figure><figure class="b"><img src="img/pokoj3b.webp" alt="Pokój trzyosobowy" loading="lazy"></figure><figure class="c"><img src="img/lazienka.webp" alt="Łazienka z prysznicem" loading="lazy"></figure></div>
  </div>
@@ -131,7 +131,7 @@ footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:14px;color
 
 <section class="sand" id="rezerwacja"><div class="wrap two">
  <div class="side reveal"><h2>Zapytaj o termin</h2><p class="lead">Napisz, kiedy przyjeżdżasz i w ile osób. Odpowiadamy tego samego dnia. Albo po prostu zadzwoń:</p><a class="big" href="tel:+48322301371">+48 32 230 13 71</a>
-  <div class="hours"><p><b>Recepcja</b> czynna całą dobę. <b>Doba hotelowa</b> od 14:00 do 11:00. Grupy na wydarzenia w Arenie: napisz wcześniej, zarezerwujemy pokoje obok siebie.</p></div></div>
+  <div class="hours"><p><b>Recepcja</b> i <b>doba hotelowa</b>: godziny <i>[potwierdzić]</i>. Grupy na wydarzenia w Arenie: napisz wcześniej, zarezerwujemy pokoje obok siebie.</p></div></div>
  <form class="form reveal" action="#" method="post">
   <div class="g"><div class="f"><label class="l" for="od">Przyjazd</label><input id="od" type="date" name="od" required></div><div class="f"><label class="l" for="do">Wyjazd</label><input id="do" type="date" name="do" required></div>
   <div class="f"><label class="l" for="os">Liczba osób</label><select id="os" name="os"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5 i więcej (grupa)</option></select></div>
@@ -169,7 +169,7 @@ footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:14px;color
   </div><div class="map reveal" aria-label="Schemat dojazdu"><svg viewBox="0 0 400 300"><path class="hw" d="M0 250 L400 250"/><text x="12" y="282">A4 → Katowice</text><text x="290" y="282">A1 → Łódź</text><path class="rd" d="M300 250 C 300 180, 250 150, 230 120 S 200 60, 190 10"/><text x="238" y="200">ul. Pszczyńska</text><path class="rd2" d="M190 60 L60 40"/><circle class="pt" cx="80" cy="42" r="9"/><text x="18" y="24">Arena Gliwice</text><circle class="pt" cx="222" cy="118" r="9"/><text x="238" y="112">Hotel AVA</text><text x="280" y="140" style="fill:#e8962e">400 m</text><text x="296" y="232">węzeł Sośnica</text></svg></div><p class="cap">Schemat, nie mapa. Odległości orientacyjne.</p></div>
   <div class="adr reveal"><b>Hotel AVA</b><p>ul. Pszczyńska 113<br>44-100 Gliwice<br><span style="color:var(--mut)">obok stacji paliw, dojazd od strony węzła Sośnica</span></p>
   <a class="tel" href="tel:+48322301371">+48 32 230 13 71</a><a class="tel" href="tel:+48721887388" style="margin-top:4px">+48 721 887 388</a><p style="margin-top:12px"><a href="mailto:hotelava@interia.pl">hotelava@interia.pl</a></p>
-  <p class="hrs"><b>Recepcja</b> całą dobę · <b>doba hotelowa</b> 14:00–11:00 · <b>restauracja</b> <i>[7:00–22:00 — potwierdzić]</i></p>
+  <p class="hrs"><b>Recepcja i doba hotelowa</b> <i>[potwierdzić]</i> · <b>restauracja</b> <i>[7:00–22:00 — potwierdzić]</i></p>
   <p style="margin-top:14px"><a href="https://maps.google.com/?q=Hotel+AVA,+Pszczyńska+113,+Gliwice" target="_blank" rel="noopener">Otwórz w Google Maps →</a></p>
   <p style="margin-top:22px;font-size:15px;color:var(--mut)">Parking w cenie, miejsce dla każdego gościa. Obiekt wyciszony, okna wymieniono przy modernizacji.</p></div>
  </div>
@@ -195,7 +195,7 @@ var secs=[].slice.call(d.querySelectorAll('section[id]')); var links=[].slice.ca
 function act(){ var y=scrollY+innerHeight*0.35; var cur=null; secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id }); links.forEach(function(a){ a.classList.toggle('navon', a.getAttribute('href')==='#'+cur) }) } addEventListener('scroll',act,{passive:true}); act();
 // daty od dziś
 var today=new Date().toISOString().slice(0,10); d.querySelectorAll('input[type=date]').forEach(function(i){i.min=today});
-d.querySelectorAll('form').forEach(function(f){ f.addEventListener('submit',function(e){ e.preventDefault(); var ok=f.querySelector('.ok'); if(ok){ok.hidden=false} f.querySelectorAll('input,textarea,select,button').forEach(function(i){i.disabled=true}) }) });
+d.querySelectorAll('form:not([data-bar])').forEach(function(f){ f.addEventListener('submit',function(e){ e.preventDefault(); var ok=f.querySelector('.ok'); if(ok){ok.hidden=false} f.querySelectorAll('input,textarea,select,button').forEach(function(i){i.disabled=true}) }) });
 })();
 
 (function(){

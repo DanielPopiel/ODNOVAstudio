@@ -111,7 +111,7 @@ footer{padding:26px 0 40px;border-top:1px solid var(--linel);font-size:14px;colo
 </div></div></section>
 
 <section id="imprezy"><div class="wrap">
- <p class="trust reveal"><span>Rodzinny hotel w Gliwicach od <i>[rok — uzupełnić]</i></span><span>Ocena Google <i>[x,x]</i> · <i>[n]</i> opinii</span><span>400 m od Areny Gliwice</span><span>Parking i Wi-Fi w cenie</span></p>
+ <p class="trust reveal"><span>Rodzinny hotel w Gliwicach od <i>[rok — uzupełnić]</i></span><span>Ocena Google <i>[x,x]</i> · <i>[n]</i> opinii</span><span>400 m od Areny Gliwice</span><span>Parking w cenie</span></p>
  <div class="head reveal"><h2>Rodzinne uroczystości pod jednym dachem</h2><p class="lead">Kuchnia, sala i pokoje dla gości w jednym budynku. Ceny orientacyjne za osobę. Ostateczne zależą od menu, które ustalamy razem.</p></div>
  <div class="two"><div class="ilist stagger"><div class="rw"><span class="n">Wesela</span><span class="z">ok. 150 zł / os.</span></div><div class="rw"><span class="n">Chrzciny</span><span class="z">ok. 80 zł / os.</span></div><div class="rw"><span class="n">Jubileusze</span><span class="z">ok. 80 zł / os.</span></div><div class="rw"><span class="n">Stypy</span><span class="z">ok. 60 zł / os.</span></div><div class="rw"><span class="n">Zjazdy i szkolenia</span><span class="z">wg uzgodnień</span></div></div>
  <div class="reveal"><div class="fig" style="aspect-ratio:4/3"><img src="img/salavip.webp" alt="Sala na przyjęcia rodzinne z nakrytym stołem" loading="lazy"></div><p class="cap">Zdjęcie z obecnej strony, przy wdrożeniu sesja we wszystkich wnętrzach.</p></div></div>
@@ -145,7 +145,7 @@ footer{padding:26px 0 40px;border-top:1px solid var(--linel);font-size:14px;colo
 
 <section class="green" id="kontakt"><div class="wrap kont">
  <div class="adr reveal"><h2>Zapytaj o termin</h2><p style="margin-top:22px"><b>Hotel AVA</b>ul. Pszczyńska 113<br>44-100 Gliwice</p><a class="tel" href="tel:+48322301371">+48 32 230 13 71</a><a class="tel" href="tel:+48721887388" style="margin-top:4px">+48 721 887 388</a><p style="margin-top:12px"><a href="mailto:hotelava@interia.pl">hotelava@interia.pl</a></p>
- <p class="hrs"><b>Doba hotelowa</b> od 14:00 do 11:00<br><b>Restauracja</b> <i>[7:00–22:00 — potwierdzić]</i><br><b>Recepcja</b> całą dobę</p>
+ <p class="hrs"><b>Doba hotelowa</b> <i>[potwierdzić]</i><br><b>Restauracja</b> <i>[7:00–22:00 — potwierdzić]</i><br><b>Recepcja</b> <i>[potwierdzić]</i></p>
  <p style="margin-top:22px;color:var(--mut);font-size:15.5px">Imprezy i sale: najlepiej zadzwonić, kalendarz sprawdzimy od ręki.</p></div>
  <form class="form reveal up" data-mode="n" action="#" method="post">
   <div class="seg"><input type="radio" name="m" id="mn" value="n" checked><label for="mn">Nocleg</label><input type="radio" name="m" id="mi" value="i"><label for="mi">Impreza lub sala</label></div>
@@ -165,7 +165,7 @@ footer{padding:26px 0 40px;border-top:1px solid var(--linel);font-size:14px;colo
   <button class="btn" type="submit">Wyślij zapytanie</button><p class="ok" hidden>Dziękujemy — w makiecie formularz nie wysyła wiadomości. W gotowej stronie trafi ona na hotelava@interia.pl.</p>
  </form>
 </div></section>
-<footer class="green"><div class="wrap"><span>© 2026 Hotel AVA, ul. Pszczyńska 113, 44-100 Gliwice · obiekt kategorii ** · doba hotelowa 14:00–11:00 · NIP [uzupełnić]</span><span><a href="#">Regulamin hotelu</a> · <a href="#">Polityka prywatności</a></span></div></footer>
+<footer class="green"><div class="wrap"><span>© 2026 Hotel AVA, ul. Pszczyńska 113, 44-100 Gliwice · obiekt kategorii ** · NIP [uzupełnić]</span><span><a href="#">Regulamin hotelu</a> · <a href="#">Polityka prywatności</a></span></div></footer>
 <div class="mbar"><a class="btn ghost" href="tel:+48322301371">Zadzwoń</a><a class="btn" href="#kontakt">Zapytaj o termin</a></div>
 <script>
 (function(){
@@ -185,7 +185,7 @@ var secs=[].slice.call(d.querySelectorAll('section[id]')); var links=[].slice.ca
 function act(){ var y=scrollY+innerHeight*0.35; var cur=null; secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id }); links.forEach(function(a){ a.classList.toggle('navon', a.getAttribute('href')==='#'+cur) }) } addEventListener('scroll',act,{passive:true}); act();
 // daty od dziś
 var today=new Date().toISOString().slice(0,10); d.querySelectorAll('input[type=date]').forEach(function(i){i.min=today});
-d.querySelectorAll('form').forEach(function(f){ f.addEventListener('submit',function(e){ e.preventDefault(); var ok=f.querySelector('.ok'); if(ok){ok.hidden=false} f.querySelectorAll('input,textarea,select,button').forEach(function(i){i.disabled=true}) }) });
+d.querySelectorAll('form:not([data-bar])').forEach(function(f){ f.addEventListener('submit',function(e){ e.preventDefault(); var ok=f.querySelector('.ok'); if(ok){ok.hidden=false} f.querySelectorAll('input,textarea,select,button').forEach(function(i){i.disabled=true}) }) });
 })();
 
 (function(){
