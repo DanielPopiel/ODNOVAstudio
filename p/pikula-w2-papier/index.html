@@ -122,6 +122,53 @@ a.meta:hover{border-bottom-color:var(--red)}
 .kdots button i{display:block;width:26px;height:2px;background:var(--rule-2);transition:background .2s}
 .kdots button[aria-current="true"] i{background:var(--red)}
 
+
+/* ---------- przelot hero ---------- */
+#hero-stage{position:relative;background:var(--paper)}
+.js #hero-stage{height:420vh}
+#hero-pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--paper)}
+#hero-cvs{width:100%;height:100%;display:none}
+.hero3d #hero-cvs{display:block}
+#hero-pin::after{content:"";position:absolute;inset:0;background:var(--paper);opacity:var(--papier,0);pointer-events:none;transition:opacity .12s linear}
+#hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero3d #hero-fallback{display:none}
+html:not(.js) .akt{position:static;translate:none;opacity:1;transform:none;margin-bottom:28px}
+html:not(.js) #hero-pin{position:static;height:auto;padding:40px 0}
+html:not(.js) .akty{position:static;display:block;background:rgba(244,243,238,.9)}
+html:not(.js) .przewin{display:none}
+.akty{position:absolute;inset:0;pointer-events:none;display:grid;align-content:center}
+.akty::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease;
+  background:linear-gradient(100deg, var(--paper) 0%, rgba(244,243,238,.92) 28%, rgba(244,243,238,.55) 48%, rgba(244,243,238,0) 68%);
+}
+#hero-stage[data-akt="1"] .akty::before,
+#hero-stage[data-akt="2"] .akty::before{opacity:1}
+#hero-stage[data-akt="3"] .akty::before{opacity:.55}
+.akt{
+  max-width:var(--maxw);margin:0 auto;padding:0 32px;width:100%;
+  opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;
+  position:absolute;left:0;right:0;top:50%;translate:0 -50%;
+}
+#hero-stage[data-akt="1"] .akt-1,
+#hero-stage[data-akt="2"] .akt-2,
+#hero-stage[data-akt="3"] .akt-3{opacity:1;transform:none;pointer-events:auto}
+.akt h1{color:var(--ink);max-width:13ch}
+.akt .lead{font-size:clamp(1.15rem,2vw,1.5rem);max-width:38ch;color:var(--ink)}
+.akt-3 .korekta{
+  background:rgba(244,243,238,.93);border:0;border-left:2px solid var(--red);
+  padding:18px 22px;max-width:44ch;margin:0;
+  }
+.akt-3 .korekta .kp{margin-top:10px}
+.przewin{
+  position:absolute;left:50%;bottom:26px;translate:-50% 0;width:160px;height:1px;background:var(--rule-2);
+}
+.przewin i{display:block;height:1px;background:var(--red);width:calc(var(--pp,0) * 100%)}
+#hero-stage[data-akt="4"] .przewin{opacity:0}
+
+/* pas pod przelotem */
+.hero-po{padding:72px 0 clamp(84px,9vw,132px)}
+.hero-po .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:end}
+
 /* ---------- sekcje ---------- */
 section{padding:clamp(84px,9vw,132px) 0}
 section[id]{scroll-margin-top:var(--hdr-h)}
@@ -231,7 +278,25 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
   .kon{grid-template-columns:1fr;gap:40px}
   .shead{grid-template-columns:1fr;gap:18px}
 }
+@media (max-width:1080px){
+  .hero-po .grid{grid-template-columns:1fr;gap:32px}
+}
 @media (max-width:860px){
+  .js #hero-stage{height:340vh}
+  #hero-pin{display:flex;flex-direction:column;justify-content:flex-start;padding-top:calc(var(--hdr-h) + 10px)}
+  .hero3d #hero-cvs{height:auto;aspect-ratio:16/9;flex:none}
+  #hero-fallback{position:static;height:auto;aspect-ratio:16/9}
+  .akty{position:static;display:flex;align-items:center;flex:1;padding:10px 0 40px}
+  .akty::before{display:none}
+  .akt{position:static;translate:none;padding:0 22px;display:none}
+  #hero-stage[data-akt="1"] .akt-1,
+  #hero-stage[data-akt="2"] .akt-2,
+  #hero-stage[data-akt="3"] .akt-3,
+  #hero-stage[data-akt="4"] .akt-3{display:block}
+  .akt h1{max-width:none;font-size:2.1rem}
+  .akt .lead{font-size:1.1rem}
+  .akt-3 .korekta{max-width:none;background:none;padding:0 0 0 16px}
+  .przewin{bottom:18px}
   .nav,.tel,.hdr-in .btn{display:none}
   .mnav{display:block;position:relative}
   .mnav summary{list-style:none;cursor:pointer;font-size:15px;padding:10px 12px;border:1px solid var(--rule-2);min-height:44px;display:flex;align-items:center}
@@ -306,27 +371,42 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
   </div>
 </div>
 
-<header class="hero" id="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-t">
-      <h1>Sprawa rozstrzyga się w zdaniu, które ktoś musiał napisać dobrze.</h1>
-      <p class="sub">Kancelaria adwokacka w Pruszkowie. Prawo rodzinne, spadkowe, cywilne i gospodarcze. Dla osób prywatnych i dla firm, w Pruszkowie i w Warszawie.</p>
-    </div>
-
-      <div class="korekta" id="korekta">
-        <p class="kz" id="kz"><span class="pre">Strony ustalają, że kontakty z małoletnim odbywać się będą </span><del id="kdel">w terminach uzgodnionych na bieżąco</del> <ins id="kins">w co drugi weekend, od piątku godz. 17:00</ins><span class="post">.</span></p>
-        <div class="kp"><span id="kpod">Poprawka w projekcie ugody</span>
-          <span class="kdots" id="kdots"><button type="button" aria-label="Poprawka 1" aria-current="true"><i></i></button><button type="button" aria-label="Poprawka 2"><i></i></button><button type="button" aria-label="Poprawka 3"><i></i></button></span></div>
+<section id="hero-stage" data-akt="1">
+  <div id="hero-pin">
+    <canvas id="hero-cvs" aria-hidden="true"></canvas>
+    <img id="hero-fallback" src="kadry/k2-web.webp" alt="Biurko w kancelarii: kartka z projektem pisma, pióro, lampa">
+    <div class="akty">
+      <div class="akt akt-1">
+        <h1>Sprawa rozstrzyga się w zdaniu, które ktoś musiał napisać dobrze.</h1>
       </div>
+      <div class="akt akt-2">
+        <p class="lead">Kancelaria adwokacka w Pruszkowie. Prawo rodzinne, spadkowe, cywilne i gospodarcze. Dla osób prywatnych i dla firm, w Pruszkowie i w Warszawie.</p>
+      </div>
+      <div class="akt akt-3">
+        <div class="korekta on" id="korekta">
+          <p class="kz" id="kz"><span>Strony ustalają, że kontakty z małoletnim odbywać się będą </span><del id="kdel">w terminach uzgodnionych na bieżąco</del> <ins id="kins">w co drugi weekend, od piątku godz. 17:00</ins><span>.</span></p>
+          <div class="kp"><span id="kpod">Poprawka w projekcie ugody</span>
+            <span class="kdots" id="kdots"><button type="button" aria-label="Poprawka 1" aria-current="true"><i></i></button><button type="button" aria-label="Poprawka 2"><i></i></button><button type="button" aria-label="Poprawka 3"><i></i></button></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="przewin" aria-hidden="true"><i></i></div>
+  </div>
+</section>
 
+<header class="hero-po" id="hero">
+  <div class="wrap grid">
+    <div>
+      <p class="lead" style="font-family:Newsreader,serif;font-size:clamp(1.35rem,2.3vw,1.9rem);line-height:1.34;max-width:26ch;margin:0 0 26px">Prowadzimy sprawy rodzinne, spadkowe, cywilne i gospodarcze — w Pruszkowie i w Warszawie.</p>
       <div class="hero-cta">
         <a class="btn" href="#kontakt">Umów konsultację</a>
         <a class="btn line" href="#obszary">Obszary praktyki</a>
-        <a class="meta" href="tel:+48601130842">Zadzwoń: +48 601 130 842</a><span class="meta">pn. i czw. do 18:00</span>
+        <a class="meta" href="tel:+48601130842">Zadzwoń: +48 601 130 842</a>
+        <span class="meta">Przyjęcia: pn. i czw. do 18:00</span>
       </div>
-
+    </div>
     <figure class="portret">
-      <img src="assets/portret.webp" width="885" height="1659" alt="Adwokat Sabina Pikula" fetchpriority="high">
+      <img src="assets/portret.webp" width="885" height="1659" alt="Adwokat Sabina Pikula">
       <figcaption>adw. Sabina Pikula — Okręgowa Rada Adwokacka w Warszawie, wpis nr 4577</figcaption>
     </figure>
   </div>
@@ -613,5 +693,16 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
   });
 })();
 </script>
+<script>
+window.HERO_W2 = {
+  paper:'#F4F3EE', dokument:[0.488,0.613], glebiaDokumentu:0.58,
+  kadry:[
+    {img:'kadry/k1-web.webp', depth:'kadry/k1-depth.png', od:0.00, do:0.42},
+    {img:'kadry/k2-web.webp', depth:'kadry/k2-depth.png', od:0.32, do:0.78},
+    {img:'kadry/k3-web.webp', depth:'kadry/k3-depth.png', od:0.68, do:1.00}
+  ]
+};
+</script>
+<script src="hero.js"></script>
 </body>
 </html>
