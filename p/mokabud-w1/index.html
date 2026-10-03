@@ -396,6 +396,28 @@ html.has-modal-open{overflow:hidden}
 .mb-nav .wp-block-navigation__responsive-container-close{top:22px!important;right:var(--gutter)!important;min-width:44px;min-height:44px;display:grid;place-items:center}
 
 .mb-stopka__cp{font-size:.88rem;margin-top:1rem!important;opacity:.8}
+
+/* nagłówek niższy: więcej miejsca na hero przy niskich ekranach */
+.mb-pasek{padding-top:8px!important;padding-bottom:8px!important}
+.mb-pasek .mb-logo,.mb-pasek .mb-logo a{display:block;line-height:0}
+.mb-pasek .mb-logo img{width:92px!important}
+@media (max-width:980px){.mb-pasek .mb-logo img{width:78px!important}}
+@media (max-height:620px){.mb-pasek{padding-top:5px!important;padding-bottom:5px!important}.mb-pasek .mb-logo img{width:70px!important}}
+/* hero: tekst nigdy nie wchodzi pod nagłówek — przy niskim ekranie zaczyna się od góry, kroje skalują się z wysokością */
+.mb-scena__tresc{justify-content:flex-start!important;padding-top:calc(var(--hdr-h) + 14px)!important}
+.mb-scena .mb-etapy__intro{margin-top:auto!important}
+.mb-etapy h1{font-size:clamp(1.9rem,min(6.4vw,8.6vh),5.9rem)!important}
+.mb-scena .mb-lead{font-size:clamp(.98rem,min(1.6vw,2.5vh),1.32rem);margin-bottom:min(1.6em,3vh)!important}
+.mb-podpis .mb-etap__nazwa{font-size:clamp(2rem,min(5vw,7vh),4.4rem)!important}
+@media (max-height:620px){
+  .mb-scena__tresc,.mb-podpisy{padding-bottom:0!important;bottom:auto}
+  .mb-scena__tresc{padding-bottom:84px!important}
+  .mb-podpisy{bottom:84px!important}
+  .mb-szyna{bottom:14px!important}
+  .mb-pomin{display:none}
+  .mb-etapy .wp-block-button__link{padding:.7em 1.1em}
+}
+@media (max-width:781px){.mb-scena::before{background:linear-gradient(0deg,rgba(20,21,23,.92) 0%,rgba(20,21,23,.72) 40%,rgba(20,21,23,.35) 70%,rgba(20,21,23,.6) 100%)!important}}
 </style>
 
 
@@ -414,10 +436,10 @@ html.has-modal-open{overflow:hidden}
 
 
 <meta content="noindex,nofollow" name="robots"/><meta content="Makieta strony Mokabud — wariant W1 „Etapami”: dom rośnie przy przewijaniu, płatność po każdym etapie." name="description"/><meta content="Mokabud — makieta strony, W1 „Etapami”" property="og:title"/><meta content="Makieta strony Mokabud — wariant W1 „Etapami”: dom rośnie przy przewijaniu, płatność po każdym etapie." property="og:description"/><meta content="https://www.odnovastudio.com/p/mokabud-w1/assets/og.jpg" property="og:image"/><meta content="https://www.odnovastudio.com/p/mokabud-w1/" property="og:url"/><meta content="website" property="og:type"/><meta content="pl_PL" property="og:locale"/><link href="data:image/png;base64,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" rel="icon" type="image/png"/><style data-z="makieta">/* Warstwa makiety Odnova Studio */
-.mk-pasek{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;padding:7px 16px;background:#0E0F10;color:#E9E8E4;font:500 13px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+.mk-pasek{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;padding:4px 16px;background:#0E0F10;color:#E9E8E4;font:500 13px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
 .mk-pasek b{font-weight:700;letter-spacing:.02em}
 .mk-pasek a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.mk-edycja{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;font-weight:600;min-height:24px}
+.mk-edycja{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:3px 10px;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;font-weight:600;min-height:24px}
 .mk-edycja::before{content:"";width:26px;height:14px;border-radius:9px;background:rgba(255,255,255,.25);box-shadow:inset 0 0 0 2px transparent;transition:background .2s;background-image:radial-gradient(circle at 7px 7px,#fff 5px,transparent 5.5px)}
 .mk-edycja[aria-pressed=true]{background:#2563EB;border-color:#2563EB}
 .mk-edycja[aria-pressed=true]::before{background-color:rgba(255,255,255,.35);background-image:radial-gradient(circle at 19px 7px,#fff 5px,transparent 5.5px)}
@@ -439,14 +461,15 @@ html.has-modal-open{overflow:hidden}
 .mk-legenda{display:inline-block;width:12px;height:12px;border:2px dashed #3B82F6;vertical-align:-1px;margin-right:4px}
 .mk-legenda--lista{border:2px solid #F59E0B}
 @media (max-width:640px){
-  .mk-pasek{font-size:12px;gap:8px;padding:6px 10px}
+  .mk-pasek{font-size:12px;gap:8px;padding:4px 8px;flex-wrap:nowrap;white-space:nowrap}
   .mk-pasek .mk-ukryj-tel{display:none}
   .mk-panel{left:12px;right:12px;bottom:12px;width:auto;font-size:14px;max-height:52vh;overflow:auto}
 }
+@media (max-width:380px){.mk-pasek{flex-wrap:wrap;white-space:normal;gap:4px 8px}}
 </style></head>
 <body class="home wp-singular page-template-default page page-id-25 wp-custom-logo wp-embed-responsive wp-theme-mokabud-w1">
-<a class="skip-link screen-reader-text" href="#wp--skip-link--target" id="wp-skip-link">Przejdź do treści</a><div class="wp-site-blocks"><header class="mb-header wp-block-template-part"><div class="mk-pasek" role="note"><span><b>MAKIETA</b> <span class="mk-ukryj-tel">strony Mokabud ·</span> W1 „Etapami” · ODNOVA Studio</span>
-<button aria-pressed="false" class="mk-edycja" type="button">Pokaż, co edytujesz w WordPressie</button></div>
+<a class="skip-link screen-reader-text" href="#wp--skip-link--target" id="wp-skip-link">Przejdź do treści</a><div class="wp-site-blocks"><header class="mb-header wp-block-template-part"><div class="mk-pasek" role="note"><span><b>MAKIETA</b> <span class="mk-ukryj-tel">strony Mokabud ·</span> W1 „Etapami”<span class="mk-ukryj-tel"> · ODNOVA Studio</span></span>
+<button aria-pressed="false" class="mk-edycja" type="button">Pokaż, co edytujesz<span class="mk-ukryj-tel"> w WordPressie</span></button></div>
 <div class="wp-block-group mb-pasek is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-2f20ec05 wp-block-group-is-layout-flex">
 <div class="mb-logo wp-block-site-logo"><a aria-current="page" class="custom-logo-link" href="#" rel="home"><img alt="Mokabud — logo" class="custom-logo" srcset="assets/img/logo.png 720w, assets/img/logo-300x200.png 300w" decoding="async" height="78" sizes="(max-width: 118px) 100vw, 118px" src="assets/img/logo.png" width="118"/></a></div>
 <nav class="is-responsive items-justified-right mb-nav wp-block-navigation is-content-justification-right is-layout-flex wp-container-core-navigation-is-layout-a904f976 wp-block-navigation-is-layout-flex" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}' data-wp-interactive="core/navigation"><button aria-haspopup="dialog" aria-label="Rozwiń menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.openMenuOnClick" data-wp-on--keydown="actions.handleMenuKeydown"><svg aria-hidden="true" focusable="false" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7.5h16v1.5H4z"></path><path d="M4 15h16v1.5H4z"></path></svg></button>
@@ -624,7 +647,7 @@ html.has-modal-open{overflow:hidden}
 <form action="#kontakt" class="mb-form" method="post">
 <input name="action" type="hidden" value="mokabud_wycena"/>
 <input name="do" type="hidden" value="biuro@mokabud.pl"/>
-<input id="mb_nonce" name="mb_nonce" type="hidden" value="2097650758"/><input name="_wp_http_referer" type="hidden" value="/"/> <p class="mb-form__row"><label for="mb-imie">Imię i nazwisko</label><input autocomplete="name" id="mb-imie" name="imie" required=""/></p>
+<input id="mb_nonce" name="mb_nonce" type="hidden" value="13fb6ad63b"/><input name="_wp_http_referer" type="hidden" value="/"/> <p class="mb-form__row"><label for="mb-imie">Imię i nazwisko</label><input autocomplete="name" id="mb-imie" name="imie" required=""/></p>
 <p class="mb-form__row"><label for="mb-tel">Telefon</label><input autocomplete="tel" id="mb-tel" inputmode="tel" name="tel" required="" type="tel"/></p>
 <p class="mb-form__row"><label for="mb-gdzie">Gdzie jest działka? <span class="opc">(opcjonalnie)</span></label><input id="mb-gdzie" name="gdzie" placeholder="np. Andrzejów, gm. Andrespol"/></p>
 <p class="mb-form__row"><label for="mb-zakres">Zakres</label>
