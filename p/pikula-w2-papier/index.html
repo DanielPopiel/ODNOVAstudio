@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kancelaria Adwokacka adw. Sabina Pikula — Pruszków · makieta W2</title>
+<meta name="description" content="Makieta strony kancelarii adwokackiej adw. Sabiny Pikuli w Pruszkowie. Wariant W2 „Papier”.">
+<meta property="og:title" content="Kancelaria Adwokacka adw. Sabina Pikula — Pruszków">
+<meta property="og:description" content="Prawo rodzinne, spadkowe, cywilne i gospodarcze. Pruszków i Warszawa.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.odnovastudio.com/p/pikula-w2-papier/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/pikula-w2-papier/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{
+  --paper:#F4F3EE;
+  --paper-2:#ECEBE3;
+  --ink:#15171B;
+  --ink-2:#3B4149;
+  --ink-3:#5C636B;
+  --rule:#DCD8CE;
+  --rule-2:#C7C2B5;
+  --red:#A62F26;
+  --red-soft:#F0E0DC;
+  --dark:#15171B;
+  --dark-2:#1E2227;
+  --on-dark:#EDEAE3;
+  --on-dark-2:#A9AEB3;
+  --maxw:1240px;
+  --hdr-h:112px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Familjen Grotesk",system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  font-feature-settings:"ss01";
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+input,textarea{caret-color:var(--red);accent-color:var(--red)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;width:100%}
+h1,h2,h3,.ser{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:400;margin:0}
+h2{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-.012em;max-width:20ch;text-wrap:balance;font-optical-sizing:auto;font-variation-settings:'opsz' 54}
+h3{font-size:1.45rem;line-height:1.32}
+p{margin:0 0 1rem}
+
+/* ---------- pasek makiety + nagłówek: JEDEN kontener ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:80}
+.flag{
+  background:var(--ink);color:var(--on-dark-2);font-size:12.5px;line-height:1.5;
+  padding:7px 32px;display:flex;gap:6px 22px;justify-content:center;flex-wrap:wrap;text-align:center;
+}
+.flag b{color:var(--paper);font-weight:500}
+.hdr{background:rgba(244,243,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.hdr-in{max-width:var(--maxw);margin:0 auto;padding:12px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;margin-right:auto;min-width:0}
+.brand .n{font-family:Newsreader,serif;font-size:1.26rem;line-height:1.1;letter-spacing:-.01em;white-space:nowrap}
+.brand .c{font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{font-size:15px;text-decoration:none;color:var(--ink-2);padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--red)}
+.tel{font-size:15px;text-decoration:none;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);text-decoration:none;
+  font-size:15px;font-weight:600;padding:11px 19px;border:1px solid var(--ink);cursor:pointer;
+  font-family:inherit;transition:background .18s,color .18s,border-color .18s;
+}
+.btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--rule-2)}
+.btn.line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn svg{flex:none}
+.mnav{display:none}
+
+/* ---------- hero ---------- */
+.hero{padding:calc(var(--hdr-h) + 56px) 0 0}
+.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;column-gap:56px;row-gap:0;
+  grid-template-areas:"t f" "k f" "c f";align-items:start}
+.hero-t{grid-area:t}
+.portret{grid-area:f}
+.korekta{grid-area:k}
+.hero-cta{grid-area:c}
+h1{font-size:clamp(2.3rem,4.6vw,3.9rem);line-height:1.04;letter-spacing:-.018em;max-width:13ch;font-optical-sizing:auto;font-variation-settings:'opsz' 54;text-wrap:balance}
+.hero .sub{margin:26px 0 0;font-size:1.18rem;color:var(--ink-2);max-width:46ch}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:30px 0 0}
+.hero-cta .meta{font-size:14.5px;color:var(--ink-3);font-variant-numeric:lining-nums tabular-nums}
+a.meta{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule-2);padding:10px 0;display:inline-flex;align-items:center;min-height:44px}
+a.meta:hover{border-bottom-color:var(--red)}
+.portret{position:relative;align-self:end;margin-bottom:0}
+.portret img{width:100%;background:transparent;mix-blend-mode:multiply;filter:contrast(1.05)}
+.portret figcaption{
+  font-size:13.5px;color:var(--ink-3);padding:10px 0 0;border-top:1px solid var(--rule);margin-top:12px;
+}
+
+/* ---------- poprawka (animacja hero) ---------- */
+.korekta{
+  margin:34px 0 0;border-bottom:1px solid var(--rule);
+  padding:0 0 18px;max-width:42ch;
+}
+.korekta .kz{font-family:Newsreader,serif;font-size:clamp(1.42rem,2.5vw,2.05rem);line-height:1.36;hanging-punctuation:first allow-end;margin:0}
+.korekta del{text-decoration:none;color:var(--ink-3);
+  background:linear-gradient(var(--red),var(--red)) left 58%/var(--d,100%) 1.5px no-repeat}
+.js .korekta del{--d:0%;transition:background-size .45s ease}
+.korekta.on del{--d:100%}
+.korekta ins{
+  text-decoration:none;color:var(--red);box-shadow:inset 0 -1px 0 0 var(--red);
+  background:linear-gradient(var(--red-soft),var(--red-soft)) left/var(--w,100%) 100% no-repeat;
+}
+.js .korekta ins{--w:0%;transition:background-size .5s ease .5s;background-size:var(--w) 100%}
+.korekta.on ins{--w:100%}
+.korekta .kp{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:14px 0 0;font-size:13.5px;color:var(--ink-3)}
+.kdots{display:flex;gap:7px}
+.kdots button{width:34px;height:34px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.kdots button i{display:block;width:26px;height:2px;background:var(--rule-2);transition:background .2s}
+.kdots button[aria-current="true"] i{background:var(--red)}
+
+/* ---------- sekcje ---------- */
+section{padding:clamp(84px,9vw,132px) 0}
+section[id]{scroll-margin-top:var(--hdr-h)}
+.alt{background:var(--paper-2)}
+.dark{background:var(--dark);color:var(--on-dark);padding:clamp(72px,7vw,100px) 0}
+.dark h2,.dark h3{color:var(--on-dark)}
+.dark p{color:var(--on-dark-2)}
+.shead{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;margin-bottom:52px}
+.shead p{margin:0;color:var(--ink-2);max-width:42ch;font-size:1.06rem}
+.dark .shead p{color:var(--on-dark-2)}
+
+/* ---------- rejestr obszarów ---------- */
+.rej{border-top:1px solid var(--rule-2)}
+.poz{
+  border-bottom:1px solid var(--rule);display:grid;grid-template-columns:76px 1.15fr 1fr;gap:10px 28px;
+  padding:26px 0;align-items:baseline;transition:background .2s;
+}
+.poz .par{font-family:Newsreader,serif;font-size:1.5rem;color:var(--ink-3);line-height:1;font-variant-numeric:oldstyle-nums;transition:color .2s}
+.poz h3{font-size:1.62rem;letter-spacing:-.008em}
+.poz p{margin:0;color:var(--ink-2);font-size:1rem;max-width:46ch;hyphens:auto;-webkit-hyphens:auto}
+.poz:hover{background:rgba(166,47,38,.035)}
+.poz:hover .par,.poz:focus-within .par{color:var(--red)}
+.poz .ex{grid-column:2/-1;display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .35s ease,opacity .35s ease}
+.poz .ex > span{overflow:hidden;font-family:Newsreader,serif;font-size:1.06rem;color:var(--ink-2)}
+.poz:hover .ex,.poz:focus-within .ex{grid-template-rows:1fr;opacity:1}
+.poz .ex > span{padding-top:0}
+.poz:hover .ex > span,.poz:focus-within .ex > span{padding-top:10px}
+.poz .ex del{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:1.5px;color:var(--ink-3)}
+.poz .ex ins{text-decoration:none;color:var(--red);box-shadow:inset 0 -1px 0 0 var(--red)}
+
+/* ---------- ciemny pas: zasady ---------- */
+.zasady{display:grid;grid-template-columns:repeat(3,1fr);gap:46px;margin-top:8px;counter-reset:z}
+.zasada{border-top:1px solid #4A525B;padding-top:18px}
+.zasada::before{content:counter(z) ".";counter-increment:z;font-family:Newsreader,serif;color:var(--on-dark-2);font-size:13.5px;display:block;margin-bottom:12px}
+.zasada h3{font-size:1.3rem;font-weight:500;margin-bottom:8px;line-height:1.32}
+.zasada p{margin:0;font-size:1.02rem}
+
+.wpis{
+  margin-top:64px;border-top:1px solid #4A525B;padding-top:22px;display:flex;flex-wrap:wrap;gap:10px 44px;
+  font-size:14.5px;color:var(--on-dark-2);font-variant-numeric:lining-nums tabular-nums;
+}
+.wpis span b{color:var(--on-dark);font-weight:500}
+
+/* ---------- adwokat ---------- */
+.adw{display:grid;grid-template-columns:1fr 250px;gap:56px;align-items:start}
+.adw .foto img{width:100%}
+.adw .foto figcaption{font-size:13px;color:var(--ink-3);margin-top:10px}
+.adw .bio p{font-size:1.1rem;max-width:56ch}
+.adw .bio .lead{font-family:Newsreader,serif;font-size:1.62rem;line-height:1.36;color:var(--ink)}
+.marg{border-top:0;border-left:1px solid var(--rule-2);padding:0 0 0 18px;margin-top:.45em;font-size:13.5px;color:var(--ink-2)}
+.marg dt{color:var(--ink-3);font-size:12.5px;margin-top:18px}
+.marg dt:first-child{margin-top:0}
+.marg dd{margin:3px 0 0;font-family:Newsreader,serif;font-size:1.06rem;font-variant-numeric:lining-nums tabular-nums}
+
+/* ---------- przebieg ---------- */
+.kroki{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--rule-2)}
+.krok{display:grid;grid-template-columns:76px 1.15fr 1fr;gap:10px 28px;border-bottom:1px solid var(--rule);padding:26px 0;align-items:baseline}
+.krok .nr{font-family:Newsreader,serif;font-size:1.5rem;line-height:1;color:var(--ink-3);font-variant-numeric:oldstyle-nums}
+.krok h3{margin:0;font-size:1.62rem;letter-spacing:-.008em}
+.krok p{margin:0;color:var(--ink-2);font-size:1rem;max-width:46ch;hyphens:auto;-webkit-hyphens:auto}
+
+/* ---------- kontakt ---------- */
+.kon{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.godz{width:100%;border-collapse:collapse;margin-top:10px}
+.godz td{padding:10px 0;border-bottom:1px solid #343A41;font-size:1rem;color:var(--on-dark-2)}
+.godz td:last-child{text-align:right;color:var(--on-dark);font-variant-numeric:lining-nums tabular-nums}
+.dane{margin-top:38px;font-size:1.06rem;line-height:1.85}
+.dane a{color:var(--on-dark);text-decoration:none;border-bottom:1px solid #4A525B}
+.dane a:hover{border-bottom-color:var(--red)}
+.form{background:var(--paper);color:var(--ink);padding:34px}
+.dark .form h3{color:var(--ink)}
+.dark .form p{color:var(--ink-2)}
+.dark .form .rodo{color:var(--ink-3)}
+.form h3{font-size:1.6rem;margin-bottom:6px}
+.form .fh{color:var(--ink-2);font-size:.98rem;margin-bottom:22px}
+.pola{display:grid;gap:16px}
+.pole label{display:block;font-size:14px;color:var(--ink-2);margin-bottom:6px}
+.pole input,.pole textarea,.pole select{
+  width:100%;font:inherit;font-size:16px;padding:12px 13px;border:1px solid var(--rule-2);
+  background:#fff;color:var(--ink);border-radius:0;
+}
+.pole textarea{min-height:104px;resize:vertical}
+.pole input:focus,.pole textarea:focus,.pole select:focus{outline:none;border-color:var(--red)}
+.rodo{font-size:12.6px;color:var(--ink-3);line-height:1.5;margin:16px 0 18px}
+.fmsg{min-height:22px;font-size:14px;margin:12px 0 0;color:var(--red)}
+
+/* ---------- stopka ---------- */
+footer{background:var(--dark-2);color:var(--on-dark-2);padding:52px 0 44px;font-size:14.5px}
+.fgrid{display:flex;flex-wrap:wrap;gap:28px 56px;justify-content:space-between}
+footer a{color:var(--on-dark-2);text-decoration:none}
+footer a:hover{color:var(--paper)}
+footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);display:block;margin-bottom:6px}
+
+/* ---------- pasek mobilny ---------- */
+.mbar{display:none}
+
+/* ---------- odsłanianie ---------- */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;grid-template-areas:"t" "k" "c" "f";row-gap:32px}
+  .portret{max-width:460px;margin:0 auto}
+  .adw{grid-template-columns:1fr;gap:28px}
+  .marg{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
+  .zasady{grid-template-columns:1fr;gap:28px}
+  .kon{grid-template-columns:1fr;gap:40px}
+  .shead{grid-template-columns:1fr;gap:18px}
+}
+@media (max-width:860px){
+  .nav,.tel,.hdr-in .btn{display:none}
+  .mnav{display:block;position:relative}
+  .mnav summary{list-style:none;cursor:pointer;font-size:15px;padding:10px 12px;border:1px solid var(--rule-2);min-height:44px;display:flex;align-items:center}
+  .mnav summary::-webkit-details-marker{display:none}
+  .mnav nav{position:absolute;right:0;top:calc(100% + 8px);background:var(--paper);border:1px solid var(--rule-2);min-width:220px;padding:8px;box-shadow:0 10px 22px -18px rgba(21,23,27,.45)}
+  .mnav nav a{display:block;padding:12px 14px;text-decoration:none;font-size:16px;border-bottom:1px solid var(--rule)}
+  .mnav nav a:last-child{border-bottom:0}
+  section{padding:76px 0}
+  .wrap{padding:0 22px}
+  .flag{padding:7px 18px;font-size:12px}
+  .hdr-in{padding:10px 22px;gap:10px;flex-wrap:nowrap}
+  .brand .n{font-size:1.1rem}
+  .mnav summary{padding:10px 12px}
+  .poz,.krok{grid-template-columns:52px 1fr;gap:8px 18px}
+  .poz p,.krok p,.poz .ex{grid-column:2}
+  .poz .ex{grid-template-rows:1fr;opacity:1}
+  .poz .ex > span{padding-top:8px}
+  .portret img{aspect-ratio:4/5;object-fit:cover;object-position:50% 14%}
+  .mbar{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--ink);
+    padding:10px 16px;gap:10px;transform:translateY(118%);transition:transform .35s ease;
+  }
+  body.past-hero .mbar{transform:none}
+  .mbar a{flex:1;text-align:center;padding:13px;text-decoration:none;font-size:15px;font-weight:600;min-height:44px}
+  .mbar .c1{background:var(--red);color:#fff}
+  .mbar .c2{border:1px solid #434A52;color:var(--on-dark)}
+  footer{padding-bottom:92px}
+  .js .reveal{transform:translateY(16px);transition-duration:.7s}
+}
+@media (max-width:420px){
+  .brand .c{display:none}
+  h1{font-size:2.3rem}
+}
+.no-js .mbar{transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top" id="top">
+  <div class="flag">
+    <span>Makieta · propozycja projektowa <b>Odnova Studio</b></span>
+    <span>wariant W2 „Papier” · strona demonstracyjna, nie jest witryną Kancelarii</span>
+  </div>
+  <div class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="#top">
+        <span class="n">adw. Sabina Pikula</span>
+        <span class="c">Kancelaria Adwokacka · Pruszków</span>
+      </a>
+      <div class="nav">
+        <a href="#obszary">Obszary praktyki</a>
+        <a href="#adwokat">Adwokat</a>
+        <a href="#przebieg">Przebieg sprawy</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a class="tel" href="tel:+48601130842">+48 601 130 842</a>
+      <a class="btn" href="#kontakt">Umów konsultację</a>
+      <details class="mnav"><summary>Menu</summary>
+        <nav>
+          <a href="#obszary">Obszary praktyki</a>
+          <a href="#adwokat">Adwokat</a>
+          <a href="#przebieg">Przebieg sprawy</a>
+          <a href="#kontakt">Kontakt</a>
+          <a href="tel:+48601130842">+48 601 130 842</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</div>
+
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-t">
+      <h1>Sprawa rozstrzyga się w zdaniu, które ktoś musiał napisać dobrze.</h1>
+      <p class="sub">Kancelaria adwokacka w Pruszkowie. Prawo rodzinne, spadkowe, cywilne i gospodarcze. Dla osób prywatnych i dla firm, w Pruszkowie i w Warszawie.</p>
+    </div>
+
+      <div class="korekta" id="korekta">
+        <p class="kz" id="kz"><span class="pre">Strony ustalają, że kontakty z małoletnim odbywać się będą </span><del id="kdel">w terminach uzgodnionych na bieżąco</del> <ins id="kins">w co drugi weekend, od piątku godz. 17:00</ins><span class="post">.</span></p>
+        <div class="kp"><span id="kpod">Poprawka w projekcie ugody</span>
+          <span class="kdots" id="kdots"><button type="button" aria-label="Poprawka 1" aria-current="true"><i></i></button><button type="button" aria-label="Poprawka 2"><i></i></button><button type="button" aria-label="Poprawka 3"><i></i></button></span></div>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn" href="#kontakt">Umów konsultację</a>
+        <a class="btn line" href="#obszary">Obszary praktyki</a>
+        <a class="meta" href="tel:+48601130842">Zadzwoń: +48 601 130 842</a><span class="meta">pn. i czw. do 18:00</span>
+      </div>
+
+    <figure class="portret">
+      <img src="assets/portret.webp" width="885" height="1659" alt="Adwokat Sabina Pikula" fetchpriority="high">
+      <figcaption>adw. Sabina Pikula — Okręgowa Rada Adwokacka w Warszawie, wpis nr 4577</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="alt" id="obszary">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Sześć obszarów, w których prowadzimy sprawy</h2>
+      <p>Pomoc prawna dopasowana do sprawy, nie do cennika: porada, pismo procesowe, reprezentacja przed sądem, organem administracji i organem egzekucyjnym.</p>
+    </div>
+    <div class="rej">
+      <article class="poz">
+        <span class="par">§ 1</span>
+        <h3>Prawo rodzinne</h3>
+        <p>Rozwód z orzeczeniem o winie i bez, separacja, alimenty na dziecko i na małżonka, władza rodzicielska, kontakty z małoletnimi, podział majątku wspólnego.</p>
+              <p class="ex"><span>Kontakty ustalone <del>na bieżąco</del> <ins>co drugi weekend, od piątku godz. 17:00</ins>.</span></p>
+      </article>
+      <article class="poz">
+        <span class="par">§ 2</span>
+        <h3>Prawo spadkowe</h3>
+        <p>Stwierdzenie nabycia spadku, dział spadku, zachowek, odrzucenie spadku obciążonego długami, wykonanie zapisu i polecenia.</p>
+              <p class="ex"><span>Spadek dzielimy <del>po równo</del> <ins>zgodnie z działem spadku, z rozliczeniem darowizn</ins>.</span></p>
+      </article>
+      <article class="poz">
+        <span class="par">§ 3</span>
+        <h3>Prawo cywilne</h3>
+        <p>Sprawy o nieruchomości, zasiedzenie, księgi wieczyste, odszkodowania, ochrona dóbr osobistych, windykacja należności, opiniowanie i przygotowanie umów.</p>
+              <p class="ex"><span>Wykonawca usunie wady <del>w rozsądnym terminie</del> <ins>w 14 dni od zgłoszenia</ins>.</span></p>
+      </article>
+      <article class="poz">
+        <span class="par">§ 4</span>
+        <h3>Prawo gospodarcze</h3>
+        <p>Bieżąca obsługa przedsiębiorców, negocjowanie umów handlowych, rejestracja spółek, fundacji i stowarzyszeń w KRS, uchwały i protokoły organów spółek.</p>
+              <p class="ex"><span>Umowa obowiązuje <del>do odwołania</del> <ins>do 31 grudnia, z 3-miesięcznym wypowiedzeniem</ins>.</span></p>
+      </article>
+      <article class="poz">
+        <span class="par">§ 5</span>
+        <h3>Prawo pracy</h3>
+        <p>Roszczenia ze stosunku pracy: wynagrodzenie, godziny nadliczbowe, przywrócenie do pracy, odszkodowanie za wadliwe wypowiedzenie. Regulaminy po stronie pracodawcy. Odwołania od decyzji ZUS.</p>
+              <p class="ex"><span>Wypowiedzenie wskazuje <del>przyczyny organizacyjne</del> <ins>likwidację stanowiska nr 4 z dnia 12 maja</ins>.</span></p>
+      </article>
+      <article class="poz">
+        <span class="par">§ 6</span>
+        <h3>Prawo karne</h3>
+        <p>Obrona podejrzanych i oskarżonych w postępowaniu przygotowawczym i sądowym, reprezentacja pokrzywdzonych i oskarżycieli posiłkowych, prywatne akty oskarżenia.</p>
+              <p class="ex"><span>Zarzut obejmuje <del>działanie na szkodę spółki</del> <ins>czyn z art. 296 § 1 k.k. w dniach 3–7 marca</ins>.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="zasady">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Zanim złożymy pierwsze pismo</h2>
+      <p>Trzy rzeczy, które ustalamy na początku, żeby nie było niespodzianek ani co do szans, ani co do kosztów.</p>
+    </div>
+    <div class="zasady">
+      <div class="zasada"><h3>Mówimy wprost, ile sprawa jest warta</h3><p>Jeśli ocena szans wypada źle, usłyszą to Państwo na pierwszym spotkaniu, a nie po roku postępowania.</p></div>
+      <div class="zasada"><h3>Wynagrodzenie ustalamy przed sprawą</h3><p>Ryczałt za sprawę albo stawka godzinowa, przedstawione na piśmie zanim podpiszemy pełnomocnictwo.</p></div>
+      <div class="zasada"><h3>Po każdym piśmie wiedzą Państwo, co dalej</h3><p>Krótka informacja po rozprawie i po każdym doręczonym piśmie: co się wydarzyło i jaki jest następny krok.</p></div>
+    </div>
+    <div class="wpis">
+      <span><b>2010</b> — wpis na listę adwokatów</span>
+      <span>Okręgowa Rada Adwokacka w Warszawie, nr <b>4577</b></span>
+      <span>Prawo — <b>KUL</b>, Lublin</span>
+      <span>Prawo podatkowe, studia podyplomowe — <b>SGH</b>, Warszawa</span>
+    </div>
+  </div>
+</section>
+
+<section id="adwokat">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Kto poprowadzi Państwa sprawę</h2>
+      <p>Jedna osoba od pierwszej rozmowy do prawomocnego wyroku. Sprawy nie przechodzą między prawnikami.</p>
+    </div>
+    <div class="adw">
+      <div class="bio">
+        <p class="lead">Praktyka obejmuje sprawy cywilne i gospodarcze, w szczególności odpowiedzialność za szkodę, sprawy majątkowe i naruszenia zobowiązań umownych, a także sprawy spadkowe, rodzinne i małżeńskie.</p>
+        <p>Absolwentka Wydziału Prawa, Prawa Kanonicznego i Administracji Katolickiego Uniwersytetu Lubelskiego oraz studiów podyplomowych z prawa podatkowego w Szkole Głównej Handlowej w Warszawie. Od 2010 roku członek Okręgowej Izby Adwokackiej w Warszawie, gdzie odbyła aplikację adwokacką i uzyskała uprawnienia zawodowe.</p>
+        <p>Doświadczenie zdobywała w kancelarii adwokackiej, kancelarii radcy prawnego oraz pracując w dużej firmie telekomunikacyjnej, stąd praktyka obejmująca zarówno klientów indywidualnych, jak i stałą obsługę przedsiębiorców.</p>
+        <p>W sprawach wymagających innych specjalizacji Kancelaria współpracuje z adwokatami i radcami prawnymi, a także z rzecznikami patentowymi, doradcami podatkowymi, biegłymi rewidentami i notariuszami.</p>
+      </div>
+      <dl class="marg">
+        <dt>Wpis</dt><dd>ORA w Warszawie, nr 4577</dd>
+        <dt>Od</dt><dd>2010</dd>
+        <dt>Obszar</dt><dd>Pruszków, Warszawa i okolice</dd>
+        <dt>Konsultacje</dt><dd>W kancelarii i telefonicznie</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="przebieg">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>Jak wygląda współpraca</h2>
+      <p>Trzy kroki, zanim cokolwiek trafi do sądu.</p>
+    </div>
+    <div class="kroki">
+      <div class="krok">
+        <span class="nr">Krok 1</span>
+        <h3>Konsultacja</h3>
+        <p>Spotkanie w kancelarii albo rozmowa telefoniczna. Ustalamy stan faktyczny i oceniamy szanse. Konsultacja jest odpłatna, a jej koszt zaliczamy na poczet wynagrodzenia, jeśli podejmujemy się sprawy.</p>
+      </div>
+      <div class="krok">
+        <span class="nr">Krok 2</span>
+        <h3>Wycena i pełnomocnictwo</h3>
+        <p>Przedstawiamy zakres pracy i wynagrodzenie. Dopiero po akceptacji podpisujemy pełnomocnictwo i przejmujemy korespondencję w sprawie.</p>
+      </div>
+      <div class="krok">
+        <span class="nr">Krok 3</span>
+        <h3>Prowadzenie sprawy</h3>
+        <p>Reprezentacja przed sądem, organami administracji i organami egzekucyjnymi, z bieżącą informacją po każdej rozprawie i każdym doręczonym piśmie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="kontakt">
+  <div class="wrap">
+    <div class="shead reveal">
+      <h2>ul. Kraszewskiego 17, Pruszków</h2>
+      <p>Adwokat przyjmuje w godzinach podanych obok. Istnieje możliwość umówienia się telefonicznie na inny, dogodny termin.</p>
+    </div>
+    <div class="kon">
+      <div>
+        <table class="godz">
+          <tr><td>Poniedziałek</td><td>9:00 – 18:00</td></tr>
+          <tr><td>Wtorek</td><td>9:00 – 16:00</td></tr>
+          <tr><td>Środa</td><td>9:00 – 16:00</td></tr>
+          <tr><td>Czwartek</td><td>9:00 – 18:00</td></tr>
+          <tr><td>Piątek</td><td>9:00 – 14:00</td></tr>
+        </table>
+        <p class="dane">
+          Kancelaria Adwokacka adw. Sabina Pikula<br>
+          ul. Kraszewskiego 17, 05-800 Pruszków<br>
+          <a href="tel:+48601130842">+48 601 130 842</a><br>
+          <a href="mailto:biuro@adwokatpikula.pl">biuro@adwokatpikula.pl</a>
+        </p>
+      </div>
+
+      <form class="form" id="frm" novalidate>
+        <h3>Opisz sprawę</h3>
+        <p class="fh">Wiadomość trafia bezpośrednio na skrzynkę Kancelarii.</p>
+        <div class="pola">
+          <div class="pole">
+            <label for="dz">Czego dotyczy sprawa</label>
+            <select id="dz" name="dziedzina">
+              <option>Prawo rodzinne — rozwód, alimenty, kontakty</option>
+              <option>Prawo spadkowe</option>
+              <option>Prawo cywilne — nieruchomości, odszkodowania, umowy</option>
+              <option>Prawo gospodarcze — obsługa firmy</option>
+              <option>Prawo pracy i ZUS</option>
+              <option>Prawo karne</option>
+              <option>Inna sprawa</option>
+            </select>
+          </div>
+          <div class="pole"><label for="im">Imię i nazwisko</label><input id="im" name="imie" type="text" autocomplete="name" required></div>
+          <div class="pole"><label for="kt">Telefon lub e-mail</label><input id="kt" name="kontakt" type="tel" inputmode="tel" autocomplete="tel" required></div>
+          <div class="pole"><label for="op">Krótki opis sprawy</label><textarea id="op" name="opis" placeholder="Kilka zdań wystarczy — szczegóły omówimy na konsultacji."></textarea></div>
+        </div>
+        <p class="rodo">Administratorem danych jest Kancelaria Adwokacka adw. Sabina Pikula, ul. Kraszewskiego 17, 05-800 Pruszków. Dane przetwarzamy wyłącznie w celu odpowiedzi na zapytanie. Pełna klauzula informacyjna w Polityce prywatności.</p>
+        <button class="btn" type="submit" style="width:100%;justify-content:center">Wyślij wiadomość</button>
+        <p class="fmsg" id="fmsg" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <span class="fn">Kancelaria Adwokacka adw. Sabina Pikula</span>
+      ul. Kraszewskiego 17, 05-800 Pruszków<br>
+      <a href="tel:+48601130842">+48 601 130 842</a> · <a href="mailto:biuro@adwokatpikula.pl">biuro@adwokatpikula.pl</a>
+    </div>
+    <div>
+      <a href="#obszary">Obszary praktyki</a><br>
+      <a href="#adwokat">Adwokat</a><br>
+      <a href="#przebieg">Przebieg sprawy</a><br>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div>
+      Okręgowa Rada Adwokacka w Warszawie, wpis nr 4577<br>
+      NIP [uzupełnić] · REGON [uzupełnić]<br>
+      <a href="#" onclick="return false">Polityka prywatności</a> · <a href="#" onclick="return false">Informacja RODO</a><br>
+      <span style="color:var(--ink-3)">Makieta: Odnova Studio · wariant W2 „Papier”</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="c1" href="tel:+48601130842">Zadzwoń</a>
+  <a class="c2" href="#kontakt">Napisz</a>
+</div>
+
+<script>
+(function(){
+  var red = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* wysokość paska u góry */
+  var top = document.getElementById('top');
+  function hm(){ document.documentElement.style.setProperty('--hdr-h', top.offsetHeight + 'px'); }
+  hm(); addEventListener('resize', hm); addEventListener('load', hm);
+
+  /* odsłanianie */
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if (red || !('IntersectionObserver' in window)) {
+    els.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var fired = false;
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){ if (e.isIntersecting){ fired = true; e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -10% 0px', threshold:.1});
+    els.forEach(function(e){ io.observe(e); });
+    function sweep(){ els.forEach(function(e){ if (e.getBoundingClientRect().top < innerHeight*0.95) e.classList.add('in'); }); }
+    addEventListener('scroll', function(){ clearTimeout(window.__sw); window.__sw = setTimeout(sweep, 140); }, {passive:true});
+    setTimeout(function(){ if (!fired) els.forEach(function(e){ e.classList.add('in'); }); }, 4000);
+  }
+
+  /* poprawka w hero */
+  var war = [
+    ['Strony ustalają, że kontakty z małoletnim odbywać się będą ', 'w terminach uzgodnionych na bieżąco', 'w co drugi weekend, od piątku godz. 17:00', '.'],
+    ['Wykonawca zobowiązuje się usunąć wady ', 'w rozsądnym terminie', 'w terminie 14 dni od zgłoszenia', '.'],
+    ['Spadkodawca rozporządza majątkiem ', 'na rzecz rodziny', 'na rzecz córki Anny Kowalskiej w całości', '.']
+  ];
+  var box = document.getElementById('korekta'), kz = document.getElementById('kz'),
+      dots = document.getElementById('kdots'), pod = document.getElementById('kpod'),
+      podpisy = ['Poprawka w projekcie ugody','Poprawka w umowie o roboty budowlane','Poprawka w projekcie testamentu'],
+      i = 0, timer = null;
+  function pokaz(n){
+    var w = war[n];
+    kz.innerHTML = '';
+    var a = document.createElement('span'); a.textContent = w[0];
+    var d = document.createElement('del'); d.textContent = w[1];
+    var s = document.createElement('ins'); s.textContent = w[2];
+    var b = document.createElement('span'); b.textContent = w[3];
+    var sp = document.createTextNode(' ');
+    kz.appendChild(a); kz.appendChild(d); kz.appendChild(sp); kz.appendChild(s); kz.appendChild(b);
+    pod.textContent = podpisy[n];
+    [].forEach.call(dots.children, function(b, k){ b.setAttribute('aria-current', k === n ? 'true' : 'false'); });
+    box.classList.remove('on');
+    void box.offsetWidth;
+    requestAnimationFrame(function(){ box.classList.add('on'); });
+  }
+  function start(){ stop(); timer = setInterval(function(){ i = (i + 1) % war.length; pokaz(i); }, 6000); }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+  dots.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    i = [].indexOf.call(dots.children, b); pokaz(i); stop();
+  });
+  if (!red) {
+    pokaz(0); start();
+    box.addEventListener('pointerenter', stop);
+    box.addEventListener('focusin', stop);
+    box.addEventListener('pointerleave', function(){ if (!box.contains(document.activeElement)) start(); });
+  } else {
+    box.classList.add('on');
+  }
+
+  /* pasek mobilny dopiero pod hero */
+  var hero = document.getElementById('hero');
+  function mb(){
+    document.body.classList.toggle('past-hero', hero.getBoundingClientRect().bottom < innerHeight*0.5);
+  }
+  mb(); addEventListener('scroll', mb, {passive:true});
+
+  /* menu mobilne zamyka się po kliknięciu */
+  var mn = document.querySelector('.mnav');
+  if (mn) mn.addEventListener('click', function(e){ if (e.target.closest('nav a')) mn.removeAttribute('open'); });
+
+  /* formularz — makieta */
+  document.getElementById('frm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var m = document.getElementById('fmsg');
+    if (!document.getElementById('im').value.trim() || !document.getElementById('kt').value.trim()){
+      m.textContent = 'Prosimy podać imię oraz telefon lub e-mail — bez tego nie odpowiemy.';
+      return;
+    }
+    m.textContent = 'To makieta — wiadomość nie została wysłana. W wersji docelowej trafia na skrzynkę kancelarii.';
+  });
+})();
+</script>
+</body>
+</html>
