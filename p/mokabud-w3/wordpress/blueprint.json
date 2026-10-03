@@ -1,0 +1,14 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": { "title": "Mokabud — makieta w3 w WordPressie", "author": "ODNOVA Studio" },
+  "landingPage": "/?mokabud=edytuj",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "features": { "networking": true },
+  "login": true,
+  "steps": [
+    { "step": "setSiteLanguage", "language": "pl_PL" },
+    { "step": "installTheme", "themeData": { "resource": "url", "url": "https://www.odnovastudio.com/p/mokabud-w3/wordpress/mokabud-w3.zip" }, "options": { "activate": true } },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; mokabud_demo_setup();" },
+    { "step": "setSiteOptions", "options": { "blogname": "Mokabud", "permalink_structure": "/%postname%/" } }
+  ]
+}
