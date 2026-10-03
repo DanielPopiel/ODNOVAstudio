@@ -18,19 +18,21 @@
 <script>document.documentElement.className+=' js';</script>
 <style>
 :root{
-  --paper:#F4F3EE;
-  --paper-2:#ECEBE3;
-  --ink:#15171B;
-  --ink-2:#3B4149;
-  --ink-3:#5C636B;
-  --rule:#DCD8CE;
-  --rule-2:#C7C2B5;
-  --red:#A62F26;
-  --red-soft:#F0E0DC;
-  --dark:#15171B;
-  --dark-2:#1E2227;
-  --on-dark:#EDEAE3;
-  --on-dark-2:#A9AEB3;
+  --paper:#F7F0E4;
+  --paper-2:#EFE3CF;
+  --ink:#251C13;
+  --ink-2:#4A3C2E;
+  --ink-3:#6B5A47;
+  --rule:#E3D5BF;
+  --rule-2:#CDB999;
+  --red:#B0361F;
+  --red-soft:#F7D9C8;
+  --miod:#B98545;
+  --miod-ciemny:#8E6024;
+  --dark:#2A1F15;
+  --dark-2:#36291C;
+  --on-dark:#F4EADB;
+  --on-dark-2:#C9B79D;
   --maxw:1240px;
   --hdr-h:112px;
 }
@@ -60,7 +62,7 @@ p{margin:0 0 1rem}
   padding:7px 32px;display:flex;gap:6px 22px;justify-content:center;flex-wrap:wrap;text-align:center;
 }
 .flag b{color:var(--paper);font-weight:500}
-.hdr{background:rgba(244,243,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.hdr{background:rgba(247,240,228,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 .hdr-in{max-width:var(--maxw);margin:0 auto;padding:12px 32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;margin-right:auto;min-width:0}
 .brand .n{font-family:Newsreader,serif;font-size:1.26rem;line-height:1.1;letter-spacing:-.01em;white-space:nowrap}
@@ -100,14 +102,11 @@ a.meta:hover{border-bottom-color:var(--red)}
 .korekta .kz{font-family:Newsreader,serif;font-size:clamp(1.42rem,2.5vw,2.05rem);line-height:1.36;hanging-punctuation:first allow-end;margin:0}
 .korekta del{text-decoration:none;color:var(--ink-3);
   background:linear-gradient(var(--red),var(--red)) left 58%/var(--d,100%) 1.5px no-repeat}
-.js .korekta del{--d:0%;transition:background-size .45s ease}
-.korekta.on del{--d:100%}
 .korekta ins{
   text-decoration:none;color:var(--red);box-shadow:inset 0 -1px 0 0 var(--red);
   background:linear-gradient(var(--red-soft),var(--red-soft)) left/var(--w,100%) 100% no-repeat;
 }
-.js .korekta ins{--w:0%;transition:background-size .5s ease .5s;background-size:var(--w) 100%}
-.korekta.on ins{--w:100%}
+.korekta ins{background-size:var(--w,100%) 100%}
 .korekta .kp{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:14px 0 0;font-size:13.5px;color:var(--ink-3)}
 .kdots{display:flex;gap:7px}
 .kdots button{width:34px;height:34px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
@@ -117,21 +116,21 @@ a.meta:hover{border-bottom-color:var(--red)}
 
 /* ---------- przelot hero ---------- */
 #hero-stage{position:relative;background:var(--paper)}
-.js #hero-stage{height:420vh}
+.js #hero-stage{height:500vh}
 #hero-pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--paper)}
 #hero-cvs{width:100%;height:100%;display:none}
 .hero3d #hero-cvs{display:block}
-#hero-pin::after{content:"";position:absolute;inset:0;background:var(--paper);opacity:var(--papier,0);pointer-events:none;transition:opacity .12s linear}
+#hero-pin::after{content:"";position:absolute;inset:0;background:var(--paper);opacity:var(--papier,0);pointer-events:none}
 #hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero3d #hero-fallback{display:none}
 html:not(.js) .akt{position:static;translate:none;opacity:1;transform:none;margin-bottom:28px}
 html:not(.js) #hero-pin{position:static;height:auto;padding:40px 0}
-html:not(.js) .akty{position:static;display:block;background:rgba(244,243,238,.9)}
+html:not(.js) .akty{position:static;display:block;background:rgba(247,240,228,.9)}
 html:not(.js) .przewin{display:none}
 .akty{position:absolute;inset:0;pointer-events:none;display:grid;align-content:center}
 .akty::before{
   content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease;
-  background:linear-gradient(100deg, var(--paper) 0%, rgba(244,243,238,.92) 28%, rgba(244,243,238,.55) 48%, rgba(244,243,238,0) 68%);
+  background:linear-gradient(100deg, var(--paper) 0%, rgba(247,240,228,.92) 28%, rgba(247,240,228,.55) 48%, rgba(247,240,228,0) 68%);
 }
 #hero-stage[data-akt="1"] .akty::before,
 #hero-stage[data-akt="2"] .akty::before{opacity:1}
@@ -147,7 +146,7 @@ html:not(.js) .przewin{display:none}
 .akt h1{color:var(--ink);max-width:13ch}
 .akt .lead{font-size:clamp(1.15rem,2vw,1.5rem);max-width:38ch;color:var(--ink)}
 .akt-3 .korekta{
-  background:rgba(244,243,238,.93);border:0;
+  background:rgba(247,240,228,.93);border:0;
   padding:20px 24px;max-width:44ch;margin:0;
   }
 .akt-3 .korekta .kp{margin-top:10px}
@@ -181,7 +180,7 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 .poz .par{font-family:Newsreader,serif;font-size:1.5rem;color:var(--ink-3);line-height:1;font-variant-numeric:oldstyle-nums;transition:color .2s}
 .poz h3{font-size:1.62rem;letter-spacing:-.008em}
 .poz p{margin:0;color:var(--ink-2);font-size:1rem;max-width:46ch;hyphens:auto;-webkit-hyphens:auto}
-.poz:hover{background:rgba(166,47,38,.035)}
+.poz:hover{background:rgba(176,54,31,.05)}
 .poz:hover .par,.poz:focus-within .par{color:var(--red)}
 .poz .ex{display:grid}
 .poz .ex > span{overflow:hidden;font-family:Newsreader,serif;font-size:1.06rem;color:var(--ink-2)}
@@ -190,12 +189,12 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 
 /* ---------- ciemny pas: zasady ---------- */
 .zasady{display:grid;grid-template-columns:repeat(3,1fr);gap:46px;margin-top:8px}
-.zasada{border-top:1px solid #4A525B;padding-top:18px}
+.zasada{border-top:1px solid #5C4732;padding-top:18px}
 .zasada h3{font-size:1.3rem;font-weight:500;margin-bottom:8px;line-height:1.32}
 .zasada p{margin:0;font-size:1.02rem}
 
 .wpis{
-  margin-top:64px;border-top:1px solid #4A525B;padding-top:22px;display:flex;flex-wrap:wrap;gap:10px 44px;
+  margin-top:64px;border-top:1px solid #5C4732;padding-top:22px;display:flex;flex-wrap:wrap;gap:10px 44px;
   font-size:14.5px;color:var(--on-dark-2);font-variant-numeric:lining-nums tabular-nums;
 }
 .wpis span b{color:var(--on-dark);font-weight:500}
@@ -221,10 +220,10 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 /* ---------- kontakt ---------- */
 .kon{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .godz{width:100%;border-collapse:collapse;margin-top:10px}
-.godz td{padding:10px 0;border-bottom:1px solid #343A41;font-size:1rem;color:var(--on-dark-2)}
+.godz td{padding:10px 0;border-bottom:1px solid #4A3826;font-size:1rem;color:var(--on-dark-2)}
 .godz td:last-child{text-align:right;color:var(--on-dark);font-variant-numeric:lining-nums tabular-nums}
 .dane{margin-top:38px;font-size:1.06rem;line-height:1.85}
-.dane a{color:var(--on-dark);text-decoration:none;border-bottom:1px solid #4A525B}
+.dane a{color:var(--on-dark);text-decoration:none;border-bottom:1px solid #5C4732}
 .dane a:hover{border-bottom-color:var(--red)}
 .form{background:var(--paper);color:var(--ink);padding:34px}
 .dark .form h3{color:var(--ink)}
@@ -268,7 +267,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--ink);displa
   .hero-po .grid{grid-template-columns:1fr;gap:32px}
 }
 @media (max-width:860px){
-  .js #hero-stage{height:340vh}
+  .js #hero-stage{height:430vh}
   #hero-pin{display:flex;flex-direction:column;justify-content:flex-start;padding-top:calc(var(--hdr-h) + 10px)}
   .hero3d #hero-cvs{height:auto;aspect-ratio:16/9;flex:none}
   #hero-fallback{position:static;height:auto;aspect-ratio:16/9}
@@ -281,13 +280,13 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--ink);displa
   #hero-stage[data-akt="4"] .akt-3{display:block}
   .akt h1{max-width:none;font-size:2.1rem}
   .akt .lead{font-size:1.1rem}
-  .akt-3 .korekta{max-width:none;background:none;padding:0}
+  .akt-3 .korekta{max-width:none;background:none;padding:0 0 16px}
   .przewin{bottom:18px}
   .nav,.tel,.hdr-in .btn{display:none}
   .mnav{display:block;position:relative}
   .mnav summary{list-style:none;cursor:pointer;font-size:15px;padding:10px 12px;border:1px solid var(--rule-2);min-height:44px;display:flex;align-items:center}
   .mnav summary::-webkit-details-marker{display:none}
-  .mnav nav{position:absolute;right:0;top:calc(100% + 8px);background:var(--paper);border:1px solid var(--rule-2);min-width:220px;padding:8px;box-shadow:0 10px 22px -18px rgba(21,23,27,.45)}
+  .mnav nav{position:absolute;right:0;top:calc(100% + 8px);background:var(--paper);border:1px solid var(--rule-2);min-width:220px;padding:8px;box-shadow:0 10px 22px -18px rgba(37,28,19,.45)}
   .mnav nav a{display:block;padding:12px 14px;text-decoration:none;font-size:16px;border-bottom:1px solid var(--rule)}
   .mnav nav a:last-child{border-bottom:0}
   section{padding:76px 0}
@@ -305,7 +304,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--ink);displa
   body.past-hero .mbar{transform:none}
   .mbar a{flex:1;text-align:center;padding:13px;text-decoration:none;font-size:15px;font-weight:600;min-height:44px}
   .mbar .c1{background:var(--red);color:#fff}
-  .mbar .c2{border:1px solid #434A52;color:var(--on-dark)}
+  .mbar .c2{border:1px solid #5C4732;color:var(--on-dark)}
   footer{padding-bottom:92px}
   .js .reveal{transform:translateY(16px);transition-duration:.7s}
 }
@@ -373,7 +372,7 @@ footer .mk{color:var(--ink-3)}
 @media(max-width:860px){
   #hero-stage{margin-bottom:-30vh}
   section{padding:60px 0}
-  .flag{font-size:11px;padding:5px 14px;flex-wrap:nowrap;white-space:nowrap}
+  .flag{font-size:12px;padding:5px 14px;flex-wrap:nowrap;white-space:nowrap}
   .flag span:last-child{display:none}
   .hdr-in{padding:8px 22px}
   .hero-po .portret{grid-template-columns:132px 1fr}
@@ -383,6 +382,38 @@ footer .mk{color:var(--ink-3)}
   .poz .ex{grid-column:2;grid-row:auto}
   .form{padding:24px 20px}
   body.w-kontakcie .mbar{transform:translateY(118%)}
+}
+
+/* ================= runda 5 — przewijanie od pierwszego piksela, cieplejsza paleta ================= */
+/* akty, zaslona i korekta sa prowadzone wprost przez postep przewijania (hero.js) */
+/* bez paddingu sekcji: scena przypina sie od pierwszego piksela, nic nie podjezdza przed startem */
+#hero-stage{padding:0}
+#hero-cvs{filter:saturate(1.18) contrast(1.03)}
+.hero-anim .akt{transition:none;will-change:opacity,transform}
+.hero-anim #hero-stage .akty::before{transition:none;opacity:var(--scrim,1)}
+.korekta ins{transition:none}
+.akt-3 .korekta{background:rgba(247,240,228,.95);box-shadow:0 14px 34px -26px rgba(37,28,19,.5)}
+.kdots button i{transition:background .2s,transform .2s}
+.kdots button[aria-current="true"] i{transform:scaleX(1.3)}
+/* tryb bez ruchu i bez JS: zdjecie jako pas, pod nim wszystkie trzy akty */
+.hero-statyczne #hero-stage,html:not(.js) #hero-stage{height:auto;margin-bottom:0}
+.hero-statyczne #hero-pin,html:not(.js) #hero-pin{position:static;height:auto;padding:var(--hdr-h) 0 0;display:block}
+.hero-statyczne #hero-fallback,html:not(.js) #hero-fallback{position:static;display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:70vh}
+.hero-statyczne .akty,html:not(.js) .akty{position:static;display:block;background:none;padding:48px 0 8px}
+.hero-statyczne .akty::before,html:not(.js) .akty::before{display:none}
+.hero-statyczne .akt,html:not(.js) .akt{position:static;translate:none;opacity:1;transform:none;margin:0 auto 28px;display:block;visibility:visible}
+.hero-statyczne .przewin{display:none}
+.hero-statyczne .hero-po,html:not(.js) .hero-po{padding-top:24px}
+/* kolor: cieple tony, miod jako akcent drugiego planu */
+.hero-po .portret img{filter:sepia(.18) saturate(1.1) contrast(1.05)}
+.poz .par,.krok .nr{color:var(--miod-ciemny)}
+.shead h2 em,.akt h1 em{font-style:italic;color:var(--red)}
+.dark .zasada h3,.dark .shead h2{color:var(--on-dark)}
+.przewin i{background:var(--miod)}
+@media(max-width:860px){
+  .hero-anim .akty{display:grid;align-items:center}
+  .hero-anim .akt{display:block;grid-area:1/1}
+  .akt-3 .korekta{padding:16px 18px 14px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -437,7 +468,7 @@ footer .mk{color:var(--ink-3)}
         <p class="lead">Kancelaria adwokacka w Pruszkowie. Prawo rodzinne, spadkowe, cywilne i gospodarcze. Dla osób prywatnych i dla firm, w Pruszkowie i w Warszawie.</p>
       </div>
       <div class="akt akt-3">
-        <div class="korekta on" id="korekta">
+        <div class="korekta" id="korekta">
           <p class="kz" id="kz"><span>Strony ustalają, że kontakty z małoletnim odbywać się będą </span><del id="kdel">w terminach uzgodnionych na bieżąco</del> <ins id="kins">w co drugi weekend, od piątku godz. 17:00</ins><span>.</span></p>
           <div class="kp"><span id="kpod">Poprawka w projekcie ugody</span>
             <span class="kdots" id="kdots"><button type="button" aria-label="Poprawka 1" aria-current="true"><i></i></button><button type="button" aria-label="Poprawka 2"><i></i></button><button type="button" aria-label="Poprawka 3"><i></i></button></span></div>
@@ -693,36 +724,28 @@ footer .mk{color:var(--ink-3)}
   var box = document.getElementById('korekta'), kz = document.getElementById('kz'),
       dots = document.getElementById('kdots'), pod = document.getElementById('kpod'),
       podpisy = ['Poprawka w projekcie ugody','Poprawka w umowie o roboty budowlane','Poprawka w projekcie testamentu'],
-      i = 0, timer = null;
-  function pokaz(n){
+      cur = -1, kdel = null, kins = null;
+  function c01(x){ return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function zbuduj(n){
     var w = war[n];
     kz.innerHTML = '';
     var a = document.createElement('span'); a.textContent = w[0];
-    var d = document.createElement('del'); d.textContent = w[1];
-    var s = document.createElement('ins'); s.textContent = w[2];
+    kdel = document.createElement('del'); kdel.textContent = w[1];
+    kins = document.createElement('ins'); kins.textContent = w[2];
     var b = document.createElement('span'); b.textContent = w[3];
-    var sp = document.createTextNode(' ');
-    kz.appendChild(a); kz.appendChild(d); kz.appendChild(sp); kz.appendChild(s); kz.appendChild(b);
+    kz.appendChild(a); kz.appendChild(kdel); kz.appendChild(document.createTextNode(' ')); kz.appendChild(kins); kz.appendChild(b);
     pod.textContent = podpisy[n];
-    [].forEach.call(dots.children, function(b, k){ b.setAttribute('aria-current', k === n ? 'true' : 'false'); });
-    box.classList.remove('on');
-    void box.offsetWidth;
-    requestAnimationFrame(function(){ box.classList.add('on'); });
+    [].forEach.call(dots.children, function(d, k){ d.setAttribute('aria-current', k === n ? 'true' : 'false'); });
+    cur = n;
   }
-  function start(){ stop(); timer = setInterval(function(){ i = (i + 1) % war.length; pokaz(i); }, 6000); }
-  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
-  dots.addEventListener('click', function(e){
-    var b = e.target.closest('button'); if (!b) return;
-    i = [].indexOf.call(dots.children, b); pokaz(i); stop();
-  });
-  if (!red) {
-    pokaz(0); start();
-    box.addEventListener('pointerenter', stop);
-    box.addEventListener('focusin', stop);
-    box.addEventListener('pointerleave', function(){ if (!box.contains(document.activeElement)) start(); });
-  } else {
-    box.classList.add('on');
-  }
+  /* sterowane przewijaniem z hero.js: n = wariant, f = 0..1 postep poprawki */
+  window.korektaUstaw = function(n, f){
+    if (n !== cur) zbuduj(n);
+    kdel.style.setProperty('--d', (c01(f / 0.4) * 100).toFixed(1) + '%');
+    kins.style.setProperty('--w', (c01((f - 0.45) / 0.35) * 100).toFixed(1) + '%');
+    kins.style.opacity = (0.12 + 0.88 * c01((f - 0.4) / 0.2)).toFixed(3);
+  };
+  window.korektaUstaw(0, 0);
 
 
   /* sierotki: jednoliterowe slowa przyklejone do nastepnego */
@@ -766,7 +789,7 @@ footer .mk{color:var(--ink-3)}
 </script>
 <script>
 window.HERO_W2 = {
-  paper:'#F4F3EE', dokument:[0.488,0.613], glebiaDokumentu:0.58,
+  paper:'#F7F0E4', dokument:[0.488,0.613], glebiaDokumentu:0.58,
   kadry:[
     {img:'kadry/k1-web.webp', depth:'kadry/k1-depth.png', od:0.00, do:0.42},
     {img:'kadry/k2-web.webp', depth:'kadry/k2-depth.png', od:0.32, do:0.78},
