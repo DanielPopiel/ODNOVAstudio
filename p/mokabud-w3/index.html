@@ -167,29 +167,34 @@ html.has-modal-open{overflow:hidden}
 .mb-hero__cta .mb-btn--solid .wp-block-button__link:hover{background:var(--czerwien);border-color:var(--czerwien);color:var(--czern)}
 .mb-hero__cta .mb-btn--linia .wp-block-button__link:hover{background:var(--czern)}
 
-/* zdjęcie pocięte na pasy z pochylonego „M” logo */
-.mb-hero__foto{grid-column:2;grid-row:1;position:relative;margin:0!important;min-height:340px;z-index:1;background:var(--czerwien)}
+/* zdjęcie pocięte na pasy z pochylonego „M” logo; żuraw opuszcza je na miejsce */
+.mb-hero{--zh:clamp(96px,16vh,150px)}
+.mb-hero__foto{grid-column:2;grid-row:1;position:relative;margin:0!important;min-height:340px;z-index:1;background:linear-gradient(var(--czerwien),var(--czerwien)) 0 var(--zh)/100% 100% no-repeat}
 .mb-hero__foto > img{width:100%;height:100%;object-fit:cover;object-position:58% 50%;position:absolute;inset:0}
-.js .mb-hero__foto > img{visibility:hidden}
-.mb-pas{position:absolute;inset:0;overflow:hidden;will-change:transform}
-.mb-pas img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 50%;transform:scale(1.08)}
+.mb-tlo-on .mb-hero__foto > img{visibility:hidden}
+.mb-tlo-on .mb-hero__foto{background-image:none}
+.mb-pas{position:absolute;inset:var(--zh) 0 0 0;will-change:transform,opacity;transform-origin:50% 0}
+.mb-pas img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 50%}
 .mb-pas--1{clip-path:polygon(0% 100%,24% 100%,40% 0%,16% 0%)}
 .mb-pas--2{clip-path:polygon(29% 100%,55% 100%,71% 0%,45% 0%)}
 .mb-pas--3{clip-path:polygon(60% 100%,84% 100%,100% 0%,76% 0%)}
-.mb-hero.is-start .mb-pas{transform:translateY(105%)}
-.mb-hero.is-gra .mb-pas{transition:transform 1.1s var(--ease)}
-.mb-hero.is-gra .mb-pas--2{transition-delay:.12s}
-.mb-hero.is-gra .mb-pas--3{transition-delay:.24s}
-.mb-hero.is-gra .mb-pas img{transition:transform 1.6s var(--ease)}
-.mb-hero.is-start .mb-pas img{transform:scale(1.25)}
+.mb-hero__tlo{position:absolute;inset:var(--zh) 0 0 0;background:var(--czerwien);opacity:0;transition:opacity .6s linear}
+.mb-hero.is-gotowe .mb-hero__tlo,.mb-tlo-on .mb-hero__tlo{opacity:1}
+.mb-zuraw{position:absolute;top:0;bottom:0;left:calc(-1 * var(--zx));width:calc(100% + var(--zx));height:100%;pointer-events:none;z-index:3;overflow:visible;--zx:120px}
+.mb-zuraw .k{fill:none;stroke:var(--czern);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.mb-zuraw .k2{fill:none;stroke:var(--czern);stroke-width:1}
+.mb-zuraw .lina{stroke:var(--czern);stroke-width:1.4}
+.mb-zuraw .pel{fill:var(--czern)}
+.mb-zuraw .czer{fill:var(--czerwien)}
+.mb-zuraw .okno{fill:var(--papier)}
+.mb-zuraw text{font:800 11px/1 var(--naglowki);font-variation-settings:"wdth" 130;letter-spacing:.12em;fill:var(--papier)}
 
 /* słowa nagłówka „rozjeżdżają się” na swoje miejsce */
 .mb-slowo{display:inline-block;white-space:nowrap;vertical-align:bottom}
 .mb-hero.is-start .mb-slowo{--wdth:50;opacity:0;transform:translateY(.25em)}
 .mb-hero.is-gra .mb-slowo{transition:--wdth .9s var(--ease),opacity .35s linear,transform .7s var(--ease);transition-delay:calc(var(--i) * 70ms + .1s)}
 
-.mb-hero.is-gotowe .mb-pas{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.js .mb-hero:not(.is-gra):not(.is-gotowe) .mb-hero__tytul,.js .mb-hero:not(.is-gra):not(.is-gotowe) .mb-hero__foto{opacity:0;animation:mb-pokaz 0s 3s forwards}
+.js .mb-hero:not(.is-gra):not(.is-gotowe) .mb-hero__tytul,.js .mb-hero:not(.is-gra):not(.is-gotowe) .mb-hero__foto{opacity:0;animation:mb-pokaz 0s 4s forwards}
 @keyframes mb-pokaz{to{opacity:1}}
 
 /* fakty w pasie na dole */
@@ -227,10 +232,12 @@ html.has-modal-open{overflow:hidden}
   .mb-nav .wp-block-navigation__responsive-container-open svg{display:none}
   .mb-nav .wp-block-navigation__responsive-container-open{background:linear-gradient(var(--czern),var(--czern)) center calc(50% - 7px)/22px 2.5px no-repeat,linear-gradient(var(--czern),var(--czern)) center/22px 2.5px no-repeat,linear-gradient(var(--czern),var(--czern)) center calc(50% + 7px)/22px 2.5px no-repeat}
   .mb-pasek .mb-logo img{width:70px}
-  .mb-hero{grid-template-columns:1fr;grid-template-rows:auto minmax(260px,46svh) auto;min-height:0}
+  .mb-hero{grid-template-columns:1fr;grid-template-rows:auto minmax(320px,52svh) auto;min-height:0}
   .mb-hero__tresc{grid-column:1;grid-row:1;padding:28px var(--gutter) 28px}
   .mb-hero__tytul{font-size:clamp(2.6rem,12.4vw,5.6rem);max-width:none}
+  .mb-hero{--zh:84px}
   .mb-hero__foto{grid-column:1;grid-row:2;min-height:0}
+  .mb-zuraw{--zx:0px}
   .mb-hero__fakty{grid-row:3;grid-template-columns:repeat(2,1fr)}
   .mb-hero__fakty li{flex-direction:column;gap:4px;padding:14px var(--gutter) 16px}
   .mb-hero__fakty li:nth-child(3){border-left:0}
@@ -254,7 +261,7 @@ html.has-modal-open{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .mb-hero .mb-pas,.mb-hero .mb-slowo,.mb-hero .mb-pas img{transition:none!important;transform:none!important;opacity:1!important}
+  .mb-hero .mb-slowo{transition:none!important;transform:none!important;opacity:1!important}
 }
 </style>
 
@@ -376,10 +383,11 @@ html.has-modal-open{overflow:hidden}
 </div>
 
 
-<script>/* Mokabud — W3 „Plakat”: hero z pasami „M”, kinetyczny nagłówek, menu. */
+<script>/* Mokabud — W3 „Plakat”: żuraw układa pasy „M” ze zdjęciem, kinetyczny nagłówek, menu. */
 (() => {
   const ruchOk = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hero = document.querySelector('.mb-hero');
+  const NS = 'http://www.w3.org/2000/svg';
 
   /* telefon na dole menu mobilnego */
   document.querySelectorAll('.mb-nav .wp-block-navigation__responsive-container-content').forEach(c => {
@@ -391,7 +399,7 @@ html.has-modal-open{overflow:hidden}
 
   if (!hero) return;
 
-  /* nagłówek: słowa w osobnych spanach; „0 zł” na biało */
+  /* nagłówek: słowa w osobnych spanach; „0 zł” wyróżnione */
   const h1 = hero.querySelector('.mb-hero__tytul');
   const slowa = [];
   if (h1 && h1.children.length === 0) {
@@ -399,28 +407,158 @@ html.has-modal-open{overflow:hidden}
     h1.textContent = '';
     tekst.split(/ +/).forEach((s, i, all) => {
       const sp = document.createElement('span');
-      sp.className = 'mb-slowo' + (/^0 ?zł/.test(s) || /^0 zł/.test(s) ? ' mb-zero' : '');
+      sp.className = 'mb-slowo' + (/^0[  ]?zł/.test(s) ? ' mb-zero' : '');
       sp.textContent = s; sp.style.setProperty('--i', i);
       h1.appendChild(sp); slowa.push(sp);
       if (i < all.length - 1) h1.appendChild(document.createTextNode(' '));
     });
   }
 
-  /* zdjęcie → trzy pasy z pochylonego „M” */
+  /* zdjęcie → trzy pasy z pochylonego „M”, czerwone tło i żuraw nad nimi */
   const fig = hero.querySelector('.mb-hero__foto');
-  const pasy = [];
-  if (fig) {
-    const img = fig.querySelector('img');
-    [1, 2, 3].forEach(n => {
-      const p = document.createElement('div');
-      p.className = 'mb-pas mb-pas--' + n; p.setAttribute('aria-hidden', 'true');
-      const k = img.cloneNode(); k.removeAttribute('class'); k.alt = ''; k.loading = 'eager';
-      p.appendChild(k); fig.appendChild(p); pasy.push(p);
+  if (!fig) return;
+  const img = fig.querySelector('img');
+  const tlo = document.createElement('div'); tlo.className = 'mb-hero__tlo'; fig.appendChild(tlo);
+  const GORA = [[.16, .40], [.45, .71], [.76, 1]]; /* górne krawędzie pasów (ułamek szerokości) */
+  const pasy = GORA.map((g, n) => {
+    const p = document.createElement('div');
+    p.className = 'mb-pas mb-pas--' + (n + 1); p.setAttribute('aria-hidden', 'true');
+    const k = img.cloneNode(); k.removeAttribute('class'); k.removeAttribute('srcset'); k.removeAttribute('sizes');
+    k.src = img.currentSrc || img.src; k.alt = ''; k.loading = 'eager';
+    p.appendChild(k); fig.appendChild(p); return p;
+  });
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('class', 'mb-zuraw'); svg.setAttribute('aria-hidden', 'true');
+  fig.appendChild(svg);
+
+  const el = (tag, at, rodzic) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in at) e.setAttribute(k, at[k]);
+    (rodzic || svg).appendChild(e); return e;
+  };
+  const r1 = v => Math.round(v * 10) / 10;
+
+  /* geometria liczona w pikselach przy każdej zmianie rozmiaru */
+  let G = null, dyn = null;
+  const kratownica = (x1, x2, yt, yb, g) => {
+    let d = `M${r1(x1)} ${r1(yt)}H${r1(x2)}M${r1(x1)} ${r1(yb)}H${r1(x2)}`;
+    const krok = (yb - yt) * 1.15, dir = x2 > x1 ? 1 : -1;
+    let x = x1, gora = false;
+    d += `M${r1(x)} ${r1(yb)}`;
+    while ((x2 - x) * dir > 0.5) {
+      x = dir > 0 ? Math.min(x + krok, x2) : Math.max(x - krok, x2);
+      d += `L${r1(x)} ${r1(gora ? yb : yt)}`; gora = !gora;
+    }
+    el('path', { d, class: 'k' }, g);
+  };
+  const buduj = () => {
+    const zx = parseFloat(getComputedStyle(svg).getPropertyValue('--zx')) || 0;
+    const W = fig.clientWidth + zx, H = fig.clientHeight;
+    const zh = pasy[0].offsetTop, FW = fig.clientWidth, SH = H - zh;
+    const tel = zx === 0;
+    const mX = tel ? 26 : zx - 40, mw = tel ? 12 : 16;
+    const jt = zh * 0.25, jh = Math.max(10, Math.min(18, zh * 0.16)), jb = jt + jh;
+    svg.setAttribute('viewBox', `0 0 ${r1(W)} ${r1(H)}`);
+    svg.textContent = '';
+    const st = el('g', {});
+    /* maszt */
+    const mL = mX - mw / 2, mR = mX + mw / 2;
+    let d = `M${r1(mL)} ${r1(jb)}V${r1(H)}M${r1(mR)} ${r1(jb)}V${r1(H)}`;
+    for (let y = jb, s = 0; y < H; y += mw * 1.1, s++) d += `M${r1(s % 2 ? mR : mL)} ${r1(y)}L${r1(s % 2 ? mL : mR)} ${r1(Math.min(H, y + mw * 1.1))}`;
+    el('path', { d, class: 'k' }, st);
+    /* wierzchołek i odciągi */
+    const top = Math.max(3, jt - zh * 0.3);
+    const wysiegnik = W - 8, przeciw = mX - (tel ? 70 : 96);
+    el('path', { d: `M${r1(mL)} ${r1(jt)}L${r1(mX)} ${r1(top)}L${r1(mR)} ${r1(jt)}M${r1(mX)} ${r1(top)}L${r1(mX + (wysiegnik - mX) * 0.62)} ${r1(jt)}M${r1(mX)} ${r1(top)}L${r1(przeciw + 6)} ${r1(jt)}`, class: 'k2' }, st);
+    /* wysięgnik i przeciwwysięgnik */
+    kratownica(mR, wysiegnik, jt, jb, st);
+    kratownica(mL, przeciw, jt, jb, st);
+    el('rect', { x: r1(przeciw), y: r1(jb), width: tel ? 18 : 26, height: r1(jh * 1.7), class: 'czer' }, st);
+    /* kabina operatora */
+    el('rect', { x: r1(mR), y: r1(jb), width: tel ? 14 : 20, height: tel ? 11 : 16, class: 'pel' }, st);
+    el('rect', { x: r1(mR + 3), y: r1(jb + 3), width: tel ? 8 : 12, height: tel ? 4 : 6, class: 'okno' }, st);
+    /* tablica z nazwą firmy na wysięgniku */
+    const tx0 = mR + (tel ? 30 : 46), tw = tel ? 72 : 104;
+    el('rect', { x: r1(tx0), y: r1(jt), width: tw, height: r1(jh), class: 'pel' }, st);
+    const t = el('text', { x: r1(tx0 + tw / 2), y: r1(jt + jh / 2 + jh * 0.24), 'text-anchor': 'middle', style: `font-size:${r1(jh * 0.62)}px` }, st);
+    t.textContent = 'MOKABUD';
+    /* części ruchome */
+    dyn = {
+      lina: el('path', { d: '', class: 'lina', fill: 'none' }),
+      wozek: el('rect', { width: tel ? 12 : 16, height: 5, class: 'pel' }),
+      hak: el('rect', { width: 10, height: 6, class: 'pel' }),
+      hakJ: el('path', { d: '', class: 'k' }),
+    };
+    const sloty = GORA.map(g => zx + (g[0] + g[1]) / 2 * FW);
+    G = { zx, W, H, zh, FW, SH, jb, mX, sloty, k: Math.max(8, Math.min(zh - jb - 32, SH * 0.12)), park: sloty[2], tel };
+  };
+
+  /* oś czasu: każdy pas pojawia się na haku, kołysze się i osiada; wózek jedzie do następnego */
+  const S = [0.1, 0.95, 1.8], OPUSZCZ = 0.55, KONIEC = 2.6;
+  const ease = x => x < 0 ? 0 : x > 1 ? 1 : 1 - Math.pow(1 - x, 3);
+  const inout = x => x < 0 ? 0 : x > 1 ? 1 : x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  let scrollP = 0;
+  const rysuj = t => {
+    if (!G) return;
+    const { zx, FW, zh, jb, sloty, k } = G;
+    let wx = sloty[0], hakY = jb + 18, aktywny = -1, sway = 0, top = 0;
+    pasy.forEach((p, i) => {
+      const tau = t - S[i];
+      if (tau < 0) { p.style.opacity = 0; p.style.transform = `translate3d(0,${-k}px,0)`; return; }
+      const op = Math.min(1, tau / 0.18);
+      const zjazd = inout((tau - 0.12) / OPUSZCZ);
+      const sw = tau < 0.12 + OPUSZCZ + 0.25 ? 7 * Math.sin(tau * 11) * Math.exp(-tau * 4.5) : 0;
+      const dy = -k * (1 - zjazd);
+      p.style.opacity = op;
+      p.style.transform = `translate3d(${r1(sw)}px,${r1(dy)}px,0)`;
+      if (tau < 0.12 + OPUSZCZ) { aktywny = i; sway = sw; top = zh + dy; }
     });
-  }
+    /* wózek i hak */
+    if (aktywny >= 0) {
+      wx = sloty[aktywny]; hakY = top - 24;
+    } else {
+      /* po odłożeniu pasa: hak wraca w górę, wózek jedzie do kolejnego miejsca */
+      let i = 0; while (i < 2 && t > S[i + 1]) i++;
+      const zwolnienie = S[i] + 0.12 + OPUSZCZ;
+      const q = inout((t - zwolnienie) / Math.max(0.01, (i < 2 ? S[i + 1] : zwolnienie + 0.3) - zwolnienie));
+      const cel = i < 2 ? sloty[i + 1] : G.park;
+      wx = sloty[i] + (cel - sloty[i]) * q;
+      const dol = zh - 24, gora = i < 2 ? zh - k - 24 : jb + 18;
+      hakY = dol + (gora - dol) * q;
+      if (t < S[0]) { wx = sloty[0]; hakY = zh - k - 24; }
+    }
+    /* po animacji przewijanie przesuwa wózek wzdłuż wysięgnika */
+    if (t >= KONIEC && scrollP > 0 && !G.tel) {
+      wx = G.park + (G.mX + 60 - G.park) * scrollP;
+      hakY = jb + 18 + scrollP * (G.H - jb) * 0.45;
+    }
+    const hx = wx + sway;
+    const { lina, wozek, hak, hakJ } = dyn;
+    wozek.setAttribute('x', r1(wx - (G.tel ? 6 : 8))); wozek.setAttribute('y', r1(jb));
+    let d = `M${r1(wx - 2)} ${r1(jb + 5)}L${r1(hx - 2)} ${r1(hakY)}M${r1(wx + 2)} ${r1(jb + 5)}L${r1(hx + 2)} ${r1(hakY)}`;
+    if (aktywny >= 0) {
+      const g = GORA[aktywny];
+      d += `M${r1(hx)} ${r1(hakY + 8)}L${r1(zx + g[0] * FW + sway + 4)} ${r1(top)}M${r1(hx)} ${r1(hakY + 8)}L${r1(zx + g[1] * FW + sway - 4)} ${r1(top)}`;
+    }
+    lina.setAttribute('d', d);
+    hak.setAttribute('x', r1(hx - 5)); hak.setAttribute('y', r1(hakY));
+    hakJ.setAttribute('d', `M${r1(hx)} ${r1(hakY + 6)}v4a3.2 3.2 0 1 1 -3.6 3.1`);
+  };
+
+  let t0 = null, czas = ruchOk ? 0 : KONIEC, gotowe = !ruchOk;
+  const petla = now => {
+    if (t0 === null) t0 = now;
+    czas = (now - t0) / 1000;
+    rysuj(czas);
+    if (czas < KONIEC) requestAnimationFrame(petla);
+    else { gotowe = true; rysuj(KONIEC); }
+  };
 
   const start = () => {
-    if (!ruchOk) { hero.classList.add('is-gotowe'); return; }
+    buduj();
+    hero.classList.add('mb-tlo-on');
+    if (!ruchOk) { hero.classList.add('is-gotowe'); rysuj(KONIEC); return; }
+    rysuj(0);
     /* stałe miejsce dla każdego słowa: litery rozciągają się w nim bez przeskoków wierszy */
     slowa.forEach(s => { s.style.width = s.getBoundingClientRect().width + 'px'; });
     hero.classList.add('is-start');
@@ -428,6 +566,15 @@ html.has-modal-open{overflow:hidden}
     requestAnimationFrame(() => requestAnimationFrame(() => {
       hero.classList.add('is-gra');
       hero.classList.remove('is-start');
+      /* żuraw rusza, gdy zdjęcie jest na ekranie (na telefonie jest pod przyciskami) */
+      const r = fig.getBoundingClientRect();
+      if (r.top < innerHeight * 0.45 || !('IntersectionObserver' in window)) requestAnimationFrame(petla);
+      else {
+        const io = new IntersectionObserver(e => {
+          if (e[0].isIntersecting) { io.disconnect(); requestAnimationFrame(petla); }
+        }, { threshold: 0.6 });
+        io.observe(fig);
+      }
       setTimeout(() => {
         slowa.forEach(s => { s.style.width = ''; });
         hero.classList.remove('is-gra');
@@ -435,31 +582,23 @@ html.has-modal-open{overflow:hidden}
       }, 2200);
     }));
   };
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(start);
+  const czekaj = img.complete ? Promise.resolve() : new Promise(r => { img.addEventListener('load', r, { once: true }); img.addEventListener('error', r, { once: true }); });
+  Promise.all([document.fonts ? document.fonts.ready : null, czekaj]).then(start);
 
-  /* przewijanie i kursor: pasy rozjeżdżają się w różnym tempie */
-  if (!ruchOk || !pasy.length) return;
-  let mx = 0, my = 0, tik = false;
-  const rysuj = () => {
-    tik = false;
-    if (!hero.classList.contains('is-gotowe')) return;
-    const r = hero.getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, -r.top / r.height));
-    const sila = [0.18, 0.32, 0.5];
-    pasy.forEach((el, i) => {
-      el.style.transform = `translate3d(${mx * (i + 1) * 4}px, ${-p * r.height * sila[i] + my * (i + 1) * 3}px, 0)`;
-    });
-  };
-  const zlec = () => { if (!tik) { tik = true; requestAnimationFrame(rysuj); } };
-  addEventListener('scroll', zlec, { passive: true });
-  if (matchMedia('(pointer: fine)').matches) {
-    hero.addEventListener('pointermove', e => {
-      const r = hero.getBoundingClientRect();
-      mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; zlec();
-    });
-    hero.addEventListener('pointerleave', () => { mx = my = 0; zlec(); });
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { buduj(); rysuj(gotowe ? KONIEC : czas); }, 120); });
+  if (ruchOk) {
+    let tik = false;
+    addEventListener('scroll', () => {
+      if (tik || !gotowe) return; tik = true;
+      requestAnimationFrame(() => {
+        tik = false;
+        const r = hero.getBoundingClientRect();
+        scrollP = Math.min(1, Math.max(0, -r.top / (r.height * 0.8)));
+        rysuj(KONIEC);
+      });
+    }, { passive: true });
   }
-  setTimeout(zlec, 2300);
 })();
 </script>
 <aside aria-label="Edycja w WordPressie" class="mk-panel" hidden="">
