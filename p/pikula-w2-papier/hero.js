@@ -109,7 +109,9 @@
     var a = new Image(), b = new Image();
     var licz = function () {
       if (!a.complete || !b.complete || !a.naturalWidth || !b.naturalWidth) return;
-      k.tex = tekstura(a); k.depth = tekstura(b); k.gotowy = true;
+      try { k.tex = tekstura(a); k.depth = tekstura(b); }
+      catch (e) { tryb_zapasowy(); return; }
+      k.gotowy = true;
       wczytane++; rysuj();
     };
     a.onload = licz; b.onload = licz;
@@ -156,7 +158,7 @@
     var rd = promien(DOK[0], DOK[1], aspect);
     // glebokosc dokumentu przyjmujemy stala (kadry sa wyrownane), kamera dojezdza do 0.86 tej odleglosci
     var Zdok = 1.0 / (ZN + ZF * DDOK);
-    var t = postep * 0.62 * Zdok;
+    var t = postep * (aspect > 1.75 ? 0.52 : 0.62) * Zdok;
     var cam = [rd[0] * t, rd[1] * t, rd[2] * t];
 
     gl.uniform3f(U.cam, cam[0], cam[1], cam[2]);
@@ -183,11 +185,11 @@
     });
 
     // wejscie w papier
-    var bialo = Math.max(0, (postep - 0.74) / 0.26);
+    var bialo = Math.min(1, Math.max(0, (postep - 0.70) / 0.18));
     stage.style.setProperty('--papier', bialo.toFixed(3));
     stage.style.setProperty('--pp', postep.toFixed(3));
     // akty tekstowe
-    var akt = postep < 0.26 ? 1 : postep < 0.56 ? 2 : postep < 0.86 ? 3 : 4;
+    var akt = postep < 0.26 ? 1 : postep < 0.56 ? 2 : postep < 0.93 ? 3 : 4;
     if (akt !== stage.__akt) { stage.__akt = akt; stage.setAttribute('data-akt', akt); }
   }
 
@@ -204,5 +206,6 @@
 
   function tryb_zapasowy() {
     document.documentElement.classList.add('hero-fallback');
+    document.documentElement.classList.remove('hero3d');
   }
 })();

@@ -14,7 +14,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <script>document.documentElement.className+=' js';</script>
 <style>
 :root{
@@ -38,9 +38,9 @@
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--paper);color:var(--ink);
-  font-family:"Familjen Grotesk",system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
-  font-feature-settings:"ss01";
+  font-family:Newsreader,Georgia,"Times New Roman",serif;font-optical-sizing:auto;
+  font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  font-feature-settings:normal;
 }
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -49,7 +49,7 @@ a{color:inherit}
 input,textarea{caret-color:var(--red);accent-color:var(--red)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;width:100%}
 h1,h2,h3,.ser{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:400;margin:0}
-h2{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-.012em;max-width:20ch;text-wrap:balance;font-optical-sizing:auto;font-variation-settings:'opsz' 54}
+h2{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-.012em;max-width:20ch;text-wrap:balance;font-optical-sizing:auto}
 h3{font-size:1.45rem;line-height:1.32}
 p{margin:0 0 1rem}
 
@@ -81,20 +81,12 @@ p{margin:0 0 1rem}
 .mnav{display:none}
 
 /* ---------- hero ---------- */
-.hero{padding:calc(var(--hdr-h) + 56px) 0 0}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;column-gap:56px;row-gap:0;
-  grid-template-areas:"t f" "k f" "c f";align-items:start}
-.hero-t{grid-area:t}
-.portret{grid-area:f}
-.korekta{grid-area:k}
-.hero-cta{grid-area:c}
-h1{font-size:clamp(2.3rem,4.6vw,3.9rem);line-height:1.04;letter-spacing:-.018em;max-width:13ch;font-optical-sizing:auto;font-variation-settings:'opsz' 54;text-wrap:balance}
-.hero .sub{margin:26px 0 0;font-size:1.18rem;color:var(--ink-2);max-width:46ch}
+h1{font-size:clamp(2.3rem,4.6vw,3.9rem);line-height:1.04;letter-spacing:-.018em;max-width:13ch;font-optical-sizing:auto;text-wrap:balance}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:30px 0 0}
 .hero-cta .meta{font-size:14.5px;color:var(--ink-3);font-variant-numeric:lining-nums tabular-nums}
 a.meta{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule-2);padding:10px 0;display:inline-flex;align-items:center;min-height:44px}
 a.meta:hover{border-bottom-color:var(--red)}
-.portret{position:relative;align-self:end;margin-bottom:0}
+.portret{position:relative;margin:0}
 .portret img{width:100%;background:transparent;mix-blend-mode:multiply;filter:contrast(1.05)}
 .portret figcaption{
   font-size:13.5px;color:var(--ink-3);padding:10px 0 0;border-top:1px solid var(--rule);margin-top:12px;
@@ -155,8 +147,8 @@ html:not(.js) .przewin{display:none}
 .akt h1{color:var(--ink);max-width:13ch}
 .akt .lead{font-size:clamp(1.15rem,2vw,1.5rem);max-width:38ch;color:var(--ink)}
 .akt-3 .korekta{
-  background:rgba(244,243,238,.93);border:0;border-left:2px solid var(--red);
-  padding:18px 22px;max-width:44ch;margin:0;
+  background:rgba(244,243,238,.93);border:0;
+  padding:20px 24px;max-width:44ch;margin:0;
   }
 .akt-3 .korekta .kp{margin-top:10px}
 .przewin{
@@ -191,18 +183,14 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 .poz p{margin:0;color:var(--ink-2);font-size:1rem;max-width:46ch;hyphens:auto;-webkit-hyphens:auto}
 .poz:hover{background:rgba(166,47,38,.035)}
 .poz:hover .par,.poz:focus-within .par{color:var(--red)}
-.poz .ex{grid-column:2/-1;display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .35s ease,opacity .35s ease}
+.poz .ex{display:grid}
 .poz .ex > span{overflow:hidden;font-family:Newsreader,serif;font-size:1.06rem;color:var(--ink-2)}
-.poz:hover .ex,.poz:focus-within .ex{grid-template-rows:1fr;opacity:1}
-.poz .ex > span{padding-top:0}
-.poz:hover .ex > span,.poz:focus-within .ex > span{padding-top:10px}
 .poz .ex del{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:1.5px;color:var(--ink-3)}
 .poz .ex ins{text-decoration:none;color:var(--red);box-shadow:inset 0 -1px 0 0 var(--red)}
 
 /* ---------- ciemny pas: zasady ---------- */
-.zasady{display:grid;grid-template-columns:repeat(3,1fr);gap:46px;margin-top:8px;counter-reset:z}
+.zasady{display:grid;grid-template-columns:repeat(3,1fr);gap:46px;margin-top:8px}
 .zasada{border-top:1px solid #4A525B;padding-top:18px}
-.zasada::before{content:counter(z) ".";counter-increment:z;font-family:Newsreader,serif;color:var(--on-dark-2);font-size:13.5px;display:block;margin-bottom:12px}
 .zasada h3{font-size:1.3rem;font-weight:500;margin-bottom:8px;line-height:1.32}
 .zasada p{margin:0;font-size:1.02rem}
 
@@ -256,11 +244,11 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 .fmsg{min-height:22px;font-size:14px;margin:12px 0 0;color:var(--red)}
 
 /* ---------- stopka ---------- */
-footer{background:var(--dark-2);color:var(--on-dark-2);padding:52px 0 44px;font-size:14.5px}
+footer{background:var(--paper);color:var(--ink-2);border-top:1px solid var(--rule-2);padding:48px 0 40px;font-size:14.5px}
 .fgrid{display:flex;flex-wrap:wrap;gap:28px 56px;justify-content:space-between}
-footer a{color:var(--on-dark-2);text-decoration:none}
-footer a:hover{color:var(--paper)}
-footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);display:block;margin-bottom:6px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--red)}
+footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--ink);display:block;margin-bottom:6px}
 
 /* ---------- pasek mobilny ---------- */
 .mbar{display:none}
@@ -270,8 +258,6 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
 .js .reveal.in{opacity:1;transform:none}
 
 @media (max-width:1080px){
-  .hero-grid{grid-template-columns:1fr;grid-template-areas:"t" "k" "c" "f";row-gap:32px}
-  .portret{max-width:460px;margin:0 auto}
   .adw{grid-template-columns:1fr;gap:28px}
   .marg{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
   .zasady{grid-template-columns:1fr;gap:28px}
@@ -295,7 +281,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
   #hero-stage[data-akt="4"] .akt-3{display:block}
   .akt h1{max-width:none;font-size:2.1rem}
   .akt .lead{font-size:1.1rem}
-  .akt-3 .korekta{max-width:none;background:none;padding:0 0 0 16px}
+  .akt-3 .korekta{max-width:none;background:none;padding:0}
   .przewin{bottom:18px}
   .nav,.tel,.hdr-in .btn{display:none}
   .mnav{display:block;position:relative}
@@ -312,9 +298,6 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
   .mnav summary{padding:10px 12px}
   .poz,.krok{grid-template-columns:52px 1fr;gap:8px 18px}
   .poz p,.krok p,.poz .ex{grid-column:2}
-  .poz .ex{grid-template-rows:1fr;opacity:1}
-  .poz .ex > span{padding-top:8px}
-  .portret img{aspect-ratio:4/5;object-fit:cover;object-position:50% 14%}
   .mbar{
     display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--ink);
     padding:10px 16px;gap:10px;transform:translateY(118%);transition:transform .35s ease;
@@ -331,6 +314,77 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
   h1{font-size:2.3rem}
 }
 .no-js .mbar{transform:none}
+
+/* ================= runda 4 — po audycie ================= */
+/* kroje: Newsreader czyta, IBM Plex Sans obsluguje */
+.flag,.hdr,.btn,.meta,.pole,.pole input,.pole textarea,.pole select,.rodo,.godz,.wpis,.marg dt,.kp,.mbar,.mnav,footer,figcaption,.fmsg,.dane{font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+.nav a,.tel{font-family:"IBM Plex Sans",system-ui,sans-serif}
+.shead p,.poz p,.krok p,.zasada p,.adw .bio p{font-size:1.06rem;color:var(--ink-2)}
+.dark .zasada p,.dark .shead p{color:var(--on-dark-2)}
+
+/* skala ze schodami */
+h1{font-size:clamp(2.4rem,5vw,4.4rem)}
+h2{font-size:clamp(2rem,3.2vw,3rem)}
+.shead h2{max-width:24ch}
+.lead-po,.adw .bio .lead,.korekta .kz{font-size:clamp(1.4rem,2vw,1.75rem);line-height:1.3}
+.lead-po{font-family:Newsreader,serif;max-width:26ch;margin:0 0 26px;color:var(--ink)}
+.poz h3,.krok h3{font-size:1.5rem}
+.flag,.brand .c,.marg dt,.rodo,.korekta .kp{font-size:14px}
+.akt .lead{font-family:Newsreader,serif;line-height:1.32}
+
+/* rytm sekcji */
+section{padding:clamp(64px,6.5vw,104px) 0}
+.dark{padding:clamp(56px,5.5vw,88px) 0}
+.shead{margin-bottom:40px}
+
+/* przejscie: pas wjezdza na biel przypietej sceny */
+#hero-stage{margin-bottom:-45vh}
+.hero-po{position:relative;z-index:2;padding:0 0 clamp(64px,6.5vw,104px)}
+.akty{z-index:2}
+#hero-pin::after{z-index:1}
+
+/* pas pod przelotem + portret jak zdjecie w legitymacji */
+.hero-po .grid{grid-template-columns:minmax(0,1fr) minmax(0,440px);column-gap:72px;align-items:start}
+.hero-po .portret{display:grid;grid-template-columns:200px 1fr;column-gap:24px;align-items:end;max-width:none;justify-self:stretch;margin:0}
+.hero-po .portret img{width:200px;aspect-ratio:4/5;object-fit:cover;object-position:50% 10%;mix-blend-mode:normal;filter:grayscale(1) contrast(1.06);outline:1px solid var(--rule-2);outline-offset:6px}
+.hero-po .portret figcaption{border-top:0;border-left:1px solid var(--rule-2);margin:0;padding:0 0 0 16px;font-size:14px;line-height:1.5;color:var(--ink-3)}
+.hero-po .portret figcaption .ser{font-size:1.2rem;color:var(--ink);display:block;margin-bottom:4px}
+
+/* rejestr: sledzenie zmian widoczne zawsze, bez pustki pod tytulem */
+.poz,.krok{grid-template-columns:76px minmax(0,360px) minmax(0,1fr);column-gap:48px}
+.poz p:not(.ex){grid-column:3;grid-row:1/span 2}
+.poz .ex{grid-column:2;grid-row:2;grid-template-rows:1fr;opacity:1;margin:0}
+.poz .ex>span{padding-top:10px;font-size:1.02rem}
+.krok .nr{white-space:nowrap}
+
+/* adwokat */
+.adw{grid-template-columns:minmax(0,64ch) 260px;column-gap:96px;justify-content:start}
+.adw .bio p{max-width:none}
+
+/* stopka */
+footer .mk{color:var(--ink-3)}
+
+@media(max-width:1080px){
+  .hero-po .grid{grid-template-columns:1fr;row-gap:36px}
+  .adw{grid-template-columns:1fr}
+  .marg{grid-template-columns:auto 1fr;column-gap:20px;row-gap:12px;align-items:baseline}
+  .marg dt{margin-top:0}
+}
+@media(max-width:860px){
+  #hero-stage{margin-bottom:-30vh}
+  section{padding:60px 0}
+  .flag{font-size:11px;padding:5px 14px;flex-wrap:nowrap;white-space:nowrap}
+  .flag span:last-child{display:none}
+  .hdr-in{padding:8px 22px}
+  .hero-po .portret{grid-template-columns:132px 1fr}
+  .hero-po .portret img{width:132px}
+  .poz,.krok{grid-template-columns:64px 1fr;column-gap:18px}
+  .poz p:not(.ex),.krok p{grid-column:2;grid-row:auto}
+  .poz .ex{grid-column:2;grid-row:auto}
+  .form{padding:24px 20px}
+  body.w-kontakcie .mbar{transform:translateY(118%)}
+}
+
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .js .reveal{opacity:1;transform:none}
@@ -397,7 +451,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
 <header class="hero-po" id="hero">
   <div class="wrap grid">
     <div>
-      <p class="lead" style="font-family:Newsreader,serif;font-size:clamp(1.35rem,2.3vw,1.9rem);line-height:1.34;max-width:26ch;margin:0 0 26px">Prowadzimy sprawy rodzinne, spadkowe, cywilne i gospodarcze — w Pruszkowie i w Warszawie.</p>
+      <p class="lead-po">Prowadzimy sprawy rodzinne, spadkowe, cywilne i gospodarcze — w Pruszkowie i w Warszawie.</p>
       <div class="hero-cta">
         <a class="btn" href="#kontakt">Umów konsultację</a>
         <a class="btn line" href="#obszary">Obszary praktyki</a>
@@ -407,7 +461,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
     </div>
     <figure class="portret">
       <img src="assets/portret.webp" width="885" height="1659" alt="Adwokat Sabina Pikula">
-      <figcaption>adw. Sabina Pikula — Okręgowa Rada Adwokacka w Warszawie, wpis nr 4577</figcaption>
+      <figcaption><span class="ser">adw. Sabina Pikula</span>Okręgowa Rada Adwokacka w&nbsp;Warszawie<br>wpis nr 4577 · od 2010</figcaption>
     </figure>
   </div>
 </header>
@@ -531,7 +585,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
 <section class="dark" id="kontakt">
   <div class="wrap">
     <div class="shead reveal">
-      <h2>ul. Kraszewskiego 17, Pruszków</h2>
+      <h2>ul.&nbsp;Kraszewskiego&nbsp;17, Pruszków</h2>
       <p>Adwokat przyjmuje w godzinach podanych obok. Istnieje możliwość umówienia się telefonicznie na inny, dogodny termin.</p>
     </div>
     <div class="kon">
@@ -558,12 +612,12 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
           <div class="pole">
             <label for="dz">Czego dotyczy sprawa</label>
             <select id="dz" name="dziedzina">
-              <option>Prawo rodzinne — rozwód, alimenty, kontakty</option>
-              <option>Prawo spadkowe</option>
-              <option>Prawo cywilne — nieruchomości, odszkodowania, umowy</option>
-              <option>Prawo gospodarcze — obsługa firmy</option>
+              <option>Rodzinne: rozwód, alimenty</option>
+              <option>Spadkowe</option>
+              <option>Cywilne: nieruchomości, umowy</option>
+              <option>Gospodarcze: obsługa firmy</option>
               <option>Prawo pracy i ZUS</option>
-              <option>Prawo karne</option>
+              <option>Karne</option>
               <option>Inna sprawa</option>
             </select>
           </div>
@@ -596,7 +650,7 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
       Okręgowa Rada Adwokacka w Warszawie, wpis nr 4577<br>
       NIP [uzupełnić] · REGON [uzupełnić]<br>
       <a href="#" onclick="return false">Polityka prywatności</a> · <a href="#" onclick="return false">Informacja RODO</a><br>
-      <span style="color:var(--ink-3)">Makieta: Odnova Studio · wariant W2 „Papier”</span>
+      <span class="mk">Makieta: Odnova Studio · wariant W2 „Papier”</span>
     </div>
   </div>
 </footer>
@@ -668,6 +722,23 @@ footer .fn{font-family:Newsreader,serif;font-size:1.2rem;color:var(--on-dark);di
     box.addEventListener('pointerleave', function(){ if (!box.contains(document.activeElement)) start(); });
   } else {
     box.classList.add('on');
+  }
+
+
+  /* sierotki: jednoliterowe slowa przyklejone do nastepnego */
+  (function(){
+    var sel='p,h1,h2,h3,li,dd,figcaption,.kz';
+    var re=/(^|[\s(„])([aiouwzAIOUWZ])\s+/g;
+    [].forEach.call(document.querySelectorAll(sel),function(el){
+      var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+      var n; while((n=w.nextNode())){ var t=n.nodeValue; var u=t.replace(re,'$1$2 '); u=u.replace(re,'$1$2 '); if(u!==t) n.nodeValue=u; }
+    });
+  })();
+
+  /* pasek mobilny chowa sie w sekcji kontaktu */
+  var kon=document.getElementById('kontakt');
+  if(kon && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ document.body.classList.toggle('w-kontakcie', en[0].isIntersecting); },{threshold:0.01}).observe(kon);
   }
 
   /* pasek mobilny dopiero pod hero */
