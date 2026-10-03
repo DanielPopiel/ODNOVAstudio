@@ -156,19 +156,19 @@ p{text-wrap:pretty}
 html.has-modal-open{overflow:hidden}
 
 /* ── hero ── */
-.mb-hero{position:relative;background:var(--czerwien);color:var(--czern);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:1fr auto;min-height:calc(100svh - var(--hdr-h));box-sizing:border-box;overflow:hidden;isolation:isolate}
+.mb-hero{position:relative;background:var(--papier);color:var(--czern);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:1fr auto;min-height:calc(100svh - var(--hdr-h));box-sizing:border-box;overflow:hidden;isolation:isolate}
 .mb-hero__tresc{grid-column:1;grid-row:1;align-self:center;padding:clamp(28px,5vh,64px) 0 clamp(28px,5vh,56px) var(--gutter);position:relative;z-index:2}
 .mb-hero__nad{margin:0 0 1.4rem;font-family:var(--naglowki);font-weight:700;font-variation-settings:"wdth" 110;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;display:flex;align-items:center;gap:12px}
-.mb-hero__nad::before{content:"";width:34px;height:10px;background:var(--czern);transform:skewX(var(--skos))}
+.mb-hero__nad::before{content:"";width:34px;height:10px;background:var(--czerwien);transform:skewX(var(--skos))}
 .mb-hero__tytul{margin:0;font-size:clamp(2.7rem,min(7.1vw,12vh),8.2rem);font-weight:850;--wdth:108;line-height:.9;letter-spacing:-.025em;max-width:11.5ch;text-wrap:initial}
-.mb-hero__tytul .mb-zero{color:var(--biel);white-space:nowrap}
+.mb-hero__tytul .mb-zero{color:var(--czerwien-c);white-space:nowrap}
 .mb-hero__lead{margin:1.6rem 0 0;max-width:34rem;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1.5;font-weight:500}
 .mb-hero__cta{margin-top:2rem!important;gap:12px}
-.mb-hero__cta .mb-btn--solid .wp-block-button__link:hover{background:var(--biel);border-color:var(--biel)}
+.mb-hero__cta .mb-btn--solid .wp-block-button__link:hover{background:var(--czerwien);border-color:var(--czerwien);color:var(--czern)}
 .mb-hero__cta .mb-btn--linia .wp-block-button__link:hover{background:var(--czern)}
 
 /* zdjęcie pocięte na pasy z pochylonego „M” logo */
-.mb-hero__foto{grid-column:2;grid-row:1;position:relative;margin:0!important;min-height:340px;z-index:1}
+.mb-hero__foto{grid-column:2;grid-row:1;position:relative;margin:0!important;min-height:340px;z-index:1;background:var(--czerwien)}
 .mb-hero__foto > img{width:100%;height:100%;object-fit:cover;object-position:58% 50%;position:absolute;inset:0}
 .js .mb-hero__foto > img{visibility:hidden}
 .mb-pas{position:absolute;inset:0;overflow:hidden;will-change:transform}
@@ -193,7 +193,7 @@ html.has-modal-open{overflow:hidden}
 @keyframes mb-pokaz{to{opacity:1}}
 
 /* fakty w pasie na dole */
-.mb-hero__fakty{grid-column:1 / -1;grid-row:2;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--czern);background:var(--czerwien);position:relative;z-index:2}
+.mb-hero__fakty{grid-column:1 / -1;grid-row:2;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--czern);background:var(--papier);position:relative;z-index:2}
 .mb-hero__fakty li{padding:16px var(--gutter) 18px;border-left:2px solid var(--czern);font-size:.92rem;font-weight:500;line-height:1.3;display:flex;align-items:baseline;gap:12px}
 .mb-hero__fakty li:first-child{border-left:0}
 .mb-hero__fakty strong{font-family:var(--naglowki);font-weight:850;font-variation-settings:"wdth" 120;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1;letter-spacing:-.02em;white-space:nowrap}
