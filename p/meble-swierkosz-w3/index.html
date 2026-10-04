@@ -102,7 +102,7 @@ h3{font-size:22px;letter-spacing:-.01em}
 html:not(.js) .seq{display:none}
 .sc-note{position:absolute;right:10px;bottom:8px;margin:0;font-size:11.5px;line-height:1.2;color:rgba(255,255,255,.95);text-shadow:0 1px 3px rgba(0,0,0,.5);pointer-events:none;z-index:2}
 .steps-cap{width:min(100%,560px);margin:16px auto 0}
-.stp{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.stp{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .stp li{height:3px;background:rgba(29,30,27,.12);position:relative;overflow:hidden;border-radius:2px}
 .stp li b,.stp li span{position:absolute;left:-9999px}
 .stp li::after{content:"";position:absolute;inset:0;background:#C8191F;transform:scaleX(var(--f,0));transform-origin:left}
@@ -113,7 +113,7 @@ html:not(.js) .seq{display:none}
 @media (max-width:860px){.stp-now{flex-wrap:wrap;gap:2px 8px;text-align:center}.stp-now i{flex-basis:100%}.scene{margin:0;width:100%}.scene-box{aspect-ratio:5/4;max-height:calc(100svh - var(--hdr-h,100px) - 300px);max-width:100%;border-radius:0;box-shadow:none}.steps-cap{width:auto;padding:0 22px;margin-top:12px}}
 
 .pin{padding:calc(var(--hdr-h,100px) + 44px) 0 34px}
-.js .hero .stage{height:460vh}
+.js .hero .stage{height:540vh}
 .js .hero .pin{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
 .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:52px;align-items:center;width:100%;padding:0 max(24px,calc((100vw - 1240px)/2 + 24px))}
 .hero .pin{overflow-x:clip}
@@ -144,7 +144,7 @@ html:not(.js) .seq{display:none}
 
 /* logotyp i nagłówek */
 .hdr .wrap{min-height:76px;gap:28px}
-.lg{flex-direction:column;align-items:flex-start;gap:4px}
+.lg{flex-direction:row;align-items:center;gap:12px}.lg-t{display:flex;flex-direction:column;align-items:flex-start;gap:4px}.lg-m{flex:none;display:block}
 .lg-w{font-family:'Raleway',sans-serif;font-weight:700;font-size:19px;letter-spacing:.14em;line-height:1;color:#1D1E1B;white-space:nowrap}
 .lg-w b{font-weight:800;border-bottom:3px solid #C8191F;padding-bottom:2px}
 .lg-s{font-size:12px;color:#6a6b64;letter-spacing:.01em}
@@ -154,8 +154,11 @@ html:not(.js) .seq{display:none}
 .hcta{padding:9px 14px;gap:8px;flex-direction:row}
 .hcta .hk-l{font-weight:500;opacity:.75;font-size:13px}
 .hcta.hk{background:#141412;color:#fff}
+.nav a{white-space:nowrap}
+@media (max-width:1500px){.nav{gap:18px}.nav a{font-size:14.5px}}
 @media (max-width:1320px){.hcta.hk{display:none}.nav{gap:20px}}
-@media (max-width:440px){.lg-w{font-size:15px;letter-spacing:.1em}.lg-s{display:none}}
+@media (max-width:1120px){.nav{gap:14px}.nav a{font-size:14px}.lg-s{display:none}}
+@media (max-width:440px){.lg-w{font-size:15px;letter-spacing:.1em}.lg-s{display:none}.lg{gap:9px}.lg-m{width:30px;height:28px}}
 /* proces na miarce */
 .tp-pin>.wrap{width:100%}
 @media (min-width:861px) and (min-height:700px){
@@ -274,7 +277,7 @@ html:not(.js) .seq{display:none}
 @media (max-width:860px){
  .hero-grid{grid-template-columns:1fr;gap:18px;padding:0}
  .hero-txt{padding:0 22px}
- .js .hero .stage{height:360vh}
+ .js .hero .stage{height:430vh}
  .js .hero .pin{align-items:flex-start}
  .pin{padding:calc(var(--hdr-h,124px) + 14px) 0 80px}
  .hero h1{font-size:32px}
@@ -299,7 +302,7 @@ html:not(.js) .seq{display:none}
 <div class="top">
 <div class="mk">Makieta W3 „Na wymiar” · projekt strony dla Meble Świerkosz przygotowany przez <a href="https://www.odnovastudio.com/">ODNOVA Studio</a></div>
 <header class="hdr"><div class="wrap">
-<a class="brand lg" href="#start" aria-label="Meble Świerkosz — początek strony"><span class="lg-w">MEBLE <b>ŚWIERKOSZ</b></span><span class="lg-s">meble na wymiar · Gliwice · od 1980</span></a>
+<a class="brand lg" href="#start" aria-label="Meble Świerkosz — początek strony"><svg class="lg-m" width="38" height="35" viewBox="0 0 48 44" aria-hidden="true"><rect x="1.5" y="1.5" width="45" height="41" fill="#FBFAF6" stroke="#1D1E1B" stroke-width="3"/><rect x="3" y="3" width="3" height="38" fill="#1D1E1B" opacity=".32"/><path d="M16.5 3v38M31.5 3v38" stroke="#1D1E1B" stroke-width="2.6"/><rect x="6" y="20" width="9.3" height="3.4" fill="#A9835A"/><rect x="6" y="23.4" width="9.3" height="1.6" fill="#D3C5B3"/><rect x="32.7" y="20" width="12.3" height="3.4" fill="#A9835A"/><rect x="32.7" y="23.4" width="12.3" height="1.6" fill="#D3C5B3"/></svg><span class="lg-t"><span class="lg-w">MEBLE <b>ŚWIERKOSZ</b></span><span class="lg-s">meble na wymiar · Gliwice · od 1980</span></span></a>
 <nav class="nav" aria-label="Sekcje"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a></nav>
 <a class="hcta hk" href="tel:+48603166206"><span class="hk-l">Kuchnie</span><span class="tel">603 166 206</span></a><a class="hcta" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="hk-l">Szafy</span><span class="tel">796 796 770</span></a>
 <details class="mnav"><summary aria-label="Menu">Menu</summary><nav aria-label="Menu mobilne"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a class="mcta" href="tel:+48796796770">Zadzwoń: <span class="tel">796 796 770</span></a></nav></details>
@@ -318,7 +321,7 @@ html:not(.js) .seq{display:none}
 <canvas class="seq" aria-hidden="true"></canvas>
 <p class="sc-note">wizualizacja, wnętrze z naszej realizacji</p>
 </div>
-<figcaption class="steps-cap"><ol class="stp" aria-label="Co pokazuje animacja"><li><b>Szafa przesuwna</b><span>od podłogi do sufitu</span></li><li><b>Drążki i szuflady</b><span>wnętrze pod Twoje ubrania</span></li><li><b>Półki</b><span>każdy centymetr wnęki wykorzystany</span></li><li><b>Drzwi wracają</b><span>lekko, po cichych prowadnicach</span></li></ol><p class="stp-now" aria-live="polite"><b>Szafa przesuwna na wymiar</b> <i>białe tafle, lustro i czarne profile</i></p></figcaption>
+<figcaption class="steps-cap"><ol class="stp" aria-label="Co pokazuje animacja"><li><b>Szafa przesuwna</b><span>od podłogi do sufitu</span></li><li><b>Drążki i szuflady</b><span>wnętrze pod Twoje ubrania</span></li><li><b>Półki</b><span>każdy centymetr wnęki wykorzystany</span></li><li><b>Przegródki i szuflady</b><span>lewa część: na drobiazgi i bieliznę</span></li><li><b>Drzwi wracają</b><span>lekko, po cichych prowadnicach</span></li></ol><p class="stp-now" aria-live="polite"><b>Szafa przesuwna na wymiar</b> <i>białe tafle, lustro i czarne profile</i></p></figcaption>
 </figure>
 </div></div></div>
 </section>
@@ -459,7 +462,7 @@ html:not(.js) .seq{display:none}
  var d=document,root=d.documentElement,RM=root.classList.contains('rm');
  var stage=d.querySelector('.hero .stage'),pin=d.querySelector('.hero .pin'),cv=d.querySelector('.seq'),scene=d.querySelector('.scene');
  var lis=[].slice.call(d.querySelectorAll('.stp li')),now=d.querySelector('.stp-now');
- var names=[["Szafa przesuwna","od podłogi do sufitu"],["Drążki i szuflady","wnętrze pod Twoje ubrania"],["Półki","każdy centymetr wnęki wykorzystany"],["Drzwi wracają","lekko, po cichych prowadnicach"]],NS=names.length;
+ var names=[["Szafa przesuwna","od podłogi do sufitu"],["Drążki i szuflady","wnętrze pod Twoje ubrania"],["Półki","każdy centymetr wnęki wykorzystany"],["Przegródki i szuflady","lewa część: na drobiazgi i bieliznę"],["Drzwi wracają","lekko, po cichych prowadnicach"]],NS=names.length;
  if(RM||!cv||!cv.getContext)return;
  var X0=546,X1=1317,Y0=202,Y1=830,FGY=578,DO=[[546,805],[805,1052],[1052,1317]],IW=1800,IH=1200;
  var ctx=cv.getContext('2d'),cl=function(x){return x<0?0:x>1?1:x},eio=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},eo=function(x){return 1-Math.pow(1-x,3)};
@@ -476,7 +479,7 @@ html:not(.js) .seq{display:none}
  function render(G){
   if(n<4||Math.abs(G-lastG)<0.0005)return;lastG=G;
   // kamera: z daleka, lekki najazd na szafę przy otwieraniu, odjazd na końcu
-  var k=(0.27*eo(cl(G))+0.73*eio(cl(G-1)))*(1-eio(cl((G-3.1)/0.9)));
+  var k=(0.27*eo(cl(G))+0.73*eio(cl(G-1)))*(1-eio(cl((G-4.1)/0.9)));
   var Z=1+0.2*k,fx=905+26*k,fy=600-84*k;
   var s0=Math.max(W/IW,H/IH),s=s0*Z,tx=W/2-fx*s,ty=H/2-fy*s;
   tx=Math.min(0,Math.max(W-IW*s,tx));ty=Math.min(0,Math.max(H-IH*s,ty));
@@ -485,18 +488,24 @@ html:not(.js) .seq{display:none}
   // cień pod górnym torem w głąb korpusu
   var tg=ctx.createLinearGradient(0,Y0,0,Y0+90);tg.addColorStop(0,'rgba(20,16,12,.22)');tg.addColorStop(1,'rgba(20,16,12,0)');ctx.fillStyle=tg;ctx.fillRect(X0,Y0,X1-X0,90);
   // skrzydła: 2 (przedni tor) w lewo nad 1; 3 (tylny tor) do środka; powrót: najpierw 3, potem 2
-  var o2=-(DO[1][0]-DO[0][0])*dom(cl((G-1.08)/0.78))*(1-dom(cl((G-3.5)/0.45)));
-  var o3=-(DO[2][1]-DO[2][0])*dom(cl((G-2.08)/0.78))*(1-dom(cl((G-3)/0.45)));
+  // 1: lustro (przedni tor) w lewo; 2: prawe (tylny tor) na środek; 3: prawe wraca, lustro jedzie nad prawe, lewe (tylny tor) na środek;
+  // 4: lewe wraca, lustro wraca na środek
+  var o2=-(DO[1][0]-DO[0][0])*dom(cl((G-1.08)/0.78))+((DO[1][0]-DO[0][0])+(DO[2][1]-DO[1][1]))*dom(cl((G-3.3)/0.62))-(DO[2][1]-DO[1][1])*dom(cl((G-4.42)/0.5));
+  var o3=-(DO[2][1]-DO[2][0])*dom(cl((G-2.08)/0.78))*(1-dom(cl((G-3.04)/0.4)));
+  var o1=(DO[1][1]-DO[1][0])*dom(cl((G-3.55)/0.45))*(1-dom(cl((G-4.05)/0.42)));
   ctx.save();ctx.beginPath();ctx.rect(X0,Y0,X1-X0,Y1-Y0);ctx.clip();
   function door(i,o){var a=DO[i][0],w=DO[i][1]-a;ctx.drawImage(doors,a-X0,0,w,Y1-Y0,a+o,Y0,w,Y1-Y0)}
-  door(0,0);
+  door(0,o1);
+  var a1=cl(o1/40)*0.36;shadow(DO[0][0]+o1,-46,a1);
   var a3=cl(-o3/40)*0.36;shadow(DO[2][1]+o3,46,a3);        // skrzydło rzuca cień na odsłonięte wnętrze
   door(2,o3);
-  var a2=cl(-o2/40)*0.36;shadow(DO[1][1]+o2,46,a2);shadow(DO[1][0]+o2,-20,a2*0.8);
+  var a2=cl(Math.abs(o2)/40)*0.36;if(o2<0){shadow(DO[1][1]+o2,46,a2);shadow(DO[1][0]+o2,-20,a2*0.8)}else{shadow(DO[1][0]+o2,-46,a2)}
   door(1,o2);
   // lustro: rama jedzie, odbicie stoi (tafla przesuwa się we własnej płaszczyźnie)
-  if(o2<-0.5){ctx.save();ctx.beginPath();ctx.rect(DO[1][0]+o2+6,Y0,DO[1][1]-DO[1][0]-12,Y1-Y0);ctx.clip();ctx.drawImage(refl,X0,Y0,refl.naturalWidth,Y1-Y0);ctx.restore()}
-  if(o2<-2){ctx.fillStyle='rgba(16,16,18,.85)';ctx.fillRect(DO[1][1]+o2,Y0,4,Y1-Y0)}   // czoło profilu wysuniętego skrzydła
+  if(Math.abs(o2)>0.5){ctx.save();ctx.beginPath();ctx.rect(DO[1][0]+o2+6,Y0,DO[1][1]-DO[1][0]-12,Y1-Y0);ctx.clip();ctx.drawImage(refl,X0,Y0,refl.naturalWidth,Y1-Y0);ctx.restore()}
+  if(o2<-2){ctx.fillStyle='rgba(16,16,18,.85)';ctx.fillRect(DO[1][1]+o2,Y0,4,Y1-Y0)}
+  if(o2>2){ctx.fillStyle='rgba(16,16,18,.85)';ctx.fillRect(DO[1][0]+o2-4,Y0,4,Y1-Y0)}
+  if(o1>2){ctx.fillStyle='rgba(16,16,18,.7)';ctx.fillRect(DO[0][0]+o1-3,Y0,3,Y1-Y0)}   // czoło profilu wysuniętego skrzydła
   if(o3<-2&&o2>-2){ctx.fillStyle='rgba(16,16,18,.7)';ctx.fillRect(DO[2][1]+o3,Y0,3,Y1-Y0)}
   ctx.restore();
   ctx.drawImage(fg,X0,FGY,fg.naturalWidth,fg.naturalHeight);
