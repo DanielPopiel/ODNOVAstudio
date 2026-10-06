@@ -53,7 +53,7 @@ p{margin:0 0 1em}
 .thumb{display:none}
 @media (max-width:760px){
  body{padding-bottom:74px}
- .thumb{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:var(--thumb-bg);border-top:1px solid var(--line)}
+ .thumb{display:grid;grid-template-columns:1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:var(--thumb-bg);border-top:1px solid var(--line)}
  .thumb a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;border-radius:var(--r,4px);text-decoration:none;background:var(--cta-bg);color:var(--cta-ink);font-weight:600;font-size:15px;line-height:1.2;font-variant-numeric:lining-nums tabular-nums}
  .thumb a+a{background:var(--cta2-bg);color:var(--cta2-ink)}
  .thumb a span{font-size:12px;font-weight:500;opacity:.85}
@@ -263,7 +263,7 @@ html:not(.js) .seq{display:none}
 .fq-p{margin-top:18px;opacity:.8}
 .faq summary svg{color:#FF6B66}
 .kontakt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px}
-.kt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0 20px}
+.kt{display:grid;grid-template-columns:minmax(0,420px);gap:12px;margin:26px 0 20px}
 .kt a{display:block;text-decoration:none;background:#C8191F;color:#fff;padding:16px 18px;border-radius:3px}
 .kt a+a{background:#141412;color:#fff}
 .kt small{display:block;font-size:13.5px;opacity:.85}
@@ -306,7 +306,7 @@ html:not(.js) .seq{display:none}
 <header class="hdr"><div class="wrap">
 <a class="brand lg" href="#start" aria-label="Meble Świerkosz — początek strony"><span class="lg-t"><span class="lg-w">MEBLE <b>ŚWIERKOSZ</b></span></span></a>
 <nav class="nav" aria-label="Sekcje"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a></nav>
-<a class="hcta" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="hk-l">Szafy</span><span class="tel">796 796 770</span></a><a class="hcta hk" href="tel:+48603166206"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="hk-l">Kuchnie</span><span class="tel">603 166 206</span></a>
+<a class="hcta" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span class="hk-l">Zadzwoń</span><span class="tel">796 796 770</span></a>
 <details class="mnav"><summary aria-label="Menu">Menu</summary><nav aria-label="Menu mobilne"><a href="#oferta">Oferta</a><a href="#realizacje">Realizacje</a><a href="#wspolpraca">Jak pracujemy</a><a href="#o-nas">O nas</a><a href="#opinie">Opinie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a class="mcta" href="tel:+48796796770">Zadzwoń: <span class="tel">796 796 770</span></a></nav></details>
 </div></header></div>
 <main id="main">
@@ -315,7 +315,7 @@ html:not(.js) .seq{display:none}
 <div class="hero-txt">
 <h1>Najpierw mierzymy. Potem budujemy co do centymetra.</h1>
 <p class="lead">Szafy przesuwne, garderoby i kuchnie na wymiar z Gliwic. Pomiar i projekt są bezpłatne, meble robimy we własnej pracowni.</p>
-<div class="ctas"><a class="btn" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Szafy <span class="tel">796 796 770</span></span></a><a class="btn b2" href="tel:+48603166206"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Kuchnie <span class="tel">603 166 206</span></span></a></div>
+<div class="ctas"><a class="btn" href="tel:+48796796770"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg><span>Zadzwoń <span class="tel">796 796 770</span></span></a></div>
 </div>
 <figure class="scene" aria-label="Szafa przesuwna w sypialni: drzwi rozsuwają się i pokazują wnętrze, potem wracają na miejsce">
 <div class="scene-box">
@@ -450,11 +450,10 @@ html:not(.js) .seq{display:none}
 <div class="reveal">
 <h2>Umów bezpłatny pomiar</h2>
 <div class="kt">
-<a href="tel:+48796796770"><small>Szafy i garderoby</small><span class="tel">796 796 770</span></a>
-<a href="tel:+48603166206"><small>Kuchnie</small><span class="tel">603 166 206</span></a>
+<a href="tel:+48796796770"><small>Szafy, garderoby i kuchnie</small><span class="tel">796 796 770</span></a>
 </div>
 <p>ul. Staromiejska 15, 44-109 Gliwice (Łabędy)<br>pon.–pt. 8:00–16:00<br><a href="mailto:mebleswierkosz@gmail.com">mebleswierkosz@gmail.com</a></p>
-<form class="form" onsubmit="event.preventDefault();this.querySelector('.note').textContent='To makieta: formularz nie wysyła jeszcze wiadomości. Zadzwoń: 796 796 770 (szafy) lub 603 166 206 (kuchnie).'">
+<form class="form" onsubmit="event.preventDefault();this.querySelector('.note').textContent='To makieta: formularz nie wysyła jeszcze wiadomości. Zadzwoń: 796 796 770.'">
 <div class="frow"><label for="f-im">Imię</label><input id="f-im" name="imie" autocomplete="given-name"></div>
 <div class="frow"><label for="f-tel">Telefon</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
 <div class="frow"><label for="f-co">Czego szukasz?</label><select id="f-co" name="co"><option>Szafa przesuwna</option><option>Szafa z drzwiami otwieranymi</option><option>Garderoba</option><option>Kuchnia</option><option>Inne meble na wymiar</option></select></div>
@@ -465,7 +464,7 @@ html:not(.js) .seq{display:none}
 </div></section>
 </main>
 <footer class="ft"><div class="wrap"><span>Meble Świerkosz · meble na wymiar od 1980 · Gliwice, Zabrze i okolice</span><span>© 2026 Meble Świerkosz · ul. Staromiejska 15, 44-109 Gliwice</span></div></footer>
-<div class="thumb" aria-label="Szybki kontakt"><a href="tel:+48796796770">Szafy, garderoby<span class="tel">796 796 770</span></a><a href="tel:+48603166206">Kuchnie<span class="tel">603 166 206</span></a></div>
+<div class="thumb" aria-label="Szybki kontakt"><a href="tel:+48796796770">Zadzwoń<span class="tel">796 796 770</span></a></div>
 <script>
 (function(){
  var d=document,root=d.documentElement,RM=root.classList.contains('rm');
