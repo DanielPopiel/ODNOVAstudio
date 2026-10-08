@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Obsługa prawna firm przez cały rok | BRP Legal Point · makieta W4</title>
+<meta name="description" content="Makieta nowej odsłony strony BRP Legal Point, wariant W4 „Kalendarz”, przygotowana przez Odnova Studio.">
+<meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W4 „Kalendarz”">
+<meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/legal-point-w4/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="theme-color" content="#F6F6F3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F6F6F3'/%3E%3Crect y='0' width='64' height='18' fill='%23C4262E'/%3E%3Ctext x='32' y='54' text-anchor='middle' fill='%2316171B' font-family='Arial Narrow,Arial' font-size='34' font-weight='700'%3E12%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@800&family=Sofia+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --paper:#F6F6F3; --paper-2:#ECEBE6; --white:#FFFFFF; --sheet:#FCFBF8;
+  --ink:#16171B; --ink-2:#3A3C43; --muted:#53565E;
+  --red:#C4262E; --red-d:#A11D24; --red-l:#F6DEDF;
+  --night:#16171B; --night-2:#22242A;
+  --line:rgba(22,23,27,.14); --line-d:rgba(246,246,243,.16);
+  --disp:'Sofia Sans Extra Condensed','Arial Narrow',sans-serif;
+  --sans:'Sofia Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --maxw:1240px; --hdr-h:104px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+section[id],header[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;caret-color:var(--red);accent-color:var(--red)}
+::selection{background:var(--red);color:#fff}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{margin:0 0 1em}
+h1,h2,h3{font-family:var(--disp);font-weight:800;margin:0;letter-spacing:-.005em;line-height:.95}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.sec.dark :focus-visible,.sec.redbg :focus-visible,.foot :focus-visible{outline-color:#fff}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+.num{font-variant-numeric:lining-nums tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3{text-wrap:balance}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:50px;padding:.8em 1.5em;font:700 16px/1.2 var(--sans);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-d)}
+.btn-line{border-color:var(--ink);color:var(--ink)}.btn-line:hover{background:var(--ink);color:var(--paper)}
+.btn-white{background:#fff;color:var(--red-d)}.btn-white:hover{background:var(--ink);color:#fff}
+.btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:var(--red)}
+
+/* pasek makiety + nawigacja */
+.top{position:fixed;inset:0 0 auto 0;z-index:60}
+.ribbon{background:var(--ink);color:rgba(246,246,243,.86);font-size:12.5px;line-height:1.35;padding:6px clamp(20px,4vw,44px);text-align:center}
+.ribbon b{color:#fff}
+.nav{background:rgba(246,246,243,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background .25s}
+.top.is-scrolled .nav{background:rgba(246,246,243,.985)}
+.nav-in{display:flex;align-items:center;gap:26px;min-height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.brand .mono{width:40px;height:40px;color:var(--ink);flex:none}
+.brand b{display:block;font:800 22px/1 var(--disp);letter-spacing:.01em}
+.brand small{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+.nav a.lnk{text-decoration:none;font-size:16px;font-weight:600;color:var(--ink-2)}
+.nav a.lnk:hover{color:var(--red)}
+.nav .tel{text-decoration:none;font-weight:700;font-size:16px}
+.nav .btn{min-height:44px;padding:.55em 1.1em;font-size:15px}
+.navtoggle{display:none;background:none;border:1.5px solid var(--ink);width:46px;height:46px;cursor:pointer;color:var(--ink)}
+.navtoggle i{display:block;width:18px;height:2px;background:currentColor;margin:4px auto}
+.drawer{display:none}
+@media (max-width:1080px){.nav a.lnk{display:none}}
+@media (max-width:760px){
+  .nav .tel,.nav .btn{display:none}
+  .navtoggle{display:block}
+  .top.menu-open .drawer{display:block;background:var(--paper);border-bottom:1px solid var(--line)}
+  .drawer a{display:block;padding:14px clamp(20px,4vw,44px);text-decoration:none;border-top:1px solid var(--line);font-size:17px;font-weight:600}
+}
+
+/* ---------- hero: kalendarz zdzierak ---------- */
+.year{position:relative;background:var(--paper);overflow:clip}
+.year-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start}
+.year-txt,.cal-pin{min-height:calc(100svh - var(--hdr-h));display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hdr-h) + 28px) 0 40px}
+.js .year-stage{height:calc(var(--hdr-h) + 420vh)}
+.js .year-stage>.year-grid{height:100%}
+.cal-zone{align-self:stretch}
+.js .year-txt,.js .cal-pin{position:sticky;top:0;height:100svh;min-height:0}
+.year h1{font-size:clamp(58px,7.4vw,118px);max-width:9ch}
+.year h1 .r{color:inherit}
+.year .lead{font-size:clamp(18px,1.45vw,21px);color:var(--ink-2);max-width:44ch;margin:28px 0 30px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-note{margin:22px 0 0;font-size:15px;color:var(--muted);max-width:44ch;padding-top:16px;border-top:1px solid var(--line)}
+.hero-note b{color:var(--ink)}
+
+.cal-pin{align-items:center}
+.cal{position:relative;width:min(100%,480px);perspective:1400px}
+.cal-head{position:relative;z-index:30;background:var(--red);color:#fff;height:66px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 20px 12px;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+.cal-head b{font:800 23px/1 var(--disp);letter-spacing:.02em}
+.cal-head span{font:600 13px/1 var(--sans);opacity:.86}
+.cal-head::before,.cal-head::after{content:"";position:absolute;top:-10px;width:12px;height:22px;border-radius:6px;background:var(--ink)}
+.cal-head::before{left:28%}.cal-head::after{right:28%}
+.cal-pages{position:relative;height:clamp(400px,calc(100svh - var(--hdr-h) - 270px),560px);transform-style:preserve-3d}
+.cal-pages::before,.cal-pages::after{content:"";position:absolute;left:3px;right:3px;bottom:-5px;height:6px;background:#E9E7E1;border:1px solid #d9d7d0;border-top:0;z-index:0}
+.cal-pages::after{left:7px;right:7px;bottom:-9px;background:#E1DFD8}
+.pg{position:absolute;inset:0;overflow:hidden;background:var(--sheet);border:1px solid #E2E0D9;display:flex;flex-direction:column;padding:16px 26px 22px;transform-origin:0 0;will-change:transform,opacity;
+  background-image:radial-gradient(circle at 50% 0,rgba(0,0,0,.08) 1.4px,transparent 1.6px);background-size:9px 7px;background-repeat:repeat-x;background-position:0 1px}
+.pg-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding:8px 0 8px}
+.pg-m{font:800 30px/1 var(--disp);text-transform:capitalize}
+.pg-y{font:600 15px/1 var(--sans);color:var(--muted)}
+.pg-day{font:800 clamp(110px,min(15vw,22vh),232px)/.82 var(--disp);letter-spacing:-.03em;text-align:center;margin:clamp(10px,2.4vh,26px) 0 0;font-variant-numeric:lining-nums}
+.pg.red .pg-day,.pg.red .pg-wd{color:var(--red)}
+.pg-wd{text-align:center;font:700 18px/1 var(--sans);margin-top:6px}
+.pg-tag{display:block;text-align:center;font-size:13.5px;color:var(--red-d);margin-top:6px;min-height:1.2em}
+.pg-note{margin-top:auto;border-top:1px solid var(--line);padding-top:14px}
+.pg-note h3{font-size:31px;line-height:1;margin-bottom:8px}
+.pg-note p{font-size:15.5px;line-height:1.45;color:var(--ink-2);margin:0 0 10px}
+.pg-note a{display:inline-flex;align-items:center;gap:8px;min-height:36px;font-weight:700;font-size:15px;color:var(--red-d);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.pg-end{position:absolute;inset:0;background:var(--ink);color:#fff;padding:28px 28px 26px;display:flex;flex-direction:column;z-index:0}
+.pg-end h2{font-size:clamp(46px,4.4vw,62px);line-height:.92}
+.pg-end p{color:rgba(255,255,255,.78);font-size:16px;margin:16px 0 0}
+.pg-end .who{display:flex;gap:14px;align-items:center;margin-top:auto;padding-top:18px;border-top:1px solid var(--line-d)}
+.pg-end .who img{width:64px;height:64px;object-fit:cover;object-position:50% 25%;border-radius:50%}
+.pg-end .who b{display:block;font:800 22px/1 var(--disp)}
+.pg-end .who small{color:rgba(255,255,255,.7);font-size:13.5px}
+.pg-end .btn{margin-top:18px;width:100%}
+.cal-months{position:relative;z-index:40;background:var(--paper);list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(12,1fr);width:min(100%,480px);border-top:1.5px solid var(--ink)}
+.cal-months button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;text-align:center;padding:9px 0 4px;min-height:36px;font:700 13px/1.2 var(--sans);color:var(--muted);position:relative}
+.cal-months button.red{color:var(--red-d)}
+.cal-months button::before{content:"";position:absolute;left:18%;right:18%;top:-1.5px;height:4px;background:var(--red);transform:scaleX(0);transition:transform .25s}
+.cal-months button.on{color:var(--ink)}
+.cal-months button.on::before{transform:none}
+.cal-months button:focus-visible{outline:2px solid var(--red)}
+.cal-legal{position:relative;z-index:40;background:var(--paper);font-size:12.5px;color:var(--muted);margin:10px 0 0;width:min(100%,480px)}
+.cal-legal i{display:inline-block;width:9px;height:9px;background:var(--red);margin-right:6px;vertical-align:0}
+.no-js-hint{display:none}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:20px;top:calc(var(--hdr-h) + 8px);z-index:70;background:var(--ink);color:#fff;padding:10px 14px;position:fixed}
+.cal-stub{position:absolute;left:0;right:0;top:66px;z-index:25;height:calc(var(--torn,0) * 1.1px);background:var(--sheet);clip-path:polygon(0 0, 100% 0, 100.0% 50%, 97.5% 70%, 95.0% 50%, 92.5% 55%, 90.0% 35%, 87.5% 55%, 85.0% 50%, 82.5% 55%, 80.0% 65%, 77.5% 70%, 75.0% 35%, 72.5% 55%, 70.0% 50%, 67.5% 100%, 65.0% 35%, 62.5% 70%, 60.0% 35%, 57.5% 100%, 55.0% 35%, 52.5% 55%, 50.0% 35%, 47.5% 55%, 45.0% 65%, 42.5% 100%, 40.0% 35%, 37.5% 70%, 35.0% 35%, 32.5% 70%, 30.0% 50%, 27.5% 100%, 25.0% 35%, 22.5% 55%, 20.0% 65%, 17.5% 85%, 15.0% 65%, 12.5% 70%, 10.0% 35%, 7.5% 70%, 5.0% 50%, 2.5% 55%, 0.0% 65%);transition:height .3s}
+
+/* sekcje */
+.sec{padding:clamp(76px,10vw,136px) 0}
+.sec.dark{background:var(--night);color:#fff}
+.sec.redbg{background:var(--red);color:#fff}
+.head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:20px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.head h2{font-size:clamp(44px,4.6vw,72px);max-width:16ch}
+.head p{color:var(--muted);margin:0;max-width:46ch;font-size:19px}
+.dark .head p{color:rgba(255,255,255,.72)}
+.head-1{grid-template-columns:1fr;gap:18px}
+
+/* zakres jako rejestr */
+.reg{border-top:1.5px solid rgba(255,255,255,.5)}
+.reg-row{display:grid;grid-template-columns:64px minmax(0,5fr) minmax(0,5fr) 170px;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line-d);transition:background .2s}
+.reg-row:hover{background:rgba(255,255,255,.03)}
+.reg-n{font:800 30px/1 var(--disp);color:rgba(255,255,255,.45);font-variant-numeric:lining-nums}
+.reg-t{font:800 clamp(30px,2.8vw,40px)/1 var(--disp)}
+.reg-l{display:block;font:400 16px/1.5 var(--sans);color:rgba(255,255,255,.7);margin-top:10px;max-width:46ch}
+.reg-tags{display:flex;flex-wrap:wrap;gap:6px 8px;margin:0;padding:0;list-style:none}
+.reg-tags li{font-size:14.5px;padding:5px 11px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.88)}
+.reg-a{justify-self:end;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:700;font-size:15.5px;color:#fff;text-decoration:none;border-bottom:1.5px solid var(--red)}
+.reg-a:hover{color:#ffb4b7}
+.reg-a svg{width:16px;height:16px}
+
+/* współpraca: wykres roku */
+.gantt{border-top:1.5px solid var(--ink)}
+.g-scale{display:grid;grid-template-columns:240px repeat(12,1fr);font:700 13px/1 var(--sans);color:var(--muted);padding:12px 0;border-bottom:1px solid var(--line)}
+.g-scale span{text-align:center}
+.g-row{display:grid;grid-template-columns:240px repeat(12,1fr);align-items:center;min-height:118px;border-bottom:1px solid var(--line);background-image:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:calc((100% - 240px)/12) 100%;background-position:240px 0;background-repeat:repeat-y}
+.g-row h3{font-size:34px;padding-right:20px}
+.g-row h3 small{display:block;font:500 15.5px/1.4 var(--sans);color:var(--muted);margin-top:8px;letter-spacing:0}
+.g-bar{height:44px;background:var(--red);display:flex;align-items:center;padding:0 14px;color:#fff;font-weight:700;font-size:14.5px;white-space:nowrap;overflow:hidden;transform-origin:0 50%}
+.g-row.a .g-bar{grid-column:6/8}
+.g-row.b .g-bar{grid-column:5/9;background:var(--ink)}
+.g-row.c .g-bar{grid-column:2/14;background:none;padding:0;gap:3px}
+.g-bar i{flex:1;height:100%;background:var(--ink)}
+.g-bar i:is(:nth-child(6),:nth-child(9),:nth-child(10),:nth-child(12)){background:var(--red)}
+.g-row.a .g-bar{background:var(--ink)}
+.js .gantt.reveal .g-bar{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.22,.61,.36,1) .25s}
+.js .gantt.reveal.in .g-bar{transform:none}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin:72px 0 0;padding:0;list-style:none}
+.steps li{padding:0 30px 0 0}
+.steps li+li{padding-left:30px;border-left:1px solid var(--line)}
+.steps .n{font:700 15px/1.2 var(--sans);color:var(--ink);border-top:4px solid var(--ink);padding-top:10px;display:block}
+.steps h3{font-size:34px;margin:12px 0 10px}
+.steps p{color:var(--ink-2);font-size:16.5px;margin:0}
+
+/* konsultacja na czerwieni */
+.consult{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:start}
+.consult h2{font-size:clamp(48px,5.6vw,84px);max-width:11ch}
+.consult .price{display:flex;align-items:flex-end;gap:18px;margin:34px 0 18px}
+.consult .price .vat{font:700 20px/1.25 var(--sans);padding-bottom:.4em}
+.consult .price .vat small{font-weight:500;font-size:16px;opacity:.85}
+.consult .price strong{font:800 clamp(80px,9vw,132px)/.85 var(--disp);font-variant-numeric:lining-nums}
+
+.consult p{max-width:46ch;color:rgba(255,255,255,.9)}
+.consult .btn{margin-top:14px}
+.quick{list-style:none;margin:0;padding:0;border-top:1.5px solid rgba(255,255,255,.7)}
+.quick li{border-bottom:1px solid rgba(255,255,255,.35)}
+.quick a{display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:14px;align-items:center;text-decoration:none;padding:24px 0;color:#fff}
+.quick h3{font-size:36px}
+.quick p{font-size:16px;margin:8px 0 0;color:rgba(255,255,255,.86)}
+.quick svg{width:26px;height:26px;transition:transform .2s}
+.quick a:hover svg{transform:translateX(4px)}
+.quick-h{font-size:36px;margin:0 0 18px}
+
+/* o mnie */
+.about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:start}
+.portrait{margin:0;position:relative}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 28%}
+.portrait figcaption{display:flex;justify-content:space-between;gap:12px;border-top:1.5px solid var(--ink);margin-top:14px;padding-top:12px;font-size:14.5px;color:var(--muted)}
+.portrait figcaption b{font:800 24px/1 var(--disp);color:var(--ink)}
+.about h2{font-size:clamp(48px,5.4vw,82px);max-width:10ch;margin-bottom:30px}
+.about p{font-size:19px;color:var(--ink-2);max-width:56ch}
+.about .quote{font:800 clamp(32px,3vw,44px)/1.02 var(--disp);color:var(--ink);max-width:20ch;margin:34px 0}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--ink);margin:36px 0 0}
+.facts div{padding:16px 16px 16px 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+.facts dt{font-size:14px;color:var(--muted)}
+.facts dd{margin:4px 0 0;font-weight:700;font-size:16.5px}
+.inds{margin:30px 0 0;font-size:17px;color:var(--ink-2)}
+.inds b{color:var(--ink)}
+
+/* FAQ */
+.faq{max-width:900px}
+.faq details{border-bottom:1px solid var(--line-d)}
+.faq details:first-child{border-top:1.5px solid rgba(255,255,255,.5)}
+.faq summary{cursor:pointer;list-style:none;padding:24px 52px 24px 0;position:relative;font:800 clamp(26px,2.3vw,34px)/1.05 var(--disp)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before,.faq summary::after{content:"";position:absolute;right:8px;top:50%;width:16px;height:2px;background:rgba(255,255,255,.7);transition:transform .25s}
+.faq summary::after{transform:rotate(90deg)}
+.faq details[open] summary::after{transform:none}
+.faq-more{margin:28px 0 0;color:rgba(255,255,255,.72)}
+.faq-more a{color:#fff;font-weight:700}
+.faq details p{color:rgba(255,255,255,.76);padding:0 52px 26px 0;margin:0;max-width:66ch}
+
+/* kontakt */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,88px)}
+.contact h2{font-size:clamp(48px,5.4vw,82px);max-width:10ch;margin-bottom:22px}
+.contact .intro{color:var(--ink-2);max-width:44ch}
+.clist{margin:30px 0 0;padding:0;list-style:none;border-top:1.5px solid var(--ink)}
+.clist li{padding:14px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:12px}
+.clist span{color:var(--muted);font-size:15px}
+.clist a{font-weight:700;text-decoration:none;display:inline-block;padding:6px 0}
+.clist a:hover{color:var(--red)}
+.form{background:none;border:0;border-top:1.5px solid var(--ink);align-self:start;padding:28px 0 0}
+.form h3{font-size:42px;margin-bottom:6px}
+.form .fh{color:var(--muted);font-size:16px}
+.form .lbl{font-weight:700;font-size:15px;margin:22px 0 10px}
+.chips-f{border:0;padding:0;margin:0}
+.chips-f legend{padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 15px var(--sans);padding:9px 14px;min-height:42px;background:transparent;border:1px solid rgba(22,23,27,.28);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.field{margin-top:18px}
+.field label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+.field input,.field textarea{width:100%;font:17px var(--sans);padding:12px 14px;border:1px solid rgba(22,23,27,.45);background:#fff;color:var(--ink)}
+.field textarea{min-height:120px;resize:vertical}
+.rodo{font-size:13.5px;color:var(--muted);margin:16px 0}
+.form .btn{width:100%}
+.formmsg{font-size:14.5px;color:var(--red-d);margin:12px 0 0;min-height:1em}
+
+.foot{background:var(--night);color:rgba(255,255,255,.7);padding:56px 0 40px;font-size:15px}
+.foot-in{display:grid;grid-template-columns:2fr 1fr 1.3fr;gap:32px}
+.foot b{color:#fff;font:800 28px/1 var(--disp);display:block;margin-bottom:10px}
+.foot a{color:rgba(255,255,255,.86);text-decoration:none;display:inline-block;padding:9px 0}
+.foot a:hover{color:#ffb4b7}
+.foot .small{grid-column:1/-1;border-top:1px solid var(--line-d);padding-top:22px;margin-top:10px;font-size:13.5px;color:rgba(255,255,255,.5)}
+.callbar{display:none}
+
+/* odsłanianie: tylko nagłówki sekcji i dwa bloki */
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:1}
+
+@media (max-width:980px){
+  .head,.consult,.about,.contact{grid-template-columns:1fr}
+  .reg-row{grid-template-columns:48px minmax(0,1fr);gap:8px 16px}
+  .reg-tags,.reg-a{grid-column:2}
+  .reg-a{justify-self:start}
+  .g-scale,.g-row{grid-template-columns:150px repeat(12,1fr)}
+  .g-row{background-size:calc((100% - 150px)/12) 100%;background-position:150px 0}
+  .g-row h3{font-size:26px}
+  .g-row h3 small{display:none}
+  .portrait{max-width:420px}
+}
+@media (max-width:760px){
+  body{font-size:17px}
+  .year-grid{grid-template-columns:1fr;gap:0}
+  .js .year-stage>.year-grid{height:auto}
+  .year-txt{min-height:0;padding:calc(var(--hdr-h) + 18px) 0 14px}
+  .year h1{font-size:clamp(42px,12vw,54px);max-width:none}
+  .year .lead{font-size:16px;margin:14px 0 18px}
+  .hero-note,.hero-cta .btn-line{display:none}
+  .js .year-txt{position:static;height:auto}
+  .js .year-stage{height:auto}
+  .js .cal-zone{height:360vh}
+  .cal-pin{min-height:0;padding:20px 0 30px}
+  .js .cal-pin{position:sticky;top:var(--hdr-h);height:calc(100svh - var(--hdr-h));padding:14px 0 10px;justify-content:center}
+  .cal{width:min(100%,380px)}
+  .cal-head{height:54px;padding:0 16px 10px}
+  .cal-stub{top:54px}
+  .cal-head b{font-size:20px}
+  .cal-pages{height:clamp(380px,calc(100svh - var(--hdr-h) - 160px),540px)}
+  .pg{padding:12px 18px 16px}
+  .pg-day{font-size:clamp(110px,34vw,150px);margin-top:8px}
+  .pg-note h3{font-size:27px}
+  .pg-note p{font-size:14.5px}
+  .cal-months{margin-top:18px;width:min(100%,380px)}
+  .cal-months button{font-size:12px}
+  .cal-legal{width:min(100%,380px);font-size:12px}
+  .hero-cta .btn{flex:1 1 100%}
+  .gantt{overflow:hidden}
+  .g-scale{grid-template-columns:repeat(12,1fr)}
+  .g-scale::before{display:none}
+  .g-scale span:first-child{display:none}
+  .g-row{grid-template-columns:repeat(12,1fr);background-position:0 0;background-size:calc(100%/12) 100%;padding:16px 0 18px;min-height:0;row-gap:10px}
+  .g-row h3{grid-column:1/-1;font-size:28px}
+  .g-row h3 small{display:block;font-size:14.5px}
+  .g-row.a .g-bar{grid-column:5/8}
+  .g-row.b .g-bar{grid-column:4/9}
+  .g-row.c .g-bar{grid-column:1/13}
+  .g-bar{font-size:13px;padding:0 8px;height:38px}
+  .steps{grid-template-columns:1fr}
+  .steps li,.steps li+li{padding:24px 0;border-left:0;border-top:1px solid var(--line)}
+  .facts{grid-template-columns:1fr}
+  .facts div:nth-child(even){padding-left:0;border-left:0}
+  .clist li{grid-template-columns:1fr;gap:2px}
+  .foot-in{grid-template-columns:1fr}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--ink);padding-bottom:env(safe-area-inset-bottom);transform:translateY(110%);transition:transform .35s}
+  body.past-hero .callbar{transform:none}
+  .callbar a{display:flex;align-items:center;justify-content:center;min-height:56px;text-decoration:none;font-weight:700;color:#fff}
+  .callbar a:first-child{background:var(--red)}
+  .foot{padding-bottom:96px}
+}
+@media (max-width:420px){ .brand small{display:none} }
+@media (min-width:761px) and (max-height:820px){.pg-note p{font-size:14px;line-height:1.38;margin-bottom:4px}.pg-note h3{font-size:26px}.pg-note{padding-top:10px}.pg-top{padding:4px 0 6px}.pg-day{font-size:min(150px,18vh)}.pg-tag:empty{display:none}.year .lead{margin:18px 0 20px;font-size:17px}.year h1{font-size:clamp(50px,5.4vw,80px);max-width:11ch}.hero-note{display:none}.cal-months{margin-top:16px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .js .gantt.reveal .g-bar{transform:none!important;transition:none!important}
+  .js .year-stage,.js .cal-zone{height:auto!important}
+  .js .year-txt,.js .cal-pin{position:static!important;height:auto!important;min-height:calc(100svh - var(--hdr-h))}
+}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="ribbon">Makieta nowej odsłony legal-point.org · wariant <b>W4 „Kalendarz”</b> · przygotowała <b>Odnova Studio</b></div>
+  <nav class="nav" aria-label="Główna nawigacja">
+    <div class="wrap nav-in">
+      <a class="brand" href="#start"><svg class="mono" viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="22" y="27.5" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="currentColor" font-family="Hanken Grotesk, Figtree, Arial, sans-serif">BRP</text></svg><span><b>BRP Legal Point</b><small>adw. Beata Rogowska-Prus</small></span></a>
+      <a class="lnk" href="#zakres">Zakres</a>
+      <a class="lnk" href="#wspolpraca">Współpraca</a>
+      <a class="lnk" href="#o-mnie">O mnie</a>
+      <a class="lnk" href="#faq">Pytania</a>
+      <a class="tel num" href="tel:+48662187462">+48 662 187 462</a>
+      <a class="btn btn-red" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a>
+      <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
+    </div>
+    <div class="drawer" id="drawer">
+      <a href="#zakres">Zakres</a><a href="#wspolpraca">Współpraca</a><a href="#o-mnie">O mnie</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a><a class="num" href="tel:+48662187462">+48 662 187 462</a>
+    </div>
+  </nav>
+</div>
+
+<header class="year" id="start">
+  <a class="skip" href="#zakres">Pomiń kalendarz</a>
+  <div class="year-stage" id="stage">
+    <div class="wrap year-grid">
+      <div class="year-txt">
+        <h1>Cały rok spółki w&nbsp;jednych <span class="r">rękach.</span></h1>
+        <p class="lead">Bieżąca obsługa prawna firm: umowy, spółka i KRS, pracownicy, należności, RODO i reklama. Piętnaście lat praktyki, także jako prawnik wewnętrzny. Online w całej Polsce.</p>
+        <div class="hero-cta">
+          <a class="btn btn-red" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a>
+          <a class="btn btn-line" href="#zakres">Zobacz zakres</a>
+        </div>
+        <p class="hero-note">Przewijaj, a kalendarz pokaże, co zwykle trafia na biurko firmy w kolejnych miesiącach. <b>Konsultacja online: 200 zł netto.</b></p>
+      </div>
+      <div class="cal-zone" id="calzone">
+        <div class="cal-pin" id="calpin" data-pin>
+          <div class="cal">
+            <div class="cal-head"><b>BRP Legal Point</b><span class="num">2026 / 2027</span></div><div class="cal-stub" aria-hidden="true"></div>
+            <div class="cal-pages" id="pages"><article class="pg" data-i="0" style="z-index:13" aria-label="Październik 2026">
+  <div class="pg-top"><span class="pg-m">październik</span><span class="pg-y num">2026</span></div>
+  <div class="pg-day" aria-hidden="true">12</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Umowy na przyszły rok</h3><p>Dostawcy przysyłają nowe cenniki i wzory umów. To dobry moment, żeby wynegocjować kary, terminy płatności i limit odpowiedzialności, zanim coś się wydarzy.</p><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Umowy B2B i negocjacje</a></div>
+</article><article class="pg" data-i="1" style="z-index:12" aria-label="Listopad 2026">
+  <div class="pg-top"><span class="pg-m">listopad</span><span class="pg-y num">2026</span></div>
+  <div class="pg-day" aria-hidden="true">16</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Regulaminy na nowy rok</h3><p>Regulamin pracy, wynagradzania i pracy zdalnej warto przejrzeć, zanim zaczną obowiązywać nowe stawki i zasady premiowania.</p><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Prawo pracy dla pracodawców</a></div>
+</article><article class="pg" data-i="2" style="z-index:11" aria-label="Grudzień 2026">
+  <div class="pg-top"><span class="pg-m">grudzień</span><span class="pg-y num">2026</span></div>
+  <div class="pg-day" aria-hidden="true">7</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Sprzedaż świąteczna</h3><p>Regulamin promocji, zasady zwrotów i oznaczanie obniżek cen w sklepie internetowym. Lepiej sprawdzić przed startem kampanii niż po pierwszej reklamacji.</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">E-commerce, reklama i IP</a></div>
+</article><article class="pg" data-i="3" style="z-index:10" aria-label="Styczeń 2027">
+  <div class="pg-top"><span class="pg-m">styczeń</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">11</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Nowy kontrahent, nowa umowa</h3><p>Pierwsze zamówienia w roku to nowe umowy. Weryfikacja umowy do trzech stron przed podpisem: ryzyka, błędy i decyzja, co dalej.</p><a href="https://legal-point.org/weryfikacja-umowy-b2b/" target="_blank" rel="noopener">Weryfikacja umowy B2B</a></div>
+</article><article class="pg" data-i="4" style="z-index:9" aria-label="Luty 2027">
+  <div class="pg-top"><span class="pg-m">luty</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">15</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Faktury z grudnia wciąż otwarte</h3><p>Między firmami termin zapłaty co do zasady nie może przekroczyć 60 dni, a za opóźnienie należy się rekompensata kosztów odzyskania należności. Pierwszy krok to porządne wezwanie do zapłaty.</p><a href="https://legal-point.org/wezwanie-do-zaplaty-b2b/" target="_blank" rel="noopener">Wezwanie do zapłaty B2B</a></div>
+</article><article class="pg red" data-i="5" style="z-index:8" aria-label="Marzec 2027">
+  <div class="pg-top"><span class="pg-m">marzec</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">31</div>
+  <div class="pg-wd">środa</div><span class="pg-tag">termin ustawowy</span>
+  <div class="pg-note"><h3>Sprawozdanie finansowe</h3><p>Zarząd ma trzy miesiące od końca roku obrotowego, żeby sporządzić sprawozdanie. Przy roku kalendarzowym termin mija 31 marca.</p><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Prawo spółek, KRS i CRBR</a></div>
+</article><article class="pg" data-i="6" style="z-index:7" aria-label="Kwiecień 2027">
+  <div class="pg-top"><span class="pg-m">kwiecień</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">19</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Przegląd RODO</h3><p>Rejestr czynności przetwarzania, umowy powierzenia z dostawcami IT, procedura zgłaszania naruszeń. Prowadzę to jako certyfikowany inspektor ochrony danych.</p><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Compliance, RODO i regulacje</a></div>
+</article><article class="pg" data-i="7" style="z-index:6" aria-label="Maj 2027">
+  <div class="pg-top"><span class="pg-m">maj</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">17</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Kampania na sezon</h3><p>Opinia prawna na etapie briefu kosztuje mniej niż zmiana gotowego spotu. Do tego umowy z twórcami i influencerami oraz zgody na wizerunek.</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">E-commerce, reklama i IP</a></div>
+</article><article class="pg red" data-i="8" style="z-index:5" aria-label="Czerwiec 2027">
+  <div class="pg-top"><span class="pg-m">czerwiec</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">30</div>
+  <div class="pg-wd">środa</div><span class="pg-tag">termin ustawowy</span>
+  <div class="pg-note"><h3>Zgromadzenie wspólników</h3><p>Zwyczajne zgromadzenie spółki z o.o. odbywa się w ciągu sześciu miesięcy od końca roku obrotowego. Zatwierdza sprawozdanie i decyduje o podziale zysku.</p><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Prawo spółek, KRS i CRBR</a></div>
+</article><article class="pg red" data-i="9" style="z-index:4" aria-label="Lipiec 2027">
+  <div class="pg-top"><span class="pg-m">lipiec</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">15</div>
+  <div class="pg-wd">czwartek</div><span class="pg-tag">termin ustawowy</span>
+  <div class="pg-note"><h3>Sprawozdanie do KRS</h3><p>Zatwierdzone sprawozdanie trafia do Repozytorium Dokumentów Finansowych w ciągu 15 dni. Zgromadzenie 30 czerwca oznacza termin 15 lipca.</p><a href="https://legal-point.org/zmiana-w-krs/" target="_blank" rel="noopener">Zgłoszenia do KRS</a></div>
+</article><article class="pg" data-i="10" style="z-index:3" aria-label="Sierpień 2027">
+  <div class="pg-top"><span class="pg-m">sierpień</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">16</div>
+  <div class="pg-wd">poniedziałek</div><span class="pg-tag"></span>
+  <div class="pg-note"><h3>Finansowanie na drugie półrocze</h3><p>Kredyt obrotowy, zastaw na maszynach, poręczenie członka zarządu. Dokumenty finansowania i zgody organów spółki sprawdzam przed podpisem.</p><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Finansowanie i zabezpieczenia</a></div>
+</article><article class="pg red" data-i="11" style="z-index:2" aria-label="Wrzesień 2027">
+  <div class="pg-top"><span class="pg-m">wrzesień</span><span class="pg-y num">2027</span></div>
+  <div class="pg-day" aria-hidden="true">8</div>
+  <div class="pg-wd">środa</div><span class="pg-tag">termin ustawowy</span>
+  <div class="pg-note"><h3>Zmiana w zarządzie</h3><p>Wniosek o wpis do KRS składa się w 7 dni od zdarzenia. Zmiana z 1 września to wniosek do 8 września, a gdy zmieniają się dane w CRBR, zgłoszenie w 14 dni roboczych.</p><a href="https://legal-point.org/zmiana-w-krs/" target="_blank" rel="noopener">Zmiana w KRS</a></div>
+</article><article class="pg-end" aria-label="Bieżąca obsługa przez cały rok">
+  <h2>Dwanaście kartek, jeden prawnik.</h2>
+  <p>Przy stałej współpracy znam firmę, kontrahentów i terminy, więc kolejna sprawa nie zaczyna się od zera.</p>
+  <div class="who"><img src="portrait.webp" alt="" width="64" height="64"><span><b>Beata Rogowska-Prus</b><small>adwokat, bieżąca obsługa prawna firm</small></span></div>
+  <a class="btn btn-red" href="#wspolpraca">Jak wygląda stała współpraca</a>
+</article></div>
+          </div>
+          <ol class="cal-months" aria-label="Przejdź do miesiąca"><li><button type="button" data-go="0" class="" aria-label="październik 2026">paź</button></li><li><button type="button" data-go="1" class="" aria-label="listopad 2026">lis</button></li><li><button type="button" data-go="2" class="" aria-label="grudzień 2026">gru</button></li><li><button type="button" data-go="3" class="" aria-label="styczeń 2027">sty</button></li><li><button type="button" data-go="4" class="" aria-label="luty 2027">lut</button></li><li><button type="button" data-go="5" class="red" aria-label="marzec 2027">mar</button></li><li><button type="button" data-go="6" class="" aria-label="kwiecień 2027">kwi</button></li><li><button type="button" data-go="7" class="" aria-label="maj 2027">maj</button></li><li><button type="button" data-go="8" class="red" aria-label="czerwiec 2027">cze</button></li><li><button type="button" data-go="9" class="red" aria-label="lipiec 2027">lip</button></li><li><button type="button" data-go="10" class="" aria-label="sierpień 2027">sie</button></li><li><button type="button" data-go="11" class="red" aria-label="wrzesień 2027">wrz</button></li></ol>
+          <p class="cal-legal"><i></i>termin wynikający z ustawy, podany w uproszczeniu. Szczegóły zależą od sytuacji spółki.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="sec dark" id="zakres">
+  <div class="wrap">
+    <div class="head head-1 reveal">
+      <h2>Osiem obszarów, jedna kancelaria</h2>
+      <p>To, co pojawia się na kartkach kalendarza, w całości. Każdy obszar ma na stronie osobną podstronę z typowymi sytuacjami i sposobem współpracy.</p>
+    </div>
+    <div class="reg"><div class="reg-row">
+  <span class="reg-n">§&nbsp;1</span>
+  <div><span class="reg-t">Bieżąca obsługa prawna firm</span><span class="reg-l">Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur. Jedna sprawa, projekt albo stała współpraca.</span></div>
+  <ul class="reg-tags"><li>doradztwo na co dzień</li><li>projekty i procedury</li><li>jedna sprawa albo stała współpraca</li></ul>
+  <a class="reg-a" href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Bieżąca obsługa prawna firm</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;2</span>
+  <div><span class="reg-t">Prawo spółek, KRS i CRBR</span><span class="reg-l">Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</span></div>
+  <ul class="reg-tags"><li>zarząd i wspólnicy</li><li>uchwały i zgromadzenia</li><li>KRS, RDF i CRBR</li></ul>
+  <a class="reg-a" href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo spółek, KRS i CRBR</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;3</span>
+  <div><span class="reg-t">Umowy B2B i negocjacje</span><span class="reg-l">Kontrakty handlowe, umowy z dostawcami i na marki własne. Od szybkiej weryfikacji po negocjacje, także po angielsku.</span></div>
+  <ul class="reg-tags"><li>tworzenie i analiza umów</li><li>redline i komentarze</li><li>negocjacje PL / EN</li></ul>
+  <a class="reg-a" href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Umowy B2B i negocjacje</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;4</span>
+  <div><span class="reg-t">Należności i spory gospodarcze</span><span class="reg-l">Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</span></div>
+  <ul class="reg-tags"><li>windykacja B2B</li><li>ugody i zabezpieczenia</li><li>spory sądowe</li></ul>
+  <a class="reg-a" href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Należności i spory gospodarcze</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;5</span>
+  <div><span class="reg-t">Prawo pracy dla pracodawców</span><span class="reg-l">Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</span></div>
+  <ul class="reg-tags"><li>umowy i regulaminy</li><li>sprawy pracownicze</li><li>procedury wewnętrzne</li></ul>
+  <a class="reg-a" href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo pracy dla pracodawców</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;6</span>
+  <div><span class="reg-t">Compliance, RODO i regulacje</span><span class="reg-l">Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</span></div>
+  <ul class="reg-tags"><li>RODO, AML i sygnaliści</li><li>monitoring prawny</li><li>PPWR, EUDR, CSRD i SUP</li></ul>
+  <a class="reg-a" href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Compliance, RODO i regulacje</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;7</span>
+  <div><span class="reg-t">E-commerce, reklama i IP</span><span class="reg-l">Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</span></div>
+  <ul class="reg-tags"><li>kampanie i promocje</li><li>umowy z twórcami</li><li>znaki towarowe i konsument</li></ul>
+  <a class="reg-a" href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – E-commerce, reklama i IP</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div><div class="reg-row">
+  <span class="reg-n">§&nbsp;8</span>
+  <div><span class="reg-t">Finansowanie i zabezpieczenia</span><span class="reg-l">Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</span></div>
+  <ul class="reg-tags"><li>pożyczki i finansowanie</li><li>hipoteki, zastawy, poręczenia</li><li>zgody korporacyjne</li></ul>
+  <a class="reg-a" href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Finansowanie i zabezpieczenia</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+</div></div>
+  </div>
+</section>
+
+<section class="sec" id="wspolpraca">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Jeden dzień, kilka tygodni albo cały rok</h2>
+      <p>Model współpracy dobieram do tego, jak często firma potrzebuje prawnika. Stała obsługa to jedna z możliwości, nie warunek.</p>
+    </div>
+    <div class="gantt reveal" role="img" aria-label="Porównanie długości trzech modeli współpracy na osi roku">
+      <div class="g-scale"><span></span><span>paź</span><span>lis</span><span>gru</span><span>sty</span><span>lut</span><span>mar</span><span>kwi</span><span>maj</span><span>cze</span><span>lip</span><span>sie</span><span>wrz</span></div>
+      <div class="g-row a"><h3>Konkretna usługa<small>Umowa, uchwała, zgłoszenie rejestrowe, wezwanie albo inny jasno określony rezultat.</small></h3><div class="g-bar">wezwanie</div></div>
+      <div class="g-row b"><h3>Projekt prawny<small>Negocjacje, transakcja, wdrożenie regulacji albo spór, który ma kilka etapów.</small></h3><div class="g-bar">negocjacje i transakcja</div></div>
+      <div class="g-row c"><h3>Bieżąca obsługa<small>Stała dostępność prawnika dla zarządu i zespołów, rozliczana według uzgodnionych zasad.</small></h3><div class="g-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+    <ol class="steps"><li><div class="n">Krok 1</div><h3>Konsultacja 30 minut</h3><p>Porządkujemy zagadnienie, pilność i oczekiwany rezultat. Nie musisz wiedzieć, jak nazwać problem prawny.</p></li><li><div class="n">Krok 2</div><h3>Zakres i wycena</h3><p>Przed rozpoczęciem pracy dostajesz na piśmie zakres, termin i wynagrodzenie. Wiesz, za jaki rezultat płacisz.</p></li><li><div class="n">Krok 3</div><h3>Realizacja</h3><p>Dokument, rekomendacja albo wsparcie projektu w uzgodnionej formie, z jasnym planem kolejnych kroków.</p></li></ol>
+  </div>
+</section>
+
+<section class="sec redbg" id="konsultacja">
+  <div class="wrap consult">
+    <div>
+      <h2 class="reveal">Pierwszy krok to 30 minut rozmowy</h2>
+      <div class="price"><strong class="num">200&nbsp;zł</strong><span class="vat">netto<br><small>246 zł brutto</small></span></div>
+      <p>Jedno zagadnienie, najważniejsze ryzyka i praktyczne dalsze kroki. Jeśli w ciągu 30 dni zlecisz związaną z nią usługę, 200&nbsp;zł netto odliczę od jej ceny.</p>
+      <a class="btn btn-white" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Wybierz termin w kalendarzu</a>
+    </div>
+    <div>
+      <h3 class="quick-h">Albo od razu jedna, konkretna sprawa</h3>
+      <ul class="quick">
+        <li><a href="https://legal-point.org/weryfikacja-umowy-b2b/" target="_blank" rel="noopener"><span><h3>Weryfikacja umowy B2B</h3><p>Umowa do 3 stron przed podpisaniem: najważniejsze ryzyka, błędy i decyzja, co dalej, napisane językiem biznesu.</p></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li><li><a href="https://legal-point.org/zmiana-w-krs/" target="_blank" rel="noopener"><span><h3>Zmiana w KRS</h3><p>Przygotowanie i złożenie zgłoszenia na podstawie dokumentów, które firma już ma.</p></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li><li><a href="https://legal-point.org/wezwanie-do-zaplaty-b2b/" target="_blank" rel="noopener"><span><h3>Wezwanie do zapłaty B2B</h3><p>Pierwszy, uporządkowany krok w odzyskaniu wymagalnej należności.</p></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="o-mnie">
+  <div class="wrap about">
+    <figure class="portrait">
+      <img src="portrait.webp" alt="Adwokat Beata Rogowska-Prus" width="716" height="900" loading="lazy">
+      <figcaption><b>Beata Rogowska-Prus</b><span>adwokat, SIE/Adw/286</span></figcaption>
+    </figure>
+    <div>
+      <h2 class="reveal">Po obu stronach biurka</h2>
+      <p>Jestem adwokatem od ponad piętnastu lat. Pracowałam w kancelariach i jako prawnik wewnętrzny w agencjach reklamowych, domach mediowych i firmach produkcyjnych, więc znam pracę prawnika z obu stron biurka.</p><p>Dzięki temu rekomendacja nie kończy się na przepisie. Uwzględnia sposób działania firmy, termin projektu i realne konsekwencje decyzji dla sprzedaży, zakupów, HR i marketingu.</p>
+      <p class="quote">Rekomendacja, którą można wdrożyć, wyjaśnić zespołowi i pogodzić z celem biznesowym.</p>
+      <p class="inds"><b>Branże:</b> produkcja, budownictwo, FMCG, reklama i media, digital i IT, e-commerce.</p>
+      <dl class="facts">
+        <div><dt>Wykształcenie</dt><dd>Prawo, Uniwersytet Warszawski</dd></div>
+        <div><dt>Specjalizacja</dt><dd>Podyplomowe prawo własności intelektualnej, UW</dd></div>
+        <div><dt>Wpis na listę adwokatów</dt><dd>Izba Adwokacka w Siedlcach, SIE/Adw/286</dd></div>
+        <div><dt>Certyfikaty</dt><dd>Inspektor ochrony danych, FCE Cambridge</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="faq">
+  <div class="wrap">
+    <div class="head head-1 reveal"><h2>Najczęstsze pytania</h2></div>
+    <div class="faq"><details><summary>Czy obsługujesz firmy z całej Polski?</summary><p>Tak. Konsultacje i większość projektów prowadzę online, więc siedziba firmy nie ma znaczenia. Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</p></details><details><summary>Czy mogę zlecić tylko jedną sprawę?</summary><p>Tak. Współpraca może dotyczyć pojedynczej umowy, zmiany w KRS, wezwania do zapłaty albo uchwały. Stała obsługa jest jedną z możliwości, nie warunkiem.</p></details><details><summary>Co obejmuje 30-minutowa konsultacja?</summary><p>Rozmowę o jednym, wcześniej wskazanym zagadnieniu, uporządkowanie najważniejszych ryzyk i rekomendację dalszych kroków. Pełna analiza dokumentów lub przygotowanie pisma to osobna usługa.</p></details><details><summary>Czy cena konsultacji pomniejszy koszt dalszej usługi?</summary><p>Tak. Jeżeli w ciągu 30 dni zlecisz usługę bezpośrednio związaną z konsultacją, a kancelaria przyjmie zlecenie, jej wynagrodzenie zostanie jednorazowo pomniejszone o 200 zł netto.</p></details><details><summary>Jak ustalana jest cena pozostałych usług?</summary><p>Po poznaniu celu, dokumentów i terminu potwierdzam zakres oraz wynagrodzenie przed rozpoczęciem pracy.</p></details></div>
+    <p class="faq-more">Nie ma tu Twojego pytania? Napisz: <a href="mailto:beata.rogowska-prus@adwokatura.pl">beata.rogowska-prus@adwokatura.pl</a></p>
+  </div>
+</section>
+
+<section class="sec" id="kontakt">
+  <div class="wrap contact">
+    <div>
+      <h2 class="reveal">Porozmawiajmy o Twojej firmie</h2>
+      <p class="intro">Zarezerwuj 30 minut w kalendarzu albo opisz sprawę w kilku zdaniach. Spotkanie stacjonarne w Mińsku Mazowieckim po wcześniejszym umówieniu.</p>
+      <ul class="clist">
+        <li><span>Telefon</span><a class="num" href="tel:+48662187462">+48 662 187 462</a></li>
+        <li><span>E-mail</span><a href="mailto:beata.rogowska-prus@adwokatura.pl">beata.rogowska-prus@adwokatura.pl</a></li>
+        <li><span>Współpraca</span><div>Bezpośrednio z adwokatem, po polsku i po angielsku</div></li>
+        <li><span>Kalendarz</span><a href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Konsultacja online, 30 min</a></li>
+        <li><span>Kancelaria</span><div>ul. Małopolska 55, 05-300 Mińsk Mazowiecki</div></li>
+      </ul>
+    </div>
+    <form class="form" id="form" novalidate>
+      <h3>Opisz sprawę</h3>
+      <p class="fh">Kilka zdań wystarczy. Szczegóły omówimy na konsultacji.</p>
+      <fieldset class="chips-f"><legend class="lbl">Czego dotyczy</legend>
+      <div class="chips"><button type="button" class="chip" aria-pressed="false">Umowa</button><button type="button" class="chip" aria-pressed="false">Spółka i KRS</button><button type="button" class="chip" aria-pressed="false">Należność</button><button type="button" class="chip" aria-pressed="false">Pracownicy</button><button type="button" class="chip" aria-pressed="false">RODO</button><button type="button" class="chip" aria-pressed="false">Reklama i znaki</button><button type="button" class="chip" aria-pressed="false">Inne</button></div></fieldset>
+      <div class="field"><label for="f1">Imię, nazwisko i firma</label><input id="f1" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f2">E-mail lub telefon</label><input id="f2" type="text" autocomplete="email"></div>
+      <div class="field"><label for="f3">Krótki opis sprawy</label><textarea id="f3" required></textarea></div>
+      <p class="rodo">Administratorem danych jest adw. Beata Rogowska-Prus, Kancelaria Adwokacka. Dane przetwarzam wyłącznie w celu odpowiedzi na zapytanie, szczegóły w <a href="https://legal-point.org/polityka-prywatnosci.html" target="_blank" rel="noopener">polityce prywatności</a>. Treść wiadomości objęta jest tajemnicą adwokacką.</p>
+      <button class="btn btn-ink" type="submit">Wyślij wiadomość</button>
+      <p class="formmsg" id="formmsg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><b>BRP Legal Point</b>Beata Rogowska-Prus, Kancelaria Adwokacka<br>ul. Małopolska 55, 05-300 Mińsk Mazowiecki<br>NIP 8222176436</div>
+    <div><a href="#zakres">Zakres</a><br><a href="#wspolpraca">Współpraca</a><br><a href="#o-mnie">O mnie</a><br><a href="#kontakt">Kontakt</a></div>
+    <div><a class="num" href="tel:+48662187462">+48 662 187 462</a><br><a href="mailto:beata.rogowska-prus@adwokatura.pl">beata.rogowska-prus@adwokatura.pl</a><br><a href="https://legal-point.org/regulamin-uslug.html" target="_blank" rel="noopener">Regulamin usług online</a><br><a href="https://legal-point.org/polityka-prywatnosci.html" target="_blank" rel="noopener">Polityka prywatności</a></div>
+    <p class="small">Makieta W4 „Kalendarz” przygotowana przez Odnova Studio, odnovastudio.com. Strona demonstracyjna, nie jest witryną kancelarii.</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a><a href="tel:+48662187462">Zadzwoń</a></div>
+
+<script>
+
+(function(){
+  var d=document, root=d.documentElement;
+  var top=d.querySelector('.top');
+  function m(){ if(top) root.style.setProperty('--hdr-h', top.offsetHeight+'px'); }
+  m(); addEventListener('resize',m); addEventListener('load',m);
+
+  // stan paska po przewinięciu
+  var sc=function(){ if(top) top.classList.toggle('is-scrolled', scrollY>40); };
+  sc(); addEventListener('scroll',sc,{passive:true});
+
+  // menu mobilne
+  var nt=d.getElementById('navtoggle'), dr=d.getElementById('drawer');
+  if(nt&&dr){
+    nt.addEventListener('click',function(){
+      var o=top.classList.toggle('menu-open'); nt.setAttribute('aria-expanded',o?'true':'false');
+    });
+    dr.addEventListener('click',function(ev){ if(ev.target.closest('a')){ top.classList.remove('menu-open'); nt.setAttribute('aria-expanded','false'); }});
+    d.addEventListener('keydown',function(ev){ if(ev.key==='Escape'){ top.classList.remove('menu-open'); nt.setAttribute('aria-expanded','false'); }});
+  }
+
+  // akordeony usług
+  d.querySelectorAll('[data-acc]').forEach(function(item){
+    var b=item.querySelector('button');
+    b.addEventListener('click',function(){
+      var open=item.classList.toggle('is-open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+
+  // chipsy w formularzu
+  d.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){ c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')==='true'?'false':'true'); });
+  });
+  var f=d.getElementById('form');
+  if(f) f.addEventListener('submit',function(ev){ ev.preventDefault();
+    var msg=d.getElementById('formmsg'); msg.textContent='To makieta: formularz niczego nie wysyła. Na stronie docelowej wiadomość trafi na adres kancelarii.'; });
+
+  // odsłanianie treści przy przewijaniu
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=[].slice.call(d.querySelectorAll('.reveal,.stagger'));
+  d.querySelectorAll('.stagger').forEach(function(s){ [].forEach.call(s.children,function(c,i){ c.style.setProperty('--i',i); }); });
+  function show(el){ el.classList.add('in'); }
+  if(reduce || !('IntersectionObserver' in window)){ els.forEach(show); return; }
+  var fired=false;
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){ if(x.isIntersecting){ fired=true; show(x.target); io.unobserve(x.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  els.forEach(function(el){ io.observe(el); });
+  function sweep(){ var vh=innerHeight; els.forEach(function(el){ if(!el.classList.contains('in') && el.getBoundingClientRect().top < vh*0.98) show(el); }); }
+  var t; addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sweep,140); },{passive:true});
+  setTimeout(function(){ if(!fired) els.forEach(show); },4000);
+})();
+
+(function(){
+  var d=document, root=d.documentElement;
+  var zone=d.getElementById('calzone'), pin=d.getElementById('calpin'), stage=d.getElementById('stage');
+  var pgs=[].slice.call(d.querySelectorAll('.pg')), btns=[].slice.call(d.querySelectorAll('.cal-months button'));
+  var endc=d.querySelector('.pg-end'); var N=pgs.length, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mob=matchMedia('(max-width:760px)');
+  function host(){ return mob.matches ? zone : stage; }
+  function hdr(){ return parseFloat(getComputedStyle(root).getPropertyValue('--hdr-h'))||100; }
+  function range(){
+    var h=host(), r=h.getBoundingClientRect();
+    var off = mob.matches ? hdr() : 0;
+    var travel=h.offsetHeight-pin.offsetHeight-(mob.matches?0:0);
+    return {top:r.top-off, travel:Math.max(1,travel)};
+  }
+  function ease(t){ return t*t*(3-2*t); }
+  var cur=-1;
+  function setActive(k){
+    if(k===cur) return; cur=k;
+    btns.forEach(function(b,i){ var on=i===Math.min(k,N-1); b.classList.toggle('on', on); if(on) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); });
+  }
+  function render(f){
+    var h=pgs[0].offsetHeight, w=pgs[0].offsetWidth;
+    pgs.forEach(function(p,i){
+      var t=Math.max(0,Math.min(1,f-i));
+      if(t<=0){ p.style.transform=''; p.style.opacity=''; p.style.visibility=''; p.style.boxShadow=''; return; }
+      if(t>=.8){ p.style.visibility='hidden'; return; }
+      p.style.visibility='';
+      var a=Math.min(1,t/.22), b=Math.max(0,(t-.22)/.58), be=b*b, rot, ty, tx, rx=a*6;
+      if(mob.matches){ rot=a*5-be*10; ty=be*h*.22; tx=be*w*1.2; } else { rot=a*7+be*26; ty=be*h*1.25; tx=be*w*.22; }
+      p.style.transform='translate3d('+tx+'px,'+ty+'px,0) rotateX('+rx+'deg) rotate('+rot+'deg)';
+      p.style.opacity=t<.62?1:Math.max(0,1-(t-.62)/.18);
+      p.style.boxShadow='0 '+(4+a*18)+'px '+(10+a*30)+'px rgba(0,0,0,'+(0.08+a*.12)+')';
+    });
+    var top=Math.min(Math.floor(f),N);
+    pgs.forEach(function(p,i){ p.inert = (i!==top); });
+    if(endc) endc.inert = f < N-0.25;
+    root.style.setProperty('--torn', Math.min(N,Math.floor(f+0.25)));
+    setActive(Math.floor(f+0.5>N?N:f+0.5));
+  }
+  if(reduce){
+    var idx=0;
+    function show(k){ idx=k; pgs.forEach(function(p,i){ p.style.visibility = i<k ? 'hidden':''; p.inert=(i!==k); }); setActive(k); }
+    btns.forEach(function(b,i){ b.addEventListener('click',function(){ show(i); }); });
+    show(0);
+  } else {
+    var ticking=false;
+    function onScroll(){
+      if(ticking) return; ticking=true;
+      requestAnimationFrame(function(){
+        ticking=false;
+        var r=range(); var p=Math.max(0,Math.min(1,-r.top/r.travel));
+        render(p*(N+1.1));
+      });
+    }
+    addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
+    btns.forEach(function(b,i){ b.addEventListener('click',function(){
+      var h=host(); var r=range(); var target=(i+0.02)/(N+1.1)*r.travel;
+      var y=scrollY + h.getBoundingClientRect().top - (mob.matches?hdr():0) + target;
+      scrollTo({top:y,behavior:'smooth'});
+    }); });
+  }
+  // dolny pasek na telefonie dopiero za otwarciem
+  var hero=d.getElementById('start');
+  function past(){ d.body.classList.toggle('past-hero', hero.getBoundingClientRect().bottom < innerHeight*0.5); }
+  past(); addEventListener('scroll',past,{passive:true});
+})();
+</script>
+</body>
+</html>
