@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0D1016">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2312382d'/%3E%3Ctext x='32' y='40' text-anchor='middle' fill='%23a8c7b8' font-family='Arial' font-size='18' font-weight='700'%3EBRP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Besley:wght@500;600&family=Onest:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Red+Hat+Text:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{--night:#0D1016;--night-2:#151a23;--paper:#F1F2F4;--white:#fff;--ink:#141821;--wine:#7B1E3A;--wine-d:#5E1229;--rose:#E9A0B6;
@@ -92,6 +92,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.015e
 }
 @media (prefers-reduced-motion:reduce){.js .stage{height:auto}.js .pin{position:relative}}
 
+:root{--serif:'Instrument Sans',Georgia,serif;--sans:'Red Hat Text',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:600}
+h1{letter-spacing:-.025em}
 .desk{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 55%,#1b2230 0%,#0d1016 60%)}
 .desk::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
 .docbox{position:absolute;right:clamp(20px,6vw,110px);top:calc(var(--hdr-h) + 30px);bottom:84px;width:min(46vw,620px);display:flex;align-items:center;justify-content:center}
@@ -122,6 +125,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.015e
 @media (max-width:760px){
   .docbox{left:0;right:0;width:auto;top:calc(var(--hdr-h) + 16px);bottom:118px}
   .note{font-size:15px;width:220px}
+  .v-rentgen .scrim{background:linear-gradient(180deg,rgba(13,16,22,.97) 0%,rgba(13,16,22,.93) 54%,rgba(13,16,22,0) 76%)}
   .note::before{display:none}
 }
 </style>
@@ -172,7 +176,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.015e
   window.__prog=function(p){ var g=d.getElementById('prog'); if(g) g.style.width=(p*100)+'%';
     var c=d.querySelector('.copy'); var h=d.querySelector('.hint');
     if(h) h.style.opacity = p>.02?0:1;
-    if(c && innerWidth<=760){ var o=1-Math.max(0,Math.min(1,(p-.03)/.08)); c.style.opacity=o; c.style.transform='translateY('+(-24*(1-o))+'px)'; c.style.pointerEvents=o<.5?'none':''; }
+    if(c && innerWidth<=760){ var o=1-Math.max(0,Math.min(1,(p-.03)/.08)); c.style.opacity=o; c.style.transform='translateY('+(-24*(1-o))+'px)'; c.style.pointerEvents=o<.5?'none':''; var sc=d.querySelector('.v-rentgen .scrim'); if(sc) sc.style.opacity=o; }
     else if(c){ c.style.opacity=''; c.style.transform=''; } };
 })();
 
