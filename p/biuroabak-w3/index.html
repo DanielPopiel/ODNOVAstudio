@@ -3,485 +3,339 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Biuro Rachunkowe ABAK — umów wizytę na Ursynowie lub w Grodzisku | makieta W3 „Wizyta”</title>
-<meta name="description" content="Biuro Rachunkowe ABAK: księgowość, kadry i płace. Centrala na Ursynowie, oddział w Grodzisku Mazowieckim. Od 1992 roku.">
+<title>Biuro Rachunkowe ABAK — księgowość dla firm z Ursynowa, Kabat i Grodziska | makieta W3 „Sąsiedzi”</title>
+<meta name="description" content="Księgowość, kadry i płace dla jednoosobowych firm, spółek i fundacji z Ursynowa, Kabat, Grodziska Mazowieckiego i okolic. Biuro Rachunkowe ABAK działa od 1992 roku.">
 <meta name="robots" content="noindex,nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E %3Crect width='64' height='64' rx='14' fill='%23172A38'/%3E%3Cpath d='M13 50 L32 15 L51 50' fill='none' stroke='%23fff' stroke-width='7'/%3E %3Cpath d='M22 44h20l3.6 6H18.4z' fill='%23E02E2E'/%3E%3C/svg%3E"><meta name="theme-color" content="#0E1A24">
-<meta property="og:type" content="website"><meta property="og:title" content="Biuro Rachunkowe ABAK — makieta W3 „Wizyta”">
-<meta property="og:description" content="Propozycja nowej strony Biura Rachunkowego ABAK: zaproszenie do biura na Ursynowie i w Grodzisku."><meta property="og:url" content="https://www.odnovastudio.com/p/biuroabak-w3/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E %3Crect width='64' height='64' rx='14' fill='%23172A38'/%3E%3Cpath d='M13 50 L32 15 L51 50' fill='none' stroke='%23fff' stroke-width='7'/%3E %3Cpath d='M22 44h20l3.6 6H18.4z' fill='%23E02E2E'/%3E%3C/svg%3E"><meta name="theme-color" content="#101B30">
+<meta property="og:type" content="website"><meta property="og:title" content="Biuro Rachunkowe ABAK — makieta W3 „Sąsiedzi”">
+<meta property="og:description" content="Propozycja nowej strony Biura Rachunkowego ABAK: księgowość dla firm z Ursynowa, Kabat i Grodziska."><meta property="og:url" content="https://www.odnovastudio.com/p/biuroabak-w3/">
 <meta property="og:image" content="https://www.odnovastudio.com/p/biuroabak-w3/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Golos+Text:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;600;700&family=Funnel+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --night:#0E1A24; --night2:#152634; --line-d:#2A3E4E; --on:#EEF1F2; --on2:#A8B7C2;
-  --sand:#F3EFE8; --white:#fff; --ink:#172A38; --ink2:#4E5B64; --line:#DCD6CB;
-  --amber:#F2B65C; --amber-d:#9A6512; --blue:#41AAE1; --red:#E02E2E;
-  --head:'Marcellus',Georgia,serif; --body:'Golos Text',system-ui,sans-serif;
+  --bg:#EEF3F7; --white:#fff; --ink:#14213A; --ink2:#4B5970; --line:#D3DCE6;
+  --blue:#41AAE1; --blue-d:#176A9E; --blue-l:#DCEEF8; --navy:#101B30; --navy2:#1A2943; --red:#E02E2E;
+  --head:'Funnel Display',system-ui,sans-serif; --body:'Funnel Sans',system-ui,sans-serif;
   --hdr-h:104px; --wrap:1200px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--night);color:var(--on);font:400 1.0625rem/1.62 var(--body);caret-color:var(--amber);accent-color:var(--amber-d)}
-::selection{background:var(--amber);color:var(--night)}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:3px}
+body{margin:0;background:var(--white);color:var(--ink);font:400 1.0625rem/1.6 var(--body);caret-color:var(--blue-d);accent-color:var(--blue-d)}
+::selection{background:var(--blue);color:var(--navy)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:var(--head);font-weight:400;line-height:1.08;letter-spacing:-.005em;margin:0}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.08;letter-spacing:-.018em;margin:0}
 .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 32px}
 section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
 .num{font-variant-numeric:lining-nums tabular-nums}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem/1 var(--body);text-decoration:none;border-radius:4px;padding:16px 26px;border:0;background:var(--amber);color:var(--night);cursor:pointer;transition:background .2s}
-.btn:hover{background:#F7C987}
-.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
-.btn.line:hover{background:rgba(255,255,255,.08)}
-.btn.ink{background:var(--ink);color:#fff}.btn.ink:hover{background:#24394A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem/1 var(--body);text-decoration:none;border-radius:10px;padding:15px 22px;border:0;background:var(--ink);color:#fff;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--blue-d)}
+.btn.bl{background:var(--blue);color:var(--navy)}.btn.bl:hover{background:#6CC0EC}
+.btn.ln{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}.btn.ln:hover{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px}
 
+/* nagłówek */
 .top{position:fixed;inset:0 0 auto 0;z-index:50}
-.mk{background:#060E15;color:#c7d2da;font:500 .78rem/1.35 var(--body);text-align:center;padding:7px 16px}
+.mk{background:var(--navy);color:#c9d6e6;font:500 .78rem/1.35 var(--body);text-align:center;padding:7px 16px}
 .mk b{color:#fff}
-.hdr{background:rgba(14,26,36,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-d)}
+@media (max-width:600px){.mk-x{display:none}}
+.hdr{background:rgba(255,255,255,.95);backdrop-filter:blur(12px) saturate(1.3);border-bottom:1px solid var(--line)}
 .hdr .wrap{display:flex;align-items:center;gap:30px;height:70px}
-.brand{display:block;width:120px;color:#fff;flex:none}
+.brand{display:block;width:132px;color:var(--ink);flex:none}
 .brand svg{display:block;width:100%;height:auto}
-.nav{display:flex;gap:28px;margin-left:auto}
-.nav a{text-decoration:none;color:var(--on);padding:6px 0;border-bottom:1px solid transparent}
-.nav a:hover{border-color:var(--amber)}
-.hdr .btn{padding:12px 18px;font-size:.95rem}
+.nav{display:flex;gap:26px;margin-left:auto;font-weight:500;font-size:.98rem}
+.nav a{text-decoration:none;padding:6px 0;background:linear-gradient(var(--blue),var(--blue)) 0 100%/0 2px no-repeat;transition:background-size .25s}
+.nav a:hover{background-size:100% 2px}
+.htel{font:600 1rem var(--head);text-decoration:none;white-space:nowrap}
+.htel small{display:block;font:500 .72rem var(--body);color:var(--ink2)}
+.hdr .btn{padding:11px 16px;font-size:.93rem}
 .mnav{display:none;margin-left:auto;position:relative}
-.mnav summary{list-style:none;cursor:pointer;font-weight:600;padding:10px 18px;border-radius:4px;box-shadow:inset 0 0 0 1px #5A7080;min-height:44px;display:flex;align-items:center}
+.mnav summary{list-style:none;cursor:pointer;font-weight:600;padding:10px 18px;border-radius:10px;box-shadow:inset 0 0 0 1.5px var(--ink);min-height:44px;display:flex;align-items:center}
 .mnav summary::-webkit-details-marker{display:none}
-.mnav nav{position:absolute;right:0;top:54px;background:var(--night2);border:1px solid var(--line-d);border-radius:8px;padding:8px;min-width:250px;display:grid}
-.mnav nav a{padding:12px 14px;text-decoration:none;border-radius:6px}
-.mnav nav a:hover{background:#203749}
+.mnav nav{position:absolute;right:0;top:54px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;min-width:250px;display:grid;box-shadow:0 20px 40px -20px rgba(16,27,48,.35)}
+.mnav nav a{padding:12px 14px;text-decoration:none;border-radius:8px;font-weight:500}
+.mnav nav a:hover{background:var(--bg)}
 
-/* hero */
-.hero{padding-top:var(--hdr-h);background:var(--night)}
-.stage{position:relative}
-.js .stage{height:460vh}
-.pin{position:relative;height:calc(100vh - var(--hdr-h));min-height:560px;overflow:hidden;--out:0}
-.js .pin{position:sticky;top:var(--hdr-h)}
-.still,#cv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#cv{opacity:0;transition:opacity .6s}
-.seq-on #cv{opacity:1}.seq-on .still{visibility:hidden}
-.scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,26,36,.92) 0%,rgba(14,26,36,.6) 34%,rgba(14,26,36,0) 62%),linear-gradient(90deg,rgba(14,26,36,.7) 0%,rgba(14,26,36,.35) 40%,rgba(14,26,36,0) 62%),linear-gradient(180deg,rgba(14,26,36,.45),rgba(14,26,36,0) 22%);pointer-events:none;opacity:calc(.45 + .55*var(--pa,1))}
-.hpanel{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:64px}
-.hpanel .in{max-width:760px}
-.hero h1{font-size:clamp(2.6rem,5vw,4.9rem);color:#fff;text-shadow:0 2px 24px rgba(8,16,24,.55)}
-.lead{font-size:1.18rem;color:#d9e1e6;margin:18px 0 30px;max-width:46ch}
-.ctas{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
-.ctas .tel{color:#fff;text-decoration:none;font:600 1.2rem var(--body)}
-.ctas .tel small{display:block;font:500 .82rem var(--body);color:var(--on2)}
-.scns{position:absolute;left:0;right:0;bottom:30px;z-index:2;pointer-events:none;opacity:calc(1 - var(--out))}
-.scn{position:absolute;left:auto;right:32px;bottom:0;transform:translateY(8px);margin:0;font:400 1.2rem var(--head);color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.6);opacity:0;transition:opacity .5s,transform .5s;white-space:nowrap}
-.scn.on{opacity:1;transform:none}
-.scn b{font:600 .8rem var(--body);color:var(--amber);letter-spacing:.02em;margin-right:10px;vertical-align:middle}
-.hend{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-end;opacity:0;pointer-events:none;padding-bottom:70px;background:linear-gradient(90deg,rgba(14,26,36,.85) 0%,rgba(14,26,36,.6) 42%,rgba(14,26,36,0) 70%),linear-gradient(0deg,rgba(14,26,36,.7),rgba(14,26,36,0) 40%)}
-.hend h2{font-size:clamp(2.4rem,4.6vw,4.4rem);color:#fff;max-width:14ch;text-shadow:0 2px 24px rgba(8,16,24,.55)}
-.hend p{text-shadow:0 1px 12px rgba(8,16,24,.6);color:#e6ecef;font-size:1.15rem;margin:14px 0 26px;max-width:44ch}
-.hprog{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.12);z-index:3}
-.hprog i{position:absolute;inset:0;background:var(--amber);transform-origin:left;transform:scaleX(var(--hp,0))}
-html:not(.js) .hend,.seq-off .hend,html:not(.js) .scns,.seq-off .scns,html:not(.js) .hprog,.seq-off .hprog{display:none}
-.seq-off .stage{height:auto}
+/* HERO: mapa okolicy */
+.hero{padding:calc(var(--hdr-h) + 64px) 0 80px;background:var(--bg);overflow:clip}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:44px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,3.3vw,3.05rem);max-width:16ch}
+.hero h1 span{color:var(--blue-d)}
+.lead{font-size:1.15rem;line-height:1.55;color:var(--ink2);max-width:44ch;margin:22px 0 30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink2)}
+.facts b{display:block;font:600 1.15rem var(--head);color:var(--ink)}
+.map{position:relative;margin:0;background:#fff;border-radius:20px;padding:18px 18px 14px}
+.map svg{width:100%;height:auto;display:block;overflow:visible}
+.map .river{fill:none;stroke:#BFE0F3;stroke-width:14;stroke-linecap:round}
+.map .road{fill:none;stroke:#D3DEE9;stroke-width:6;stroke-linecap:round}
+.map .route{fill:none;stroke:var(--blue-d);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:1 1}
+.js .map .route{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s .5s cubic-bezier(.4,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.map .reach{fill:rgba(65,170,225,.09);stroke:rgba(23,106,158,.25);stroke-width:1;stroke-dasharray:4 4}
+.map .town circle{fill:#fff;stroke:var(--ink2);stroke-width:2.4}
+.map .rail{fill:none;stroke:#9FB4CA;stroke-width:3}
+.map .rail-t{font:600 18px var(--body);fill:#7D93AC}
+.map text{paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+.map .town text{font:500 24px var(--body);fill:var(--ink2)}
+.map .ofc circle.o{fill:var(--blue-d)}
+.map .ofc circle.h{fill:none;stroke:var(--blue);stroke-width:2;opacity:.6}
+.js .map .ofc circle.h{animation:ring 2.8s 2.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ring{from{transform:scale(.6);opacity:.8}to{transform:scale(2.4);opacity:0}}
+.map .ofc text{font:600 30px var(--head);fill:var(--ink)}
+.map .ofc text.s{font:500 21px var(--body);fill:var(--ink2)}
+.map figcaption{font-size:.88rem;color:var(--ink2);margin-top:8px;display:flex;gap:16px;flex-wrap:wrap}
+.map figcaption i{display:inline-block;width:22px;height:0;border-top:2.6px solid var(--blue-d);vertical-align:middle;margin-right:6px}
+.map figcaption i.r{width:14px;height:14px;border:1px dashed rgba(23,106,158,.5);background:rgba(65,170,225,.12);border-radius:50%}
 
-.sec{padding:clamp(88px,10vw,140px) 0}
-.light{background:var(--sand);color:var(--ink)}
-.h2{font-size:clamp(2.6rem,5vw,4.6rem)}
-.intro{font-size:1.15rem;color:var(--on2);max-width:46ch;margin:22px 0 0}
-.light .intro{color:var(--ink2)}
+/* sekcje */
+.sh{margin-bottom:44px;max-width:760px}
+.sh h2{font-size:clamp(1.9rem,3vw,2.7rem)}
+.sh p{font-size:1.1rem;color:var(--ink2);margin:14px 0 0;max-width:56ch}
 
-/* PIERWSZA WIZYTA: sticky kadr + kroki */
-.fv{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:72px;align-items:start;margin-top:64px}
-.fv .ph{position:sticky;top:calc(var(--hdr-h) + 32px);aspect-ratio:4/5;max-height:calc(100vh - var(--hdr-h) - 64px);width:100%;border-radius:6px;overflow:hidden;background:#1c2a35}
-.fv .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:var(--ox,50%) var(--oy,50%);transform:scale(var(--z,1.02));transition:transform 1.2s cubic-bezier(.2,.7,.2,1),transform-origin 1.2s cubic-bezier(.2,.7,.2,1),opacity .9s}
-.fv .ph img+img{opacity:0}
-.fv .ph.alt img+img{opacity:1}
-.fv .ph::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(rgba(14,26,36,0),rgba(14,26,36,.9))}
-.fv .cap{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;color:#fff;font:400 1.35rem/1.25 var(--head);text-shadow:0 2px 14px rgba(0,0,0,.5)}
-.fv .cap small{display:block;font:500 .82rem var(--body);color:var(--amber);margin-bottom:6px}
-.steps{list-style:none;margin:0;padding:0}
-.steps>li{min-height:62vh;padding:6vh 0;border-top:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
-.steps>li:first-child{border-top:0;padding-top:0;min-height:56vh}
-.steps .k{font:600 .9rem var(--body);color:var(--amber-d)}
-.steps h3{font-size:clamp(2rem,3.4vw,3rem);color:var(--ink);margin:10px 0 16px}
-.steps p{margin:0;color:var(--ink2);font-size:1.08rem;max-width:44ch}
-.steps>li h3{transition:color .4s}
-.steps>li:not(.on) h3{color:var(--ink2)}
-.steps{counter-reset:s}
-.steps .k{font:400 3.4rem/1 var(--head);color:var(--amber-d)}
-.ck{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:8px}
-.ck label{display:flex;gap:14px;align-items:center;cursor:pointer;background:#fff;border-radius:8px;padding:14px 16px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s,background .2s}
-.ck input{appearance:none;-webkit-appearance:none;width:24px;height:24px;flex:none;border-radius:6px;border:1.5px solid #9AA0A4;margin:0;display:grid;place-items:center;background:#fff;transition:all .2s}
-.ck input::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) scale(0);margin-top:-3px;transition:transform .2s}
-.ck input:checked{background:var(--ink);border-color:var(--ink)}
-.ck input:checked::after{transform:rotate(45deg) scale(1)}
-.ck label:has(input:checked){background:#FBF8F2}
-.ck label:has(input:checked) span{text-decoration:line-through;text-decoration-color:rgba(23,42,56,.35);color:var(--ink2)}
-.ck span small{display:block;font-size:.85rem;color:var(--ink2);text-decoration:none}
-.ckc{margin:14px 0 0;font-size:.95rem;color:var(--ink2)}
-.ckc b{color:var(--ink)}
-.px{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--line)}
-.px li{display:flex;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.px .n{color:var(--ink)}
-.px .d{flex:1;border-bottom:1px dotted #B9B2A5;transform:translateY(-5px)}
-.px .p{font:400 1.6rem var(--head);color:var(--ink);white-space:nowrap}
-.px .p small{font:400 .85rem var(--body);color:var(--ink2)}
+/* KIM JESTEŚ */
+.who{padding:110px 0}
+.pick{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;align-items:start}
+.types{display:grid;gap:8px}
+.types button{all:unset;cursor:pointer;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;transition:border-color .2s,background .2s,box-shadow .2s}
+.types button:hover{border-color:#9FB4CA}
+.types button[aria-selected="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:#FBFDFE}
+.types button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.types .ic{width:44px;height:44px;border-radius:10px;border:1.5px solid var(--ink);display:grid;place-items:center;color:var(--ink);font:600 .78rem/1 var(--head);letter-spacing:-.01em;text-align:center}
+.types button[aria-selected="true"] .ic{background:var(--ink);color:#fff}
+.types b{display:block;font:600 1.05rem/1.2 var(--head)}
+.types small{display:block;font-size:.88rem;color:var(--ink2);margin-top:2px}
+.types .p{font:600 .95rem var(--head);color:var(--blue-d);white-space:nowrap}
+.card{position:sticky;top:calc(var(--hdr-h) + 24px);background:var(--navy);color:#fff;border-radius:18px;padding:36px 36px 32px;min-height:440px;display:flex;flex-direction:column}
+.card[hidden]{display:none}
+.card .k{font:500 .9rem var(--body);color:#9DB4CF}
+.card h3{font-size:1.9rem;margin:8px 0 14px}
+.card p{margin:0;color:#C9D6E6;font-size:1.04rem}
+.card ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+.card li{padding-left:28px;position:relative}
+.card li::before{content:"";position:absolute;left:2px;top:.5em;width:12px;height:7px;border-left:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(-45deg)}
+.card .pr{margin-top:auto;padding-top:24px;border-top:1px solid #2C3D5C;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.card .pr b{font:600 2.2rem/1 var(--head)}
+.card .pr span{display:block;font-size:.88rem;color:#9DB4CF;margin-top:6px}
+.card .btn{margin-top:22px;align-self:flex-start}
 
-/* REZERWACJA */
-.bk>*{min-width:0}
-.bk{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;margin-top:56px}
+/* LUDZIE */
+.team{padding:110px 0;background:var(--bg)}
+.ppl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pp{background:#fff;border-radius:16px;padding:26px 24px 24px;display:flex;flex-direction:column}
+.av{width:64px;height:64px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);display:grid;place-items:center;font:600 1.3rem var(--head);margin-bottom:18px}
+.pp:nth-child(-n+2) .av{background:var(--ink);color:#fff}
+.pp h3{font-size:1.25rem}
+.pp .r{font-size:.9rem;color:var(--ink2);margin-top:2px}
+.pp q{display:block;margin-top:16px;font-size:.98rem;line-height:1.5;color:var(--ink);quotes:"„" "”"}
+.note{font-size:.88rem;color:var(--ink2);margin-top:18px}
+
+/* CZWARTKI */
+.thu{background:var(--blue-d);color:#fff;padding:64px 0}
+.thu .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:36px;align-items:center}
+.thu .cal{width:96px;border-radius:14px;overflow:hidden;background:#fff;color:var(--ink);text-align:center;box-shadow:0 16px 30px -18px rgba(0,0,0,.5)}
+.thu .cal span{display:block;background:var(--red);color:#fff;font:600 .8rem var(--body);padding:6px 0}
+.thu .cal b{display:block;font:600 2.6rem/1 var(--head);padding:12px 0 4px}
+.thu .cal small{display:block;font-size:.75rem;color:var(--ink2);padding-bottom:10px}
+.thu h2{font-size:clamp(1.6rem,2.6vw,2.2rem)}
+.thu p{margin:8px 0 0;color:#DCEAF5;max-width:52ch}
+.thu .btn{background:#fff;color:var(--ink)}.thu .btn:hover{background:var(--blue-l)}
+
+/* ZAUFANIE */
+.trust{padding:110px 0}
+.docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.doc{border-radius:16px;padding:28px;border:1px solid var(--line);background:#fff}
+.doc .k{font-size:.88rem;color:var(--ink2)}
+.doc .big{font:600 2.2rem/1.1 var(--head);margin:10px 0 10px;color:var(--ink)}
+.doc p{margin:0;color:var(--ink2);font-size:.98rem}
+
+/* AKTUALNOŚCI */
+.news{padding:0 0 110px}
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.nl li{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,.9fr);gap:28px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.nl time{font-size:.92rem;color:var(--ink2)}
+.nl h3{font-size:1.25rem;line-height:1.25}
+.nl h3 a{text-decoration:none}
+.nl h3 a:hover{color:var(--blue-d)}
+.nl p{margin:0;color:var(--ink2);font-size:.98rem}
+.nl .tg{display:inline-block;font:600 .76rem var(--body);background:var(--blue-l);color:var(--blue-d);border-radius:6px;padding:3px 8px;margin-bottom:8px}
+
+/* KONTAKT */
+.ct{background:var(--navy);color:#fff;padding:110px 0}
+.ct .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:56px;align-items:start}
+.ct h2{font-size:clamp(1.9rem,3vw,2.7rem);margin-bottom:30px}
 .ofc{display:grid;gap:14px}
-.ofc label{position:relative;display:block;cursor:pointer;border-radius:10px;padding:24px 24px 22px 62px;background:var(--night2);box-shadow:inset 0 0 0 1px var(--line-d);transition:box-shadow .2s,background .2s}
-.ofc input{position:absolute;left:24px;top:28px;width:22px;height:22px;accent-color:var(--amber)}
-.ofc label:has(input:checked){box-shadow:inset 0 0 0 2px var(--amber);background:#1A3042}
-.ofc b{display:block;font:400 1.6rem var(--head);color:#fff}
-.ofc span{display:block;color:var(--on2);font-size:.98rem}
-.ofc a{font-weight:600;color:#fff;text-decoration:none}
-.live{display:inline-flex!important;align-items:center;gap:8px;margin-top:12px;font:500 .9rem var(--body)!important;color:#CFE8D6!important}
-.live i{width:9px;height:9px;border-radius:50%;background:#5BD17E}
-.live.cl{color:var(--on2)!important}.live.cl i{background:#7C8C98}
-.tk{background:var(--sand);color:var(--ink);border-radius:12px;padding:34px;position:relative;
-  -webkit-mask:radial-gradient(circle 13px at 0 118px,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 13px at 100% 118px,#0000 98%,#000) right/51% 100% no-repeat;
-          mask:radial-gradient(circle 13px at 0 118px,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 13px at 100% 118px,#0000 98%,#000) right/51% 100% no-repeat}
-.tk .th{display:flex;justify-content:space-between;align-items:end;padding-bottom:26px;border-bottom:2px dashed #CFC6B6;margin-bottom:6px;height:92px}
-.tk h3{font-size:2rem}
-.tk .th span{font-size:.9rem;color:var(--ink2);text-align:right}
-.tk .lbl{font-weight:600;font-size:.95rem;margin:22px 0 10px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{font:500 .95rem var(--body);border:0;border-radius:6px;padding:11px 14px;min-height:44px;background:#fff;color:var(--ink);cursor:pointer;box-shadow:inset 0 0 0 1px var(--line)}
-.chips button:hover{box-shadow:inset 0 0 0 1px var(--ink)}
-.chips button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:none}
-.chips button small{display:block;font-size:.8rem;color:var(--ink2)}
-.chips button[aria-pressed="true"] small{color:#D8E1E7}
-.tk .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-.tk label.lbl{display:block;margin-top:0}
-.tk input{width:100%;font:400 1rem var(--body);border:1.5px solid #8A8F93;border-radius:6px;padding:13px 14px;min-height:48px;background:#fff;color:var(--ink)}
-.tk .bring{margin:20px 0 0;padding:12px 0;border-top:1px dashed #CFC6B6;border-bottom:1px dashed #CFC6B6;font-size:.95rem;color:var(--ink)}
-.tk .bring a{color:var(--ink2);margin-left:6px;font-size:.88rem}
-.tk .sum{margin:20px 0 0;color:var(--ink2);font-size:.98rem}
-.tk .sum.ok{padding:14px 16px;border-radius:8px;background:#FFF1D6;color:#5B3D0A}
-.tk .sum.err{padding:14px 16px;border-radius:8px;background:#FBE9E7;color:#8A2416}
-.tk .btn{margin-top:18px;width:100%}
-.tk .priv{font-size:.85rem;color:var(--ink2);margin:10px 0 0}
+.ofc>div{border:1px solid #2C3D5C;border-radius:14px;padding:22px 24px}
+.ofc h3{font-size:1.2rem}
+.ofc .r{font-size:.85rem;color:#9DB4CF}
+.ofc .tel{display:block;font:600 1.8rem/1 var(--head);text-decoration:none;margin:14px 0 10px;color:var(--blue)}
+.ofc p{margin:0;color:#C9D6E6;font-size:.95rem}
+.ofc p a{color:#fff}
+.hrs{margin-top:18px;color:#C9D6E6;font-size:.95rem}
+.f{background:#fff;color:var(--ink);border-radius:16px;padding:30px;display:grid;gap:8px}
+.f h3{font-size:1.45rem}
+.f .sub{margin:0 0 10px;color:var(--ink2)}
+.f label{font-weight:600;font-size:.93rem;margin-top:6px}
+.f input,.f select,.f textarea{font:400 1rem var(--body);padding:13px 14px;border:1.5px solid #C2CDD9;border-radius:10px;background:#fff;color:var(--ink);width:100%}
+.f textarea{min-height:96px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px rgba(65,170,225,.35)}
+.f .priv{font-size:.85rem;color:var(--ink2);margin:8px 0}
 
-/* SPRAWY: zakładki sytuacji */
-.sw{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;margin-top:56px;align-items:start}
-.tabs{display:grid;border-top:1px solid var(--line)}
-.tabs button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);font:400 clamp(1.4rem,2.2vw,1.9rem)/1.2 var(--head);color:var(--ink2);transition:color .25s,padding .3s}
-.tabs button::after{content:"";width:12px;height:12px;border-right:2px solid currentColor;border-top:2px solid currentColor;transform:rotate(45deg);opacity:0;transition:opacity .25s,transform .3s}
-.tabs button:hover{color:var(--ink)}
-.tabs button[aria-selected="true"]{color:var(--ink);padding-left:14px}
-.tabs button[aria-selected="true"]::after{opacity:1}
-.tabs button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-.pn{background:#fff;border-radius:12px;padding:40px;box-shadow:0 30px 60px -40px rgba(14,26,36,.35);position:sticky;top:calc(var(--hdr-h) + 30px)}
-.pn[hidden]{display:none}
-.pn h3{font-size:clamp(1.9rem,3vw,2.6rem);color:var(--ink)}
-.pn p{color:var(--ink2);font-size:1.08rem;margin:16px 0 0}
-.pn ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-.pn li{padding-left:28px;position:relative;color:var(--ink)}
-.pn li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;height:7px;border-left:2px solid var(--amber-d);border-bottom:2px solid var(--amber-d);transform:rotate(-45deg)}
-.pn .cost{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
-.pn .cost b{font:400 2rem var(--head);color:var(--ink)}
-.pn .cost span{color:var(--ink2);font-size:.95rem}
-.pn .btn{margin-top:22px}
-
-/* OPINIA na kadrze */
-.qv{position:relative;overflow:hidden;padding:clamp(110px,14vw,190px) 0}
-.qv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.42)}
-.qv::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,26,36,.9),rgba(14,26,36,.5) 60%,rgba(14,26,36,.3))}
-.qv .wrap{position:relative}
-.qv blockquote{margin:0;font:400 clamp(2rem,4vw,3.6rem)/1.18 var(--head);color:#fff;max-width:24ch}
-.qv blockquote::before{content:"„";color:var(--amber)}
-.qv blockquote::after{content:"”";color:var(--amber)}
-.qv .who{margin-top:30px;color:var(--on2);font-size:1.05rem}
-.qv .who b{color:#fff;font-weight:600}
-.qv .q2{margin-top:56px;max-width:60ch;border-left:1px solid var(--amber);padding-left:22px;color:#D9E1E6;font-size:1.08rem}
-.qv .q2 small{display:block;color:var(--on2);margin-top:8px;font-size:.92rem}
-
-/* FAQ + tablica */
-.nf{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:72px;align-items:start}
-.acc{margin-top:36px}
-.acc details{border-top:1px solid var(--line)}
-.acc details:last-child{border-bottom:1px solid var(--line)}
-.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:22px 0;font:400 1.4rem/1.25 var(--head);color:var(--ink)}
-.acc summary::-webkit-details-marker{display:none}
-.acc summary i{flex:none;width:12px;height:12px;border-right:2px solid var(--amber-d);border-bottom:2px solid var(--amber-d);transform:rotate(45deg);transition:transform .3s;margin-right:6px}
-.acc details[open] summary i{transform:rotate(-135deg)}
-.acc .bd{padding:0 0 22px;color:var(--ink2)}
-.acc .bd p{margin:0}
-.board{background:var(--night);color:var(--on);border-radius:12px;padding:34px 34px 20px;margin-top:36px}
-.board h3{font-size:1.7rem;color:#fff;display:flex;justify-content:space-between;align-items:baseline}
-.board h3 small{font:500 .85rem var(--body);color:var(--on2)}
-.board ul{list-style:none;margin:18px 0 0;padding:0}
-.board li{padding:18px 0;border-top:1px solid var(--line-d);position:relative}
-.board time{font-size:.85rem;color:var(--amber)}
-.board h4{margin:4px 0 0;font:400 1.3rem/1.25 var(--head);color:#fff}
-.board a{text-decoration:none}.board a::after{content:"";position:absolute;inset:0}
-.board li:hover h4{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
-
-/* do zobaczenia */
-.bye{background:var(--night);padding:110px 0 120px;border-top:1px solid var(--line-d)}
-.bye .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:56px;align-items:end}
-.bye h2{font-size:clamp(2.6rem,5vw,4.6rem);color:#fff}
-.bye .t{text-decoration:none;color:#fff}
-.bye .t small{display:block;color:var(--on2);font-size:.92rem;margin-bottom:6px}
-.bye .t b{font:600 2.2rem var(--body);letter-spacing:-.01em;color:var(--amber)}
-.bye .t:hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
-
-.plq{display:flex;justify-content:center;margin-bottom:48px}
-.plq div{border:1px solid #6E5A3A;outline:4px solid #060E15;box-shadow:0 0 0 5px #3B3020;background:linear-gradient(135deg,#2A2418,#1A160F);border-radius:4px;padding:22px 40px;text-align:center;color:#E9D9B8;font-size:.95rem;line-height:1.6}
-.plq b{display:block;font:400 1.7rem var(--head);color:#F3E6C8;margin-bottom:4px;letter-spacing:.04em}
-footer{background:#060E15;color:var(--on2);padding:64px 0 64px;font-size:.95rem}
-footer .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px}
-footer .brand{width:150px}
-footer nav{display:flex;flex-wrap:wrap;gap:10px 26px}
-footer a{color:#fff;text-decoration:none}
+footer{background:var(--navy);color:#A9B8CE;padding:0 0 110px;font-size:.93rem}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px;border-top:1px solid #2C3D5C;padding-top:48px}
+footer .brand{color:#fff;width:140px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a{color:#E3EAF3;text-decoration:none}
 footer a:hover{text-decoration:underline}
-footer p{margin:6px 0}
-.f{display:none}
+footer p{margin:6px 0 0}
 
-.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}
+.mbar{position:fixed;left:10px;right:10px;bottom:10px;z-index:40;display:none;gap:8px;transform:translateY(140%);transition:transform .35s}
+.mbar a{flex:1;padding:15px 8px;font-size:.95rem}
+body.past-hero .mbar{transform:none}
+.no-js .mbar{transform:none}
+
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
 .js .reveal.in{opacity:1;transform:none}
-.mbar{display:none}
+
 @media (max-width:1080px){
-  .nav{display:none}.mnav{display:block}
-  .bk,.nf{grid-template-columns:1fr;gap:40px}
-  .sw{grid-template-columns:1fr;gap:28px}
-  .pn{position:relative;top:0}
-  .bye .wrap{grid-template-columns:1fr;gap:28px}
-}
-@media (max-width:900px){
-  .fv{grid-template-columns:1fr;gap:0}
-  .fv .ph{position:sticky;top:var(--hdr-h);aspect-ratio:auto;height:28vh;height:28svh;max-height:none;border-radius:0;margin:0 -20px;width:auto;z-index:2}
-  .steps>li{min-height:0;padding:44px 0}
-  .steps>li:first-child{padding-top:36px}
+  .nav,.htel{display:none}.mnav{display:block}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .pick{grid-template-columns:1fr}
+  .card{position:relative;top:0;min-height:0}
+  .ppl{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
   :root{--hdr-h:96px}
-  body{font-size:1rem}
   .wrap{padding:0 20px}
-  .mk-x{display:none}
-  .hdr .wrap{height:62px;gap:12px}
-  .brand{width:96px}
-  .js .stage{height:360vh}
-  .hpanel{padding-bottom:30px}
-  .hero h1{font-size:clamp(2.1rem,9vw,2.7rem)}
-  .lead{font-size:1rem;margin:10px 0 18px}
-  .scns{bottom:auto;top:14px}
-  .scn{font-size:.95rem;white-space:normal;width:86%;text-align:center;left:7%;right:auto}
-  .ctas .btn{flex-basis:100%}
-  .ctas .tel{flex:1}
-  .hend{padding-bottom:40px}
-  .tk{padding:24px 20px;-webkit-mask:none;mask:none}
-  .tk .th{height:auto}
-  .tk .two{grid-template-columns:1fr}
-  #days{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 4px}
-  #days button{flex:0 0 30%;scroll-snap-align:start}
-  #hours{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-  #hours button{padding:11px 4px}
-  .pn{padding:28px 22px}
-  .tabs{display:flex;overflow-x:auto;gap:8px;border:0;margin:0 -20px;padding:0 20px 6px;scroll-snap-type:x mandatory}
-  .tabs button{flex:none;white-space:nowrap;font-size:1.08rem;padding:12px 16px;border:1px solid var(--line);border-radius:999px;scroll-snap-align:start}
-  .tabs button::after{display:none}
-  .tabs button[aria-selected="true"]{background:var(--ink);color:#fff;padding-left:16px;border-color:var(--ink)}
+  .hero{padding:calc(var(--hdr-h) + 32px) 0 56px}
+  .lead{font-size:1.04rem}
+  .who,.team,.trust,.ct{padding:76px 0}.news{padding:0 0 76px}
+  .ppl,.docs{grid-template-columns:1fr}
+  .thu .wrap{grid-template-columns:auto minmax(0,1fr);gap:20px}.thu .btn{grid-column:1/-1;justify-self:start}
+  .nl li{grid-template-columns:1fr;gap:6px}
+  .ct .grid{grid-template-columns:1fr;gap:40px}
+  .card{padding:26px 22px}
+  .types button{grid-template-columns:40px minmax(0,1fr);}
+  .types .p{grid-column:2}
+  .map{padding:8px}.map .town text{font-size:40px}.map .ofc text{font-size:46px}.map .ofc text.s{font-size:0}.map .town.mx,.map .rail-t{display:none}
   footer .wrap{grid-template-columns:1fr}
-  footer{padding-bottom:100px}
-  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(6,14,21,.97);border-top:1px solid var(--line-d);transform:translateY(110%);transition:transform .35s}
-  .past-hero .mbar,html:not(.js) .mbar{transform:none}
-  .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;border-radius:6px;background:var(--amber);color:var(--night);text-decoration:none;font:600 .95rem/1.15 var(--body)}
-  .mbar a small{font-weight:500;font-size:.74rem}
-  .mbar a+a{background:#fff}
+  .mbar{display:flex}
+  .hdr .btn{display:none}
+  body.past-hero{padding-bottom:80px}
 }
-@media (max-width:420px){.hdr .btn{display:none}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .stage{height:auto}.js .reveal{opacity:1;transform:none;transition:none}.steps>li{opacity:1}.fv .ph img{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .js .map .route{stroke-dashoffset:0}
+}
 </style>
 </head>
 <body>
+<a class="sr" href="#main">Przejdź do treści</a>
 <div class="top" id="top">
-  <div class="mk">Makieta <b>W3 „Wizyta”</b> dla Biura Rachunkowego ABAK<span class="mk-x"> · Odnova Studio · wnętrza są poglądowe (wygenerowane)</span></div>
+  <div class="mk">Makieta <b>W3 „Sąsiedzi”</b><span class="mk-x"> dla Biura Rachunkowego ABAK</span> · Odnova Studio</div>
   <header class="hdr"><div class="wrap">
     <a class="brand" href="#" aria-label="ABAK Biuro Rachunkowe — strona główna"><svg class="logo" viewBox="14 14 612 176" role="img" aria-label="ABAK Biuro Rachunkowe"><path fill="currentColor" fill-rule="evenodd" d="M87.33,187.01C84.67,186.71 82.64,186.09 81.11,185.11C79.84,184.30 79.61,184.05 78.65,182.50C77.84,181.18 77.83,181.08 77.67,171.00C77.58,165.41 77.63,160.65 77.79,160.42C78.11,159.96 80.59,159.85 81.23,160.26C81.52,160.45 81.66,163.16 81.73,170.19C81.85,181.21 81.84,181.16 84.60,182.42C86.04,183.07 86.74,183.13 93.17,183.13C99.64,183.14 100.28,183.08 101.67,182.42C103.40,181.60 104.80,180.24 105.31,178.89C105.53,178.32 105.67,174.56 105.67,169.15L105.67,160.35L106.45,160.15C106.88,160.04 107.82,160.00 108.53,160.06L109.83,160.17L109.83,173.50L109.83,186.83L108.00,186.83L106.17,186.83L106.07,184.75C105.96,182.43 105.54,182.11 104.54,183.60C103.82,184.68 102.41,185.65 100.42,186.43C98.73,187.10 91.15,187.43 87.33,187.01ZM158.33,187.02C154.44,186.44 151.94,184.61 150.69,181.40C150.08,179.84 150.00,178.92 150.00,173.33C150.00,167.20 150.03,166.96 150.88,165.16C151.94,162.92 153.80,161.32 156.33,160.47C157.93,159.93 159.28,159.85 167.00,159.85C174.72,159.85 176.07,159.93 177.67,160.47C180.25,161.34 182.20,163.03 183.25,165.29C184.08,167.10 184.11,167.38 184.10,173.50C184.10,179.57 184.06,179.91 183.25,181.67C182.18,183.98 180.67,185.42 178.33,186.36C176.64,187.05 175.88,187.11 168.33,187.19C163.84,187.24 159.34,187.16 158.33,187.02ZM272.00,187.02C269.35,186.69 267.73,186.01 266.38,184.66C264.72,183.00 263.96,179.28 264.68,176.29C265.82,171.50 268.70,170.37 279.83,170.36C287.36,170.36 290.08,170.85 292.06,172.58C293.14,173.51 293.44,172.77 293.21,169.77C292.97,166.63 292.53,165.72 290.72,164.59C289.54,163.86 289.25,163.83 281.17,163.83C271.58,163.83 271.25,163.92 270.75,166.45L270.48,167.83L268.52,167.93C266.31,168.05 265.93,167.76 266.24,166.18C266.79,163.39 268.43,161.48 271.16,160.47C272.60,159.93 273.87,159.85 280.99,159.84C288.29,159.83 289.36,159.90 291.00,160.49C293.63,161.43 295.25,162.79 296.20,164.87C297.01,166.64 297.01,166.67 296.92,176.74L296.83,186.83L295.08,186.93C293.31,187.04 293.20,186.95 293.29,185.67C293.31,185.39 293.18,184.94 292.99,184.67C292.70,184.24 292.57,184.27 292.05,184.88C291.72,185.27 290.79,185.93 289.98,186.35C288.59,187.06 288.05,187.12 281.33,187.20C277.39,187.24 273.19,187.16 272.00,187.02ZM312.83,187.03C310.17,186.69 307.27,185.27 306.07,183.73C304.22,181.35 304.00,180.24 304.03,173.58C304.06,165.82 304.48,164.45 307.50,162.11C310.06,160.12 311.61,159.85 320.17,159.85C326.89,159.86 328.06,159.94 329.67,160.50C333.24,161.76 334.78,163.52 335.18,166.79C335.45,168.98 335.22,169.32 333.46,169.33C332.21,169.33 331.90,168.99 331.35,166.96C330.72,164.60 329.74,164.05 325.43,163.64C321.38,163.26 319.56,163.27 314.91,163.72C311.13,164.08 309.81,164.70 308.73,166.62C308.06,167.81 308.00,168.38 308.01,173.21C308.02,179.29 308.37,180.57 310.52,182.21L311.78,183.17L320.14,183.17C328.25,183.17 328.53,183.14 329.54,182.43C330.94,181.42 331.77,180.10 331.98,178.50L332.17,177.17L334.00,177.17L335.83,177.17L335.74,178.67C335.51,182.47 333.63,185.25 330.46,186.45C329.11,186.96 327.65,187.09 321.83,187.18C317.98,187.24 313.93,187.17 312.83,187.03ZM392.17,187.01C388.92,186.70 386.64,185.86 384.89,184.31C382.41,182.13 382.24,181.30 382.08,170.72C382.00,165.70 382.03,161.24 382.14,160.80C382.32,160.09 382.53,160.00 383.99,160.00C384.89,160.00 385.71,160.14 385.82,160.30C385.92,160.47 386.04,164.71 386.08,169.72C386.18,180.45 386.29,180.89 389.17,182.33C390.79,183.14 391.02,183.17 397.83,183.15C404.36,183.14 404.93,183.09 406.33,182.40C407.98,181.59 408.51,181.20 409.50,180.04C410.12,179.31 410.18,178.65 410.33,169.72L410.50,160.17L412.13,160.06C413.03,160.01 413.89,160.09 414.06,160.26C414.45,160.65 414.45,186.35 414.06,186.74C413.89,186.91 413.10,187.00 412.30,186.94L410.83,186.83L410.73,184.92C410.62,182.66 410.26,182.52 408.75,184.12C406.15,186.88 400.72,187.83 392.17,187.01ZM504.33,186.99C501.76,186.64 500.16,185.86 498.56,184.19C496.41,181.97 496.00,180.24 496.00,173.50C496.00,169.07 496.12,167.51 496.58,166.07C497.39,163.55 499.24,161.70 502.00,160.65C504.11,159.86 504.41,159.83 513.17,159.83C521.81,159.83 522.25,159.86 524.23,160.62C526.65,161.54 528.36,163.07 529.41,165.26C530.12,166.74 530.17,167.25 530.15,173.50C530.13,179.73 530.08,180.27 529.37,181.79C527.88,184.95 525.54,186.47 521.33,187.02C518.70,187.36 506.87,187.34 504.33,186.99ZM597.87,186.98C596.61,186.83 595.42,186.55 595.22,186.36C595.03,186.16 594.60,186.00 594.27,186.00C593.95,186.00 592.89,185.21 591.92,184.24C589.48,181.79 589.00,180.03 589.00,173.60C589.00,169.62 589.13,168.33 589.69,166.50C590.59,163.59 592.32,161.80 595.34,160.66C597.42,159.87 597.81,159.84 605.67,159.85C613.50,159.85 613.92,159.88 616.00,160.66C618.77,161.70 620.62,163.54 621.40,166.03C622.14,168.38 622.47,173.39 621.93,173.94C621.64,174.23 617.91,174.33 607.47,174.33C591.85,174.33 593.00,174.15 593.00,176.61C592.99,179.91 594.98,182.52 598.06,183.28C600.18,183.80 611.64,183.76 613.94,183.22C615.88,182.77 617.88,181.15 618.06,179.89C618.16,179.24 618.37,179.17 620.17,179.17L622.17,179.17L622.07,180.67C621.84,183.98 618.62,186.48 613.88,187.03C610.94,187.37 600.97,187.34 597.87,186.98ZM16.33,186.69C16.33,186.49 16.32,178.08 16.32,168.00C16.32,157.92 16.33,149.52 16.33,149.33C16.33,149.12 22.16,149.00 33.13,149.00C48.92,149.00 50.06,149.04 52.05,149.66C54.12,150.30 55.54,151.30 56.47,152.77C57.28,154.03 57.72,158.08 57.32,160.58C56.85,163.56 56.06,164.75 53.99,165.64C52.09,166.46 52.09,166.84 53.97,167.16C55.72,167.46 57.77,169.25 58.27,170.93C58.49,171.65 58.67,174.05 58.67,176.25C58.67,183.01 57.50,184.86 52.34,186.26C50.85,186.67 47.27,186.79 33.42,186.90C21.47,187.00 16.33,186.94 16.33,186.69ZM65.75,186.79C65.43,186.65 65.33,183.67 65.33,173.51C65.33,158.96 65.16,159.99 67.61,160.01C68.28,160.01 69.02,160.13 69.25,160.28C69.58,160.49 69.66,163.39 69.59,173.69L69.50,186.83L67.83,186.90C66.92,186.93 65.98,186.88 65.75,186.79ZM118.16,186.60C118.07,186.36 118.03,180.39 118.08,173.33L118.17,160.50L119.83,160.50C121.50,160.50 121.50,160.50 121.61,161.67C121.77,163.40 122.15,163.54 123.40,162.29C125.31,160.39 127.31,159.90 133.12,159.92C137.50,159.93 138.41,160.03 140.00,160.66C143.73,162.13 144.98,164.20 144.99,168.92L145.00,172.00L143.22,172.00L141.43,172.00L141.23,169.33C141.00,166.35 140.52,165.44 138.69,164.45C137.72,163.92 136.78,163.83 132.19,163.84C126.48,163.85 125.64,164.04 123.72,165.79C122.22,167.16 122.17,167.46 122.00,177.33L121.83,186.83L120.08,186.93C118.87,187.00 118.27,186.90 118.16,186.60ZM216.16,186.60C216.07,186.36 216.03,177.84 216.08,167.67L216.17,149.17L233.33,149.17C249.07,149.17 250.66,149.22 252.43,149.78C254.70,150.50 256.45,152.07 257.03,153.91C257.61,155.78 257.81,162.81 257.34,164.92C256.91,166.85 255.76,168.22 253.70,169.26C252.48,169.88 252.30,170.35 253.14,170.75C253.43,170.89 253.92,171.12 254.23,171.28C254.55,171.43 255.26,172.12 255.82,172.81L256.83,174.06L257.00,180.23C257.12,184.70 257.06,186.48 256.78,186.71C256.56,186.89 255.59,186.99 254.61,186.94L252.83,186.83L252.67,181.14C252.51,175.80 252.45,175.37 251.69,174.27C250.17,172.05 249.61,171.98 234.33,172.08L220.83,172.17L220.67,179.50L220.50,186.83L218.41,186.93C216.93,187.00 216.28,186.91 216.16,186.60ZM342.49,186.60C342.40,186.36 342.37,177.84 342.41,167.67L342.50,149.17L344.33,149.17L346.17,149.17L346.26,156.58C346.31,160.66 346.48,164.00 346.64,164.00C346.80,164.00 347.66,163.40 348.55,162.66C351.20,160.46 353.39,159.96 360.38,159.95C366.81,159.94 369.08,160.35 371.33,161.95C374.47,164.16 374.70,165.25 374.59,177.24L374.50,186.83L372.67,186.83L370.83,186.83L370.66,177.33C370.55,171.46 370.34,167.52 370.11,167.00C369.60,165.85 368.76,165.16 367.00,164.44C365.71,163.92 364.56,163.84 358.83,163.85C352.84,163.87 352.02,163.94 350.67,164.56C349.00,165.32 347.45,166.73 346.89,168.00C346.66,168.51 346.45,172.37 346.34,177.83L346.17,186.83L344.41,186.93C343.20,187.00 342.61,186.90 342.49,186.60ZM422.75,186.78C422.16,186.54 422.14,160.99 422.73,160.40C423.15,159.98 425.24,159.86 426.14,160.20C426.53,160.35 426.67,160.87 426.67,162.20C426.67,163.19 426.79,164.00 426.93,164.00C427.08,164.00 427.83,163.41 428.60,162.70C430.93,160.52 433.47,159.93 440.52,159.94C445.57,159.94 446.64,160.04 448.72,160.68C451.74,161.62 453.64,163.40 454.26,165.87C454.58,167.17 454.95,184.02 454.71,186.60C454.68,186.91 454.14,187.01 452.75,186.93L450.83,186.83L450.74,177.50C450.64,166.25 450.66,166.33 447.50,164.58C446.24,163.88 445.78,163.84 439.17,163.86C432.66,163.87 432.06,163.92 430.61,164.61C428.87,165.43 427.28,166.94 426.95,168.08C426.83,168.50 426.72,172.83 426.70,177.71C426.67,185.49 426.60,186.62 426.14,186.80C425.52,187.03 423.35,187.02 422.75,186.78ZM463.33,186.68C463.33,186.49 463.32,178.08 463.32,168.00C463.32,157.92 463.33,149.51 463.33,149.32C463.33,149.10 464.07,149.01 465.25,149.07L467.17,149.17L467.24,159.16C467.29,164.66 467.40,169.35 467.48,169.58C467.57,169.81 468.19,170.00 468.86,170.00C469.87,170.00 471.34,169.16 477.58,165.00L485.08,160.00L487.68,160.00C489.12,160.00 490.38,160.14 490.48,160.30C490.58,160.47 489.97,161.03 489.13,161.55C488.28,162.07 487.34,162.65 487.04,162.84C483.39,165.08 474.17,171.48 474.17,171.77C474.17,172.23 483.53,179.24 491.81,184.98C492.99,185.80 493.88,186.59 493.79,186.73C493.70,186.88 492.43,187.00 490.97,187.00C488.31,187.00 488.30,186.99 486.15,185.42C484.97,184.55 482.41,182.71 480.46,181.33C478.52,179.96 475.42,177.75 473.59,176.42C470.65,174.29 470.07,174.00 468.79,174.00C467.86,174.00 467.33,174.15 467.31,174.42C467.30,174.65 467.27,177.53 467.23,180.83L467.17,186.83L465.25,186.93C464.07,186.99 463.33,186.90 463.33,186.68ZM545.00,186.16C544.82,185.69 544.27,184.44 543.79,183.40C543.31,182.35 542.71,181.05 542.47,180.50C542.23,179.95 541.58,178.49 541.02,177.25C540.46,176.01 540.00,174.92 540.00,174.83C540.00,174.74 539.54,173.66 538.97,172.42C537.69,169.62 537.22,168.57 536.38,166.67C536.02,165.84 535.26,164.14 534.70,162.88C534.13,161.62 533.76,160.46 533.86,160.30C533.96,160.13 534.86,160.00 535.85,160.00C537.72,160.00 539.00,160.73 539.00,161.81C539.00,162.07 539.21,162.70 539.47,163.22C539.96,164.20 540.78,166.03 541.57,167.91C541.81,168.50 542.26,169.55 542.57,170.25C543.19,171.67 543.91,173.36 544.54,174.83C547.87,182.72 548.52,183.68 549.05,181.48C549.17,180.94 549.82,179.00 550.49,177.17C551.16,175.33 551.84,173.38 552.00,172.83C552.36,171.58 553.26,169.05 553.65,168.17C553.81,167.80 554.02,167.20 554.12,166.83C554.57,165.12 556.25,160.62 556.55,160.31C556.75,160.12 558.13,160.01 559.81,160.07L562.73,160.17L563.21,161.50C564.85,166.06 565.74,168.62 566.00,169.50C566.29,170.50 568.08,175.52 569.14,178.33C569.46,179.16 569.84,180.33 569.99,180.94C570.15,181.55 570.36,182.13 570.46,182.23C570.77,182.55 571.67,182.04 571.88,181.42C571.99,181.10 572.52,179.86 573.06,178.67C573.61,177.47 574.25,176.05 574.49,175.50C575.56,173.09 576.35,171.33 577.46,168.93C578.11,167.52 579.02,165.47 579.49,164.37C581.21,160.26 581.29,160.18 583.61,160.07C586.11,159.95 586.12,159.99 584.37,163.54C583.66,164.99 582.63,167.14 582.08,168.33C581.53,169.53 580.55,171.62 579.90,173.00C578.78,175.39 578.19,176.67 575.29,183.00C574.58,184.56 573.87,186.06 573.71,186.33C573.51,186.70 572.71,186.86 570.80,186.93C568.44,187.02 568.11,186.96 567.58,186.31C567.26,185.92 567.00,185.31 567.00,184.96C567.00,184.61 566.85,184.06 566.67,183.75C566.32,183.13 565.48,180.85 565.00,179.17C564.84,178.62 564.17,176.67 563.51,174.83C562.84,173.00 561.76,169.89 561.09,167.92C560.42,165.95 559.70,164.33 559.50,164.33C559.30,164.33 558.81,165.27 558.41,166.42C556.66,171.46 555.65,174.29 554.99,176.00C554.60,177.01 554.15,178.28 553.99,178.83C553.84,179.38 553.46,180.51 553.14,181.33C552.83,182.16 552.26,183.73 551.87,184.83L551.17,186.83L548.25,186.93C545.37,187.02 545.32,187.01 545.00,186.16ZM177.45,182.23C179.69,180.52 180.00,179.44 180.00,173.23L180.00,167.77L179.05,166.45C177.46,164.26 176.83,164.02 171.66,163.60C168.17,163.31 165.82,163.31 162.32,163.60C157.08,164.02 156.30,164.35 154.81,166.70C154.04,167.93 154.00,168.24 154.00,173.34C154.00,179.35 154.33,180.53 156.41,182.12C157.85,183.21 158.44,183.27 168.03,183.21L176.22,183.17L177.45,182.23ZM289.47,183.12C290.51,182.98 291.36,182.60 292.02,181.99C292.91,181.15 293.00,180.87 293.00,178.85C293.00,174.32 292.19,174.00 280.81,174.00C273.66,174.00 272.13,174.09 271.23,174.54C269.44,175.44 269.02,176.24 269.01,178.73C269.00,181.35 269.74,182.54 271.67,182.99C273.07,183.32 287.26,183.42 289.47,183.12ZM523.40,182.38C524.07,181.96 524.97,181.07 525.38,180.40C526.10,179.24 526.14,178.81 526.14,173.50C526.14,168.19 526.10,167.76 525.38,166.60C524.10,164.52 522.84,164.02 517.77,163.59C511.34,163.04 504.46,163.61 502.59,164.85C500.43,166.27 500.02,167.65 500.01,173.39C500.00,178.99 500.46,180.66 502.37,182.02C503.96,183.16 505.28,183.29 514.17,183.21C521.83,183.14 522.22,183.10 523.40,182.38ZM50.92,182.30C53.15,181.61 53.98,180.51 54.22,177.94C54.51,174.83 54.11,172.16 53.19,171.10C51.70,169.36 50.69,169.25 35.52,169.09C22.41,168.95 21.51,168.98 21.10,169.54C20.54,170.29 20.48,181.37 21.03,182.39C21.38,183.05 21.59,183.06 35.44,182.90C45.82,182.79 49.87,182.63 50.92,182.30ZM617.93,169.28C618.07,167.62 617.30,165.93 615.91,164.87C614.87,164.08 614.29,163.95 610.24,163.60C606.80,163.31 604.68,163.31 601.33,163.60C597.45,163.95 596.79,164.10 595.58,164.91C594.52,165.63 594.06,166.25 593.55,167.69C592.40,170.89 591.56,170.69 605.57,170.59L617.83,170.50L617.93,169.28ZM249.00,167.27C251.89,166.60 252.99,164.63 253.00,160.13C253.00,157.38 252.56,155.85 251.44,154.63C249.96,153.04 249.18,152.96 234.50,153.07L220.83,153.17L220.74,159.99C220.69,163.74 220.73,167.01 220.82,167.24C221.04,167.83 246.46,167.86 249.00,167.27ZM49.60,164.49C50.80,164.13 51.57,163.65 52.16,162.88C52.91,161.89 53.00,161.46 53.00,158.87C53.00,155.52 52.60,154.66 50.62,153.64C49.41,153.02 48.67,153.00 35.09,153.08L20.83,153.17L20.74,158.33C20.69,161.17 20.73,163.84 20.83,164.25L21.01,165.00L34.45,165.00C45.54,165.00 48.18,164.91 49.60,164.49ZM65.88,153.57C65.41,153.23 65.32,152.75 65.40,151.16L65.50,149.17L67.50,149.17L69.50,149.17L69.60,151.30C69.67,152.79 69.57,153.52 69.27,153.71C68.60,154.14 66.53,154.05 65.88,153.57ZM16.84,134.67C16.59,134.28 20.72,126.67 23.34,122.67C23.52,122.39 23.77,121.94 23.90,121.67C24.16,121.11 28.81,113.12 29.34,112.33C29.52,112.06 29.77,111.61 29.90,111.33C30.14,110.78 33.80,104.47 34.34,103.67C34.52,103.39 34.77,102.94 34.90,102.67C35.16,102.11 39.81,94.12 40.34,93.33C40.52,93.06 40.77,92.61 40.90,92.33C41.03,92.06 42.20,90.03 43.50,87.83C44.80,85.62 45.98,83.60 46.11,83.33C46.23,83.05 46.64,82.38 47.00,81.83C47.36,81.28 47.80,80.52 47.97,80.13C48.14,79.75 48.86,78.48 49.58,77.30C50.29,76.13 50.98,74.94 51.11,74.67C51.24,74.39 51.64,73.72 52.00,73.17C52.36,72.62 52.77,71.94 52.90,71.67C53.17,71.09 57.84,63.08 58.34,62.33C58.52,62.06 58.77,61.61 58.90,61.33C59.02,61.06 59.96,59.41 60.99,57.67C62.02,55.92 62.97,54.27 63.10,54.00C63.23,53.72 63.64,53.05 64.00,52.50C64.36,51.95 64.76,51.27 64.89,51.00C65.15,50.43 68.83,44.10 69.34,43.33C69.52,43.06 69.77,42.61 69.90,42.33C70.16,41.77 74.81,33.78 75.34,33.00C75.52,32.73 75.77,32.27 75.90,32.00C76.02,31.72 76.96,30.07 77.99,28.33C79.02,26.59 79.97,24.94 80.10,24.67C80.23,24.39 80.64,23.72 81.00,23.17C81.36,22.62 81.76,21.94 81.89,21.67C82.02,21.39 82.42,20.75 82.79,20.25L83.46,19.33L92.37,19.33C97.27,19.33 101.51,19.42 101.80,19.53C102.09,19.64 103.11,21.11 104.08,22.78C105.04,24.46 106.01,26.13 106.24,26.50C106.46,26.87 106.75,27.38 106.88,27.65C107.18,28.24 112.88,37.97 113.34,38.67C113.52,38.94 113.77,39.39 113.90,39.66C114.03,39.93 115.20,41.95 116.50,44.16C117.80,46.36 118.98,48.39 119.10,48.67C119.23,48.94 119.64,49.62 120.00,50.17C120.36,50.72 120.77,51.39 120.89,51.66C121.02,51.93 122.20,53.95 123.50,56.16C124.80,58.36 125.98,60.39 126.10,60.67C126.23,60.94 126.64,61.62 127.00,62.17C127.36,62.72 127.77,63.39 127.89,63.66C128.17,64.23 132.84,72.25 133.34,73.00C133.52,73.27 133.77,73.72 133.90,73.99C134.03,74.26 135.20,76.29 136.50,78.49C137.80,80.70 138.98,82.73 139.10,83.00C139.23,83.27 139.64,83.95 140.00,84.50C140.36,85.05 140.77,85.72 140.89,85.99C141.02,86.26 142.23,88.34 143.57,90.60C144.91,92.87 145.92,94.86 145.82,95.03C145.71,95.20 142.48,95.33 138.54,95.33C130.55,95.33 130.94,95.45 129.34,92.50C128.95,91.77 128.33,90.72 127.98,90.17C127.63,89.62 127.24,88.95 127.11,88.69C126.99,88.43 124.69,84.53 122.01,80.03C119.33,75.52 117.03,71.61 116.90,71.33C116.77,71.06 116.36,70.38 116.00,69.83C115.64,69.28 115.24,68.62 115.11,68.36C114.99,68.10 112.69,64.20 110.01,59.69C107.32,55.19 105.02,51.27 104.89,51.00C104.76,50.73 104.36,50.05 104.00,49.50C103.64,48.95 103.19,48.20 103.00,47.83C102.81,47.47 102.35,46.66 101.98,46.03C101.60,45.41 99.55,41.96 97.42,38.37C93.63,31.97 93.12,31.25 92.55,31.43C92.30,31.51 90.88,33.79 90.01,35.50C89.82,35.87 89.52,36.39 89.34,36.67C88.81,37.48 85.15,43.79 84.90,44.33C84.77,44.61 84.36,45.28 84.00,45.83C83.64,46.38 83.23,47.06 83.10,47.33C82.97,47.61 82.03,49.26 81.00,51.00C79.97,52.74 79.03,54.39 78.90,54.67C78.77,54.94 78.36,55.62 78.00,56.17C77.64,56.72 77.23,57.39 77.10,57.67C76.83,58.25 72.16,66.26 71.66,67.00C71.48,67.27 71.23,67.73 71.10,68.00C70.84,68.56 66.19,76.55 65.66,77.33C65.48,77.61 65.23,78.06 65.10,78.33C64.84,78.89 60.19,86.88 59.66,87.67C59.48,87.94 59.23,88.39 59.10,88.67C58.84,89.23 54.19,97.22 53.66,98.00C53.48,98.27 53.23,98.73 53.10,99.00C52.97,99.27 52.03,100.92 51.00,102.67C49.97,104.41 49.03,106.06 48.90,106.33C48.77,106.61 48.36,107.28 48.00,107.83C47.64,108.38 47.24,109.06 47.11,109.33C46.98,109.61 46.04,111.26 45.01,113.00C43.98,114.74 43.03,116.39 42.90,116.67C42.77,116.94 42.36,117.62 42.00,118.17C41.64,118.72 41.24,119.39 41.11,119.67C40.98,119.94 40.04,121.59 39.01,123.33C37.98,125.08 37.02,126.73 36.89,127.00C36.75,127.28 36.46,127.81 36.24,128.18C36.01,128.55 35.09,130.16 34.17,131.74C33.17,133.49 32.25,134.70 31.84,134.81C30.61,135.14 17.05,135.02 16.84,134.67ZM180.16,134.61C180.07,134.36 180.03,108.37 180.08,76.83L180.17,19.50L223.33,19.41C275.08,19.31 281.53,19.53 289.67,21.74C298.41,24.11 303.63,29.44 305.38,37.79C306.27,42.07 306.27,54.68 305.38,58.34C303.73,65.05 300.78,68.24 293.24,71.46C292.54,71.76 291.75,72.00 291.47,72.00C290.69,72.00 288.96,72.99 289.16,73.32C289.26,73.48 290.35,73.72 291.59,73.85C292.82,73.97 294.43,74.28 295.17,74.53C295.90,74.79 296.68,74.99 296.91,75.00C297.13,75.00 298.48,75.54 299.90,76.21C305.08,78.64 308.08,82.82 309.38,89.46C309.98,92.51 310.03,93.83 309.89,103.33C309.73,113.96 309.58,115.44 308.24,119.33C306.50,124.38 302.61,128.35 297.33,130.47C296.51,130.80 295.34,131.28 294.74,131.53C294.14,131.79 293.38,132.00 293.05,132.00C292.72,132.00 291.79,132.21 290.98,132.46C289.18,133.03 283.33,133.86 277.50,134.39C270.75,134.99 180.39,135.20 180.16,134.61ZM321.79,134.51C321.69,134.24 321.92,133.58 322.30,133.04C322.69,132.50 323.00,131.99 323.00,131.89C323.00,131.80 323.87,130.25 324.93,128.44C326.00,126.64 326.97,124.94 327.10,124.67C327.23,124.39 327.64,123.72 328.00,123.17C328.36,122.62 328.77,121.94 328.90,121.67C329.03,121.39 329.97,119.74 331.00,118.00C332.03,116.26 332.97,114.61 333.10,114.33C333.23,114.06 333.64,113.38 334.00,112.83C334.36,112.28 334.76,111.61 334.89,111.33C335.15,110.77 338.83,104.43 339.34,103.67C339.52,103.39 339.77,102.94 339.90,102.67C340.03,102.39 341.20,100.36 342.50,98.16C343.80,95.95 344.98,93.93 345.11,93.66C345.23,93.39 345.64,92.72 346.00,92.17C346.36,91.62 346.76,90.94 346.89,90.67C347.15,90.10 350.83,83.77 351.34,83.00C351.52,82.73 351.77,82.27 351.90,82.00C352.02,81.73 352.96,80.07 353.99,78.33C355.02,76.59 355.97,74.94 356.10,74.67C356.23,74.39 356.64,73.72 357.00,73.17C357.36,72.62 357.76,71.94 357.89,71.67C358.02,71.39 358.96,69.74 359.99,68.00C361.02,66.26 361.97,64.61 362.10,64.33C362.23,64.06 362.64,63.38 363.00,62.83C363.36,62.28 363.76,61.61 363.89,61.33C364.15,60.77 367.83,54.43 368.34,53.67C368.52,53.39 368.77,52.94 368.90,52.67C369.16,52.11 373.81,44.12 374.34,43.33C374.52,43.06 374.77,42.61 374.90,42.33C375.03,42.06 375.97,40.41 377.00,38.67C378.03,36.93 378.97,35.27 379.10,35.00C379.23,34.73 379.64,34.05 380.00,33.50C380.36,32.95 380.76,32.27 380.89,32.00C381.15,31.43 384.83,25.10 385.34,24.33C385.52,24.06 385.77,23.61 385.89,23.33C386.01,23.06 386.61,22.05 387.22,21.08L388.33,19.33L397.41,19.34C404.03,19.35 406.64,19.46 407.03,19.76C407.32,19.98 408.29,21.44 409.20,23.00C410.10,24.55 411.01,26.13 411.24,26.50C411.46,26.86 411.75,27.39 411.88,27.66C412.02,27.93 413.20,29.95 414.50,32.16C415.80,34.36 416.98,36.39 417.10,36.67C417.23,36.94 417.64,37.62 418.00,38.17C418.36,38.72 418.77,39.39 418.89,39.66C419.17,40.23 423.84,48.25 424.34,49.00C424.52,49.27 424.77,49.72 424.90,49.99C425.03,50.27 426.20,52.29 427.51,54.49C428.81,56.70 429.98,58.73 430.11,59.00C430.24,59.27 430.64,59.95 431.00,60.50C431.36,61.05 431.77,61.72 431.89,61.99C432.02,62.26 433.20,64.29 434.50,66.49C435.80,68.70 436.97,70.73 437.10,71.00C437.23,71.27 437.48,71.73 437.66,72.00C438.20,72.80 442.86,80.79 443.11,81.33C443.24,81.61 443.64,82.28 444.00,82.83C444.36,83.38 444.76,84.05 444.89,84.32C445.02,84.58 446.45,87.03 448.07,89.76C449.68,92.49 450.92,94.86 450.82,95.03C450.71,95.20 447.52,95.33 443.54,95.33C435.55,95.33 435.94,95.45 434.34,92.50C433.95,91.77 433.33,90.72 432.98,90.17C432.63,89.62 432.19,88.87 432.00,88.50C431.81,88.13 431.35,87.32 430.98,86.70C428.39,82.42 421.09,70.08 420.89,69.67C420.77,69.39 420.36,68.72 420.00,68.17C419.64,67.62 419.24,66.95 419.11,66.69C418.99,66.43 416.69,62.53 414.01,58.03C411.33,53.52 409.03,49.61 408.90,49.33C408.77,49.06 408.36,48.38 408.00,47.83C407.64,47.28 407.19,46.53 407.00,46.17C406.81,45.80 406.35,44.98 405.97,44.35C405.59,43.73 403.76,40.65 401.91,37.52C398.62,31.95 398.12,31.25 397.55,31.43C397.30,31.51 395.88,33.79 395.01,35.50C394.82,35.87 394.52,36.39 394.34,36.67C393.81,37.48 390.15,43.79 389.90,44.33C389.77,44.61 389.36,45.28 389.00,45.83C388.64,46.38 388.23,47.06 388.10,47.33C387.83,47.91 383.16,55.92 382.66,56.67C382.48,56.94 382.23,57.39 382.10,57.67C381.85,58.21 376.21,67.86 375.66,68.67C375.48,68.94 375.23,69.39 375.10,69.67C374.84,70.23 370.19,78.22 369.66,79.00C369.48,79.27 369.23,79.73 369.10,80.00C368.85,80.55 363.21,90.19 362.66,91.00C362.48,91.27 362.23,91.73 362.10,92.00C361.98,92.27 361.04,93.93 360.01,95.67C358.98,97.41 358.02,99.06 357.89,99.33C357.75,99.61 357.46,100.13 357.24,100.50C357.01,100.87 356.01,102.59 355.00,104.33C353.99,106.08 352.99,107.80 352.76,108.17C352.54,108.53 352.25,109.06 352.11,109.33C351.98,109.61 350.77,111.69 349.43,113.95C348.10,116.21 347.00,118.12 347.00,118.17C347.00,118.29 343.19,124.87 342.66,125.67C342.48,125.94 342.18,126.47 341.99,126.83C341.81,127.20 341.21,128.25 340.66,129.17C340.12,130.08 339.19,131.69 338.60,132.73C338.00,133.79 337.24,134.70 336.85,134.81C336.47,134.91 332.97,134.99 329.07,135.00C323.15,135.00 321.95,134.92 321.79,134.51ZM486.33,134.72C485.87,134.57 485.87,20.12 486.34,19.83C486.78,19.56 499.56,19.56 500.00,19.83C500.22,19.97 500.33,28.25 500.33,44.00C500.33,65.33 500.39,68.01 500.86,68.48C501.31,68.93 502.68,69.00 510.77,69.00L520.17,69.00L524.50,66.06C531.27,61.47 539.13,56.13 543.44,53.19C545.60,51.71 547.73,50.27 548.16,50.00C548.59,49.73 550.72,48.28 552.89,46.80C558.35,43.06 563.26,39.72 569.33,35.61C579.06,29.03 584.83,25.09 587.50,23.23C588.97,22.20 590.80,20.98 591.58,20.50L592.99,19.64L604.66,19.57C611.08,19.53 616.33,19.57 616.33,19.67C616.31,20.19 615.13,21.07 608.17,25.75C603.95,28.58 597.50,32.92 593.83,35.39C590.17,37.87 584.09,41.97 580.33,44.51C576.57,47.05 570.38,51.23 566.56,53.81C562.75,56.39 559.27,58.73 558.84,59.00C558.07,59.49 548.79,65.76 540.17,71.61C537.78,73.23 535.83,74.75 535.83,74.99C535.83,75.40 537.53,76.69 542.67,80.16C543.86,80.96 546.78,82.97 549.17,84.62C551.55,86.28 555.15,88.76 557.17,90.14C561.97,93.43 565.92,96.15 572.61,100.80C573.95,101.74 575.40,102.73 575.83,103.00C576.75,103.60 580.26,105.99 583.50,108.25C588.53,111.75 590.63,113.20 594.00,115.49C595.93,116.80 598.48,118.56 599.67,119.39C602.20,121.16 605.03,123.11 610.33,126.73C619.11,132.74 621.11,134.18 621.06,134.45C621.03,134.60 615.61,134.71 609.02,134.70L597.03,134.68L594.60,133.02C593.26,132.11 590.89,130.46 589.33,129.36C587.77,128.26 585.52,126.69 584.33,125.86C583.14,125.04 580.89,123.47 579.33,122.37C577.77,121.27 575.45,119.64 574.17,118.75C572.88,117.86 570.48,116.17 568.83,115.00C567.18,113.83 564.93,112.26 563.83,111.49C562.73,110.73 560.48,109.16 558.83,108.00C557.18,106.84 554.93,105.27 553.83,104.51C552.73,103.74 550.48,102.17 548.83,101.00C547.18,99.83 544.93,98.26 543.83,97.49C542.73,96.73 540.48,95.16 538.83,94.00C537.18,92.84 534.93,91.27 533.83,90.51C532.73,89.74 530.48,88.17 528.83,87.00C527.18,85.83 524.56,84.00 523.00,82.94L520.17,81.00L510.65,81.00C503.69,81.00 501.03,81.11 500.73,81.40C500.43,81.70 500.33,88.12 500.33,108.23C500.33,129.15 500.25,134.67 499.92,134.68C496.35,134.77 486.58,134.81 486.33,134.72ZM281.67,121.24C287.11,120.41 289.69,119.44 292.07,117.35C293.74,115.87 294.30,114.96 295.44,111.83C296.11,109.98 296.16,109.27 296.13,102.00C296.10,95.06 296.01,93.91 295.40,91.89C293.81,86.73 291.34,84.28 286.17,82.79C281.50,81.45 278.15,81.35 235.67,81.34C213.21,81.33 194.65,81.33 194.42,81.33C194.09,81.33 194.00,85.58 194.00,101.44C194.00,112.51 194.11,121.66 194.24,121.79C194.37,121.92 213.31,121.97 236.32,121.90C272.61,121.79 278.63,121.70 281.67,121.24ZM279.17,67.24C286.50,66.04 289.36,64.06 291.40,58.79C292.10,56.98 292.16,56.31 292.16,49.83C292.16,42.13 291.91,40.73 289.95,37.62C288.22,34.86 285.82,33.71 279.67,32.66C276.01,32.04 273.94,32.01 234.92,32.01L194.00,32.00L194.00,50.01L194.00,68.02L234.92,67.90C270.76,67.80 276.25,67.71 279.17,67.24Z"/><path fill="#E02E2E" d="M48.00,134.32C48.00,134.01 48.84,132.31 49.65,131.00C50.80,129.12 54.00,123.61 54.00,123.50C54.00,123.43 55.31,121.15 56.92,118.43C58.52,115.72 60.00,113.12 60.21,112.66C60.42,112.19 60.99,111.33 61.49,110.74L62.39,109.67L107.28,109.67C131.97,109.67 152.47,109.76 152.83,109.86C153.26,109.97 154.64,111.97 156.67,115.40C158.41,118.35 159.89,120.91 159.95,121.08C160.02,121.25 161.78,124.25 163.87,127.74C165.96,131.24 167.67,134.22 167.67,134.38C167.67,134.54 140.87,134.67 107.83,134.67C66.64,134.67 48.00,134.56 48.00,134.32Z"/><path fill="#41AAE1" d="M297.14,177.33C297.14,172.66 297.19,170.75 297.25,173.08C297.31,175.42 297.31,179.25 297.25,181.58C297.19,183.92 297.14,182.01 297.14,177.33ZM342.16,168.33C342.16,158.71 342.20,154.77 342.25,159.58C342.30,164.40 342.30,172.27 342.25,177.08C342.20,181.90 342.16,177.96 342.16,168.33ZM370.48,177.67C370.48,173.54 370.52,171.85 370.58,173.92C370.64,175.98 370.64,179.35 370.58,181.42C370.52,183.48 370.48,181.79 370.48,177.67ZM257.78,160.17C257.78,158.88 257.84,158.40 257.91,159.09C257.98,159.78 257.98,160.83 257.91,161.42C257.83,162.02 257.77,161.45 257.78,160.17ZM24.27,148.75C28.18,148.70 34.48,148.70 38.27,148.75C42.06,148.80 38.87,148.85 31.17,148.85C23.47,148.85 20.36,148.80 24.27,148.75ZM224.11,148.75C227.92,148.70 234.07,148.70 237.77,148.75C241.47,148.80 238.35,148.85 230.83,148.85C223.32,148.85 220.29,148.80 224.11,148.75ZM354.33,134.35C354.33,133.92 357.70,127.86 359.34,125.33C359.52,125.06 359.77,124.61 359.90,124.33C360.03,124.06 360.97,122.41 362.00,120.67C363.03,118.92 363.98,117.27 364.11,117.00C364.71,115.74 366.61,112.56 367.58,111.19L368.65,109.67L414.11,109.67C456.98,109.67 459.59,109.70 460.07,110.25C460.54,110.79 467.57,122.54 468.10,123.67C468.23,123.94 468.64,124.62 469.00,125.17C469.36,125.72 469.76,126.39 469.89,126.67C470.02,126.94 471.00,128.61 472.06,130.38C473.13,132.15 474.00,133.83 474.00,134.13C474.00,134.62 469.01,134.67 414.17,134.67C377.12,134.67 354.33,134.55 354.33,134.35ZM135.25,95.42C136.95,95.36 139.72,95.36 141.42,95.42C143.11,95.48 141.72,95.53 138.33,95.53C134.94,95.53 133.55,95.48 135.25,95.42ZM440.92,95.43C441.52,95.35 442.42,95.35 442.92,95.43C443.42,95.50 442.93,95.57 441.83,95.56C440.73,95.56 440.32,95.50 440.92,95.43ZM447.09,95.43C447.59,95.35 448.34,95.35 448.75,95.43C449.16,95.51 448.75,95.57 447.83,95.57C446.92,95.57 446.58,95.50 447.09,95.43Z"/></svg></a>
-    <nav class="nav" aria-label="Główna"><a href="#pierwsza">Pierwsza wizyta</a><a href="#wizyta">Umów termin</a><a href="#sprawy">Z czym przyjść</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a></nav>
-    <a class="btn" href="#wizyta">Umów wizytę</a>
-    <details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#pierwsza">Pierwsza wizyta</a><a href="#wizyta">Umów termin</a><a href="#sprawy">Z czym przyjść</a><a href="#pytania">Pytania i aktualności</a><a href="#kontakt">Kontakt</a><a href="tel:+48226484113">Ursynów: 22 648 41 13</a><a href="tel:+48227241363">Grodzisk: 22 724 13 63</a></nav></details>
+    <nav class="nav" aria-label="Główna"><a href="#dla-kogo">Dla kogo</a><a href="#zespol">Zespół</a><a href="#czwartki">Konsultacje</a><a href="#przepisy">Aktualności</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="htel num" href="tel:+48226484113">22 648 41 13<small>Ursynów · centrala</small></a>
+    <a class="btn bl" href="#kontakt">Umów rozmowę</a>
+    <details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#dla-kogo">Dla kogo</a><a href="#zespol">Zespół</a><a href="#czwartki">Bezpłatne konsultacje</a><a href="#przepisy">Aktualności</a><a href="#kontakt">Kontakt</a><a href="tel:+48226484113">Ursynów: 22 648 41 13</a><a href="tel:+48227241363">Grodzisk: 22 724 13 63</a></nav></details>
   </div></header>
 </div>
 
-<main>
-<section class="hero" aria-label="Biuro Rachunkowe ABAK">
-  <div class="stage" id="stage"><div class="pin">
-    <img class="still" id="still" src="img/still.jpg" alt="Wejście do biura rachunkowego wieczorem (kadr poglądowy)" width="1600" height="893">
-    <canvas id="cv" aria-hidden="true"></canvas>
-    <div class="scrim"></div>
-    <div class="hpanel"><div class="wrap"><div class="in">
-      <h1>Zapraszamy do biura. Z&nbsp;dokumentami albo&nbsp;bez.</h1>
-      <p class="lead">Biuro Rachunkowe ABAK — księgowość, kadry i płace od 1992 roku. Centrala na Ursynowie, oddział w Grodzisku Mazowieckim.</p>
-      <div class="ctas"><a class="btn" href="#wizyta">Umów wizytę</a><a class="tel num" href="tel:+48226484113"><small>Ursynów</small>22 648 41 13</a><a class="tel num" href="tel:+48227241363"><small>Grodzisk Maz.</small>22 724 13 63</a></div>
-    </div></div></div>
-    <div class="scns" aria-hidden="true"><p class="scn" data-a="0" data-b="30"><b>01 / 04</b>Centrala na Ursynowie</p><p class="scn" data-a="31" data-b="56"><b>02 / 04</b>Zapraszamy do środka</p><p class="scn" data-a="57" data-b="80"><b>03 / 04</b>Tu przyjmujemy dokumenty</p><p class="scn" data-a="81" data-b="99"><b>04 / 04</b>Biurko gotowe do rozmowy</p></div>
-    <div class="hend"><div class="wrap"><h2>Usiądźmy i policzmy to razem.</h2><p>Pierwsza rozmowa jest bezpłatna. Na miejscu powiemy, ile będzie kosztować obsługa Państwa firmy.</p><a class="btn" href="#wizyta">Wybierz biuro i godzinę</a></div></div>
-    <div class="hprog" aria-hidden="true"><i></i></div>
-  </div></div>
+<main id="main">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div>
+      <h1 id="h1">Księgowość dla firm z <span>Ursynowa, Kabat i Grodziska</span>.</h1>
+      <p class="lead">Od 1992 roku prowadzimy księgi jednoosobowych firm, spółek, fundacji i stowarzyszeń z okolicy. Dwa biura, a po dokumenty możemy przyjechać.</p>
+      <div class="ctas"><a class="btn" href="#dla-kogo">Sprawdź, co dla Ciebie <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ln num" href="tel:+48226484113">22 648 41 13</a></div>
+      <div class="facts"><div><b class="num">od 1992</b>na rynku</div><div><b class="num">2 biura</b>Ursynów i Grodzisk</div><div><b class="num">30 min</b>na odpowiedź na mail</div></div>
+    </div>
+    <figure class="map" aria-label="Mapa: biura ABAK na Ursynowie i w Grodzisku Mazowieckim oraz miejscowości, do których dojeżdżamy po dokumenty">
+      <svg viewBox="0 0 1000 560" role="img" aria-hidden="true"><path class="river" d="M905 -10 C 880 80, 860 150, 900 230 S 960 330, 945 420 S 960 520, 1010 580"/><path class="road" d="M30 470 C 200 410, 330 360, 430 300 S 620 190, 850 80"/><path class="road" d="M290 150 C 450 170, 650 160, 849 73"/><path class="rail" d="M324 368 C 360 345, 400 310, 440 287 S 540 236, 572 219 S 640 170, 849 73" stroke-dasharray="14 8"/><text class="rail-t" x="500" y="280">WKD</text><circle class="reach" cx="330" cy="340" r="135"/><circle class="reach" cx="870" cy="240" r="110"/><path class="route" pathLength="1" d="M889 292 C 800 270, 700 250, 610 260 S 440 300, 324 368"/><g class="town"><circle cx="849" cy="73" r="5"/><text x="835" y="78" text-anchor="end">Warszawa</text></g><g class="town mx"><circle cx="301" cy="153" r="5"/><text x="315" y="158" text-anchor="start">Błonie</text></g><g class="town mx"><circle cx="610" cy="185" r="5"/><text x="624" y="190" text-anchor="start">Piastów</text></g><g class="town"><circle cx="572" cy="219" r="5"/><text x="586" y="224" text-anchor="start">Pruszków</text></g><g class="town"><circle cx="440" cy="287" r="5"/><text x="454" y="273" text-anchor="start">Brwinów</text></g><g class="town mx"><circle cx="372" cy="312" r="5"/><text x="358" y="317" text-anchor="end">Milanówek</text></g><g class="town mx"><circle cx="64" cy="475" r="5"/><text x="78" y="480" text-anchor="start">Żyrardów</text></g><g class="town"><circle cx="905" cy="330" r="5"/><text x="919" y="335" text-anchor="start">Kabaty</text></g><g class="ofc"><circle class="h" cx="889" cy="292" r="12"/><circle class="o" cx="889" cy="292" r="9"/><text x="870" y="340" text-anchor="end">Ursynów</text><text class="s" x="870" y="366" text-anchor="end">centrala · Wąwozowa 2</text></g><g class="ofc"><circle class="h" cx="324" cy="368" r="12"/><circle class="o" cx="324" cy="368" r="9"/><text x="324" y="412" text-anchor="middle">Grodzisk Mazowiecki</text><text class="s" x="324" y="438" text-anchor="middle">oddział · Orzeszkowej 6</text></g></svg>
+      <figcaption><span><i></i>trasa między biurami</span><span><i class="r"></i>dojeżdżamy po dokumenty</span></figcaption>
+    </figure>
+  </div>
 </section>
 
-<section class="sec light" id="pierwsza" aria-labelledby="h-p">
+<section class="who" id="dla-kogo" aria-labelledby="h-w">
   <div class="wrap">
-    <h2 class="h2 reveal" id="h-p">Tak wygląda pierwsza wizyta.</h2>
-    <p class="intro reveal">Czterdzieści minut przy stole. Wychodzi się z ceną, planem i bez zobowiązań.</p>
-    <div class="fv">
-      <div class="ph" id="fvph" aria-hidden="true">
-        <img src="img/desk.jpg" alt="" width="1920" height="1072">
-        <img src="img/room.jpg" alt="" width="1920" height="1072">
-        <p class="cap" id="fvcap">Stół, przy którym rozmawiamy</p>
-      </div>
-      <ol class="steps" id="steps">
-        <li data-z="1.16" data-ox="62%" data-oy="70%" data-alt="0" data-cap="Stół, przy którym rozmawiamy">
-          <span class="k num">01</span><h3>Proszę przynieść, co jest pod ręką.</h3>
-          <p>Komplet nie jest potrzebny. Proszę odhaczyć to, co już jest — resztę ustalimy na miejscu.</p>
-          <ul class="ck" id="ck">
-            <li><label><input type="checkbox"><span>Dowód osobisty</span></label></li>
-            <li><label><input type="checkbox"><span>NIP i REGON firmy<small>albo wpis z CEIDG</small></span></label></li>
-            <li><label><input type="checkbox"><span>Ostatnie deklaracje<small>PIT, VAT, ZUS — jeśli firma już działa</small></span></label></li>
-            <li><label><input type="checkbox"><span>Faktury i wyciągi z ostatniego miesiąca</span></label></li>
-            <li><label><input type="checkbox"><span>Umowy z pracownikami<small>jeśli firma kogoś zatrudnia</small></span></label></li>
-            <li><label><input type="checkbox"><span>Dostęp do programu do faktur<small>przyda się przy KSeF</small></span></label></li>
-          </ul>
-          <p class="ckc" id="ckc" aria-live="polite">Zaznaczone: <b>0 z 6</b>. Nic więcej nie trzeba, wystarczy dowód.</p>
-        </li>
-        <li data-z="1.22" data-ox="18%" data-oy="38%" data-alt="1" data-cap="Segregatory klientów, każdy rok osobno">
-          <span class="k num">02</span><h3>Przeglądamy dokumenty.</h3>
-          <p>Sprawdzamy formę opodatkowania, zaległe terminy i to, czy coś nie umknęło poprzedniemu biuru. Mówimy wprost, co znaleźliśmy.</p>
-        </li>
-        <li data-z="1.06" data-ox="50%" data-oy="60%" data-alt="1" data-cap="Recepcja, tu przyjmujemy dokumenty">
-          <span class="k num">03</span><h3>Mówimy, ile to kosztuje.</h3>
-          <p>Kwotę podajemy na miejscu. Ceny netto, miesięcznie:</p>
-          <ul class="px"><li><span class="n">Ryczałt</span><span class="d"></span><span class="p num">od 99 zł<small> / mies.</small></span></li><li><span class="n">Księga przychodów i rozchodów</span><span class="d"></span><span class="p num">od 199 zł<small> / mies.</small></span></li><li><span class="n">Księgi handlowe</span><span class="d"></span><span class="p num">od 799 zł<small> / mies.</small></span></li><li><span class="n">Kadry i płace</span><span class="d"></span><span class="p num">35 zł<small> / osoba</small></span></li></ul>
-        </li>
-        <li data-z="1.0" data-ox="50%" data-oy="50%" data-alt="0" data-cap="Od tej chwili pilnujemy terminów za Państwa">
-          <span class="k num">04</span><h3>Podpisujemy umowę i przejmujemy resztę.</h3>
-          <p>Jeśli firma miała inne biuro, sami odbieramy dokumentację. Od pierwszego miesiąca przychodzą kwoty do zapłaty i terminy, bez szukania w przepisach.</p>
-        </li>
-      </ol>
+    <div class="sh reveal"><h2 id="h-w">Kim jest Twoja firma?</h2><p>Wybierz formę, a pokażemy, co robimy, ile to kosztuje i co przygotować na pierwsze spotkanie.</p></div>
+    <div class="pick">
+      <div class="types" role="tablist" aria-label="Forma działalności"><button role="tab" id="ty0" aria-controls="cd0" aria-selected="true" tabindex="0"><span class="ic" aria-hidden="true">JDG</span><span><b>Jednoosobowa działalność</b><small>ryczałt, skala albo liniowy</small></span><span class="p num">od 99 zł</span></button><button role="tab" id="ty1" aria-controls="cd1" aria-selected="false" tabindex="-1"><span class="ic" aria-hidden="true">s.c.</span><span><b>Spółka cywilna</b><small>dwóch lub więcej wspólników</small></span><span class="p num">od 199 zł</span></button><button role="tab" id="ty2" aria-controls="cd2" aria-selected="false" tabindex="-1"><span class="ic" aria-hidden="true">sp.j.</span><span><b>Spółka jawna lub komandytowa</b><small>KPiR albo pełne księgi</small></span><span class="p num">od 199 zł</span></button><button role="tab" id="ty3" aria-controls="cd3" aria-selected="false" tabindex="-1"><span class="ic" aria-hidden="true">sp.<br>z o.o.</span><span><b>Spółka z o.o.</b><small>pełna księgowość i CIT</small></span><span class="p num">od 799 zł</span></button><button role="tab" id="ty4" aria-controls="cd4" aria-selected="false" tabindex="-1"><span class="ic" aria-hidden="true">fund.</span><span><b>Fundacja lub stowarzyszenie</b><small>organizacje pozarządowe</small></span><span class="p num">wycena</span></button><button role="tab" id="ty5" aria-controls="cd5" aria-selected="false" tabindex="-1"><span class="ic" aria-hidden="true">PIT</span><span><b>Osoba bez działalności</b><small>najem, sprzedaż, PIT</small></span><span class="p num">wycena</span></button></div>
+      <div><div class="card" role="tabpanel" id="cd0" aria-labelledby="ty0"><span class="k">Najczęściej: fryzjer, fizjoterapeuta, programista, tłumacz, sklep z osiedla.</span><h3>Jednoosobowa działalność</h3><p>Pomożemy wybrać formę opodatkowania, a potem co miesiąc wyliczymy podatek i ZUS. Roczny PIT i rejestracja w urzędach są w cenie.</p><ul><li>Ewidencja przychodów albo księga przychodów i rozchodów</li><li>VAT, JPK, zaliczki PIT, ZUS</li><li>Roczny PIT i porady w cenie</li></ul><div class="pr"><div><b class="num">od 99 zł</b><span>ryczałt; księga przychodów od 199 zł</span></div><a class="btn bl" href="#kontakt">Umów rozmowę</a></div></div><div class="card" role="tabpanel" id="cd1" aria-labelledby="ty1" hidden><span class="k">Wspólny sklep, gabinet albo pracownia.</span><h3>Spółka cywilna</h3><p>Prowadzimy księgę spółki i rozliczamy każdego wspólnika osobno, łącznie z jego ZUS i rocznym PIT.</p><ul><li>Księga przychodów i rozchodów spółki</li><li>Rozliczenie wspólników</li><li>Kadry i płace pracowników spółki</li></ul><div class="pr"><div><b class="num">od 199 zł</b><span>miesięcznie netto</span></div><a class="btn bl" href="#kontakt">Umów rozmowę</a></div></div><div class="card" role="tabpanel" id="cd2" aria-labelledby="ty2" hidden><span class="k">Firmy rodzinne, wykonawcy, hurtownie.</span><h3>Spółka jawna lub komandytowa</h3><p>Dobieramy ewidencję do przychodów spółki. Spółka komandytowa od 2021 roku płaci CIT i prowadzi pełne księgi.</p><ul><li>Księga przychodów albo księgi handlowe</li><li>CIT lub PIT wspólników</li><li>Sprawozdanie finansowe i GUS</li></ul><div class="pr"><div><b class="num">od 199 zł</b><span>pełne księgi od 799 zł</span></div><a class="btn bl" href="#kontakt">Umów rozmowę</a></div></div><div class="card" role="tabpanel" id="cd3" aria-labelledby="ty3" hidden><span class="k">Software house, firma usługowa, spółka z jednym wspólnikiem.</span><h3>Spółka z o.o.</h3><p>Pełne księgi według planu kont, CIT, sprawozdanie finansowe i e-sprawozdanie do KRS. Pilnujemy też terminów zarządu.</p><ul><li>Księgi handlowe i polityka rachunkowości</li><li>CIT, VAT, JPK</li><li>Sprawozdanie finansowe i KRS</li></ul><div class="pr"><div><b class="num">od 799 zł</b><span>miesięcznie netto</span></div><a class="btn bl" href="#kontakt">Umów rozmowę</a></div></div><div class="card" role="tabpanel" id="cd4" aria-labelledby="ty4" hidden><span class="k">Fundacje, kluby sportowe, stowarzyszenia z okolicy.</span><h3>Fundacja lub stowarzyszenie</h3><p>Księgi organizacji, sprawozdanie finansowe, CIT-8 z załącznikiem i rozliczenie działalności odpłatnej.</p><ul><li>Księgi i sprawozdanie organizacji</li><li>CIT-8 i CIT-8O</li><li>Rozliczenie dotacji i darowizn</li></ul><div class="pr"><div><b class="num">wycena</b><span>zależnie od skali działalności</span></div><a class="btn bl" href="#kontakt">Umów rozmowę</a></div></div><div class="card" role="tabpanel" id="cd5" aria-labelledby="ty5" hidden><span class="k">Wynajem mieszkania, sprzedaż nieruchomości, zagraniczne dochody.</span><h3>Osoba bez działalności</h3><p>Rozliczymy roczny PIT, najem prywatny i sprzedaż nieruchomości. Sprawdzimy, z jakich ulg można skorzystać.</p><ul><li>Roczny PIT z ulgami</li><li>Ryczałt od najmu</li><li>Sprzedaż nieruchomości</li></ul><div class="pr"><div><b class="num">wycena</b><span>jednorazowo, po rozmowie</span></div><a class="btn bl" href="#kontakt">Umów rozmowę</a></div></div></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="wizyta" aria-labelledby="h-w">
+<section class="team" id="zespol" aria-labelledby="h-t">
   <div class="wrap">
-    <h2 class="h2 reveal" id="h-w">Wybierz biuro i godzinę.</h2>
-    <p class="intro reveal">Oddzwonimy, żeby potwierdzić termin. Pierwsza rozmowa jest bezpłatna.</p>
-    <form class="bk" id="book" novalidate>
-      <div class="ofc" role="radiogroup" aria-label="Biuro"><label><input type="radio" name="biuro" value="Warszawa · Ursynów" checked><b>Warszawa · Ursynów</b><span>ul. Wąwozowa 2 lok. 1E, 02-796 Warszawa</span><span><a class="num" href="tel:+48226484113">22 648 41 13</a> · centrala · <a href="https://maps.google.com/?q=W%C4%85wozowa+2+Warszawa">dojazd</a></span><span class="live"><i></i> Poniedziałek–piątek, 8:00–16:00</span></label><label><input type="radio" name="biuro" value="Grodzisk Mazowiecki"><b>Grodzisk Mazowiecki</b><span>ul. Elizy Orzeszkowej 6 lok. 7A, 05-825 Grodzisk Mazowiecki</span><span><a class="num" href="tel:+48227241363">22 724 13 63</a> · oddział · <a href="https://maps.google.com/?q=Orzeszkowej+6+Grodzisk+Mazowiecki">dojazd</a></span><span class="live"><i></i> Poniedziałek–piątek, 8:00–16:00</span></label></div>
-      <div class="tk">
-        <div class="th"><h3>Wizyta w ABAK</h3><span id="tkofc">Warszawa · Ursynów</span></div>
-        <p class="lbl">Dzień</p><div class="chips" id="days" role="group" aria-label="Dzień"></div>
-        <p class="lbl">Godzina</p><div class="chips" id="hours" role="group" aria-label="Godzina"></div>
-        <div class="two">
-          <div><label class="lbl" for="b1">Imię i nazwisko</label><input id="b1" autocomplete="name"></div>
-          <div><label class="lbl" for="b2">Telefon</label><input id="b2" autocomplete="tel" inputmode="tel"></div>
-        </div>
-        <p class="bring" id="bring">Przyniosę: dowód osobisty <a href="#pierwsza">zmień listę</a></p>
-        <p class="sum" id="sum" aria-live="polite">Wybierz dzień i godzinę.</p>
-        <button class="btn ink" type="submit">Poproś o termin</button>
-        <p class="priv">Odpowiadamy tylko w sprawie tej wizyty. <a href="#">Polityka prywatności</a></p>
-      </div>
-    </form>
+    <div class="sh reveal"><h2 id="h-t">Firmę tworzą ludzie.</h2><p>Księgowością zajmujemy się od ponad 40 lat, biuro prowadzimy od 1992 roku. Te osoby odbiorą telefon.</p></div>
+    <div class="ppl"><article class="pp reveal"><span class="av" aria-hidden="true">JB</span><h3>Jerzy Bourguin</h3><span class="r">księgowy, współwłaściciel</span><q>Księgowość to moja pasja, a zaufanie klientów jest największą nagrodą.</q></article><article class="pp reveal"><span class="av" aria-hidden="true">JK</span><h3>Jan Kułakowski</h3><span class="r">księgowy, współwłaściciel</span><q>Księgowość to nie tylko wprowadzanie danych. Dla mnie księgowość nie jest nudna.</q></article><article class="pp reveal"><span class="av" aria-hidden="true">MG</span><h3>Marta Gontowska</h3><span class="r">księgowa</span><q>Sukces to drabina, po której nie sposób się wspiąć z rękami w kieszeni.</q></article><article class="pp reveal"><span class="av" aria-hidden="true">AA</span><h3>Agnieszka Adamiec</h3><span class="r">księgowa</span><q>Cieszy mnie każdy krok zrobiony do przodu.</q></article></div>
+    <p class="note">Zdjęcia zespołu zrobimy przy wdrożeniu strony.</p>
   </div>
 </section>
 
-<section class="sec light" id="sprawy" aria-labelledby="h-s">
+<section class="thu" id="czwartki" aria-labelledby="h-c">
   <div class="wrap">
-    <h2 class="h2 reveal" id="h-s">Z czym do nas przychodzą.</h2>
-    <p class="intro reveal">Sześć sytuacji, z którymi klienci najczęściej otwierają nasze drzwi. Proszę wybrać swoją.</p>
-    <div class="sw">
-      <div class="tabs" role="tablist" aria-label="Sytuacje"><button role="tab" id="tb0" aria-controls="pn0" aria-selected="true" tabindex="0">Zakładam firmę</button><button role="tab" id="tb1" aria-controls="pn1" aria-selected="false" tabindex="-1">Zatrudniam pierwszą osobę</button><button role="tab" id="tb2" aria-controls="pn2" aria-selected="false" tabindex="-1">Mam zaległości w księgach</button><button role="tab" id="tb3" aria-controls="pn3" aria-selected="false" tabindex="-1">Przyszło pismo z urzędu</button><button role="tab" id="tb4" aria-controls="pn4" aria-selected="false" tabindex="-1">Zmieniam biuro rachunkowe</button><button role="tab" id="tb5" aria-controls="pn5" aria-selected="false" tabindex="-1">Prowadzę spółkę</button></div>
-      <div><div class="pn" role="tabpanel" id="pn0" aria-labelledby="tb0"><h3>Pomożemy wybrać formę, zanim cokolwiek zostanie podpisane.</h3><p>Na spotkaniu liczymy, czy lepszy będzie ryczałt, skala czy podatek liniowy, i rejestrujemy firmę w urzędach.</p><ul><li>Wybór formy działalności i opodatkowania</li><li>Rejestracja w CEIDG, US i ZUS</li><li>Ulgi na start i preferencyjny ZUS</li></ul><div class="cost"><b class="num">od 99 zł</b><span>miesięcznie, rejestracja w cenie</span></div><a class="btn ink" href="#wizyta">Umów wizytę w tej sprawie</a></div><div class="pn" role="tabpanel" id="pn1" aria-labelledby="tb1" hidden><h3>Umowa, ZUS, badania. Wszystko w jednym miejscu.</h3><p>Przygotujemy umowę, zgłosimy pracownika do ZUS, przypomnimy o badaniach i szkoleniu BHP. Co miesiąc przychodzi gotowa lista płac.</p><ul><li>Umowa o pracę lub zlecenie</li><li>Zgłoszenie do ZUS i akta osobowe</li><li>Lista płac, PIT-11, ewidencja czasu pracy</li></ul><div class="cost"><b class="num">35 zł</b><span>za pracownika, same płace 25 zł</span></div><a class="btn ink" href="#wizyta">Umów wizytę w tej sprawie</a></div><div class="pn" role="tabpanel" id="pn2" aria-labelledby="tb2" hidden><h3>Bez względu na powód. Porządkujemy i rozmawiamy z urzędem.</h3><p>Przeglądamy dokumenty, robimy korekty deklaracji i ustalamy z urzędem, co dalej. Na koniec zaświadczenie o niezaleganiu.</p><ul><li>Przegląd i uzupełnienie ksiąg</li><li>Korekty deklaracji VAT, PIT, ZUS</li><li>Zaświadczenia z US i ZUS</li></ul><div class="cost"><b class="num">wycena</b><span>po przejrzeniu dokumentów</span></div><a class="btn ink" href="#wizyta">Umów wizytę w tej sprawie</a></div><div class="pn" role="tabpanel" id="pn3" aria-labelledby="tb3" hidden><h3>Odpowiadamy w imieniu firmy. Kontrolę można przyjąć u nas.</h3><p>Na podstawie pełnomocnictwa przygotujemy wyjaśnienia i pisma. Kontrolerzy mogą pracować w naszym biurze, a nie w siedzibie firmy.</p><ul><li>Pełnomocnictwo przed US i ZUS</li><li>Wyjaśnienia i korespondencja</li><li>Kontrola w biurze ABAK</li></ul><div class="cost"><b class="num">do ustalenia</b><span>zależnie od sprawy</span></div><a class="btn ink" href="#wizyta">Umów wizytę w tej sprawie</a></div><div class="pn" role="tabpanel" id="pn4" aria-labelledby="tb4" hidden><h3>Także w trakcie roku. Dokumenty odbieramy sami.</h3><p>Przejmujemy dokumentację od poprzedniego biura i sprawdzamy ją, zanim zaczniemy księgować. Najwygodniej od początku miesiąca.</p><ul><li>Odbiór dokumentacji</li><li>Sprawdzenie ostatnich deklaracji</li><li>Start od nowego miesiąca</li></ul><div class="cost"><b class="num">od 199 zł</b><span>miesięcznie, księga przychodów</span></div><a class="btn ink" href="#wizyta">Umów wizytę w tej sprawie</a></div><div class="pn" role="tabpanel" id="pn5" aria-labelledby="tb5" hidden><h3>Pełne księgi, CIT i sprawozdania w terminie.</h3><p>Prowadzimy księgi handlowe spółek: CIT, sprawozdania finansowe, JPK, a także kadry i płace zespołu.</p><ul><li>Księgi handlowe i CIT</li><li>Sprawozdanie finansowe i e-sprawozdania</li><li>Kadry i płace</li></ul><div class="cost"><b class="num">od 799 zł</b><span>miesięcznie netto</span></div><a class="btn ink" href="#wizyta">Umów wizytę w tej sprawie</a></div></div>
+    <div class="cal" aria-hidden="true"><span>czwartek</span><b>czw.</b><small>8:00–15:00</small></div>
+    <div><h2 id="h-c">W każdy czwartek konsultacje są bezpłatne.</h2><p>Wybierz godzinę i biuro, Ursynów albo Grodzisk. Przynieś pytania, a jeśli masz, ostatnie deklaracje.</p></div>
+    <a class="btn" href="#kontakt">Zapisz się na czwartek</a>
+  </div>
+</section>
+
+<section class="trust" aria-labelledby="h-z">
+  <div class="wrap">
+    <div class="sh reveal"><h2 id="h-z">Bezpiecznie, na piśmie.</h2></div>
+    <div class="docs">
+      <div class="doc reveal"><div class="k">Certyfikat Ministra Finansów</div><p class="big num">nr 2167/97</p><p>Uprawnienia do usługowego prowadzenia ksiąg rachunkowych.</p></div>
+      <div class="doc reveal"><div class="k">Ubezpieczenie OC w PZU</div><p class="big num">500 000 zł</p><p>Ryzyko ewentualnych błędów przejmuje nasz ubezpieczyciel, nie Twoja firma.</p></div>
+      <div class="doc reveal"><div class="k">Kontrole skarbowe</div><p class="big">w naszym biurze</p><p>Reprezentujemy przed urzędem, a kontrolę można przyjąć u nas, nie w Twojej firmie.</p></div>
     </div>
   </div>
 </section>
 
-<section class="qv" id="opinie" aria-label="Opinie klientów">
-  <img src="img/room.jpg" alt="" width="1920" height="1072" loading="lazy">
+<section class="news" id="przepisy" aria-labelledby="h-n">
   <div class="wrap">
-    <blockquote class="reveal">Oni prowadzą moją księgowość, a&nbsp;ja mogę spokojnie trenować, startować w&nbsp;zawodach i&nbsp;jeździć po świecie.</blockquote>
-    <p class="who reveal"><b>Luiza Złotkowska</b>, srebrna medalistka igrzysk olimpijskich w Soczi</p>
-    <p class="q2 reveal">„Po trzynastu latach współpracy mogę jedynie powiedzieć, że sam nie wiem, kiedy ten czas upłynął.”<small>Witold Czuksanow, dziennikarz, firma FLORA</small></p>
+    <div class="sh reveal"><h2 id="h-n">Co się zmienia w przepisach.</h2><p>Krótko i po ludzku. Wpisy dodaje biuro.</p></div>
+    <ul class="nl"><li class="reveal"><time>1 października 2026</time><div><span class="tg">Podatki</span><h3><a href="#przepisy">KSeF od stycznia także dla najmniejszych firm</a></h3></div><p>Zwolnienie dla firm wystawiających faktury na mniej niż 10 tys. zł miesięcznie kończy się z końcem 2026 roku.</p></li><li class="reveal"><time>15 września 2026</time><div><span class="tg">ZUS i kadry</span><h3><a href="#przepisy">Nowa płaca minimalna od 1 stycznia 2027</a></h3></div><p>Zmienią się też część składek i limity. Przeliczymy listy płac przed styczniem.</p></li><li class="reveal"><time>2 września 2026</time><div><span class="tg">Z biura</span><h3><a href="#przepisy">Za rok świętujemy 35 lat ABAK</a></h3></div><p>Dziękujemy klientom, którzy są z nami od lat dziewięćdziesiątych.</p></li></ul>
   </div>
 </section>
 
-<section class="sec light" id="pytania" aria-labelledby="h-q">
-  <div class="wrap nf">
-    <div><h2 class="h2 reveal" id="h-q">Zanim Państwo przyjdą.</h2><div class="acc"><details><summary>Czy mogę przenieść księgowość od innego biura w trakcie roku?<i aria-hidden="true"></i></summary><div class="bd"><p>Tak. Przejmujemy dokumentację od poprzedniego biura i sprawdzamy ją, zanim zaczniemy księgować. Najwygodniej od początku miesiąca.</p></div></details><details><summary>Jak przekazuję dokumenty?<i aria-hidden="true"></i></summary><div class="bd"><p>Osobiście w biurze na Ursynowie lub w Grodzisku, mailem albo przez panel klienta. Na terenie Warszawy, Grodziska, Milanówka, Brwinowa, Pruszkowa, Piastowa, Żyrardowa i Błonia możemy też przyjechać.</p></div></details><details><summary>Ile kosztuje obsługa?<i aria-hidden="true"></i></summary><div class="bd"><p>Ryczałt od 99 zł, księga przychodów i rozchodów od 199 zł, księgi handlowe od 799 zł miesięcznie netto. Dokładną cenę podajemy po krótkiej rozmowie, bo zależy od liczby dokumentów.</p></div></details><details><summary>Czy pomożecie przy KSeF?<i aria-hidden="true"></i></summary><div class="bd"><p>Tak. Sprawdzamy, czy program do faktur jest gotowy, i pokazujemy, jak wystawiać e-faktury, żeby nic nie utknęło w systemie.</p></div></details><details><summary>Czy jesteście ubezpieczeni?<i aria-hidden="true"></i></summary><div class="bd"><p>Tak, nasze usługi są ubezpieczone w PZU na 500 000 zł. Mamy certyfikat Ministra Finansów nr 2167/97 na usługowe prowadzenie ksiąg rachunkowych.</p></div></details></div></div>
-    <div class="board reveal" id="aktualnosci"><h3>Tablica ogłoszeń <small>dodaje biuro</small></h3><ul><li><time>1 października 2026</time><h4><a href="#aktualnosci">KSeF od stycznia także dla najmniejszych firm</a></h4></li><li><time>15 września 2026</time><h4><a href="#aktualnosci">Nowa płaca minimalna od 1 stycznia 2027</a></h4></li><li><time>2 września 2026</time><h4><a href="#aktualnosci">Za rok świętujemy 35 lat ABAK</a></h4></li></ul></div>
-  </div>
-</section>
-
-<section class="bye" id="kontakt" aria-labelledby="h-k">
-  <div class="wrap">
-    <h2 id="h-k" class="reveal">Do zobaczenia w biurze.</h2>
-    <a class="t num reveal" href="tel:+48226484113"><small>Ursynów · ul. Wąwozowa 2 lok. 1E</small><b>22 648 41 13</b></a>
-    <a class="t num reveal" href="tel:+48227241363"><small>Grodzisk Maz. · ul. Elizy Orzeszkowej 6 lok. 7A</small><b>22 724 13 63</b></a>
+<section class="ct" id="kontakt" aria-labelledby="h-k">
+  <div class="wrap grid">
+    <div>
+      <h2 id="h-k" class="reveal">Zadzwoń do biura, które jest bliżej.</h2>
+      <div class="ofc"><div><h3>Warszawa · Ursynów</h3><div class="r">centrala</div><a class="tel num" href="tel:+48226484113">22 648 41 13</a><p>ul. Wąwozowa 2 lok. 1E, 02-796 Warszawa<br>poczta@biuroabak.pl · <a href="https://maps.google.com/?q=W%C4%85wozowa+2+Warszawa">dojazd</a></p></div><div><h3>Grodzisk Mazowiecki</h3><div class="r">oddział</div><a class="tel num" href="tel:+48227241363">22 724 13 63</a><p>ul. Elizy Orzeszkowej 6 lok. 7A, 05-825 Grodzisk Mazowiecki<br>biuro@biuroabak.pl · <a href="https://maps.google.com/?q=Orzeszkowej+6+Grodzisk+Mazowiecki">dojazd</a></p></div></div>
+      <p class="hrs">Poniedziałek–piątek, 8:00–16:00. Kontrolę skarbową można przyjąć u nas w biurze.</p>
+    </div>
+    <form class="f reveal" novalidate>
+        <h3>Napisz albo zapisz się na czwartek</h3><p class="sub">Odpowiemy zwykle w 30 minut, w godzinach pracy biura.</p>
+        <label for="f1">Imię i nazwisko</label><input id="f1" autocomplete="name">
+        <label for="f2">Telefon lub e-mail</label><input id="f2" autocomplete="tel">
+        <label for="f3">Forma działalności</label><select id="f3"><option value="" selected disabled>Wybierz formę</option><option>Jednoosobowa — ryczałt</option><option>Jednoosobowa — księga przychodów i rozchodów</option><option>Spółka — księgi handlowe</option><option>Dopiero zakładam firmę</option><option>Nie wiem, proszę o radę</option><option>Fundacja lub stowarzyszenie</option><option>Bezpłatna konsultacja w czwartek</option></select>
+        <label for="f4">Wiadomość</label><textarea id="f4" placeholder="Np. ok. 40 faktur miesięcznie, 2 pracowników"></textarea>
+        <p class="priv">Odpowiadamy tylko w tej sprawie. <a href="#">Polityka prywatności</a></p>
+        <button class="btn" type="submit">Wyślij zapytanie</button>
+      </form>
   </div>
 </section>
 </main>
-<footer><div class="plq" aria-label="Godziny otwarcia"><div><b>ABAK</b>Biuro Rachunkowe · czynne pon.–pt. 8:00–16:00<br>Ursynów, ul. Wąwozowa 2 lok. 1E · Grodzisk Maz., ul. Elizy Orzeszkowej 6 lok. 7A</div></div><div class="wrap">
+<footer><div class="wrap">
   <div><a class="brand" href="#" aria-label="ABAK — do góry"><svg class="logo" viewBox="14 14 612 176" role="img" aria-label="ABAK Biuro Rachunkowe"><path fill="currentColor" fill-rule="evenodd" d="M87.33,187.01C84.67,186.71 82.64,186.09 81.11,185.11C79.84,184.30 79.61,184.05 78.65,182.50C77.84,181.18 77.83,181.08 77.67,171.00C77.58,165.41 77.63,160.65 77.79,160.42C78.11,159.96 80.59,159.85 81.23,160.26C81.52,160.45 81.66,163.16 81.73,170.19C81.85,181.21 81.84,181.16 84.60,182.42C86.04,183.07 86.74,183.13 93.17,183.13C99.64,183.14 100.28,183.08 101.67,182.42C103.40,181.60 104.80,180.24 105.31,178.89C105.53,178.32 105.67,174.56 105.67,169.15L105.67,160.35L106.45,160.15C106.88,160.04 107.82,160.00 108.53,160.06L109.83,160.17L109.83,173.50L109.83,186.83L108.00,186.83L106.17,186.83L106.07,184.75C105.96,182.43 105.54,182.11 104.54,183.60C103.82,184.68 102.41,185.65 100.42,186.43C98.73,187.10 91.15,187.43 87.33,187.01ZM158.33,187.02C154.44,186.44 151.94,184.61 150.69,181.40C150.08,179.84 150.00,178.92 150.00,173.33C150.00,167.20 150.03,166.96 150.88,165.16C151.94,162.92 153.80,161.32 156.33,160.47C157.93,159.93 159.28,159.85 167.00,159.85C174.72,159.85 176.07,159.93 177.67,160.47C180.25,161.34 182.20,163.03 183.25,165.29C184.08,167.10 184.11,167.38 184.10,173.50C184.10,179.57 184.06,179.91 183.25,181.67C182.18,183.98 180.67,185.42 178.33,186.36C176.64,187.05 175.88,187.11 168.33,187.19C163.84,187.24 159.34,187.16 158.33,187.02ZM272.00,187.02C269.35,186.69 267.73,186.01 266.38,184.66C264.72,183.00 263.96,179.28 264.68,176.29C265.82,171.50 268.70,170.37 279.83,170.36C287.36,170.36 290.08,170.85 292.06,172.58C293.14,173.51 293.44,172.77 293.21,169.77C292.97,166.63 292.53,165.72 290.72,164.59C289.54,163.86 289.25,163.83 281.17,163.83C271.58,163.83 271.25,163.92 270.75,166.45L270.48,167.83L268.52,167.93C266.31,168.05 265.93,167.76 266.24,166.18C266.79,163.39 268.43,161.48 271.16,160.47C272.60,159.93 273.87,159.85 280.99,159.84C288.29,159.83 289.36,159.90 291.00,160.49C293.63,161.43 295.25,162.79 296.20,164.87C297.01,166.64 297.01,166.67 296.92,176.74L296.83,186.83L295.08,186.93C293.31,187.04 293.20,186.95 293.29,185.67C293.31,185.39 293.18,184.94 292.99,184.67C292.70,184.24 292.57,184.27 292.05,184.88C291.72,185.27 290.79,185.93 289.98,186.35C288.59,187.06 288.05,187.12 281.33,187.20C277.39,187.24 273.19,187.16 272.00,187.02ZM312.83,187.03C310.17,186.69 307.27,185.27 306.07,183.73C304.22,181.35 304.00,180.24 304.03,173.58C304.06,165.82 304.48,164.45 307.50,162.11C310.06,160.12 311.61,159.85 320.17,159.85C326.89,159.86 328.06,159.94 329.67,160.50C333.24,161.76 334.78,163.52 335.18,166.79C335.45,168.98 335.22,169.32 333.46,169.33C332.21,169.33 331.90,168.99 331.35,166.96C330.72,164.60 329.74,164.05 325.43,163.64C321.38,163.26 319.56,163.27 314.91,163.72C311.13,164.08 309.81,164.70 308.73,166.62C308.06,167.81 308.00,168.38 308.01,173.21C308.02,179.29 308.37,180.57 310.52,182.21L311.78,183.17L320.14,183.17C328.25,183.17 328.53,183.14 329.54,182.43C330.94,181.42 331.77,180.10 331.98,178.50L332.17,177.17L334.00,177.17L335.83,177.17L335.74,178.67C335.51,182.47 333.63,185.25 330.46,186.45C329.11,186.96 327.65,187.09 321.83,187.18C317.98,187.24 313.93,187.17 312.83,187.03ZM392.17,187.01C388.92,186.70 386.64,185.86 384.89,184.31C382.41,182.13 382.24,181.30 382.08,170.72C382.00,165.70 382.03,161.24 382.14,160.80C382.32,160.09 382.53,160.00 383.99,160.00C384.89,160.00 385.71,160.14 385.82,160.30C385.92,160.47 386.04,164.71 386.08,169.72C386.18,180.45 386.29,180.89 389.17,182.33C390.79,183.14 391.02,183.17 397.83,183.15C404.36,183.14 404.93,183.09 406.33,182.40C407.98,181.59 408.51,181.20 409.50,180.04C410.12,179.31 410.18,178.65 410.33,169.72L410.50,160.17L412.13,160.06C413.03,160.01 413.89,160.09 414.06,160.26C414.45,160.65 414.45,186.35 414.06,186.74C413.89,186.91 413.10,187.00 412.30,186.94L410.83,186.83L410.73,184.92C410.62,182.66 410.26,182.52 408.75,184.12C406.15,186.88 400.72,187.83 392.17,187.01ZM504.33,186.99C501.76,186.64 500.16,185.86 498.56,184.19C496.41,181.97 496.00,180.24 496.00,173.50C496.00,169.07 496.12,167.51 496.58,166.07C497.39,163.55 499.24,161.70 502.00,160.65C504.11,159.86 504.41,159.83 513.17,159.83C521.81,159.83 522.25,159.86 524.23,160.62C526.65,161.54 528.36,163.07 529.41,165.26C530.12,166.74 530.17,167.25 530.15,173.50C530.13,179.73 530.08,180.27 529.37,181.79C527.88,184.95 525.54,186.47 521.33,187.02C518.70,187.36 506.87,187.34 504.33,186.99ZM597.87,186.98C596.61,186.83 595.42,186.55 595.22,186.36C595.03,186.16 594.60,186.00 594.27,186.00C593.95,186.00 592.89,185.21 591.92,184.24C589.48,181.79 589.00,180.03 589.00,173.60C589.00,169.62 589.13,168.33 589.69,166.50C590.59,163.59 592.32,161.80 595.34,160.66C597.42,159.87 597.81,159.84 605.67,159.85C613.50,159.85 613.92,159.88 616.00,160.66C618.77,161.70 620.62,163.54 621.40,166.03C622.14,168.38 622.47,173.39 621.93,173.94C621.64,174.23 617.91,174.33 607.47,174.33C591.85,174.33 593.00,174.15 593.00,176.61C592.99,179.91 594.98,182.52 598.06,183.28C600.18,183.80 611.64,183.76 613.94,183.22C615.88,182.77 617.88,181.15 618.06,179.89C618.16,179.24 618.37,179.17 620.17,179.17L622.17,179.17L622.07,180.67C621.84,183.98 618.62,186.48 613.88,187.03C610.94,187.37 600.97,187.34 597.87,186.98ZM16.33,186.69C16.33,186.49 16.32,178.08 16.32,168.00C16.32,157.92 16.33,149.52 16.33,149.33C16.33,149.12 22.16,149.00 33.13,149.00C48.92,149.00 50.06,149.04 52.05,149.66C54.12,150.30 55.54,151.30 56.47,152.77C57.28,154.03 57.72,158.08 57.32,160.58C56.85,163.56 56.06,164.75 53.99,165.64C52.09,166.46 52.09,166.84 53.97,167.16C55.72,167.46 57.77,169.25 58.27,170.93C58.49,171.65 58.67,174.05 58.67,176.25C58.67,183.01 57.50,184.86 52.34,186.26C50.85,186.67 47.27,186.79 33.42,186.90C21.47,187.00 16.33,186.94 16.33,186.69ZM65.75,186.79C65.43,186.65 65.33,183.67 65.33,173.51C65.33,158.96 65.16,159.99 67.61,160.01C68.28,160.01 69.02,160.13 69.25,160.28C69.58,160.49 69.66,163.39 69.59,173.69L69.50,186.83L67.83,186.90C66.92,186.93 65.98,186.88 65.75,186.79ZM118.16,186.60C118.07,186.36 118.03,180.39 118.08,173.33L118.17,160.50L119.83,160.50C121.50,160.50 121.50,160.50 121.61,161.67C121.77,163.40 122.15,163.54 123.40,162.29C125.31,160.39 127.31,159.90 133.12,159.92C137.50,159.93 138.41,160.03 140.00,160.66C143.73,162.13 144.98,164.20 144.99,168.92L145.00,172.00L143.22,172.00L141.43,172.00L141.23,169.33C141.00,166.35 140.52,165.44 138.69,164.45C137.72,163.92 136.78,163.83 132.19,163.84C126.48,163.85 125.64,164.04 123.72,165.79C122.22,167.16 122.17,167.46 122.00,177.33L121.83,186.83L120.08,186.93C118.87,187.00 118.27,186.90 118.16,186.60ZM216.16,186.60C216.07,186.36 216.03,177.84 216.08,167.67L216.17,149.17L233.33,149.17C249.07,149.17 250.66,149.22 252.43,149.78C254.70,150.50 256.45,152.07 257.03,153.91C257.61,155.78 257.81,162.81 257.34,164.92C256.91,166.85 255.76,168.22 253.70,169.26C252.48,169.88 252.30,170.35 253.14,170.75C253.43,170.89 253.92,171.12 254.23,171.28C254.55,171.43 255.26,172.12 255.82,172.81L256.83,174.06L257.00,180.23C257.12,184.70 257.06,186.48 256.78,186.71C256.56,186.89 255.59,186.99 254.61,186.94L252.83,186.83L252.67,181.14C252.51,175.80 252.45,175.37 251.69,174.27C250.17,172.05 249.61,171.98 234.33,172.08L220.83,172.17L220.67,179.50L220.50,186.83L218.41,186.93C216.93,187.00 216.28,186.91 216.16,186.60ZM342.49,186.60C342.40,186.36 342.37,177.84 342.41,167.67L342.50,149.17L344.33,149.17L346.17,149.17L346.26,156.58C346.31,160.66 346.48,164.00 346.64,164.00C346.80,164.00 347.66,163.40 348.55,162.66C351.20,160.46 353.39,159.96 360.38,159.95C366.81,159.94 369.08,160.35 371.33,161.95C374.47,164.16 374.70,165.25 374.59,177.24L374.50,186.83L372.67,186.83L370.83,186.83L370.66,177.33C370.55,171.46 370.34,167.52 370.11,167.00C369.60,165.85 368.76,165.16 367.00,164.44C365.71,163.92 364.56,163.84 358.83,163.85C352.84,163.87 352.02,163.94 350.67,164.56C349.00,165.32 347.45,166.73 346.89,168.00C346.66,168.51 346.45,172.37 346.34,177.83L346.17,186.83L344.41,186.93C343.20,187.00 342.61,186.90 342.49,186.60ZM422.75,186.78C422.16,186.54 422.14,160.99 422.73,160.40C423.15,159.98 425.24,159.86 426.14,160.20C426.53,160.35 426.67,160.87 426.67,162.20C426.67,163.19 426.79,164.00 426.93,164.00C427.08,164.00 427.83,163.41 428.60,162.70C430.93,160.52 433.47,159.93 440.52,159.94C445.57,159.94 446.64,160.04 448.72,160.68C451.74,161.62 453.64,163.40 454.26,165.87C454.58,167.17 454.95,184.02 454.71,186.60C454.68,186.91 454.14,187.01 452.75,186.93L450.83,186.83L450.74,177.50C450.64,166.25 450.66,166.33 447.50,164.58C446.24,163.88 445.78,163.84 439.17,163.86C432.66,163.87 432.06,163.92 430.61,164.61C428.87,165.43 427.28,166.94 426.95,168.08C426.83,168.50 426.72,172.83 426.70,177.71C426.67,185.49 426.60,186.62 426.14,186.80C425.52,187.03 423.35,187.02 422.75,186.78ZM463.33,186.68C463.33,186.49 463.32,178.08 463.32,168.00C463.32,157.92 463.33,149.51 463.33,149.32C463.33,149.10 464.07,149.01 465.25,149.07L467.17,149.17L467.24,159.16C467.29,164.66 467.40,169.35 467.48,169.58C467.57,169.81 468.19,170.00 468.86,170.00C469.87,170.00 471.34,169.16 477.58,165.00L485.08,160.00L487.68,160.00C489.12,160.00 490.38,160.14 490.48,160.30C490.58,160.47 489.97,161.03 489.13,161.55C488.28,162.07 487.34,162.65 487.04,162.84C483.39,165.08 474.17,171.48 474.17,171.77C474.17,172.23 483.53,179.24 491.81,184.98C492.99,185.80 493.88,186.59 493.79,186.73C493.70,186.88 492.43,187.00 490.97,187.00C488.31,187.00 488.30,186.99 486.15,185.42C484.97,184.55 482.41,182.71 480.46,181.33C478.52,179.96 475.42,177.75 473.59,176.42C470.65,174.29 470.07,174.00 468.79,174.00C467.86,174.00 467.33,174.15 467.31,174.42C467.30,174.65 467.27,177.53 467.23,180.83L467.17,186.83L465.25,186.93C464.07,186.99 463.33,186.90 463.33,186.68ZM545.00,186.16C544.82,185.69 544.27,184.44 543.79,183.40C543.31,182.35 542.71,181.05 542.47,180.50C542.23,179.95 541.58,178.49 541.02,177.25C540.46,176.01 540.00,174.92 540.00,174.83C540.00,174.74 539.54,173.66 538.97,172.42C537.69,169.62 537.22,168.57 536.38,166.67C536.02,165.84 535.26,164.14 534.70,162.88C534.13,161.62 533.76,160.46 533.86,160.30C533.96,160.13 534.86,160.00 535.85,160.00C537.72,160.00 539.00,160.73 539.00,161.81C539.00,162.07 539.21,162.70 539.47,163.22C539.96,164.20 540.78,166.03 541.57,167.91C541.81,168.50 542.26,169.55 542.57,170.25C543.19,171.67 543.91,173.36 544.54,174.83C547.87,182.72 548.52,183.68 549.05,181.48C549.17,180.94 549.82,179.00 550.49,177.17C551.16,175.33 551.84,173.38 552.00,172.83C552.36,171.58 553.26,169.05 553.65,168.17C553.81,167.80 554.02,167.20 554.12,166.83C554.57,165.12 556.25,160.62 556.55,160.31C556.75,160.12 558.13,160.01 559.81,160.07L562.73,160.17L563.21,161.50C564.85,166.06 565.74,168.62 566.00,169.50C566.29,170.50 568.08,175.52 569.14,178.33C569.46,179.16 569.84,180.33 569.99,180.94C570.15,181.55 570.36,182.13 570.46,182.23C570.77,182.55 571.67,182.04 571.88,181.42C571.99,181.10 572.52,179.86 573.06,178.67C573.61,177.47 574.25,176.05 574.49,175.50C575.56,173.09 576.35,171.33 577.46,168.93C578.11,167.52 579.02,165.47 579.49,164.37C581.21,160.26 581.29,160.18 583.61,160.07C586.11,159.95 586.12,159.99 584.37,163.54C583.66,164.99 582.63,167.14 582.08,168.33C581.53,169.53 580.55,171.62 579.90,173.00C578.78,175.39 578.19,176.67 575.29,183.00C574.58,184.56 573.87,186.06 573.71,186.33C573.51,186.70 572.71,186.86 570.80,186.93C568.44,187.02 568.11,186.96 567.58,186.31C567.26,185.92 567.00,185.31 567.00,184.96C567.00,184.61 566.85,184.06 566.67,183.75C566.32,183.13 565.48,180.85 565.00,179.17C564.84,178.62 564.17,176.67 563.51,174.83C562.84,173.00 561.76,169.89 561.09,167.92C560.42,165.95 559.70,164.33 559.50,164.33C559.30,164.33 558.81,165.27 558.41,166.42C556.66,171.46 555.65,174.29 554.99,176.00C554.60,177.01 554.15,178.28 553.99,178.83C553.84,179.38 553.46,180.51 553.14,181.33C552.83,182.16 552.26,183.73 551.87,184.83L551.17,186.83L548.25,186.93C545.37,187.02 545.32,187.01 545.00,186.16ZM177.45,182.23C179.69,180.52 180.00,179.44 180.00,173.23L180.00,167.77L179.05,166.45C177.46,164.26 176.83,164.02 171.66,163.60C168.17,163.31 165.82,163.31 162.32,163.60C157.08,164.02 156.30,164.35 154.81,166.70C154.04,167.93 154.00,168.24 154.00,173.34C154.00,179.35 154.33,180.53 156.41,182.12C157.85,183.21 158.44,183.27 168.03,183.21L176.22,183.17L177.45,182.23ZM289.47,183.12C290.51,182.98 291.36,182.60 292.02,181.99C292.91,181.15 293.00,180.87 293.00,178.85C293.00,174.32 292.19,174.00 280.81,174.00C273.66,174.00 272.13,174.09 271.23,174.54C269.44,175.44 269.02,176.24 269.01,178.73C269.00,181.35 269.74,182.54 271.67,182.99C273.07,183.32 287.26,183.42 289.47,183.12ZM523.40,182.38C524.07,181.96 524.97,181.07 525.38,180.40C526.10,179.24 526.14,178.81 526.14,173.50C526.14,168.19 526.10,167.76 525.38,166.60C524.10,164.52 522.84,164.02 517.77,163.59C511.34,163.04 504.46,163.61 502.59,164.85C500.43,166.27 500.02,167.65 500.01,173.39C500.00,178.99 500.46,180.66 502.37,182.02C503.96,183.16 505.28,183.29 514.17,183.21C521.83,183.14 522.22,183.10 523.40,182.38ZM50.92,182.30C53.15,181.61 53.98,180.51 54.22,177.94C54.51,174.83 54.11,172.16 53.19,171.10C51.70,169.36 50.69,169.25 35.52,169.09C22.41,168.95 21.51,168.98 21.10,169.54C20.54,170.29 20.48,181.37 21.03,182.39C21.38,183.05 21.59,183.06 35.44,182.90C45.82,182.79 49.87,182.63 50.92,182.30ZM617.93,169.28C618.07,167.62 617.30,165.93 615.91,164.87C614.87,164.08 614.29,163.95 610.24,163.60C606.80,163.31 604.68,163.31 601.33,163.60C597.45,163.95 596.79,164.10 595.58,164.91C594.52,165.63 594.06,166.25 593.55,167.69C592.40,170.89 591.56,170.69 605.57,170.59L617.83,170.50L617.93,169.28ZM249.00,167.27C251.89,166.60 252.99,164.63 253.00,160.13C253.00,157.38 252.56,155.85 251.44,154.63C249.96,153.04 249.18,152.96 234.50,153.07L220.83,153.17L220.74,159.99C220.69,163.74 220.73,167.01 220.82,167.24C221.04,167.83 246.46,167.86 249.00,167.27ZM49.60,164.49C50.80,164.13 51.57,163.65 52.16,162.88C52.91,161.89 53.00,161.46 53.00,158.87C53.00,155.52 52.60,154.66 50.62,153.64C49.41,153.02 48.67,153.00 35.09,153.08L20.83,153.17L20.74,158.33C20.69,161.17 20.73,163.84 20.83,164.25L21.01,165.00L34.45,165.00C45.54,165.00 48.18,164.91 49.60,164.49ZM65.88,153.57C65.41,153.23 65.32,152.75 65.40,151.16L65.50,149.17L67.50,149.17L69.50,149.17L69.60,151.30C69.67,152.79 69.57,153.52 69.27,153.71C68.60,154.14 66.53,154.05 65.88,153.57ZM16.84,134.67C16.59,134.28 20.72,126.67 23.34,122.67C23.52,122.39 23.77,121.94 23.90,121.67C24.16,121.11 28.81,113.12 29.34,112.33C29.52,112.06 29.77,111.61 29.90,111.33C30.14,110.78 33.80,104.47 34.34,103.67C34.52,103.39 34.77,102.94 34.90,102.67C35.16,102.11 39.81,94.12 40.34,93.33C40.52,93.06 40.77,92.61 40.90,92.33C41.03,92.06 42.20,90.03 43.50,87.83C44.80,85.62 45.98,83.60 46.11,83.33C46.23,83.05 46.64,82.38 47.00,81.83C47.36,81.28 47.80,80.52 47.97,80.13C48.14,79.75 48.86,78.48 49.58,77.30C50.29,76.13 50.98,74.94 51.11,74.67C51.24,74.39 51.64,73.72 52.00,73.17C52.36,72.62 52.77,71.94 52.90,71.67C53.17,71.09 57.84,63.08 58.34,62.33C58.52,62.06 58.77,61.61 58.90,61.33C59.02,61.06 59.96,59.41 60.99,57.67C62.02,55.92 62.97,54.27 63.10,54.00C63.23,53.72 63.64,53.05 64.00,52.50C64.36,51.95 64.76,51.27 64.89,51.00C65.15,50.43 68.83,44.10 69.34,43.33C69.52,43.06 69.77,42.61 69.90,42.33C70.16,41.77 74.81,33.78 75.34,33.00C75.52,32.73 75.77,32.27 75.90,32.00C76.02,31.72 76.96,30.07 77.99,28.33C79.02,26.59 79.97,24.94 80.10,24.67C80.23,24.39 80.64,23.72 81.00,23.17C81.36,22.62 81.76,21.94 81.89,21.67C82.02,21.39 82.42,20.75 82.79,20.25L83.46,19.33L92.37,19.33C97.27,19.33 101.51,19.42 101.80,19.53C102.09,19.64 103.11,21.11 104.08,22.78C105.04,24.46 106.01,26.13 106.24,26.50C106.46,26.87 106.75,27.38 106.88,27.65C107.18,28.24 112.88,37.97 113.34,38.67C113.52,38.94 113.77,39.39 113.90,39.66C114.03,39.93 115.20,41.95 116.50,44.16C117.80,46.36 118.98,48.39 119.10,48.67C119.23,48.94 119.64,49.62 120.00,50.17C120.36,50.72 120.77,51.39 120.89,51.66C121.02,51.93 122.20,53.95 123.50,56.16C124.80,58.36 125.98,60.39 126.10,60.67C126.23,60.94 126.64,61.62 127.00,62.17C127.36,62.72 127.77,63.39 127.89,63.66C128.17,64.23 132.84,72.25 133.34,73.00C133.52,73.27 133.77,73.72 133.90,73.99C134.03,74.26 135.20,76.29 136.50,78.49C137.80,80.70 138.98,82.73 139.10,83.00C139.23,83.27 139.64,83.95 140.00,84.50C140.36,85.05 140.77,85.72 140.89,85.99C141.02,86.26 142.23,88.34 143.57,90.60C144.91,92.87 145.92,94.86 145.82,95.03C145.71,95.20 142.48,95.33 138.54,95.33C130.55,95.33 130.94,95.45 129.34,92.50C128.95,91.77 128.33,90.72 127.98,90.17C127.63,89.62 127.24,88.95 127.11,88.69C126.99,88.43 124.69,84.53 122.01,80.03C119.33,75.52 117.03,71.61 116.90,71.33C116.77,71.06 116.36,70.38 116.00,69.83C115.64,69.28 115.24,68.62 115.11,68.36C114.99,68.10 112.69,64.20 110.01,59.69C107.32,55.19 105.02,51.27 104.89,51.00C104.76,50.73 104.36,50.05 104.00,49.50C103.64,48.95 103.19,48.20 103.00,47.83C102.81,47.47 102.35,46.66 101.98,46.03C101.60,45.41 99.55,41.96 97.42,38.37C93.63,31.97 93.12,31.25 92.55,31.43C92.30,31.51 90.88,33.79 90.01,35.50C89.82,35.87 89.52,36.39 89.34,36.67C88.81,37.48 85.15,43.79 84.90,44.33C84.77,44.61 84.36,45.28 84.00,45.83C83.64,46.38 83.23,47.06 83.10,47.33C82.97,47.61 82.03,49.26 81.00,51.00C79.97,52.74 79.03,54.39 78.90,54.67C78.77,54.94 78.36,55.62 78.00,56.17C77.64,56.72 77.23,57.39 77.10,57.67C76.83,58.25 72.16,66.26 71.66,67.00C71.48,67.27 71.23,67.73 71.10,68.00C70.84,68.56 66.19,76.55 65.66,77.33C65.48,77.61 65.23,78.06 65.10,78.33C64.84,78.89 60.19,86.88 59.66,87.67C59.48,87.94 59.23,88.39 59.10,88.67C58.84,89.23 54.19,97.22 53.66,98.00C53.48,98.27 53.23,98.73 53.10,99.00C52.97,99.27 52.03,100.92 51.00,102.67C49.97,104.41 49.03,106.06 48.90,106.33C48.77,106.61 48.36,107.28 48.00,107.83C47.64,108.38 47.24,109.06 47.11,109.33C46.98,109.61 46.04,111.26 45.01,113.00C43.98,114.74 43.03,116.39 42.90,116.67C42.77,116.94 42.36,117.62 42.00,118.17C41.64,118.72 41.24,119.39 41.11,119.67C40.98,119.94 40.04,121.59 39.01,123.33C37.98,125.08 37.02,126.73 36.89,127.00C36.75,127.28 36.46,127.81 36.24,128.18C36.01,128.55 35.09,130.16 34.17,131.74C33.17,133.49 32.25,134.70 31.84,134.81C30.61,135.14 17.05,135.02 16.84,134.67ZM180.16,134.61C180.07,134.36 180.03,108.37 180.08,76.83L180.17,19.50L223.33,19.41C275.08,19.31 281.53,19.53 289.67,21.74C298.41,24.11 303.63,29.44 305.38,37.79C306.27,42.07 306.27,54.68 305.38,58.34C303.73,65.05 300.78,68.24 293.24,71.46C292.54,71.76 291.75,72.00 291.47,72.00C290.69,72.00 288.96,72.99 289.16,73.32C289.26,73.48 290.35,73.72 291.59,73.85C292.82,73.97 294.43,74.28 295.17,74.53C295.90,74.79 296.68,74.99 296.91,75.00C297.13,75.00 298.48,75.54 299.90,76.21C305.08,78.64 308.08,82.82 309.38,89.46C309.98,92.51 310.03,93.83 309.89,103.33C309.73,113.96 309.58,115.44 308.24,119.33C306.50,124.38 302.61,128.35 297.33,130.47C296.51,130.80 295.34,131.28 294.74,131.53C294.14,131.79 293.38,132.00 293.05,132.00C292.72,132.00 291.79,132.21 290.98,132.46C289.18,133.03 283.33,133.86 277.50,134.39C270.75,134.99 180.39,135.20 180.16,134.61ZM321.79,134.51C321.69,134.24 321.92,133.58 322.30,133.04C322.69,132.50 323.00,131.99 323.00,131.89C323.00,131.80 323.87,130.25 324.93,128.44C326.00,126.64 326.97,124.94 327.10,124.67C327.23,124.39 327.64,123.72 328.00,123.17C328.36,122.62 328.77,121.94 328.90,121.67C329.03,121.39 329.97,119.74 331.00,118.00C332.03,116.26 332.97,114.61 333.10,114.33C333.23,114.06 333.64,113.38 334.00,112.83C334.36,112.28 334.76,111.61 334.89,111.33C335.15,110.77 338.83,104.43 339.34,103.67C339.52,103.39 339.77,102.94 339.90,102.67C340.03,102.39 341.20,100.36 342.50,98.16C343.80,95.95 344.98,93.93 345.11,93.66C345.23,93.39 345.64,92.72 346.00,92.17C346.36,91.62 346.76,90.94 346.89,90.67C347.15,90.10 350.83,83.77 351.34,83.00C351.52,82.73 351.77,82.27 351.90,82.00C352.02,81.73 352.96,80.07 353.99,78.33C355.02,76.59 355.97,74.94 356.10,74.67C356.23,74.39 356.64,73.72 357.00,73.17C357.36,72.62 357.76,71.94 357.89,71.67C358.02,71.39 358.96,69.74 359.99,68.00C361.02,66.26 361.97,64.61 362.10,64.33C362.23,64.06 362.64,63.38 363.00,62.83C363.36,62.28 363.76,61.61 363.89,61.33C364.15,60.77 367.83,54.43 368.34,53.67C368.52,53.39 368.77,52.94 368.90,52.67C369.16,52.11 373.81,44.12 374.34,43.33C374.52,43.06 374.77,42.61 374.90,42.33C375.03,42.06 375.97,40.41 377.00,38.67C378.03,36.93 378.97,35.27 379.10,35.00C379.23,34.73 379.64,34.05 380.00,33.50C380.36,32.95 380.76,32.27 380.89,32.00C381.15,31.43 384.83,25.10 385.34,24.33C385.52,24.06 385.77,23.61 385.89,23.33C386.01,23.06 386.61,22.05 387.22,21.08L388.33,19.33L397.41,19.34C404.03,19.35 406.64,19.46 407.03,19.76C407.32,19.98 408.29,21.44 409.20,23.00C410.10,24.55 411.01,26.13 411.24,26.50C411.46,26.86 411.75,27.39 411.88,27.66C412.02,27.93 413.20,29.95 414.50,32.16C415.80,34.36 416.98,36.39 417.10,36.67C417.23,36.94 417.64,37.62 418.00,38.17C418.36,38.72 418.77,39.39 418.89,39.66C419.17,40.23 423.84,48.25 424.34,49.00C424.52,49.27 424.77,49.72 424.90,49.99C425.03,50.27 426.20,52.29 427.51,54.49C428.81,56.70 429.98,58.73 430.11,59.00C430.24,59.27 430.64,59.95 431.00,60.50C431.36,61.05 431.77,61.72 431.89,61.99C432.02,62.26 433.20,64.29 434.50,66.49C435.80,68.70 436.97,70.73 437.10,71.00C437.23,71.27 437.48,71.73 437.66,72.00C438.20,72.80 442.86,80.79 443.11,81.33C443.24,81.61 443.64,82.28 444.00,82.83C444.36,83.38 444.76,84.05 444.89,84.32C445.02,84.58 446.45,87.03 448.07,89.76C449.68,92.49 450.92,94.86 450.82,95.03C450.71,95.20 447.52,95.33 443.54,95.33C435.55,95.33 435.94,95.45 434.34,92.50C433.95,91.77 433.33,90.72 432.98,90.17C432.63,89.62 432.19,88.87 432.00,88.50C431.81,88.13 431.35,87.32 430.98,86.70C428.39,82.42 421.09,70.08 420.89,69.67C420.77,69.39 420.36,68.72 420.00,68.17C419.64,67.62 419.24,66.95 419.11,66.69C418.99,66.43 416.69,62.53 414.01,58.03C411.33,53.52 409.03,49.61 408.90,49.33C408.77,49.06 408.36,48.38 408.00,47.83C407.64,47.28 407.19,46.53 407.00,46.17C406.81,45.80 406.35,44.98 405.97,44.35C405.59,43.73 403.76,40.65 401.91,37.52C398.62,31.95 398.12,31.25 397.55,31.43C397.30,31.51 395.88,33.79 395.01,35.50C394.82,35.87 394.52,36.39 394.34,36.67C393.81,37.48 390.15,43.79 389.90,44.33C389.77,44.61 389.36,45.28 389.00,45.83C388.64,46.38 388.23,47.06 388.10,47.33C387.83,47.91 383.16,55.92 382.66,56.67C382.48,56.94 382.23,57.39 382.10,57.67C381.85,58.21 376.21,67.86 375.66,68.67C375.48,68.94 375.23,69.39 375.10,69.67C374.84,70.23 370.19,78.22 369.66,79.00C369.48,79.27 369.23,79.73 369.10,80.00C368.85,80.55 363.21,90.19 362.66,91.00C362.48,91.27 362.23,91.73 362.10,92.00C361.98,92.27 361.04,93.93 360.01,95.67C358.98,97.41 358.02,99.06 357.89,99.33C357.75,99.61 357.46,100.13 357.24,100.50C357.01,100.87 356.01,102.59 355.00,104.33C353.99,106.08 352.99,107.80 352.76,108.17C352.54,108.53 352.25,109.06 352.11,109.33C351.98,109.61 350.77,111.69 349.43,113.95C348.10,116.21 347.00,118.12 347.00,118.17C347.00,118.29 343.19,124.87 342.66,125.67C342.48,125.94 342.18,126.47 341.99,126.83C341.81,127.20 341.21,128.25 340.66,129.17C340.12,130.08 339.19,131.69 338.60,132.73C338.00,133.79 337.24,134.70 336.85,134.81C336.47,134.91 332.97,134.99 329.07,135.00C323.15,135.00 321.95,134.92 321.79,134.51ZM486.33,134.72C485.87,134.57 485.87,20.12 486.34,19.83C486.78,19.56 499.56,19.56 500.00,19.83C500.22,19.97 500.33,28.25 500.33,44.00C500.33,65.33 500.39,68.01 500.86,68.48C501.31,68.93 502.68,69.00 510.77,69.00L520.17,69.00L524.50,66.06C531.27,61.47 539.13,56.13 543.44,53.19C545.60,51.71 547.73,50.27 548.16,50.00C548.59,49.73 550.72,48.28 552.89,46.80C558.35,43.06 563.26,39.72 569.33,35.61C579.06,29.03 584.83,25.09 587.50,23.23C588.97,22.20 590.80,20.98 591.58,20.50L592.99,19.64L604.66,19.57C611.08,19.53 616.33,19.57 616.33,19.67C616.31,20.19 615.13,21.07 608.17,25.75C603.95,28.58 597.50,32.92 593.83,35.39C590.17,37.87 584.09,41.97 580.33,44.51C576.57,47.05 570.38,51.23 566.56,53.81C562.75,56.39 559.27,58.73 558.84,59.00C558.07,59.49 548.79,65.76 540.17,71.61C537.78,73.23 535.83,74.75 535.83,74.99C535.83,75.40 537.53,76.69 542.67,80.16C543.86,80.96 546.78,82.97 549.17,84.62C551.55,86.28 555.15,88.76 557.17,90.14C561.97,93.43 565.92,96.15 572.61,100.80C573.95,101.74 575.40,102.73 575.83,103.00C576.75,103.60 580.26,105.99 583.50,108.25C588.53,111.75 590.63,113.20 594.00,115.49C595.93,116.80 598.48,118.56 599.67,119.39C602.20,121.16 605.03,123.11 610.33,126.73C619.11,132.74 621.11,134.18 621.06,134.45C621.03,134.60 615.61,134.71 609.02,134.70L597.03,134.68L594.60,133.02C593.26,132.11 590.89,130.46 589.33,129.36C587.77,128.26 585.52,126.69 584.33,125.86C583.14,125.04 580.89,123.47 579.33,122.37C577.77,121.27 575.45,119.64 574.17,118.75C572.88,117.86 570.48,116.17 568.83,115.00C567.18,113.83 564.93,112.26 563.83,111.49C562.73,110.73 560.48,109.16 558.83,108.00C557.18,106.84 554.93,105.27 553.83,104.51C552.73,103.74 550.48,102.17 548.83,101.00C547.18,99.83 544.93,98.26 543.83,97.49C542.73,96.73 540.48,95.16 538.83,94.00C537.18,92.84 534.93,91.27 533.83,90.51C532.73,89.74 530.48,88.17 528.83,87.00C527.18,85.83 524.56,84.00 523.00,82.94L520.17,81.00L510.65,81.00C503.69,81.00 501.03,81.11 500.73,81.40C500.43,81.70 500.33,88.12 500.33,108.23C500.33,129.15 500.25,134.67 499.92,134.68C496.35,134.77 486.58,134.81 486.33,134.72ZM281.67,121.24C287.11,120.41 289.69,119.44 292.07,117.35C293.74,115.87 294.30,114.96 295.44,111.83C296.11,109.98 296.16,109.27 296.13,102.00C296.10,95.06 296.01,93.91 295.40,91.89C293.81,86.73 291.34,84.28 286.17,82.79C281.50,81.45 278.15,81.35 235.67,81.34C213.21,81.33 194.65,81.33 194.42,81.33C194.09,81.33 194.00,85.58 194.00,101.44C194.00,112.51 194.11,121.66 194.24,121.79C194.37,121.92 213.31,121.97 236.32,121.90C272.61,121.79 278.63,121.70 281.67,121.24ZM279.17,67.24C286.50,66.04 289.36,64.06 291.40,58.79C292.10,56.98 292.16,56.31 292.16,49.83C292.16,42.13 291.91,40.73 289.95,37.62C288.22,34.86 285.82,33.71 279.67,32.66C276.01,32.04 273.94,32.01 234.92,32.01L194.00,32.00L194.00,50.01L194.00,68.02L234.92,67.90C270.76,67.80 276.25,67.71 279.17,67.24Z"/><path fill="#E02E2E" d="M48.00,134.32C48.00,134.01 48.84,132.31 49.65,131.00C50.80,129.12 54.00,123.61 54.00,123.50C54.00,123.43 55.31,121.15 56.92,118.43C58.52,115.72 60.00,113.12 60.21,112.66C60.42,112.19 60.99,111.33 61.49,110.74L62.39,109.67L107.28,109.67C131.97,109.67 152.47,109.76 152.83,109.86C153.26,109.97 154.64,111.97 156.67,115.40C158.41,118.35 159.89,120.91 159.95,121.08C160.02,121.25 161.78,124.25 163.87,127.74C165.96,131.24 167.67,134.22 167.67,134.38C167.67,134.54 140.87,134.67 107.83,134.67C66.64,134.67 48.00,134.56 48.00,134.32Z"/><path fill="#41AAE1" d="M297.14,177.33C297.14,172.66 297.19,170.75 297.25,173.08C297.31,175.42 297.31,179.25 297.25,181.58C297.19,183.92 297.14,182.01 297.14,177.33ZM342.16,168.33C342.16,158.71 342.20,154.77 342.25,159.58C342.30,164.40 342.30,172.27 342.25,177.08C342.20,181.90 342.16,177.96 342.16,168.33ZM370.48,177.67C370.48,173.54 370.52,171.85 370.58,173.92C370.64,175.98 370.64,179.35 370.58,181.42C370.52,183.48 370.48,181.79 370.48,177.67ZM257.78,160.17C257.78,158.88 257.84,158.40 257.91,159.09C257.98,159.78 257.98,160.83 257.91,161.42C257.83,162.02 257.77,161.45 257.78,160.17ZM24.27,148.75C28.18,148.70 34.48,148.70 38.27,148.75C42.06,148.80 38.87,148.85 31.17,148.85C23.47,148.85 20.36,148.80 24.27,148.75ZM224.11,148.75C227.92,148.70 234.07,148.70 237.77,148.75C241.47,148.80 238.35,148.85 230.83,148.85C223.32,148.85 220.29,148.80 224.11,148.75ZM354.33,134.35C354.33,133.92 357.70,127.86 359.34,125.33C359.52,125.06 359.77,124.61 359.90,124.33C360.03,124.06 360.97,122.41 362.00,120.67C363.03,118.92 363.98,117.27 364.11,117.00C364.71,115.74 366.61,112.56 367.58,111.19L368.65,109.67L414.11,109.67C456.98,109.67 459.59,109.70 460.07,110.25C460.54,110.79 467.57,122.54 468.10,123.67C468.23,123.94 468.64,124.62 469.00,125.17C469.36,125.72 469.76,126.39 469.89,126.67C470.02,126.94 471.00,128.61 472.06,130.38C473.13,132.15 474.00,133.83 474.00,134.13C474.00,134.62 469.01,134.67 414.17,134.67C377.12,134.67 354.33,134.55 354.33,134.35ZM135.25,95.42C136.95,95.36 139.72,95.36 141.42,95.42C143.11,95.48 141.72,95.53 138.33,95.53C134.94,95.53 133.55,95.48 135.25,95.42ZM440.92,95.43C441.52,95.35 442.42,95.35 442.92,95.43C443.42,95.50 442.93,95.57 441.83,95.56C440.73,95.56 440.32,95.50 440.92,95.43ZM447.09,95.43C447.59,95.35 448.34,95.35 448.75,95.43C449.16,95.51 448.75,95.57 447.83,95.57C446.92,95.57 446.58,95.50 447.09,95.43Z"/></svg></a><p style="margin-top:16px">Biuro Rachunkowe ABAK · od 1992 roku<br>Licencja MF nr 2167/97 · OC w PZU 500 000 zł</p></div>
-  <div><nav aria-label="Stopka"><a href="#pierwsza">Pierwsza wizyta</a><a href="#wizyta">Umów termin</a><a href="#sprawy">Z czym przyjść</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a><a href="#kontakt">Panel klienta</a><a href="#">Polityka prywatności</a></nav>
+  <div><nav aria-label="Stopka"><a href="#dla-kogo">Dla kogo</a><a href="#zespol">Zespół</a><a href="#czwartki">Konsultacje</a><a href="#przepisy">Aktualności</a><a href="#kontakt">Kontakt</a><a href="#kontakt">Panel klienta</a><a href="#">Polityka prywatności</a></nav>
   <p style="margin-top:14px">ul. Wąwozowa 2 lok. 1E, 02-796 Warszawa · ul. Elizy Orzeszkowej 6 lok. 7A, 05-825 Grodzisk Mazowiecki</p>
   <p>NIP [uzupełnić] · REGON [uzupełnić] · © 2026 ABAK Biuro Rachunkowe · makieta: Odnova Studio</p></div>
 </div></footer>
-<div class="mbar"><a href="tel:+48226484113">Zadzwoń<small>Ursynów</small></a><a href="tel:+48227241363">Zadzwoń<small>Grodzisk Maz.</small></a></div>
-<script>window.__SEQ={"n":100,"fx":0.5,"fy":0.55,"tempo":[0.0,0.0196,0.0384,0.0551,0.0736,0.0893,0.1068,0.1236,0.1378,0.1539,0.1677,0.1835,0.1991,0.212,0.2269,0.2395,0.2541,0.2686,0.2808,0.2948,0.3063,0.3199,0.3334,0.3446,0.3578,0.3687,0.3819,0.395,0.4057,0.4189,0.4294,0.4418,0.454,0.4636,0.4751,0.4841,0.4948,0.5052,0.5133,0.5233,0.5312,0.5409,0.5502,0.5571,0.5652,0.5712,0.5784,0.5855,0.5908,0.5973,0.6023,0.6085,0.6144,0.6189,0.6248,0.63,0.6373,0.6448,0.6511,0.658,0.6631,0.6685,0.674,0.6791,0.687,0.6934,0.7022,0.7116,0.7189,0.7284,0.7362,0.746,0.7562,0.7647,0.7755,0.7843,0.7949,0.8052,0.8134,0.8236,0.832,0.8419,0.8519,0.86,0.8696,0.8775,0.8869,0.8961,0.9036,0.9126,0.9197,0.9283,0.937,0.9441,0.953,0.9605,0.9701,0.9802,0.9887,1.0],"b":"img/seq/b/%03d.webp","s":"img/seq/s/%03d.webp"};</script>
-<script>/* Hero z sekwencji klatek sterowanej przewijaniem (ABAK r3, W1 i W3).
-   window.__SEQ = {n, b:'img/seq/b/%03d.webp', s:'img/seq/s/%03d.webp', list:[...data-uri] (PREZENTACJA), fx, fy, tempo:[...]}
-   Bez JS / reduced-motion: nieruchomy kadr #still i treść panelu. */
+<div class="mbar" aria-label="Szybki kontakt"><a class="btn bl" href="tel:+48226484113">Zadzwoń · Ursynów</a><a class="btn" href="tel:+48227241363">Zadzwoń · Grodzisk</a></div>
+<script>
 (function(){
-  var d=document, root=d.documentElement, S=window.__SEQ;
-  var stage=d.getElementById('stage'); if(!stage) return;
-  var pin=stage.querySelector('.pin'), cv=d.getElementById('cv'), still=d.getElementById('still'),
-      panel=d.querySelector('.hpanel'), end=d.querySelector('.hend'), bar=d.querySelector('.hprog i'),
-      scn=[].slice.call(d.querySelectorAll('.scn'));
-  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function cl(x){return x<0?0:x>1?1:x}
-  function prog(){ var r=stage.getBoundingClientRect(), top=parseFloat(getComputedStyle(pin).top)||0, h=stage.offsetHeight-pin.offsetHeight; return h>1?cl((top-r.top)/h):0; }
-  if(!S||rm||!cv||!cv.getContext){ root.classList.add('seq-off'); return; }
-  var ctx=cv.getContext('2d'), n=S.n, small=Math.min(innerWidth,screen.width||9999)*Math.min(devicePixelRatio||1,2)<=1000;
-  var imgs=new Array(n), ok=new Array(n), got=0, fx=S.fx==null?.5:S.fx, fy=S.fy==null?.5:S.fy;
-  function src(i){ if(S.list) return S.list[i]; var t=small&&S.s?S.s:S.b; return t.replace('%03d',('00'+i).slice(-3)); }
-  function load(i){ if(imgs[i]) return; var im=new Image(); im.decoding='async'; im.onload=function(){ ok[i]=1; got++; if(got===1){ root.classList.add('seq-on'); } if(i===cur||!drawn) draw(); }; im.src=src(i); imgs[i]=im; }
-  // kolejność: co 8., co 4., co 2., każda — od pierwszego kadru widać obraz, potem się zagęszcza
-  [8,4,2,1].forEach(function(st){ for(var i=0;i<n;i+=st) load(i); }); load(n-1);
-  function nearest(i){ if(ok[i]) return i; for(var k=1;k<n;k++){ if(i-k>=0&&ok[i-k]) return i-k; if(i+k<n&&ok[i+k]) return i+k; } return -1; }
-  // tempo: tabela skumulowana (długość n) — rozmyte fragmenty mijają szybciej
-  var T=S.tempo&&S.tempo.length===n?S.tempo:null;
-  function frameAt(p){ if(!T) return Math.round(p*(n-1)); var lo=0,hi=n-1; while(lo<hi){ var m=(lo+hi)>>1; if(T[m]<p) lo=m+1; else hi=m; } return lo; }
-  var cur=0, drawn=false, W=0, H=0;
-  function size(){ var dpr=Math.min(devicePixelRatio||1,2), r=cv.getBoundingClientRect(), w=Math.round(r.width*dpr), h=Math.round(r.height*dpr); if(w!==W||h!==H){ W=cv.width=w; H=cv.height=h; drawn=false; } }
-  function draw(){
-    size(); var k=nearest(cur); if(k<0) return; var im=imgs[k], iw=im.naturalWidth, ih=im.naturalHeight; if(!iw) return;
-    var s=Math.max(W/iw,H/ih), dw=iw*s, dh=ih*s, x=(W-dw)*fx, y=(H-dh)*fy;
-    ctx.drawImage(im,x,y,dw,dh); drawn=true;
-  }
-  var lastScn=-2;
-  function ui(p){
-    if(panel){ var a=cl(1-(p-.18)/.14); panel.style.opacity=a; panel.style.transform='translateY('+(-24*(1-a))+'px)'; panel.style.pointerEvents=a>.5?'auto':'none'; pin.style.setProperty('--pa',a); }
-    if(end){ var e=cl((p-.86)/.08); end.style.opacity=e; end.style.transform='translateY('+(18*(1-e))+'px)'; end.style.pointerEvents=e>.5?'auto':'none'; }
-    if(bar) bar.parentNode.style.setProperty('--hp',p);
-    var act=-1; scn.forEach(function(s,i){ var a=+s.dataset.a, b=+s.dataset.b; if(cur>=a&&cur<=b) act=i; });
-    if(act!==lastScn){ lastScn=act; scn.forEach(function(s,i){ s.classList.toggle('on',i===act); }); }
-    // tekst wychodzi razem ze sceną, gdy sticky odjeżdża
-    var r=stage.getBoundingClientRect(), out=cl(-(r.bottom-innerHeight)/(innerHeight*.35));
-    pin.style.setProperty('--out',out);
-  }
-  var tick=false;
-  function onS(){ if(tick) return; tick=true; requestAnimationFrame(function(){ tick=false; var p=prog(); var f=frameAt(p); if(f!==cur||!drawn){ cur=f; draw(); } ui(p); }); }
-  addEventListener('scroll',onS,{passive:true}); addEventListener('resize',function(){ drawn=false; onS(); }); onS();
-})();
-</script>
-<script>(function(){
   var d=document, root=d.documentElement, top=d.getElementById('top');
   function m(){ if(top) root.style.setProperty('--hdr-h',top.offsetHeight+'px'); }
   m(); addEventListener('resize',m); addEventListener('load',m);
@@ -508,41 +362,14 @@ footer p{margin:6px 0}
   if(mn) mn.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ mn.removeAttribute('open'); }); });
   d.querySelectorAll('form.f').forEach(function(f){ f.addEventListener('submit',function(e){ e.preventDefault(); var b=f.querySelector('button'); if(b) b.textContent='Dziękujemy — oddzwonimy (makieta)'; }); });
 })();
+
 </script>
 <script>
 (function(){
-  var d=document;
-  /* pierwsza wizyta: kroki zmieniają kadr */
-  var ph=d.getElementById('fvph'), cap=d.getElementById('fvcap'), st=[].slice.call(d.querySelectorAll('#steps>li')), rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function act(li){ st.forEach(function(x){ x.classList.toggle('on',x===li); }); if(!ph) return; ph.style.setProperty('--z',rm?1:li.dataset.z); ph.style.setProperty('--ox',li.dataset.ox); ph.style.setProperty('--oy',li.dataset.oy); ph.classList.toggle('alt',li.dataset.alt==='1'); if(cap) cap.textContent=li.dataset.cap; }
-  if(st.length){ act(st[0]); if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) act(e.target); }); },{rootMargin:'-45% 0px -45% 0px'}); st.forEach(function(x){ io.observe(x); }); } else st.forEach(function(x){ x.classList.add('on'); }); }
-  var ck=d.getElementById('ck'), ckc=d.getElementById('ckc');
-  var br=d.getElementById('bring');
-  if(ck) ck.addEventListener('change',function(){ var n=ck.querySelectorAll('input:checked').length; if(br){ var it=[].map.call(ck.querySelectorAll('input:checked'),function(i){ return i.nextElementSibling.firstChild.nodeValue.trim().toLowerCase(); }); br.firstChild.nodeValue='Przyniosę: '+(it.length?it.join(', '):'dowód osobisty')+' '; } ckc.innerHTML='Zaznaczone: <b>'+n+' z 6</b>. '+(n===0?'Nic więcej nie trzeba, wystarczy dowód.':n<4?'To wystarczy na pierwszą rozmowę.':n<6?'Świetnie, zdążymy więcej.':'Komplet. Zróbmy to w jednym spotkaniu.'); });
-  /* otwarte teraz — czas w Warszawie */
-  function wawNow(){ try{ var p=new Intl.DateTimeFormat('pl-PL',{timeZone:'Europe/Warsaw',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()), o={}; p.forEach(function(x){ o[x.type]=x.value; }); return {wd:o.weekday,h:+o.hour,m:+o.minute}; }catch(e){ var n=new Date(); return {wd:['niedz.','pon.','wt.','śr.','czw.','pt.','sob.'][n.getDay()],h:n.getHours(),m:n.getMinutes()}; } }
-  function live(){ var t=wawNow(), wk=!/sob|niedz|nd/.test(t.wd), mins=t.h*60+t.m, open=wk&&mins>=480&&mins<960;
-    d.querySelectorAll('.live').forEach(function(el){ el.classList.toggle('cl',!open); el.lastChild.nodeValue=open?(' Otwarte teraz · do 16:00'+(mins>=900?' (jeszcze '+(960-mins)+' min)':'')):(wk&&mins<480?' Zamknięte · otwieramy dziś o 8:00':(/pt/.test(t.wd)||!wk)?' Zamknięte · otwieramy w poniedziałek o 8:00':' Zamknięte · otwieramy jutro o 8:00'); }); }
-  live(); setInterval(live,60000);
-  /* rezerwacja */
-  var days=d.getElementById('days'), hours=d.getElementById('hours'), sum=d.getElementById('sum'), tko=d.getElementById('tkofc');
-  if(days){
-    var dn=['niedz.','pon.','wt.','śr.','czw.','pt.','sob.'], mn=['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
-    var t=new Date(), list=[], x=new Date(t.getFullYear(),t.getMonth(),t.getDate()+1);
-    while(list.length<5){ if(x.getDay()>0&&x.getDay()<6) list.push(new Date(x)); x.setDate(x.getDate()+1); }
-    var sel={d:null,h:null};
-    function chip(box,label,small,val,key){ var b=d.createElement('button'); b.type='button'; b.setAttribute('aria-pressed','false'); b.textContent=label; if(small){ var s=d.createElement('small'); s.textContent=small; b.appendChild(s);} b.addEventListener('click',function(){ [].forEach.call(box.children,function(c){ c.setAttribute('aria-pressed','false'); }); b.setAttribute('aria-pressed','true'); sel[key]=val; upd(); }); box.appendChild(b); }
-    list.forEach(function(x){ chip(days,dn[x.getDay()]+' '+x.getDate(),mn[x.getMonth()],x,'d'); });
-    ['8:30','10:00','11:30','13:00','14:30'].forEach(function(h){ chip(hours,h,'',h,'h'); });
-    function ofc(){ var r=d.querySelector('.ofc input:checked'); return r?r.value:''; }
-    function upd(){ if(tko) tko.textContent=ofc(); sum.className='sum'; if(sel.d&&sel.h){ sum.classList.add('ok'); sum.textContent='Wizyta: '+ofc()+', '+dn[sel.d.getDay()]+' '+sel.d.getDate()+' '+mn[sel.d.getMonth()]+', godz. '+sel.h+'.'; } else sum.textContent='Wybierz dzień i godzinę.'; }
-    d.querySelectorAll('.ofc input').forEach(function(r){ r.addEventListener('change',upd); });
-    d.getElementById('book').addEventListener('submit',function(e){ e.preventDefault(); if(sel.d&&sel.h){ sum.className='sum ok'; sum.textContent='Dziękujemy — oddzwonimy, żeby potwierdzić termin (makieta).'; } else { sum.className='sum err'; sum.textContent='Wybierz dzień i godzinę.'; } });
-  }
-  /* zakładki sytuacji */
-  var tabs=[].slice.call(d.querySelectorAll('.tabs [role=tab]'));
-  function sel_(b,focus){ tabs.forEach(function(x){ var on=x===b; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; d.getElementById(x.getAttribute('aria-controls')).hidden=!on; }); if(focus) b.focus(); }
-  tabs.forEach(function(b,i){ b.addEventListener('click',function(){ sel_(b); }); b.addEventListener('keydown',function(e){ var k=e.key, j=k==='ArrowDown'||k==='ArrowRight'?i+1:k==='ArrowUp'||k==='ArrowLeft'?i-1:null; if(j!==null){ e.preventDefault(); sel_(tabs[(j+tabs.length)%tabs.length],true); } }); });
+  var d=document, tabs=[].slice.call(d.querySelectorAll('.types [role=tab]'));
+  function sel(b,focus){ tabs.forEach(function(x){ var on=x===b; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; d.getElementById(x.getAttribute('aria-controls')).hidden=!on; }); if(focus) b.focus(); }
+  tabs.forEach(function(b,i){ b.addEventListener('click',function(){ sel(b); if(innerWidth<1080) d.getElementById(b.getAttribute('aria-controls')).scrollIntoView({behavior:'smooth',block:'nearest'}); });
+    b.addEventListener('keydown',function(e){ var k=e.key, j=k==='ArrowDown'||k==='ArrowRight'?i+1:k==='ArrowUp'||k==='ArrowLeft'?i-1:null; if(j!==null){ e.preventDefault(); sel(tabs[(j+tabs.length)%tabs.length],true); } }); });
 })();
 </script>
 </body>
