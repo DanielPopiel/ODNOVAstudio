@@ -266,6 +266,12 @@ footer.ft{background:var(--con);color:var(--ink);padding:40px 0 24px;border-top:
  .hint,.ld{display:none}
 }
 @media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative}.cap{transition:none}}
+
+/* pływające zdjęcia */
+.js .plyw{overflow:hidden;position:relative;isolation:isolate}
+.js .plyw>img{translate:var(--px,0) var(--py,0);scale:var(--ps,1.14);will-change:translate,scale;transition:scale 1.2s cubic-bezier(.2,.7,.2,1),filter .6s;backface-visibility:hidden}
+.js .plyw:hover>img{--ps:1.19;filter:brightness(1.04) saturate(1.05)}
+@media(prefers-reduced-motion:reduce){.js .plyw>img{translate:none;scale:none;will-change:auto}}
 </style>
 </head>
 <body>
@@ -381,6 +387,19 @@ pad();ld.classList.add('on');
 var order=[0];for(var i=10;i<N;i+=10)order.push(i);for(var i=0;i<N;i++)if(order.indexOf(i)<0)order.push(i);
 var qi=0;function pump(){for(var k=0;k<6&&qi<order.length;k++)load(order[qi++]);if(qi<order.length)setTimeout(pump,40)}pump();
 addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});addEventListener('resize',function(){pad();cur=-1;pos=-1;upd()});upd();
+})();
+
+/* pływające zdjęcia: paralaksa + powolny dryf, tylko widoczne ramki */
+(function(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var SEL='.of-p .pf,.dl-p .pf,.et-p,.rz-p,.ab2-p,.pic,.hp-p,.tile-p,.rl-p,.ek-p',fr=[].slice.call(document.querySelectorAll(SEL)).filter(function(f){return f.querySelector(':scope>img')});
+if(!fr.length)return;var vis=new Set(),run=false,mob=innerWidth<=760;
+fr.forEach(function(f,i){f.classList.add('plyw');f._ph=i*1.7;f._per=10+(i%4)*1.3;f._dr=f.closest('.gi')?0:1});
+function tick(t){if(!vis.size){run=false;return}var H=innerHeight;vis.forEach(function(f){var r=f.getBoundingClientRect(),c=(r.top+r.height/2-H/2)/(H/2+r.height/2);c=Math.max(-1,Math.min(1,c));
+ var s=t/1000*2*Math.PI/f._per+f._ph,py=-c*(mob?3.5:4.6)*f._dr+Math.sin(s)*.55,px=Math.cos(s*.8)*.8,ps=1.135+Math.sin(s*.5)*.022;
+ var im=f.firstElementChild&&f.firstElementChild.tagName==='IMG'?f.firstElementChild:f.querySelector(':scope>img');
+ im.style.setProperty('--py',py.toFixed(2)+'%');im.style.setProperty('--px',px.toFixed(2)+'%');if(!f.matches(':hover'))im.style.setProperty('--ps',ps.toFixed(4))});requestAnimationFrame(tick)}
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target)});if(vis.size&&!run){run=true;requestAnimationFrame(tick)}},{rootMargin:'80px 0px'});
+fr.forEach(function(f){io.observe(f);f.addEventListener('mouseenter',function(){var im=f.querySelector(':scope>img');im&&im.style.removeProperty('--ps')})});
 })();
 </script>
 </body></html>

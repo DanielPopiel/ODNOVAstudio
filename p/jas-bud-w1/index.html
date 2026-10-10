@@ -87,7 +87,8 @@ nav.main a:hover{text-decoration:underline;text-underline-offset:7px;text-decora
 .of-t p{color:var(--mut);font-size:1.05rem;max-width:52ch}
 .of-li{color:var(--ink)!important;font-size:.98rem!important}
 .of-p{margin:0;position:sticky;top:calc(var(--hdr-h) + 24px)}
-.of-p img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
+.of-p .pf{aspect-ratio:3/4;border-radius:4px;overflow:hidden}
+.of-p img{width:100%;height:100%;object-fit:cover}
 .of-p figcaption{font-size:.85rem;color:var(--mut);margin-top:10px}
 /* etapy: ciemna sekcja, duże numery nad linią */
 .dk{background:var(--dark);color:#e9efe6}
@@ -107,7 +108,8 @@ nav.main a:hover{text-decoration:underline;text-underline-offset:7px;text-decora
 /* dlaczego: zdjęcie 7/12 + stos liczb */
 .dl-g{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,80px);align-items:stretch}
 .dl-p{margin:0;display:flex;flex-direction:column}
-.dl-p img{width:100%;flex:1;min-height:0;height:100%;aspect-ratio:auto;object-fit:cover;border-radius:4px}
+.dl-p .pf{flex:1;min-height:320px;border-radius:4px;overflow:hidden}
+.dl-p img{width:100%;height:100%;object-fit:cover}
 .dl-p figcaption{font-size:.92rem;color:var(--mut);margin-top:12px;max-width:60ch;line-height:1.5}
 .dl-l{display:flex;flex-direction:column;justify-content:center}
 .lb{border-top:1px solid var(--line);padding:18px 0 22px}
@@ -225,10 +227,10 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:56px 0 24px}
 /* tablet / telefon */
 @media(max-width:1000px){
  .of-g,.dl-g,.op-g,.fq,.ktg,.sh1-row{grid-template-columns:1fr}.of-p,.op-l,.kt-l{position:static}
- .of-p{order:-1}.of-p img{aspect-ratio:16/10}
+ .of-p{order:-1}.of-p .pf{aspect-ratio:16/10}
  .ets{grid-template-columns:1fr 1fr}
  .rzs{grid-template-columns:1fr 1fr}.rz:first-child{grid-row:auto;grid-column:span 2}.rz:first-child .rz-p img{aspect-ratio:16/10}
- .dl-l{padding-top:8px}.dl-p img{aspect-ratio:16/10;height:auto;flex:none}
+ .dl-l{padding-top:8px}.dl-p .pf{aspect-ratio:16/10;flex:none;min-height:0}
 }
 @media(max-width:640px){
  .ets,.rzs{grid-template-columns:1fr}.rz:first-child{grid-column:auto}
@@ -300,6 +302,12 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:56px 0 24px}
  .hero .hint{display:none}
 }
 .no-js .hero .stage::after,.no-js .hero .stage::before{display:none}.no-js .hero .ht,.no-js .hero h1,.no-js .hero .lead{color:var(--ink)}.no-js .hero .btn-p{background:var(--grn);color:#fff;border-color:var(--grn)}.no-js .hero .btn-s{border-color:var(--ink);color:var(--ink)}
+
+/* pływające zdjęcia */
+.js .plyw{overflow:hidden;position:relative;isolation:isolate}
+.js .plyw>img{translate:var(--px,0) var(--py,0);scale:var(--ps,1.14);will-change:translate,scale;transition:scale 1.2s cubic-bezier(.2,.7,.2,1),filter .6s;backface-visibility:hidden}
+.js .plyw:hover>img{--ps:1.19;filter:brightness(1.04) saturate(1.05)}
+@media(prefers-reduced-motion:reduce){.js .plyw>img{translate:none;scale:none;will-change:auto}}
 </style>
 </head>
 <body>
@@ -326,12 +334,12 @@ footer.ft{background:var(--dark);color:#e9efe6;padding:56px 0 24px}
 <section id="oferta"><div class="wrap1">
 <div class="sh1 rv"><h2>Dom, bliźniak albo cała szeregówka. Od wykopu po stan surowy otwarty.</h2>
 <p>Każdy etap wykonują nasze stałe brygady, a materiał zamawiamy i odbieramy sami. Na życzenie prowadzimy budowę dalej, do stanu deweloperskiego.</p></div>
-<div class="of-g"><div class="of-l"><div class="of-r"><div class="of-n"><span class="nr" aria-hidden="true">01</span></div><div class="of-t"><h3>Budowa domów jednorodzinnych</h3><p>Od fundamentów po stan surowy otwarty, a na życzenie do stanu deweloperskiego. Każdy etap wykonujemy własnymi brygadami i z materiałów, które sami zamawiamy i odbieramy na budowie.</p><p class="of-li">Fundamenty, ściany, stropy, konstrukcja dachu. Technologia murowana (silikat, ceramika) i konstrukcje żelbetowe. Harmonogram ustalany przed startem i pilnowany do odbioru.</p></div></div><div class="of-r"><div class="of-n"><span class="nr" aria-hidden="true">02</span></div><div class="of-t"><h3>Osiedla i domy w zabudowie szeregowej</h3><p>Małe i średnie osiedla: od pojedynczych segmentów po pełne szeregowce. Współpracujemy z inwestorami prywatnymi, którzy budują kilka domów lub bliźniaków naraz i potrzebują jednego wykonawcy, który dopilnuje całości.</p><p class="of-li">Etapowanie prac i dostaw dla całej inwestycji. Doświadczenie z osiedla 18 lokali w Jankach i 5 szeregówek dla jednego inwestora. Jedna ekipa, jeden odpowiedzialny za każdy segment.</p></div></div><div class="of-r"><div class="of-n"><span class="nr" aria-hidden="true">03</span></div><div class="of-t"><h3>Budowa z materiałem i wsparcie inwestora</h3><p>Specjalizujemy się w realizacjach z materiałem: to my organizujemy zakupy, dostawy i logistykę, pilnujemy jakości i kosztów. W trakcie budowy doradzamy przy zmianach projektowych i rozwiązaniach technicznych.</p><p class="of-li">Materiał na budowie na czas, bez pilnowania transportów. Doradztwo przy zmianach w projekcie. Kontakt z kierownikiem budowy i kolejnymi ekipami.</p></div></div></div><figure class="of-p"><img src="img/dom-sso-1600.webp" srcset="img/dom-sso-800.webp 800w, img/dom-sso-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 45vw" alt="Dom w stanie surowym otwartym, silikat i wieńce żelbetowe" width="1600" height="1200" loading="lazy"><figcaption>Habdzin k. Konstancina, stan surowy otwarty</figcaption></figure></div></div></section><section id="etapy" class="dk"><div class="wrap1">
+<div class="of-g"><div class="of-l"><div class="of-r"><div class="of-n"><span class="nr" aria-hidden="true">01</span></div><div class="of-t"><h3>Budowa domów jednorodzinnych</h3><p>Od fundamentów po stan surowy otwarty, a na życzenie do stanu deweloperskiego. Każdy etap wykonujemy własnymi brygadami i z materiałów, które sami zamawiamy i odbieramy na budowie.</p><p class="of-li">Fundamenty, ściany, stropy, konstrukcja dachu. Technologia murowana (silikat, ceramika) i konstrukcje żelbetowe. Harmonogram ustalany przed startem i pilnowany do odbioru.</p></div></div><div class="of-r"><div class="of-n"><span class="nr" aria-hidden="true">02</span></div><div class="of-t"><h3>Osiedla i domy w zabudowie szeregowej</h3><p>Małe i średnie osiedla: od pojedynczych segmentów po pełne szeregowce. Współpracujemy z inwestorami prywatnymi, którzy budują kilka domów lub bliźniaków naraz i potrzebują jednego wykonawcy, który dopilnuje całości.</p><p class="of-li">Etapowanie prac i dostaw dla całej inwestycji. Doświadczenie z osiedla 18 lokali w Jankach i 5 szeregówek dla jednego inwestora. Jedna ekipa, jeden odpowiedzialny za każdy segment.</p></div></div><div class="of-r"><div class="of-n"><span class="nr" aria-hidden="true">03</span></div><div class="of-t"><h3>Budowa z materiałem i wsparcie inwestora</h3><p>Specjalizujemy się w realizacjach z materiałem: to my organizujemy zakupy, dostawy i logistykę, pilnujemy jakości i kosztów. W trakcie budowy doradzamy przy zmianach projektowych i rozwiązaniach technicznych.</p><p class="of-li">Materiał na budowie na czas, bez pilnowania transportów. Doradztwo przy zmianach w projekcie. Kontakt z kierownikiem budowy i kolejnymi ekipami.</p></div></div></div><figure class="of-p"><div class="pf"><img src="img/dom-sso-1600.webp" srcset="img/dom-sso-800.webp 800w, img/dom-sso-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 45vw" alt="Dom w stanie surowym otwartym, silikat i wieńce żelbetowe" width="1600" height="1200" loading="lazy"></div><figcaption>Habdzin k. Konstancina, stan surowy otwarty</figcaption></figure></div></div></section><section id="etapy" class="dk"><div class="wrap1">
 <div class="sh1 sh1-row rv"><h2>Czternaście tygodni, pięć etapów, jedna ekipa.</h2>
 <p>Orientacyjny harmonogram dla domu około 150 m². Dokładne terminy podajemy przy wycenie i pilnujemy ich do odbioru.</p></div>
 <ol class="ets"><li class="et"><div class="et-h"><span class="nr" aria-hidden="true">01</span><span class="et-w">tydz. 0–2</span></div><div class="et-p"><img src="img/koparka-1600.webp" srcset="img/koparka-800.webp 800w, img/koparka-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 20vw" alt="Wykop i ławy" width="1600" height="1200" loading="lazy"></div><h3>Wykop i ławy</h3><p>Geodeta, koparka, chudy beton, zbrojenie i betonowanie ław.</p></li><li class="et"><div class="et-h"><span class="nr" aria-hidden="true">02</span><span class="et-w">tydz. 2–4</span></div><div class="et-p"><img src="img/lawa-folia-1600.webp" srcset="img/lawa-folia-800.webp 800w, img/lawa-folia-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 20vw" alt="Ściany fundamentowe i płyta" width="1600" height="1200" loading="lazy"></div><h3>Ściany fundamentowe i płyta</h3><p>Bloczki, izolacja, zasypka warstwami, zbrojenie i wylanie płyty.</p></li><li class="et"><div class="et-h"><span class="nr" aria-hidden="true">03</span><span class="et-w">tydz. 4–8</span></div><div class="et-p"><img src="img/parter-1600.webp" srcset="img/parter-800.webp 800w, img/parter-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 20vw" alt="Ściany parteru i strop" width="1600" height="1200" loading="lazy"></div><h3>Ściany parteru i strop</h3><p>Silikat warstwa po warstwie, nadproża, wieniec, szalunek i strop.</p></li><li class="et"><div class="et-h"><span class="nr" aria-hidden="true">04</span><span class="et-w">tydz. 8–12</span></div><div class="et-p"><img src="img/dom-sso-1600.webp" srcset="img/dom-sso-800.webp 800w, img/dom-sso-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 20vw" alt="Piętro i wieńce" width="1600" height="1200" loading="lazy"></div><h3>Piętro i wieńce</h3><p>Ściany piętra, kominy, wieniec pod dach.</p></li><li class="et"><div class="et-h"><span class="nr" aria-hidden="true">05</span><span class="et-w">tydz. 12–14</span></div><div class="et-p"><img src="img/dom-garaz-1600.webp" srcset="img/dom-garaz-800.webp 800w, img/dom-garaz-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 20vw" alt="Dach i odbiór" width="1600" height="1200" loading="lazy"></div><h3>Dach i odbiór</h3><p>Więźba lub stropodach, odbiór stanu surowego otwartego.</p></li></ol></div></section><section id="dlaczego"><div class="wrap1">
 <div class="sh1 rv"><h2>Solidny dom zaczyna się od solidnej ekipy</h2><p>JAS-BUD to firma budowlana, która od ponad siedmiu lat realizuje domy jednorodzinne od fundamentów po stan surowy otwarty. Zaczynaliśmy jako podwykonawca dużych deweloperów, dziś budujemy przede wszystkim dla klientów indywidualnych w Warszawie i okolicach.</p></div>
-<div class="dl-g"><figure class="dl-p"><img src="img/ekipa-1600.webp" srcset="img/ekipa-800.webp 800w, img/ekipa-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 58vw" alt="Murarze JAS-BUD stawiają ścianę z silikatu" width="1600" height="893" loading="lazy"><figcaption>Brygada JAS-BUD na ścianach parteru. Siedziba firmy jest w Ostrołęce, brygady pracują na budowach na Mazowszu; dojazd i logistyka są po naszej stronie.</figcaption></figure>
+<div class="dl-g"><figure class="dl-p"><div class="pf"><img src="img/ekipa-1600.webp" srcset="img/ekipa-800.webp 800w, img/ekipa-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 58vw" alt="Murarze JAS-BUD stawiają ścianę z silikatu" width="1600" height="893" loading="lazy"></div><figcaption>Brygada JAS-BUD na ścianach parteru. Siedziba firmy jest w Ostrołęce, brygady pracują na budowach na Mazowszu; dojazd i logistyka są po naszej stronie.</figcaption></figure>
 <div class="dl-l"><div class="lb"><b>100+</b><span>zbudowanych domów</span><p>Domy, bliźniaki, szeregówki i budynek czterolokalowy. Z materiałem i bez.</p></div><div class="lb"><b>5</b><span>własnych brygad</span><p>Ci sami ludzie od pierwszej ławy do ostatniego stropu. Nic nie zlecamy na zewnątrz.</p></div><div class="lb"><b>8–14</b><span>tygodni do stanu surowego</span><p>Wstępny termin podajemy już przy wycenie, harmonogram ustalamy po podpisaniu umowy.</p></div><p class="dl-m">Budujemy w Warszawie i okolicach: Wilanów · Janki · Konstancin-Jeziorna · Ostrołęka</p></div></div></div></section><section id="realizacje" class="rz-s"><div class="wrap1">
 <h2 class="disp rv">Ponad sto domów na Mazowszu.</h2>
 <div class="rzs"><article class="rz rv" style="--i:0"><div class="rz-p"><img src="img/dom-garaz-1600.webp" srcset="img/dom-garaz-800.webp 800w, img/dom-garaz-1600.webp 1600w" sizes="(max-width:1000px) 100vw, 58vw" alt="Dom jednorodzinny z piwnicą, Warszawa, Wilanów" width="1600" height="1200" loading="lazy"></div>
@@ -411,6 +419,19 @@ pad();ld.classList.add('on');
 var order=[0];for(var i=10;i<N;i+=10)order.push(i);for(var i=0;i<N;i++)if(order.indexOf(i)<0)order.push(i);
 var qi=0;function pump(){for(var k=0;k<6&&qi<order.length;k++)load(order[qi++]);if(qi<order.length)setTimeout(pump,40)}pump();
 addEventListener('scroll',function(){requestAnimationFrame(upd)},{passive:true});addEventListener('resize',function(){pad();cur=-1;pos=-1;upd()});upd();
+})();
+
+/* pływające zdjęcia: paralaksa + powolny dryf, tylko widoczne ramki */
+(function(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var SEL='.of-p .pf,.dl-p .pf,.et-p,.rz-p,.ab2-p,.pic,.hp-p,.tile-p,.rl-p,.ek-p',fr=[].slice.call(document.querySelectorAll(SEL)).filter(function(f){return f.querySelector(':scope>img')});
+if(!fr.length)return;var vis=new Set(),run=false,mob=innerWidth<=760;
+fr.forEach(function(f,i){f.classList.add('plyw');f._ph=i*1.7;f._per=10+(i%4)*1.3;f._dr=f.closest('.gi')?0:1});
+function tick(t){if(!vis.size){run=false;return}var H=innerHeight;vis.forEach(function(f){var r=f.getBoundingClientRect(),c=(r.top+r.height/2-H/2)/(H/2+r.height/2);c=Math.max(-1,Math.min(1,c));
+ var s=t/1000*2*Math.PI/f._per+f._ph,py=-c*(mob?3.5:4.6)*f._dr+Math.sin(s)*.55,px=Math.cos(s*.8)*.8,ps=1.135+Math.sin(s*.5)*.022;
+ var im=f.firstElementChild&&f.firstElementChild.tagName==='IMG'?f.firstElementChild:f.querySelector(':scope>img');
+ im.style.setProperty('--py',py.toFixed(2)+'%');im.style.setProperty('--px',px.toFixed(2)+'%');if(!f.matches(':hover'))im.style.setProperty('--ps',ps.toFixed(4))});requestAnimationFrame(tick)}
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target)});if(vis.size&&!run){run=true;requestAnimationFrame(tick)}},{rootMargin:'80px 0px'});
+fr.forEach(function(f){io.observe(f);f.addEventListener('mouseenter',function(){var im=f.querySelector(':scope>img');im&&im.style.removeProperty('--ps')})});
 })();
 </script>
 </body></html>
