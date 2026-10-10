@@ -233,6 +233,35 @@ body.past-hero .mbar{transform:none}
   .js .reveal{opacity:1;transform:none}
   .js .map .route{stroke-dashoffset:0}
 }
+
+/* hero: mozaika klientów z filmami (r8) */
+.hero.hD{padding:calc(var(--hdr-h) + 56px) 0 76px}
+.hD .wrap{display:block}
+.hD .top_{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:end;margin-bottom:36px}
+.hD h1{font-size:clamp(2.2rem,3.6vw,3.4rem);max-width:18ch}
+.hD .lead{margin:0 0 24px}
+.mz{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.tile{position:relative;margin:0;border-radius:20px;overflow:hidden;background:#cfd8e0;isolation:isolate}
+.tile:first-child{grid-row:span 2}
+.tile:nth-child(4){grid-column:span 2}
+.tile img,.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile video{opacity:0;transition:opacity .45s ease}
+.tile.on video{opacity:1}
+.tile img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.tile.on img{transform:scale(1.02)}
+.tile figcaption{position:absolute;z-index:2;left:12px;bottom:12px;right:12px;display:flex}
+.tile figcaption span{background:rgba(255,255,255,.95);border-radius:10px;padding:8px 12px;font:400 .82rem/1.3 var(--body);color:var(--ink2)}
+.tile figcaption b{display:block;font:600 .95rem/1.2 var(--head);color:var(--ink)}
+.tile figcaption em{font-style:normal}
+.tile .pl{position:absolute;z-index:2;right:12px;top:12px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);transition:opacity .3s}
+.tile .pl:after{content:'';position:absolute;left:13px;top:10px;border-left:11px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
+.tile.on .pl{opacity:0}
+.gdzie{background:var(--bg);padding:96px 0}
+.gdzie .wrap{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:center}
+.gdzie h2{font-size:clamp(1.9rem,3vw,2.6rem)}
+.gdzie p{color:var(--ink2);max-width:40ch}
+@media (max-width:900px){.hero.hD{padding:calc(var(--hdr-h) + 28px) 0 56px}.hD .top_{grid-template-columns:1fr;gap:16px;margin-bottom:24px}.mz{grid-template-columns:1fr 1fr;grid-template-rows:220px 180px 170px;gap:10px}.tile:nth-child(2) figcaption em,.tile:nth-child(3) figcaption em{display:none}.tile:first-child{grid-column:span 2;grid-row:auto}.tile:nth-child(4){grid-column:span 2}.tile figcaption span{font-size:.8rem;padding:6px 9px}.tile figcaption b{font-size:.84rem}.tile .pl{width:28px;height:28px}.tile .pl:after{left:11px;top:8px;border-left-width:9px;border-top-width:6px;border-bottom-width:6px}.gdzie .wrap{grid-template-columns:1fr}.gdzie{padding:64px 0}}
+@media (prefers-reduced-motion:reduce){.tile video{display:none}.tile .pl{display:none}.tile img{transition:none}}
 </style>
 </head>
 <body>
@@ -249,20 +278,11 @@ body.past-hero .mbar{transform:none}
 </div>
 
 <main id="main">
-<section class="hero" aria-labelledby="h1">
-  <div class="wrap">
-    <div>
-      <h1 id="h1">Księgowość dla firm z <span>Ursynowa, Kabat i Grodziska</span>.</h1>
-      <p class="lead">Od 1992 roku prowadzimy księgi jednoosobowych firm, spółek, fundacji i stowarzyszeń z okolicy. Dwa biura, a po dokumenty możemy przyjechać.</p>
-      <div class="ctas"><a class="btn" href="#dla-kogo">Sprawdź, co dla Ciebie <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ln num" href="tel:+48226484113">22 648 41 13</a></div>
-      <div class="facts"><div><b class="num">od 1992</b>na rynku</div><div><b class="num">2 biura</b>Ursynów i Grodzisk</div><div><b class="num">30 min</b>na odpowiedź na mail</div></div>
-    </div>
-    <figure class="map" aria-label="Mapa: biura ABAK na Ursynowie i w Grodzisku Mazowieckim oraz miejscowości, do których dojeżdżamy po dokumenty">
-      <svg viewBox="0 0 1000 560" role="img" aria-hidden="true"><path class="river" d="M905 -10 C 880 80, 860 150, 900 230 S 960 330, 945 420 S 960 520, 1010 580"/><path class="road" d="M30 470 C 200 410, 330 360, 430 300 S 620 190, 850 80"/><path class="road" d="M290 150 C 450 170, 650 160, 849 73"/><path class="rail" d="M324 368 C 360 345, 400 310, 440 287 S 540 236, 572 219 S 640 170, 849 73" stroke-dasharray="14 8"/><text class="rail-t" x="500" y="280">WKD</text><circle class="reach" cx="330" cy="340" r="135"/><circle class="reach" cx="870" cy="240" r="110"/><path class="route" pathLength="1" d="M889 292 C 800 270, 700 250, 610 260 S 440 300, 324 368"/><g class="town"><circle cx="849" cy="73" r="5"/><text x="835" y="78" text-anchor="end">Warszawa</text></g><g class="town mx"><circle cx="301" cy="153" r="5"/><text x="315" y="158" text-anchor="start">Błonie</text></g><g class="town mx"><circle cx="610" cy="185" r="5"/><text x="624" y="190" text-anchor="start">Piastów</text></g><g class="town"><circle cx="572" cy="219" r="5"/><text x="586" y="224" text-anchor="start">Pruszków</text></g><g class="town"><circle cx="440" cy="287" r="5"/><text x="454" y="273" text-anchor="start">Brwinów</text></g><g class="town mx"><circle cx="372" cy="312" r="5"/><text x="358" y="317" text-anchor="end">Milanówek</text></g><g class="town mx"><circle cx="64" cy="475" r="5"/><text x="78" y="480" text-anchor="start">Żyrardów</text></g><g class="town"><circle cx="905" cy="330" r="5"/><text x="919" y="335" text-anchor="start">Kabaty</text></g><g class="ofc"><circle class="h" cx="889" cy="292" r="12"/><circle class="o" cx="889" cy="292" r="9"/><text x="870" y="340" text-anchor="end">Ursynów</text><text class="s" x="870" y="366" text-anchor="end">centrala · Wąwozowa 2</text></g><g class="ofc"><circle class="h" cx="324" cy="368" r="12"/><circle class="o" cx="324" cy="368" r="9"/><text x="324" y="412" text-anchor="middle">Grodzisk Mazowiecki</text><text class="s" x="324" y="438" text-anchor="middle">oddział · Orzeszkowej 6</text></g></svg>
-      <figcaption><span><i></i>trasa między biurami</span><span><i class="r"></i>dojeżdżamy po dokumenty</span></figcaption>
-    </figure>
-  </div>
-</section>
+<section class="hero hD" aria-labelledby="h1"><div class="wrap">
+  <div class="top_"><h1 id="h1">Księgowość dla firm z <span>Ursynowa, Kabat i&nbsp;Grodziska</span>.</h1>
+  <div><p class="lead">Kwiaciarnia z pawilonu, fachowiec w busie, spółka dwóch wspólników, firma z zaległościami. Od 1992 roku prowadzimy księgi sąsiadów z okolicy.</p><div class="ctas"><a class="btn" href="#dla-kogo">Sprawdź, co dla Ciebie <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ln num" href="tel:+48226484113">22 648 41 13</a></div></div></div>
+  <div class="mz" aria-label="Nasi klienci z okolicy (zdjęcia i filmy poglądowe)"><figure class="tile"><img src="img/mz-a.webp" alt="" width="1100" height="614" style="object-position:66% 60%"><video muted loop playsinline preload="none" aria-hidden="true" data-src="img/mz-a.mp4" data-webm="img/mz-a.webm" style="object-position:66% 60%"></video><figcaption><span><b>Kwiaciarnia w pawilonie</b><em>jednoosobowa, ryczałt</em></span></figcaption><i class="pl" aria-hidden="true"></i></figure><figure class="tile"><img src="img/mz-b.webp" alt="" width="1100" height="614" style="object-position:30% 45%"><video muted loop playsinline preload="none" aria-hidden="true" data-src="img/mz-b.mp4" data-webm="img/mz-b.webm" style="object-position:30% 45%"></video><figcaption><span><b>Hydraulik w trasie</b><em>faktury zdjęciem z telefonu</em></span></figcaption><i class="pl" aria-hidden="true"></i></figure><figure class="tile"><img src="img/mz-c.webp" alt="" width="1100" height="614" style="object-position:60% 55%"><video muted loop playsinline preload="none" aria-hidden="true" data-src="img/mz-c.mp4" data-webm="img/mz-c.webm" style="object-position:60% 55%"></video><figcaption><span><b>Spółka cywilna</b><em>czwartkowa konsultacja</em></span></figcaption><i class="pl" aria-hidden="true"></i></figure><figure class="tile"><img src="img/mz-d.webp" alt="" width="1100" height="614" style="object-position:50% 45%"><video muted loop playsinline preload="none" aria-hidden="true" data-src="img/mz-d.mp4" data-webm="img/mz-d.webm" style="object-position:50% 45%"></video><figcaption><span><b>Zaległości z trzech lat</b><em>układamy i korygujemy</em></span></figcaption><i class="pl" aria-hidden="true"></i></figure></div>
+</div></section>
 
 <section class="who" id="dla-kogo" aria-labelledby="h-w">
   <div class="wrap">
@@ -307,6 +327,11 @@ body.past-hero .mbar{transform:none}
     <ul class="nl"><li class="reveal"><time>1 października 2026</time><div><span class="tg">Podatki</span><h3><a href="#przepisy">KSeF od stycznia także dla najmniejszych firm</a></h3></div><p>Zwolnienie dla firm wystawiających faktury na mniej niż 10 tys. zł miesięcznie kończy się z końcem 2026 roku.</p></li><li class="reveal"><time>15 września 2026</time><div><span class="tg">ZUS i kadry</span><h3><a href="#przepisy">Nowa płaca minimalna od 1 stycznia 2027</a></h3></div><p>Zmienią się też część składek i limity. Przeliczymy listy płac przed styczniem.</p></li><li class="reveal"><time>2 września 2026</time><div><span class="tg">Z biura</span><h3><a href="#przepisy">Za rok świętujemy 35 lat ABAK</a></h3></div><p>Dziękujemy klientom, którzy są z nami od lat dziewięćdziesiątych.</p></li></ul>
   </div>
 </section>
+
+<section class="gdzie" aria-labelledby="h-g"><div class="wrap"><div><h2 id="h-g">Dwa biura i&nbsp;dojazd po dokumenty.</h2><p>Centrala na Ursynowie, oddział w Grodzisku Mazowieckim. Do Milanówka, Brwinowa, Pruszkowa, Piastowa, Żyrardowa i Błonia możemy przyjechać po dokumenty.</p></div><figure class="map" aria-label="Mapa: biura ABAK na Ursynowie i w Grodzisku Mazowieckim oraz miejscowości, do których dojeżdżamy po dokumenty">
+      <svg viewBox="0 0 1000 560" role="img" aria-hidden="true"><path class="river" d="M905 -10 C 880 80, 860 150, 900 230 S 960 330, 945 420 S 960 520, 1010 580"/><path class="road" d="M30 470 C 200 410, 330 360, 430 300 S 620 190, 850 80"/><path class="road" d="M290 150 C 450 170, 650 160, 849 73"/><path class="rail" d="M324 368 C 360 345, 400 310, 440 287 S 540 236, 572 219 S 640 170, 849 73" stroke-dasharray="14 8"/><text class="rail-t" x="500" y="280">WKD</text><circle class="reach" cx="330" cy="340" r="135"/><circle class="reach" cx="870" cy="240" r="110"/><path class="route" pathLength="1" d="M889 292 C 800 270, 700 250, 610 260 S 440 300, 324 368"/><g class="town"><circle cx="849" cy="73" r="5"/><text x="835" y="78" text-anchor="end">Warszawa</text></g><g class="town mx"><circle cx="301" cy="153" r="5"/><text x="315" y="158" text-anchor="start">Błonie</text></g><g class="town mx"><circle cx="610" cy="185" r="5"/><text x="624" y="190" text-anchor="start">Piastów</text></g><g class="town"><circle cx="572" cy="219" r="5"/><text x="586" y="224" text-anchor="start">Pruszków</text></g><g class="town"><circle cx="440" cy="287" r="5"/><text x="454" y="273" text-anchor="start">Brwinów</text></g><g class="town mx"><circle cx="372" cy="312" r="5"/><text x="358" y="317" text-anchor="end">Milanówek</text></g><g class="town mx"><circle cx="64" cy="475" r="5"/><text x="78" y="480" text-anchor="start">Żyrardów</text></g><g class="town"><circle cx="905" cy="330" r="5"/><text x="919" y="335" text-anchor="start">Kabaty</text></g><g class="ofc"><circle class="h" cx="889" cy="292" r="12"/><circle class="o" cx="889" cy="292" r="9"/><text x="870" y="340" text-anchor="end">Ursynów</text><text class="s" x="870" y="366" text-anchor="end">centrala · Wąwozowa 2</text></g><g class="ofc"><circle class="h" cx="324" cy="368" r="12"/><circle class="o" cx="324" cy="368" r="9"/><text x="324" y="412" text-anchor="middle">Grodzisk Mazowiecki</text><text class="s" x="324" y="438" text-anchor="middle">oddział · Orzeszkowej 6</text></g></svg>
+      <figcaption><span><i></i>trasa między biurami</span><span><i class="r"></i>dojeżdżamy po dokumenty</span></figcaption>
+    </figure></div></section>
 
 <section class="ct" id="kontakt" aria-labelledby="h-k">
   <div class="wrap grid">
@@ -372,5 +397,10 @@ body.past-hero .mbar{transform:none}
     b.addEventListener('keydown',function(e){ var k=e.key, j=k==='ArrowDown'||k==='ArrowRight'?i+1:k==='ArrowUp'||k==='ArrowLeft'?i-1:null; if(j!==null){ e.preventDefault(); sel(tabs[(j+tabs.length)%tabs.length],true); } }); });
 })();
 </script>
+<script>(function(){var ts=[].slice.call(document.querySelectorAll('.mz .tile'));if(!ts.length||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function on(t){var v=t.querySelector('video');if(!v)return;if(!v.src)v.src=(v.canPlayType('video/mp4; codecs="avc1.4D401F"')||!v.dataset.webm)?v.dataset.src:v.dataset.webm;var p=v.play();if(p&&p.catch)p.catch(function(){});t.classList.add('on');}
+function off(t){var v=t.querySelector('video');t.classList.remove('on');if(v&&v.src)setTimeout(function(){if(!t.classList.contains('on'))v.pause();},450);}
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){ts.forEach(function(t){t.addEventListener('pointerenter',function(){on(t)});t.addEventListener('pointerleave',function(){off(t)});});}
+else if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>.7)on(e.target);else off(e.target);});},{threshold:[0,.7,1]});ts.forEach(function(t){io.observe(t)});}})();</script>
 </body>
 </html>
