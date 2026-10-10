@@ -9,7 +9,7 @@
 <meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W5 „Rentgen”">
 <meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
 <meta property="og:image" content="https://www.odnovastudio.com/p/legal-point-w5/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="theme-color" content="#0D1016">
+<meta name="theme-color" content="#0E1622">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F1F2F4'/%3E%3Crect x='20' y='6' width='24' height='14' fill='none' stroke='%23141821' stroke-width='3'/%3E%3Cpath d='M32 20v14M10 34h44M10 34v8M32 34v8M54 34v8' stroke='%23141821' stroke-width='3' fill='none'/%3E%3Crect x='3' y='42' width='14' height='14' fill='%23141821'/%3E%3Crect x='25' y='42' width='14' height='14' fill='%237B1E3A'/%3E%3Crect x='47' y='42' width='14' height='14' fill='%23141821'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600&family=Red+Hat+Text:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
@@ -322,16 +322,81 @@ h1,h2,h3{text-wrap:balance}
   .js .tix{min-height:0}
 }
 
+:root{--paper:#F2F3F5;--paper-2:#F2F3F5;--white:#FFFFFF;--ink:#121821;--ink-2:#39414F;--muted:#5A6272;
+--wine:#B3261E;--wine-2:#C62F26;--wine-d:#8E1D17;--wine-l:#F6E3E1;--night:#0E1622;--rose:#F4A7A1;
+--mute:rgba(255,255,255,.74);--hw:600;--serif:'Instrument Sans',Georgia,serif;--sans:'Red Hat Text',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+h1,h2,h3,.brand b,.cap,.foot b,.faq summary,.quick a b,.price-line strong,.about .quote,.flow .n,.models-h,.form h3,.quick-h,.kp-d,.portrait figcaption b{font-weight:600}
+.faq summary::before,.faq summary::after{background:var(--rose)}
+.foot a:hover{color:var(--rose)}
 
+/* sekcja wejściowa */
+.intro{background:var(--paper)}
+.spec{border-top:1.5px solid var(--ink)}
+.sp-h,.sp-r{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,4fr);gap:28px}
+.sp-h{padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line)}
+.sp-r{padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.sp-r h3{font-size:clamp(23px,2vw,28px)}
+.sp-r p{margin:0}
+.sp-x{color:var(--ink-2)}
+.sp-x mark{background:linear-gradient(transparent 58%,rgba(196,38,46,.2) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sp-ok{color:var(--wine);font-weight:600}
+.intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:40px 0 0}
+.intro-cta span{color:var(--muted);font-size:15.5px}
+.moments{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.mo h3{font-size:clamp(28px,2.6vw,38px)}
+.mo p{margin:0;color:var(--ink-2)}
+.mo .mo-out{color:var(--wine);font-weight:600;font-size:16px}
+.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--wine)}
+.dz{display:grid;grid-template-columns:150px 150px minmax(0,1fr);gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dz time{font:500 clamp(38px,3.6vw,54px)/1 var(--serif);color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
+.dz-k{font-weight:600;font-size:15px;color:var(--muted)}
+.dz h3{font-size:clamp(23px,2vw,28px)}
+.dz p{margin:6px 0 0;color:var(--ink-2)}
+.day-note{margin:36px 0 0;max-width:62ch;font-size:18.5px;color:var(--ink-2)}
+.day-note b{font-family:var(--serif);font-weight:inherit;color:var(--ink);font-size:1.15em}
+.bridge{border-top:1.5px solid var(--ink)}
+.br-h{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);margin-left:calc(25% + 6px)}
+.br-r{display:grid;grid-template-columns:25% minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:center}
+.br-r h3{font-size:clamp(23px,2vw,28px)}
+.br-r p{margin:0}
+.br-a,.br-b{color:var(--ink-2)}
+.br-b{text-align:right}
+.br-m{position:relative;text-align:center;font-weight:600;color:#fff;background:var(--wine);padding:14px 18px}
+.br-m::before,.br-m::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:var(--wine)}
+.br-m::before{right:100%}.br-m::after{left:100%}
+/* pas */
+.band{position:relative;overflow:hidden;isolation:isolate}
+.band-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.42}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--night) 20%,rgba(0,0,0,0))}
+.band-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:end}
+.band-q{font:var(--hw,400) clamp(32px,3.4vw,52px)/1.15 var(--serif);margin:0;max-width:20ch;color:#fff}
+.band-f{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.3)}
+.band-f li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);font-size:16.5px}
+.band-f b{color:#fff;font-family:var(--serif);font-weight:inherit;font-size:1.15em}
+@media (max-width:900px){
+  .sp-h,.br-h{display:none}
+  .sp-r,.mo,.br-r{grid-template-columns:1fr;gap:10px}
+  .sp-x::before{content:"Ryzyko: ";font-weight:600;color:#A3242C}
+  .sp-ok::before{content:"Propozycja: ";font-weight:600}
+  .dz{grid-template-columns:96px minmax(0,1fr);gap:8px 20px}
+  .dz-k{grid-column:2}.dz div{grid-column:1/-1}
+  .br-b{text-align:left}
+  .br-a::before{content:"Ty: ";font-weight:600;color:var(--ink)}
+  .br-b::before{content:"Druga strona: ";font-weight:600;color:var(--ink)}
+  .br-m{text-align:left}.br-m::before,.br-m::after{display:none}
+  .band-in{grid-template-columns:1fr}
+  .band::after{background:linear-gradient(180deg,rgba(0,0,0,.2),var(--night) 70%)}
+}
 /* pasek nad ciemnym otwarciem */
-.top.on-hero .nav{background:rgba(13,16,22,.55);border-bottom-color:rgba(255,255,255,.16)}
+.top.on-hero .nav{background:rgba(10,12,16,.5);border-bottom-color:rgba(255,255,255,.16)}
 .top.on-hero .nav a.lnk,.top.on-hero .nav .tel,.top.on-hero .brand b,.top.on-hero .brand .mono{color:#fff}
 .top.on-hero .brand small{color:rgba(255,255,255,.72)}
 .top.on-hero .navtoggle{color:#fff;border-color:rgba(255,255,255,.55)}
 .top.on-hero .nav a.lnk:hover{color:var(--rose)}
 .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff}
-:root{--rose:#E9A0B6;--mute:rgba(255,255,255,.72)}
-.stage{background:#0D1016;color:#fff}
+.stage{background:var(--night);color:#fff}
+.stage .copy h1 span{color:var(--rose)}
 
 /* scena */
 .stage{position:relative}
@@ -369,8 +434,6 @@ h1,h2,h3{text-wrap:balance}
 }
 @media (prefers-reduced-motion:reduce){.js .stage{height:auto}.js .pin{position:relative}}
 
-:root{--serif:'Instrument Sans',Georgia,serif;--sans:'Red Hat Text',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:600}
 h1{letter-spacing:-.025em}
 .desk{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 55%,#1b2230 0%,#0d1016 60%)}
 .desk::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
@@ -407,56 +470,18 @@ h1{letter-spacing:-.025em}
 }
 
 
-/* sekcja wejściowa */
-.intro{background:var(--paper)}
-.spec{border-top:1.5px solid var(--ink)}
-.sp-h,.sp-r{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,4fr);gap:28px}
-.sp-h{padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line)}
-.sp-r{padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.sp-r h3{font-size:clamp(23px,2vw,28px)}
-.sp-r p{margin:0}
-.sp-x{color:var(--ink-2)}
-.sp-x mark{background:linear-gradient(transparent 58%,rgba(196,38,46,.2) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.sp-ok{color:var(--wine);font-weight:600}
-.intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:40px 0 0}
-.intro-cta span{color:var(--muted);font-size:15.5px}
-.moments{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:32px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.mo h3{font-size:clamp(26px,2.4vw,34px)}
-.mo p{margin:0;color:var(--ink-2)}
-.mo .mo-out{color:var(--wine);font-weight:600;font-size:16px}
-.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-.dz{display:grid;grid-template-columns:150px 150px minmax(0,1fr);gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.dz time{font:500 clamp(38px,3.6vw,54px)/1 var(--serif);color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
-.dz-k{font-weight:600;font-size:15px;color:var(--muted)}
-.dz h3{font-size:clamp(23px,2vw,28px)}
-.dz p{margin:6px 0 0;color:var(--ink-2)}
-.day-note{margin:36px 0 0;max-width:62ch;font-size:18.5px;color:var(--ink-2)}
-.day-note b{font-family:var(--serif);font-weight:inherit;color:var(--ink);font-size:1.15em}
-.bridge{border-top:1.5px solid var(--ink)}
-.br-h{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);margin-left:calc(25% + 6px)}
-.br-r{display:grid;grid-template-columns:25% minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:center}
-.br-r h3{font-size:clamp(23px,2vw,28px)}
-.br-r p{margin:0}
-.br-a,.br-b{color:var(--ink-2)}
-.br-b{text-align:right}
-.br-m{position:relative;text-align:center;font-weight:600;color:#fff;background:var(--wine);padding:14px 18px}
-.br-m::before,.br-m::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:var(--wine)}
-.br-m::before{right:100%}.br-m::after{left:100%}
-@media (max-width:900px){
-  .sp-h,.br-h{display:none}
-  .sp-r,.mo,.br-r{grid-template-columns:1fr;gap:10px}
-  .sp-x::before{content:"Ryzyko: ";font-weight:600;color:#A3242C}
-  .sp-ok::before{content:"Propozycja: ";font-weight:600;color:var(--wine)}
-  .dz{grid-template-columns:96px minmax(0,1fr);gap:8px 20px}
-  .dz-k{grid-column:2}
-  .dz div{grid-column:1/-1}
-  .br-b{text-align:left}
-  .br-a::before{content:"Ty: ";font-weight:600;color:var(--ink)}
-  .br-b::before{content:"Druga strona: ";font-weight:600;color:var(--ink)}
-  .br-m{text-align:left}
-  .br-m::before,.br-m::after{display:none}
-}
+/* W5: techniczny, rysunkowy: siatka, cienkie linie, ostre krawędzie */
+body{font-size:17px}
+h1,h2,h3{letter-spacing:-.022em}
+.sec.dark{background:var(--night) linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/44px 44px,var(--night) linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/44px 44px;background-color:var(--night)}
+.head{border-top:2px solid currentColor;padding-top:22px}
+.head h2{font-size:clamp(32px,3.2vw,48px)}
+.btn{border-radius:0}
+.btn-wine{background:var(--wine)}
+.about .quote{font-family:'Literata',Georgia,serif;font-weight:400;font-style:italic;color:var(--ink)}
+.about .quote::before{content:"";display:block;width:56px;height:4px;background:var(--wine);margin-bottom:18px}
+.js body.v-rentgen .stage{height:300vh}
+@media (max-width:760px){.js body.v-rentgen .stage{height:260vh}}
 </style>
 </head>
 <body class="v-rentgen">
@@ -495,17 +520,12 @@ h1{letter-spacing:-.025em}
   <div class="bar"><div class="wrap bar-in"><p class="cap" id="cap" aria-live="off"></p><span class="hint">Przewijaj</span></div><div class="prog" id="prog"></div></div>
 </div></header>
 <main>
-<section class="sec intro" id="weryfikacja">
-  <div class="wrap">
+<section class="sec intro" id="weryfikacja"><div class="wrap">
     <div class="head reveal"><h2>Co sprawdzam w umowie, zanim ją podpiszesz</h2>
-      <p>Sześć klauzul, które najczęściej kosztują firmy pieniądze. Przy Twojej umowie dostajesz taką listę w krótkiej notatce, po polsku albo po angielsku.</p></div>
-    <div class="spec">
-      <div class="sp-h" aria-hidden="true"><span>Klauzula</span><span>Co może pójść nie tak</span><span>Co proponuję</span></div>
-      <div class="sp-r"><h3>Odpowiedzialność</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Brak limitu: odpowiadasz za każdą szkodę, także za utracone korzyści kontrahenta.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Limit do wartości umowy i wyłączenie utraconych korzyści.</p></div><div class="sp-r"><h3>Kary umowne</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Kara za każdy dzień opóźnienia, bez górnej granicy.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Górny limit kar i jasne zasady ich naliczania.</p></div><div class="sp-r"><h3>Termin płatności</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>120 dni od doręczenia faktury, choć między firmami co do zasady obowiązuje 60 dni.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Termin 30 albo 60 dni i odsetki za opóźnienie w transakcjach handlowych.</p></div><div class="sp-r"><h3>Odbiór</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Odbiór dopiero po protokole, z którym druga strona może zwlekać.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Termin na zgłoszenie uwag, a po nim odbiór bez zastrzeżeń.</p></div><div class="sp-r"><h3>Wypowiedzenie</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Kontrahent może wypowiedzieć umowę w każdej chwili i bez przyczyny.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Okres wypowiedzenia i rozliczenie pracy już wykonanej.</p></div><div class="sp-r"><h3>Prawo i sąd</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Spory rozstrzyga sąd właściwy dla siedziby kontrahenta.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Sąd właściwy dla Twojej siedziby albo najpierw mediacja.</p></div>
-    </div>
-    <p class="intro-cta"><a class="btn btn-wine" href="mailto:beata.rogowska-prus@adwokatura.pl?subject=Umowa%20do%20sprawdzenia">Wyślij umowę do sprawdzenia</a><span>Wycenę dostajesz przed rozpoczęciem pracy.</span></p>
-  </div>
-</section>
+      <p>Sześć klauzul, które najczęściej wymagają poprawek. Przy Twojej umowie dostajesz taką listę w krótkiej notatce, po polsku albo po angielsku.</p></div>
+    <div class="spec"><div class="sp-h" aria-hidden="true"><span>Klauzula</span><span>Co może pójść nie tak</span><span>Co proponuję</span></div><div class="sp-r"><h3>Odpowiedzialność</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Brak limitu: odpowiadasz za każdą szkodę, także za utracone korzyści kontrahenta.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Limit do wartości umowy i wyłączenie utraconych korzyści.</p></div><div class="sp-r"><h3>Kary umowne</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Kara za każdy dzień opóźnienia, bez górnej granicy.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Górny limit kar i jasne zasady ich naliczania.</p></div><div class="sp-r"><h3>Termin płatności</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>120 dni od doręczenia faktury, choć między firmami co do zasady obowiązuje 60 dni.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Termin 30 albo 60 dni i odsetki za opóźnienie w transakcjach handlowych.</p></div><div class="sp-r"><h3>Odbiór</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Odbiór dopiero po protokole, z którym druga strona może zwlekać.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Termin na zgłoszenie uwag, a po nim odbiór bez zastrzeżeń.</p></div><div class="sp-r"><h3>Wypowiedzenie</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Kontrahent może wypowiedzieć umowę w każdej chwili i bez przyczyny.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Okres wypowiedzenia i rozliczenie pracy już wykonanej.</p></div><div class="sp-r"><h3>Prawo i sąd</h3><p class="sp-x"><span class="sr">Ryzyko: </span><mark>Spory rozstrzyga sąd właściwy dla siedziby kontrahenta.</mark></p><p class="sp-ok"><span class="sr">Propozycja: </span>Sąd właściwy dla Twojej siedziby albo najpierw mediacja.</p></div></div>
+    <p class="intro-cta"><a class="btn btn-wine" href="mailto:beata.rogowska-prus@adwokatura.pl?subject=Umowa%20do%20sprawdzenia">Wyślij umowę do sprawdzenia</a><span>Zakres i wynagrodzenie potwierdzam przed rozpoczęciem pracy.</span></p>
+  </div></section>
 <section class="sec dark" id="jak">
   <div class="wrap">
     <div class="head reveal">
@@ -534,15 +554,10 @@ h1{letter-spacing:-.025em}
 <p class="kp-tags">kampanie i promocje · umowy z twórcami · znaki towarowe i konsument</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – E-commerce, reklama i IP</span></a></div></div></div></div>
   </div>
 </section>
-<section class="sec wine" id="porownanie">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2>Etat, kancelaria od sprawy czy stała obsługa?</h2>
-      <p>Trzy sposoby, w jakie firmy rozwiązują sprawy prawne. Każdy ma sens na innym etapie, dlatego współpracę można zacząć od jednej sprawy.</p>
-    </div>
-    <div class="cmp" role="table"><div class="cmp-h"><span></span><b class="">Prawnik na etacie</b><b class="">Kancelaria od sprawy do sprawy</b><b class="us">Bieżąca obsługa BRP Legal Point</b></div><div class="cmp-r"><span class="cmp-l">Zna firmę i kontrahentów</span><span class="" data-col="Prawnik na etacie">Tak</span><span class="" data-col="Kancelaria od sprawy do sprawy">Za każdym razem od nowa</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Tak, z każdą sprawą lepiej</span></div><div class="cmp-r"><span class="cmp-l">Koszt</span><span class="" data-col="Prawnik na etacie">Pensja i składki co miesiąc</span><span class="" data-col="Kancelaria od sprawy do sprawy">Każda sprawa wyceniana osobno</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zakres i zasady rozliczenia ustalone z góry</span></div><div class="cmp-r"><span class="cmp-l">Zakres</span><span class="" data-col="Prawnik na etacie">Zwykle jedna specjalizacja</span><span class="" data-col="Kancelaria od sprawy do sprawy">Szeroki, ale rozproszony między prawników</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Spółki, umowy, praca, należności, RODO, reklama i IP</span></div><div class="cmp-r"><span class="cmp-l">Start</span><span class="" data-col="Prawnik na etacie">Rekrutacja i wdrożenie</span><span class="" data-col="Kancelaria od sprawy do sprawy">Od pierwszej sprawy</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Od 30-minutowej konsultacji</span></div><div class="cmp-r"><span class="cmp-l">Kto prowadzi sprawę</span><span class="" data-col="Prawnik na etacie">Ta sama osoba</span><span class="" data-col="Kancelaria od sprawy do sprawy">Często kolejny prawnik z zespołu</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zawsze adwokat osobiście, po polsku i po angielsku</span></div></div>
-  </div>
-</section>
+<section class="sec dark band" id="dlaczego"><div class="wrap band-in">
+    <p class="band-q reveal">Umowa przeczytana zdanie po zdaniu, z myślą o tym, jak naprawdę pracuje Twoja firma.</p>
+    <ul class="band-f"><li><b>Ponad 15 lat</b> praktyki, także jako prawnik wewnętrzny w agencjach, domach mediowych i firmach produkcyjnych.</li><li><b>Bezpośrednio z adwokatem.</b> Sprawę prowadzę osobiście, od konsultacji do gotowego dokumentu.</li><li><b>Online w całej Polsce.</b> Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</li><li><b>Po polsku i po angielsku.</b> Umowy i negocjacje z kontrahentami z zagranicy.</li></ul>
+  </div></section>
 <section class="sec" id="o-mnie">
   <div class="wrap about">
     <figure class="portrait">
@@ -706,9 +721,9 @@ h1{letter-spacing:-.025em}
 })();
 
 (function(){
-  var d=document, top=d.querySelector('.top'), st=d.querySelector('.stage');
+  var d=document, top=d.querySelector('.top'), st=d.getElementById('start'), dark=true;
   function f(){ var b=st.getBoundingClientRect().bottom;
-    top.classList.toggle('on-hero', b>top.offsetHeight && !top.classList.contains('menu-open'));
+    top.classList.toggle('on-hero', dark && b>top.offsetHeight && !top.classList.contains('menu-open'));
     d.body.classList.toggle('past-hero', b<innerHeight*.5); }
   f(); addEventListener('scroll',f,{passive:true}); addEventListener('resize',f);
   var nt=d.getElementById('navtoggle'); if(nt) nt.addEventListener('click',function(){ setTimeout(f,0); });

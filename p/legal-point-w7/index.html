@@ -9,10 +9,10 @@
 <meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W7 „Dzień w kancelarii”">
 <meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
 <meta property="og:image" content="https://www.odnovastudio.com/p/legal-point-w7/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="theme-color" content="#0D1016">
+<meta name="theme-color" content="#F5F4F0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F1F2F4'/%3E%3Crect x='20' y='6' width='24' height='14' fill='none' stroke='%23141821' stroke-width='3'/%3E%3Cpath d='M32 20v14M10 34h44M10 34v8M32 34v8M54 34v8' stroke='%23141821' stroke-width='3' fill='none'/%3E%3Crect x='3' y='42' width='14' height='14' fill='%23141821'/%3E%3Crect x='25' y='42' width='14' height='14' fill='%237B1E3A'/%3E%3Crect x='47' y='42' width='14' height='14' fill='%23141821'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Petrona:wght@500&family=Sofia+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Petrona:wght@500;600&family=Sofia+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
@@ -322,56 +322,12 @@ h1,h2,h3{text-wrap:balance}
   .js .tix{min-height:0}
 }
 
-
-/* pasek nad ciemnym otwarciem */
-.top.on-hero .nav{background:rgba(13,16,22,.55);border-bottom-color:rgba(255,255,255,.16)}
-.top.on-hero .nav a.lnk,.top.on-hero .nav .tel,.top.on-hero .brand b,.top.on-hero .brand .mono{color:#fff}
-.top.on-hero .brand small{color:rgba(255,255,255,.72)}
-.top.on-hero .navtoggle{color:#fff;border-color:rgba(255,255,255,.55)}
-.top.on-hero .nav a.lnk:hover{color:var(--rose)}
-.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff}
-:root{--rose:#E9A0B6;--mute:rgba(255,255,255,.72)}
-.stage{background:#0D1016;color:#fff}
-
-/* scena */
-.stage{position:relative}
-.js .stage{height:420vh}
-.pin{position:relative;height:100svh;overflow:hidden;background:var(--night)}
-.js .pin{position:sticky;top:0}
-.media{position:absolute;inset:0}
-.media canvas,.media img.poster{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
-.scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(13,16,22,.88) 0%,rgba(13,16,22,.62) 34%,rgba(13,16,22,0) 62%),linear-gradient(0deg,rgba(13,16,22,.75) 0%,rgba(13,16,22,0) 30%)}
-.copy{position:absolute;left:0;right:0;top:calc(var(--hdr-h) + clamp(28px,7vh,80px))}
-.copy h1{font-size:clamp(36px,3.9vw,60px);line-height:1.05;max-width:14ch;text-shadow:0 2px 24px rgba(0,0,0,.4)}
-.copy h1 span{display:block;color:var(--rose)}
-.copy .lead{max-width:44ch;color:rgba(255,255,255,.84);font-size:clamp(16.5px,1.25vw,19px);margin:22px 0 26px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.bar{position:absolute;left:0;right:0;bottom:0;padding-bottom:24px}
-.bar-in{display:flex;align-items:flex-end;justify-content:flex-end;gap:24px;text-align:right}
-.copy{transition:opacity .25s,transform .25s}
-.cap{min-height:1.5em;font:500 clamp(17px,1.5vw,21px)/1.35 var(--serif);max-width:34ch;transition:opacity .3s}
-.cap small{display:block;font:600 13px/1 var(--sans);color:var(--rose);margin-bottom:8px;font-variant-numeric:tabular-nums}
-.prog{position:absolute;left:0;bottom:0;height:3px;background:var(--rose);width:0}
-.hint{font-size:13.5px;color:var(--mute)}
-.nojs-note{display:none}
-
-/* po scenie */
-
-@media (max-width:760px){
-  .copy{top:calc(var(--hdr-h) + 18px)}
-  .copy h1{font-size:clamp(32px,9vw,40px)}
-  .copy .lead{font-size:15.5px;margin:12px 0 16px}
-  .cta .btn-ghost{display:none}
-  .scrim{background:linear-gradient(180deg,rgba(13,16,22,.9) 0%,rgba(13,16,22,.55) 42%,rgba(13,16,22,0) 62%),linear-gradient(0deg,rgba(13,16,22,.8) 0%,rgba(13,16,22,0) 26%)}
-  .cap{font-size:16px}
-  .bar-in{justify-content:flex-start;text-align:left}
-  .hint{display:none}
-}
-@media (prefers-reduced-motion:reduce){.js .stage{height:auto}.js .pin{position:relative}}
-
-:root{--serif:'Petrona',Georgia,serif;--sans:'Sofia Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
-
+:root{--paper:#F5F4F0;--paper-2:#F5F4F0;--white:#FBFBF9;--ink:#14231D;--ink-2:#3B4A43;--muted:#5A6862;
+--wine:#12382D;--wine-2:#1C4D3E;--wine-d:#0B261E;--wine-l:#E4EEE8;--night:#12382D;--rose:#A8C7B8;
+--mute:rgba(255,255,255,.74);--hw:500;--serif:'Petrona',Georgia,serif;--sans:'Sofia Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+h1,h2,h3,.brand b,.cap,.foot b,.faq summary,.quick a b,.price-line strong,.about .quote,.flow .n,.models-h,.form h3,.quick-h,.kp-d,.portrait figcaption b{font-weight:500}
+.faq summary::before,.faq summary::after{background:var(--rose)}
+.foot a:hover{color:var(--rose)}
 
 /* sekcja wejściowa */
 .intro{background:var(--paper)}
@@ -383,15 +339,15 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
 .sp-r p{margin:0}
 .sp-x{color:var(--ink-2)}
 .sp-x mark{background:linear-gradient(transparent 58%,rgba(196,38,46,.2) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.sp-ok{color:var(--ink);font-weight:500;padding-left:16px;border-left:3px solid var(--wine)}
+.sp-ok{color:var(--wine);font-weight:600}
 .intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:40px 0 0}
 .intro-cta span{color:var(--muted);font-size:15.5px}
-.moments{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:32px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.mo h3{font-size:clamp(26px,2.4vw,34px)}
+.moments{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.mo h3{font-size:clamp(28px,2.6vw,38px)}
 .mo p{margin:0;color:var(--ink-2)}
 .mo .mo-out{color:var(--wine);font-weight:600;font-size:16px}
-.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--wine)}
 .dz{display:grid;grid-template-columns:150px 150px minmax(0,1fr);gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .dz time{font:500 clamp(38px,3.6vw,54px)/1 var(--serif);color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
 .dz-k{font-weight:600;font-size:15px;color:var(--muted)}
@@ -409,20 +365,77 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
 .br-m{position:relative;text-align:center;font-weight:600;color:#fff;background:var(--wine);padding:14px 18px}
 .br-m::before,.br-m::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:var(--wine)}
 .br-m::before{right:100%}.br-m::after{left:100%}
+/* pas */
+.band{position:relative;overflow:hidden;isolation:isolate}
+.band-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.42}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--night) 20%,rgba(0,0,0,0))}
+.band-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:end}
+.band-q{font:var(--hw,400) clamp(32px,3.4vw,52px)/1.15 var(--serif);margin:0;max-width:20ch;color:#fff}
+.band-f{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.3)}
+.band-f li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);font-size:16.5px}
+.band-f b{color:#fff;font-family:var(--serif);font-weight:inherit;font-size:1.15em}
 @media (max-width:900px){
   .sp-h,.br-h{display:none}
   .sp-r,.mo,.br-r{grid-template-columns:1fr;gap:10px}
   .sp-x::before{content:"Ryzyko: ";font-weight:600;color:#A3242C}
-  .sp-ok::before{content:"Propozycja: ";font-weight:600;color:var(--wine)}
+  .sp-ok::before{content:"Propozycja: ";font-weight:600}
   .dz{grid-template-columns:96px minmax(0,1fr);gap:8px 20px}
-  .dz-k{grid-column:2}
-  .dz div{grid-column:1/-1}
+  .dz-k{grid-column:2}.dz div{grid-column:1/-1}
   .br-b{text-align:left}
   .br-a::before{content:"Ty: ";font-weight:600;color:var(--ink)}
   .br-b::before{content:"Druga strona: ";font-weight:600;color:var(--ink)}
-  .br-m{text-align:left}
-  .br-m::before,.br-m::after{display:none}
+  .br-m{text-align:left}.br-m::before,.br-m::after{display:none}
+  .band-in{grid-template-columns:1fr}
+  .band::after{background:linear-gradient(180deg,rgba(0,0,0,.2),var(--night) 70%)}
 }
+/* pasek nad ciemnym otwarciem */
+.top.on-hero .nav{background:rgba(10,12,16,.5);border-bottom-color:rgba(255,255,255,.16)}
+.top.on-hero .nav a.lnk,.top.on-hero .nav .tel,.top.on-hero .brand b,.top.on-hero .brand .mono{color:#fff}
+.top.on-hero .brand small{color:rgba(255,255,255,.72)}
+.top.on-hero .navtoggle{color:#fff;border-color:rgba(255,255,255,.55)}
+.top.on-hero .nav a.lnk:hover{color:var(--rose)}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff}
+.stage{background:var(--night);color:#fff}
+.stage .copy h1 span{color:var(--rose)}
+
+
+.vh-dzien{background:var(--paper);min-height:100svh;display:flex;align-items:center;padding:calc(var(--hdr-h) + clamp(24px,4vh,48px)) 0 clamp(32px,5vh,64px);overflow:hidden}
+.vh-dzien>.wrap{width:100%}
+.vh-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,4.5vw,72px);align-items:center}
+.vh-dzien h1{font-size:clamp(38px,3.7vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink)}
+.vh-dzien h1 span{display:block;color:var(--wine)}
+.vh-dzien .lead{font-size:clamp(17px,1.3vw,19.5px);color:var(--ink-2);max-width:44ch;margin:24px 0 28px}
+.vh-dzien .cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn-line{border-color:rgba(20,35,29,.4);color:var(--ink)}.btn-line:hover{background:var(--ink);color:#fff}
+.vh-note{margin:24px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:15px;color:var(--muted);max-width:44ch}
+.vh-note b{color:var(--ink)}
+.vh-media{position:relative;margin:0 calc(-1 * (100vw - min(100vw, 1240px)) / 2 - clamp(20px,4vw,44px)) 0 0;background:#0F1F19}
+.vh-media video,.vh-media img{display:block;width:100%;height:min(74svh,700px);object-fit:cover;object-position:60% 50%}
+.vh-media::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(0deg,rgba(9,24,19,.86),rgba(9,24,19,0));pointer-events:none}
+.vh-clock{position:absolute;left:clamp(16px,2.4vw,28px);right:clamp(16px,2.4vw,28px);bottom:clamp(14px,2.2vw,26px);z-index:2;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:baseline;color:#fff}
+.vh-clock b{font:500 clamp(34px,3.4vw,52px)/1 var(--serif);font-variant-numeric:lining-nums tabular-nums;color:var(--rose)}
+.vh-clock span{font-size:clamp(15px,1.2vw,18px);line-height:1.35}
+.vh-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.18);z-index:3}
+.vh-bar i{display:block;height:100%;width:0;background:var(--rose)}
+.vh-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:900px){.vh-grid{grid-template-columns:1fr}.vh-media{order:-1;margin:0 calc(-1 * clamp(20px,4vw,44px))}.vh-media video,.vh-media img{height:auto;aspect-ratio:16/10}.vh-dzien{padding-top:var(--hdr-h);min-height:0;display:block}}
+@media (max-width:760px){.vh-dzien h1{font-size:clamp(34px,9.6vw,44px)}.vh-dzien .lead{font-size:16px;margin:14px 0 18px}.vh-note,.vh-dzien .btn-line{display:none}.vh-dzien .cta .btn{flex:1 1 100%}}
+
+
+/* W7: jasna, spokojna, w kolorach legal-point.org: zieleń, mięta, ciepła biel */
+body{background:var(--paper);font-size:17.5px}
+.sec{padding:clamp(72px,9vw,124px) 0}
+.sec:not(.dark):nth-of-type(odd){background:var(--white)}
+.head h2{font-size:clamp(34px,3.4vw,52px)}
+.btn{border-radius:0}
+.btn-wine{background:var(--wine)}.btn-wine:hover{background:#0B261E}
+.sec.dark{background:var(--night)}
+.sec.dark .head p,.faq-h p{color:rgba(255,255,255,.78)}
+.about .quote{color:var(--wine)}
+.facts{border-top-color:var(--wine)}
+.flow li{border-top-color:var(--rose)}
+.flow li::before{border-color:var(--rose)}
+.price-line strong{color:var(--wine)}
 </style>
 </head>
 <body class="v-dzien">
@@ -444,32 +457,34 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
     </div>
   </nav>
 </div>
-<header class="stage" id="start"><div class="pin">
-  <div class="media" id="media"><canvas id="cv" aria-hidden="true"></canvas><img class="poster" id="poster" alt="" src="poster.webp"></div>
-  <div class="scrim"></div>
-  <div class="copy"><div class="wrap">
-  <h1>Twój dział prawny pracuje cały dzień.<span>Ty w tym czasie prowadzisz firmę.</span></h1>
-  <p class="lead">Stała obsługa prawna firm: umowy, KRS, sprawy pracownicze, należności, RODO i reklama. Jedna adwokatka, która zna Twoją firmę, zamiast szukania kancelarii przy każdej sprawie. Online w całej Polsce.</p>
-  <div class="cta"><a class="btn btn-wine" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a><a class="btn btn-ghost" href="#jak">Jak pracuję</a></div>
-</div></div>
-  <div class="bar"><div class="wrap bar-in"><p class="cap" id="cap" aria-live="off"></p><span class="hint">Przewijaj</span></div><div class="prog" id="prog"></div></div>
+<header class="vh vh-dzien" id="start"><div class="wrap vh-grid">
+  <div class="vh-copy">
+    <h1>Twój dział prawny pracuje cały dzień.<span>Ty w tym czasie prowadzisz firmę.</span></h1>
+    <p class="lead">Stała obsługa prawna firm: umowy, KRS, sprawy pracownicze, należności, RODO i reklama. Jedna adwokatka, która zna Twoją firmę. Online w całej Polsce.</p>
+    <div class="cta"><a class="btn btn-wine" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a><a class="btn btn-line" href="#dzien">Zobacz jeden dzień</a></div>
+    <p class="vh-note"><b>Konsultacja online: 200 zł netto.</b> Odliczam ją od ceny usługi zleconej w ciągu 30 dni.</p>
+  </div>
+  <figure class="vh-media"><video id="hv" muted playsinline loop preload="auto" poster="poster.webp" aria-hidden="true"><source src="hero-m.mp4" type="video/mp4" media="(max-width:760px)"><source src="hero.mp4" type="video/mp4"></video>
+    <figcaption class="vh-clock" aria-live="off"><b id="clk">9:00</b><span id="clkt">Umowa z nowym dostawcą sprawdzona</span></figcaption>
+    <div class="vh-bar" aria-hidden="true"><i id="vbar"></i></div>
+  </figure>
 </div></header>
 <main>
-<section class="sec intro" id="dzien">
-  <div class="wrap">
+<section class="sec intro" id="dzien"><div class="wrap">
     <div class="head reveal"><h2>Tak wygląda jeden dzień stałej obsługi</h2>
       <p>Pięć spraw z pięciu działów. Każdy pisze tam, gdzie zawsze, a odpowiedź dostaje od osoby, która zna już firmę i jej umowy.</p></div>
     <ol class="day"><li class="dz reveal"><time>9:00</time><span class="dz-k">Sprzedaż</span><div><h3>Umowa z nowym klientem B2B</h3><p>Uwagi w trybie zmian i krótka notatka, co warto wynegocjować.</p></div></li><li class="dz reveal"><time>11:00</time><span class="dz-k">Zarząd</span><div><h3>Zmiana w zarządzie spółki</h3><p>Uchwała, wniosek do KRS i zgłoszenie do CRBR w terminie.</p></div></li><li class="dz reveal"><time>13:00</time><span class="dz-k">HR</span><div><h3>Umowa z nowym pracownikiem</h3><p>Umowa o pracę, zakaz konkurencji i informacja o warunkach zatrudnienia.</p></div></li><li class="dz reveal"><time>15:00</time><span class="dz-k">Finanse</span><div><h3>Faktura nieopłacona od trzech miesięcy</h3><p>Wezwanie do zapłaty i plan na wypadek, gdyby nie zadziałało.</p></div></li><li class="dz reveal"><time>17:00</time><span class="dz-k">Marketing</span><div><h3>Promocja w sklepie internetowym</h3><p>Regulamin promocji i zgody marketingowe zgodne z RODO.</p></div></li></ol>
     <p class="day-note"><b>Nie płacisz za etat.</b> Stałą obsługę rozliczamy według zasad ustalonych z góry, a pojedynczą sprawę według wyceny przed rozpoczęciem pracy.</p>
-  </div>
-</section>
-<section class="sec wine" id="porownanie">
+  </div></section>
+<section class="sec dark" id="jak">
   <div class="wrap">
     <div class="head reveal">
-      <h2>Etat, kancelaria od sprawy czy stała obsługa?</h2>
-      <p>Trzy sposoby, w jakie firmy rozwiązują sprawy prawne. Każdy ma sens na innym etapie, dlatego współpracę można zacząć od jednej sprawy.</p>
+      <h2>Zgłoszenie, wycena, gotowy dokument</h2>
+      <p>Jak w dziale prawnym na miejscu: opisujesz sprawę swoimi słowami, a ja porządkuję ją w plan. Nie musisz wiedzieć, jak nazwać problem prawny.</p>
     </div>
-    <div class="cmp" role="table"><div class="cmp-h"><span></span><b class="">Prawnik na etacie</b><b class="">Kancelaria od sprawy do sprawy</b><b class="us">Bieżąca obsługa BRP Legal Point</b></div><div class="cmp-r"><span class="cmp-l">Zna firmę i kontrahentów</span><span class="" data-col="Prawnik na etacie">Tak</span><span class="" data-col="Kancelaria od sprawy do sprawy">Za każdym razem od nowa</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Tak, z każdą sprawą lepiej</span></div><div class="cmp-r"><span class="cmp-l">Koszt</span><span class="" data-col="Prawnik na etacie">Pensja i składki co miesiąc</span><span class="" data-col="Kancelaria od sprawy do sprawy">Każda sprawa wyceniana osobno</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zakres i zasady rozliczenia ustalone z góry</span></div><div class="cmp-r"><span class="cmp-l">Zakres</span><span class="" data-col="Prawnik na etacie">Zwykle jedna specjalizacja</span><span class="" data-col="Kancelaria od sprawy do sprawy">Szeroki, ale rozproszony między prawników</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Spółki, umowy, praca, należności, RODO, reklama i IP</span></div><div class="cmp-r"><span class="cmp-l">Start</span><span class="" data-col="Prawnik na etacie">Rekrutacja i wdrożenie</span><span class="" data-col="Kancelaria od sprawy do sprawy">Od pierwszej sprawy</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Od 30-minutowej konsultacji</span></div><div class="cmp-r"><span class="cmp-l">Kto prowadzi sprawę</span><span class="" data-col="Prawnik na etacie">Ta sama osoba</span><span class="" data-col="Kancelaria od sprawy do sprawy">Często kolejny prawnik z zespołu</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zawsze adwokat osobiście, po polsku i po angielsku</span></div></div>
+    <ol class="flow"><li><div class="n">1</div><h3>Konsultacja 30 minut</h3><p>Porządkujemy zagadnienie, pilność i oczekiwany rezultat. Nie musisz wiedzieć, jak nazwać problem prawny.</p></li><li><div class="n">2</div><h3>Zakres i wycena</h3><p>Przed rozpoczęciem pracy dostajesz na piśmie zakres, termin i wynagrodzenie. Wiesz, za jaki rezultat płacisz.</p></li><li><div class="n">3</div><h3>Realizacja</h3><p>Dokument, rekomendacja albo wsparcie projektu w uzgodnionej formie, z jasnym planem kolejnych kroków.</p></li></ol>
+    <h3 class="models-h">Model współpracy dobieram do tego, jak często firma potrzebuje prawnika</h3>
+    <div class="models"><div><h3>Konkretna usługa</h3><p>Umowa, uchwała, zgłoszenie rejestrowe, wezwanie albo inny jasno określony rezultat.</p></div><div><h3>Projekt prawny</h3><p>Negocjacje, transakcja, wdrożenie regulacji albo spór, który ma kilka etapów.</p></div><div><h3>Bieżąca obsługa</h3><p>Stała dostępność prawnika dla zarządu i zespołów, rozliczana według uzgodnionych zasad.</p></div></div>
   </div>
 </section>
 <section class="sec" id="o-mnie">
@@ -492,17 +507,10 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
     </div>
   </div>
 </section>
-<section class="sec dark" id="jak">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2>Zgłoszenie, wycena, gotowy dokument</h2>
-      <p>Jak w dziale prawnym na miejscu: opisujesz sprawę swoimi słowami, a ja porządkuję ją w plan. Nie musisz wiedzieć, jak nazwać problem prawny.</p>
-    </div>
-    <ol class="flow"><li><div class="n">1</div><h3>Konsultacja 30 minut</h3><p>Porządkujemy zagadnienie, pilność i oczekiwany rezultat. Nie musisz wiedzieć, jak nazwać problem prawny.</p></li><li><div class="n">2</div><h3>Zakres i wycena</h3><p>Przed rozpoczęciem pracy dostajesz na piśmie zakres, termin i wynagrodzenie. Wiesz, za jaki rezultat płacisz.</p></li><li><div class="n">3</div><h3>Realizacja</h3><p>Dokument, rekomendacja albo wsparcie projektu w uzgodnionej formie, z jasnym planem kolejnych kroków.</p></li></ol>
-    <h3 class="models-h">Model współpracy dobieram do tego, jak często firma potrzebuje prawnika</h3>
-    <div class="models"><div><h3>Konkretna usługa</h3><p>Umowa, uchwała, zgłoszenie rejestrowe, wezwanie albo inny jasno określony rezultat.</p></div><div><h3>Projekt prawny</h3><p>Negocjacje, transakcja, wdrożenie regulacji albo spór, który ma kilka etapów.</p></div><div><h3>Bieżąca obsługa</h3><p>Stała dostępność prawnika dla zarządu i zespołów, rozliczana według uzgodnionych zasad.</p></div></div>
-  </div>
-</section>
+<section class="sec dark band" id="dlaczego"><img class="band-bg" src="still-end.webp" alt="" loading="lazy"><div class="wrap band-in">
+    <p class="band-q reveal">Jedna osoba, która zna Twoją firmę, jej umowy i ludzi.</p>
+    <ul class="band-f"><li><b>Ponad 15 lat</b> praktyki, także jako prawnik wewnętrzny w agencjach, domach mediowych i firmach produkcyjnych.</li><li><b>Bezpośrednio z adwokatem.</b> Sprawę prowadzę osobiście, od konsultacji do gotowego dokumentu.</li><li><b>Online w całej Polsce.</b> Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</li><li><b>Po polsku i po angielsku.</b> Umowy i negocjacje z kontrahentami z zagranicy.</li></ul>
+  </div></section>
 <section class="sec" id="kompetencje">
   <div class="wrap">
     <div class="head head-1 reveal">
@@ -565,47 +573,15 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
   </div>
 </footer>
 <div class="callbar"><a href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a><a href="tel:+48662187462">Zadzwoń</a></div>
-
-<script>window.__CAPS=["9:00 · Umowa z nowym dostawcą sprawdzona", "11:00 · Zmiana w zarządzie zgłoszona do KRS", "13:00 · Umowa z nowym pracownikiem gotowa", "15:00 · Wezwanie do zapłaty wysłane", "17:00 · Regulamin promocji zatwierdzony", "Wszystko załatwione, zanim zamkniesz biuro"];</script><script>window.__FR=["klatki/L/f_000.webp", "klatki/L/f_001.webp", "klatki/L/f_002.webp", "klatki/L/f_003.webp", "klatki/L/f_004.webp", "klatki/L/f_005.webp", "klatki/L/f_006.webp", "klatki/L/f_007.webp", "klatki/L/f_008.webp", "klatki/L/f_009.webp", "klatki/L/f_010.webp", "klatki/L/f_011.webp", "klatki/L/f_012.webp", "klatki/L/f_013.webp", "klatki/L/f_014.webp", "klatki/L/f_015.webp", "klatki/L/f_016.webp", "klatki/L/f_017.webp", "klatki/L/f_018.webp", "klatki/L/f_019.webp", "klatki/L/f_020.webp", "klatki/L/f_021.webp", "klatki/L/f_022.webp", "klatki/L/f_023.webp", "klatki/L/f_024.webp", "klatki/L/f_025.webp", "klatki/L/f_026.webp", "klatki/L/f_027.webp", "klatki/L/f_028.webp", "klatki/L/f_029.webp", "klatki/L/f_030.webp", "klatki/L/f_031.webp", "klatki/L/f_032.webp", "klatki/L/f_033.webp", "klatki/L/f_034.webp", "klatki/L/f_035.webp", "klatki/L/f_036.webp", "klatki/L/f_037.webp", "klatki/L/f_038.webp", "klatki/L/f_039.webp", "klatki/L/f_040.webp", "klatki/L/f_041.webp", "klatki/L/f_042.webp", "klatki/L/f_043.webp", "klatki/L/f_044.webp", "klatki/L/f_045.webp", "klatki/L/f_046.webp", "klatki/L/f_047.webp", "klatki/L/f_048.webp", "klatki/L/f_049.webp", "klatki/L/f_050.webp", "klatki/L/f_051.webp", "klatki/L/f_052.webp", "klatki/L/f_053.webp", "klatki/L/f_054.webp", "klatki/L/f_055.webp", "klatki/L/f_056.webp", "klatki/L/f_057.webp", "klatki/L/f_058.webp", "klatki/L/f_059.webp"];window.__FR_S=["klatki/S/f_000.webp", "klatki/S/f_001.webp", "klatki/S/f_002.webp", "klatki/S/f_003.webp", "klatki/S/f_004.webp", "klatki/S/f_005.webp", "klatki/S/f_006.webp", "klatki/S/f_007.webp", "klatki/S/f_008.webp", "klatki/S/f_009.webp", "klatki/S/f_010.webp", "klatki/S/f_011.webp", "klatki/S/f_012.webp", "klatki/S/f_013.webp", "klatki/S/f_014.webp", "klatki/S/f_015.webp", "klatki/S/f_016.webp", "klatki/S/f_017.webp", "klatki/S/f_018.webp", "klatki/S/f_019.webp", "klatki/S/f_020.webp", "klatki/S/f_021.webp", "klatki/S/f_022.webp", "klatki/S/f_023.webp", "klatki/S/f_024.webp", "klatki/S/f_025.webp", "klatki/S/f_026.webp", "klatki/S/f_027.webp", "klatki/S/f_028.webp", "klatki/S/f_029.webp", "klatki/S/f_030.webp", "klatki/S/f_031.webp", "klatki/S/f_032.webp", "klatki/S/f_033.webp", "klatki/S/f_034.webp", "klatki/S/f_035.webp", "klatki/S/f_036.webp", "klatki/S/f_037.webp", "klatki/S/f_038.webp", "klatki/S/f_039.webp", "klatki/S/f_040.webp", "klatki/S/f_041.webp", "klatki/S/f_042.webp", "klatki/S/f_043.webp", "klatki/S/f_044.webp", "klatki/S/f_045.webp", "klatki/S/f_046.webp", "klatki/S/f_047.webp", "klatki/S/f_048.webp", "klatki/S/f_049.webp", "klatki/S/f_050.webp", "klatki/S/f_051.webp", "klatki/S/f_052.webp", "klatki/S/f_053.webp", "klatki/S/f_054.webp", "klatki/S/f_055.webp", "klatki/S/f_056.webp", "klatki/S/f_057.webp", "klatki/S/f_058.webp", "klatki/S/f_059.webp"];window.__POS="66% 50%";</script>
 <script>
-(function(){
-  var d=document, root=d.documentElement, top=d.querySelector('.top');
-  function m(){ root.style.setProperty('--hdr-h', top.offsetHeight+'px'); }
-  m(); addEventListener('resize',m); addEventListener('load',m);
-  window.__stageP=function(){ var st=d.querySelector('.stage'), pin=d.querySelector('.pin');
-    var r=st.getBoundingClientRect(), tr=Math.max(1, st.offsetHeight-pin.offsetHeight); return Math.max(0,Math.min(1,-r.top/tr)); };
-  window.__caps=function(list,p,from,to){ var cap=d.getElementById('cap'); if(!cap||!list.length) return;
-    var k=Math.floor((p-from)/(to-from)*list.length); if(p<from){cap.innerHTML=''; cap.dataset.k=-1; return;}
-    k=Math.max(0,Math.min(list.length-1,k)); if(cap.dataset.k==k) return; cap.dataset.k=k;
-    cap.innerHTML='<small>'+String(k+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0')+'</small>'+list[k]; };
-  window.__prog=function(p){ var g=d.getElementById('prog'); if(g) g.style.width=(p*100)+'%';
-    var c=d.querySelector('.copy'); var h=d.querySelector('.hint');
-    if(h) h.style.opacity = p>.02?0:1;
-    if(c && innerWidth<=760){ var o=1-Math.max(0,Math.min(1,(p-.03)/.08)); c.style.opacity=o; c.style.transform='translateY('+(-24*(1-o))+'px)'; c.style.pointerEvents=o<.5?'none':''; var sc=d.querySelector('.v-rentgen .scrim'); if(sc) sc.style.opacity=o; }
-    else if(c){ c.style.opacity=''; c.style.transform=''; } };
-})();
-
-(function(){
-  var d=document, cv=d.getElementById('cv'), g=cv.getContext('2d'), poster=d.getElementById('poster');
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000;
-  var L=(small&&window.__FR_S)?window.__FR_S:window.__FR, N=L.length, imgs=new Array(N), ok=new Array(N);
-  var POS=window.__POS||'50% 50%';
-  for(var i=0;i<N;i++){ (function(i){ var im=new Image(); im.decoding='async'; im.onload=function(){ ok[i]=true; dirty=true; }; im.src=L[i]; imgs[i]=im; })(i); }
-  function near(i){ for(var k=0;k<N;k++){ if(ok[i-k]) return i-k; if(ok[i+k]) return i+k; } return -1; }
-  var W=0,H=0,dirty=true,last=-1;
-  function size(){ var w=cv.clientWidth*Math.min(devicePixelRatio||1,2), h=cv.clientHeight*Math.min(devicePixelRatio||1,2); if(w!==W||h!==H){ W=cv.width=w; H=cv.height=h; dirty=true; } }
-  function draw(i){ var im=imgs[i]; var iw=im.naturalWidth, ih=im.naturalHeight; var s=Math.max(W/iw,H/ih);
-    var px=parseFloat(POS)/100, py=parseFloat(POS.split(' ')[1])/100;
-    var dw=iw*s, dh=ih*s; g.drawImage(im,(W-dw)*px,(H-dh)*py,dw,dh); }
-  var CAPS=window.__CAPS||[];
-  function tick(){ size(); var p=reduce?1:window.__stageP(); var i=Math.round(p*(N-1)); var j=near(i);
-    if(j>=0&&(j!==last||dirty)){ draw(j); last=j; dirty=false; poster.style.opacity=0; }
-    window.__caps(CAPS,p,.05,.95); window.__prog(p); requestAnimationFrame(tick); }
-  tick();
+(function(){var v=document.getElementById('hv'); if(!v) return; var C=[["9:00", "Umowa z nowym dostawcą sprawdzona"], ["11:00", "Zmiana w zarządzie zgłoszona do KRS"], ["13:00", "Umowa z nowym pracownikiem gotowa"], ["15:00", "Wezwanie do zapłaty wysłane"], ["17:00", "Regulamin promocji zatwierdzony"], ["18:00", "Wszystko załatwione, zanim zamkniesz biuro"]], k=document.getElementById('clk'), t=document.getElementById('clkt'), bar=document.getElementById('vbar'), last=-1;
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function upd(){ var d=v.duration||8, p=Math.min(1,v.currentTime/d); var i=Math.min(C.length-1,Math.floor(p*C.length)); if(i!==last){ last=i; k.textContent=C[i][0]; t.textContent=C[i][1]; } bar.style.width=(p*100)+'%'; }
+ if(reduce){ v.removeAttribute('loop'); v.addEventListener('loadedmetadata',function(){ v.currentTime=v.duration-0.05; k.textContent=C[C.length-1][0]; t.textContent=C[C.length-1][1]; }); return; }
+ v.addEventListener('timeupdate',upd); (function raf(){ upd(); requestAnimationFrame(raf); })();
+ var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting) v.play().catch(function(){}); else v.pause(); }); }); io.observe(v);
 })();
 </script>
-
 <script>
 (function(){
   var d=document, root=d.documentElement;
@@ -661,9 +637,9 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:500}
 })();
 
 (function(){
-  var d=document, top=d.querySelector('.top'), st=d.querySelector('.stage');
+  var d=document, top=d.querySelector('.top'), st=d.getElementById('start'), dark=false;
   function f(){ var b=st.getBoundingClientRect().bottom;
-    top.classList.toggle('on-hero', b>top.offsetHeight && !top.classList.contains('menu-open'));
+    top.classList.toggle('on-hero', dark && b>top.offsetHeight && !top.classList.contains('menu-open'));
     d.body.classList.toggle('past-hero', b<innerHeight*.5); }
   f(); addEventListener('scroll',f,{passive:true}); addEventListener('resize',f);
   var nt=d.getElementById('navtoggle'); if(nt) nt.addEventListener('click',function(){ setTimeout(f,0); });

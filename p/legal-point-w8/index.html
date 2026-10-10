@@ -9,10 +9,10 @@
 <meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W8 „Most”">
 <meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
 <meta property="og:image" content="https://www.odnovastudio.com/p/legal-point-w8/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="theme-color" content="#0D1016">
+<meta name="theme-color" content="#16222E">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F1F2F4'/%3E%3Crect x='20' y='6' width='24' height='14' fill='none' stroke='%23141821' stroke-width='3'/%3E%3Cpath d='M32 20v14M10 34h44M10 34v8M32 34v8M54 34v8' stroke='%23141821' stroke-width='3' fill='none'/%3E%3Crect x='3' y='42' width='14' height='14' fill='%23141821'/%3E%3Crect x='25' y='42' width='14' height='14' fill='%237B1E3A'/%3E%3Crect x='47' y='42' width='14' height='14' fill='%23141821'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
@@ -322,56 +322,12 @@ h1,h2,h3{text-wrap:balance}
   .js .tix{min-height:0}
 }
 
-
-/* pasek nad ciemnym otwarciem */
-.top.on-hero .nav{background:rgba(13,16,22,.55);border-bottom-color:rgba(255,255,255,.16)}
-.top.on-hero .nav a.lnk,.top.on-hero .nav .tel,.top.on-hero .brand b,.top.on-hero .brand .mono{color:#fff}
-.top.on-hero .brand small{color:rgba(255,255,255,.72)}
-.top.on-hero .navtoggle{color:#fff;border-color:rgba(255,255,255,.55)}
-.top.on-hero .nav a.lnk:hover{color:var(--rose)}
-.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff}
-:root{--rose:#E9A0B6;--mute:rgba(255,255,255,.72)}
-.stage{background:#0D1016;color:#fff}
-
-/* scena */
-.stage{position:relative}
-.js .stage{height:420vh}
-.pin{position:relative;height:100svh;overflow:hidden;background:var(--night)}
-.js .pin{position:sticky;top:0}
-.media{position:absolute;inset:0}
-.media canvas,.media img.poster{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
-.scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(13,16,22,.88) 0%,rgba(13,16,22,.62) 34%,rgba(13,16,22,0) 62%),linear-gradient(0deg,rgba(13,16,22,.75) 0%,rgba(13,16,22,0) 30%)}
-.copy{position:absolute;left:0;right:0;top:calc(var(--hdr-h) + clamp(28px,7vh,80px))}
-.copy h1{font-size:clamp(36px,3.9vw,60px);line-height:1.05;max-width:14ch;text-shadow:0 2px 24px rgba(0,0,0,.4)}
-.copy h1 span{display:block;color:var(--rose)}
-.copy .lead{max-width:44ch;color:rgba(255,255,255,.84);font-size:clamp(16.5px,1.25vw,19px);margin:22px 0 26px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.bar{position:absolute;left:0;right:0;bottom:0;padding-bottom:24px}
-.bar-in{display:flex;align-items:flex-end;justify-content:flex-end;gap:24px;text-align:right}
-.copy{transition:opacity .25s,transform .25s}
-.cap{min-height:1.5em;font:500 clamp(17px,1.5vw,21px)/1.35 var(--serif);max-width:34ch;transition:opacity .3s}
-.cap small{display:block;font:600 13px/1 var(--sans);color:var(--rose);margin-bottom:8px;font-variant-numeric:tabular-nums}
-.prog{position:absolute;left:0;bottom:0;height:3px;background:var(--rose);width:0}
-.hint{font-size:13.5px;color:var(--mute)}
-.nojs-note{display:none}
-
-/* po scenie */
-
-@media (max-width:760px){
-  .copy{top:calc(var(--hdr-h) + 18px)}
-  .copy h1{font-size:clamp(32px,9vw,40px)}
-  .copy .lead{font-size:15.5px;margin:12px 0 16px}
-  .cta .btn-ghost{display:none}
-  .scrim{background:linear-gradient(180deg,rgba(13,16,22,.9) 0%,rgba(13,16,22,.55) 42%,rgba(13,16,22,0) 62%),linear-gradient(0deg,rgba(13,16,22,.8) 0%,rgba(13,16,22,0) 26%)}
-  .cap{font-size:16px}
-  .bar-in{justify-content:flex-start;text-align:left}
-  .hint{display:none}
-}
-@media (prefers-reduced-motion:reduce){.js .stage{height:auto}.js .pin{position:relative}}
-
-:root{--serif:'Gilda Display',Georgia,serif;--sans:'Wix Madefor Text',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
-
+:root{--paper:#EEEAE3;--paper-2:#EEEAE3;--white:#F8F6F2;--ink:#18212B;--ink-2:#3E4955;--muted:#5F6874;
+--wine:#9C4F1A;--wine-2:#B05C22;--wine-d:#7A3C12;--wine-l:#F3E4D6;--night:#16222E;--rose:#F0B46A;
+--mute:rgba(255,255,255,.74);--hw:400;--serif:'Gilda Display',Georgia,serif;--sans:'Wix Madefor Text',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+h1,h2,h3,.brand b,.cap,.foot b,.faq summary,.quick a b,.price-line strong,.about .quote,.flow .n,.models-h,.form h3,.quick-h,.kp-d,.portrait figcaption b{font-weight:400}
+.faq summary::before,.faq summary::after{background:var(--rose)}
+.foot a:hover{color:var(--rose)}
 
 /* sekcja wejściowa */
 .intro{background:var(--paper)}
@@ -383,15 +339,15 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
 .sp-r p{margin:0}
 .sp-x{color:var(--ink-2)}
 .sp-x mark{background:linear-gradient(transparent 58%,rgba(196,38,46,.2) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.sp-ok{color:var(--ink);font-weight:500;padding-left:16px;border-left:3px solid var(--wine)}
+.sp-ok{color:var(--wine);font-weight:600}
 .intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:40px 0 0}
 .intro-cta span{color:var(--muted);font-size:15.5px}
-.moments{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:32px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.mo h3{font-size:clamp(26px,2.4vw,34px)}
+.moments{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.mo h3{font-size:clamp(28px,2.6vw,38px)}
 .mo p{margin:0;color:var(--ink-2)}
 .mo .mo-out{color:var(--wine);font-weight:600;font-size:16px}
-.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--wine)}
 .dz{display:grid;grid-template-columns:150px 150px minmax(0,1fr);gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .dz time{font:500 clamp(38px,3.6vw,54px)/1 var(--serif);color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
 .dz-k{font-weight:600;font-size:15px;color:var(--muted)}
@@ -409,20 +365,66 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
 .br-m{position:relative;text-align:center;font-weight:600;color:#fff;background:var(--wine);padding:14px 18px}
 .br-m::before,.br-m::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:var(--wine)}
 .br-m::before{right:100%}.br-m::after{left:100%}
+/* pas */
+.band{position:relative;overflow:hidden;isolation:isolate}
+.band-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.42}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--night) 20%,rgba(0,0,0,0))}
+.band-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:end}
+.band-q{font:var(--hw,400) clamp(32px,3.4vw,52px)/1.15 var(--serif);margin:0;max-width:20ch;color:#fff}
+.band-f{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.3)}
+.band-f li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);font-size:16.5px}
+.band-f b{color:#fff;font-family:var(--serif);font-weight:inherit;font-size:1.15em}
 @media (max-width:900px){
   .sp-h,.br-h{display:none}
   .sp-r,.mo,.br-r{grid-template-columns:1fr;gap:10px}
   .sp-x::before{content:"Ryzyko: ";font-weight:600;color:#A3242C}
-  .sp-ok::before{content:"Propozycja: ";font-weight:600;color:var(--wine)}
+  .sp-ok::before{content:"Propozycja: ";font-weight:600}
   .dz{grid-template-columns:96px minmax(0,1fr);gap:8px 20px}
-  .dz-k{grid-column:2}
-  .dz div{grid-column:1/-1}
+  .dz-k{grid-column:2}.dz div{grid-column:1/-1}
   .br-b{text-align:left}
   .br-a::before{content:"Ty: ";font-weight:600;color:var(--ink)}
   .br-b::before{content:"Druga strona: ";font-weight:600;color:var(--ink)}
-  .br-m{text-align:left}
-  .br-m::before,.br-m::after{display:none}
+  .br-m{text-align:left}.br-m::before,.br-m::after{display:none}
+  .band-in{grid-template-columns:1fr}
+  .band::after{background:linear-gradient(180deg,rgba(0,0,0,.2),var(--night) 70%)}
 }
+/* pasek nad ciemnym otwarciem */
+.top.on-hero .nav{background:rgba(10,12,16,.5);border-bottom-color:rgba(255,255,255,.16)}
+.top.on-hero .nav a.lnk,.top.on-hero .nav .tel,.top.on-hero .brand b,.top.on-hero .brand .mono{color:#fff}
+.top.on-hero .brand small{color:rgba(255,255,255,.72)}
+.top.on-hero .navtoggle{color:#fff;border-color:rgba(255,255,255,.55)}
+.top.on-hero .nav a.lnk:hover{color:var(--rose)}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff}
+.stage{background:var(--night);color:#fff}
+.stage .copy h1 span{color:var(--rose)}
+
+
+.vh-most{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#0B141C;color:#fff}
+.vh-most video,.vh-most .vh-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.vh-most::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,20,.78) 0%,rgba(8,14,20,.38) 38%,rgba(8,14,20,0) 60%),linear-gradient(0deg,rgba(8,14,20,.7) 0%,rgba(8,14,20,0) 30%);pointer-events:none}
+.vh-top{position:absolute;left:0;right:0;top:calc(var(--hdr-h) + clamp(24px,6vh,72px));z-index:2;text-align:center}
+.vh-most h1{font-size:clamp(46px,6vw,96px);line-height:1;letter-spacing:-.01em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.vh-most .lead{max-width:52ch;margin:20px auto 26px;color:rgba(255,255,255,.86);font-size:clamp(16.5px,1.25vw,19px);text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.vh-most .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.vh-end{position:absolute;left:0;right:0;bottom:clamp(28px,6vh,64px);z-index:2;text-align:center;font:var(--hw,400) clamp(22px,2vw,30px)/1.25 var(--serif);color:#fff;opacity:0;transform:translateY(10px);transition:opacity .9s,transform .9s}
+.vh-most.done .vh-end{opacity:1;transform:none}
+.vh-replay{position:absolute;right:clamp(16px,3vw,40px);bottom:clamp(20px,4vh,40px);z-index:3;min-height:44px;padding:0 16px;background:rgba(0,0,0,.35);color:#fff;border:1px solid rgba(255,255,255,.45);font:600 14px var(--sans);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .4s}
+.vh-most.done .vh-replay{opacity:1;pointer-events:auto}
+@media (max-width:760px){.vh-most h1{font-size:clamp(38px,11vw,50px)}.vh-most .lead{font-size:15.5px;margin:12px auto 16px;padding:0 6px}.vh-most .btn-ghost{display:none}.vh-end{bottom:84px;padding:0 20px}.vh-replay{bottom:20px}}
+
+
+/* W8: panoramiczny: szerokie kadry, poziome pasy, miedź na kamieniu */
+body{font-size:17.5px}
+.wrap{max-width:1380px}
+.sec{padding:clamp(80px,10vw,140px) 0}
+.head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--line);padding-bottom:28px}
+.dark .head{border-bottom-color:rgba(255,255,255,.2)}
+.head h2{font-size:clamp(38px,4vw,60px);max-width:16ch}
+.btn{border-radius:0}
+.btn-wine{background:var(--wine)}
+.sec.dark{background:var(--night)}
+.flow .n{color:var(--rose)}
+.about .quote{color:var(--wine)}
 </style>
 </head>
 <body class="v-most">
@@ -444,25 +446,40 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
     </div>
   </nav>
 </div>
-<header class="stage" id="start"><div class="pin">
-  <div class="media" id="media"><canvas id="cv" aria-hidden="true"></canvas><img class="poster" id="poster" alt="" src="poster.webp"></div>
-  <div class="scrim"></div>
-  <div class="copy"><div class="wrap">
-  <h1>Dobra umowa łączy obie strony.</h1>
-  <p class="lead">Umowy B2B, negocjacje po polsku i po angielsku, zabezpieczenie płatności już na etapie rozmów. Bieżąca obsługa prawna firm, online w całej Polsce.</p>
-  <div class="cta"><a class="btn btn-wine" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a><a class="btn btn-ghost" href="#jak">Jak pracuję</a></div>
-</div></div>
-  <div class="bar"><div class="wrap bar-in"><p class="cap" id="cap" aria-live="off"></p><span class="hint">Przewijaj</span></div><div class="prog" id="prog"></div></div>
-</div></header>
+<header class="vh vh-most" id="start"><video id="hv" muted playsinline preload="auto" poster="poster.webp" aria-hidden="true"><source src="hero-m.mp4" type="video/mp4" media="(max-width:760px)"><source src="hero.mp4" type="video/mp4"></video>
+  <div class="vh-top"><div class="wrap">
+    <h1>Dobra umowa łączy obie strony.</h1>
+    <p class="lead">Umowy B2B, negocjacje po polsku i po angielsku, zabezpieczenie płatności już na etapie rozmów. Bieżąca obsługa prawna firm, online w całej Polsce.</p>
+    <div class="cta"><a class="btn btn-wine" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a><a class="btn btn-ghost" href="#negocjacje">Jak negocjuję</a></div>
+  </div></div>
+  <p class="vh-end">Podpis, który obie strony rozumieją.</p>
+  <button class="vh-replay" type="button" id="vrep">Odtwórz jeszcze raz</button>
+</header>
 <main>
-<section class="sec intro" id="negocjacje">
-  <div class="wrap">
+<section class="sec intro" id="negocjacje"><div class="wrap">
     <div class="head reveal"><h2>Umowa, którą rozumieją obie strony</h2>
-      <p>Dobra umowa nie wygrywa z kontrahentem, tylko daje obu firmom pracować dalej. Tak wyglądają punkty, na których negocjacje utykają najczęściej. Rozmowy prowadzę także po angielsku.</p></div>
-    <div class="bridge">
-      <div class="br-h" aria-hidden="true"><span>Ty chcesz</span><span>Gdzie się spotykamy</span><span>Druga strona chce</span></div>
-      <div class="br-r reveal"><h3>Płatność</h3><p class="br-a"><span class="sr">Ty: </span>Pieniądze szybko i pewnie</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Termin 30 dni, zaliczka albo gwarancja zapłaty</p><p class="br-b"><span class="sr">Druga strona: </span>Zapłata jak najpóźniej</p></div><div class="br-r reveal"><h3>Odpowiedzialność</h3><p class="br-a"><span class="sr">Ty: </span>Jak najmniejsza</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Limit do wartości kontraktu, bez wyłączeń dla winy umyślnej</p><p class="br-b"><span class="sr">Druga strona: </span>Pełna, za każdą szkodę</p></div><div class="br-r reveal"><h3>Kary umowne</h3><p class="br-a"><span class="sr">Ty: </span>Najlepiej żadne</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Kary po obu stronach, z górnym limitem</p><p class="br-b"><span class="sr">Druga strona: </span>Wysokie i za wszystko</p></div><div class="br-r reveal"><h3>Język umowy</h3><p class="br-a"><span class="sr">Ty: </span>Polski</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Umowa dwujęzyczna z ustaloną wersją rozstrzygającą</p><p class="br-b"><span class="sr">Druga strona: </span>Angielski</p></div>
+      <p>Dobra umowa pozwala obu firmom dalej razem pracować. Tak wyglądają punkty, na których negocjacje utykają najczęściej. Rozmowy prowadzę także po angielsku.</p></div>
+    <div class="bridge"><div class="br-h" aria-hidden="true"><span>Ty chcesz</span><span>Gdzie się spotykamy</span><span>Druga strona chce</span></div><div class="br-r reveal"><h3>Płatność</h3><p class="br-a"><span class="sr">Ty: </span>Pieniądze szybko i pewnie</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Termin 30 dni, zaliczka albo gwarancja zapłaty</p><p class="br-b"><span class="sr">Druga strona: </span>Zapłata jak najpóźniej</p></div><div class="br-r reveal"><h3>Odpowiedzialność</h3><p class="br-a"><span class="sr">Ty: </span>Jak najmniejsza</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Limit do wartości kontraktu, bez wyłączeń dla winy umyślnej</p><p class="br-b"><span class="sr">Druga strona: </span>Pełna, za każdą szkodę</p></div><div class="br-r reveal"><h3>Kary umowne</h3><p class="br-a"><span class="sr">Ty: </span>Najlepiej żadne</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Kary po obu stronach, z górnym limitem</p><p class="br-b"><span class="sr">Druga strona: </span>Wysokie i za wszystko</p></div><div class="br-r reveal"><h3>Język umowy</h3><p class="br-a"><span class="sr">Ty: </span>Polski</p><p class="br-m"><span class="sr">Rozwiązanie: </span>Umowa dwujęzyczna z ustaloną wersją rozstrzygającą</p><p class="br-b"><span class="sr">Druga strona: </span>Angielski</p></div></div>
+  </div></section>
+<section class="sec dark band" id="dlaczego"><img class="band-bg" src="still-end.webp" alt="" loading="lazy"><div class="wrap band-in">
+    <p class="band-q reveal">Negocjacje prowadzone tak, żeby po podpisie obie firmy chciały dalej współpracować.</p>
+    <ul class="band-f"><li><b>Ponad 15 lat</b> praktyki, także jako prawnik wewnętrzny w agencjach, domach mediowych i firmach produkcyjnych.</li><li><b>Bezpośrednio z adwokatem.</b> Sprawę prowadzę osobiście, od konsultacji do gotowego dokumentu.</li><li><b>Online w całej Polsce.</b> Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</li><li><b>Po polsku i po angielsku.</b> Umowy i negocjacje z kontrahentami z zagranicy.</li></ul>
+  </div></section>
+<section class="sec" id="kompetencje">
+  <div class="wrap">
+    <div class="head head-1 reveal">
+      <h2>Kompetencje działu, według tego, kto pyta</h2>
+      <p>Osiem obszarów praktyki przypisanych do działów, z których najczęściej przychodzą sprawy. Każdy obszar ma na stronie osobną podstronę.</p>
     </div>
+    <div class="kp"><div class="kp-row" style="--c:#2E4A7D;--t:#DCE4F2"><p class="kp-d"><i></i>Zarząd</p><div class="kp-list"><div class="kp-a"><h3>Bieżąca obsługa prawna firm</h3><p>Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur. Jedna sprawa, projekt albo stała współpraca.</p>
+<p class="kp-tags">doradztwo na co dzień · projekty i procedury · jedna sprawa albo stała współpraca</p><a href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Bieżąca obsługa prawna firm</span></a></div><div class="kp-a"><h3>Prawo spółek, KRS i CRBR</h3><p>Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</p>
+<p class="kp-tags">zarząd i wspólnicy · uchwały i zgromadzenia · KRS, RDF i CRBR</p><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo spółek, KRS i CRBR</span></a></div><div class="kp-a"><h3>Finansowanie i zabezpieczenia</h3><p>Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</p>
+<p class="kp-tags">pożyczki i finansowanie · hipoteki, zastawy, poręczenia · zgody korporacyjne</p><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Finansowanie i zabezpieczenia</span></a></div></div></div><div class="kp-row" style="--c:#8A5712;--t:#F4E6CF"><p class="kp-d"><i></i>Sprzedaż</p><div class="kp-list"><div class="kp-a"><h3>Należności i spory gospodarcze</h3><p>Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</p>
+<p class="kp-tags">windykacja B2B · ugody i zabezpieczenia · spory sądowe</p><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Należności i spory gospodarcze</span></a></div></div></div><div class="kp-row" style="--c:#5B6B1C;--t:#EBEFD6"><p class="kp-d"><i></i>Zakupy</p><div class="kp-list"><div class="kp-a"><h3>Umowy B2B i negocjacje</h3><p>Kontrakty handlowe, umowy z dostawcami i na marki własne. Od szybkiej weryfikacji po negocjacje, także po angielsku.</p>
+<p class="kp-tags">tworzenie i analiza umów · redline i komentarze · negocjacje PL / EN</p><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Umowy B2B i negocjacje</span></a></div></div></div><div class="kp-row" style="--c:#35596A;--t:#DCE7EC"><p class="kp-d"><i></i>Operacje</p><div class="kp-list"><div class="kp-a"><h3>Compliance, RODO i regulacje</h3><p>Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</p>
+<p class="kp-tags">RODO, AML i sygnaliści · monitoring prawny · PPWR, EUDR, CSRD i SUP</p><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Compliance, RODO i regulacje</span></a></div></div></div><div class="kp-row" style="--c:#1D6964;--t:#D8ECE9"><p class="kp-d"><i></i>HR</p><div class="kp-list"><div class="kp-a"><h3>Prawo pracy dla pracodawców</h3><p>Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</p>
+<p class="kp-tags">umowy i regulaminy · sprawy pracownicze · procedury wewnętrzne</p><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo pracy dla pracodawców</span></a></div></div></div><div class="kp-row" style="--c:#A1392B;--t:#F6DDD8"><p class="kp-d"><i></i>Marketing</p><div class="kp-list"><div class="kp-a"><h3>E-commerce, reklama i IP</h3><p>Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</p>
+<p class="kp-tags">kampanie i promocje · umowy z twórcami · znaki towarowe i konsument</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – E-commerce, reklama i IP</span></a></div></div></div></div>
   </div>
 </section>
 <section class="sec dark" id="jak">
@@ -494,32 +511,6 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
         <div><dt>Certyfikaty</dt><dd>Inspektor ochrony danych, FCE Cambridge</dd></div>
       </dl>
     </div>
-  </div>
-</section>
-<section class="sec wine" id="porownanie">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2>Etat, kancelaria od sprawy czy stała obsługa?</h2>
-      <p>Trzy sposoby, w jakie firmy rozwiązują sprawy prawne. Każdy ma sens na innym etapie, dlatego współpracę można zacząć od jednej sprawy.</p>
-    </div>
-    <div class="cmp" role="table"><div class="cmp-h"><span></span><b class="">Prawnik na etacie</b><b class="">Kancelaria od sprawy do sprawy</b><b class="us">Bieżąca obsługa BRP Legal Point</b></div><div class="cmp-r"><span class="cmp-l">Zna firmę i kontrahentów</span><span class="" data-col="Prawnik na etacie">Tak</span><span class="" data-col="Kancelaria od sprawy do sprawy">Za każdym razem od nowa</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Tak, z każdą sprawą lepiej</span></div><div class="cmp-r"><span class="cmp-l">Koszt</span><span class="" data-col="Prawnik na etacie">Pensja i składki co miesiąc</span><span class="" data-col="Kancelaria od sprawy do sprawy">Każda sprawa wyceniana osobno</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zakres i zasady rozliczenia ustalone z góry</span></div><div class="cmp-r"><span class="cmp-l">Zakres</span><span class="" data-col="Prawnik na etacie">Zwykle jedna specjalizacja</span><span class="" data-col="Kancelaria od sprawy do sprawy">Szeroki, ale rozproszony między prawników</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Spółki, umowy, praca, należności, RODO, reklama i IP</span></div><div class="cmp-r"><span class="cmp-l">Start</span><span class="" data-col="Prawnik na etacie">Rekrutacja i wdrożenie</span><span class="" data-col="Kancelaria od sprawy do sprawy">Od pierwszej sprawy</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Od 30-minutowej konsultacji</span></div><div class="cmp-r"><span class="cmp-l">Kto prowadzi sprawę</span><span class="" data-col="Prawnik na etacie">Ta sama osoba</span><span class="" data-col="Kancelaria od sprawy do sprawy">Często kolejny prawnik z zespołu</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zawsze adwokat osobiście, po polsku i po angielsku</span></div></div>
-  </div>
-</section>
-<section class="sec" id="kompetencje">
-  <div class="wrap">
-    <div class="head head-1 reveal">
-      <h2>Kompetencje działu, według tego, kto pyta</h2>
-      <p>Osiem obszarów praktyki przypisanych do działów, z których najczęściej przychodzą sprawy. Każdy obszar ma na stronie osobną podstronę.</p>
-    </div>
-    <div class="kp"><div class="kp-row" style="--c:#2E4A7D;--t:#DCE4F2"><p class="kp-d"><i></i>Zarząd</p><div class="kp-list"><div class="kp-a"><h3>Bieżąca obsługa prawna firm</h3><p>Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur. Jedna sprawa, projekt albo stała współpraca.</p>
-<p class="kp-tags">doradztwo na co dzień · projekty i procedury · jedna sprawa albo stała współpraca</p><a href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Bieżąca obsługa prawna firm</span></a></div><div class="kp-a"><h3>Prawo spółek, KRS i CRBR</h3><p>Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</p>
-<p class="kp-tags">zarząd i wspólnicy · uchwały i zgromadzenia · KRS, RDF i CRBR</p><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo spółek, KRS i CRBR</span></a></div><div class="kp-a"><h3>Finansowanie i zabezpieczenia</h3><p>Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</p>
-<p class="kp-tags">pożyczki i finansowanie · hipoteki, zastawy, poręczenia · zgody korporacyjne</p><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Finansowanie i zabezpieczenia</span></a></div></div></div><div class="kp-row" style="--c:#8A5712;--t:#F4E6CF"><p class="kp-d"><i></i>Sprzedaż</p><div class="kp-list"><div class="kp-a"><h3>Należności i spory gospodarcze</h3><p>Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</p>
-<p class="kp-tags">windykacja B2B · ugody i zabezpieczenia · spory sądowe</p><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Należności i spory gospodarcze</span></a></div></div></div><div class="kp-row" style="--c:#5B6B1C;--t:#EBEFD6"><p class="kp-d"><i></i>Zakupy</p><div class="kp-list"><div class="kp-a"><h3>Umowy B2B i negocjacje</h3><p>Kontrakty handlowe, umowy z dostawcami i na marki własne. Od szybkiej weryfikacji po negocjacje, także po angielsku.</p>
-<p class="kp-tags">tworzenie i analiza umów · redline i komentarze · negocjacje PL / EN</p><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Umowy B2B i negocjacje</span></a></div></div></div><div class="kp-row" style="--c:#35596A;--t:#DCE7EC"><p class="kp-d"><i></i>Operacje</p><div class="kp-list"><div class="kp-a"><h3>Compliance, RODO i regulacje</h3><p>Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</p>
-<p class="kp-tags">RODO, AML i sygnaliści · monitoring prawny · PPWR, EUDR, CSRD i SUP</p><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Compliance, RODO i regulacje</span></a></div></div></div><div class="kp-row" style="--c:#1D6964;--t:#D8ECE9"><p class="kp-d"><i></i>HR</p><div class="kp-list"><div class="kp-a"><h3>Prawo pracy dla pracodawców</h3><p>Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</p>
-<p class="kp-tags">umowy i regulaminy · sprawy pracownicze · procedury wewnętrzne</p><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo pracy dla pracodawców</span></a></div></div></div><div class="kp-row" style="--c:#A1392B;--t:#F6DDD8"><p class="kp-d"><i></i>Marketing</p><div class="kp-list"><div class="kp-a"><h3>E-commerce, reklama i IP</h3><p>Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</p>
-<p class="kp-tags">kampanie i promocje · umowy z twórcami · znaki towarowe i konsument</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – E-commerce, reklama i IP</span></a></div></div></div></div>
   </div>
 </section>
 <section class="sec dark" id="faq">
@@ -567,47 +558,15 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
   </div>
 </footer>
 <div class="callbar"><a href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację</a><a href="tel:+48662187462">Zadzwoń</a></div>
-
-<script>window.__CAPS=["Dwie firmy, dwa interesy", "Projekt umowy po jednej stronie", "Komentarze i poprawki", "Negocjacje, także po angielsku", "Zabezpieczenie płatności", "Podpis, który obie strony rozumieją"];</script><script>window.__FR=["klatki/L/f_000.webp", "klatki/L/f_001.webp", "klatki/L/f_002.webp", "klatki/L/f_003.webp", "klatki/L/f_004.webp", "klatki/L/f_005.webp", "klatki/L/f_006.webp", "klatki/L/f_007.webp", "klatki/L/f_008.webp", "klatki/L/f_009.webp", "klatki/L/f_010.webp", "klatki/L/f_011.webp", "klatki/L/f_012.webp", "klatki/L/f_013.webp", "klatki/L/f_014.webp", "klatki/L/f_015.webp", "klatki/L/f_016.webp", "klatki/L/f_017.webp", "klatki/L/f_018.webp", "klatki/L/f_019.webp", "klatki/L/f_020.webp", "klatki/L/f_021.webp", "klatki/L/f_022.webp", "klatki/L/f_023.webp", "klatki/L/f_024.webp", "klatki/L/f_025.webp", "klatki/L/f_026.webp", "klatki/L/f_027.webp", "klatki/L/f_028.webp", "klatki/L/f_029.webp", "klatki/L/f_030.webp", "klatki/L/f_031.webp", "klatki/L/f_032.webp", "klatki/L/f_033.webp", "klatki/L/f_034.webp", "klatki/L/f_035.webp", "klatki/L/f_036.webp", "klatki/L/f_037.webp", "klatki/L/f_038.webp", "klatki/L/f_039.webp", "klatki/L/f_040.webp", "klatki/L/f_041.webp", "klatki/L/f_042.webp", "klatki/L/f_043.webp", "klatki/L/f_044.webp", "klatki/L/f_045.webp", "klatki/L/f_046.webp", "klatki/L/f_047.webp", "klatki/L/f_048.webp", "klatki/L/f_049.webp", "klatki/L/f_050.webp", "klatki/L/f_051.webp", "klatki/L/f_052.webp", "klatki/L/f_053.webp", "klatki/L/f_054.webp", "klatki/L/f_055.webp", "klatki/L/f_056.webp", "klatki/L/f_057.webp", "klatki/L/f_058.webp", "klatki/L/f_059.webp"];window.__FR_S=["klatki/S/f_000.webp", "klatki/S/f_001.webp", "klatki/S/f_002.webp", "klatki/S/f_003.webp", "klatki/S/f_004.webp", "klatki/S/f_005.webp", "klatki/S/f_006.webp", "klatki/S/f_007.webp", "klatki/S/f_008.webp", "klatki/S/f_009.webp", "klatki/S/f_010.webp", "klatki/S/f_011.webp", "klatki/S/f_012.webp", "klatki/S/f_013.webp", "klatki/S/f_014.webp", "klatki/S/f_015.webp", "klatki/S/f_016.webp", "klatki/S/f_017.webp", "klatki/S/f_018.webp", "klatki/S/f_019.webp", "klatki/S/f_020.webp", "klatki/S/f_021.webp", "klatki/S/f_022.webp", "klatki/S/f_023.webp", "klatki/S/f_024.webp", "klatki/S/f_025.webp", "klatki/S/f_026.webp", "klatki/S/f_027.webp", "klatki/S/f_028.webp", "klatki/S/f_029.webp", "klatki/S/f_030.webp", "klatki/S/f_031.webp", "klatki/S/f_032.webp", "klatki/S/f_033.webp", "klatki/S/f_034.webp", "klatki/S/f_035.webp", "klatki/S/f_036.webp", "klatki/S/f_037.webp", "klatki/S/f_038.webp", "klatki/S/f_039.webp", "klatki/S/f_040.webp", "klatki/S/f_041.webp", "klatki/S/f_042.webp", "klatki/S/f_043.webp", "klatki/S/f_044.webp", "klatki/S/f_045.webp", "klatki/S/f_046.webp", "klatki/S/f_047.webp", "klatki/S/f_048.webp", "klatki/S/f_049.webp", "klatki/S/f_050.webp", "klatki/S/f_051.webp", "klatki/S/f_052.webp", "klatki/S/f_053.webp", "klatki/S/f_054.webp", "klatki/S/f_055.webp", "klatki/S/f_056.webp", "klatki/S/f_057.webp", "klatki/S/f_058.webp", "klatki/S/f_059.webp"];window.__POS="50% 55%";</script>
 <script>
-(function(){
-  var d=document, root=d.documentElement, top=d.querySelector('.top');
-  function m(){ root.style.setProperty('--hdr-h', top.offsetHeight+'px'); }
-  m(); addEventListener('resize',m); addEventListener('load',m);
-  window.__stageP=function(){ var st=d.querySelector('.stage'), pin=d.querySelector('.pin');
-    var r=st.getBoundingClientRect(), tr=Math.max(1, st.offsetHeight-pin.offsetHeight); return Math.max(0,Math.min(1,-r.top/tr)); };
-  window.__caps=function(list,p,from,to){ var cap=d.getElementById('cap'); if(!cap||!list.length) return;
-    var k=Math.floor((p-from)/(to-from)*list.length); if(p<from){cap.innerHTML=''; cap.dataset.k=-1; return;}
-    k=Math.max(0,Math.min(list.length-1,k)); if(cap.dataset.k==k) return; cap.dataset.k=k;
-    cap.innerHTML='<small>'+String(k+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0')+'</small>'+list[k]; };
-  window.__prog=function(p){ var g=d.getElementById('prog'); if(g) g.style.width=(p*100)+'%';
-    var c=d.querySelector('.copy'); var h=d.querySelector('.hint');
-    if(h) h.style.opacity = p>.02?0:1;
-    if(c && innerWidth<=760){ var o=1-Math.max(0,Math.min(1,(p-.03)/.08)); c.style.opacity=o; c.style.transform='translateY('+(-24*(1-o))+'px)'; c.style.pointerEvents=o<.5?'none':''; var sc=d.querySelector('.v-rentgen .scrim'); if(sc) sc.style.opacity=o; }
-    else if(c){ c.style.opacity=''; c.style.transform=''; } };
-})();
-
-(function(){
-  var d=document, cv=d.getElementById('cv'), g=cv.getContext('2d'), poster=d.getElementById('poster');
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000;
-  var L=(small&&window.__FR_S)?window.__FR_S:window.__FR, N=L.length, imgs=new Array(N), ok=new Array(N);
-  var POS=window.__POS||'50% 50%';
-  for(var i=0;i<N;i++){ (function(i){ var im=new Image(); im.decoding='async'; im.onload=function(){ ok[i]=true; dirty=true; }; im.src=L[i]; imgs[i]=im; })(i); }
-  function near(i){ for(var k=0;k<N;k++){ if(ok[i-k]) return i-k; if(ok[i+k]) return i+k; } return -1; }
-  var W=0,H=0,dirty=true,last=-1;
-  function size(){ var w=cv.clientWidth*Math.min(devicePixelRatio||1,2), h=cv.clientHeight*Math.min(devicePixelRatio||1,2); if(w!==W||h!==H){ W=cv.width=w; H=cv.height=h; dirty=true; } }
-  function draw(i){ var im=imgs[i]; var iw=im.naturalWidth, ih=im.naturalHeight; var s=Math.max(W/iw,H/ih);
-    var px=parseFloat(POS)/100, py=parseFloat(POS.split(' ')[1])/100;
-    var dw=iw*s, dh=ih*s; g.drawImage(im,(W-dw)*px,(H-dh)*py,dw,dh); }
-  var CAPS=window.__CAPS||[];
-  function tick(){ size(); var p=reduce?1:window.__stageP(); var i=Math.round(p*(N-1)); var j=near(i);
-    if(j>=0&&(j!==last||dirty)){ draw(j); last=j; dirty=false; poster.style.opacity=0; }
-    window.__caps(CAPS,p,.05,.95); window.__prog(p); requestAnimationFrame(tick); }
-  tick();
+(function(){var h=document.querySelector('.vh-most'), v=document.getElementById('hv'), r=document.getElementById('vrep'); if(!v){ h.classList.add('done'); return; }
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduce){ v.addEventListener('loadedmetadata',function(){ v.currentTime=v.duration-0.05; h.classList.add('done'); }); return; }
+ v.addEventListener('ended',function(){ h.classList.add('done'); });
+ v.play().catch(function(){ h.classList.add('done'); });
+ r.addEventListener('click',function(){ h.classList.remove('done'); v.currentTime=0; v.play(); });
 })();
 </script>
-
 <script>
 (function(){
   var d=document, root=d.documentElement;
@@ -663,9 +622,9 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
 })();
 
 (function(){
-  var d=document, top=d.querySelector('.top'), st=d.querySelector('.stage');
+  var d=document, top=d.querySelector('.top'), st=d.getElementById('start'), dark=true;
   function f(){ var b=st.getBoundingClientRect().bottom;
-    top.classList.toggle('on-hero', b>top.offsetHeight && !top.classList.contains('menu-open'));
+    top.classList.toggle('on-hero', dark && b>top.offsetHeight && !top.classList.contains('menu-open'));
     d.body.classList.toggle('past-hero', b<innerHeight*.5); }
   f(); addEventListener('scroll',f,{passive:true}); addEventListener('resize',f);
   var nt=d.getElementById('navtoggle'); if(nt) nt.addEventListener('click',function(){ setTimeout(f,0); });

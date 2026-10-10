@@ -9,10 +9,10 @@
 <meta property="og:title" content="BRP Legal Point · nowa odsłona strony, wariant W6 „Domino”">
 <meta property="og:description" content="Makieta przygotowana przez Odnova Studio.">
 <meta property="og:image" content="https://www.odnovastudio.com/p/legal-point-w6/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="theme-color" content="#0D1016">
+<meta name="theme-color" content="#15100C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F1F2F4'/%3E%3Crect x='20' y='6' width='24' height='14' fill='none' stroke='%23141821' stroke-width='3'/%3E%3Cpath d='M32 20v14M10 34h44M10 34v8M32 34v8M54 34v8' stroke='%23141821' stroke-width='3' fill='none'/%3E%3Crect x='3' y='42' width='14' height='14' fill='%23141821'/%3E%3Crect x='25' y='42' width='14' height='14' fill='%237B1E3A'/%3E%3Crect x='47' y='42' width='14' height='14' fill='%23141821'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
@@ -322,16 +322,81 @@ h1,h2,h3{text-wrap:balance}
   .js .tix{min-height:0}
 }
 
+:root{--paper:#F4EFE7;--paper-2:#F4EFE7;--white:#FBF8F3;--ink:#1C1611;--ink-2:#4A3F35;--muted:#6E6255;
+--wine:#7A1F2B;--wine-2:#8E2A36;--wine-d:#5C1620;--wine-l:#F1E1DF;--night:#17110D;--rose:#D9B27C;
+--mute:rgba(255,255,255,.74);--hw:400;--serif:'Libre Caslon Display',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+h1,h2,h3,.brand b,.cap,.foot b,.faq summary,.quick a b,.price-line strong,.about .quote,.flow .n,.models-h,.form h3,.quick-h,.kp-d,.portrait figcaption b{font-weight:400}
+.faq summary::before,.faq summary::after{background:var(--rose)}
+.foot a:hover{color:var(--rose)}
 
+/* sekcja wejściowa */
+.intro{background:var(--paper)}
+.spec{border-top:1.5px solid var(--ink)}
+.sp-h,.sp-r{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,4fr);gap:28px}
+.sp-h{padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line)}
+.sp-r{padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.sp-r h3{font-size:clamp(23px,2vw,28px)}
+.sp-r p{margin:0}
+.sp-x{color:var(--ink-2)}
+.sp-x mark{background:linear-gradient(transparent 58%,rgba(196,38,46,.2) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sp-ok{color:var(--wine);font-weight:600}
+.intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:40px 0 0}
+.intro-cta span{color:var(--muted);font-size:15.5px}
+.moments{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.mo h3{font-size:clamp(28px,2.6vw,38px)}
+.mo p{margin:0;color:var(--ink-2)}
+.mo .mo-out{color:var(--wine);font-weight:600;font-size:16px}
+.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--wine)}
+.dz{display:grid;grid-template-columns:150px 150px minmax(0,1fr);gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dz time{font:500 clamp(38px,3.6vw,54px)/1 var(--serif);color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
+.dz-k{font-weight:600;font-size:15px;color:var(--muted)}
+.dz h3{font-size:clamp(23px,2vw,28px)}
+.dz p{margin:6px 0 0;color:var(--ink-2)}
+.day-note{margin:36px 0 0;max-width:62ch;font-size:18.5px;color:var(--ink-2)}
+.day-note b{font-family:var(--serif);font-weight:inherit;color:var(--ink);font-size:1.15em}
+.bridge{border-top:1.5px solid var(--ink)}
+.br-h{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);margin-left:calc(25% + 6px)}
+.br-r{display:grid;grid-template-columns:25% minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:center}
+.br-r h3{font-size:clamp(23px,2vw,28px)}
+.br-r p{margin:0}
+.br-a,.br-b{color:var(--ink-2)}
+.br-b{text-align:right}
+.br-m{position:relative;text-align:center;font-weight:600;color:#fff;background:var(--wine);padding:14px 18px}
+.br-m::before,.br-m::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:var(--wine)}
+.br-m::before{right:100%}.br-m::after{left:100%}
+/* pas */
+.band{position:relative;overflow:hidden;isolation:isolate}
+.band-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.42}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--night) 20%,rgba(0,0,0,0))}
+.band-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:end}
+.band-q{font:var(--hw,400) clamp(32px,3.4vw,52px)/1.15 var(--serif);margin:0;max-width:20ch;color:#fff}
+.band-f{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.3)}
+.band-f li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);font-size:16.5px}
+.band-f b{color:#fff;font-family:var(--serif);font-weight:inherit;font-size:1.15em}
+@media (max-width:900px){
+  .sp-h,.br-h{display:none}
+  .sp-r,.mo,.br-r{grid-template-columns:1fr;gap:10px}
+  .sp-x::before{content:"Ryzyko: ";font-weight:600;color:#A3242C}
+  .sp-ok::before{content:"Propozycja: ";font-weight:600}
+  .dz{grid-template-columns:96px minmax(0,1fr);gap:8px 20px}
+  .dz-k{grid-column:2}.dz div{grid-column:1/-1}
+  .br-b{text-align:left}
+  .br-a::before{content:"Ty: ";font-weight:600;color:var(--ink)}
+  .br-b::before{content:"Druga strona: ";font-weight:600;color:var(--ink)}
+  .br-m{text-align:left}.br-m::before,.br-m::after{display:none}
+  .band-in{grid-template-columns:1fr}
+  .band::after{background:linear-gradient(180deg,rgba(0,0,0,.2),var(--night) 70%)}
+}
 /* pasek nad ciemnym otwarciem */
-.top.on-hero .nav{background:rgba(13,16,22,.55);border-bottom-color:rgba(255,255,255,.16)}
+.top.on-hero .nav{background:rgba(10,12,16,.5);border-bottom-color:rgba(255,255,255,.16)}
 .top.on-hero .nav a.lnk,.top.on-hero .nav .tel,.top.on-hero .brand b,.top.on-hero .brand .mono{color:#fff}
 .top.on-hero .brand small{color:rgba(255,255,255,.72)}
 .top.on-hero .navtoggle{color:#fff;border-color:rgba(255,255,255,.55)}
 .top.on-hero .nav a.lnk:hover{color:var(--rose)}
 .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff}
-:root{--rose:#E9A0B6;--mute:rgba(255,255,255,.72)}
-.stage{background:#0D1016;color:#fff}
+.stage{background:var(--night);color:#fff}
+.stage .copy h1 span{color:var(--rose)}
 
 /* scena */
 .stage{position:relative}
@@ -369,60 +434,33 @@ h1,h2,h3{text-wrap:balance}
 }
 @media (prefers-reduced-motion:reduce){.js .stage{height:auto}.js .pin{position:relative}}
 
-:root{--serif:'Libre Caslon Display',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
-h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
 
 
-/* sekcja wejściowa */
-.intro{background:var(--paper)}
-.spec{border-top:1.5px solid var(--ink)}
-.sp-h,.sp-r{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,4fr);gap:28px}
-.sp-h{padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line)}
-.sp-r{padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.sp-r h3{font-size:clamp(23px,2vw,28px)}
-.sp-r p{margin:0}
-.sp-x{color:var(--ink-2)}
-.sp-x mark{background:linear-gradient(transparent 58%,rgba(196,38,46,.2) 58%);color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.sp-ok{color:var(--ink);font-weight:500;padding-left:16px;border-left:3px solid var(--wine)}
-.intro-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:40px 0 0}
-.intro-cta span{color:var(--muted);font-size:15.5px}
-.moments{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-.mo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:32px;padding:32px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.mo h3{font-size:clamp(26px,2.4vw,34px)}
-.mo p{margin:0;color:var(--ink-2)}
-.mo .mo-out{color:var(--wine);font-weight:600;font-size:16px}
-.day{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-.dz{display:grid;grid-template-columns:150px 150px minmax(0,1fr);gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.dz time{font:500 clamp(38px,3.6vw,54px)/1 var(--serif);color:var(--wine);font-variant-numeric:lining-nums tabular-nums}
-.dz-k{font-weight:600;font-size:15px;color:var(--muted)}
-.dz h3{font-size:clamp(23px,2vw,28px)}
-.dz p{margin:6px 0 0;color:var(--ink-2)}
-.day-note{margin:36px 0 0;max-width:62ch;font-size:18.5px;color:var(--ink-2)}
-.day-note b{font-family:var(--serif);font-weight:inherit;color:var(--ink);font-size:1.15em}
-.bridge{border-top:1.5px solid var(--ink)}
-.br-h{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:14px 0;font-size:14px;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);margin-left:calc(25% + 6px)}
-.br-r{display:grid;grid-template-columns:25% minmax(0,3fr) minmax(0,4fr) minmax(0,3fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:center}
-.br-r h3{font-size:clamp(23px,2vw,28px)}
-.br-r p{margin:0}
-.br-a,.br-b{color:var(--ink-2)}
-.br-b{text-align:right}
-.br-m{position:relative;text-align:center;font-weight:600;color:#fff;background:var(--wine);padding:14px 18px}
-.br-m::before,.br-m::after{content:"";position:absolute;top:50%;width:24px;height:2px;background:var(--wine)}
-.br-m::before{right:100%}.br-m::after{left:100%}
-@media (max-width:900px){
-  .sp-h,.br-h{display:none}
-  .sp-r,.mo,.br-r{grid-template-columns:1fr;gap:10px}
-  .sp-x::before{content:"Ryzyko: ";font-weight:600;color:#A3242C}
-  .sp-ok::before{content:"Propozycja: ";font-weight:600;color:var(--wine)}
-  .dz{grid-template-columns:96px minmax(0,1fr);gap:8px 20px}
-  .dz-k{grid-column:2}
-  .dz div{grid-column:1/-1}
-  .br-b{text-align:left}
-  .br-a::before{content:"Ty: ";font-weight:600;color:var(--ink)}
-  .br-b::before{content:"Druga strona: ";font-weight:600;color:var(--ink)}
-  .br-m{text-align:left}
-  .br-m::before,.br-m::after{display:none}
-}
+/* W6: klasyczny, wyważony, osiowy: duże szeryfy, podwójne linie, mosiądz */
+body{font-size:17.5px}
+.sec{padding:clamp(88px,11vw,156px) 0}
+.head{grid-template-columns:1fr;justify-items:center;text-align:center;gap:22px}
+.head h2{font-size:clamp(40px,4.6vw,68px);max-width:18ch;line-height:1.04}
+.head p{margin:0 auto;text-align:center}
+.head::before{content:"";display:block;width:120px;height:5px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;opacity:.55}
+.dark .head::before{border-color:var(--rose)}
+.btn{border-radius:0;letter-spacing:.01em}
+.btn-wine{background:var(--wine)}
+.about h2,.contact h2,.faq-h h2{font-size:clamp(40px,4.2vw,62px)}
+.about .quote{color:var(--wine);font-size:clamp(28px,2.8vw,40px)}
+.sec.dark{background:var(--night)}
+.flow .n{color:var(--rose)}
+.js body.v-domino .stage{height:360vh}
+.v-domino .copy{top:auto;bottom:clamp(56px,9vh,104px)}
+.v-domino .copy h1{font-size:clamp(46px,5vw,80px);max-width:15ch;line-height:1}
+.v-domino .copy .lead{max-width:52ch}
+.v-domino .bar{top:calc(var(--hdr-h) + 28px);bottom:auto}
+.v-domino .bar-in{justify-content:flex-end}
+.v-domino .cap{font-size:clamp(20px,1.8vw,26px)}
+.v-domino .prog{display:none}
+.v-domino .scrim{background:linear-gradient(0deg,rgba(15,10,7,.92) 0%,rgba(15,10,7,.6) 38%,rgba(15,10,7,0) 66%),linear-gradient(180deg,rgba(15,10,7,.55) 0%,rgba(15,10,7,0) 26%)}
+@media (max-width:760px){.v-domino .copy{top:calc(var(--hdr-h) + 18px);bottom:auto}.v-domino .copy h1{font-size:clamp(34px,10vw,44px)}.v-domino .bar{top:auto;bottom:0}.v-domino .scrim{background:linear-gradient(180deg,rgba(15,10,7,.9) 0%,rgba(15,10,7,.5) 44%,rgba(15,10,7,0) 62%),linear-gradient(0deg,rgba(15,10,7,.8) 0%,rgba(15,10,7,0) 26%)}}
+@media (max-width:760px){.js body.v-domino .stage{height:320vh}}
 </style>
 </head>
 <body class="v-domino">
@@ -448,57 +486,22 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
   <div class="media" id="media"><canvas id="cv" aria-hidden="true"></canvas><img class="poster" id="poster" alt="" src="poster.webp"></div>
   <div class="scrim"></div>
   <div class="copy"><div class="wrap">
-  <h1>Jedna klauzula przewraca wszystko po kolei.<span>Zatrzymuję to wcześniej.</span></h1>
+  <h1>Jedna klauzula przewraca wszystko po kolei.<span>Warto sprawdzić to wcześniej.</span></h1>
   <p class="lead">Bieżąca obsługa prawna spółek i przedsiębiorców: umowy, KRS, pracownicy, należności, RODO i reklama. Piętnaście lat praktyki, także jako prawnik wewnętrzny. Online w całej Polsce.</p>
   <div class="cta"><a class="btn btn-wine" href="https://cal.com/beata-rogowska-prus-rcmiyk/konsultacja-prawna-b2b-30-min" target="_blank" rel="noopener">Umów konsultację 30 min</a><a class="btn btn-ghost" href="#jak">Jak pracuję</a></div>
 </div></div>
   <div class="bar"><div class="wrap bar-in"><p class="cap" id="cap" aria-live="off"></p><span class="hint">Przewijaj</span></div><div class="prog" id="prog"></div></div>
 </div></header>
 <main>
-<section class="sec intro" id="wczesniej">
-  <div class="wrap">
+<section class="sec intro" id="wczesniej"><div class="wrap">
     <div class="head reveal"><h2>Cztery momenty, w których warto zadzwonić wcześniej</h2>
-      <p>Większość sporów zaczyna się od decyzji, którą można było sprawdzić w kwadrans. To są chwile, w których ten kwadrans robi największą różnicę.</p></div>
-    <ul class="moments"><li class="mo reveal"><h3>Zanim podpiszesz umowę</h3><p>Limit odpowiedzialności, kary umowne, termin płatności i wypowiedzenie. Jedna poprawka dziś kosztuje mniej niż spór za rok.</p><p class="mo-out">Lista ryzyk i gotowe propozycje zmian</p></li><li class="mo reveal"><h3>Kiedy kontrahent przestaje płacić</h3><p>Wezwanie do zapłaty, ugoda albo nakaz zapłaty, zanim zaległa faktura zacznie blokować płynność firmy.</p><p class="mo-out">Wezwanie i plan odzyskania należności</p></li><li class="mo reveal"><h3>Zanim zmienisz coś w spółce</h3><p>Nowy członek zarządu, zmiana wspólników albo umowy spółki. Każda taka zmiana ma swój termin w KRS i w CRBR.</p><p class="mo-out">Uchwały, wniosek do KRS i zgłoszenie do CRBR</p></li><li class="mo reveal"><h3>Zanim zatrudnisz albo zwolnisz</h3><p>Umowa, zakaz konkurencji, regulaminy i wypowiedzenie, które nie skończy się w sądzie pracy.</p><p class="mo-out">Dokumenty kadrowe gotowe do podpisu</p></li></ul>
-  </div>
-</section>
-<section class="sec wine" id="porownanie">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2>Etat, kancelaria od sprawy czy stała obsługa?</h2>
-      <p>Trzy sposoby, w jakie firmy rozwiązują sprawy prawne. Każdy ma sens na innym etapie, dlatego współpracę można zacząć od jednej sprawy.</p>
-    </div>
-    <div class="cmp" role="table"><div class="cmp-h"><span></span><b class="">Prawnik na etacie</b><b class="">Kancelaria od sprawy do sprawy</b><b class="us">Bieżąca obsługa BRP Legal Point</b></div><div class="cmp-r"><span class="cmp-l">Zna firmę i kontrahentów</span><span class="" data-col="Prawnik na etacie">Tak</span><span class="" data-col="Kancelaria od sprawy do sprawy">Za każdym razem od nowa</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Tak, z każdą sprawą lepiej</span></div><div class="cmp-r"><span class="cmp-l">Koszt</span><span class="" data-col="Prawnik na etacie">Pensja i składki co miesiąc</span><span class="" data-col="Kancelaria od sprawy do sprawy">Każda sprawa wyceniana osobno</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zakres i zasady rozliczenia ustalone z góry</span></div><div class="cmp-r"><span class="cmp-l">Zakres</span><span class="" data-col="Prawnik na etacie">Zwykle jedna specjalizacja</span><span class="" data-col="Kancelaria od sprawy do sprawy">Szeroki, ale rozproszony między prawników</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Spółki, umowy, praca, należności, RODO, reklama i IP</span></div><div class="cmp-r"><span class="cmp-l">Start</span><span class="" data-col="Prawnik na etacie">Rekrutacja i wdrożenie</span><span class="" data-col="Kancelaria od sprawy do sprawy">Od pierwszej sprawy</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Od 30-minutowej konsultacji</span></div><div class="cmp-r"><span class="cmp-l">Kto prowadzi sprawę</span><span class="" data-col="Prawnik na etacie">Ta sama osoba</span><span class="" data-col="Kancelaria od sprawy do sprawy">Często kolejny prawnik z zespołu</span><span class="us" data-col="Bieżąca obsługa BRP Legal Point">Zawsze adwokat osobiście, po polsku i po angielsku</span></div></div>
-  </div>
-</section>
-<section class="sec" id="kompetencje">
-  <div class="wrap">
-    <div class="head head-1 reveal">
-      <h2>Kompetencje działu, według tego, kto pyta</h2>
-      <p>Osiem obszarów praktyki przypisanych do działów, z których najczęściej przychodzą sprawy. Każdy obszar ma na stronie osobną podstronę.</p>
-    </div>
-    <div class="kp"><div class="kp-row" style="--c:#2E4A7D;--t:#DCE4F2"><p class="kp-d"><i></i>Zarząd</p><div class="kp-list"><div class="kp-a"><h3>Bieżąca obsługa prawna firm</h3><p>Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur. Jedna sprawa, projekt albo stała współpraca.</p>
-<p class="kp-tags">doradztwo na co dzień · projekty i procedury · jedna sprawa albo stała współpraca</p><a href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Bieżąca obsługa prawna firm</span></a></div><div class="kp-a"><h3>Prawo spółek, KRS i CRBR</h3><p>Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</p>
-<p class="kp-tags">zarząd i wspólnicy · uchwały i zgromadzenia · KRS, RDF i CRBR</p><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo spółek, KRS i CRBR</span></a></div><div class="kp-a"><h3>Finansowanie i zabezpieczenia</h3><p>Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</p>
-<p class="kp-tags">pożyczki i finansowanie · hipoteki, zastawy, poręczenia · zgody korporacyjne</p><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Finansowanie i zabezpieczenia</span></a></div></div></div><div class="kp-row" style="--c:#8A5712;--t:#F4E6CF"><p class="kp-d"><i></i>Sprzedaż</p><div class="kp-list"><div class="kp-a"><h3>Należności i spory gospodarcze</h3><p>Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</p>
-<p class="kp-tags">windykacja B2B · ugody i zabezpieczenia · spory sądowe</p><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Należności i spory gospodarcze</span></a></div></div></div><div class="kp-row" style="--c:#5B6B1C;--t:#EBEFD6"><p class="kp-d"><i></i>Zakupy</p><div class="kp-list"><div class="kp-a"><h3>Umowy B2B i negocjacje</h3><p>Kontrakty handlowe, umowy z dostawcami i na marki własne. Od szybkiej weryfikacji po negocjacje, także po angielsku.</p>
-<p class="kp-tags">tworzenie i analiza umów · redline i komentarze · negocjacje PL / EN</p><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Umowy B2B i negocjacje</span></a></div></div></div><div class="kp-row" style="--c:#35596A;--t:#DCE7EC"><p class="kp-d"><i></i>Operacje</p><div class="kp-list"><div class="kp-a"><h3>Compliance, RODO i regulacje</h3><p>Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</p>
-<p class="kp-tags">RODO, AML i sygnaliści · monitoring prawny · PPWR, EUDR, CSRD i SUP</p><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Compliance, RODO i regulacje</span></a></div></div></div><div class="kp-row" style="--c:#1D6964;--t:#D8ECE9"><p class="kp-d"><i></i>HR</p><div class="kp-list"><div class="kp-a"><h3>Prawo pracy dla pracodawców</h3><p>Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</p>
-<p class="kp-tags">umowy i regulaminy · sprawy pracownicze · procedury wewnętrzne</p><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo pracy dla pracodawców</span></a></div></div></div><div class="kp-row" style="--c:#A1392B;--t:#F6DDD8"><p class="kp-d"><i></i>Marketing</p><div class="kp-list"><div class="kp-a"><h3>E-commerce, reklama i IP</h3><p>Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</p>
-<p class="kp-tags">kampanie i promocje · umowy z twórcami · znaki towarowe i konsument</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – E-commerce, reklama i IP</span></a></div></div></div></div>
-  </div>
-</section>
-<section class="sec dark" id="jak">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2>Zgłoszenie, wycena, gotowy dokument</h2>
-      <p>Jak w dziale prawnym na miejscu: opisujesz sprawę swoimi słowami, a ja porządkuję ją w plan. Nie musisz wiedzieć, jak nazwać problem prawny.</p>
-    </div>
-    <ol class="flow"><li><div class="n">1</div><h3>Konsultacja 30 minut</h3><p>Porządkujemy zagadnienie, pilność i oczekiwany rezultat. Nie musisz wiedzieć, jak nazwać problem prawny.</p></li><li><div class="n">2</div><h3>Zakres i wycena</h3><p>Przed rozpoczęciem pracy dostajesz na piśmie zakres, termin i wynagrodzenie. Wiesz, za jaki rezultat płacisz.</p></li><li><div class="n">3</div><h3>Realizacja</h3><p>Dokument, rekomendacja albo wsparcie projektu w uzgodnionej formie, z jasnym planem kolejnych kroków.</p></li></ol>
-    <h3 class="models-h">Model współpracy dobieram do tego, jak często firma potrzebuje prawnika</h3>
-    <div class="models"><div><h3>Konkretna usługa</h3><p>Umowa, uchwała, zgłoszenie rejestrowe, wezwanie albo inny jasno określony rezultat.</p></div><div><h3>Projekt prawny</h3><p>Negocjacje, transakcja, wdrożenie regulacji albo spór, który ma kilka etapów.</p></div><div><h3>Bieżąca obsługa</h3><p>Stała dostępność prawnika dla zarządu i zespołów, rozliczana według uzgodnionych zasad.</p></div></div>
-  </div>
-</section>
+      <p>Wiele sporów zaczyna się od decyzji podjętej bez sprawdzenia dokumentów. To chwile, w których krótka konsultacja daje najwięcej.</p></div>
+    <ul class="moments"><li class="mo reveal"><h3>Zanim podpiszesz umowę</h3><p>Limit odpowiedzialności, kary umowne, termin płatności i wypowiedzenie. Poprawkę najłatwiej wprowadzić przed podpisem.</p><p class="mo-out">Lista ryzyk i propozycje zmian</p></li><li class="mo reveal"><h3>Kiedy kontrahent przestaje płacić</h3><p>Wezwanie do zapłaty, ugoda albo nakaz zapłaty, zanim zaległość urośnie.</p><p class="mo-out">Wezwanie i plan odzyskania należności</p></li><li class="mo reveal"><h3>Zanim zmienisz coś w spółce</h3><p>Nowy członek zarządu, zmiana wspólników albo umowy spółki. Każda taka zmiana ma swój termin w KRS i w CRBR.</p><p class="mo-out">Uchwały, wniosek do KRS i zgłoszenie do CRBR</p></li><li class="mo reveal"><h3>Zanim zatrudnisz albo zwolnisz</h3><p>Umowa, zakaz konkurencji, regulaminy i wypowiedzenie przygotowane zgodnie z przepisami.</p><p class="mo-out">Dokumenty kadrowe gotowe do podpisu</p></li></ul>
+  </div></section>
+<section class="sec dark band" id="dlaczego"><div class="wrap band-in">
+    <p class="band-q reveal">Dokumenty sprawdzone, zanim zaczną obowiązywać.</p>
+    <ul class="band-f"><li><b>Ponad 15 lat</b> praktyki, także jako prawnik wewnętrzny w agencjach, domach mediowych i firmach produkcyjnych.</li><li><b>Bezpośrednio z adwokatem.</b> Sprawę prowadzę osobiście, od konsultacji do gotowego dokumentu.</li><li><b>Online w całej Polsce.</b> Spotkanie w Mińsku Mazowieckim można uzgodnić indywidualnie.</li><li><b>Po polsku i po angielsku.</b> Umowy i negocjacje z kontrahentami z zagranicy.</li></ul>
+  </div></section>
 <section class="sec" id="o-mnie">
   <div class="wrap about">
     <figure class="portrait">
@@ -517,6 +520,34 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
         <div><dt>Certyfikaty</dt><dd>Inspektor ochrony danych, FCE Cambridge</dd></div>
       </dl>
     </div>
+  </div>
+</section>
+<section class="sec dark" id="jak">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Zgłoszenie, wycena, gotowy dokument</h2>
+      <p>Jak w dziale prawnym na miejscu: opisujesz sprawę swoimi słowami, a ja porządkuję ją w plan. Nie musisz wiedzieć, jak nazwać problem prawny.</p>
+    </div>
+    <ol class="flow"><li><div class="n">1</div><h3>Konsultacja 30 minut</h3><p>Porządkujemy zagadnienie, pilność i oczekiwany rezultat. Nie musisz wiedzieć, jak nazwać problem prawny.</p></li><li><div class="n">2</div><h3>Zakres i wycena</h3><p>Przed rozpoczęciem pracy dostajesz na piśmie zakres, termin i wynagrodzenie. Wiesz, za jaki rezultat płacisz.</p></li><li><div class="n">3</div><h3>Realizacja</h3><p>Dokument, rekomendacja albo wsparcie projektu w uzgodnionej formie, z jasnym planem kolejnych kroków.</p></li></ol>
+    <h3 class="models-h">Model współpracy dobieram do tego, jak często firma potrzebuje prawnika</h3>
+    <div class="models"><div><h3>Konkretna usługa</h3><p>Umowa, uchwała, zgłoszenie rejestrowe, wezwanie albo inny jasno określony rezultat.</p></div><div><h3>Projekt prawny</h3><p>Negocjacje, transakcja, wdrożenie regulacji albo spór, który ma kilka etapów.</p></div><div><h3>Bieżąca obsługa</h3><p>Stała dostępność prawnika dla zarządu i zespołów, rozliczana według uzgodnionych zasad.</p></div></div>
+  </div>
+</section>
+<section class="sec" id="kompetencje">
+  <div class="wrap">
+    <div class="head head-1 reveal">
+      <h2>Kompetencje działu, według tego, kto pyta</h2>
+      <p>Osiem obszarów praktyki przypisanych do działów, z których najczęściej przychodzą sprawy. Każdy obszar ma na stronie osobną podstronę.</p>
+    </div>
+    <div class="kp"><div class="kp-row" style="--c:#2E4A7D;--t:#DCE4F2"><p class="kp-d"><i></i>Zarząd</p><div class="kp-list"><div class="kp-a"><h3>Bieżąca obsługa prawna firm</h3><p>Konsultacje dla zarządu i zespołów, opiniowanie decyzji i procedur. Jedna sprawa, projekt albo stała współpraca.</p>
+<p class="kp-tags">doradztwo na co dzień · projekty i procedury · jedna sprawa albo stała współpraca</p><a href="https://legal-point.org/obsluga-prawna-firm/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Bieżąca obsługa prawna firm</span></a></div><div class="kp-a"><h3>Prawo spółek, KRS i CRBR</h3><p>Uchwały, zgromadzenia, protokoły, zmiany w spółce i zgłoszenia rejestrowe jako jeden uporządkowany proces.</p>
+<p class="kp-tags">zarząd i wspólnicy · uchwały i zgromadzenia · KRS, RDF i CRBR</p><a href="https://legal-point.org/prawo-spolek-krs/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo spółek, KRS i CRBR</span></a></div><div class="kp-a"><h3>Finansowanie i zabezpieczenia</h3><p>Analiza umów finansowania i zabezpieczeń, zanim firma przyjmie zobowiązanie.</p>
+<p class="kp-tags">pożyczki i finansowanie · hipoteki, zastawy, poręczenia · zgody korporacyjne</p><a href="https://legal-point.org/finansowanie-i-zabezpieczenia/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Finansowanie i zabezpieczenia</span></a></div></div></div><div class="kp-row" style="--c:#8A5712;--t:#F4E6CF"><p class="kp-d"><i></i>Sprzedaż</p><div class="kp-list"><div class="kp-a"><h3>Należności i spory gospodarcze</h3><p>Zabezpieczenie płatności już przy negocjacjach, wezwania, nakazy zapłaty i reprezentacja przed sądem.</p>
+<p class="kp-tags">windykacja B2B · ugody i zabezpieczenia · spory sądowe</p><a href="https://legal-point.org/windykacja-spory-gospodarcze/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Należności i spory gospodarcze</span></a></div></div></div><div class="kp-row" style="--c:#5B6B1C;--t:#EBEFD6"><p class="kp-d"><i></i>Zakupy</p><div class="kp-list"><div class="kp-a"><h3>Umowy B2B i negocjacje</h3><p>Kontrakty handlowe, umowy z dostawcami i na marki własne. Od szybkiej weryfikacji po negocjacje, także po angielsku.</p>
+<p class="kp-tags">tworzenie i analiza umów · redline i komentarze · negocjacje PL / EN</p><a href="https://legal-point.org/umowy-b2b/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Umowy B2B i negocjacje</span></a></div></div></div><div class="kp-row" style="--c:#35596A;--t:#DCE7EC"><p class="kp-d"><i></i>Operacje</p><div class="kp-list"><div class="kp-a"><h3>Compliance, RODO i regulacje</h3><p>Obowiązki prawne przełożone na konkretne procedury, dokumenty i szkolenia dla zespołów.</p>
+<p class="kp-tags">RODO, AML i sygnaliści · monitoring prawny · PPWR, EUDR, CSRD i SUP</p><a href="https://legal-point.org/compliance-i-regulacje/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Compliance, RODO i regulacje</span></a></div></div></div><div class="kp-row" style="--c:#1D6964;--t:#D8ECE9"><p class="kp-d"><i></i>HR</p><div class="kp-list"><div class="kp-a"><h3>Prawo pracy dla pracodawców</h3><p>Regulaminy, kontrakty menedżerskie, procedury antymobbingowe i sygnalistów, spory pracownicze.</p>
+<p class="kp-tags">umowy i regulaminy · sprawy pracownicze · procedury wewnętrzne</p><a href="https://legal-point.org/prawo-pracy-dla-pracodawcow/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – Prawo pracy dla pracodawców</span></a></div></div></div><div class="kp-row" style="--c:#A1392B;--t:#F6DDD8"><p class="kp-d"><i></i>Marketing</p><div class="kp-list"><div class="kp-a"><h3>E-commerce, reklama i IP</h3><p>Opiniowanie kampanii od briefu po emisję, znaki towarowe, umowy z twórcami i influencerami, regulaminy sklepów.</p>
+<p class="kp-tags">kampanie i promocje · umowy z twórcami · znaki towarowe i konsument</p><a href="https://legal-point.org/ecommerce-reklama-wlasnosc-intelektualna/" target="_blank" rel="noopener">Pełny zakres<span class="sr"> – E-commerce, reklama i IP</span></a></div></div></div></div>
   </div>
 </section>
 <section class="sec dark" id="faq">
@@ -660,9 +691,9 @@ h1,h2,h3,.brand b,.cap,.pick b,.pick span{font-weight:400}
 })();
 
 (function(){
-  var d=document, top=d.querySelector('.top'), st=d.querySelector('.stage');
+  var d=document, top=d.querySelector('.top'), st=d.getElementById('start'), dark=true;
   function f(){ var b=st.getBoundingClientRect().bottom;
-    top.classList.toggle('on-hero', b>top.offsetHeight && !top.classList.contains('menu-open'));
+    top.classList.toggle('on-hero', dark && b>top.offsetHeight && !top.classList.contains('menu-open'));
     d.body.classList.toggle('past-hero', b<innerHeight*.5); }
   f(); addEventListener('scroll',f,{passive:true}); addEventListener('resize',f);
   var nt=d.getElementById('navtoggle'); if(nt) nt.addEventListener('click',function(){ setTimeout(f,0); });
