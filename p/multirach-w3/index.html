@@ -324,7 +324,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.025em}
 </div>
 <main>
 <section class="hero hv" aria-labelledby="h1">
-<div class="hv-med" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="img/w3-hero-poster-s.webp"><img class="hv-img" src="img/w3-hero-poster.webp" alt="Księgowa pokazuje klientowi długopisem pozycję na zestawieniu; na biurku kalkulator z taśmą i pomarańczowy segregator" width="1600" height="893" fetchpriority="high"></picture></div>
+<div class="hv-med" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="img/w3-hero-poster-s.webp"><img class="hv-img" src="img/w3-hero-poster.webp" alt="Księgowa pokazuje klientowi długopisem pozycję na zestawieniu; na biurku kalkulator z taśmą i pomarańczowy segregator" width="1600" height="893" fetchpriority="high"></picture><video class="hv-vid" autoplay muted loop playsinline preload="auto" poster="img/w3-hero-poster.webp"><source src="img/w3-hero-s.mp4" type="video/mp4" media="(max-width:760px)"><source src="img/w3-hero.mp4" type="video/mp4"></video></div>
 <div class="hv-txt"><div class="wrap"><div class="h-col">
 <h1 class="h1" id="h1">Policzone co&nbsp;do&nbsp;grosza.<br>Wytłumaczone po&nbsp;ludzku.</h1>
 <p class="h-lead">MultiRach, biuro rachunkowe w&nbsp;Ciechanowie. Pełna księgowość, KPiR, ryczałt, kadry i&nbsp;płace, VAT rolniczy i&nbsp;audyt.</p>
@@ -426,7 +426,7 @@ if(f)f.addEventListener('submit',e=>{e.preventDefault();const n=f.querySelector(
   e.addEventListener('pointerleave',()=>{e.style.setProperty('--ry','0deg');e.style.setProperty('--rx','0deg')})});
 })();
 
-(()=>{const v=document.querySelector('.hv-vid');if(v){const on=()=>v.classList.add('on');v.addEventListener('playing',on,{once:true});if(v.readyState>=3&&!v.paused)on();
+(()=>{const v=document.querySelector('.hv-vid');if(v){const on=()=>v.classList.add('on');v.addEventListener('playing',on,{once:true});if(v.readyState>=3&&!v.paused)on();v.play&&v.play().catch(()=>{});
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.pause();v.removeAttribute('autoplay')}}
  const li=[...document.querySelectorAll('.hv-scn li')];if(li.length>1&&!matchMedia('(prefers-reduced-motion: reduce)').matches){let i=0;setInterval(()=>{li[i].classList.remove('on');i=(i+1)%li.length;li[i].classList.add('on')},4200)}})();
 
