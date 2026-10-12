@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poszło z Dymem — pizzeria na Katowickiej w Opolu · Makieta W6 „Od ciasta”</title>
+<meta name="description" content="Pizza z ciasta z długiej fermentacji i pieca opalanego drewnem. Pizzeria Poszło z Dymem, ul. Katowicka 48, Opole. Karta z cenami, rezerwacja, dowóz do 7 km.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#DEDDDA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Poszło z Dymem — W6 „Od ciasta” · makieta ODNOVA Studio">
+<meta property="og:description" content="Od ciasta do pieca: tak powstaje pizza przy Katowickiej 48 w Opolu.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/poszlozdymem-w6-recznie/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/poszlozdymem-w6-recznie/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23E9D9B8'/%3E%3Ccircle cx='32' cy='32' r='21' fill='%23B42A18'/%3E%3Ccircle cx='25' cy='28' r='5' fill='%23F7F3EA'/%3E%3Ccircle cx='39' cy='37' r='5' fill='%23F7F3EA'/%3E%3Cellipse cx='36' cy='24' rx='5' ry='3' fill='%232F6B3A'/%3E%3C/svg%3E">
+<script>document.documentElement.className='js'</script>
+<style>
+@font-face{
+  font-family: 'Corben';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonty/Corben-700-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family: 'Corben';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonty/Corben-700-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonty/Chivo-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonty/Chivo-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonty/Chivo-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonty/Chivo-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root{
+  --marmur:#F3F1EC; --marmur2:#E9E6DF; --tusz:#1B1A17; --tusz2:#55524B;
+  --pom:#B42A18; --pom-d:#8E1F10; --baz:#2F6B3A; --baz-d:#1E3A29; --krem:#F4EEDF; --maka:#FBFAF7;
+  --disp:'Corben', Georgia, serif; --txt:'Chivo', system-ui, sans-serif;
+  --gut:clamp(18px,4.5vw,64px); --maxw:1280px; --hdr-h:72px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr-h) + 16px);caret-color:var(--pom);accent-color:var(--pom)}
+body{margin:0;background:var(--marmur);color:var(--tusz);font:400 17px/1.6 var(--txt);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+::selection{background:var(--pom);color:#fff}
+:focus-visible{outline:2px solid var(--pom);outline-offset:3px;border-radius:3px}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:0;text-wrap:balance}
+p{margin:0 0 1em;text-wrap:pretty}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sr:focus{position:fixed;left:12px;top:12px;width:auto;height:auto;clip:auto;z-index:99;background:var(--tusz);color:#fff;padding:10px 14px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;
+  font:600 16px/1 var(--txt);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s}
+.btn-p{background:var(--pom);color:#fff}.btn-p:hover{background:var(--pom-d)}
+.btn-l{border-color:var(--tusz);color:var(--tusz)}.btn-l:hover{background:var(--tusz);color:var(--marmur)}
+
+/* nagłówek */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;background:rgba(243,241,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(27,26,23,.1)}
+.hdr .wrap{display:flex;align-items:center;gap:22px;min-height:72px;max-width:1440px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo img{width:54px}
+.logo b{font:700 21px/1 var(--disp);letter-spacing:-.01em}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{padding:10px 12px;text-decoration:none;font-size:15.5px;border-radius:999px}
+.nav a:hover{background:rgba(27,26,23,.06)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;color:var(--tusz2);white-space:nowrap}
+.status::before{content:'';width:8px;height:8px;border-radius:50%;background:#9a958c}
+.status.is-open::before{background:var(--baz);box-shadow:0 0 0 3px rgba(47,107,58,.18)}
+.tel{font-weight:600;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.hdr .btn{min-height:44px;padding:0 18px;font-size:15px}
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;padding:0 16px;border:1.5px solid var(--tusz);border-radius:999px;font-weight:600}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:calc(100% + 10px);background:var(--maka);border:1px solid rgba(27,26,23,.15);border-radius:14px;padding:8px;min-width:230px;display:grid;box-shadow:0 20px 40px -20px rgba(0,0,0,.3)}
+.mnav nav a{padding:12px 14px;text-decoration:none;min-height:44px}
+.mnav nav .btn{margin-top:6px}
+@media(max-width:1080px){.status{display:none}}
+@media(max-width:900px){.nav,.hdr .tel{display:none}.mnav{display:block;margin-left:auto}}
+@media(max-width:440px){.hdr .hdr-cta{display:none}.hdr .wrap{gap:12px}.mnav summary{padding:0 14px}.logo b{font-size:17px}.logo img{width:44px}}
+
+/* ── HERO: film z góry, kroki obok ── */
+.hero{position:relative;background:#DEDDDA}
+.js .hero{height:420vh}
+.scena{position:relative;min-height:100svh;max-width:1440px;margin:0 auto;padding:calc(var(--hdr-h) + 32px) var(--gut) 40px;
+  display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,48px);align-items:center}
+.js .scena{position:sticky;top:0;height:100svh;min-height:0;padding-top:calc(var(--hdr-h) + 20px);padding-bottom:28px}
+.hero h1{font-size:clamp(44px,4.9vw,78px)}
+.hero-lead{font-size:clamp(17px,1.3vw,19.5px);color:var(--tusz2);max-width:42ch;margin:20px 0 26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.kroki{list-style:none;margin:clamp(26px,4vh,44px) 0 0;padding:0;counter-reset:k;border-top:1px solid rgba(27,26,23,.14)}
+.kroki li{display:grid;grid-template-columns:2.2em 1fr;gap:0 10px;padding:9px 0;border-bottom:1px solid rgba(27,26,23,.14);color:#6f6b63;transition:color .4s}
+.kroki li::before{content:'1';font:700 15px/1.6 var(--disp);color:inherit}
+.kroki li:nth-child(2)::before{content:'2'}.kroki li:nth-child(3)::before{content:'3'}.kroki li:nth-child(4)::before{content:'4'}.kroki li:nth-child(5)::before{content:'5'}
+.kroki button{all:unset;cursor:pointer;display:block;min-height:28px}
+.kroki button:focus-visible{outline:2px solid var(--pom);outline-offset:3px;border-radius:3px}
+.kroki b{font:700 19px/1.4 var(--disp);color:inherit;transition:color .4s}
+.kroki span{grid-column:2;font-size:15px;line-height:1.45;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .4s}
+.kroki li.on{color:var(--tusz)}
+.kroki li.on b{color:var(--pom)}
+.kroki li.on span{max-height:4.5em;min-height:2.9em;opacity:1;color:var(--tusz2)}
+html:not(.js) .kroki span{max-height:none;opacity:1}
+.stol{position:relative;align-self:stretch;height:calc(100svh - var(--hdr-h) - 48px);width:calc(100% + var(--gut));margin-right:calc(-1 * var(--gut));overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 18%);mask-image:linear-gradient(90deg,transparent,#000 18%)}
+.stol img,.stol canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stol .final{opacity:0;inset:auto;object-fit:contain}
+html:not(.js) .stol .final{display:none}
+.stol canvas{display:none}
+.stol.gra canvas{display:block}
+.pasek{position:absolute;left:var(--gut);right:var(--gut);bottom:14px;z-index:3;height:2px;background:rgba(27,26,23,.1);display:none}
+.js .pasek{display:block}
+.pasek i{display:block;height:100%;background:var(--pom);transform-origin:left;transform:scaleX(var(--p,0))}
+@media(max-width:900px){
+  .js .hero{height:300vh}
+  .scena{grid-template-columns:1fr;align-content:start;gap:18px;padding-top:calc(var(--hdr-h) + 18px)}
+  .stol{order:-1;width:100vw;height:40svh;margin:-18px calc(-1 * var(--gut)) 0;-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);mask-image:linear-gradient(180deg,#000 78%,transparent)}
+  .hero h1{font-size:clamp(34px,9.6vw,50px)}
+  .hero-lead{margin:10px 0 14px;font-size:15.5px}
+  .hero-cta .btn-l{display:none}
+  .kroki{margin-top:16px}
+  .kroki li{padding:8px 0}
+  .js .kroki li:not(.on){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .kroki li.on::before{content:attr(data-n) ' / 5'}
+  .kroki li.on{grid-template-columns:3.4em 1fr}
+  .kroki span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+  .kroki span{font-size:14.5px}
+}
+@media(max-width:900px) and (max-height:720px){.hero-lead{display:none}}
+
+/* ── sekcje ── */
+.sek{padding:clamp(72px,9vw,132px) 0}
+.sek h2{font-size:clamp(36px,4.2vw,60px)}
+.lead{font-size:clamp(17px,1.3vw,19.5px);color:var(--tusz2);max-width:52ch;margin:24px 0 0}
+
+/* karta: ciemnozielona tablica, pozycje z kropkami do ceny */
+.karta{background:var(--baz-d);color:var(--krem)}
+.karta .lead{color:#C9CDB8}
+.karta-glowa{display:grid;grid-template-columns:1fr 1fr;gap:20px 64px;align-items:end;margin-bottom:44px}
+[data-karta-tabs]{display:flex;flex-wrap:wrap;gap:6px 26px;margin-bottom:34px;position:sticky;top:var(--hdr-h);z-index:5;padding:14px 0;background:var(--baz-d);border-bottom:1px solid rgba(244,238,223,.18)}
+[data-karta-tabs] button{font:700 19px/1 var(--disp);min-height:44px;padding:0;border:0;background:none;color:rgba(244,238,223,.6);cursor:pointer;border-bottom:2px solid transparent}
+[data-karta-tabs] button:hover{color:var(--krem)}
+[data-karta-tabs] button[aria-selected="true"]{color:var(--krem);border-bottom-color:#E9A23B}
+.k-note{color:#C9CDB8;margin-bottom:22px}
+.k-items{list-style:none;margin:0;padding:0;columns:2;column-gap:72px}
+.k-item{break-inside:avoid;padding:14px 0 16px}
+.k-head{display:flex;align-items:baseline;gap:10px}
+.k-n{font:700 21px/1.25 var(--disp)}
+.k-tag{font-size:12.5px;padding:2px 9px;border-radius:999px;border:1px solid rgba(244,238,223,.4);color:#E3DDCB;white-space:nowrap}
+.k-fill{flex:1;border-bottom:2px dotted rgba(244,238,223,.32);transform:translateY(-5px);min-width:20px}
+.k-p{font:700 19px/1 var(--disp);color:#F2B65A;white-space:nowrap;font-variant-numeric:lining-nums}
+.k-p small{font:400 13px var(--txt);color:#C9CDB8}
+.k-d{margin:4px 0 0;color:#C9CDB8;font-size:15px;max-width:44ch}
+.karta-stopka{margin-top:44px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.karta-stopka .btn-p{background:#E9A23B;color:var(--tusz)}.karta-stopka .btn-p:hover{background:#F2B65A}
+.karta-stopka a.tel{color:var(--krem);min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:900px){.karta-glowa{grid-template-columns:1fr}.k-items{columns:1}[data-karta-tabs]{gap:4px 20px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}[data-karta-tabs] button{white-space:nowrap;font-size:17px}}
+
+/* sala: duże zdjęcie, obok dane jak na wizytówce */
+.sala-uklad{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,64px);margin-top:48px;align-items:start}
+.sala-uklad figure{margin:0;background:var(--marmur2)}
+.sala-uklad .duze{border-radius:18px;overflow:hidden;aspect-ratio:3/2}
+.sala-uklad .duze img{width:100%;height:100%;object-fit:cover}
+.sala-dwa{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,22px);margin-top:clamp(12px,1.6vw,22px)}
+.sala-dwa figure{border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+.sala-dwa img{width:100%;height:100%;object-fit:cover}
+.wiz{position:sticky;top:calc(var(--hdr-h) + 24px)}
+.wiz h3{font-size:24px;margin:0 0 8px}
+.wiz > div{padding:22px 0;border-top:1px solid rgba(27,26,23,.14)}
+.wiz > div:last-child{border-bottom:1px solid rgba(27,26,23,.14)}
+.wiz ul{list-style:none;margin:0;padding:0}
+.wiz li{display:flex;justify-content:space-between;gap:16px;padding:4px 0;font-variant-numeric:tabular-nums}
+.wiz li.dzis{font-weight:600;color:var(--pom)}
+.wiz p{margin:0 0 6px}
+.wiz .tel-duzy{font:700 30px/1.1 var(--disp);text-decoration:none;display:inline-block;padding:6px 0;color:var(--pom)}
+@media(max-width:900px){.sala-uklad{grid-template-columns:1fr}.wiz{position:static}}
+
+/* dostawa: pełny kolor pomidora */
+.dostawa{background:var(--pom);color:#fff}
+.dost-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,80px);align-items:start}
+.dostawa h2{font-size:clamp(36px,4.2vw,60px)}
+.dostawa p{color:#FCE3DC;max-width:40ch;margin-top:18px}
+.dostawa .btn{background:#fff;color:var(--pom);margin-top:12px}.dostawa .btn:hover{background:var(--krem)}
+.strefy{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums lining-nums}
+.strefy caption{text-align:left;font-size:14.5px;color:#FCE3DC;padding-bottom:12px}
+.strefy th,.strefy td{text-align:left;padding:16px 10px 16px 0;border-bottom:1px solid rgba(255,255,255,.28);font-size:16px}
+.strefy thead th{font-size:13.5px;font-weight:400;color:#FCE3DC;padding-top:0}
+.strefy tbody th{font:700 21px/1.2 var(--disp)}
+@media(max-width:520px){.strefy thead{display:none}.strefy tr{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.28)}
+  .strefy th,.strefy td{border:0;padding:0}.strefy tbody th{grid-row:span 3}.strefy td{text-align:right}}
+@media(max-width:900px){.dost-in{grid-template-columns:1fr}.strefy th,.strefy td{font-size:15px;padding-right:6px}.strefy tbody th{font-size:18px}}
+
+/* stopka */
+.stopka{background:var(--tusz);color:#D8D3C8;padding:56px 0 40px;font-size:15px}
+.stopka .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:28px 48px;align-items:center}
+.stopka img{width:120px}
+.stopka nav{display:flex;flex-wrap:wrap;gap:4px 22px}
+.stopka a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.stopka a:hover{text-decoration:underline}
+.stopka .tel{font:700 22px/1 var(--disp);color:#fff}
+.stopka .mk{grid-column:1/-1;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:13.5px;color:#8E887C;margin:0}
+@media(max-width:760px){.stopka .wrap{grid-template-columns:1fr}}
+
+.mbar{display:none}
+@media(max-width:760px){
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(243,241,236,.96);border-top:1px solid rgba(27,26,23,.14);transform:translateY(110%);transition:transform .35s}
+  .past-hero .mbar,html:not(.js) .mbar{transform:none}
+  .mbar .btn{min-height:48px;font-size:15.5px}
+  .stopka{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+}
+
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .hero{height:auto}.js .scena{position:relative;height:auto;min-height:100svh}
+  .stol canvas,.pasek,.stol .final{display:none!important}
+  .kroki span{max-height:none;opacity:1}.kroki li{color:var(--tusz)}.kroki li:not(.on){display:grid}
+  .js .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+<a class="sr" href="#karta">Przejdź do karty</a>
+<header class="hdr" data-hdr>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Poszło z Dymem — na górę strony"><img src="assets/znak-kolor.png" alt="" width="593" height="236"><b>Poszło z Dymem</b></a>
+    <nav class="nav" aria-label="Główne"><a href="#karta">Karta</a><a href="#sala">Sala</a><a href="#dostawa">Dostawa</a><a href="#kontakt">Kontakt</a></nav>
+    <span class="status" data-status>Godziny otwarcia niżej</span>
+    <a class="tel" href="tel:+48510265267">510 265 267</a>
+    <a class="btn btn-p hdr-cta" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów online</a>
+    <details class="mnav"><summary aria-label="Menu nawigacji"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Menu</summary>
+      <nav aria-label="Menu mobilne"><a href="#karta">Karta</a><a href="#sala">Sala</a><a href="#dostawa">Dostawa</a><a href="#kontakt">Kontakt</a><a href="tel:+48510265267">Zadzwoń: 510 265 267</a>
+        <a class="btn btn-p" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów online</a></nav></details>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" data-hero aria-labelledby="hero-h">
+  <div class="scena">
+    <div class="hero-txt">
+      <h1 id="hero-h">Od ciasta do&nbsp;pieca.</h1>
+      <p class="hero-lead">Ciasto z długiej fermentacji, piec opalany drewnem. Pizzeria przy Katowickiej 48 w Opolu — przewiń, a Margherita złoży się na twoich oczach.</p>
+      <div class="hero-cta">
+        <a class="btn btn-p" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów online</a>
+        <a class="btn btn-l" href="#karta">Zobacz kartę</a>
+      </div>
+      <ol class="kroki" id="kroki">
+        <li data-n="1" data-t="0" class="on"><button type="button"><b>Ciasto</b></button><span>Rozciągnięte, z grubszym brzegiem, który w piecu urośnie.</span></li>
+        <li data-n="2" data-t=".19"><button type="button"><b>Sos pomidorowy</b></button><span>Łyżka na środek i rozprowadzenie spiralą, z dala od brzegu.</span></li>
+        <li data-n="3" data-t=".58"><button type="button"><b>Mozzarella fior di latte</b></button><span>Rwana na kawałki, żeby w piecu rozpłynęła się plamami.</span></li>
+        <li data-n="4" data-t=".74"><button type="button"><b>Grana padano i bazylia</b></button><span>Komplet dla Margherity, od której warto zacząć — od 33 zł.</span></li>
+        <li data-n="5" data-t=".84"><button type="button"><b>Piec opalany drewnem</b></button><span>Wychodzi z cętkami na brzegu. Resztę karty znajdziesz niżej.</span></li>
+      </ol>
+    </div>
+    <div class="stol" id="stol" aria-hidden="true">
+      <img class="start" src="assets/film-start.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+      <canvas id="film" data-n="90"></canvas>
+      <img class="final" id="final" src="assets/pieczona.webp" alt="" width="640" height="640" decoding="async">
+    </div>
+    <div class="pasek" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<section class="sek karta" id="karta" aria-labelledby="karta-h">
+  <div class="wrap">
+    <div class="karta-glowa">
+      <h2 id="karta-h" class="reveal">Karta</h2>
+      <p class="lead reveal">Pizza, makarony, przystawki, sałatki i desery. Ceny takie same jak przy zamówieniu online.</p>
+    </div>
+    <div data-karta>
+      <div data-karta-tabs role="tablist" aria-label="Kategorie karty"></div>
+      <div data-karta-list role="tabpanel"></div>
+    </div>
+    <div class="karta-stopka">
+      <a class="btn btn-p" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów online</a>
+      <a class="tel" href="tel:+48510265267">albo zadzwoń: 510 265 267</a>
+    </div>
+  </div>
+</section>
+
+<section class="sek sala" id="sala" aria-labelledby="sala-h">
+  <div class="wrap">
+    <h2 id="sala-h" class="reveal">Zjedz u nas, na Katowickiej</h2>
+    <p class="lead reveal">Jasna sala z białymi krzesłami, drewnem i plakatami z włoskim jedzeniem. Stoliki dla dwojga i dla całej rodziny — na weekend lepiej zarezerwować.</p>
+    <div class="sala-uklad">
+      <div>
+        <figure class="duze"><img src="assets/sala-plakaty.webp" alt="Sala Poszło z Dymem z plakatami włoskich dań" width="1360" height="907" loading="lazy" decoding="async"></figure>
+        <div class="sala-dwa">
+          <figure><img src="assets/lampa.webp" alt="Lampa nad stolikiem i kratka z bluszczem" width="900" height="600" loading="lazy" decoding="async"></figure>
+          <figure><img src="assets/neon-fasada.webp" alt="Neon Poszło z Dymem nad wejściem przy Katowickiej 48" width="1360" height="907" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+      <div class="wiz" id="kontakt">
+        <div><h3>Godziny</h3><ul data-godziny><li><span>Poniedziałek</span><span>nieczynne</span></li><li><span>Wtorek – sobota</span><span>12:00 – 22:00</span></li><li><span>Niedziela</span><span>12:00 – 20:00</span></li></ul></div>
+        <div><h3>Adres</h3><p>ul. Katowicka 48, 45-061 Opole</p><p><a href="https://www.google.com/maps/search/?api=1&query=Katowicka+48+Opole+Pizzeria+Poszlo+z+Dymem" rel="noopener">Pokaż na mapie</a></p></div>
+        <div><h3>Rezerwacja</h3><a class="tel-duzy" href="tel:+48510265267">510 265 267</a><p><a href="mailto:pizzeriaposzlozdymem@gmail.com">pizzeriaposzlozdymem@gmail.com</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sek dostawa" id="dostawa" aria-labelledby="dost-h">
+  <div class="wrap dost-in">
+    <div>
+      <h2 id="dost-h" class="reveal">Dowieziemy po Opolu</h2>
+      <p>Dowozimy do 7 km. Do 1,5 km gratis od 150 zł, do 5 km gratis od 200 zł.</p>
+      <a class="btn" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów z dowozem</a>
+    </div>
+    <table class="strefy">
+      <caption>Koszt dowozu według odległości od Katowickiej 48</caption>
+      <thead><tr><th scope="col">Odległość</th><th scope="col">Dowóz</th><th scope="col">Min. zamówienie</th><th scope="col">Za darmo</th></tr></thead>
+      <tbody data-strefy>
+        <tr><th scope="row">do 1,5 km</th><td>5 zł</td><td>60 zł</td><td>od 150 zł</td></tr>
+        <tr><th scope="row">1,5 – 3 km</th><td>8 zł</td><td>60 zł</td><td>od 200 zł</td></tr>
+        <tr><th scope="row">3 – 5 km</th><td>10 zł</td><td>60 zł</td><td>od 200 zł</td></tr>
+        <tr><th scope="row">5 – 7 km</th><td>12 zł</td><td>70 zł</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+
+<footer class="stopka">
+  <div class="wrap">
+    <img src="assets/logo-bialy.png" alt="Poszło z Dymem" width="994" height="604" loading="lazy">
+    <div><nav aria-label="Stopka"><a href="#karta">Karta</a><a href="#sala">Sala</a><a href="#dostawa">Dostawa</a><a href="https://www.instagram.com/poszlozdymem/" rel="noopener">Instagram</a><a href="https://www.facebook.com/Posz%C5%82o-z-Dymem-102492268325629" rel="noopener">Facebook</a></nav>
+      <p style="margin:10px 0 0">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole · NIP: [uzupełnić]</p></div>
+    <a class="tel" href="tel:+48510265267">510 265 267</a>
+    <p class="mk">© <span data-rok>2026</span> Poszło z Dymem · Makieta W6 „Od ciasta” przygotowana przez ODNOVA Studio · film w hero wygenerowany poglądowo, zdjęcia sali i pizzy: materiały lokalu</p>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Szybki kontakt">
+  <a class="btn btn-l" href="tel:+48510265267">Zadzwoń</a>
+  <a class="btn btn-p" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów online</a>
+</nav>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Poszło z Dymem","servesCuisine":["pizza","włoska"],"telephone":"+48510265267","email":"pizzeriaposzlozdymem@gmail.com",
+"address":{"@type":"PostalAddress","streetAddress":"ul. Katowicka 48","postalCode":"45-061","addressLocality":"Opole","addressCountry":"PL"},
+"geo":{"@type":"GeoCoordinates","latitude":50.6662,"longitude":17.9370},"url":"https://www.poszlozdymem.pl/","hasMenu":"https://www.poszlozdymem.pl/#karta","acceptsReservations":true,
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"12:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"20:00"}]}
+</script>
+<script src="assets/menu-data.js"></script>
+<script src="assets/wspolne.js"></script>
+<script>
+/* Jedyny ruch tej strony: przewijanie przesuwa film z góry (składanie Margherity), obok zapalają się kolejne kroki.
+   Na końcu film przechodzi w prawdziwe zdjęcie pizzy z lokalu. */
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero = document.querySelector('.hero'), stol = document.getElementById('stol'), cv = document.getElementById('film');
+  var fin = document.getElementById('final'), bar = document.querySelector('.pasek');
+  var kroki = [].slice.call(document.querySelectorAll('#kroki li'));
+  if (!hero) return;
+  if (RM) { var st = stol.querySelector('.start'); st.src = 'assets/pieczona.webp'; st.style.objectFit = 'contain'; return; }
+  var N = +cv.getAttribute('data-n') || 0, F = window.PZD_FRAMES || null;
+  if (F) N = F.length;
+  var fr = new Array(N), cx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+  var dir = innerWidth <= 900 ? 'assets/film-m/k' : 'assets/film/k';
+  function src(i){ return F ? F[i] : dir + String(i + 1).padStart(3, '0') + '.webp'; }
+  function load(i){ if (fr[i] || i >= N) return; var im = new Image(); im.decoding = 'async'; im.src = src(i); im.onload = function(){ im.ok = 1; draw(cur); }; fr[i] = im; }
+  if (N) { load(0); [8,4,2,1].forEach(function(st){ for (var i = 0; i < N; i += st) load(i); }); stol.classList.add('gra'); }
+  var DX = .504, DY = .525, DD = .348;                                     // środek i średnica ciasta w kadrze filmu (1280×720)
+  function size(){
+    var w = stol.clientWidth, h = stol.clientHeight; cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    var fw = innerWidth <= 900 ? 760 : 1280, fh = 720, ox = innerWidth <= 900 ? 260 : 0;   // kadr mobilny wycięty z x=260
+    var s = Math.max(w / fw, h / fh) * 1.02, x0 = (w - fw * s) / 2, y0 = (h - fh * s) / 2;
+    var d = DD * 1280 * s * 1.01, cxp = x0 + (DX * 1280 - ox) * s, cyp = y0 + DY * 720 * s;
+    fin.style.cssText = 'left:' + (cxp - d/2) + 'px;top:' + (cyp - d/2) + 'px;width:' + d + 'px;height:' + d + 'px;opacity:' + (fin.style.opacity || 0);
+    draw(cur);
+  }
+  function near(i){ for (var d = 0; d < N; d++){ if (fr[i-d] && fr[i-d].ok) return fr[i-d]; if (fr[i+d] && fr[i+d].ok) return fr[i+d]; } return null; }
+  function cover(im, a){ var s = Math.max(cv.width / im.naturalWidth, cv.height / im.naturalHeight) * 1.02, w = im.naturalWidth * s, h = im.naturalHeight * s;
+    cx.globalAlpha = a; cx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h); }
+  var FILM = .84;
+  function draw(p){
+    if (!N) return;
+    var f = Math.min(1, p / FILM) * (N - 1), i = Math.floor(f), t = f - i, a = near(i), b = fr[i+1] && fr[i+1].ok ? fr[i+1] : null;
+    if (!a) return; cover(a, 1); if (b && t > .01) cover(b, t); cx.globalAlpha = 1;
+  }
+  var cur = 0, tgt = 0, raf = 0;
+  function prog(){ var r = hero.getBoundingClientRect(), tot = r.height - innerHeight; return tot > 0 ? Math.min(1, Math.max(0, -r.top / tot)) : 0; }
+  function apply(p){
+    draw(p);
+    var k = Math.min(1, Math.max(0, (p - FILM + .02) / .12)), e = k * k * (3 - 2 * k);
+    fin.style.opacity = e.toFixed(3);
+    if (e > 0 && fr[0] && fr[0].ok) { cover(fr[0], e); cx.globalAlpha = 1; }        // finał bez dłoni: pod upieczoną pizzą pierwsza klatka
+    var n = 0; kroki.forEach(function(li, j){ if (p >= +li.getAttribute('data-t') - .001) n = j; });
+    kroki.forEach(function(li, j){ var on = j === n; if (li.classList.contains('on') !== on) { li.classList.toggle('on', on); on ? li.setAttribute('aria-current', 'step') : li.removeAttribute('aria-current'); } });
+    bar.style.setProperty('--p', p.toFixed(3));
+  }
+  function loop(){ cur += (tgt - cur) * .14; apply(cur); if (Math.abs(tgt - cur) > .0004) raf = requestAnimationFrame(loop); else { raf = 0; cur = tgt; apply(cur); } }
+  function on(){ tgt = prog(); if (!raf) raf = requestAnimationFrame(loop); }
+  addEventListener('scroll', on, { passive:true }); addEventListener('resize', size);
+  kroki.forEach(function(li){ li.querySelector('button').addEventListener('click', function(){
+    var t = +li.getAttribute('data-t') + .02; scrollTo({ top: hero.offsetTop + t * (hero.offsetHeight - innerHeight), behavior:'smooth' }); }); });
+  size(); on();
+})();
+</script>
+</body>
+</html>
