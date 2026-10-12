@@ -193,6 +193,18 @@ html:not(.js) .bit:not(:first-child){display:none}
 }
 @media(max-width:860px) and (max-height:700px){.hero-lead{display:none}}
 
+/* ── z pieca: ciemny pas zaraz po filmie, trzy prawdziwe zdjęcia ── */
+.zpieca{background:#0D0A08;color:#F3EEE6;padding:clamp(64px,8vw,112px) 0 0}
+.zpieca h2{color:#F3EEE6;font-size:clamp(34px,4.2vw,58px);max-width:18ch}
+.zpieca .sek-lead{color:#BFB4A6}
+.zp-rzad{list-style:none;margin:clamp(36px,5vw,64px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:4px}
+.zp-rzad figure{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden;background:#1A1512}
+.zp-rzad img{width:100%;height:100%;object-fit:cover;display:block}
+.zp-rzad figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 20px;background:linear-gradient(0deg,rgba(13,10,8,.85),rgba(13,10,8,0));display:flex;flex-direction:column;gap:2px}
+.zp-rzad b{font:400 clamp(24px,2.2vw,32px)/1 var(--disp);color:#F3EEE6}
+.zp-rzad span{font-size:14.5px;color:#D9D0C3}
+@media(max-width:860px){.zp-rzad{grid-template-columns:1fr;gap:3px}.zp-rzad figure{aspect-ratio:16/10}.zp-rzad figcaption{padding:40px 18px 16px}}
+
 /* ── sekcje ── */
 section{position:relative}
 .sek{padding:clamp(72px,10vw,140px) 0}
@@ -227,16 +239,15 @@ section{position:relative}
 /* dostawa: kraft + pieczątka */
 .dostawa{background:#BDBBB8;color:var(--tusz)}
 .dostawa .sek-lead{color:#2A2826}
-.dost-siatka{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:center}
-.pieczatka{width:min(100%,460px);justify-self:center;transform:rotate(-9deg);color:var(--czer);mix-blend-mode:multiply}
-.pieczatka svg{width:100%;height:auto;display:block;-webkit-mask-image:var(--szum);mask-image:var(--szum);-webkit-mask-size:180px;mask-size:180px}
-.pieczatka text{font-family:var(--disp)}
+.dost-siatka{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.pudlo{position:relative}
+.pudlo img{position:relative;z-index:1;width:100%;height:auto;object-fit:cover;display:block;aspect-ratio:4/3;object-position:50% 45%;border-radius:4px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
 table{border-collapse:collapse;width:100%;margin-top:30px;font-size:16.5px}
 th,td{text-align:left;padding:14px 10px 14px 0;border-bottom:1px solid rgba(30,28,26,.28);font-variant-numeric:tabular-nums lining-nums}
 thead th{font-size:14px;font-weight:700;color:var(--tusz);border-bottom:2px solid var(--tusz)}
 tbody th{font-weight:700}
 .dost-uwaga{font-size:15px;color:#2A2826;margin-top:18px}
-@media(max-width:860px){.dost-siatka{grid-template-columns:1fr}.pieczatka{width:min(78%,340px)}table{font-size:15px}th,td{padding:12px 6px 12px 0}}
+@media(max-width:860px){.dost-siatka{grid-template-columns:1fr}table{font-size:15px}th,td{padding:12px 6px 12px 0}}
 
 /* trzy kroki — tu kolejność coś znaczy */
 .kroki{list-style:none;margin:64px 0 0;padding:28px 0 0;border-top:2px solid var(--tusz);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px)}
@@ -304,6 +315,7 @@ tbody th{font-weight:700}
 }
 .stopka .tel,.karta-stopka .tel{display:inline-flex;align-items:center;min-height:44px}
 .tel-duzy{padding:6px 0}
+.k-wiecej{display:block;width:100%;margin-top:10px;min-height:48px;border:2px solid var(--tusz);background:transparent;color:var(--tusz);font:600 15.5px var(--txt);border-radius:3px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -364,6 +376,17 @@ tbody th{font-weight:700}
   </div>
 </section>
 
+<section class="zpieca" aria-labelledby="zpieca-h">
+  <div class="wrap">
+    <h2 id="zpieca-h" class="reveal">Z pieca wychodzi więcej niż pizza.</h2>
+    <p class="sek-lead reveal">Calzone i panini na cieście z pieca — z tego samego ognia przy Katowickiej 48. A pizzę zapakujemy w karton i przywieziemy.</p>
+  </div>
+  <ul class="zp-rzad stagger">
+    <li><figure><img src="assets/calzone.webp" alt="Calzone z pieca z sosem pomidorowym i grillowanymi warzywami" width="900" height="600" loading="lazy" decoding="async"><figcaption><b>Calzone</b><span>zamknięta pizza, z pieca</span></figcaption></figure></li>
+    <li><figure><img src="assets/panini.webp" alt="Panini na cieście z pieca z kurczakiem, sałatą i czerwoną cebulą" width="900" height="599" loading="lazy" decoding="async"><figcaption><b>Panini</b><span>na cieście z pieca, na wynos</span></figcaption></figure></li>
+  </ul>
+</section>
+
 <section class="karta sek tektura" id="karta" aria-labelledby="karta-h">
   <div class="wrap">
     <div class="karta-glowa">
@@ -387,16 +410,9 @@ tbody th{font-weight:700}
 
 <section class="dostawa sek tektura" id="dostawa" aria-labelledby="dost-h">
   <div class="wrap dost-siatka">
-    <div class="pieczatka" aria-hidden="true">
-      <svg viewBox="0 0 400 400">
-        <defs><path id="krag" d="M200 200m-150 0a150 150 0 1 1 300 0a150 150 0 1 1-300 0"/></defs>
-        <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="9"/>
-        <circle cx="200" cy="200" r="174" fill="none" stroke="currentColor" stroke-width="3"/>
-        <circle cx="200" cy="200" r="112" fill="none" stroke="currentColor" stroke-width="3"/>
-        <text font-size="29" fill="currentColor"><textPath href="#krag" startOffset="0" textLength="925" lengthAdjust="spacing">DOWÓZ PO OPOLU · POSZŁO Z DYMEM · KATOWICKA 48 ·</textPath></text>
-        <text x="200" y="194" text-anchor="middle" font-size="64" fill="currentColor">do 7 km</text>
-        <text x="200" y="238" text-anchor="middle" font-size="23" fill="currentColor">od 5 zł za kurs</text>
-      </svg>
+    <div class="pudlo">
+      <img src="assets/karton-pizza-3x2.webp" alt="Otwarty karton Poszło z Dymem z pizzą" width="900" height="599" loading="lazy" decoding="async">
+
     </div>
     <div>
       <h2 id="dost-h" class="reveal">Dowóz po Opolu</h2>
@@ -444,10 +460,10 @@ tbody th{font-weight:700}
     <img src="assets/logo-bialy.png" alt="Poszło z Dymem" width="497" height="302" loading="lazy">
     <div>
       <nav aria-label="Stopka"><a href="#karta">Karta</a><a href="#dostawa">Dostawa</a><a href="#lokal">Lokal</a><a href="https://www.instagram.com/poszlozdymem/" rel="noopener">Instagram</a><a href="https://www.facebook.com/Posz%C5%82o-z-Dymem-102492268325629" rel="noopener">Facebook</a></nav>
-      <p style="margin-top:14px">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole · NIP: [uzupełnić]</p>
+      <p style="margin-top:14px">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole</p>
     </div>
     <a class="tel" href="tel:+48510265267">510 265 267</a>
-    <p class="mk">© <span data-rok>2026</span> Poszło z Dymem · Makieta W4 „Karton” przygotowana przez ODNOVA Studio · zdjęcia: materiały lokalu</p>
+    <p class="mk">© <span data-rok>2026</span> Poszło z Dymem · Makieta W4 „Karton” przygotowana przez ODNOVA Studio · film w hero wygenerowany poglądowo · zdjęcia sali, pizzy i kartonu: materiały lokalu</p>
   </div>
 </footer>
 

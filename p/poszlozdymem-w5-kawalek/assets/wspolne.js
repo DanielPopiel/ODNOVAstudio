@@ -57,6 +57,14 @@
             '<span class="k-fill" aria-hidden="true"></span><span class="k-p">' + (it.od ? '<small>od </small>' : '') + zl(it.p) + '</span></div>' +
             (it.d ? '<p class="k-d">' + it.d.replace(/ \/ /g, ', ') + '</p>' : '') + '</li>';
         }).join('') + '</ul>';
+      /* na telefonie długa lista (20 pizz) idzie na dwa ekrany — pokaż 8, resztę po stuknięciu */
+      if (innerWidth <= 760 && c.items.length > 9) {
+        var li = $$('.k-item', list), wiecej = document.createElement('button');
+        li.slice(8).forEach(function(e){ e.hidden = true; });
+        wiecej.type = 'button'; wiecej.className = 'k-wiecej'; wiecej.textContent = 'Pokaż wszystkie (' + c.items.length + ')';
+        wiecej.addEventListener('click', function(){ li.forEach(function(e){ e.hidden = false; }); wiecej.remove(); li[8].querySelector('.k-n').scrollIntoView({ block:'center', behavior:'smooth' }); });
+        list.appendChild(wiecej);
+      }
       $$('button', tabs).forEach(function(b){ var on = b.getAttribute('data-id') === id; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
       list.setAttribute('aria-labelledby', 'tab-' + id);
     }

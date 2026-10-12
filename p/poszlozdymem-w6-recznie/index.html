@@ -169,6 +169,16 @@ html:not(.js) .stol .final{display:none}
 .karta{background:var(--baz-d);color:var(--krem)}
 .karta .lead{color:#C9CDB8}
 .karta-glowa{display:grid;grid-template-columns:1fr 1fr;gap:20px 64px;align-items:end;margin-bottom:44px}
+/* trzy zdjęcia na tablicy: prawdziwe, z lokalu */
+.trzy{list-style:none;margin:0 0 clamp(40px,5vw,64px);padding:0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:clamp(12px,1.6vw,22px);align-items:stretch}
+.trzy li:first-child b{font-size:clamp(28px,2.6vw,38px)}
+.trzy figure{margin:0;position:relative;height:clamp(280px,25vw,380px);border-radius:14px;overflow:hidden;background:#15291D}
+.trzy img{width:100%;height:100%;object-fit:cover;display:block}
+.trzy figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(0deg,rgba(14,28,20,.85),rgba(14,28,20,0));display:flex;flex-direction:column;gap:2px}
+.trzy b{font:700 clamp(22px,2vw,28px)/1.1 var(--disp);color:var(--krem)}
+.trzy span{font-size:14px;color:#C9CDB8}
+@media(max-width:700px){.trzy{grid-template-columns:1fr 1fr}.trzy li:first-child{grid-column:1/-1}.trzy figure{height:auto;aspect-ratio:4/3}.trzy li:first-child figure{aspect-ratio:16/9}.trzy li:not(:first-child) span{display:none}.trzy b{font-size:20px}.trzy li:first-child b{font-size:26px}}
+@media(max-width:520px){.k-n{font-size:18px}.k-head{gap:6px}}
 [data-karta-tabs]{display:flex;flex-wrap:wrap;gap:6px 26px;margin-bottom:34px;position:sticky;top:var(--hdr-h);z-index:5;padding:14px 0;background:var(--baz-d);border-bottom:1px solid rgba(244,238,223,.18)}
 [data-karta-tabs] button{font:700 19px/1 var(--disp);min-height:44px;padding:0;border:0;background:none;color:rgba(244,238,223,.6);cursor:pointer;border-bottom:2px solid transparent}
 [data-karta-tabs] button:hover{color:var(--krem)}
@@ -208,7 +218,7 @@ html:not(.js) .stol .final{display:none}
 @media(max-width:900px){.sala-uklad{grid-template-columns:1fr}.wiz{position:static}}
 
 /* dostawa: pełny kolor pomidora */
-.dostawa{background:var(--pom);color:#fff}
+.sek.dostawa{background:var(--pom);color:#fff;padding:clamp(56px,7vw,88px) 0}
 .dost-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,80px);align-items:start}
 .dostawa h2{font-size:clamp(36px,4.2vw,60px)}
 .dostawa p{color:#FCE3DC;max-width:40ch;margin-top:18px}
@@ -251,6 +261,7 @@ html:not(.js) .stol .final{display:none}
   .kroki span{max-height:none;opacity:1}.kroki li{color:var(--tusz)}.kroki li:not(.on){display:grid}
   .js .reveal{opacity:1;transform:none;transition:none}
 }
+.k-wiecej{display:block;width:100%;margin-top:14px;min-height:48px;border:1.5px solid rgba(244,238,223,.4);background:transparent;color:var(--krem);font:600 15.5px var(--txt);border-radius:999px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -283,7 +294,7 @@ html:not(.js) .stol .final{display:none}
         <li data-n="2" data-t=".19"><button type="button"><b>Sos pomidorowy</b></button><span>Łyżka na środek i rozprowadzenie spiralą, z dala od brzegu.</span></li>
         <li data-n="3" data-t=".58"><button type="button"><b>Mozzarella fior di latte</b></button><span>Rwana na kawałki, żeby w piecu rozpłynęła się plamami.</span></li>
         <li data-n="4" data-t=".74"><button type="button"><b>Grana padano i bazylia</b></button><span>Komplet dla Margherity, od której warto zacząć — od 33 zł.</span></li>
-        <li data-n="5" data-t=".84"><button type="button"><b>Piec opalany drewnem</b></button><span>Wychodzi z cętkami na brzegu. Resztę karty znajdziesz niżej.</span></li>
+        <li data-n="5" data-t=".8"><button type="button"><b>Piec opalany drewnem</b></button><span>Wychodzi z cętkami na brzegu. Resztę karty znajdziesz niżej.</span></li>
       </ol>
     </div>
     <div class="stol" id="stol" aria-hidden="true">
@@ -298,9 +309,14 @@ html:not(.js) .stol .final{display:none}
 <section class="sek karta" id="karta" aria-labelledby="karta-h">
   <div class="wrap">
     <div class="karta-glowa">
-      <h2 id="karta-h" class="reveal">Karta</h2>
-      <p class="lead reveal">Pizza, makarony, przystawki, sałatki i desery. Ceny takie same jak przy zamówieniu online.</p>
+      <h2 id="karta-h" class="reveal">Z pieca i z kuchni</h2>
+      <p class="lead reveal">Pizza z pieca opalanego drewnem, calzone, panini na tym samym cieście, a z kuchni makarony i sałatki. Ceny takie same jak przy zamówieniu online.</p>
     </div>
+    <ul class="trzy stagger">
+      <li><figure><img src="assets/pizza-kolo.webp" alt="Pizza z pieca na desce" width="900" height="900" loading="lazy" decoding="async"><figcaption><b>Pizza</b><span>21 pizz, od 33 zł</span></figcaption></figure></li>
+      <li><figure><img src="assets/calzone.webp" alt="Calzone z pieca z sosem pomidorowym i grillowanymi warzywami" width="900" height="600" loading="lazy" decoding="async"><figcaption><b>Calzone</b><span>zamknięta pizza z pieca</span></figcaption></figure></li>
+      <li><figure><img src="assets/panini.webp" alt="Panini na cieście z pieca z kurczakiem i sałatą" width="900" height="599" loading="lazy" decoding="async"><figcaption><b>Panini</b><span>na cieście z pieca</span></figcaption></figure></li>
+    </ul>
     <div data-karta>
       <div data-karta-tabs role="tablist" aria-label="Kategorie karty"></div>
       <div data-karta-list role="tabpanel"></div>
@@ -358,7 +374,7 @@ html:not(.js) .stol .final{display:none}
   <div class="wrap">
     <img src="assets/logo-bialy.png" alt="Poszło z Dymem" width="994" height="604" loading="lazy">
     <div><nav aria-label="Stopka"><a href="#karta">Karta</a><a href="#sala">Sala</a><a href="#dostawa">Dostawa</a><a href="https://www.instagram.com/poszlozdymem/" rel="noopener">Instagram</a><a href="https://www.facebook.com/Posz%C5%82o-z-Dymem-102492268325629" rel="noopener">Facebook</a></nav>
-      <p style="margin:10px 0 0">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole · NIP: [uzupełnić]</p></div>
+      <p style="margin:10px 0 0">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole</p></div>
     <a class="tel" href="tel:+48510265267">510 265 267</a>
     <p class="mk">© <span data-rok>2026</span> Poszło z Dymem · Makieta W6 „Od ciasta” przygotowana przez ODNOVA Studio · film w hero wygenerowany poglądowo, zdjęcia sali i pizzy: materiały lokalu</p>
   </div>

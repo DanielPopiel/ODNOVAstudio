@@ -151,7 +151,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .po p{margin:10px 0 18px;color:#34302B}
 .po .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .reset{background:none;border:0;color:var(--tekst);font:600 15px var(--txt);text-decoration:underline;text-underline-offset:.22em;cursor:pointer;min-height:44px;padding:0 10px}
-.podp{display:none;align-items:center;gap:8px;margin:6px 0 0;font-size:15px;color:var(--tekst);transition:opacity .4s}
+.podp{display:none;align-items:center;gap:8px;margin:6px 0 0;font-size:14.5px;color:var(--szary);transition:opacity .4s}
 .js .podp{display:flex}
 .podp.off{opacity:.0}
 .podp svg{width:18px;height:18px;flex:none}
@@ -174,9 +174,10 @@ p{margin:0 0 1em;text-wrap:pretty}
 /* na pierwszy raz: cztery pizze z góry, w jednym rzędzie jak na blacie */
 .start-glowa{display:grid;grid-template-columns:1.1fr .9fr;gap:24px 64px;align-items:end}
 .start-glowa .lead{margin:0}
-.blat{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,36px)}
+.blat{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);column-gap:clamp(12px,1.5vw,20px);row-gap:0}
 .blat li{display:flex;flex-direction:column}
-.blat .kadr{display:block;aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--beton)}
+.blat .kadr{display:block;aspect-ratio:1;overflow:hidden;background:var(--beton);border-radius:10px}
+.blat li>*:not(.kadr){margin-right:clamp(8px,1.2vw,18px)}
 .blat .kadr img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,.61,.36,1)}
 @media(hover:hover){.blat li:hover .kadr img{transform:scale(1.045)}}
 .blat h3{font-size:clamp(26px,2.2vw,32px);margin-top:22px}
@@ -186,29 +187,44 @@ p{margin:0 0 1em;text-wrap:pretty}
 .cena small{font:500 14px var(--txt);color:var(--szary)}
 .zam{white-space:nowrap;font-weight:600;color:var(--ziel);text-underline-offset:.22em;min-height:44px;display:inline-flex;align-items:center}
 @media(max-width:1000px){.start-glowa{grid-template-columns:1fr}.blat{grid-template-columns:repeat(2,1fr);row-gap:44px}}
-@media(max-width:520px){.blat{gap:14px;row-gap:36px}.blat h3{font-size:23px;margin-top:14px}.blat p{font-size:14.5px}.cena{font-size:20px}}
+@media(max-width:520px){.blat{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scrollbar-width:none}.blat li{flex:0 0 76%;scroll-snap-align:start}.blat .kadr{border-radius:10px!important}.blat li>*:not(.kadr){margin-right:0}.blat h3{font-size:23px;margin-top:14px}.blat p{font-size:14.5px}.cena{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.blat .kadr img{transition:none}}
 
+/* nie tylko pizza: ciemny pas z dwoma prawdziwymi zdjęciami */
+.piec{background:var(--grafit);color:#EDEAE4}
+.piec h2{color:#EDEAE4}
+.piec .lead{color:#C2BDB5}
+.piec-in{display:grid;grid-template-columns:.85fr 1fr 1fr;gap:clamp(20px,3vw,48px);align-items:end}
+.piec h2{font-size:clamp(40px,4.6vw,66px)}
+.piec-txt{padding-bottom:8px}
+.piec-btn{border-color:#EDEAE4;color:#EDEAE4;margin-top:26px}
+.piec-btn:hover{background:#EDEAE4;color:var(--grafit)}
+.piec-f{margin:0;border-radius:8px;overflow:hidden;aspect-ratio:4/3;position:relative;background:var(--grafit2)}
+.piec-f img{width:100%;height:100%;object-fit:cover;display:block}
+.piec-f figcaption{position:absolute;left:14px;bottom:12px;font:400 22px/1 var(--disp);color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+@media(max-width:900px){.piec-in{grid-template-columns:1fr 1fr}.piec-txt{grid-column:1/-1}}
+@media(max-width:520px){.piec-in{grid-template-columns:1fr}}
+
 /* karta: ciemna, jak blat stołu */
-.karta{background:var(--grafit);color:#EDEAE4}
-.karta .lead{color:#C2BDB5}
+.karta{background:var(--biel);color:var(--tekst);border-top:1px solid rgba(34,33,31,.12)}
+.karta .lead{color:var(--szary)}
 .karta-glowa{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 48px;margin-bottom:40px}
-[data-karta-tabs]{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;position:sticky;top:calc(var(--hdr-h) + 8px);z-index:5;padding:8px 0;background:var(--grafit)}
-[data-karta-tabs] button{font:500 15.5px/1 var(--txt);min-height:44px;padding:0 18px;border-radius:8px;border:1.5px solid rgba(237,234,228,.35);background:transparent;color:#EDEAE4;cursor:pointer}
-[data-karta-tabs] button:hover{border-color:#EDEAE4}
-[data-karta-tabs] button[aria-selected="true"]{background:#EDEAE4;color:var(--grafit);border-color:#EDEAE4}
-.k-note{color:#C2BDB5;font-size:15.5px;margin:0 0 10px}
+[data-karta-tabs]{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;position:sticky;top:calc(var(--hdr-h) + 8px);z-index:5;padding:8px 0;background:var(--biel)}
+[data-karta-tabs] button{font:500 15.5px/1 var(--txt);min-height:44px;padding:0 18px;border-radius:8px;border:1.5px solid rgba(34,33,31,.3);background:transparent;color:var(--tekst);cursor:pointer}
+[data-karta-tabs] button:hover{border-color:var(--tekst)}
+[data-karta-tabs] button[aria-selected="true"]{background:var(--tekst);color:var(--biel);border-color:var(--tekst)}
+.k-note{color:var(--szary);font-size:15.5px;margin:0 0 10px}
 .k-items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(32px,5vw,80px)}
-.k-item{padding:20px 0;border-bottom:1px solid rgba(237,234,228,.13)}
+.k-item{padding:20px 0;border-bottom:1px solid rgba(34,33,31,.14)}
 .k-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
 .k-n{font:400 21px/1.2 var(--disp)}
-.k-tag{font:500 12.5px/1 var(--txt);padding:4px 8px;border-radius:999px;background:rgba(237,234,228,.12);color:#DCD7CF}
-.k-tag-ostre{background:rgba(232,90,60,.22);color:#FFB7A3}
-.k-tag-vege{background:rgba(9,147,25,.25);color:#A9E3AE}
+.k-tag{font:500 12.5px/1 var(--txt);padding:4px 8px;border-radius:999px;background:rgba(34,33,31,.08);color:var(--szary)}
+.k-tag-ostre{background:rgba(200,50,30,.12);color:#9E2414}
+.k-tag-vege{background:rgba(11,122,26,.12);color:var(--ziel-d)}
 .k-fill{flex:1}
-.k-p{font:400 19px/1 var(--disp);white-space:nowrap;color:#F2C88A;font-variant-numeric:lining-nums}
-.k-p small{font:500 13px var(--txt);color:#B5AFA6}
-.k-d{margin:6px 0 0;font-size:15px;color:#B9B3AA;max-width:50ch}
+.k-p{font:400 19px/1 var(--disp);white-space:nowrap;color:var(--pomidor);font-variant-numeric:lining-nums}
+.k-p small{font:500 13px var(--txt);color:var(--szary)}
+.k-d{margin:6px 0 0;font-size:15px;color:var(--szary);max-width:50ch}
 @media(max-width:860px){.k-items{grid-template-columns:1fr}[data-karta-tabs]{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:calc(var(--gut)*-1);margin-right:calc(var(--gut)*-1);padding-left:var(--gut);padding-right:var(--gut)}[data-karta-tabs] button{flex:none}}
 
 /* sala: zdjęcia lokalu + godziny */
@@ -224,21 +240,21 @@ p{margin:0 0 1em;text-wrap:pretty}
 @media(max-width:900px){.sala-foto{grid-template-columns:1fr 1fr}.sala-foto figure:first-child{grid-column:1/-1;aspect-ratio:4/3}.sala-dane{grid-template-columns:1fr}}
 
 /* dostawa: zielony pas */
-.dostawa{background:var(--biel);color:var(--tekst);padding:clamp(60px,8vw,104px) 0;border-top:1px solid rgba(34,33,31,.12)}
-.dostawa h2{font-size:clamp(36px,4.4vw,62px);color:var(--tekst)}
+.dostawa{background:var(--grafit);color:#EDEAE4;padding:clamp(60px,8vw,104px) 0}
+.dostawa h2{font-size:clamp(36px,4.4vw,62px);color:#EDEAE4}
 .dost-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,80px);align-items:center}
-.dost-in p{color:var(--szary);margin-top:16px}
+.dost-in p{color:#C2BDB5;margin-top:16px}
 .strefy{margin:0}
-.strefy div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-top:1px solid rgba(34,33,31,.16);font-variant-numeric:tabular-nums lining-nums}
-.strefy div:last-child{border-bottom:1px solid rgba(34,33,31,.16)}
+.strefy div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-top:1px solid rgba(237,234,228,.18);font-variant-numeric:tabular-nums lining-nums}
+.strefy div:last-child{border-bottom:1px solid rgba(237,234,228,.18)}
 .strefy dt{font-weight:600}
 .strefy dd{margin:0}
-.strefy b{font-weight:700;color:var(--ziel)}
+.strefy b{font-weight:700;color:#A9E3AE}
 .dostawa .btn{background:var(--ziel);color:#fff}
 .dostawa .btn:hover{background:var(--ziel-d)}
 @media(max-width:900px){.dost-in{grid-template-columns:1fr}.strefy div{grid-template-columns:1fr;gap:2px}}
 
-.stopka{background:var(--grafit);color:#B9B3AA;padding:56px 0 40px;font-size:15px}
+.stopka{background:#1F1E1C;color:#B9B3AA;padding:56px 0 40px;font-size:15px}
 .stopka .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:24px 48px;align-items:start}
 .stopka img{width:150px}
 .stopka nav{display:flex;flex-wrap:wrap;gap:6px 22px}
@@ -264,6 +280,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal,.js .stagger>*{opacity:1;transform:none;transition:none}.po-in{transition:none}}
 .stopka .tel,.karta-stopka .tel{display:inline-flex;align-items:center;min-height:44px}
 .tel-duzy{padding:6px 0}
+.k-wiecej{display:block;width:100%;margin-top:14px;min-height:48px;border:1.5px solid rgba(34,33,31,.3);background:transparent;color:var(--tekst);font:600 15.5px var(--txt);border-radius:8px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -292,7 +309,7 @@ p{margin:0 0 1em;text-wrap:pretty}
         <a class="btn btn-l" href="#karta">Karta z cenami</a>
       </div>
       <p class="licznik" aria-live="polite" id="ile">Na desce 8 z 8 kawałków</p>
-      <p class="podp" id="hint" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V5a2 2 0 1 1 4 0v5m0-1a2 2 0 1 1 4 0v2m0-1a2 2 0 1 1 4 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4 15a2 2 0 0 1 3.4-2.1L9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="t-touch">Stuknij w pizzę i weź kawałek</span><span class="t-mouse">Kliknij w pizzę i weź kawałek</span></p>
+      <p class="podp" id="hint" aria-hidden="true"><span class="t-touch">Dotknij pizzy — zabierz kawałek</span><span class="t-mouse">Kliknij w pizzę — zabierz kawałek</span></p>
     </div>
     <div class="stol" id="stol">
       <canvas id="cv" aria-hidden="true"></canvas>
@@ -320,6 +337,18 @@ p{margin:0 0 1em;text-wrap:pretty}
       <li><span class="kadr"><img src="assets/top-doncamillo.webp" alt="Pizza Don Camillo z góry, na drewnianej desce" width="720" height="720" loading="lazy" decoding="async"></span><h3>Don Camillo</h3><p>Crème fraîche, gruszka, gorgonzola, prażone orzechy włoskie i rukola. Na słodko-słono.</p><div class="poz-meta"><span class="cena"><small>od </small>43 zł</span><a class="zam" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener" aria-label="Zamów Don Camillo">Zamów</a></div></li>
       <li><span class="kadr"><img src="assets/top-nduja.webp" alt="Pizza Nduja z góry, na drewnianej desce" width="720" height="720" loading="lazy" decoding="async"></span><h3>Nduja</h3><p>Pasta nduja, czerwona cebula, jalapeño i mascarpone, które wszystko łagodzi. Najostrzejsza w karcie.</p><div class="poz-meta"><span class="cena"><small>od </small>44 zł</span><a class="zam" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener" aria-label="Zamów Nduję">Zamów</a></div></li>
     </ul>
+  </div>
+</section>
+
+<section class="sek piec" aria-labelledby="piec-h">
+  <div class="wrap piec-in">
+    <div class="piec-txt">
+      <h2 id="piec-h" class="reveal">Nie tylko pizza.</h2>
+      <p class="lead reveal">Z tego samego pieca wychodzą calzone i panini na cieście z pieca, a z kuchni makarony: gnocchi, carbonara, tagliatelle z krewetkami. Wszystko jest w karcie niżej.</p>
+      <a class="btn btn-l piec-btn" href="#karta">Makarony i przystawki</a>
+    </div>
+    <figure class="piec-f"><img src="assets/calzone.webp" alt="Calzone z pieca z sosem pomidorowym i grillowanymi warzywami" width="900" height="600" loading="lazy" decoding="async"><figcaption>Calzone</figcaption></figure>
+    <figure class="piec-f"><img src="assets/panini.webp" alt="Panini na cieście z pieca z kurczakiem, sałatą i czerwoną cebulą" width="900" height="599" loading="lazy" decoding="async"><figcaption>Panini</figcaption></figure>
   </div>
 </section>
 
@@ -358,7 +387,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 <section class="dostawa" id="dostawa" aria-labelledby="dost-h">
   <div class="wrap dost-in">
     <div>
-      <h2 id="dost-h" class="reveal">Albo przywieziemy do Ciebie</h2>
+      <h2 id="dost-h" class="reveal">Albo przywieziemy do ciebie</h2>
       <p>Dowozimy do 7 km. Do 1,5 km gratis od 150 zł, do 5 km gratis od 200 zł.</p>
       <a class="btn" href="https://poszlo-z-dymem.upmenusite.com/" rel="noopener">Zamów z dowozem</a>
     </div>
@@ -376,7 +405,7 @@ p{margin:0 0 1em;text-wrap:pretty}
   <div class="wrap">
     <img src="assets/logo-bialy.png" alt="Poszło z Dymem" width="994" height="604" loading="lazy">
     <div><nav aria-label="Stopka"><a href="#karta">Karta</a><a href="#sala">Sala</a><a href="#dostawa">Dostawa</a><a href="https://www.instagram.com/poszlozdymem/" rel="noopener">Instagram</a><a href="https://www.facebook.com/Posz%C5%82o-z-Dymem-102492268325629" rel="noopener">Facebook</a></nav>
-      <p style="margin-top:14px">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole · NIP: [uzupełnić]</p></div>
+      <p style="margin-top:14px">Pizzeria Poszło z Dymem · ul. Katowicka 48, 45-061 Opole</p></div>
     <a class="tel" href="tel:+48510265267">510 265 267</a>
     <p class="mk">© <span data-rok>2026</span> Poszło z Dymem · Makieta W5 „Kawałek po kawałku” przygotowana przez ODNOVA Studio · zdjęcia sali i pizzy: materiały lokalu, zdjęcia pozycji z karty poglądowe</p>
   </div>
