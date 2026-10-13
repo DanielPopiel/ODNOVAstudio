@@ -227,6 +227,32 @@ h1,h2,h3,.h2,.row h3,.row .cena,.rate b{text-transform:uppercase;letter-spacing:
 .cta2 h3{font-size:clamp(1.8rem,2.6vw,2.4rem)}
 .cta2 p{margin:10px 0 16px;opacity:.86;max-width:46ch}
 @media(max-width:860px){.cta2{grid-template-columns:1fr}}
+/* pływające: zdjęcia lewitują same z siebie i lekko idą za kursorem, nagłówki zapalają się literami jak neon, zdjęcia zajęć odsłaniają się kurtyną */
+.fstack{position:relative;margin:0;aspect-ratio:4/5;max-width:560px;justify-self:end;width:100%}
+.fstack .fo{position:absolute;margin:0;overflow:hidden;border-radius:var(--rad);box-shadow:0 24px 60px rgba(0,0,0,.55);will-change:transform;animation:lev var(--d,8s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+.fstack .fo>div{width:100%;height:100%;transform:translate3d(var(--mx,0px),var(--my,0px),0);transition:transform .9s cubic-bezier(.22,.61,.36,1)}
+.fstack .fo img{width:100%;height:100%;object-fit:cover}
+.fstack .m{left:8%;top:6%;width:78%;height:76%;--d:9s;--rz:-.6deg}
+.fstack .s1{left:0;top:0;width:40%;aspect-ratio:1;--d:7s;--dl:-2s;--rz:-3deg;z-index:2}
+.fstack .s2{right:0;bottom:0;width:48%;aspect-ratio:4/3;--d:11s;--dl:-5s;--rz:2.5deg;z-index:2}
+.fstack .tag{position:absolute;z-index:3;font-family:var(--disp);text-transform:uppercase;font-size:clamp(1.1rem,1.6vw,1.45rem);letter-spacing:.03em;background:#0e0e10;color:#fff;border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:3px;white-space:nowrap;animation:lev var(--d,6s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+.fstack .tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acc);margin-right:9px;vertical-align:.12em;box-shadow:0 0 10px var(--acc)}
+.fstack .t1{right:4%;top:14%;--d:6s;--rz:2deg}
+.fstack .t2{left:4%;bottom:24%;--d:8s;--dl:-3s;--rz:-2deg}
+.fstack figcaption{position:absolute;left:8%;right:52%;bottom:-6px;font-size:.85rem;opacity:.7}
+@keyframes lev{from{transform:translate3d(0,-10px,0) rotate(var(--rz,0deg))}to{transform:translate3d(0,12px,0) rotate(calc(var(--rz,0deg)*-.4))}}
+@media(max-width:860px){.fstack{justify-self:center;max-width:460px;margin-top:20px}}
+.h2 .w{display:inline-block;white-space:nowrap}
+.js .h2 .ch{opacity:.12}
+.h2.lit .ch{animation:ign .9s steps(1,end) both;animation-delay:var(--cd,0s)}
+@keyframes ign{0%{opacity:.12}20%{opacity:1;text-shadow:0 0 18px rgba(227,6,19,.9)}28%{opacity:.25}40%{opacity:1}55%{opacity:.5}70%,100%{opacity:1;text-shadow:none}}
+.js .zaj .img{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1)}
+.js .zaj .img img{transform:scale(1.25);transition:transform 1.8s cubic-bezier(.22,.61,.36,1)}
+.js .zaj article.in .img{clip-path:inset(0 0 0 0)}
+.js .zaj article.in .img img{transform:scale(1.04)}
+.js .zaj article:nth-child(even) .img{clip-path:inset(100% 0 0 0)}.js .zaj article:nth-child(even).in .img{clip-path:inset(0 0 0 0)}
+.promo .big{animation:lev 7s ease-in-out infinite alternate;--rz:-1deg}
+@media(prefers-reduced-motion:reduce){.fstack .fo,.fstack .tag,.promo .big{animation:none}.js .h2 .ch{opacity:1}.h2.lit .ch{animation:none}.js .zaj .img,.js .zaj article:nth-child(even) .img{clip-path:none}.js .zaj .img img{transform:none}}
 
 </style>
 </head>
@@ -263,7 +289,7 @@ h1,h2,h3,.h2,.row h3,.row .cena,.rate b{text-transform:uppercase;letter-spacing:
 <p class="lead">Nie ma recepcji, karnetu w portfelu ani godzin otwarcia. Jest aplikacja i drzwi, które poznają Twój telefon.</p>
 <ol class="kroki stagger" style="margin-top:34px"><li><div><h3>Kup karnet online</h3><p>Wybierasz miasto i karnet w aplikacji WodGuru. Płatność kartą, bez wizyty w klubie.</p></div></li><li><div><h3>Odbierz kod QR</h3><p>Kod pojawia się w aplikacji od razu po opłaceniu. To Twój klucz do klubu.</p></div></li><li><div><h3>Wejdź, kiedy chcesz</h3><p>Skanujesz kod przy drzwiach. 24 godziny na dobę, 7 dni w tygodniu, także w święta.</p></div></li></ol>
 </div>
-<figure class="foto reveal"><img src="a/hero2.webp" alt="Telefon z kodem QR przy czytniku drzwi" width="2000" height="1116" loading="lazy"><figcaption>Czytnik przy drzwiach — kod z aplikacji, bez recepcji</figcaption></figure>
+<figure class="fstack reveal" data-depth><div class="fo m" data-z="10"><div><img src="a/hero2.webp" alt="Telefon z kodem QR przy czytniku drzwi" width="2000" height="1116" loading="lazy"></div></div><div class="fo s1" data-z="26"><div><img src="a/f08.jpg" alt="Wejście do klubu" width="1800" height="1202" loading="lazy"></div></div><div class="fo s2" data-z="-22"><div><img src="a/f04.jpg" alt="Budynek klubu nocą" width="1800" height="1200" loading="lazy"></div></div><span class="tag t1" aria-hidden="true"><i></i>otwarte też o 2:00</span><span class="tag t2" aria-hidden="true">kod QR zamiast karty</span><figcaption>Czytnik przy drzwiach — kod z aplikacji, bez recepcji</figcaption></figure>
 </div></section>
 
 <section class="sec acc promo" id="promo"><div class="wrap">
@@ -377,6 +403,20 @@ var cam=document.querySelector('.hero .cam');if(cam&&matchMedia('(pointer:fine)'
 })();
 (function(){
 var c=document.getElementById('clk');function t(){var d=new Date();c.textContent='JEST '+d.getHours()+':'+('0'+d.getMinutes()).slice(-2)+' · OTWARTE'}t();setInterval(t,20000);
+})();
+
+(function(){
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+// nagłówki: litery zapalają się jak neon
+var hs=[].slice.call(document.querySelectorAll('.sec .h2'));
+if(!rm){hs.forEach(function(h){var t=h.textContent;h.setAttribute('aria-label',t);var out=[];t.split(' ').forEach(function(w,wi){var sp=document.createElement('span');sp.className='w';sp.setAttribute('aria-hidden','true');w.split('').forEach(function(c){var e=document.createElement('span');e.className='ch';e.textContent=c;e.style.setProperty('--cd',(Math.random()*.55).toFixed(2)+'s');sp.appendChild(e)});out.push(sp)});h.textContent='';out.forEach(function(sp,i){if(i)h.appendChild(document.createTextNode(' '));h.appendChild(sp)})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lit');io.unobserve(e.target)}})},{threshold:.4});hs.forEach(function(h){io.observe(h)});
+setTimeout(function(){hs.forEach(function(h){var r=h.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)h.classList.add('lit')})},300);}
+// lewitujący stos: głębia za kursorem
+var st=document.querySelector('.fstack');if(rm||!st||!matchMedia('(pointer:fine)').matches)return;
+var fo=[].slice.call(st.querySelectorAll('.fo'));var sec=st.closest('section');
+sec.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;fo.forEach(function(f){var z=+f.dataset.z;f.firstChild.style.setProperty('--mx',(px*z).toFixed(1)+'px');f.firstChild.style.setProperty('--my',(py*z).toFixed(1)+'px')})});
+sec.addEventListener('pointerleave',function(){fo.forEach(function(f){f.firstChild.style.setProperty('--mx','0px');f.firstChild.style.setProperty('--my','0px')})});
 })();
 </script>
 </body></html>

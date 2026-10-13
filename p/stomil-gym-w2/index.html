@@ -215,6 +215,30 @@ html:not(.js) .hero{min-height:100svh}html:not(.js) .stage{position:relative;hei
 .zaj2 h3{font-size:1.4rem;letter-spacing:-.01em}
 .zaj2 p{margin-top:10px;opacity:.85}
 @media(max-width:860px){.zaj2{grid-template-columns:1fr}}
+/* pływające: przypięta galeria jedzie w bok, w tle wielki napis w przeciwną stronę, zdjęcia przechylają się od prędkości przewijania, nagłówki wjeżdżają kursywą */
+.hgal{position:relative;background:#0a0a0a;color:#fff}
+.js .hgal{height:340vh}
+.hgal .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;padding-top:calc(var(--hdr-h,100px) + clamp(16px,3vh,36px))}
+.hgal .hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;position:relative;z-index:2}
+.hgal .hd p{opacity:.75;max-width:36ch;font-size:.98rem}
+.hgal .ghost{position:absolute;left:0;top:50%;font-family:var(--disp);font-style:italic;font-weight:800;font-size:clamp(7rem,22vw,20rem);line-height:.8;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(198,255,46,.28);transform:translate3d(-10%,-30%,0);will-change:transform;pointer-events:none;z-index:0}
+.hgal .track{position:relative;z-index:1;display:flex;gap:clamp(14px,2vw,28px);align-items:center;padding:0 clamp(16px,4vw,48px);width:max-content;will-change:transform}
+.hgal figure{margin:0;flex:0 0 auto;width:clamp(240px,30vw,460px);transform:skewX(var(--sk,0deg));transition:transform .25s ease-out}
+.hgal figure:nth-child(even){margin-top:clamp(40px,10vh,110px)}
+.hgal figure .ph{aspect-ratio:4/5;overflow:hidden;background:#151515}
+.hgal figure:nth-child(3n+2) .ph{aspect-ratio:1}
+.hgal figure img{width:118%;max-width:none;height:100%;object-fit:cover;transform:translate3d(var(--ix,0%),0,0)}
+.hgal figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:.92rem}
+.hgal figcaption b{font-family:var(--disp);font-style:italic;font-weight:700;font-size:1.25rem;color:var(--acc)}
+.hgal .end{flex:0 0 auto;width:clamp(240px,28vw,380px);font-family:var(--disp);font-style:italic;font-weight:800;font-size:clamp(2rem,3.4vw,3.2rem);line-height:.95}
+.hgal .end .btn{margin-top:18px;font-style:normal}
+html:not(.js) .hgal .pin{position:relative;height:auto;padding-bottom:60px}html:not(.js) .hgal .track{overflow-x:auto;width:auto}
+@media(max-width:760px){.js .hgal{height:300vh}.hgal figure{width:68vw}.hgal figure:nth-child(even){margin-top:36px}.hgal .ghost{font-size:9rem}.hgal .hd p{display:none}}
+@media(prefers-reduced-motion:reduce){.js .hgal{height:auto}.hgal .pin{position:relative;height:auto;padding-bottom:60px}.hgal .track{overflow-x:auto;width:auto;transform:none!important}.hgal .ghost{display:none}}
+.kl .img img{transform:skewY(var(--sk2,0deg)) scale(1.06);transition:transform .3s ease-out}
+.js .reveal.sk{transform:translateX(-48px) skewX(-14deg);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.sk.in{transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal.sk{transform:none}.hgal figure,.kl .img img{transform:none}}
 
 </style>
 </head>
@@ -254,7 +278,7 @@ html:not(.js) .hero{min-height:100svh}html:not(.js) .stage{position:relative;hei
 </section>
 
 <section class="sec alt" id="cennik"><div class="wrap">
-<h2 class="h2">Jeden karnet. Oba kluby. Cała doba.</h2>
+<h2 class="h2 reveal sk">Jeden karnet. Oba kluby. Cała doba.</h2>
 <p class="lead">Wszystkie karnety w jednej tabeli — bez kart, bez gwiazdek. Kupujesz w aplikacji WodGuru, kod QR masz od razu.</p>
 <table class="tab"><thead><tr><th>Karnet</th><th>Rodzaj</th><th>W cenie</th><th style="text-align:right">Cena</th></tr></thead><tbody><tr class=""><td class="n">Jednorazowe wejście</td><td class="typ">siłownia + zajęcia grupowe</td><td class="cechy-td"><div class="cechy"><span>płatność jednorazowa</span><span>bez subskrypcji, bez umowy</span><span>ważny w dniu zakupu</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">39<small>zł</small></a></td></tr><tr class=""><td class="n">Flex-7</td><td class="typ">7 dni, bez umowy</td><td class="cechy-td"><div class="cechy"><span>siłownia 24/7</span><span>system poleceń</span><span>jedna płatność</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">79<small>zł</small></a></td></tr><tr class=""><td class="n">Flex</td><td class="typ">bez umowy</td><td class="cechy-td"><div class="cechy"><span>siłownia 24/7</span><span>system poleceń</span><span>−10 zł za przedłużenie przed końcem</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">139<small>zł / 30 dni</small></a></td></tr><tr class=""><td class="n">Chillow</td><td class="typ">subskrypcja na czas nieokreślony</td><td class="cechy-td"><div class="cechy"><span>siłownia 24/7</span><span>system poleceń</span><span>automatyczna płatność</span><span>2 miesiące wypowiedzenia</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">119<small>zł / mies.</small></a></td></tr><tr class=""><td class="n">Smart-12</td><td class="typ">umowa na 12 miesięcy</td><td class="cechy-td"><div class="cechy"><span>siłownia 24/7</span><span>gwarancja ceny</span><span>automatyczna płatność</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">109<small>zł / mies.</small></a></td></tr><tr class="top"><td class="n">Smart-24</td><td class="typ">umowa na 24 miesiące</td><td class="cechy-td"><div class="cechy"><span>siłownia 24/7</span><span>gwarancja ceny</span><span>automatyczna płatność</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">99<small>zł / mies.</small></a></td></tr><tr class=""><td class="n">Multi</td><td class="typ">siłownia + zajęcia grupowe</td><td class="cechy-td"><div class="cechy"><span>wszystkie zajęcia grupowe</span><span>strefa cross</span><span>bez umowy; 199 zł w subskrypcji</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">220<small>zł / mies.</small></a></td></tr><tr class=""><td class="n">HYROX Start</td><td class="typ">wejście w HYROX</td><td class="cechy-td"><div class="cechy"><span>5-dniowy plan treningowy</span><span>zajęcia HYROX</span><span>siłownia 24/7</span></div></td><td class="c"><a href="https://wod.guru/user/login" target="_blank" rel="noopener">149<small>zł / 14 dni</small></a></td></tr></tbody></table>
 <p style="margin-top:22px;font-size:.92rem;opacity:.7;max-width:70ch">Pełne warunki w regulaminie klubu.</p>
@@ -263,7 +287,7 @@ html:not(.js) .hero{min-height:100svh}html:not(.js) .stage{position:relative;hei
 
 <section class="hyrox" id="zajecia">
 <div class="img"><img src="a/f06.jpg" alt="" width="1134" height="722" loading="lazy"></div>
-<div class="wrap"><h2 class="reveal">HY<b>ROX</b><br>w&nbsp;Grudziądzu</h2><p class="reveal">Globalny format fitness racing: 8 km biegu przeplatane 8 stacjami funkcjonalnymi. Trenujesz pod zawody albo po prostu pod kondycję — treningi są skalowalne.</p><div class="meta reveal"><span>Zajęcia kilka razy w tygodniu</span><span>HYROX Start: 149 zł / 14 dni</span><span>W cenie siłownia 24/7</span></div><p class="reveal" style="margin-top:22px"><a class="btn p" href="#cennik">Karnet HYROX Start</a></p></div>
+<div class="wrap"><h2 class="reveal sk">HY<b>ROX</b><br>w&nbsp;Grudziądzu</h2><p class="reveal">Globalny format fitness racing: 8 km biegu przeplatane 8 stacjami funkcjonalnymi. Trenujesz pod zawody albo po prostu pod kondycję — treningi są skalowalne.</p><div class="meta reveal"><span>Zajęcia kilka razy w tygodniu</span><span>HYROX Start: 149 zł / 14 dni</span><span>W cenie siłownia 24/7</span></div><p class="reveal" style="margin-top:22px"><a class="btn p" href="#cennik">Karnet HYROX Start</a></p></div>
 <div class="wrap" style="position:relative;padding-bottom:80px"><div class="zaj2 stagger">
 <article><h3>CrossTraining</h3><p>Siła, wytrzymałość i technika w jednym treningu. Własna strefa cross z rigiem, kettlebellami i sankami.</p></article>
 <article><h3>Trening personalny</h3><p>Pierwsza konsultacja z trenerem w cenie każdej wejściówki. Plan pod Twój cel, kontrola techniki, pomiary postępów.</p></article>
@@ -271,24 +295,32 @@ html:not(.js) .hero{min-height:100svh}html:not(.js) .stage{position:relative;hei
 </div></div>
 </section>
 
+<section class="hgal" id="galeria" aria-label="Klub w kadrach">
+<div class="pin">
+<div class="ghost" aria-hidden="true">Grudziądz · Bydgoszcz · 24/7 · Grudziądz · Bydgoszcz</div>
+<div class="wrap hd"><h2 class="h2 reveal sk">Klub<br>w kadrach</h2><p>Prawdziwe zdjęcia z naszych sal. Przewijaj dalej — galeria jedzie w bok.</p></div>
+<div style="display:grid;align-items:center;min-width:0"><div class="track" id="track"><figure><div class="ph"><img src="a/f08.jpg" alt="Wejście, Stomil Gym" width="1800" height="1202" loading="lazy"></div><figcaption><b>Wejście</b><span>kod QR zamiast recepcji</span></figcaption></figure><figure><div class="ph"><img src="a/f01.jpg" alt="Cardio, Stomil Gym" width="1800" height="1198" loading="lazy"></div><figcaption><b>Cardio</b><span>bieżnie przy czerwonej ścianie</span></figcaption></figure><figure><div class="ph"><img src="a/f02.jpg" alt="Strefa cross, Stomil Gym" width="1134" height="722" loading="lazy"></div><figcaption><b>Strefa cross</b><span>kettlebelle, skrzynie, liny</span></figcaption></figure><figure><div class="ph"><img src="a/f03.jpg" alt="Wolne ciężary, Stomil Gym" width="1800" height="1198" loading="lazy"></div><figcaption><b>Wolne ciężary</b><span>z trenerem albo sam</span></figcaption></figure><figure><div class="ph"><img src="a/f06.jpg" alt="Po WOD-zie, Stomil Gym" width="1134" height="722" loading="lazy"></div><figcaption><b>Po WOD-zie</b><span>grupa w Grudziądzu</span></figcaption></figure><figure><div class="ph"><img src="a/f07.jpg" alt="Zawody, Stomil Gym" width="1800" height="811" loading="lazy"></div><figcaption><b>Zawody</b><span>podium z naszej hali</span></figcaption></figure><figure><div class="ph"><img src="a/byd.jpg" alt="Bydgoszcz, Stomil Gym" width="1800" height="1005" loading="lazy"></div><figcaption><b>Bydgoszcz</b><span>drugi klub, ten sam kod</span></figcaption></figure><div class="end">Oba kluby w&nbsp;jednym karnecie.<br><a class="btn p" href="#cennik">Wybierz karnet</a></div></div></div>
+</div>
+</section>
+
 <section class="sec alt" id="jak"><div class="wrap">
-<h2 class="h2">Jak to działa</h2>
+<h2 class="h2 reveal sk">Jak to działa</h2>
 <p class="lead">Bez recepcji. Bez umawiania się. Trzy kroki, z których dwa robisz na kanapie.</p>
 <ol class="kroki3 stagger"><li><h3>Kup karnet online</h3><p>Wybierasz miasto i karnet w aplikacji WodGuru. Płatność kartą, bez wizyty w klubie.</p></li><li><h3>Odbierz kod QR</h3><p>Kod pojawia się w aplikacji od razu po opłaceniu. To Twój klucz do klubu.</p></li><li><h3>Wejdź, kiedy chcesz</h3><p>Skanujesz kod przy drzwiach. 24 godziny na dobę, 7 dni w tygodniu, także w święta.</p></li></ol>
 </div></section>
 
 <section class="sec acc" id="promo"><div class="wrap amb2">
-<div><h2 class="h2">Pierwszy miesiąc za <b>1 zł</b></h2><p class="lead" style="opacity:.9">Karnet SMART-12 z kodem START: pierwszy miesiąc za złotówkę, potem 109 zł miesięcznie z gwarancją ceny. Kod: <b>START</b>.</p><p style="margin-top:22px"><a class="btn p" href="https://wod.guru/user/login" target="_blank" rel="noopener">Odbierz w WodGuru</a></p></div>
-<div><h2 class="h2">Policz, ile zapłacisz z programem Ambasador</h2><p style="margin-top:10px;opacity:.9">Każde skuteczne polecenie to 10 zł mniej przy kolejnej płatności.</p><label for="pol" class="sr">Liczba poleceń</label><input id="pol" type="range" min="0" max="11" value="3"><output for="pol" class="out"><span id="polv">3 polecenia</span> → karnet Smart‑12 za <b id="polc">79 zł</b> miesięcznie</output><div class="licz"><span id="polb">79</span> zł</div></div>
+<div><h2 class="h2 reveal sk">Pierwszy miesiąc za <b>1 zł</b></h2><p class="lead" style="opacity:.9">Karnet SMART-12 z kodem START: pierwszy miesiąc za złotówkę, potem 109 zł miesięcznie z gwarancją ceny. Kod: <b>START</b>.</p><p style="margin-top:22px"><a class="btn p" href="https://wod.guru/user/login" target="_blank" rel="noopener">Odbierz w WodGuru</a></p></div>
+<div><h2 class="h2 reveal sk">Policz, ile zapłacisz z programem Ambasador</h2><p style="margin-top:10px;opacity:.9">Każde skuteczne polecenie to 10 zł mniej przy kolejnej płatności.</p><label for="pol" class="sr">Liczba poleceń</label><input id="pol" type="range" min="0" max="11" value="3"><output for="pol" class="out"><span id="polv">3 polecenia</span> → karnet Smart‑12 za <b id="polc">79 zł</b> miesięcznie</output><div class="licz"><span id="polb">79</span> zł</div></div>
 </div></section>
 
 <section class="sec" id="opinie"><div class="wrap">
-<h2 class="h2">Co mówią klubowicze</h2>
+<h2 class="h2 reveal sk">Co mówią klubowicze</h2>
 <div class="rate"><b>4,8</b><span>średnia z 104 opinii w Google (Grudziądz, stan na 12.10.2026)<br><a href="https://www.google.com/maps/search/Stomil+Gym+Grudzi%C4%85dz" target="_blank" rel="noopener">Opinie — Grudziądz</a> · <a href="https://www.google.com/maps/search/Stomil+Gym+Bydgoszcz" target="_blank" rel="noopener">Opinie — Bydgoszcz</a></span></div><div class="quotes stagger"><blockquote>Trenuję o 5 rano przed pracą, bo wtedy mam czas. Nigdzie indziej w Grudziądzu nie dałoby się tego zrobić.<cite>Paweł K., Grudziądz</cite></blockquote><blockquote>Zajęcia HYROX zmieniły mi podejście do treningu. Pierwsze zawody za mną.<cite>Ola W., Grudziądz</cite></blockquote><blockquote>Kupiłem karnet w aplikacji o 23, o 23:10 byłem w środku.<cite>Michał D., Bydgoszcz</cite></blockquote><p class="note">Treść cytatów przykładowa — w gotowej stronie wstawiamy prawdziwe opinie z wizytówki Google, z imieniem i inicjałem.</p></div>
 </div></section>
 
 <section class="sec alt" id="kluby"><div class="wrap">
-<h2 class="h2">Dwa kluby</h2>
+<h2 class="h2 reveal sk">Dwa kluby</h2>
 <div class="kl stagger">
 <article><div class="img"><img src="a/f03.jpg" alt="Klub Stomil Gym Grudziądz" width="1800" height="1198" loading="lazy"></div><h3>Grudziądz</h3><p>ul. Ludwika Waryńskiego 32–36 · od 2013, 86-300 Grudziądz</p><p>Pierwszy klub, ponad 10 lat na mapie miasta. Siłownia, strefa cross, zajęcia grupowe i HYROX.</p><div class="btns"><a class="btn p" href="https://www.google.com/maps/search/Stomil+Gym+Grudzi%C4%85dz" target="_blank" rel="noopener">Nawiguj</a><a class="btn g" href="#cennik">Karnety</a></div></article>
 <article><div class="img"><img src="a/byd.jpg" alt="Klub Stomil Gym Bydgoszcz" width="1800" height="1005" loading="lazy"></div><h3>Bydgoszcz</h3><p>ul. Sandomierska 35 · nowy klub, 85-830 Bydgoszcz</p><p>Nowy klub w tym samym modelu: wchodzisz kodem z telefonu, trenujesz, kiedy chcesz.</p><div class="btns"><a class="btn p" href="https://www.google.com/maps/search/Stomil+Gym+Bydgoszcz" target="_blank" rel="noopener">Nawiguj</a><a class="btn g" href="#cennik">Karnety</a></div></article>
@@ -297,7 +329,7 @@ html:not(.js) .hero{min-height:100svh}html:not(.js) .stage{position:relative;hei
 </div></section>
 
 <section class="sec" id="faq"><div class="wrap">
-<h2 class="h2">Pytania i odpowiedzi</h2>
+<h2 class="h2 reveal sk">Pytania i odpowiedzi</h2>
 <div class="faq"><details><summary>Jak wejść do klubu?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Kodem QR z aplikacji WodGuru. Generujesz go w aplikacji i skanujesz przy drzwiach — drzwi otwierają się same, nie potrzebujesz recepcji.</div></details><details><summary>Czy klub naprawdę jest otwarty całą dobę?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Tak. 24 godziny, 7 dni w tygodniu, także w dni świąteczne. W nocy na miejscu nie ma obsługi, ale działa monitoring i numer serwisowy na drzwiach.</div></details><details><summary>Czym różni się Chillow od Smart-12 i Smart-24?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Chillow to subskrypcja bez umowy na czas określony (119 zł miesięcznie, 2 miesiące wypowiedzenia). Smart-12 i Smart-24 to umowa na 12 lub 24 miesiące z niższą ceną (109 / 99 zł) i gwarancją, że nie wzrośnie.</div></details><details><summary>Czy honorujecie MultiSport?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Nie. Zamiast tego mamy program Ambasador, który obniża cenę karnetu o 10 zł za każde skuteczne polecenie — nawet do 0 zł.</div></details><details><summary>Czy mogę wejść ze znajomym na swój kod?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Kod jest imienny i działa dla jednej osoby. Znajomy kupuje własną wejściówkę — a jeśli skorzysta z Twojego polecenia, Ty płacisz mniej.</div></details><details><summary>Drzwi się nie otwierają — co robić?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Zadzwoń pod numer serwisowy z drzwi klubu albo napisz na bok@stomilgym.pl. Reagujemy od razu.</div></details><details><summary>Jak umówić się z trenerem?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Napisz na bok@stomilgym.pl — dobierzemy trenera do Twojego celu. Pierwsza konsultacja jest bezpłatna.</div></details></div>
 </div></section>
 
@@ -356,6 +388,18 @@ st.classList.toggle('phase2',p>0.08);c1.classList.toggle('on',p>0.40);c2.classLi
 var n=imgs.length,i=Math.min(n-1,Math.floor(p*n*0.999));imgs.forEach(function(im,k){im.classList.toggle('on',k===i)});pb.style.setProperty('--p',p)}
 addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 var r=document.getElementById('pol');function pol(){var v=+r.value,c=Math.max(0,109-10*v);document.getElementById('polv').textContent=v+(v===1?' polecenie':(v>=2&&v<=4?' polecenia':' poleceń'));document.getElementById('polc').textContent=c+' zł';document.getElementById('polb').textContent=c}r.addEventListener('input',pol);pol();
+})();
+
+(function(){
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var g=document.querySelector('.hgal'),tr=document.getElementById('track'),gh=g.querySelector('.ghost'),figs=[].slice.call(tr.querySelectorAll('figure')),ims=figs.map(function(f){return f.querySelector('img')}),kl=[].slice.call(document.querySelectorAll('.kl .img img')),ly=scrollY,v=0,tk=false;
+function run(){tk=false;var r=g.getBoundingClientRect(),h=g.offsetHeight-innerHeight,p=Math.min(1,Math.max(0,-r.top/h)),max=tr.scrollWidth-innerWidth;
+tr.style.transform='translate3d('+(-p*max).toFixed(1)+'px,0,0)';gh.style.transform='translate3d('+(-10+p*28).toFixed(2)+'%,-30%,0)';
+ims.forEach(function(im){var b=im.parentNode.getBoundingClientRect(),c=(b.left+b.width/2)/innerWidth-.5;im.style.setProperty('--ix',(-8-c*10).toFixed(2)+'%')});
+var dy=scrollY-ly;ly=scrollY;v=v*.8+dy*.2;var sk=Math.max(-5,Math.min(5,-v*.1));figs.forEach(function(f){f.style.setProperty('--sk',sk.toFixed(2)+'deg')});kl.forEach(function(i){i.style.setProperty('--sk2',(sk*.4).toFixed(2)+'deg')});
+if(Math.abs(v)>.3){q()}}
+function q(){if(!tk){tk=true;requestAnimationFrame(run)}}
+addEventListener('scroll',q,{passive:true});addEventListener('resize',q);run();
 })();
 </script>
 </body></html>
