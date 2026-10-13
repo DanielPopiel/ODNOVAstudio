@@ -104,7 +104,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 
 /* ── HERO: zielony szyld, polaroid z filmem ── */
 .hero{position:relative;background:var(--ziel);color:var(--krem)}
-.js .hero{height:300vh}
+.js .hero{height:470vh}
 .scena{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:center;padding:calc(var(--hdr-h) + 28px) var(--gut) 60px;overflow:hidden}
 .js .scena{position:sticky;top:0;height:100svh;min-height:0}
 .hero h1{font-size:clamp(48px,5.8vw,92px);line-height:1}
@@ -123,7 +123,9 @@ p{margin:0 0 1em;text-wrap:pretty}
 .stol canvas,.stol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .stol.gra .start{opacity:0}
 html:not(.js) .stol canvas{display:none}
-.stol .final{position:absolute;opacity:0;object-fit:contain;width:50%;height:auto;left:25%;top:20%}
+.stol .final{position:absolute;opacity:0;object-fit:contain;width:50%;height:auto;left:25%;top:20%;will-change:transform,opacity}
+.stol .zoom{position:absolute;inset:0;transform-origin:50% 52%;will-change:transform}
+.stol #para{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .podpis{position:absolute;left:18px;right:18px;bottom:14px;display:flex;justify-content:space-between;align-items:baseline;font:italic 500 17px/1.3 var(--txt);color:var(--tusz2)}
 .podpis b{font:400 20px/1 var(--disp);color:var(--tusz)}
 .tasma{position:absolute;left:50%;top:-14px;width:128px;height:30px;background:rgba(240,199,94,.8);transform:translateX(-50%) rotate(-2deg);clip-path:polygon(0 8%,3% 0,97% 4%,100% 92%,97% 100%,2% 96%)}
@@ -132,7 +134,7 @@ html:not(.js) .stol canvas{display:none}
 @media(min-width:901px){.js .pasek{display:none}}
 .pasek i{display:block;height:100%;background:var(--zolty);transform-origin:left;transform:scaleX(var(--p,0))}
 @media(max-width:900px){
-  .js .hero{height:240vh}
+  .js .hero{height:360vh}
   .scena{grid-template-columns:1fr;align-content:start;gap:16px;padding-top:calc(var(--hdr-h) + 14px);padding-bottom:50px}
   .hero h1{font-size:clamp(38px,10.5vw,60px)}
   .hero-lead{margin:12px 0 16px;font-size:16px}
@@ -304,18 +306,21 @@ tr:last-child td,tr:last-child th{border-bottom:0}
       </div>
       <ol class="kroki" id="kroki" aria-label="Etapy">
         <li data-t="0" class="on"><button type="button"><b>1</b>Ciasto</button></li>
-        <li data-t=".19"><button type="button"><b>2</b>Sos</button></li>
-        <li data-t=".58"><button type="button"><b>3</b>Mozzarella</button></li>
-        <li data-t=".74"><button type="button"><b>4</b>Bazylia</button></li>
-        <li data-t=".84"><button type="button"><b>5</b>Z pieca</button></li>
+        <li data-t=".06"><button type="button"><b>2</b>Sos</button></li>
+        <li data-t=".42"><button type="button"><b>3</b>Mozzarella</button></li>
+        <li data-t=".59"><button type="button"><b>4</b>Bazylia</button></li>
+        <li data-t=".72"><button type="button"><b>5</b>Z pieca</button></li>
       </ol>
     </div>
     <div class="polaroid" id="polaroid">
       <span class="tasma" aria-hidden="true"></span>
       <div class="stol" id="stol">
-        <img class="start" src="assets/film-start.webp" alt="Rozciągnięte ciasto na blacie, obok sos pomidorowy i bazylia" width="1280" height="720" fetchpriority="high" decoding="async">
-        <canvas id="film" data-n="90" aria-hidden="true"></canvas>
-        <img class="final" id="final" src="assets/pieczona.webp" alt="" width="640" height="640" decoding="async">
+        <img class="start" src="assets/film-start.webp" alt="Rozciągnięte ciasto na blacie, obok sos pomidorowy i bazylia" width="960" height="720" fetchpriority="high" decoding="async">
+        <div class="zoom" id="zoom">
+          <canvas id="film" data-n="160" aria-hidden="true"></canvas>
+          <img class="final" id="final" src="assets/pieczona.webp" alt="" width="640" height="640" decoding="async">
+          <canvas id="para" aria-hidden="true"></canvas>
+        </div>
       </div>
       <p class="podpis"><b id="pod-b">Margherita</b><span id="pod-s">1 / 5 — ciasto z długiej fermentacji</span></p>
     </div>
@@ -438,64 +443,108 @@ tr:last-child td,tr:last-child th{border-bottom:0}
 <script src="assets/menu-data.js"></script>
 <script src="assets/wspolne.js"></script>
 <script>
-/* Jedyny ruch tej strony: przewijanie składa Margheritę w polaroidzie (klatki z Veo), zdjęcie prostuje się po drodze. */
+/* Hero: przewijanie składa Margheritę w polaroidzie (160 klatek z Veo, 16 kl./s), potem „pieczenie”:
+   ciepłe światło i przenikanie w upieczoną pizzę, na końcu pizza powoli się obraca, a nad nią unosi się para.
+   Ruch wygładzany czasowo (niezależnie od odświeżania ekranu), kadr powoli się przybliża przez cały film. */
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hero = document.querySelector('.hero'), stol = document.getElementById('stol'), cv = document.getElementById('film'), pol = document.getElementById('polaroid');
-  var fin = document.getElementById('final'), bar = document.querySelector('.pasek'), podB = document.getElementById('pod-b'), podS = document.getElementById('pod-s');
+  var fin = document.getElementById('final'), zoom = document.getElementById('zoom'), pc = document.getElementById('para');
+  var bar = document.querySelector('.pasek'), podS = document.getElementById('pod-s');
   var kroki = [].slice.call(document.querySelectorAll('#kroki li'));
   var OPIS = ['ciasto z długiej fermentacji', 'sos pomidorowy, spiralą', 'mozzarella fior di latte, rwana', 'bazylia i grana padano', 'z pieca, 90 sekund'];
   if (!hero) return;
   if (RM) { var st = stol.querySelector('.start'); st.src = 'assets/pieczona.webp'; st.style.objectFit = 'contain'; st.style.background = '#E3D9C6'; podS.textContent = '5 / 5 — ' + OPIS[4]; return; }
-  var N = +cv.getAttribute('data-n') || 0, F = window.PZD_FRAMES || null;
-  if (F) N = F.length;
-  var fr = new Array(N), cx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
-  var mob = innerWidth <= 900, dir = mob ? 'assets/film-m/k' : 'assets/film/k';
+  var mob = innerWidth <= 900, F = window.PZD_FRAMES || null;
+  var N = F ? F.length : (mob ? 120 : 160), dir = mob ? 'assets/film-m/k' : 'assets/film/k';
+  var FW = mob ? 720 : 960, FH = 720, OX = mob ? 285 : 165;                // klatki wycięte z kadru 1280×720 od x = OX
+  if (F && mob) { FW = 960; OX = 165; }                                     // w PREZENTACJI jest jeden zestaw klatek
+  var fr = new Array(N), cx = cv.getContext('2d'), px = pc.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
   function src(i){ return F ? F[i] : dir + String(i + 1).padStart(3, '0') + '.webp'; }
-  function load(i){ if (fr[i] || i >= N) return; var im = new Image(); im.decoding = 'async'; im.src = src(i); im.onload = function(){ im.ok = 1; draw(cur); }; fr[i] = im; }
-  if (N) { load(0); for (var i0 = 0; i0 < N; i0 += 8) load(i0); stol.classList.add('gra');
-    var fine = function(){ if (fine.d) return; fine.d = 1; [4,2,1].forEach(function(st){ for (var i = 0; i < N; i += st) load(i); }); };
-    addEventListener('scroll', fine, { once:true, passive:true }); if ('requestIdleCallback' in window) requestIdleCallback(fine, { timeout:2500 }); else setTimeout(fine, 2500); }
-  var DX = .504, DY = .525, DD = .348;                                     // środek i średnica ciasta w kadrze filmu (1280×720)
+  function load(i){ if (fr[i] || i >= N) return; var im = new Image(); im.decoding = 'async'; im.src = src(i); im.onload = function(){ im.ok = 1; if (Math.abs(i - fi) < 3) draw(); }; fr[i] = im; }
+  load(0); for (var i0 = 0; i0 < N; i0 += 8) load(i0); stol.classList.add('gra');
+  var fine = function(){ if (fine.d) return; fine.d = 1; [4,2,1].forEach(function(st){ for (var i = 0; i < N; i += st) load(i); }); };
+  addEventListener('scroll', fine, { once:true, passive:true }); if ('requestIdleCallback' in window) requestIdleCallback(fine, { timeout:2000 }); else setTimeout(fine, 2000);
+  var DX = .504, DY = .525, DD = .348, W = 0, H = 0, pzx = 0, pzy = 0, pzd = 0;   // środek i średnica ciasta w kadrze 1280×720
   function size(){
-    var w = stol.clientWidth, h = stol.clientHeight; cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
-    var fw = mob ? 760 : 1280, fh = 720, ox = mob ? 260 : 0;
-    var s = Math.max(w / fw, h / fh) * 1.02, x0 = (w - fw * s) / 2, y0 = (h - fh * s) / 2;
-    var d = DD * 1280 * s * 1.01, cxp = x0 + (DX * 1280 - ox) * s, cyp = y0 + DY * 720 * s;
-    fin.style.cssText = 'left:' + (cxp - d/2) + 'px;top:' + (cyp - d/2) + 'px;width:' + d + 'px;height:' + d + 'px;opacity:' + (fin.style.opacity || 0);
-    draw(cur);
+    W = stol.clientWidth; H = stol.clientHeight;
+    cv.width = pc.width = Math.round(W * dpr); cv.height = pc.height = Math.round(H * dpr);
+    cx.imageSmoothingEnabled = true; cx.imageSmoothingQuality = 'high';
+    var s = Math.max(W / FW, H / FH) * 1.02, x0 = (W - FW * s) / 2, y0 = (H - FH * s) / 2;
+    pzd = DD * 1280 * s * 1.01; pzx = x0 + (DX * 1280 - OX) * s; pzy = y0 + DY * 720 * s;
+    fin.style.left = (pzx - pzd/2) + 'px'; fin.style.top = (pzy - pzd/2) + 'px'; fin.style.width = fin.style.height = pzd + 'px';
+    draw();
   }
   function near(i){ for (var d = 0; d < N; d++){ if (fr[i-d] && fr[i-d].ok) return fr[i-d]; if (fr[i+d] && fr[i+d].ok) return fr[i+d]; } return null; }
   function cover(im, a){ var s = Math.max(cv.width / im.naturalWidth, cv.height / im.naturalHeight) * 1.02, w = im.naturalWidth * s, h = im.naturalHeight * s;
     cx.globalAlpha = a; cx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h); }
-  var FILM = .84;
-  function draw(p){
-    if (!N) return;
-    var f = Math.min(1, p / FILM) * (N - 1), i = Math.floor(f), t = f - i, a = near(i), b = fr[i+1] && fr[i+1].ok ? fr[i+1] : null;
-    if (!a) return; cover(a, 1); if (b && t > .01) cover(b, t); cx.globalAlpha = 1;
-  }
-  var cur = 0, tgt = 0, raf = 0, lastN = -1;
-  function prog(){ var r = hero.getBoundingClientRect(), tot = r.height - innerHeight; return tot > 0 ? Math.min(1, Math.max(0, -r.top / tot)) : 0; }
-  function apply(p){
-    draw(p);
-    var k = Math.min(1, Math.max(0, (p - FILM + .02) / .12)), e = k * k * (3 - 2 * k);
+  var FILM = .70, BAKE0 = .70, BAKE1 = .80, cur = 0, tgt = 0, fi = 0;
+  function sm(a, b, x){ var k = Math.min(1, Math.max(0, (x - a) / (b - a))); return k * k * (3 - 2 * k); }
+  function draw(){
+    if (!W) return;
+    var p = cur, f = Math.min(1, p / FILM) * (N - 1), i = Math.floor(f), t = f - i; fi = f;
+    var a = near(i), b = fr[i+1] && fr[i+1].ok ? fr[i+1] : null;
+    if (!a) return;
+    cx.globalCompositeOperation = 'source-over'; cover(a, 1); if (b && t > .01) cover(b, t);
+    var e = sm(BAKE0, BAKE1, p);
+    if (e > 0 && fr[0] && fr[0].ok) cover(fr[0], e);                        // pod upieczoną pizzą blat bez dłoni
+    var g = Math.sin(Math.PI * sm(BAKE0 - .02, BAKE1 + .02, p));           // ciepło pieca: rośnie i gaśnie w trakcie przenikania
+    if (g > .01) {
+      var X = pzx * dpr, Y = pzy * dpr, R = pzd * dpr * .9, gr = cx.createRadialGradient(X, Y, R * .1, X, Y, R * 1.6);
+      gr.addColorStop(0, 'rgba(255,150,60,' + (.55 * g) + ')'); gr.addColorStop(.5, 'rgba(255,110,30,' + (.25 * g) + ')'); gr.addColorStop(1, 'rgba(255,110,30,0)');
+      cx.globalCompositeOperation = 'soft-light'; cx.globalAlpha = 1; cx.fillStyle = gr; cx.fillRect(0, 0, cv.width, cv.height);
+      cx.globalCompositeOperation = 'source-over';
+    }
+    cx.globalAlpha = 1;
+    var rot = 22 * sm(BAKE1, 1, p);
     fin.style.opacity = e.toFixed(3);
-    if (e > 0 && fr[0] && fr[0].ok) { cover(fr[0], e); cx.globalAlpha = 1; }
-    pol.style.setProperty('--rot', ((mob ? -3 : -4) * (1 - Math.min(1, p / .6))).toFixed(2) + 'deg');   // polaroid prostuje się w trakcie
-    var n = 0; kroki.forEach(function(li, j){ if (p >= +li.getAttribute('data-t') - .001) n = j; });
+    fin.style.transform = 'rotate(' + rot.toFixed(2) + 'deg) scale(' + (1.04 - .04 * e).toFixed(4) + ')';
+    zoom.style.transform = 'scale(' + (1 + .07 * sm(0, BAKE0, p) - .03 * sm(BAKE1, 1, p)).toFixed(4) + ')';
+  }
+  /* para nad upieczoną pizzą: miękkie smugi, czas rzeczywisty, siła zależna od przewinięcia */
+  var smugi = [], parT = 0, parRaf = 0, last = 0;
+  function para(now){
+    var dt = last ? Math.min(50, now - last) : 16; last = now;
+    var sila = sm(BAKE0 + .04, BAKE1 + .04, cur);
+    px.clearRect(0, 0, pc.width, pc.height);
+    if (sila > .02 && smugi.length < 14 && Math.random() < .12 * sila) smugi.push({ x: pzx + (Math.random() - .5) * pzd * .5, y: pzy - pzd * (.05 + Math.random() * .2), r: pzd * (.05 + Math.random() * .04), l: 0, L: 2400 + Math.random() * 1600, vx: (Math.random() - .5) * .006, sw: Math.random() * 6.28 });
+    for (var k = smugi.length - 1; k >= 0; k--){
+      var m = smugi[k]; m.l += dt; if (m.l > m.L) { smugi.splice(k, 1); continue; }
+      var life = m.l / m.L, y = m.y - pzd * .75 * life, x = m.x + m.vx * m.l + Math.sin(m.sw + life * 5) * pzd * .03;
+      var al = Math.pow(Math.sin(Math.PI * life), 1.5) * .1 * Math.max(sila, .3), rr = m.r * (1 + life * 2.2);
+      var gg = px.createRadialGradient(x * dpr, y * dpr, 0, x * dpr, y * dpr, rr * dpr);
+      gg.addColorStop(0, 'rgba(255,255,255,' + al + ')'); gg.addColorStop(1, 'rgba(255,255,255,0)');
+      px.fillStyle = gg; px.beginPath(); px.arc(x * dpr, y * dpr, rr * dpr, 0, 6.283); px.fill();
+    }
+    var widac = hero.getBoundingClientRect().bottom > 0;
+    if ((sila > .02 || smugi.length) && widac) parRaf = requestAnimationFrame(para); else { parRaf = 0; last = 0; px.clearRect(0, 0, pc.width, pc.height); }
+  }
+  var lastN = -1, raf = 0, lt = 0;
+  function prog(){ var r = hero.getBoundingClientRect(), tot = r.height - innerHeight; return tot > 0 ? Math.min(1, Math.max(0, -r.top / tot)) : 0; }
+  function apply(){
+    draw();
+    pol.style.setProperty('--rot', ((mob ? -3 : -4) * (1 - sm(0, .55, cur))).toFixed(2) + 'deg');
+    var n = 0; kroki.forEach(function(li, j){ if (cur >= +li.getAttribute('data-t') - .001) n = j; });
     if (n !== lastN) { lastN = n; podS.textContent = (n + 1) + ' / 5 — ' + OPIS[n];
       kroki.forEach(function(li, j){ var on = j === n; li.classList.toggle('on', on); on ? li.setAttribute('aria-current', 'step') : li.removeAttribute('aria-current'); }); }
-    bar.style.setProperty('--p', p.toFixed(3));
+    bar.style.setProperty('--p', cur.toFixed(4));
+    if (cur > BAKE0 + .04 && !parRaf) parRaf = requestAnimationFrame(para);
   }
-  function loop(){ cur += (tgt - cur) * .14; apply(cur); if (Math.abs(tgt - cur) > .0004) raf = requestAnimationFrame(loop); else { raf = 0; cur = tgt; apply(cur); } }
+  function loop(now){                                                      // wygładzanie wykładnicze w czasie: ~120 ms stałej czasowej
+    var dt = lt ? Math.min(64, now - lt) : 16; lt = now;
+    cur += (tgt - cur) * (1 - Math.exp(-dt / 120));
+    if (Math.abs(tgt - cur) < .00015) cur = tgt;
+    apply();
+    if (cur !== tgt) raf = requestAnimationFrame(loop); else { raf = 0; lt = 0; }
+  }
   function on(){ tgt = prog(); if (!raf) raf = requestAnimationFrame(loop); }
-  addEventListener('scroll', on, { passive:true }); addEventListener('resize', size);
+  addEventListener('scroll', on, { passive:true }); addEventListener('resize', function(){ mob = innerWidth <= 900; size(); });
   kroki.forEach(function(li){ li.querySelector('button').addEventListener('click', function(){
     var t = +li.getAttribute('data-t') + .02; scrollTo({ top: hero.offsetTop + t * (hero.offsetHeight - innerHeight), behavior:'smooth' }); }); });
+  [].forEach.call(document.querySelectorAll('[data-tab]'), function(a){ a.addEventListener('click', function(){ var b = document.getElementById('tab-' + a.getAttribute('data-tab')); if (b) b.click(); }); });
   var L = ['', 'Dowóz', 'Minimum', 'Za darmo'], etyk = function(){ [].forEach.call(document.querySelectorAll('.strefy tbody tr'), function(tr){ [].forEach.call(tr.children, function(c, i){ if (i) c.setAttribute('data-l', L[i]); }); }); };
   etyk(); var tb = document.querySelector('[data-strefy]'); if (tb) new MutationObserver(etyk).observe(tb, { childList:true });
-  [].forEach.call(document.querySelectorAll('[data-tab]'), function(a){ a.addEventListener('click', function(){ var b = document.getElementById('tab-' + a.getAttribute('data-tab')); if (b) b.click(); }); });
-  size(); on();
+  cur = tgt = prog(); size(); apply();
 })();
 </script>
 </body>
