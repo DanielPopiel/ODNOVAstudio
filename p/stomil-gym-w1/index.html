@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stomil Gym — siłownia samoobsługowa 24/7 · Grudziądz i Bydgoszcz</title>
+<meta name="description" content="Wchodzisz kodem QR z telefonu, trenujesz o każdej porze. Siłownia 24/7 w Grudziądzu i Bydgoszczy, karnety od 39 zł, pierwszy miesiąc za 1 zł.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0e0e10">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stomil Gym — siłownia samoobsługowa 24/7 · Grudziądz i Bydgoszcz">
+<meta property="og:description" content="Wchodzisz kodem QR z telefonu, trenujesz o każdej porze. Siłownia 24/7 w Grudziądzu i Bydgoszczy, karnety od 39 zł, pierwszy miesiąc za 1 zł.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/stomil-gym-w1/a/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/stomil-gym-w1/">
+<link rel="icon" href="a/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;font-feature-settings:"lnum" 1}
+img,video,canvas{max-width:100%;display:block;height:auto}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--disp);line-height:1;font-weight:var(--dispw,800)}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit}
+::selection{background:var(--acc);color:#fff}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.sec.alt :focus-visible,.sec.acc :focus-visible{outline-color:var(--ink2)}
+html{caret-color:var(--acc);accent-color:var(--acc)}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+section[id]{scroll-margin-top:calc(var(--hdr-h,78px) + 8px)}
+/* pasek makiety + nagłówek w jednym fixed */
+.fixtop{position:fixed;inset:0 0 auto 0;z-index:50}
+.mock{background:#111;color:#cfcfd4;font-size:12px;letter-spacing:.02em;text-align:center;padding:6px 12px;line-height:1.3}
+.mock b{color:#fff;font-weight:600}
+@media(max-width:760px){.mock{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}}
+.hdr{background:var(--hdrbg);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:14px 22px;min-height:66px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.hdr .logo{display:flex;align-items:center;margin-right:auto}
+.hdr .logo img{height:34px;width:auto}
+.hdr nav{display:flex;gap:4px 22px;font-size:15px;font-weight:500}
+.hdr nav a{text-decoration:none;opacity:.85;padding:6px 0}
+.hdr nav a:hover{opacity:1}
+.hdr .tel{text-decoration:none;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:10px 20px;border-radius:var(--rad,8px);border:1px solid transparent;text-decoration:none;font-weight:600;font-size:15.5px;line-height:1.2;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn.p{background:var(--acc);color:#fff}
+.btn.p:hover{background:var(--acc2)}
+.btn.g{background:transparent;color:inherit;border-color:currentColor;opacity:.9}
+.btn.g:hover{opacity:1}
+.mnav{display:none}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:var(--rad,8px);padding:0 14px;font-weight:600;font-size:14px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;left:0;right:0;top:100%;background:var(--hdrbg2);border-bottom:1px solid var(--line);padding:10px clamp(16px,4vw,48px) 18px;display:flex;flex-direction:column;gap:2px}
+.mnav nav a{padding:12px 0;text-decoration:none;font-size:18px;border-bottom:1px solid var(--line)}
+.mnav nav a:last-child{border:0}
+@media(max-width:980px){.hdr nav,.hdr .tel{display:none}.mnav{display:block;position:static}.hdr .wrap{flex-wrap:nowrap}}
+@media(max-width:760px){.hdr .cta{display:none}.mnav nav .cta{display:flex;margin-top:10px}}
+/* dolny pasek mobilny */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--hdrbg2);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s}
+.mbar .btn{flex:1;min-height:48px}
+html:not(.js) .mbar,.past-hero .mbar{transform:none}
+@media(max-width:760px){.mbar{display:flex}body{padding-bottom:70px}}
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(8px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(8px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*70ms)}
+.js .stagger.in>*{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .stagger>*{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* sekcje */
+.sec{padding:clamp(56px,8vw,104px) 0}
+.sec.alt{background:var(--bg2);color:var(--ink2)}
+.sec.acc{background:var(--acc);color:#fff}
+.h2{font-size:clamp(2.4rem,5.2vw,3.9rem);letter-spacing:-.01em;max-width:20ch;text-wrap:balance}
+.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);max-width:60ch;opacity:.86;margin-top:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+/* lista redakcyjna */
+.rows{border-top:1px solid var(--line);margin-top:34px}
+.row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr) auto;gap:16px 32px;padding:26px 0;border-bottom:1px solid var(--line);align-items:center}
+.row h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+.row .sub{opacity:.75;font-size:.98rem;margin-top:4px}
+.row .cechy{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.98rem;opacity:.9}
+.row .cena{font-family:var(--disp);font-size:clamp(2.2rem,3.4vw,3rem);line-height:1;white-space:nowrap;text-align:right}
+.row .cena small{display:block;font-family:var(--sans);font-size:.85rem;font-weight:500;opacity:.75;margin-top:6px;letter-spacing:0}
+@media(max-width:860px){.row{grid-template-columns:1fr auto;gap:8px 18px;align-items:start;padding:20px 0}.row .cena{grid-column:2;grid-row:1;font-size:2rem}.row .cechy{grid-column:1/-1;font-size:.9rem;gap:4px 14px;opacity:.75}}
+/* FAQ */
+.faq{border-top:1px solid var(--line);margin-top:30px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-weight:600;font-size:1.12rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{flex:0 0 22px;width:22px;height:22px;transition:transform .25s}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq .a{padding:0 0 24px;max-width:66ch;opacity:.88}
+/* opinie */
+.quotes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(20px,3vw,40px);margin-top:36px}
+.quotes blockquote{margin:0;padding:0 0 0 22px;border-left:2px solid var(--acc);font-size:1.22rem;line-height:1.4}
+.quotes cite{display:block;font-style:normal;font-size:.95rem;opacity:.7;margin-top:14px}
+.quotes .note{grid-column:1/-1;font-size:.78rem;opacity:.6}
+@media(max-width:860px){.quotes{grid-template-columns:1fr}}
+.rate{display:flex;align-items:center;gap:14px;margin:26px 0 8px;font-size:1rem}
+.rate b{font-family:var(--disp);font-size:2.8rem;line-height:1;font-weight:var(--dispw,800)}
+/* kontakt */
+.kontakt .grid2{align-items:stretch}
+.kontakt .dane{display:grid;gap:22px;align-content:start;font-size:1.08rem}
+.kontakt .dane a{text-decoration:none}
+.kontakt .dane b{display:block;font-weight:600;font-size:.86rem;letter-spacing:0;opacity:.85;margin-bottom:4px}
+.sec.acc .lead,.sec.acc p{opacity:1}
+.form{background:var(--paper);color:#111;padding:clamp(22px,3vw,36px);border-radius:var(--rad,8px);display:grid;gap:14px}
+.form label{display:grid;gap:6px;font-size:.95rem}
+.form input,.form textarea,.form select{font:inherit;padding:12px 14px;border:1px solid #cfcfcf;border-radius:6px;background:#fff;color:#111;width:100%}
+.form textarea{min-height:120px;resize:vertical}
+.form .btn{justify-self:start}
+.form small{opacity:.7}
+.form .chk{grid-template-columns:auto 1fr;align-items:start;font-size:.88rem;gap:10px}.form .chk input{width:auto;margin-top:3px}
+/* stopka */
+.foot{padding:48px 0 32px;border-top:1px solid var(--line);font-size:.95rem}
+.foot .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.foot .logo img{height:30px;width:auto;margin-bottom:14px}
+.foot ul{display:grid;gap:8px}
+.foot a{text-decoration:none;opacity:.85;display:inline-block;padding:6px 0}
+.foot .legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 24px;opacity:.65;font-size:.85rem;border-top:1px solid var(--line);padding-top:18px;margin-top:8px}
+@media(max-width:760px){.foot .wrap{grid-template-columns:1fr}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+:root{--bg:#0e0e10;--bg2:#f3f1ea;--ink:#ececee;--ink2:#141416;--acc:#E30613;--acc2:#b8040f;--blue:#1b2a3a;--line:rgba(255,255,255,.14);--paper:#f6f5f0;
+--hdrbg:rgba(14,14,16,.9);--hdrbg2:#141416;--disp:'Sofia Sans Extra Condensed',Impact,sans-serif;--dispw:800;--sans:'IBM Plex Sans',system-ui,sans-serif;--rad:4px}
+.sec.alt{--line:rgba(0,0,0,.14);--hdrbg2:#fff}
+h1,h2,h3,.h2,.row h3,.row .cena,.rate b{text-transform:uppercase;letter-spacing:.005em}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;background:#07080a;color:#fff}
+.hero .media{position:absolute;inset:0}
+.hero .media img,.hero .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,10,.25) 0%,rgba(7,8,10,0) 35%,rgba(7,8,10,.72) 78%,#0e0e10 100%)}
+.hero .wrap{position:relative;padding-top:calc(var(--hdr-h,100px) + 48px);padding-bottom:clamp(40px,7vh,80px)}
+.hero h1{font-size:clamp(4.6rem,13vw,13rem);line-height:.86;letter-spacing:-.005em;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.hero h1 span{display:block;color:var(--acc)}
+.hero .sub{display:grid;grid-template-columns:1fr auto;gap:22px 48px;align-items:end;margin-top:28px}
+.hero .sub p{font-size:clamp(1.05rem,1.6vw,1.35rem);max-width:46ch;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.hero .cities{display:flex;gap:12px;flex-wrap:wrap}
+.hero .cities .btn{min-height:54px;padding:12px 24px;font-size:1.05rem}
+.hero .cities .btn.g{background:rgba(14,14,16,.45);backdrop-filter:blur(6px);border-color:rgba(255,255,255,.45)}
+.hero .clock{position:absolute;right:clamp(16px,4vw,48px);top:calc(var(--hdr-h,100px) + 28px);font-family:var(--disp);font-size:clamp(1.2rem,2vw,1.6rem);letter-spacing:.04em;opacity:.9;display:flex;gap:14px;align-items:center}
+.hero .clock i{width:10px;height:10px;border-radius:50%;background:#35d07f;box-shadow:0 0 0 0 rgba(53,208,127,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(53,208,127,.55)}70%{box-shadow:0 0 0 12px rgba(53,208,127,0)}100%{box-shadow:0 0 0 0 rgba(53,208,127,0)}}
+@media(max-width:760px){.hero .sub{grid-template-columns:1fr}.hero .clock{position:static;margin-bottom:18px}.hero .media img,.hero .media video{object-position:50% 50%}}
+.hero .media img{animation:kb 26s linear forwards}@keyframes kb{to{transform:scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.hero .media img{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero .clock i{animation:none}}
+/* kroki */
+.kroki{counter-reset:k}
+.kroki li{display:grid;grid-template-columns:auto 1fr;gap:18px 26px;padding:30px 0;border-top:1px solid var(--line);align-items:start}
+.kroki li:last-child{border-bottom:1px solid var(--line)}
+.kroki li::before{counter-increment:k;content:counter(k,decimal-leading-zero);font-family:var(--disp);font-size:clamp(3rem,5vw,4.6rem);line-height:.9;color:var(--acc);min-width:2.2ch}
+.kroki h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
+.kroki p{margin-top:8px;max-width:48ch;opacity:.86}
+.jak .foto{position:relative;border-radius:var(--rad);overflow:hidden;aspect-ratio:3/4}
+.jak .foto img{width:100%;height:100%;object-fit:cover}
+.jak .foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,0));font-size:.9rem;color:#fff}
+/* promo */
+.promo{position:relative;overflow:hidden}
+.promo .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.promo .big{font-family:var(--disp);font-size:clamp(5rem,16vw,15rem);line-height:.82;letter-spacing:-.01em;text-transform:uppercase}
+.promo .big small{display:block;font-size:.28em;letter-spacing:.02em;margin-top:.2em;opacity:.95}
+.promo p{font-size:1.15rem;max-width:44ch}
+.promo code{font-family:var(--sans);font-weight:600;background:#fff;color:var(--acc);padding:2px 8px;border-radius:3px}
+.promo .btn.p{background:#111;color:#fff;margin-top:22px}
+.promo .btn.p:hover{background:#000}
+@media(max-width:860px){.promo .wrap{grid-template-columns:1fr}}
+/* miasta */
+.miasta{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,36px);margin-top:36px}
+.miasto{position:relative;border-radius:var(--rad);overflow:hidden;min-height:420px;display:grid;align-items:end;color:#fff;isolation:isolate}
+.miasto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;transition:transform .8s}
+.miasto:hover img{transform:scale(1.04)}
+.miasto::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 55%,rgba(0,0,0,.08) 100%)}
+.miasto .in{padding:28px}
+.miasto h3{font-size:clamp(2.4rem,4vw,3.6rem)}
+.miasto .adr{opacity:.9;margin-top:6px}
+.miasto p{margin-top:10px;max-width:40ch;opacity:.9;font-size:.98rem}
+.miasto .btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.miasto .tag{position:absolute;top:18px;left:18px;background:var(--acc);color:#fff;font-weight:600;font-size:.8rem;padding:6px 10px;border-radius:3px}
+@media(max-width:860px){.miasta{grid-template-columns:1fr}.miasto{min-height:360px}}
+/* cennik filtr */
+.filtr{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.filtr button{border:1px solid var(--line);background:transparent;color:inherit;padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:500}
+.filtr button[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+.row.top .sub{color:var(--acc);font-weight:600}
+.grp{font-family:var(--sans);font-weight:600;font-size:.95rem;text-transform:none;letter-spacing:0;opacity:.7;padding:30px 0 10px}
+.rows .grp:first-child{padding-top:10px}
+.cennik .uwaga{margin-top:24px;font-size:.92rem;opacity:.7;max-width:70ch}
+/* zajęcia */
+.zaj{display:grid;gap:0;margin-top:40px}
+.zaj article{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;padding:48px 0;border-top:1px solid var(--line)}
+.zaj article:nth-child(even) .img{order:2}
+.zaj .img{aspect-ratio:3/2;overflow:hidden;border-radius:var(--rad)}
+.zaj .img img{width:100%;height:100%;object-fit:cover}
+.zaj h3{font-size:clamp(2.2rem,3.6vw,3.2rem)}
+.zaj p{margin-top:12px;max-width:50ch;opacity:.88;font-size:1.05rem}
+.zaj .btn{margin-top:20px}
+@media(max-width:860px){.zaj article{grid-template-columns:1fr}.zaj article:nth-child(even) .img{order:0}}
+/* ambasador */
+.amb .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start}
+.amb ol{margin:26px 0 0;padding:0;list-style:none;counter-reset:a;display:grid;gap:12px}
+.amb ol li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;font-size:1.05rem}
+.amb ol li::before{counter-increment:a;content:counter(a);font-family:var(--disp);font-size:2rem;color:var(--acc);line-height:1}
+.amb .zero{font-family:var(--disp);font-size:clamp(4.5rem,9vw,8rem);line-height:.9;text-transform:uppercase;color:var(--acc);text-align:left}
+.amb .zero small{display:block;font-size:.24em;color:var(--ink2);letter-spacing:.01em;opacity:.8}
+@media(max-width:860px){.amb .wrap{grid-template-columns:1fr}.amb .zero{text-align:left}}
+/* dwa cta */
+.cta2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,36px)}
+.cta2 div{border-top:2px solid var(--acc);padding-top:20px}
+.cta2 h3{font-size:clamp(1.8rem,2.6vw,2.4rem)}
+.cta2 p{margin:10px 0 16px;opacity:.86;max-width:46ch}
+@media(max-width:860px){.cta2{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="fixtop" id="top">
+<div class="mock"><b>MAKIETA</b> · propozycja nowej strony stomilgym.pl · wariant W1 „Otwarte. Zawsze.” · ODNOVA Studio · treść i zdjęcia do podmiany</div>
+<header class="hdr">
+<div class="wrap">
+<a class="logo" href="#top" aria-label="Stomil Gym — strona główna"><img src="a/logo-dark.png" alt="Stomil Gym" width="200" height="68"></a>
+<nav aria-label="Menu"><a href="#jak">Jak to działa</a><a href="#cennik">Karnety</a><a href="#zajecia">Zajęcia</a><a href="#kluby">Kluby</a><a href="#faq">FAQ</a></nav>
+<a class="tel" href="tel:+48604515144">+48 604 515 144</a>
+<a class="btn p cta" href="#cennik">Kup karnet</a>
+<details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#jak">Jak to działa</a><a href="#cennik">Karnety</a><a href="#zajecia">Zajęcia</a><a href="#kluby">Kluby</a><a href="#faq">FAQ</a><a href="tel:+48604515144">+48 604 515 144</a><a class="btn p cta" href="#cennik">Kup karnet</a></nav></details>
+</div>
+</header>
+</div>
+<div class="mbar"><a class="btn g" href="tel:+48604515144">Zadzwoń</a><a class="btn p" href="#cennik">Kup karnet</a></div>
+
+<section class="hero" id="start">
+<div class="media"><picture><source media="(max-width:760px)" srcset="a/hero-1000.webp"><img src="a/hero.webp" alt="" width="2000" height="1116" fetchpriority="high"></picture></div>
+<div class="wrap">
+<div class="clock" aria-live="off"><i></i><span id="clk">OTWARTE TERAZ</span></div>
+<h1>Otwarte.<span>Zawsze.</span></h1>
+<div class="sub">
+<p>Siłownia samoobsługowa: kupujesz karnet w telefonie, kod QR otwiera drzwi, trenujesz o 6:00 albo o 2:00 w nocy. Bez recepcji, bez godzin otwarcia.</p>
+<div class="cities"><a class="btn p" href="#cennik">Kup karnet</a><a class="btn g" href="#kluby">Grudziądz · Bydgoszcz</a></div>
+</div>
+</div>
+</section>
+
+<section class="sec jak" id="jak"><div class="wrap grid2">
+<div>
+<h2 class="h2">Trzy kroki i jesteś w środku</h2>
+<p class="lead">Nie ma recepcji, karnetu w portfelu ani godzin otwarcia. Jest aplikacja i drzwi, które poznają Twój telefon.</p>
+<ol class="kroki stagger" style="margin-top:34px"><li><div><h3>Kup karnet online</h3><p>Wybierasz miasto i karnet w aplikacji WodGuru. Płatność kartą, bez wizyty w klubie.</p></div></li><li><div><h3>Odbierz kod QR</h3><p>Kod pojawia się w aplikacji od razu po opłaceniu. To Twój klucz do klubu.</p></div></li><li><div><h3>Wejdź, kiedy chcesz</h3><p>Skanujesz kod przy drzwiach. 24 godziny na dobę, 7 dni w tygodniu, także w święta.</p></div></li></ol>
+</div>
+<figure class="foto reveal"><img src="a/hero2.webp" alt="Telefon z kodem QR przy czytniku drzwi" width="2000" height="1116" loading="lazy"><figcaption>Czytnik przy drzwiach — kod z aplikacji, bez recepcji</figcaption></figure>
+</div></section>
+
+<section class="sec acc promo" id="promo"><div class="wrap">
+<div class="big">1 zł<small>pierwszy miesiąc</small></div>
+<div class="reveal"><p>Karnet SMART-12 z kodem START: pierwszy miesiąc za złotówkę, potem 109 zł miesięcznie z gwarancją ceny.</p><p style="margin-top:14px">Kod przy zakupie: <code>START</code></p><a class="btn p" href="#cennik">Zobacz karnety</a></div>
+</div></section>
+
+<section class="sec cennik" id="cennik"><div class="wrap">
+<h2 class="h2">Karnety bez drobnego druku</h2>
+<p class="lead">Jedna cena, jasne warunki. Każdy karnet otwiera drzwi obu klubów przez całą dobę.</p>
+<div class="rows" id="rows"><h3 class="grp">Bez umowy</h3><div class="row" data-typ="bez umowy"><div><h3>Jednorazowe wejście</h3><div class="sub">siłownia + zajęcia grupowe</div></div><ul class="cechy"><li>płatność jednorazowa</li><li>bez subskrypcji, bez umowy</li><li>ważny w dniu zakupu</li></ul><div class="cena">39<small>zł</small></div></div><div class="row" data-typ="bez umowy"><div><h3>Flex-7</h3><div class="sub">7 dni, bez umowy</div></div><ul class="cechy"><li>siłownia 24/7</li><li>system poleceń</li><li>jedna płatność</li></ul><div class="cena">79<small>zł</small></div></div><div class="row" data-typ="bez umowy"><div><h3>Flex</h3><div class="sub">bez umowy</div></div><ul class="cechy"><li>siłownia 24/7</li><li>system poleceń</li><li>−10 zł za przedłużenie przed końcem</li></ul><div class="cena">139<small>zł / 30 dni</small></div></div><h3 class="grp">Subskrypcje — taniej, z gwarancją ceny</h3><div class="row" data-typ="subskrypcja"><div><h3>Chillow</h3><div class="sub">subskrypcja na czas nieokreślony</div></div><ul class="cechy"><li>siłownia 24/7</li><li>system poleceń</li><li>automatyczna płatność</li><li>2 miesiące wypowiedzenia</li></ul><div class="cena">119<small>zł / mies.</small></div></div><div class="row" data-typ="subskrypcja"><div><h3>Smart-12</h3><div class="sub">umowa na 12 miesięcy</div></div><ul class="cechy"><li>siłownia 24/7</li><li>gwarancja ceny</li><li>automatyczna płatność</li></ul><div class="cena">109<small>zł / mies.</small></div></div><div class="row top" data-typ="subskrypcja"><div><h3>Smart-24</h3><div class="sub">umowa na 24 miesiące · najczęściej wybierany</div></div><ul class="cechy"><li>siłownia 24/7</li><li>gwarancja ceny</li><li>automatyczna płatność</li></ul><div class="cena">99<small>zł / mies.</small></div></div><h3 class="grp">Z zajęciami grupowymi</h3><div class="row" data-typ="grupowe"><div><h3>Multi</h3><div class="sub">siłownia + zajęcia grupowe</div></div><ul class="cechy"><li>wszystkie zajęcia grupowe</li><li>strefa cross</li><li>bez umowy; 199 zł w subskrypcji</li></ul><div class="cena">220<small>zł / mies.</small></div></div><div class="row" data-typ="grupowe"><div><h3>HYROX Start</h3><div class="sub">wejście w HYROX</div></div><ul class="cechy"><li>5-dniowy plan treningowy</li><li>zajęcia HYROX</li><li>siłownia 24/7</li></ul><div class="cena">149<small>zł / 14 dni</small></div></div></div>
+<p class="uwaga">Zakup w aplikacji WodGuru po wybraniu miasta. Karnety Smart‑12 i Smart‑24 mają gwarancję ceny na czas umowy. Pełne warunki w regulaminie klubu.</p>
+<p style="margin-top:28px"><a class="btn p" href="https://wod.guru/user/login" target="_blank" rel="noopener">Kup karnet w WodGuru</a></p>
+</div></section>
+
+<section class="sec alt" id="kluby"><div class="wrap">
+<h2 class="h2">Dwa miasta, ten sam kod</h2>
+<p class="lead">Karnet działa w obu klubach. W Grudziądzu trenujemy od ponad dziesięciu lat, w Bydgoszczy otworzyliśmy drugi klub w tym samym modelu.</p>
+<div class="miasta stagger">
+<article class="miasto"><img src="a/f01.jpg" alt="Klub Stomil Gym Grudziądz — bieżnie" width="1800" height="1198" loading="lazy"><div class="in"><h3>Grudziądz</h3><div class="adr">ul. Ludwika Waryńskiego 32–36 · od 2013</div><p>Pierwszy klub, ponad 10 lat na mapie miasta. Siłownia, strefa cross, zajęcia grupowe i HYROX.</p><div class="btns"><a class="btn p" href="#cennik">Kup karnet</a><a class="btn g" href="https://www.google.com/maps/search/Stomil+Gym+Grudzi%C4%85dz" target="_blank" rel="noopener">Nawiguj</a></div></div></article>
+<article class="miasto"><img src="a/f03.jpg" alt="Klub Stomil Gym — strefa wolnych ciężarów (zdjęcie z Grudziądza, do podmiany na Bydgoszcz)" width="1800" height="1198" loading="lazy"><div class="in"><h3>Bydgoszcz</h3><div class="adr">ul. Sandomierska 35 · nowy klub</div><p>Nowy klub w tym samym modelu: wchodzisz kodem z telefonu, trenujesz, kiedy chcesz.</p><div class="btns"><a class="btn p" href="#cennik">Kup karnet</a><a class="btn g" href="https://www.google.com/maps/search/Stomil+Gym+Bydgoszcz" target="_blank" rel="noopener">Nawiguj</a></div></div></article>
+</div>
+</div></section>
+
+<section class="sec" id="zajecia"><div class="wrap">
+<h2 class="h2">Nie tylko siłownia</h2>
+<p class="lead">Strefa cross, zajęcia grupowe i trenerzy — w karnecie Multi albo na jednorazowe wejście.</p>
+<div class="zaj">
+<article class="reveal"><div class="img"><img src="a/f06.jpg" alt="Grupa po treningu w strefie cross" width="1134" height="722" loading="lazy"></div><div><h3>HYROX</h3><p>Globalny format fitness racing: 8 km biegu przeplatane 8 stacjami funkcjonalnymi. Trenujesz pod zawody albo po prostu pod kondycję — treningi są skalowalne.</p><p style="margin-top:8px;font-weight:600">HYROX Start — 149 zł za 14 dni z planem treningowym</p><a class="btn g" href="#cennik">Zobacz karnet HYROX</a></div></article>
+<article class="reveal"><div class="img"><img src="a/f02.jpg" alt="Kettlebelle w strefie cross" width="1134" height="722" loading="lazy"></div><div><h3>CrossTraining</h3><p>Siła, wytrzymałość i technika w jednym treningu. Własna strefa cross z rigiem, kettlebellami i sankami.</p><a class="btn g" href="#cennik">Karnet Multi — 220 zł</a></div></article>
+<article class="reveal"><div class="img"><img src="a/f03.jpg" alt="Trening z trenerem personalnym" width="1800" height="1198" loading="lazy"></div><div><h3>Trening personalny</h3><p>Pierwsza konsultacja z trenerem w cenie każdej wejściówki. Plan pod Twój cel, kontrola techniki, pomiary postępów.</p><a class="btn g" href="#kontakt">Umów konsultację</a></div></article>
+</div>
+</div></section>
+
+<section class="sec alt amb" id="ambasador"><div class="wrap">
+<div><h2 class="h2">Karnet nawet za 0 zł</h2><p class="lead">Program Ambasador: polecasz klub znajomemu, on zaczyna trenować, a Ty dostajesz 10 zł zniżki na kolejną płatność — za każde skuteczne polecenie. Dziesięć poleceń to karnet za darmo.</p><ol class="stagger"><li>Udostępniasz swój link z aplikacji WodGuru</li><li>Znajomy rejestruje się i opłaca karnet</li><li>Twoja następna płatność jest o 10 zł niższa</li></ol></div>
+<div class="zero">0 zł<small>za karnet, po jedenastu poleceniach Smart‑12</small></div>
+</div></section>
+
+<section class="sec" id="opinie"><div class="wrap">
+<h2 class="h2">Trenują tu ludzie, którzy mają mało czasu</h2>
+<div class="rate"><b>4,8</b><span>średnia z 104 opinii w Google (Grudziądz, stan na 12.10.2026)<br><a href="https://www.google.com/maps/search/Stomil+Gym+Grudzi%C4%85dz" target="_blank" rel="noopener">Opinie — Grudziądz</a> · <a href="https://www.google.com/maps/search/Stomil+Gym+Bydgoszcz" target="_blank" rel="noopener">Opinie — Bydgoszcz</a></span></div><div class="quotes stagger"><blockquote>Trenuję o 5 rano przed pracą, bo wtedy mam czas. Nigdzie indziej w Grudziądzu nie dałoby się tego zrobić.<cite>Klubowicz, Grudziądz</cite></blockquote><blockquote>Zajęcia HYROX zmieniły mi podejście do treningu. Pierwsze zawody za mną.<cite>Klubowiczka, Grudziądz</cite></blockquote><blockquote>Kupiłem karnet w aplikacji o 23, o 23:10 byłem w środku.<cite>Klubowicz, Bydgoszcz</cite></blockquote><p class="note">Treść cytatów przykładowa — w gotowej stronie wstawiamy prawdziwe opinie z wizytówki Google, z imieniem i inicjałem.</p></div>
+</div></section>
+
+<section class="sec alt" id="faq"><div class="wrap">
+<h2 class="h2">Pytania z drzwi klubu</h2>
+<p class="lead">Nie ma recepcji, więc odpowiadamy tutaj.</p>
+<div class="faq"><details><summary>Jak wejść do klubu?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Kodem QR z aplikacji WodGuru. Generujesz go w aplikacji i skanujesz przy drzwiach — drzwi otwierają się same, nie potrzebujesz recepcji.</div></details><details><summary>Czy klub naprawdę jest otwarty całą dobę?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Tak. 24 godziny, 7 dni w tygodniu, także w dni świąteczne. W nocy na miejscu nie ma obsługi, ale działa monitoring i numer serwisowy na drzwiach.</div></details><details><summary>Czym różni się Chillow od Smart-12 i Smart-24?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Chillow to subskrypcja bez umowy na czas określony (119 zł miesięcznie, 2 miesiące wypowiedzenia). Smart-12 i Smart-24 to umowa na 12 lub 24 miesiące z niższą ceną (109 / 99 zł) i gwarancją, że nie wzrośnie.</div></details><details><summary>Czy honorujecie MultiSport?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Nie. Zamiast tego mamy program Ambasador, który obniża cenę karnetu o 10 zł za każde skuteczne polecenie — nawet do 0 zł.</div></details><details><summary>Czy mogę wejść ze znajomym na swój kod?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Kod jest imienny i działa dla jednej osoby. Znajomy kupuje własną wejściówkę — a jeśli skorzysta z Twojego polecenia, Ty płacisz mniej.</div></details><details><summary>Drzwi się nie otwierają — co robić?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Zadzwoń pod numer serwisowy z drzwi klubu albo napisz na bok@stomilgym.pl. Reagujemy od razu.</div></details><details><summary>Jak umówić się z trenerem?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Napisz na bok@stomilgym.pl — dobierzemy trenera do Twojego celu. Pierwsza konsultacja jest bezpłatna.</div></details></div>
+</div></section>
+
+<section class="sec" id="wspolpraca" style="padding:clamp(40px,6vw,72px) 0"><div class="wrap cta2 stagger">
+<div><h3>Jesteś trenerem personalnym?</h3><p>Dołącz do zespołu trenerów Stomil Gym — pracujesz z klubowiczami w klubie otwartym całą dobę, na warunkach, które ustalamy indywidualnie.</p><a class="btn g" href="mailto:bok@stomilgym.pl">Napisz do nas</a></div>
+<div><h3>Masz lokal w kujawsko-pomorskim?</h3><p>Szukamy kolejnych lokalizacji pod siłownie samoobsługowe. Napisz, jeśli masz ciekawą halę lub pawilon.</p><a class="btn g" href="mailto:bok@stomilgym.pl">Zgłoś lokal</a></div>
+</div></section>
+
+<section class="sec acc kontakt" id="kontakt"><div class="wrap">
+<h2 class="h2">Masz pytanie? Napisz albo zadzwoń.</h2>
+<p class="lead">Odpowiadamy w godzinach pracy biura, a w sprawie drzwi — natychmiast pod numerem serwisowym z drzwi klubu.</p>
+<div class="grid2" style="margin-top:40px">
+<div class="dane">
+<div><b>Telefon</b><a href="tel:+48604515144">+48 604 515 144</a></div>
+<div><b>E-mail</b><a href="mailto:bok@stomilgym.pl">bok@stomilgym.pl</a></div>
+<div><b>Numer serwisowy (drzwi, całą dobę)</b>[uzupełnić — numer z drzwi klubu]</div>
+<div><b>Grudziądz</b>ul. Ludwika Waryńskiego 32–36 · od 2013, 86-300 Grudziądz</div>
+<div><b>Bydgoszcz</b>ul. Sandomierska 35 · nowy klub, 85-830 Bydgoszcz</div>
+<div><b>Social media</b><a href="https://www.facebook.com/StomilGym" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/stomil_gym/" target="_blank" rel="noopener">Instagram</a></div>
+</div>
+<form class="form" onsubmit="return false">
+<label>Imię<input type="text" name="imie" autocomplete="given-name" required></label>
+<label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+<label>Klub<select name="klub"><option>Grudziądz</option><option>Bydgoszcz</option></select></label>
+<label>Wiadomość<textarea name="msg" required></textarea></label>
+<label class="chk"><input type="checkbox" name="rodo" required> Zgadzam się na kontakt w sprawie mojego zapytania (RODO).</label>
+<button class="btn p" type="submit">Wyślij wiadomość</button>
+<small>Makieta — formularz nie wysyła wiadomości.</small>
+</form>
+</div></div></section>
+<footer class="foot"><div class="wrap">
+<div><a class="logo" href="#top"><img src="a/logo-dark.png" alt="Stomil Gym" width="176" height="60"></a><p>Siłownie samoobsługowe 24/7 w Grudziądzu i Bydgoszczy.</p><p style="margin-top:10px"><a href="tel:+48604515144">+48 604 515 144</a> · <a href="mailto:bok@stomilgym.pl">bok@stomilgym.pl</a></p></div>
+<ul><li><a href="#jak">Jak to działa</a></li><li><a href="#cennik">Karnety</a></li><li><a href="#zajecia">Zajęcia grupowe</a></li><li><a href="#kluby">Kluby</a></li><li><a href="#faq">FAQ</a></li></ul>
+<ul><li><a href="https://wod.guru/user/login" target="_blank" rel="noopener">Logowanie WodGuru</a></li><li><a href="https://stomilgym.pl/regulamin/" target="_blank" rel="noopener">Regulamin klubu</a></li><li><a href="https://stomilgym.pl/regulamin-sklepu/" target="_blank" rel="noopener">Regulamin sklepu</a></li><li><a href="https://stomilgym.pl/polityka-prywatnosci/" target="_blank" rel="noopener">Polityka prywatności</a></li><li><a href="https://stomilgym.pl/wp-content/uploads/2026/03/Zgoda-Rodzica_Opiekuna-01.04.26.pdf" target="_blank" rel="noopener">Zgoda dla niepełnoletnich</a></li></ul>
+<div class="legal"><span>© 2026 Stomil Gym Sp. z o.o.</span><span>NIP [uzupełnić]</span><span>REGON [uzupełnić]</span><span>Projekt makiety: ODNOVA Studio</span></div>
+</div></footer>
+<script>
+
+(function(){
+var d=document,hdr=d.getElementById('top');
+function m(){d.documentElement.style.setProperty('--hdr-h',hdr.offsetHeight+'px')}
+m();addEventListener('resize',m);addEventListener('load',m);
+d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){d.querySelector('.mnav').removeAttribute('open')})});
+var hero=d.querySelector('.hero');
+function ph(){if(!hero)return;d.body.classList.toggle('past-hero',hero.getBoundingClientRect().top<-innerHeight*0.35)}
+addEventListener('scroll',ph,{passive:true});ph();
+var els=[].slice.call(d.querySelectorAll('.reveal,.stagger'));var fired=false;
+d.querySelectorAll('.stagger').forEach(function(s){[].forEach.call(s.children,function(c,i){c.style.setProperty('--i',i)})});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);fired=true}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});els.forEach(function(e){io.observe(e)});
+setTimeout(function(){if(!fired)els.forEach(function(e){e.classList.add('in')})},4000);
+var t;function sweep(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in')})}
+addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sweep,160)},{passive:true});}else{els.forEach(function(e){e.classList.add('in')})}
+})();
+
+(function(){
+var c=document.getElementById('clk');function t(){var d=new Date();c.textContent='JEST '+d.getHours()+':'+('0'+d.getMinutes()).slice(-2)+' · OTWARTE'}t();setInterval(t,20000);
+})();
+</script>
+</body></html>
