@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Salon Fryzjerski Sylwia — koloryzacja i strzyżenie, Toruń ul. Końcowa 4 | Makieta W3 „Wzornik”</title>
+<meta name="description" content="Salon Fryzjerski Sylwia, Toruń ul. Końcowa 4, od 1997 r. Koloryzacja, balejaż, strzyżenie damskie, męskie i dziecięce, trwała. Pon.–pt. 8–20, sob. 8–13. Tel. 56 622 77 87.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="Salon Fryzjerski Sylwia — makieta W3 „Wzornik”">
+<meta property="og:description" content="Poglądowa wersja nowej strony salonu przy ul. Końcowej 4 w Toruniu.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/salon-sylwia-w3/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f2d94e'/%3E%3Cg fill='none' stroke='%231f1520' stroke-width='4'%3E%3Ccircle cx='20' cy='45' r='8'/%3E%3Ccircle cx='44' cy='45' r='8'/%3E%3Cpath d='M25 39 46 10M39 39 18 10'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&f[]=supreme@400,500,700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HairSalon","name":"Salon Fryzjerski Sylwia","founder":"Sylwia Poliwodzińska","foundingDate":"1997","telephone":"+48566227787","email":"s.poliwodzinska@gmail.com","address":{"@type":"PostalAddress","streetAddress":"ul. Końcowa 4","postalCode":"87-100","addressLocality":"Toruń","addressCountry":"PL"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"13:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"96"}}</script>
+<style>
+:root{
+  --white:#fbfbf8; --yellow:#f2d94e; --ink:#1f1520; --ink2:#2b1f2c; --wine:#7d1f35; --wine-d:#5e1527;
+  --mut:#5a4f58; --mut-d:#f0dfe6; --line:rgba(31,21,32,.16); --line-d:rgba(251,251,248,.18);
+  --serif:'Gambarino',Georgia,serif; --sans:'Supreme',system-ui,sans-serif; --hdr-h:110px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font:400 1.07rem/1.6 var(--sans);caret-color:var(--wine);accent-color:var(--wine)}
+::selection{background:var(--yellow);color:var(--ink)}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px;border-radius:2px}
+.b2 :focus-visible,.b3 :focus-visible,.b5 :focus-visible,.kontakt :focus-visible,footer :focus-visible,.mk :focus-visible{outline-color:var(--yellow)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1;margin:0;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+.num{font-variant-numeric:lining-nums tabular-nums}
+
+.top{position:fixed;inset:0 0 auto;z-index:50}
+.mk{background:var(--ink);color:var(--yellow);font-size:.82rem;text-align:center;padding:7px 16px;line-height:1.35}
+.hdr{background:var(--white);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:54px;height:auto}
+.brand span{font-family:var(--serif);font-size:1.3rem;line-height:1;white-space:nowrap}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{text-decoration:none;font-weight:500;padding:6px 0;background:linear-gradient(var(--yellow),var(--yellow)) 0 85%/0 8px no-repeat;transition:background-size .25s}
+.nav a:hover{background-size:100% 8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:var(--white);text-decoration:none;font-weight:700;font-size:1rem;padding:13px 22px;border-radius:999px;border:2px solid var(--ink);min-height:48px;white-space:nowrap;transition:background .2s,color .2s}
+.btn:hover{background:var(--yellow);color:var(--ink)}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--white)}
+.btn svg{width:18px;height:18px}
+.mnav{display:none}
+
+/* hero */
+.hero{padding:calc(var(--hdr-h) + 48px) 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero .wrap>*{min-width:0}
+.hero h1{font-size:clamp(3.4rem,6.6vw,6.2rem);line-height:.95}
+.hero .lead{margin-top:28px;font-size:1.2rem;color:var(--mut);max-width:34ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.open{display:flex;align-items:center;gap:10px;margin-top:28px;font-weight:500}
+.open i{width:10px;height:10px;border-radius:50%;background:#3f9a5b;flex:none}
+.open.closed i{background:var(--wine)}
+
+.wz{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end}
+.stage{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--ink)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:45% 35%;transition:opacity .5s ease}
+.stage img.out{opacity:0}
+.stage .before{position:absolute;left:16px;bottom:16px;width:28%;aspect-ratio:3/4;border:3px solid var(--white);border-radius:4px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.stage .before img{object-position:50% 40%}
+.stage .before span{position:absolute;left:0;right:0;bottom:0;background:rgba(31,21,32,.75);color:var(--white);font-size:.78rem;font-weight:700;text-align:center;padding:3px 0}
+.stage .lbl{position:absolute;right:16px;top:16px;background:var(--yellow);color:var(--ink);font-weight:700;font-size:.92rem;padding:7px 14px;border-radius:999px}
+.ring{display:flex;flex-direction:column;gap:10px;align-items:center}
+.ring button{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer;font:500 .82rem var(--sans);color:var(--mut)}
+.ring .sw{width:52px;height:64px;border-radius:4px 4px 26px 26px;background:var(--img) center/cover no-repeat var(--c);box-shadow:inset 0 0 0 1px rgba(31,21,32,.12);transition:transform .25s cubic-bezier(.3,1.4,.6,1),box-shadow .25s;outline:2px solid transparent;outline-offset:3px}
+.ring button:hover .sw{transform:translateY(-4px)}
+.ring button[aria-pressed=true] .sw{outline-color:var(--ink);transform:translateX(-6px)}
+.ring button[aria-pressed=true]{color:var(--ink);font-weight:700}
+.wz-cap{grid-column:1/-1;font-size:.98rem;color:var(--mut)}
+.wz-cap b{color:var(--ink)}
+
+/* paleta usług — pasy w odcieniach */
+.paleta{position:relative}
+.paleta .intro{padding:112px 0 56px}
+.paleta .intro h2{font-size:clamp(2.8rem,5.4vw,4.6rem)}
+.paleta .intro p{margin-top:18px;max-width:52ch;font-size:1.12rem;color:var(--mut)}
+.band{--bg:#eee;--fg:var(--ink);--ln:rgba(31,21,32,.2);background:var(--bg);color:var(--fg);position:sticky;top:var(--hdr-h);min-height:calc(100svh - var(--hdr-h));display:flex;align-items:center;padding:64px 0;box-shadow:0 -24px 48px -24px rgba(31,21,32,.35);scroll-margin-top:var(--hdr-h)}
+.band .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) minmax(0,.8fr);gap:56px;align-items:center}
+.band .chip{display:flex;align-items:center;gap:14px;font-weight:700;font-size:.95rem}
+.band .chip i{width:46px;height:58px;border-radius:4px 4px 23px 23px;background:var(--sw) center/cover var(--bg);box-shadow:0 0 0 2px var(--fg)}
+.band h3{font-size:clamp(2.6rem,4.8vw,4.6rem);margin-top:26px;line-height:.95}
+.band .d{margin-top:18px;max-width:34ch;opacity:.85}
+.band ul{list-style:none;margin:0;padding:0;border-top:2px solid var(--fg)}
+.band li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid var(--ln);line-height:1.35}
+.band li b{white-space:nowrap;font-weight:700;font-variant-numeric:lining-nums tabular-nums;font-size:1.06rem}
+.band figure{margin:0;aspect-ratio:4/5;border-radius:6px;overflow:hidden}
+.band figure img{width:100%;height:100%;object-fit:cover}
+.b1{--bg:#ece6ee}
+.b2{--bg:#2a2629;--fg:#fbfbf8;--ln:rgba(251,251,248,.2)}
+.b3{--bg:#a4452a;--fg:#fbfbf8;--ln:rgba(251,251,248,.24)}
+.b4{--bg:var(--yellow)}
+.b5{--bg:var(--ink);--fg:#fbfbf8;--ln:rgba(251,251,248,.2)}
+.b5 .note{margin-top:30px;color:#f0dfe6;max-width:46ch}
+.b5 .note strong{display:block;font-family:var(--serif);font-weight:400;color:var(--yellow);font-size:1.4rem}
+.kids{font-size:1.1rem;max-width:60ch;margin-top:22px}
+.kids b{font-family:var(--serif);font-weight:400;font-size:1.35rem}
+
+/* sylwia */
+.sylwia h2,.kontakt h2{font-size:clamp(2.8rem,5.4vw,4.6rem)}
+.sylwia{padding:112px 0}
+.sylwia .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+.sylwia .wrap.mw{display:block}
+.sylwia figure{margin:0}
+.sylwia figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.sylwia figcaption{margin-top:12px;color:var(--mut);font-size:.95rem}
+.sylwia .t{margin-top:24px;font-size:1.15rem;color:var(--mut);max-width:48ch}
+.how{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--line)}
+.how li{display:grid;grid-template-columns:28px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.how li i{width:18px;height:18px;border-radius:50%;background:var(--c);margin-top:4px;box-shadow:inset 0 -4px 6px -3px rgba(0,0,0,.35)}
+.how b{font-weight:700}
+.rate{display:flex;align-items:center;gap:16px;margin-top:32px}
+.rate .v{font-family:var(--serif);font-size:2.6rem;line-height:1}
+.rate a{font-weight:700;text-underline-offset:3px}
+.mosaic{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:72px}
+.mosaic img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
+.mosaic img:nth-child(even){margin-top:36px}
+
+/* kontakt — wine */
+.kontakt{background:var(--wine);color:var(--white);padding:112px 0 100px}
+.kontakt .grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:44px;align-items:start}
+.tel{display:inline-block;font-family:var(--serif);font-size:clamp(3rem,7vw,5.6rem);line-height:1;color:var(--yellow);text-decoration:none;font-variant-numeric:lining-nums}
+.tel:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px}
+.kontakt .sub{margin-top:18px;color:var(--mut-d);max-width:40ch}
+.kontakt .addr{margin-top:32px;line-height:1.75}
+.kontakt .addr a{text-underline-offset:3px}
+.hrs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-d)}
+.hrs li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line-d);font-variant-numeric:lining-nums tabular-nums}
+.hrs li.today{color:var(--yellow);font-weight:700}
+.map{margin-top:36px;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:var(--wine-d)}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.4)}
+
+footer{background:var(--ink);color:var(--mut-d);padding:40px 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer nav{display:flex;gap:20px}
+footer a{text-decoration:none}
+.mbar{display:none}
+.js .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:1100px){
+  .band{position:relative;top:0;min-height:0;box-shadow:none}
+  .band .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .band figure{grid-row:1;grid-column:2;aspect-ratio:1}
+  .band ul{grid-column:1/-1}
+}
+@media (max-width:980px){
+  .nav{display:none}
+  .mnav{display:block;position:relative}
+  .mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700;padding:0 14px;border:2px solid var(--ink);border-radius:999px}
+  .mnav summary::-webkit-details-marker{display:none}
+  .mnav nav{position:absolute;right:0;top:54px;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:10px;min-width:220px;display:grid;box-shadow:0 18px 40px rgba(0,0,0,.12)}
+  .mnav nav a{padding:12px;text-decoration:none;font-weight:500;border-radius:4px}
+  .mnav nav a:hover{background:var(--yellow)}
+  .mnav .only-s{display:none}
+  .hdr .btn{margin-left:auto}
+  .hero .wrap,.sylwia .wrap,.kontakt .grid{grid-template-columns:1fr;gap:44px}
+  .wz{max-width:560px}
+  .mosaic{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;scrollbar-width:none}
+  .mosaic img{flex:0 0 40%;scroll-snap-align:start;margin-top:0!important}
+}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .hdr .wrap{height:62px;gap:12px}
+  .brand img{width:42px}
+  .brand span{font-size:1.05rem}
+  .hero{padding-top:calc(var(--hdr-h) + 22px);padding-bottom:56px}
+  .hero h1{font-size:clamp(2.7rem,12.5vw,3.6rem)}
+  .hero .lead{font-size:1.08rem;margin-top:18px}
+  .cta{flex-wrap:nowrap;margin-top:22px}.cta .btn{flex:1;padding:13px 12px}
+  .hide-s{display:none}
+  .wz{display:flex;flex-direction:column;gap:14px}
+  .ring{order:-1}
+  .stage{width:100%}
+  .ring{flex-direction:row;overflow-x:auto;justify-content:flex-start;gap:14px;padding:4px 2px 8px;scrollbar-width:none}
+  .ring::-webkit-scrollbar{display:none}
+  .ring button{flex:none}
+  .ring .sw{width:44px;height:54px}
+  .ring button[aria-pressed=true] .sw{transform:translateY(-6px)}
+  .sylwia,.kontakt{padding:76px 0}
+  .paleta .intro{padding:76px 0 40px}
+  .band{padding:56px 0}
+  .band .wrap{grid-template-columns:1fr;gap:26px}
+  .band figure{grid-column:1;grid-row:auto;aspect-ratio:16/10}
+  .mosaic img{flex-basis:62%}
+  footer{padding-bottom:110px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--white);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s}
+  .past-hero .mbar{transform:none}
+}
+@media (max-width:380px){.brand span{font-size:.95rem}.brand img{width:36px}.cta{gap:8px}.cta .btn{padding:12px 10px;font-size:.95rem}}
+@media (max-width:420px){
+  .hdr .btn{display:none}
+  .mnav{margin-left:auto}
+  .mnav .only-s{display:block;background:var(--ink);color:var(--white)!important;text-align:center;margin-top:6px}
+  .mnav .only-s:hover{background:var(--wine)!important}
+}
+
+/* ===== efekty W3 ===== */
+@property --shade{syntax:'<color>';inherits:true;initial-value:#b2a594}
+.wz{position:relative}
+.hero{overflow-x:clip}
+.blob{position:absolute;z-index:-1;width:80%;aspect-ratio:1;right:-12%;top:0;background:radial-gradient(closest-side,var(--shade),transparent);opacity:.5;transition:--shade .9s ease;pointer-events:none}
+.stage{view-transition-name:wz}
+::view-transition-old(wz){animation:none}
+::view-transition-new(wz){animation:wzIn .85s cubic-bezier(.7,0,.2,1) both}
+@keyframes wzIn{from{clip-path:circle(0% at var(--vx,100%) var(--vy,50%))}to{clip-path:circle(150% at var(--vx,100%) var(--vy,50%))}}
+.js .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.js .hero h1 .ln>span{display:block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.22,.61,.36,1)}
+.js .hero h1 .ln+.ln>span{transition-delay:.1s}
+.js .hero .lead,.js .hero .cta,.js .hero .open{opacity:0;transform:translateY(14px);transition:opacity .8s .3s,transform .8s .3s}
+.js .hero .stage{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1)}
+.js .hero .ring button{opacity:0;transform:translateX(24px);transition:opacity .6s,transform .6s cubic-bezier(.22,.61,.36,1)}
+.js .hero.go h1 .ln>span,.js .hero.go .lead,.js .hero.go .cta,.js .hero.go .open,.js .hero.go .ring button{opacity:1;transform:none}
+.js .hero.go .stage{clip-path:inset(0)}
+.js .band .in-a{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s cubic-bezier(.22,.61,.36,1)}
+.js .band.in .in-a{opacity:1;transform:none}
+.js .band.in .in-a:nth-child(2){transition-delay:.08s}.js .band.in .in-a:nth-child(3){transition-delay:.16s}
+.js .band figure img{transform:scale(1.12);transition:transform 1.4s cubic-bezier(.22,.61,.36,1)}
+.js .band.in figure img{transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+  .js .hero h1 .ln>span,.js .hero .lead,.js .hero .cta,.js .hero .open,.js .hero .ring button,.js .band .in-a{opacity:1;transform:none}
+  .js .hero .stage{clip-path:none}
+  .js .band figure img{transform:none}
+}
+.map{position:relative}.map iframe{position:relative;z-index:1}.map .fb{position:absolute;inset:0;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;text-decoration:none;color:inherit;font-weight:600;line-height:1.4}.map .fb svg{width:34px;height:34px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="mk">Makieta W3 „Wzornik” — poglądowa wersja nowej strony przygotowana przez ODNOVA Studio</div>
+  <header class="hdr"><div class="wrap">
+    <a class="brand" href="#top" aria-label="Salon Fryzjerski Sylwia — początek strony"><img src="a/logo-ink.png" alt="" width="360" height="219"><span>Salon Fryzjerski Sylwia</span></a>
+    <nav class="nav" aria-label="Główne"><a href="#cennik">Usługi i cennik</a><a href="#salon">Salon</a><a href="#kontakt">Kontakt</a></nav>
+    <a class="btn" href="tel:+48566227787"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span class="num">56 622 77 87</span></a>
+    <details class="mnav"><summary>Menu <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5h12M2 11h12" stroke="currentColor" stroke-width="1.8"/></svg></summary>
+      <nav aria-label="Menu mobilne"><a href="#cennik">Usługi i cennik</a><a href="#salon">Salon</a><a href="#kontakt">Kontakt i godziny</a><a class="only-s" href="tel:+48566227787">Zadzwoń: 56 622 77 87</a></nav></details>
+  </div></header>
+</div>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Zmień kolor,<br>nie fryzjera.</h1>
+      <p class="lead">Salon Fryzjerski Sylwia przy ul. Końcowej 4 w Toruniu. Od 1997 roku strzyżemy, farbujemy i robimy trwałą — paniom, panom i dzieciom.</p>
+      <div class="cta"><a class="btn" href="tel:+48566227787"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>Zadzwoń<span class="hide-s">: 56 622 77 87</span></span></a><a class="btn line" href="#cennik">Cennik</a></div>
+      <p class="open" id="open"><i></i><span>Pon.–pt. 8:00–20:00 · sob. 8:00–13:00</span></p>
+    </div>
+    <div class="wz">
+      <span class="blob" aria-hidden="true"></span>
+      <div class="stage" id="stage">
+        <img class="po" src="a/pp5-po.jpg" alt="Po: równy, chłodny popielaty blond" width="628" height="872" fetchpriority="high">
+        <span class="lbl" id="lbl">Popiel</span>
+        <div class="before"><img src="a/pp5-przed.jpg" alt="Przed: żółtawy, nierówny blond" width="628" height="872"><span>przed</span></div>
+      </div>
+      <div class="ring" role="group" aria-label="Wybierz odcień i zobacz metamorfozę">
+        <button type="button" aria-pressed="true" data-n="5" data-po="a/pp5-po.jpg" data-pr="a/pp5-przed.jpg" data-l="Popiel" data-c="Żółte refleksy wyrównane w jednolity, chłodny blond." data-a="Po: równy, chłodny popielaty blond"><span class="sw" style="--img:url(a/sw-5.jpg);--c:#b2a594"></span>Popiel</button>
+        <button type="button" aria-pressed="false" data-n="1" data-po="a/pp1-po.jpg" data-pr="a/pp1-przed.jpg" data-l="Burgund" data-c="Krótsze cięcie i głęboki, chłodny burgund zamiast blondu." data-a="Po: krótkie cięcie w burgundzie"><span class="sw" style="--img:url(a/sw-1.jpg);--c:#7b3a3c"></span>Burgund</button>
+        <button type="button" aria-pressed="false" data-n="2" data-po="a/pp2-po.jpg" data-pr="a/pp2-przed.jpg" data-l="Perła" data-c="Ciepły żółty zamieniony w chłodny, perłowy odcień." data-a="Po: chłodny, perłowy odcień"><span class="sw" style="--img:url(a/sw-2.jpg);--c:#a69ca6"></span>Perła</button>
+        <button type="button" aria-pressed="false" data-n="6" data-po="a/pp6-po.jpg" data-pr="a/pp6-przed.jpg" data-l="Brąz" data-c="Rozjaśnione końcówki wyrównane z odrostem." data-a="Po: jednolity, ciepły brąz"><span class="sw" style="--img:url(a/sw-6.jpg);--c:#a27b58"></span>Brąz</button>
+        <button type="button" aria-pressed="false" data-n="3" data-po="a/pp3-po.jpg" data-pr="a/pp3-przed.jpg" data-l="Srebro" data-c="Odrost schowany, objętość z modelowania." data-a="Po: srebrzysty blond"><span class="sw" style="--img:url(a/sw-3.jpg);--c:#d8d5cf"></span>Srebro</button>
+        <button type="button" aria-pressed="false" data-n="4" data-po="a/pp4-po.jpg" data-pr="a/pp4-przed.jpg" data-l="Czerń" data-c="Trwała: z prostych, płaskich włosów w sprężyste loki." data-a="Po: czarne loki po trwałej"><span class="sw" style="--img:url(a/sw-4.jpg);--c:#2a2629"></span>Czerń</button>
+      </div>
+      <p class="wz-cap" id="cap" aria-live="polite"><b>Wybierz odcień.</b> Żółte refleksy wyrównane w jednolity, chłodny blond.</p>
+    </div>
+  </div>
+</section>
+
+<section class="paleta" id="cennik">
+  <div class="wrap intro"><h2 class="reveal">Paleta usług i cennik</h2><p>Każda usługa ma swój odcień. Ceny w widełkach, bo zależą od długości i gęstości włosów oraz czasu pracy. Dokładną kwotę powiemy przy telefonie albo na fotelu.</p></div>
+  <article class="band b1" id="c-damskie"><div class="wrap">
+    <div class="in-a"><p class="chip"><i style="--sw:url(a/sw-2.jpg)"></i>odcień: perła</p><h3>Strzyżenie damskie</h3><p class="d">Krótkie i długie, nowoczesne i klasyczne, dopasowane do kształtu twarzy i typu włosów.</p></div>
+    <ul class="in-a"><li>Strzyżenie damskie<b>50–70 zł</b></li><li>Strzyżenie na równo<b>80–90 zł</b></li><li>Strzyżenie z myciem<b>100–120 zł</b></li><li>Strzyżenie z modelowaniem<b>120–160 zł</b></li></ul>
+    <figure class="in-a"><img src="a/bob.jpg" alt="Bob w odcieniu karmelu" loading="lazy" width="574" height="574"></figure>
+  </div></article>
+  <article class="band b2" id="c-meskie"><div class="wrap">
+    <div class="in-a"><p class="chip"><i style="--sw:url(a/sw-3.jpg)"></i>odcień: grafit</p><h3>Męskie i broda</h3><p class="d">Maszynka albo nożyczki, broda także brzytwą.</p><p class="kids"><b>Dzieci też.</b> Powiedz przy zapisie, że wizyta jest dla dziecka.</p></div>
+    <ul class="in-a"><li>Strzyżenie męskie<b>50 zł</b></li><li>Strzyżenie maszynką<b>40 zł</b></li><li>Strzyżenie brody<b>30 zł</b></li><li>Strzyżenie + broda<b>70 zł</b></li><li>Strzyżenie + broda brzytwą<b>80 zł</b></li><li>Strzyżenie z myciem<b>55 zł</b></li></ul>
+    <figure class="in-a"><img src="a/meskie.jpg" alt="Męskie strzyżenie z cieniowaniem" loading="lazy" width="574" height="593"></figure>
+  </div></article>
+  <article class="band b3" id="c-kolor"><div class="wrap">
+    <div class="in-a"><p class="chip"><i style="--sw:url(a/sw-6.jpg)"></i>odcień: miedź</p><h3>Koloryzacja</h3><p class="d">Farbowanie, pasemka, balejaż w jednym lub dwóch kolorach. Możesz przynieść własną farbę.</p></div>
+    <ul class="in-a"><li>Farba klienta + suszenie<b>100–120 zł</b></li><li>Farba klienta + ułożenie<b>150–160 zł</b></li><li>Farba klienta + ułożenie + strzyżenie<b>170–180 zł</b></li><li>Farba nasza + suszenie<b>160–180 zł</b></li><li>Farba nasza, komplet<b>200–250 zł</b></li><li>Balejaż, 1 kolor<b>220–260 zł</b></li><li>Balejaż, 2 kolory<b>240–300 zł</b></li><li>Pasemka (woreczek)<b>150 zł</b></li></ul>
+    <figure class="in-a"><img src="a/pp6-po.jpg" alt="Włosy po wyrównaniu koloru" loading="lazy" width="628" height="872"></figure>
+  </div></article>
+  <article class="band b4" id="c-model"><div class="wrap">
+    <div class="in-a"><p class="chip"><i style="--sw:url(a/sw-5.jpg)"></i>odcień: złoto</p><h3>Modelowanie i zabiegi</h3><p class="d">Ułożenie na co dzień i na wielkie okazje, upięcia, keratyna.</p></div>
+    <ul class="in-a"><li>Modelowanie<b>80–90 zł</b></li><li>Układanie okolicznościowe<b>200 zł</b></li><li>Odżywka keratynowa + modelowanie<b>160–180 zł</b></li><li>Odżywka keratynowa, komplet<b>200–220 zł</b></li></ul>
+    <figure class="in-a"><img src="a/upiecie-loki.jpg" alt="Upięcie z lokami" loading="lazy" width="574" height="885"></figure>
+  </div></article>
+  <article class="band b5" id="c-trwala"><div class="wrap">
+    <div class="in-a"><p class="chip"><i style="--sw:url(a/sw-4.jpg)"></i>odcień: czerń</p><h3>Trwała</h3><p class="d">Ondulacja zwykła, kwaśna i podnosząca włosy u nasady.</p><p class="note"><strong>Po domowym farbowaniu?</strong>Zniszczone włosy albo poprawka koloru mogą wymagać więcej pracy. Powiedz o tym przy zapisie.</p></div>
+    <ul class="in-a"><li>Trwała ondulacja<b>190–250 zł</b></li><li>Trwała kwaśna<b>200–230 zł</b></li><li>Trwała podnosząca włosy<b>200 zł</b></li></ul>
+    <figure class="in-a"><img src="a/pp4-po.jpg" alt="Czarne loki po trwałej" loading="lazy" width="628" height="872"></figure>
+  </div></article>
+</section>
+
+<section class="sylwia" id="salon">
+  <div class="wrap">
+    <figure class="reveal"><img src="a/salon.jpg" alt="Wnętrze salonu przy ul. Końcowej 4 — fotele i lustra" loading="lazy" width="765" height="1020"><figcaption>ul. Końcowa 4, Toruń</figcaption></figure>
+    <div>
+      <h2>Od 1997 roku pod tym samym adresem</h2>
+      <p class="t">Salon prowadzi Sylwia Poliwodzińska. Dbamy o piękny wygląd Twoich włosów i o to, żeby wizyta była przyjemna — paniom, panom i dzieciom.</p>
+      <ul class="how">
+        <li><i style="--c:#f2d94e"></i><span><b>Strzyżenie dopasowane do Ciebie.</b> Do kształtu twarzy i typu włosów, krótkich i długich.</span></li>
+        <li><i style="--c:#6e2a33"></i><span><b>Profesjonalne kosmetyki.</b> Albo Twoja własna farba — to też robimy.</span></li>
+        <li><i style="--c:#b9ad9f"></i><span><b>Trwała w trzech wersjach.</b> Zwykła, kwaśna i podnosząca włosy.</span></li>
+      </ul>
+      <div class="rate"><span class="v">4,8</span><span>w Google, z 96 opinii · <a href="https://www.google.com/maps/place/?q=place_id:ChIJk9yc1Pk0A0cREp2kLqOp3Es" target="_blank" rel="noopener">przeczytaj opinie</a></span></div>
+    </div>
+  </div>
+  <div class="wrap mw"><div class="mosaic" role="group" aria-label="Więcej prac z salonu">
+    <img src="a/upiecie-blond.jpg" alt="Upięcie okolicznościowe w blondzie" loading="lazy" width="574" height="885">
+    <img src="a/blond-krotkie.jpg" alt="Krótka platyna" loading="lazy" width="661" height="1020">
+    <img src="a/pp3-po.jpg" alt="Srebrzysty blond z modelowaniem" loading="lazy" width="628" height="872">
+    <img src="a/blond-proste.jpg" alt="Proste włosy w jasnym blondzie" loading="lazy" width="752" height="777">
+    <img src="a/pp2-po.jpg" alt="Krótkie włosy w perłowym odcieniu" loading="lazy" width="628" height="872">
+  </div></div>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <h2 class="reveal">Zapisy przez telefon</h2>
+    <div class="grid">
+      <div>
+        <a class="tel" href="tel:+48566227787">56 622 77 87</a>
+        <p class="sub">Zadzwoń w godzinach otwarcia salonu i umów dogodny termin.</p>
+        <p class="addr">ul. Końcowa 4, 87-100 Toruń<br><a href="mailto:s.poliwodzinska@gmail.com">s.poliwodzinska@gmail.com</a><br><a href="https://www.google.com/maps/dir/?api=1&destination=Ko%C5%84cowa+4,+87-100+Toru%C5%84" target="_blank" rel="noopener">Wyznacz trasę</a></p>
+        <div class="map"><a class="fb" href="https://www.google.com/maps/place/?q=place_id:ChIJk9yc1Pk0A0cREp2kLqOp3Es" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg><span>ul. Końcowa 4, Toruń<br><u>Otwórz w Mapach Google</u></span></a><iframe title="Mapa: Salon Fryzjerski Sylwia, ul. Końcowa 4, Toruń" loading="lazy" src="https://maps.google.com/maps?q=Salon+fryzjerski+Sylwia+Poliwodzi%C5%84ska,+Ko%C5%84cowa+4,+87-100+Toru%C5%84&ll=53.024007,18.595535&z=16&hl=pl&output=embed" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+      </div>
+      <ul class="hrs" id="hours">
+        <li data-d="1"><span>Poniedziałek</span><span>8:00 – 20:00</span></li><li data-d="2"><span>Wtorek</span><span>8:00 – 20:00</span></li><li data-d="3"><span>Środa</span><span>8:00 – 20:00</span></li><li data-d="4"><span>Czwartek</span><span>8:00 – 20:00</span></li><li data-d="5"><span>Piątek</span><span>8:00 – 20:00</span></li><li data-d="6"><span>Sobota</span><span>8:00 – 13:00</span></li><li data-d="0"><span>Niedziela</span><span>nieczynne</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© Salon Fryzjerski Sylwia Poliwodzińska · ul. Końcowa 4, 87-100 Toruń · NIP [uzupełnić]</span><nav><a href="#cennik">Cennik</a><a href="#salon">Salon</a><a href="#kontakt">Kontakt</a></nav><span>Makieta W3 · ODNOVA Studio</span></div></footer>
+<div class="mbar"><a class="btn" href="tel:+48566227787">Zadzwoń</a><a class="btn line" href="#cennik">Cennik</a></div>
+
+<script>
+(()=>{
+const d=document,de=d.documentElement,top=d.querySelector('.top');
+const m=()=>de.style.setProperty('--hdr-h',top.offsetHeight+'px');m();addEventListener('resize',m);addEventListener('load',m);
+// wzornik
+const st=d.getElementById('stage'),po=st.querySelector('.po'),bf=st.querySelector('.before img'),lbl=d.getElementById('lbl'),cap=d.getElementById('cap');
+const btns=[...d.querySelectorAll('.ring button')];
+btns.forEach(b=>{const pre=new Image();pre.src=b.dataset.po;
+  b.addEventListener('click',()=>{btns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+    po.classList.add('out');setTimeout(()=>{po.src=b.dataset.po;po.alt=b.dataset.a;bf.src=b.dataset.pr;po.classList.remove('out')},matchMedia('(prefers-reduced-motion:reduce)').matches?0:220);
+    lbl.textContent=b.dataset.l;cap.innerHTML='';const s=d.createElement('b');s.textContent=b.dataset.l+'. ';cap.append(s,b.dataset.c);});});
+// header
+const hero=d.querySelector('.hero');const onS=()=>d.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);onS();addEventListener('scroll',onS,{passive:true});
+d.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
+// status
+const H={1:[8,20],2:[8,20],3:[8,20],4:[8,20],5:[8,20],6:[8,13]};const now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60;
+const li=d.querySelector('#hours li[data-d="'+day+'"]');if(li)li.classList.add('today');
+const op=d.getElementById('open'),o=H[day];let txt;
+if(o&&h>=o[0]&&h<o[1])txt='Teraz otwarte, dziś do '+o[1]+':00';
+else if(o&&h<o[0]){txt='Dziś otwieramy o '+o[0]+':00';op.classList.add('closed')}
+else{op.classList.add('closed');for(let i=1;i<=7;i++){const dd=(day+i)%7;if(H[dd]){txt='Teraz zamknięte, otwieramy '+(i===1?'jutro':['w niedzielę','w poniedziałek','we wtorek','w środę','w czwartek','w piątek','w sobotę'][dd])+' o '+H[dd][0]+':00';break}}}
+op.querySelector('span').textContent=txt;
+// reveal
+const els=[...d.querySelectorAll('.reveal')];let fired=false;
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});els.forEach(e=>io.observe(e))}
+const sweep=()=>els.forEach(e=>{if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')});let t;addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(sweep,120)},{passive:true});
+setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
+})();
+</script>
+
+<script>
+(()=>{
+const d=document,root=d.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const btns=[...d.querySelectorAll('.ring button')],st=d.getElementById('stage'),po=st.querySelector('.po'),bf=st.querySelector('.before img'),lbl=d.getElementById('lbl'),cap=d.getElementById('cap'),blob=d.querySelector('.blob');
+const swc=b=>getComputedStyle(b.querySelector('.sw')).getPropertyValue('--c').trim();
+blob.style.setProperty('--shade',swc(btns[0]));
+/* nowy odcień rozlewa się kołem od klikniętej próbki */
+btns.forEach(b=>b.addEventListener('click',e=>{
+  e.stopImmediatePropagation();
+  const apply=()=>{btns.forEach(x=>x.setAttribute('aria-pressed',x===b));po.src=b.dataset.po;po.alt=b.dataset.a;if(bf&&b.dataset.pr)bf.src=b.dataset.pr;lbl.textContent=b.dataset.l;cap.innerHTML='';const s2=d.createElement('b');s2.textContent=b.dataset.l+'. ';cap.append(s2,b.dataset.c);blob.style.setProperty('--shade',swc(b))};
+  const r=st.getBoundingClientRect(),q=b.querySelector('.sw').getBoundingClientRect();
+  root.style.setProperty('--vx',((q.left+q.width/2-r.left)/r.width*100)+'%');root.style.setProperty('--vy',((q.top+q.height/2-r.top)/r.height*100)+'%');
+  if(d.startViewTransition&&!rm){const img=new Image();img.src=b.dataset.po;(img.decode?img.decode():Promise.resolve()).catch(()=>{}).then(()=>d.startViewTransition(apply))}else apply();
+},true));
+/* wejście hero */
+const hero=d.querySelector('.hero'),h1=hero.querySelector('h1');
+h1.innerHTML=h1.innerHTML.split(/<br\s*\/?>/).map(t=>'<span class="ln"><span>'+t+'</span></span>').join('');
+requestAnimationFrame(()=>requestAnimationFrame(()=>hero.classList.add('go')));
+d.querySelectorAll('.ring button').forEach((b,i)=>b.style.transitionDelay=(.45+i*.06)+'s');
+/* pasy wchodzą */
+const bands=[...d.querySelectorAll('.band')];
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.25});bands.forEach(b=>io.observe(b))}else bands.forEach(b=>b.classList.add('in'));
+let t;addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(()=>bands.forEach(b=>{if(b.getBoundingClientRect().top<innerHeight*.8)b.classList.add('in')}),150)},{passive:true});
+})();
+</script>
+</body>
+</html>
