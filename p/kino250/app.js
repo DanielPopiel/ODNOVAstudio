@@ -48,6 +48,7 @@
     if (rek[o]) delete rek[o]; else rek[o] = new Date().toISOString().slice(0, 10);
     if (rek.d || rek.k) stan.widzieli[id] = rek; else delete stan.widzieli[id];
     zapisz();
+    synchFilm(id);
     if (navigator.vibrate) navigator.vibrate(rek[o] ? 12 : 6);
     return !!rek[o];
   }
@@ -382,7 +383,7 @@
       const tryb = confirm(`W kopii jest ${n} ${odm(n, ['film', 'filmy', 'filmów'])} z odhaczeniami.\n\nOK – zastąp obecny postęp kopią.\nAnuluj – połącz (dodaj odhaczenia z kopii do obecnych).`);
       if (tryb) stan.widzieli = czyste;
       else for (const [id, r] of Object.entries(czyste)) stan.widzieli[id] = { ...(stan.widzieli[id] || {}), ...r };
-      zapisz(); statystyki(); rysujListe();
+      zapisz(); synchWszystko(); statystyki(); rysujListe();
       toast(tryb ? 'Postęp wczytany z kopii' : 'Kopia dołączona');
     } catch (err) {
       toast('To nie jest plik kopii Kino 250');
@@ -390,8 +391,169 @@
   });
   $('#wyzeruj').addEventListener('click', () => {
     if (!confirm('Na pewno wyzerować cały postęp Daniela i Kasi? (Najpierw warto zapisać kopię.)')) return;
-    stan.widzieli = {}; zapisz(); statystyki(); rysujListe(); toast('Postęp wyzerowany');
+    stan.widzieli = {}; zapisz(); synchWszystko(); statystyki(); rysujListe(); toast('Postęp wyzerowany');
   });
+
+  // ---------- synchronizacja (wspólna lista w Firebase) ----------
+  // Odhaczenia leżą w bazie pod długim, losowym kodem listy. Każde urządzenie z tym kodem widzi to samo, na bieżąco.
+  const BAZA = 'https://kino250-52b93-default-rtdb.europe-west1.firebasedatabase.app/kino250';
+  const ZNAKI = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let zrodlo = null, synchStan = 'wyl', zalegle = false, rysujPozniej = null;
+
+  const adres = (sciezka = '') => `${BAZA}/${stan.pokoj}/widzieli${sciezka}.json`;
+  const nowyKod = () => {
+    const los = crypto.getRandomValues(new Uint8Array(24));
+    return Array.from(los, (b) => ZNAKI[b % ZNAKI.length]).join('').match(/.{4}/g).join('-');
+  };
+  const czystyKod = (s) => (String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, '').match(/.{1,4}/g) || []).join('-');
+  const linkListy = () => `${location.origin}${location.pathname}#lista=${stan.pokoj}`;
+
+  function czystyRekord(r) {
+    if (!r || typeof r !== 'object') return null;
+    const x = {};
+    if (r.d) x.d = String(r.d).slice(0, 10);
+    if (r.k) x.k = String(r.k).slice(0, 10);
+    return x.d || x.k ? x : null;
+  }
+  function czysteWszystko(obj) {
+    const out = {};
+    for (const [id, r] of Object.entries(obj || {})) { const x = czystyRekord(r); if (/^tt\d+$/.test(id) && x) out[id] = x; }
+    return out;
+  }
+  async function wyslij(sciezka, dane) {
+    const r = await fetch(adres(sciezka), { method: 'PUT', body: JSON.stringify(dane) });
+    if (!r.ok) throw new Error(r.status);
+  }
+  function synchFilm(id) {
+    if (!stan.pokoj) return;
+    wyslij('/' + id, stan.widzieli[id] || null).catch(() => { zalegle = true; ustawStan('blad'); });
+  }
+  function synchWszystko() {
+    if (!stan.pokoj) return;
+    wyslij('', stan.widzieli).then(() => { zalegle = false; }).catch(() => { zalegle = true; ustawStan('blad'); });
+  }
+
+  // Zmiana przyszła z bazy (z innego urządzenia albo pierwszy odczyt).
+  function zastosuj(sciezka, dane) {
+    const cz = sciezka.split('/').filter(Boolean);
+    if (!cz.length) { stan.widzieli = czysteWszystko(dane); return; }
+    const rek = cz.length === 1 ? dane : { ...(stan.widzieli[cz[0]] || {}), [cz[1]]: dane };
+    const x = czystyRekord(rek);
+    if (x) stan.widzieli[cz[0]] = x; else delete stan.widzieli[cz[0]];
+  }
+  function poZmianieZBazy() {
+    zapisz();
+    clearTimeout(rysujPozniej);
+    rysujPozniej = setTimeout(() => {
+      statystyki(); rysujListe();
+      if (otwartyId && $('#arkFilm').open) pokazFilm(otwartyId);
+    }, 60);
+  }
+
+  function rozlacz() {
+    if (zrodlo) { zrodlo.close(); zrodlo = null; }
+  }
+  function nasluchuj() {
+    rozlacz();
+    if (!stan.pokoj) { ustawStan('wyl'); return; }
+    ustawStan('laczy');
+    zrodlo = new EventSource(adres());
+    const obsluz = (typ) => (e) => {
+      let m; try { m = JSON.parse(e.data); } catch (err) { return; }
+      if (!m) return;
+      // Zmiany zrobione bez internetu mają pierwszeństwo – wysyłamy je zamiast przyjmować stan z bazy.
+      if (zalegle && typ === 'put' && m.path === '/') { synchWszystko(); ustawStan('ok'); return; }
+      if (typ === 'put') zastosuj(m.path, m.data);
+      else for (const [k, v] of Object.entries(m.data || {})) zastosuj(`${m.path.replace(/\/$/, '')}/${k}`, v);
+      ustawStan('ok');
+      poZmianieZBazy();
+    };
+    zrodlo.addEventListener('put', obsluz('put'));
+    zrodlo.addEventListener('patch', obsluz('patch'));
+    zrodlo.addEventListener('cancel', () => { ustawStan('blad'); rozlacz(); });
+    zrodlo.onerror = () => ustawStan('blad'); // EventSource sam spróbuje ponownie
+  }
+
+  // Pierwsze podłączenie urządzenia: łączymy to, co jest tu, z tym, co jest w bazie (nic nie ginie).
+  async function dolacz(kod, nowa) {
+    rozlacz();
+    stan.pokoj = kod; zapisz();
+    ustawStan('laczy');
+    try {
+      let zdalne = {};
+      if (!nowa) {
+        const r = await fetch(adres());
+        if (!r.ok) throw new Error(r.status);
+        zdalne = czysteWszystko(await r.json());
+      }
+      const razem = { ...zdalne };
+      for (const [id, r] of Object.entries(stan.widzieli)) {
+        const z = razem[id] || {};
+        const x = {};
+        for (const o of ['d', 'k']) { const a = r[o], b = z[o]; if (a || b) x[o] = a && b ? (a < b ? a : b) : a || b; }
+        razem[id] = x;
+      }
+      stan.widzieli = czysteWszystko(razem);
+      await wyslij('', stan.widzieli);
+      zalegle = false;
+      poZmianieZBazy();
+      nasluchuj();
+      toast(nowa ? 'Wspólna lista utworzona' : 'Połączono ze wspólną listą');
+    } catch (err) {
+      zalegle = true;
+      nasluchuj();
+      ustawStan('blad');
+      toast('Brak połączenia – spróbuję ponownie, gdy wróci internet');
+    }
+  }
+
+  function ustawStan(s) { synchStan = s; rysujSynch(); }
+  function rysujSynch() {
+    const box = $('#synchBox');
+    if (!box) return;
+    if (!stan.pokoj) {
+      box.innerHTML = `<p class="notka" style="margin:0 0 10px">Odhaczenia są teraz tylko na tym urządzeniu. Włącz wspólną listę, żeby telefon, komputer i telefon Kasi widziały to samo.</p>
+        <div class="dwa"><button class="przycisk glowny" type="button" id="synchNowa">Utwórz wspólną listę</button><button class="przycisk" type="button" id="synchDolacz">Mam kod listy</button></div>`;
+      $('#synchNowa').onclick = () => dolacz(nowyKod(), true);
+      $('#synchDolacz').onclick = () => {
+        const kod = czystyKod(prompt('Wklej kod wspólnej listy (z drugiego urządzenia):'));
+        if (kod.replace(/-/g, '').length < 20) { if (kod) toast('To nie wygląda na kod listy'); return; }
+        dolacz(kod, false);
+      };
+      return;
+    }
+    const opis = { ok: 'Zsynchronizowano', laczy: 'Łączę…', blad: 'Brak połączenia – zmiany wyślę później', wyl: '' }[synchStan];
+    box.innerHTML = `<div class="synch-stan ${synchStan}"><i></i>${opis}</div>
+      <div class="synch-kod">${esc(stan.pokoj)}</div>
+      <div class="dwa"><button class="przycisk glowny" type="button" id="synchLink">Wyślij link</button><button class="przycisk" type="button" id="synchKopiuj">Kopiuj kod</button></div>
+      <p class="notka">Na drugim urządzeniu otwórz wysłany link albo wybierz tam „Mam kod listy” i wklej kod. Kod działa jak klucz – dawaj go tylko domownikom.</p>
+      <button class="przycisk ostrzez" type="button" id="synchOdlacz" style="width:100%;margin-top:10px">Odłącz to urządzenie</button>`;
+    const kopiuj = (t, ok) => {
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast(ok), () => prompt('Skopiuj:', t));
+      else prompt('Skopiuj:', t);
+    };
+    $('#synchKopiuj').onclick = () => kopiuj(stan.pokoj, 'Kod skopiowany');
+    $('#synchLink').onclick = () => {
+      if (navigator.share) navigator.share({ title: 'Kino 250 – wspólna lista', url: linkListy() }).catch(() => {});
+      else kopiuj(linkListy(), 'Link skopiowany');
+    };
+    $('#synchOdlacz').onclick = () => {
+      if (!confirm('Odłączyć to urządzenie od wspólnej listy? Odhaczenia zostaną tutaj, ale przestaną się synchronizować.')) return;
+      rozlacz(); delete stan.pokoj; zapisz(); ustawStan('wyl');
+    };
+  }
+
+  window.addEventListener('online', () => { if (stan.pokoj && (zalegle || !zrodlo || zrodlo.readyState === 2)) nasluchuj(); });
+
+  function startSynch() {
+    const m = location.hash.match(/lista=([A-Za-z0-9-]{20,})/);
+    if (m) {
+      history.replaceState(null, '', location.pathname + location.search);
+      const kod = czystyKod(m[1]);
+      if (kod !== stan.pokoj && confirm('Połączyć to urządzenie ze wspólną listą Kino 250? Twoje obecne odhaczenia zostaną do niej dołączone.')) { dolacz(kod, false); return; }
+    }
+    if (stan.pokoj) nasluchuj(); else rysujSynch();
+  }
 
   // ---------- instalacja ----------
   let prosba = null;
@@ -423,6 +585,7 @@
       rysujFiltry();
       statystyki();
       rysujListe();
+      startSynch();
     })
     .catch(() => {
       lista.innerHTML = '<li class="pusto"><strong>Nie udało się wczytać listy</strong>Sprawdź internet i spróbuj jeszcze raz – potem działa też offline.<button type="button" class="ponow" id="ponow">Spróbuj ponownie</button></li>';

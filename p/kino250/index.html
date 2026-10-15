@@ -171,6 +171,11 @@ dialog.arkusz[open]{animation:wjazd .32s cubic-bezier(.2,.9,.25,1)}
 a.przycisk{color:var(--tekst);text-decoration:none}
 .przycisk.glowny{background:var(--zloto);border-color:var(--zloto);color:#1b1204}
 .przycisk.ostrzez{color:#ff8c8c}
+.synch-stan{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:650;margin-bottom:10px}
+.synch-stan i{width:9px;height:9px;border-radius:50%;background:var(--slaby);flex:none}
+.synch-stan.ok i{background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.15)}
+.synch-stan.blad i{background:#ff8c8c}
+.synch-kod{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;letter-spacing:.04em;padding:10px 12px;border-radius:12px;background:var(--bg2);border:1px solid var(--linia);margin-bottom:8px;user-select:all;word-break:break-all;text-align:center}
 .notka{font-size:12.5px;color:var(--slaby);margin:8px 0 0;line-height:1.45}
 select.wybor{width:100%;height:46px;border-radius:14px;border:1px solid var(--linia);background:var(--bg2);padding:0 12px}
 
@@ -316,8 +321,12 @@ select.wybor{width:100%;height:46px;border-radius:14px;border:1px solid var(--li
 <!-- Ustawienia / kopia -->
 <dialog class="arkusz" id="arkUst" aria-labelledby="tUst">
   <div class="uchwyt"></div>
-  <div class="ark-glowa"><h2 id="tUst">Kopia zapasowa</h2><button class="ikon" type="button" data-zamknij aria-label="Zamknij"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="ark-glowa"><h2 id="tUst">Synchronizacja i kopia</h2><button class="ikon" type="button" data-zamknij aria-label="Zamknij"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <div class="ark-tresc">
+    <div class="sekcja">
+      <h3>Synchronizacja</h3>
+      <div id="synchBox"></div>
+    </div>
     <div class="sekcja">
       <h3>Postęp</h3>
       <div class="dwa">
@@ -325,7 +334,7 @@ select.wybor{width:100%;height:46px;border-radius:14px;border:1px solid var(--li
         <button class="przycisk" type="button" id="importBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V9M7 14l5-5 5 5M5 4h14"/></svg>Wczytaj kopię</button>
       </div>
       <input type="file" id="importPlik" accept="application/json,.json" hidden>
-      <p class="notka">Postęp zapisuje się sam w tym telefonie. „Zapisz kopię” pobiera mały plik .json – przyda się przy zmianie telefonu albo żeby przenieść postęp na drugi telefon (np. Kasi).</p>
+      <p class="notka">Postęp zapisuje się sam w tym urządzeniu (a przy włączonej synchronizacji – też we wspólnej liście). „Zapisz kopię” pobiera mały plik .json – przyda się przy zmianie telefonu albo żeby przenieść postęp na drugi telefon (np. Kasi).</p>
     </div>
     <div class="sekcja">
       <h3>Tytuły</h3>

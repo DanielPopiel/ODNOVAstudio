@@ -1,7 +1,7 @@
 // Kino 250 – service worker.
 // Strona, skrypt i lista: najpierw sieć (świeża wersja), a gdy jej brak albo trwa za długo – kopia z pamięci.
 // Okładki i ikony: najpierw pamięć (nie zmieniają się), a brakujące dociąga z sieci.
-const CACHE = 'kino250-v5';
+const CACHE = 'kino250-v6';
 const PLIKI = [
   './',
   './index.html',
