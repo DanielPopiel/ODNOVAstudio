@@ -409,8 +409,12 @@
   }
 
   // ---------- start ----------
-  fetch('filmy.json')
-    .then((r) => r.json())
+  function wczytajListe() {
+    lista.innerHTML = '<li class="pusto"><strong>Wczytuję listę…</strong></li>';
+    const stoper = new AbortController();
+    const limit = setTimeout(() => stoper.abort(), 12000);
+    fetch('filmy.json', { signal: stoper.signal })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((dane) => {
       meta = dane;
       filmy = dane.filmy.map((f) => ({ ...f, _szuk: norm([f.t, f.o || '', f.g.join(' ')].join(' ')) }));
@@ -421,6 +425,10 @@
       rysujListe();
     })
     .catch(() => {
-      lista.innerHTML = '<li class="pusto"><strong>Nie udało się wczytać listy</strong>Otwórz aplikację raz z internetem – potem działa offline.</li>';
-    });
+      lista.innerHTML = '<li class="pusto"><strong>Nie udało się wczytać listy</strong>Sprawdź internet i spróbuj jeszcze raz – potem działa też offline.<button type="button" class="ponow" id="ponow">Spróbuj ponownie</button></li>';
+      $('#ponow').addEventListener('click', wczytajListe);
+    })
+    .finally(() => clearTimeout(limit));
+  }
+  wczytajListe();
 })();
