@@ -177,6 +177,42 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .js .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
 .js .reveal.in{opacity:1;transform:none}
 
+/* ticker */
+.ticker{background:var(--navy2);color:var(--brassL);overflow:hidden;white-space:nowrap;padding:16px 0;border-bottom:1px solid var(--lineL)}
+.tk-track{display:inline-flex;gap:26px;align-items:center;will-change:transform}
+.ticker span{font:400 clamp(1.3rem,2.4vw,2rem)/1 var(--d);letter-spacing:.01em}
+.ticker b{color:var(--red);font-size:1.2rem}
+/* floating prints */
+.sphoto{position:relative}
+.story{overflow-x:clip}
+.print{position:absolute;z-index:2;margin:0;background:#fff;padding:9px 9px 26px;box-shadow:0 18px 36px rgba(23,24,58,.22);will-change:transform}
+.print img{display:block;width:100%;aspect-ratio:1;object-fit:cover;animation:bob 7s ease-in-out infinite}
+.p1{width:clamp(120px,13vw,190px);left:-70px;bottom:40px;rotate:-7deg}
+.p2{width:clamp(110px,11vw,160px);right:-40px;top:-40px;rotate:6deg}
+.p2 img{aspect-ratio:4/5;animation-delay:-3s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -9px}}
+/* postcards */
+.postcards{padding:120px 0}
+.pc-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px}
+.gscore{display:grid;grid-template-columns:auto auto;align-items:center;gap:4px 14px;text-decoration:none;color:var(--ink)}
+.gscore b{grid-row:span 2;font:400 3.6rem/1 var(--d)}
+.gscore .stars{width:120px;height:22px;fill:#E0A21B}
+.gscore span{font:600 .95rem/1.2 var(--b);color:var(--ink2);border-bottom:2px solid var(--red)}
+.pc-wall{columns:3 300px;column-gap:28px}
+.pc{break-inside:avoid;margin:0 0 28px;background:#FBF8F1;padding:30px 26px 22px;position:relative;box-shadow:0 14px 30px rgba(23,24,58,.12);background-image:linear-gradient(transparent 31px,rgba(23,24,58,.07) 32px);background-size:100% 32px;border-top:8px solid transparent;border-image:repeating-linear-gradient(-45deg,var(--red) 0 12px,#FBF8F1 12px 20px,var(--navy2) 20px 32px,#FBF8F1 32px 40px) 8}
+.pc:nth-child(3n+1){rotate:-1.2deg}.pc:nth-child(3n+2){rotate:.8deg}.pc:nth-child(3n){rotate:-.4deg}
+.pc blockquote{font:500 1.04rem/1.6 var(--b);color:var(--ink);padding-right:70px}
+.pc figcaption{margin-top:14px;font:700 .95rem/1 var(--b);color:var(--redd)}
+.pm{position:absolute;right:14px;top:14px;width:78px;height:78px;border:2px solid rgba(169,36,31,.55);border-radius:50%;display:grid;place-content:center;text-align:center;color:rgba(169,36,31,.75);font:700 .62rem/1.25 var(--b);letter-spacing:.08em;rotate:12deg}
+.pm em{font-style:normal;display:block}
+/* contact on navy */
+.navyc{background:var(--navy);color:var(--bone)}
+.navyc .cinfo dt{color:#cfcbe0}
+.navyc .cinfo dd a,.navyc .rating a{border-bottom-color:var(--brassL)}
+.navyc h2{color:#fff}
+@media (max-width:760px){.pc:nth-child(n+6){display:none}.p1{left:-10px;bottom:-30px}.p2{right:-6px;top:-30px}.pc-wall{columns:1}.postcards{padding:90px 0}}
+@media (prefers-reduced-motion:reduce){.print img{animation:none}}
+
 @keyframes thunk{0%{opacity:0;transform:rotate(-14deg) scale(1.5)}70%{opacity:1;transform:rotate(-14deg) scale(.96)}100%{opacity:1;transform:rotate(-14deg) scale(1)}}
 @media (max-width:980px){
   .nav,.hdr .tel{display:none}
@@ -217,6 +253,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   .js .reveal{opacity:1;transform:none}
   .stamp{opacity:1;transform:rotate(-14deg)}
 }
+[data-par]{overflow:hidden}[data-par] img{will-change:transform;transform-origin:center}
 </style>
 </head>
 <body>
@@ -224,7 +261,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   <div class="mk"><b>Makieta W2 „Z&nbsp;Long Island do Bytomia”</b> · poglądowa propozycja nowej strony Świata Języków · ODNOVA Studio</div>
   <header class="hdr"><div class="wrap">
     <a class="brand" href="#start" aria-label="Świat Języków — początek strony"><img src="img/logo.png" width="203" height="160" alt="Logo Świat Języków"><span>Świat Języków</span></a>
-    <nav class="nav" aria-label="Główna"><a href="#historia">O&nbsp;szkole</a><a href="#dzieci">Dzieci</a><a href="#jezyki">Dorośli</a><a href="#firmy">Firmy</a></nav>
+    <nav class="nav" aria-label="Główna"><a href="#historia">O&nbsp;szkole</a><a href="#dzieci">Dzieci</a><a href="#jezyki">Dorośli</a><a href="#opinie">Opinie</a><a href="#firmy">Firmy</a></nav>
     <a class="tel" href="tel:+48322823003">32 282 30 03</a>
     <a class="btn btn-red" href="#kontakt">Zapisz się</a>
     <details class="mnav"><summary>Menu</summary><nav aria-label="Menu"><a href="#historia">O&nbsp;szkole</a><a href="#dzieci">Dzieci</a><a href="#jezyki">Dorośli</a><a href="#firmy">Firmy</a><a href="#kontakt">Kontakt</a><a href="tel:+48322823003">Zadzwoń: 32 282 30 03</a><a class="mcta" href="#kontakt">Zapisz się</a></nav></details>
@@ -251,6 +288,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   </div>
 </section>
 <div class="airmail" aria-hidden="true"></div>
+<div class="ticker" aria-hidden="true"><div class="tk-track"><span>PAR AVION</span><b>✈</b><span>New York → Bytom</span><b>✈</b><span>Hello</span><b>✈</b><span>Guten Tag</span><b>✈</b><span>¡Hola!</span><b>✈</b><span>Bonjour</span><b>✈</b><span>Ciao</span><b>✈</b><span>Привет</span><b>✈</b><span>Dzień dobry</span><b>✈</b><span>PAR AVION</span><b>✈</b><span>New York → Bytom</span><b>✈</b><span>Hello</span><b>✈</b><span>Guten Tag</span><b>✈</b><span>¡Hola!</span><b>✈</b><span>Bonjour</span><b>✈</b><span>Ciao</span><b>✈</b><span>Привет</span><b>✈</b><span>Dzień dobry</span><b>✈</b></div></div>
 
 <section class="bone story" id="historia">
   <div class="wrap sgrid">
@@ -263,7 +301,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
         <p><strong>Najpierw mówimy, potem ćwiczymy.</strong>Gramatyka jest narzędziem, nie tematem samym w&nbsp;sobie. Uczą też egzaminatorzy maturalni z&nbsp;OKE.</p>
       </div>
     </div>
-    <figure class="photo reveal"><img src="img/sala.jpg" width="1376" height="768" alt="Jasna sala lekcyjna w kamienicy, krzesła ustawione w krąg do rozmowy" loading="lazy"><figcaption>Zdjęcie poglądowe — przy wdrożeniu sesja w&nbsp;Państwa salach.</figcaption></figure>
+    <div class="sphoto"><figure class="print p1" data-speed="-.16" aria-hidden="true"><img src="img/zeszyt.jpg" alt=""></figure><figure class="print p2" data-speed=".14" aria-hidden="true"><img src="img/globus.jpg" alt=""></figure><figure class="photo reveal" data-par><img src="img/sala.jpg" width="1376" height="768" alt="Jasna sala lekcyjna w kamienicy, krzesła ustawione w krąg do rozmowy" loading="lazy"><figcaption>Zdjęcie poglądowe — przy wdrożeniu sesja w&nbsp;Państwa salach.</figcaption></figure></div>
   </div>
 </section>
 
@@ -307,11 +345,17 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 </section>
 <div class="airmail" aria-hidden="true"></div>
 
-<section class="bone contact" id="kontakt">
+<section class="bone postcards" id="opinie" aria-labelledby="pch">
+  <div class="wrap">
+    <div class="pc-head"><h2 id="pch" class="reveal">Kartki od kursantów.</h2><a class="gscore" href="https://www.google.com/maps/place/?q=place_id:ChIJozKRFy_TFkcRysrJMQ7-mKE" target="_blank" rel="noopener"><b>4,7</b><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg><span>49 opinii w Google · zobacz wszystkie</span></a></div>
+    <div class="pc-wall"><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2026</em></span><blockquote>„Bardzo polecam szkołę Świat Języków, syn ma 8 lat, uczy się tam angielskiego już 3 rok. Dobrze sobie już radzi w konwersacji po angielsku.”</blockquote><figcaption>— Bożena G.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2026</em></span><blockquote>„Szkoła bardzo ułatwiła mi przygotowanie się do matury, bardzo podobał mi się sposób w jaki przeprowadzane były lekcje, co skutkowało wysokim procentem na maturze.”</blockquote><figcaption>— Martyna K.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2026</em></span><blockquote>„Bardzo fajna szkoła językowa. Córka chodzi z przyjemnością. Po roku nauki chętniej mówi w j. angielskim.”</blockquote><figcaption>— Aneta W.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2025</em></span><blockquote>„Zajęcia są efektywne pod względem nauki języka, ale również ciekawe, kreatywne i inspirujące dla dzieci. Widzimy ogromne postępy w znajomości języka angielskiego u naszych dzieci.”</blockquote><figcaption>— Marta N.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2026</em></span><blockquote>„Największym plusem jest ogromny wybór języków, nawet tych mniej popularnych. Dodatkowym atutem jest niesamowita elastyczność.”</blockquote><figcaption>— Olo</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2026</em></span><blockquote>„Córka uczęszcza tutaj na zajęcia z języka niemieckiego i jest bardzo zadowolona.”</blockquote><figcaption>— Michał S.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2026</em></span><blockquote>„Bardzo fajni ludzie, wspaniali lektorzy i lektorki, miłe panie z sekretariatu. Serdecznie polecam.”</blockquote><figcaption>— Przemek K.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2019</em></span><blockquote>„Uczestniczyłam w konwersacjach języka angielskiego z Panem Andrew Paul — byłam bardzo zadowolona z wyboru native speakera!”</blockquote><figcaption>— Iwona P.</figcaption></figure><figure class="pc"><span class="pm" aria-hidden="true"><em>GOOGLE</em>★★★★★<em>2019</em></span><blockquote>„Dwójka moich dzieci uczęszcza do tej szkoły, sam się uczyłem hiszpańskiego. Serdeczna atmosfera i przyjazny personel. Polecam!”</blockquote><figcaption>— Dawid S.</figcaption></figure></div>
+  </div>
+</section>
+<section class="contact navyc" id="kontakt">
   <div class="wrap cgrid">
     <div class="cinfo">
       <h2 class="reveal">Napisz albo wpadnij na Dworcową.</h2>
-      <p class="rating"><a href="#">4,7 / 5 w&nbsp;Google · 49 opinii</a></p>
+      <p class="rating"><a href="https://www.google.com/maps/place/?q=place_id:ChIJozKRFy_TFkcRysrJMQ7-mKE" target="_blank" rel="noopener">4,7 / 5 w&nbsp;Google · 49 opinii</a></p>
       <dl>
         <dt>Telefon</dt><dd><a href="tel:+48322823003">32 282 30 03</a></dd>
         <dt>Komórka</dt><dd><a href="tel:+48600220204">600 22 02 04</a> (8:00–21:00)</dd>
@@ -376,6 +420,20 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   var tick=false; function req(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;frame()})}}
   addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); frame();
 
+  /* ticker + floating prints */
+  var lastY=scrollY, vel=0; addEventListener('scroll',function(){vel+=scrollY-lastY;lastY=scrollY},{passive:true});
+  var tk=d.querySelector('.tk-track'), tx=0, prints=[].slice.call(d.querySelectorAll('.print[data-speed]'));
+  function loop(){ vel*=.9; var b=Math.min(40,Math.abs(vel))*.25;
+    if(tk){var w=tk.scrollWidth/2; tx-=(.7+b); if(-tx>=w)tx+=w; tk.style.transform='translateX('+tx+'px)';}
+    var vh=innerHeight; prints.forEach(function(f){var r=f.parentNode.getBoundingClientRect(); f.style.transform='translateY('+Math.max(-70,Math.min(70,(r.top+r.height/2-vh/2)*(+f.dataset.speed)))+'px)';});
+    requestAnimationFrame(loop);}
+  if(!reduce) requestAnimationFrame(loop);
+
+
+  /* image parallax inside frames */
+  var pims=[].slice.call(d.querySelectorAll('[data-par] img'));
+  function par(){var vh=innerHeight; pims.forEach(function(im){var r=im.parentNode.getBoundingClientRect(); if(r.bottom<0||r.top>vh)return; var t=(r.top+r.height/2-vh/2)/vh; im.style.transform='scale(1.14) translateY('+(t*-6)+'%)'}); requestAnimationFrame(par)}
+  if(!reduce&&pims.length) requestAnimationFrame(par);
   var rv=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
   var steps=[].slice.call(d.querySelectorAll('.steps li'));
   if('IntersectionObserver' in window && !reduce){

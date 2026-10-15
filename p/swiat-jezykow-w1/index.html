@@ -198,6 +198,46 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .js .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
 .js .reveal.in{opacity:1;transform:none}
 
+
+/* ---------- marquee ---------- */
+.mq{background:var(--red);color:#fff;overflow:hidden;padding:22px 0;white-space:nowrap}
+.mq-track{display:inline-flex;gap:44px;align-items:baseline;will-change:transform}
+.mq span{font:700 clamp(2.2rem,5vw,4.2rem)/1 var(--h);letter-spacing:-.03em}
+.mq i{font:italic 400 clamp(2rem,4.6vw,3.8rem)/1 var(--b);opacity:.85}
+/* ---------- floating photos ---------- */
+.team{position:relative;overflow:hidden}
+.floaters{position:absolute;left:0;right:0;top:80px;height:420px;pointer-events:none}
+.fl{position:absolute;will-change:transform;margin:0}
+.fl img{display:block;width:100%;height:100%;object-fit:cover;border-radius:28px;box-shadow:0 24px 50px rgba(27,26,58,.18);animation:bob 7s ease-in-out infinite}
+.f1{right:5%;top:50px;width:clamp(150px,14vw,210px);aspect-ratio:1;transform:rotate(4deg)}
+.f2{right:26%;top:40px;width:clamp(100px,9vw,140px);aspect-ratio:1}
+.f2 img{border-radius:50%;animation-delay:-2.5s}
+.f3{right:18%;top:215px;width:clamp(100px,9vw,130px);aspect-ratio:4/5}
+.f3 img{border-radius:90px 90px 20px 20px;animation-delay:-4.5s}
+.ftxt{font:italic 400 1.15rem/1 var(--b);color:var(--ink);background:#fff;padding:12px 18px;border-radius:999px;box-shadow:0 10px 26px rgba(27,26,58,.12);animation:bob 6s ease-in-out infinite}
+.t1{right:31%;top:220px}.t2{right:4%;top:300px;color:var(--red);animation-delay:-3s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.team .wrap{position:relative}
+.team h2,.team .lead{max-width:min(560px,58%)}
+/* ---------- reviews ---------- */
+.reviews{padding:120px 0 110px;background:var(--paper2);overflow:hidden}
+.rv-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:56px}
+.gscore{display:grid;grid-template-columns:auto auto;align-items:center;gap:4px 14px;text-decoration:none}
+.gscore b{grid-row:span 2;font:700 4rem/1 var(--h);letter-spacing:-.04em}
+.gscore .stars{width:120px;height:22px;fill:#F2B01E}
+.gscore span{font:500 .95rem/1.2 var(--h);color:var(--ink2);border-bottom:1.5px solid var(--red)}
+.rv-rows{display:grid;gap:22px}
+.rv-row{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rv-track{display:inline-flex;gap:22px;will-change:transform}
+.rv{margin:0;flex:0 0 auto;width:min(420px,78vw);background:#fff;border-radius:22px;padding:22px 24px;position:relative;box-shadow:0 1px 0 var(--line)}
+.rv.l{border-bottom-left-radius:6px}.rv.r{border-bottom-right-radius:6px;background:var(--navy);color:#fff}
+.rv blockquote{font:400 1.02rem/1.55 var(--b)}
+.rv figcaption{margin-top:12px;font:500 .88rem/1.3 var(--h);color:var(--ink2)}
+.rv.r figcaption{color:#c9c7ea}
+.rv b{font-weight:600;color:inherit}
+@media (max-width:980px){.floaters{display:none}.team h2,.team .lead{max-width:none}}
+@media (prefers-reduced-motion:reduce){.fl img,.ftxt{animation:none}}
+
 @media (max-width:980px){
   .nav,.hdr .tel{display:none}
   .mnav{display:block;margin-left:auto}
@@ -238,6 +278,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   .js .bub.main{position:relative;left:auto;top:auto;transform:none!important;clip-path:none!important;display:inline-block;margin:calc(var(--hdr-h) + 24px) 0 0 28px}
   .mbar{transition:none}
 }
+[data-par]{overflow:hidden}[data-par] img{will-change:transform;transform-origin:center}
 </style>
 </head>
 <body>
@@ -245,7 +286,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   <div class="mk"><b>Makieta W1 „Mów!”</b> · poglądowa propozycja nowej strony Świata Języków · ODNOVA Studio</div>
   <header class="hdr"><div class="wrap">
     <a class="brand" href="#start" aria-label="Świat Języków — początek strony"><img src="img/logo.png" width="203" height="160" alt="Logo Świat Języków"><span>Świat Języków<small>szkoła językowa · Bytom</small></span></a>
-    <nav class="nav" aria-label="Główna"><a href="#kursy">Kursy</a><a href="#kadra">Lektorzy</a><a href="#cennik">Cennik</a><a href="#gdzie">Gdzie uczymy</a></nav>
+    <nav class="nav" aria-label="Główna"><a href="#kursy">Kursy</a><a href="#kadra">Lektorzy</a><a href="#opinie">Opinie</a><a href="#cennik">Cennik</a><a href="#gdzie">Gdzie uczymy</a></nav>
     <a class="tel" href="tel:+48600220204">600 22 02 04</a>
     <a class="btn btn-red" href="#kontakt">Lekcja próbna</a>
     <details class="mnav"><summary>Menu</summary><nav aria-label="Menu"><a href="#kursy">Kursy</a><a href="#kadra">Lektorzy</a><a href="#cennik">Cennik</a><a href="#gdzie">Gdzie uczymy</a><a href="#kontakt">Kontakt</a><a href="tel:+48600220204">Zadzwoń: 600 22 02 04</a><a class="mcta" href="#kontakt">Lekcja próbna</a></nav></details>
@@ -273,6 +314,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   </div>
 </section>
 
+<div class="mq" aria-hidden="true"><div class="mq-track"><span>Dzień dobry</span><i>Hello</i><span>Guten Tag</span><i>¡Hola!</i><span>Bonjour</span><i>Ciao</i><span>Привет</span><i>Good morning</i><span>Dzień dobry</span><i>Hello</i><span>Guten Tag</span><i>¡Hola!</i><span>Bonjour</span><i>Ciao</i><span>Привет</span><i>Good morning</i></div></div>
 <section class="dark chat" id="kursy">
   <div class="wrap">
     <div class="chat-head">
@@ -330,6 +372,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 </section>
 
 <section class="team" id="kadra">
+  <div class="floaters" aria-hidden="true"><figure class="fl f1" data-speed="-.07"><img src="img/zeszyt.jpg" alt=""></figure><figure class="fl f2" data-speed=".06"><img src="img/fiszki.jpg" alt=""></figure><figure class="fl f3" data-speed="-.04"><img src="img/globus.jpg" alt=""></figure><span class="fl ftxt t1" data-speed=".09">native speakerzy</span><span class="fl ftxt t2" data-speed="-.06">od 2003</span></div>
   <div class="wrap">
     <h2 class="reveal">Z&nbsp;kim będziesz rozmawiać.</h2>
     <p class="lead" style="margin-top:22px">Rodzinna szkoła, nie oddział sieci. Lektorzy z&nbsp;wieloletnim doświadczeniem, egzaminatorzy maturalni i&nbsp;native speakerzy, którzy w&nbsp;Polsce zostali na dłużej.</p>
@@ -344,7 +387,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   </div>
 </section>
 
-<figure class="wide"><picture><source media="(max-width:760px)" srcset="img/sala-900.jpg"><img src="img/sala.jpg" width="1800" height="1005" alt="Jasna sala w kamienicy, krzesła ustawione w krąg do rozmowy" loading="lazy"></picture><figcaption class="wrap">Zdjęcie poglądowe — przy wdrożeniu robimy sesję w&nbsp;Państwa salach przy Dworcowej.</figcaption></figure>
+<figure class="wide" data-par><picture><source media="(max-width:760px)" srcset="img/sala-900.jpg"><img src="img/sala.jpg" width="1800" height="1005" alt="Jasna sala w kamienicy, krzesła ustawione w krąg do rozmowy" loading="lazy"></picture><figcaption class="wrap">Zdjęcie poglądowe — przy wdrożeniu robimy sesję w&nbsp;Państwa salach przy Dworcowej.</figcaption></figure>
 
 <section class="band" aria-label="Dlaczego my">
   <div class="wrap">
@@ -357,6 +400,17 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   </div>
 </section>
 
+
+<section class="reviews" id="opinie" aria-labelledby="rvh">
+  <div class="wrap rv-head">
+    <h2 id="rvh" class="reveal">Tak o nas mówią.</h2>
+    <a class="gscore" href="https://www.google.com/maps/place/?q=place_id:ChIJozKRFy_TFkcRysrJMQ7-mKE" target="_blank" rel="noopener"><b>4,7</b><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg><span>49 opinii w Google · zobacz wszystkie</span></a>
+  </div>
+  <div class="rv-rows">
+    <div class="rv-row" data-dir="-1"><div class="rv-track"><figure class="rv l"><blockquote>„Bardzo polecam szkołę Świat Języków, syn ma 8 lat, uczy się tam angielskiego już 3 rok. Dobrze sobie już radzi w konwersacji po angielsku.”</blockquote><figcaption><b>Bożena G.</b> · opinia Google · 2026</figcaption></figure><figure class="rv r"><blockquote>„Szkoła bardzo ułatwiła mi przygotowanie się do matury, bardzo podobał mi się sposób w jaki przeprowadzane były lekcje, co skutkowało wysokim procentem na maturze.”</blockquote><figcaption><b>Martyna K.</b> · opinia Google · 2026</figcaption></figure><figure class="rv l"><blockquote>„Bardzo fajna szkoła językowa. Córka chodzi z przyjemnością. Po roku nauki chętniej mówi w j. angielskim.”</blockquote><figcaption><b>Aneta W.</b> · opinia Google · 2026</figcaption></figure><figure class="rv r"><blockquote>„Zajęcia są efektywne pod względem nauki języka, ale również ciekawe, kreatywne i inspirujące dla dzieci. Widzimy ogromne postępy w znajomości języka angielskiego u naszych dzieci.”</blockquote><figcaption><b>Marta N.</b> · opinia Google · 2025</figcaption></figure><figure class="rv l"><blockquote>„Największym plusem jest ogromny wybór języków, nawet tych mniej popularnych. Dodatkowym atutem jest niesamowita elastyczność.”</blockquote><figcaption><b>Olo</b> · opinia Google · 2026</figcaption></figure><figure class="rv r"><blockquote>„Córka uczęszcza tutaj na zajęcia z języka niemieckiego i jest bardzo zadowolona.”</blockquote><figcaption><b>Michał S.</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv l"><blockquote>„Bardzo polecam szkołę Świat Języków, syn ma 8 lat, uczy się tam angielskiego już 3 rok. Dobrze sobie już radzi w konwersacji po angielsku.”</blockquote><figcaption><b>Bożena G.</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv r"><blockquote>„Szkoła bardzo ułatwiła mi przygotowanie się do matury, bardzo podobał mi się sposób w jaki przeprowadzane były lekcje, co skutkowało wysokim procentem na maturze.”</blockquote><figcaption><b>Martyna K.</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv l"><blockquote>„Bardzo fajna szkoła językowa. Córka chodzi z przyjemnością. Po roku nauki chętniej mówi w j. angielskim.”</blockquote><figcaption><b>Aneta W.</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv r"><blockquote>„Zajęcia są efektywne pod względem nauki języka, ale również ciekawe, kreatywne i inspirujące dla dzieci. Widzimy ogromne postępy w znajomości języka angielskiego u naszych dzieci.”</blockquote><figcaption><b>Marta N.</b> · opinia Google · 2025</figcaption></figure><figure aria-hidden="true" class="rv l"><blockquote>„Największym plusem jest ogromny wybór języków, nawet tych mniej popularnych. Dodatkowym atutem jest niesamowita elastyczność.”</blockquote><figcaption><b>Olo</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv r"><blockquote>„Córka uczęszcza tutaj na zajęcia z języka niemieckiego i jest bardzo zadowolona.”</blockquote><figcaption><b>Michał S.</b> · opinia Google · 2026</figcaption></figure></div></div>
+    <div class="rv-row" data-dir="1"><div class="rv-track"><figure class="rv l"><blockquote>„Bardzo fajni ludzie, wspaniali lektorzy i lektorki, miłe panie z sekretariatu. Serdecznie polecam.”</blockquote><figcaption><b>Przemek K.</b> · opinia Google · 2026</figcaption></figure><figure class="rv r"><blockquote>„Uczestniczyłam w konwersacjach języka angielskiego z Panem Andrew Paul — byłam bardzo zadowolona z wyboru native speakera!”</blockquote><figcaption><b>Iwona P.</b> · opinia Google · 2019</figcaption></figure><figure class="rv l"><blockquote>„Dwójka moich dzieci uczęszcza do tej szkoły, sam się uczyłem hiszpańskiego. Serdeczna atmosfera i przyjazny personel. Polecam!”</blockquote><figcaption><b>Dawid S.</b> · opinia Google · 2019</figcaption></figure><figure class="rv r"><blockquote>„Dobra szkoła językowa. Córka zadowolona. Zrobiła spore postępy. Warto zapłacić w 1 racie… jest trochę taniej i spokój na cały rok.”</blockquote><figcaption><b>JB</b> · opinia Google · 2026</figcaption></figure><figure class="rv l"><blockquote>„Najlepsza szkoła językowa na Śląsku! Profesjonalne podejście, wykwalifikowany personel i fantastyczna atmosfera.”</blockquote><figcaption><b>Beata I.</b> · opinia Google · 2019</figcaption></figure><figure class="rv r"><blockquote>„Szkoła godna polecenia, wysoki poziom nauczania, bardzo dobre przygotowanie do matury.”</blockquote><figcaption><b>Justyna K.</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv l"><blockquote>„Bardzo fajni ludzie, wspaniali lektorzy i lektorki, miłe panie z sekretariatu. Serdecznie polecam.”</blockquote><figcaption><b>Przemek K.</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv r"><blockquote>„Uczestniczyłam w konwersacjach języka angielskiego z Panem Andrew Paul — byłam bardzo zadowolona z wyboru native speakera!”</blockquote><figcaption><b>Iwona P.</b> · opinia Google · 2019</figcaption></figure><figure aria-hidden="true" class="rv l"><blockquote>„Dwójka moich dzieci uczęszcza do tej szkoły, sam się uczyłem hiszpańskiego. Serdeczna atmosfera i przyjazny personel. Polecam!”</blockquote><figcaption><b>Dawid S.</b> · opinia Google · 2019</figcaption></figure><figure aria-hidden="true" class="rv r"><blockquote>„Dobra szkoła językowa. Córka zadowolona. Zrobiła spore postępy. Warto zapłacić w 1 racie… jest trochę taniej i spokój na cały rok.”</blockquote><figcaption><b>JB</b> · opinia Google · 2026</figcaption></figure><figure aria-hidden="true" class="rv l"><blockquote>„Najlepsza szkoła językowa na Śląsku! Profesjonalne podejście, wykwalifikowany personel i fantastyczna atmosfera.”</blockquote><figcaption><b>Beata I.</b> · opinia Google · 2019</figcaption></figure><figure aria-hidden="true" class="rv r"><blockquote>„Szkoła godna polecenia, wysoki poziom nauczania, bardzo dobre przygotowanie do matury.”</blockquote><figcaption><b>Justyna K.</b> · opinia Google · 2026</figcaption></figure></div></div>
+  </div>
+</section>
 <section class="prices" id="cennik">
   <div class="wrap">
     <h2 class="reveal">Cennik na rok 2026/2027.</h2>
@@ -403,7 +457,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
         <dt>E-mail</dt><dd><a href="mailto:bytomswiatjezykow@gmail.com">bytomswiatjezykow@gmail.com</a></dd>
         <dt>Adres</dt><dd>ul. Dworcowa 1, II piętro, Bytom</dd>
       </dl>
-      <p class="gplace"><a href="#">4,7 w&nbsp;Google · 49 opinii rodziców i&nbsp;kursantów</a></p>
+      <p class="gplace"><a href="https://www.google.com/maps/place/?q=place_id:ChIJozKRFy_TFkcRysrJMQ7-mKE" target="_blank" rel="noopener">4,7 w&nbsp;Google · 49 opinii rodziców i&nbsp;kursantów</a></p>
     </div>
     <form onsubmit="event.preventDefault();this.querySelector('.ok').textContent='To makieta — w gotowej stronie wiadomość trafi do sekretariatu.'">
       <h3>Bezpłatna lekcja próbna</h3>
@@ -480,6 +534,29 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   var tick=false; function req(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;frame()})}}
   addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); frame();
 
+
+  /* marquee + review rows: auto drift + scroll velocity */
+  var lastY=scrollY, vel=0;
+  addEventListener('scroll',function(){vel+= (scrollY-lastY); lastY=scrollY},{passive:true});
+  var mq=d.querySelector('.mq-track'), mx=0;
+  var rows=[].slice.call(d.querySelectorAll('.rv-row')).map(function(r){return {el:r.querySelector('.rv-track'),dir:+r.dataset.dir,x:0,hover:false,row:r}});
+  rows.forEach(function(o){o.row.addEventListener('mouseenter',function(){o.hover=true});o.row.addEventListener('mouseleave',function(){o.hover=false});o.row.addEventListener('focusin',function(){o.hover=true});o.row.addEventListener('focusout',function(){o.hover=false})});
+  var fls=[].slice.call(d.querySelectorAll('.fl[data-speed]'));
+  function loop(){
+    vel*=0.9; var boost=Math.max(-40,Math.min(40,vel))*0.25;
+    if(mq){var w=mq.scrollWidth/2; mx-= (0.6+Math.abs(boost)); if(-mx>=w)mx+=w; mq.style.transform='translateX('+mx+'px)';}
+    rows.forEach(function(o){ if(o.hover)return; var w=o.el.scrollWidth/2; o.x+= o.dir*(0.35+Math.abs(boost)*.5); if(o.dir<0&&-o.x>=w)o.x+=w; if(o.dir>0&&o.x>=0)o.x-=w; o.el.style.transform='translateX('+o.x+'px)';});
+    var vh=innerHeight; fls.forEach(function(f){var r=f.parentNode.getBoundingClientRect(); var c=(r.top+r.height/2-vh/2); f.style.translate='0 '+Math.max(-70,Math.min(70,c*(+f.dataset.speed)))+'px';});
+    requestAnimationFrame(loop);
+  }
+  rows.forEach(function(o){if(o.dir>0)o.x=-o.el.scrollWidth/2});
+  if(!reduce) requestAnimationFrame(loop);
+
+
+  /* image parallax inside frames */
+  var pims=[].slice.call(d.querySelectorAll('[data-par] img'));
+  function par(){var vh=innerHeight; pims.forEach(function(im){var r=im.parentNode.getBoundingClientRect(); if(r.bottom<0||r.top>vh)return; var t=(r.top+r.height/2-vh/2)/vh; im.style.transform='scale(1.14) translateY('+(t*-6)+'%)'}); requestAnimationFrame(par)}
+  if(!reduce&&pims.length) requestAnimationFrame(par);
   /* reveal headings */
   var rv=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
   if('IntersectionObserver' in window && !reduce){

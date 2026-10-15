@@ -213,6 +213,49 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .js .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
 .js .reveal.in{opacity:1;transform:none}
 
+/* schools band */
+.band-schools{background:var(--navy);color:#fff;display:flex;overflow:hidden;white-space:nowrap;padding:18px 0}
+.bs-track{display:flex;flex:0 0 auto;align-items:center;gap:22px;padding-right:22px;animation:bs 60s linear infinite}
+.bs-track span{font:600 1.15rem/1 var(--h)}
+.bs-track i{width:8px;height:8px;border-radius:50%;background:var(--yel)}
+@keyframes bs{to{transform:translateX(-100%)}}
+.band-schools:hover .bs-track{animation-play-state:paused}
+/* stickers */
+.age{position:relative;overflow:hidden}
+.stickers{position:absolute;inset:0;pointer-events:none}
+.sk{position:absolute;will-change:transform}
+span.sk{font:700 1.15rem/1 var(--h);padding:12px 18px;border-radius:16px;background:var(--yel);color:var(--ink);box-shadow:0 10px 24px rgba(20,33,61,.14);animation:bob 6s ease-in-out infinite}
+.k1{right:7%;top:90px;rotate:-6deg}
+.k2{right:22%;top:40px;background:#fff!important;rotate:4deg;animation-delay:-2s!important}
+.k3{right:4%;top:230px;background:var(--blue)!important;color:#fff!important;rotate:3deg;animation-delay:-4s!important}
+.ph{right:15%;top:150px;width:150px;margin:0;rotate:-4deg}
+.ph img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:24px;border:6px solid #fff;box-shadow:0 16px 34px rgba(20,33,61,.18);animation:bob 7s ease-in-out infinite;animation-delay:-1s}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.age h2,.age > .wrap > .lead{max-width:min(620px,60%)}
+/* opinions carousel */
+.opinions{padding:110px 0 100px;background:var(--bg)}
+.op-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
+.op-ctrl{display:flex;align-items:center;gap:12px}
+.gscore{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:10px}
+.gscore b{font:700 3rem/1 var(--h)}
+.gscore span{display:grid;gap:4px;font:600 .9rem/1.2 var(--b);color:var(--ink2)}
+.stars{width:96px;height:18px;fill:#F2B01E;display:block}
+.arw{width:48px;height:48px;border-radius:50%;border:0;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font:600 1.2rem/1 var(--b);cursor:pointer;color:var(--ink)}
+.arw:hover{background:var(--ink);color:#fff}
+.op-scroll{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px max(28px,calc((100vw - 1240px)/2 + 28px)) 30px;scrollbar-width:none}
+.op-scroll::-webkit-scrollbar{display:none}
+.rq{margin:0;flex:0 0 min(360px,82vw);scroll-snap-align:start;background:#fff;border-radius:var(--r);padding:24px;border:1px solid var(--line);transition:translate .35s}
+.rq:nth-child(odd){translate:0 14px}
+.rq-top{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--blueL);color:var(--blueD);font:700 1.15rem/1 var(--h);flex:0 0 auto}
+.rq:nth-child(3n+2) .av{background:var(--yelL);color:#8A6200}.rq:nth-child(3n) .av{background:#FBE1DF;color:var(--redd)}
+.rq b{display:block;font:700 1rem/1.2 var(--b)}
+.rq small{display:flex;align-items:center;gap:8px;font:500 .82rem/1.2 var(--b);color:var(--ink2);margin-top:3px}
+.rq small .stars{width:70px;height:13px}
+.rq blockquote{color:var(--ink);font-size:1rem;line-height:1.6}
+@media (max-width:980px){.stickers{display:none}.age h2,.age > .wrap > .lead{max-width:none}}
+@media (prefers-reduced-motion:reduce){.bs-track,span.sk,.ph img{animation:none}}
+
 @media (max-width:980px){
   .nav,.hdr .tel{display:none}
   .mnav{display:block;margin-left:auto}
@@ -245,6 +288,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   .pin.sel circle.halo{animation:none}
   .js .reveal{opacity:1;transform:none}
 }
+[data-par]{overflow:hidden}[data-par] img{will-change:transform;transform-origin:center}
 </style>
 </head>
 <body>
@@ -252,7 +296,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   <div class="mk"><b>Makieta W3 „W&nbsp;szkole Twojego dziecka”</b> · poglądowa propozycja nowej strony Świata Języków · ODNOVA Studio</div>
   <header class="hdr"><div class="wrap">
     <a class="brand" href="#start" aria-label="Świat Języków — początek strony"><img src="img/logo.png" width="203" height="160" alt="Logo Świat Języków"><span>Świat Języków</span></a>
-    <nav class="nav" aria-label="Główna"><a href="#mapa">Mapa szkół</a><a href="#wiek">Kursy dla dzieci</a><a href="#dorosli">Dorośli i&nbsp;firmy</a><a href="#pytania">Pytania</a></nav>
+    <nav class="nav" aria-label="Główna"><a href="#mapa">Mapa szkół</a><a href="#wiek">Kursy dla dzieci</a><a href="#dorosli">Dorośli i&nbsp;firmy</a><a href="#opinie">Opinie</a><a href="#pytania">Pytania</a></nav>
     <a class="tel" href="tel:+48600220204">600 22 02 04</a>
     <a class="btn btn-red" href="#zapisy">Zapytaj o&nbsp;miejsce</a>
     <details class="mnav"><summary>Menu</summary><nav aria-label="Menu"><a href="#mapa">Mapa szkół</a><a href="#wiek">Kursy dla dzieci</a><a href="#dorosli">Dorośli i&nbsp;firmy</a><a href="#pytania">Pytania</a><a href="#zapisy">Kontakt</a><a href="tel:+48600220204">Zadzwoń: 600 22 02 04</a><a class="mcta" href="#zapisy">Zapytaj o&nbsp;miejsce</a></nav></details>
@@ -312,7 +356,9 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   </div>
 </section>
 
+<div class="band-schools" aria-label="Szkoły, w których uczymy"><div class="bs-track"><span>SP nr 4 Bytom</span><i></i><span>SP nr 6 Bytom</span><i></i><span>SP nr 36 Bytom</span><i></i><span>SP nr 43 Stolarzowice</span><i></i><span>SP nr 45 Szombierki</span><i></i><span>SP nr 46 Bytom</span><i></i><span>SP nr 1 Świętochłowice</span><i></i><span>SP nr 2 Świętochłowice</span><i></i><span>SP nr 4 Świętochłowice</span><i></i><span>SP nr 5 Świętochłowice</span><i></i><span>SP nr 2 Radzionków</span><i></i><span>MSP nr 12 Piekary Śląskie</span><i></i></div><div class="bs-track" aria-hidden="true"><span>SP nr 4 Bytom</span><i></i><span>SP nr 6 Bytom</span><i></i><span>SP nr 36 Bytom</span><i></i><span>SP nr 43 Stolarzowice</span><i></i><span>SP nr 45 Szombierki</span><i></i><span>SP nr 46 Bytom</span><i></i><span>SP nr 1 Świętochłowice</span><i></i><span>SP nr 2 Świętochłowice</span><i></i><span>SP nr 4 Świętochłowice</span><i></i><span>SP nr 5 Świętochłowice</span><i></i><span>SP nr 2 Radzionków</span><i></i><span>MSP nr 12 Piekary Śląskie</span><i></i></div></div>
 <section class="age" id="wiek">
+  <div class="stickers" aria-hidden="true"><span class="sk k1" data-speed="-.2">Hello!</span><span class="sk k2" data-speed=".16">apple 🍎</span><span class="sk k3" data-speed="-.1">Good job!</span><figure class="sk ph" data-speed=".2"><img src="img/fiszki.jpg" alt=""></figure></div>
   <div class="wrap">
     <h2 class="reveal">Ile lat ma Twoje dziecko?</h2>
     <p class="lead" style="margin-top:20px">Wybierz wiek — pokażemy kurs, rytm zajęć i&nbsp;cenę na rok 2026/2027. Na drugie dziecko rabat 30%.</p>
@@ -358,6 +404,14 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   </div>
 </section>
 
+<section class="opinions" id="opinie" aria-labelledby="oph">
+  <div class="wrap">
+    <div class="op-head"><h2 id="oph" class="reveal">Co mówią rodzice i kursanci.</h2>
+      <div class="op-ctrl"><a class="gscore" href="https://www.google.com/maps/place/?q=place_id:ChIJozKRFy_TFkcRysrJMQ7-mKE" target="_blank" rel="noopener"><b>4,7</b><span><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg>49 opinii w Google</span></a><button type="button" class="arw" data-d="-1" aria-label="Poprzednie opinie">←</button><button type="button" class="arw" data-d="1" aria-label="Następne opinie">→</button></div>
+    </div>
+  </div>
+  <div class="op-scroll" tabindex="0" aria-label="Opinie z Google — przewiń w bok"><figure class="rq"><div class="rq-top"><span class="av">B</span><span><b>Bożena G.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Bardzo polecam szkołę Świat Języków, syn ma 8 lat, uczy się tam angielskiego już 3 rok. Dobrze sobie już radzi w konwersacji po angielsku.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">M</span><span><b>Martyna K.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Szkoła bardzo ułatwiła mi przygotowanie się do matury, bardzo podobał mi się sposób w jaki przeprowadzane były lekcje, co skutkowało wysokim procentem na maturze.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">A</span><span><b>Aneta W.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Bardzo fajna szkoła językowa. Córka chodzi z przyjemnością. Po roku nauki chętniej mówi w j. angielskim.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">M</span><span><b>Marta N.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2025</small></span></div><blockquote>Zajęcia są efektywne pod względem nauki języka, ale również ciekawe, kreatywne i inspirujące dla dzieci. Widzimy ogromne postępy w znajomości języka angielskiego u naszych dzieci.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">O</span><span><b>Olo</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Największym plusem jest ogromny wybór języków, nawet tych mniej popularnych. Dodatkowym atutem jest niesamowita elastyczność.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">M</span><span><b>Michał S.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Córka uczęszcza tutaj na zajęcia z języka niemieckiego i jest bardzo zadowolona.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">P</span><span><b>Przemek K.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Bardzo fajni ludzie, wspaniali lektorzy i lektorki, miłe panie z sekretariatu. Serdecznie polecam.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">I</span><span><b>Iwona P.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2019</small></span></div><blockquote>Uczestniczyłam w konwersacjach języka angielskiego z Panem Andrew Paul — byłam bardzo zadowolona z wyboru native speakera!</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">D</span><span><b>Dawid S.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2019</small></span></div><blockquote>Dwójka moich dzieci uczęszcza do tej szkoły, sam się uczyłem hiszpańskiego. Serdeczna atmosfera i przyjazny personel. Polecam!</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">J</span><span><b>JB</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Dobra szkoła językowa. Córka zadowolona. Zrobiła spore postępy. Warto zapłacić w 1 racie… jest trochę taniej i spokój na cały rok.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">B</span><span><b>Beata I.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2019</small></span></div><blockquote>Najlepsza szkoła językowa na Śląsku! Profesjonalne podejście, wykwalifikowany personel i fantastyczna atmosfera.</blockquote></figure><figure class="rq"><div class="rq-top"><span class="av">J</span><span><b>Justyna K.</b><small><svg class="stars" viewBox="0 0 120 22" aria-hidden="true"><defs><path id="st" d="M11 1.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L11 16.1 5.1 19.3l1.3-6.5L1.5 8.3l6.6-.8z"/></defs><use href="#st"/><use href="#st" x="24"/><use href="#st" x="48"/><use href="#st" x="72"/><use href="#st" x="96"/></svg> opinia Google · 2026</small></span></div><blockquote>Szkoła godna polecenia, wysoki poziom nauczania, bardzo dobre przygotowanie do matury.</blockquote></figure></div>
+</section>
 <section class="adults" id="dorosli">
   <div class="wrap agrid">
     <div>
@@ -370,7 +424,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
         <div><p><b>Szkolenia dla firm</b><span>W&nbsp;Twojej firmie, na całym Śląsku · biznesowy, techniczny, medyczny</span></p><em>wycena indywidualna</em></div>
       </div>
     </div>
-    <figure class="reveal"><img src="img/wieczor.jpg" width="1800" height="1005" alt="Wieczorne zajęcia konwersacyjne dla dorosłych przy stole z mapą i kawą" loading="lazy"></figure>
+    <figure class="reveal" data-par><img src="img/wieczor.jpg" width="1800" height="1005" alt="Wieczorne zajęcia konwersacyjne dla dorosłych przy stole z mapą i kawą" loading="lazy"></figure>
   </div>
 </section>
 
@@ -475,6 +529,18 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   function sc(){d.body.classList.toggle('past-hero', d.getElementById('szkoly').getBoundingClientRect().bottom < innerHeight*.5);var z=d.getElementById('zapisy').getBoundingClientRect();d.body.classList.toggle('at-form',z.top<innerHeight*.8&&z.bottom>0)}
   addEventListener('scroll',sc,{passive:true}); sc();
 
+  /* floating stickers + carousel arrows */
+  var sks=[].slice.call(d.querySelectorAll('.sk[data-speed]'));
+  function fl(){var vh=innerHeight; sks.forEach(function(f){var r=f.parentNode.getBoundingClientRect(); f.style.transform='translateY('+Math.max(-70,Math.min(70,(r.top+r.height/2-vh/2)*(+f.dataset.speed)))+'px)'}); requestAnimationFrame(fl)}
+  if(!reduce) requestAnimationFrame(fl);
+  var osc=d.querySelector('.op-scroll');
+  d.querySelectorAll('.arw').forEach(function(b){b.addEventListener('click',function(){osc.scrollBy({left:(+b.dataset.d)*Math.min(380,osc.clientWidth*.85),behavior:reduce?'auto':'smooth'})})});
+
+
+  /* image parallax inside frames */
+  var pims=[].slice.call(d.querySelectorAll('[data-par] img'));
+  function par(){var vh=innerHeight; pims.forEach(function(im){var r=im.parentNode.getBoundingClientRect(); if(r.bottom<0||r.top>vh)return; var t=(r.top+r.height/2-vh/2)/vh; im.style.transform='scale(1.14) translateY('+(t*-6)+'%)'}); requestAnimationFrame(par)}
+  if(!reduce&&pims.length) requestAnimationFrame(par);
   var rv=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
   if('IntersectionObserver' in window && !reduce){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
