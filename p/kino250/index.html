@@ -98,21 +98,26 @@ button{cursor:pointer}
 
 /* ---------- lista ---------- */
 .lista{list-style:none;margin:4px 0 0;padding:0 0 calc(40px + var(--safe-b));display:grid;gap:10px}
-.film{position:relative;display:grid;grid-template-columns:62px 1fr auto;gap:12px;align-items:center;padding:10px 10px 10px 10px;border-radius:var(--r);
+.film{position:relative;display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;padding:10px 10px 10px 10px;border-radius:var(--r);
   background:var(--pow);border:1px solid var(--linia);content-visibility:auto;contain-intrinsic-size:auto 96px;transition:border-color .25s,background .25s,box-shadow .25s}
 .film::before{content:"";position:absolute;left:-1px;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:transparent;transition:background .25s}
 .film.d::before{background:var(--d)}
 .film.k::before{background:var(--k)}
 .film.d.k{background:linear-gradient(135deg,rgba(242,179,61,.13),rgba(242,179,61,.03) 55%),var(--pow);border-color:rgba(242,179,61,.45);box-shadow:0 8px 24px -14px rgba(0,0,0,.7)}
 .film.d.k::before{background:linear-gradient(var(--d),var(--k))}
-.kafel{width:62px;height:80px;border-radius:12px;position:relative;overflow:hidden;display:grid;place-content:center;text-align:center;
+.kafel{width:60px;height:90px;border-radius:12px;position:relative;overflow:hidden;display:grid;place-content:center;text-align:center;
   background:linear-gradient(155deg,hsl(var(--h) 45% 24%),hsl(var(--h) 40% 11%));box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
 .kafel::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.035) 0 6px,transparent 6px 12px);pointer-events:none}
 .kafel .nr{font-size:27px;font-weight:900;letter-spacing:-.05em;line-height:.9;color:hsl(var(--h) 85% 80%);font-variant-numeric:tabular-nums}
 .kafel .nr small{font-size:13px;font-weight:700;opacity:.7;letter-spacing:0;margin-right:1px}
 .kafel .rok{font-size:11px;font-weight:700;color:hsl(var(--h) 30% 72%);margin-top:6px;letter-spacing:.06em}
 .kafel.dlugi .nr{font-size:23px}
+.kafel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.kafel .plak{position:absolute;top:0;left:0;z-index:3;min-width:22px;padding:2px 5px 2px 4px;border-radius:0 0 8px 0;background:rgba(10,10,14,.82);color:#fff;font-size:11px;font-weight:850;line-height:1.3;text-align:center;font-variant-numeric:tabular-nums;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.kafel .plak::before{content:"#";opacity:.6;font-weight:700;margin-right:1px}
+.kafel.bez .plak{display:none}
 .film.d.k .kafel{box-shadow:inset 0 0 0 1.5px rgba(242,179,61,.75)}
+.film.d.k .kafel::before{content:"";position:absolute;inset:0;z-index:4;border-radius:inherit;box-shadow:inset 0 0 0 1.5px rgba(242,179,61,.85);pointer-events:none}
 .opis{min-width:0;padding:2px 0}
 .opis h2{margin:0;font-size:16px;font-weight:720;line-height:1.22;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .opis .oryg{margin:2px 0 0;font-size:12.5px;color:var(--slaby);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic}
@@ -171,7 +176,8 @@ select.wybor{width:100%;height:46px;border-radius:14px;border:1px solid var(--li
 
 /* szczegóły filmu */
 .szcz-gora{display:grid;grid-template-columns:86px 1fr;gap:16px;align-items:center;margin-bottom:16px}
-.szcz-gora .kafel{width:86px;height:112px;border-radius:16px}
+.szcz-gora .kafel{width:86px;height:129px;border-radius:14px}
+.szcz-gora .kafel .plak{font-size:13px;padding:3px 7px 3px 6px}
 .szcz-gora .kafel .nr{font-size:38px}
 .szcz-gora .kafel .rok{font-size:12.5px}
 .szcz-gora h2{margin:0;font-size:22px;line-height:1.15;font-weight:820;letter-spacing:-.015em}

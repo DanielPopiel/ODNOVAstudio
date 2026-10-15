@@ -72,7 +72,7 @@
   const IKONA_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 
   function kafel(f) {
-    return `<div class="kafel${f.r >= 100 ? ' dlugi' : ''}" style="--h:${hue(f.y)}" aria-hidden="true"><div class="nr"><small>#</small>${f.r}</div><div class="rok">${f.y}</div></div>`;
+    return `<div class="kafel${f.r >= 100 ? ' dlugi' : ''}" style="--h:${hue(f.y)}" aria-hidden="true"><div class="nr"><small>#</small>${f.r}</div><div class="rok">${f.y}</div><img src="okladki/${f.id}.jpg" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('bez');this.remove()"><span class="plak">${f.r}</span></div>`;
   }
 
   // ---------- lista ----------
@@ -87,7 +87,7 @@
         <h2>${esc(t)}</h2>
         ${o ? `<p class="oryg">${esc(o)}</p>` : ''}
         ${f.op ? `<p class="fab">${esc(f.op)}</p>` : ''}
-        <div class="meta"><span class="ocena">${IKONA_GW}${ocena(f.oc)}</span><span>${czas(f.min)}</span><span class="gat">${esc(f.g.join(' · '))}</span></div>
+        <div class="meta"><span class="ocena">${IKONA_GW}${ocena(f.oc)}</span><span>${f.y}</span><span>${czas(f.min)}</span><span class="gat">${esc(f.g.join(' · '))}</span></div>
       </div>
       <div class="przelaczniki">
         <button type="button" class="os d" data-os="d" aria-pressed="${d}" aria-label="${OSOBY.d} widział: ${esc(t)}">D<span class="ptaszek">${IKONA_OK}</span></button>
