@@ -1,5 +1,5 @@
 // Kino 250 – service worker: działa offline (najpierw pamięć, w tle odświeża z sieci).
-const CACHE = 'kino250-v2';
+const CACHE = 'kino250-v3';
 const PLIKI = [
   './',
   './index.html',

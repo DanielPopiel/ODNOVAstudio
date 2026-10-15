@@ -86,6 +86,7 @@
       <div class="opis" data-otworz>
         <h2>${esc(t)}</h2>
         ${o ? `<p class="oryg">${esc(o)}</p>` : ''}
+        ${f.op ? `<p class="fab">${esc(f.op)}</p>` : ''}
         <div class="meta"><span class="ocena">${IKONA_GW}${ocena(f.oc)}</span><span>${czas(f.min)}</span><span class="gat">${esc(f.g.join(' · '))}</span></div>
       </div>
       <div class="przelaczniki">
@@ -205,6 +206,7 @@
     const o = drugi(f);
     $('#filmTresc').innerHTML = `
       <div class="szcz-gora">${kafel(f)}<div><h2 id="tFilm">${esc(tytul(f))}</h2>${o ? `<p class="oryg">${esc(o)}</p>` : ''}</div></div>
+      ${f.op ? `<p class="szcz-fab">${esc(f.op)}</p>` : ''}
       <div class="fakty">
         <div class="fakt"><b style="color:var(--zloto2)">★ ${ocena(f.oc)}</b><span>${glosy(f.v)} głosów</span></div>
         <div class="fakt"><b>${f.y}</b><span>rok premiery</span></div>
