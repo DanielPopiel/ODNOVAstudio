@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Świat Języków Bytom — makieta W3 „W szkole Twojego dziecka”</title>
+<meta name="description" content="Angielski po lekcjach w 12 szkołach podstawowych w Bytomiu, Świętochłowicach, Radzionkowie i Piekarach Śląskich. Kursy dla dzieci od 2 lat, młodzieży i dorosłych.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Świat Języków — makieta W3 „W szkole Twojego dziecka”">
+<meta property="og:description" content="Makieta W3 „W szkole Twojego dziecka” — propozycja nowej strony Świata Języków w Bytomiu. Przygotowało ODNOVA Studio.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/swiat-jezykow-w3/img/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/swiat-jezykow-w3/">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<meta name="theme-color" content="#2F6FD6">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F7; --card:#fff; --ink:#14213D; --ink2:#4A5672; --blue:#2F6FD6; --blueD:#1F55AE; --blueL:#DCE7FA;
+  --yel:#F6C344; --yelL:#FDF1CF; --red:#CF2A22; --redd:#A9201A; --r:18px; --navy:#17224A; --line:rgba(20,33,61,.13); --lineL:rgba(255,255,255,.16);
+  --h:"Baloo 2",system-ui,sans-serif; --b:"Rethink Sans",system-ui,sans-serif; --hdr-h:110px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1.07rem/1.6 var(--b);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+::selection{background:var(--yel);color:var(--ink)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+input,select,textarea{caret-color:var(--blue);accent-color:var(--blue)}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--h);font-weight:600;line-height:1.04;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,4.8vw,3.6rem);letter-spacing:-.02em;text-wrap:balance}
+p{text-wrap:pretty}
+.plist li strong,.faq summary,.tracks b,.course h3,form h3,.brand span{font-family:var(--b)!important;font-weight:700;letter-spacing:-.01em}
+.lead{font-size:clamp(1.1rem,1.5vw,1.25rem);color:var(--ink2);max-width:38em}
+
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mk{background:var(--navy);color:#dfe5f5;font:500 .8rem/1.35 var(--b);text-align:center;padding:7px 14px}
+.mk b{color:#fff}
+.hdr{background:rgba(243,245,247,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;min-height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:58px}
+.brand span{font:600 1.15rem/1 var(--h)}
+.nav{display:flex;gap:24px;margin-left:auto}
+.nav a{font:500 .98rem/1 var(--b);text-decoration:none;padding:8px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--blue)}
+.tel{font:600 1rem/1 var(--b);text-decoration:none;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem/1 var(--b);text-decoration:none;border-radius:14px;padding:16px 22px;border:0;cursor:pointer;transition:background .2s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--redd)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blueD)}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.hdr .btn{padding:12px 18px}
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;font:600 1rem/1 var(--b);padding:13px 16px;background:#fff;border-radius:12px;box-shadow:inset 0 0 0 1.5px var(--line);min-height:44px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:54px;background:#fff;border-radius:16px;padding:10px;min-width:230px;box-shadow:0 18px 40px rgba(20,33,61,.16)}
+.mnav nav a{display:block;padding:13px 14px;font:500 1.05rem/1.1 var(--b);text-decoration:none;border-radius:10px}
+.mnav nav a:hover{background:var(--bg)}
+.mnav .mcta{display:none}
+
+/* hero */
+.hero{padding:calc(var(--hdr-h) + 34px) 0 80px;overflow:hidden}
+.hgrid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px 50px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,4.4vw,4.1rem);font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+.hero h1 span{background:linear-gradient(transparent 62%,var(--yel) 62% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .lead{margin-top:22px}
+.find{margin-top:32px;background:#fff;border-radius:20px;padding:20px;box-shadow:0 1px 0 var(--line),0 20px 44px rgba(20,33,61,.08);max-width:520px}
+.find label{display:block;font:600 1rem/1.3 var(--b);margin-bottom:10px}
+.find select{width:100%;font:500 1.02rem/1.3 var(--b);color:var(--ink);background:var(--bg);border:1.5px solid transparent;border-radius:12px;padding:14px;min-height:52px}
+.find select:focus{border-color:var(--blue);outline:0}
+.answer{margin-top:14px;font-size:1rem;color:var(--ink2);min-height:3.2em}
+.answer strong{color:var(--ink)}
+.proof{margin-top:18px;font-size:.95rem;color:var(--ink2);max-width:520px}
+.proof a{color:var(--ink);font-weight:600}
+.answer .btn{margin-top:12px}
+.map{position:relative;margin:0;background:#fff;border-radius:var(--r);border:1px solid var(--line);padding:12px;grid-area:map}
+.htxt{grid-area:txt}.find-wrap{grid-area:find}
+.hgrid{grid-template-areas:"txt map" "find map"}
+.map svg{width:100%;height:auto;display:block}
+.map .area{fill:#E9EFF9;stroke:#BFD0EE;stroke-width:1.5}
+.map .road{fill:none;stroke:#E1E6EE;stroke-width:5;stroke-linecap:round;stroke-dasharray:1 10}
+.pin{cursor:pointer}.pin:focus{outline:none}.pin:focus-visible circle.dot{stroke:var(--ink);stroke-width:3}
+.pin text{font:700 15px var(--b);fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:5px;opacity:0;transition:opacity .25s}
+.pin.sel text{opacity:1}
+.map .cn{font:600 19px var(--h);fill:var(--blueD)}
+.map .hq circle{fill:var(--red)}
+.map .hq text{font:700 14px var(--b);fill:var(--ink)}
+.pin circle.dot{fill:var(--blue);transform-box:fill-box;transform-origin:center;transition:transform .4s cubic-bezier(.2,.8,.2,1),fill .3s}
+.pin circle.halo{fill:var(--blue);opacity:0;transform-box:fill-box;transform-origin:center}
+
+.pin.sel circle.dot{fill:var(--yel);transform:scale(1.5);stroke:var(--ink);stroke-width:2}
+.pin.sel circle.halo{animation:halo 1.6s ease-out infinite}
+@keyframes halo{0%{opacity:.45;transform:scale(1)}100%{opacity:0;transform:scale(3.4)}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;padding:12px 14px 8px;font:500 .9rem/1.3 var(--b);color:var(--ink2)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+
+/* age slider */
+.age{padding:110px 0;background:#fff}
+.ab{margin-top:48px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.slider{background:var(--yelL);border-radius:var(--r);padding:34px;border:0;margin:0}
+.ages legend{font:600 1.6rem/1.2 var(--h);margin-bottom:20px;float:left;width:100%}
+.opts{display:flex;flex-wrap:wrap;gap:10px;clear:both}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;inset:0}
+.opts span{display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font:600 1.05rem/1 var(--b)}
+.opts input:checked+span{background:var(--ink);color:#fff;box-shadow:none}
+.opts input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.hint{margin-top:22px;color:var(--ink2);font-size:.98rem}
+.slider label{font:600 1.05rem/1.3 var(--b)}
+.agev{font:700 clamp(4.4rem,9vw,7rem)/1 var(--h);margin:16px 0 4px;font-variant-numeric:lining-nums}
+.agev small{font:600 1.2rem/1 var(--b);color:var(--ink2);margin-left:8px}
+input[type=range]{width:100%;height:44px;background:transparent;-webkit-appearance:none;appearance:none}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:9px;background:linear-gradient(90deg,var(--yel),var(--blue))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;border-radius:50%;background:#fff;border:3px solid var(--ink);margin-top:-12px;cursor:grab}
+input[type=range]::-moz-range-track{height:10px;border-radius:9px;background:linear-gradient(90deg,var(--yel),var(--blue))}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--ink)}
+.ticks{position:relative;height:16px;margin:4px 17px 0;font:500 .85rem/1 var(--b);color:var(--ink2)}
+.ticks span{position:absolute;transform:translateX(-50%)}
+.course{background:#fff;border-radius:var(--r);padding:34px;border:1px solid var(--line);display:flex;flex-direction:column}
+.course h3{font-size:2.1rem}
+.course .what{margin-top:12px;color:var(--ink2);font-size:1.05rem}
+.course dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.course dt{color:var(--ink2);font-size:.95rem}
+.course dd{font-weight:600;font-variant-numeric:lining-nums}
+.course .btn{margin-top:auto;align-self:flex-start}
+.course .sp{height:24px}
+.no-js .course,.no-js .slider{display:none}
+
+.nojs-list{display:none}
+.no-js .nojs-list{display:block;margin-top:30px}
+
+/* parents */
+.parents{padding:110px 0;background:var(--yelL)}
+.pgrid figure figcaption{font-size:.88rem;color:var(--ink2);padding-top:10px}
+.pgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.pgrid figure{margin:0}
+.pgrid figure img{border-radius:var(--r)}
+.pgrid figure img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+.plist{list-style:none;margin-top:30px}
+.plist li{padding:18px 0;border-top:1px solid var(--line);position:relative;color:var(--ink2)}
+.plist li:last-child{border-bottom:1px solid var(--line)}
+.plist li strong{display:block;font:600 1.2rem/1.25 var(--h);color:var(--ink);margin-bottom:2px}
+.mail{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-top:-60px;margin-left:30px;position:relative;font-size:.96rem;color:var(--ink2);box-shadow:0 14px 30px rgba(20,33,61,.10)}
+.mail .mh{font:600 .85rem/1 var(--b);color:var(--blueD);margin-bottom:10px}
+.mail b{color:var(--ink)}
+
+/* adults dark */
+.adults{background:var(--navy);color:#fff;padding:110px 0}
+.adults .lead{color:#c6cee6}
+.agrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:60px;align-items:start}
+.adults figure{border-radius:var(--r);overflow:hidden;margin:0}
+.adults figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.tracks{margin-top:34px;display:grid;gap:0}
+.tracks div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:18px 0;border-top:1px solid var(--lineL)}
+.tracks div:last-child{border-bottom:1px solid var(--lineL)}
+.tracks b{font:600 1.18rem/1.25 var(--h)}
+.tracks span{color:#c6cee6;font-size:.98rem;display:block;margin-top:3px}
+.tracks em{font:600 1rem/1.3 var(--b);font-style:normal;color:var(--yel);white-space:nowrap;font-variant-numeric:lining-nums}
+
+/* faq */
+.faq{padding:110px 0}
+.faq .wrap{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
+.faq h2{position:sticky;top:calc(var(--hdr-h) + 30px)}
+.faq .list{max-width:900px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;font:600 1.25rem/1.3 var(--h);padding:22px 50px 22px 0;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:10px;height:10px;margin-top:-8px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(45deg);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+.faq details p{padding:0 0 22px;color:var(--ink2);max-width:46em}
+
+/* contact */
+.contact{padding:0;background:var(--blue)}
+.cbox{color:#fff;padding:100px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px}
+.cbox .lead{color:#fff}
+.cbox dl{margin-top:30px;display:grid;grid-template-columns:auto 1fr;gap:12px 22px}
+.cbox dt{color:#fff}
+.cbox dd{font-weight:600;overflow-wrap:anywhere}
+.cbox dd a{text-decoration:none;border-bottom:2px solid var(--yel);font-variant-numeric:lining-nums tabular-nums}
+.cbox .stars{margin-top:28px;font:600 1rem/1.4 var(--b)}
+.cbox .stars b{font:700 2.4rem/1 var(--h);margin-right:8px;vertical-align:-4px}
+form{background:#fff;color:var(--ink);border-radius:var(--r);padding:32px}
+form h3{font-size:1.6rem}
+form > p{color:var(--ink2);margin:6px 0 16px}
+form label{display:block;font:600 .95rem/1.3 var(--b);margin:14px 0 7px}
+form input,form select,form textarea{width:100%;font:400 1.02rem/1.4 var(--b);color:var(--ink);background:#fff;border:1.5px solid #7E889E;border-radius:12px;padding:14px;min-height:50px}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--blue);outline:0}
+form textarea{min-height:96px}
+form .btn{width:100%;margin-top:20px}
+.ok{display:block;font-size:.9rem;color:var(--ink2);margin-top:10px}
+form :user-invalid{border-color:var(--red)}
+
+footer{background:var(--navy);color:#c6cee6;padding:56px 0 110px;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between}
+footer strong{font:600 1.15rem/1.2 var(--h);color:#fff;display:block;margin-bottom:6px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a{text-decoration:none}
+footer nav a{padding:10px 0}
+@media(min-width:981px){footer{padding-bottom:56px}}
+footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;font-size:.85rem;opacity:.75}
+
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:none;gap:10px;transform:translateY(130%);transition:transform .35s}
+.past-hero .mbar,.no-js .mbar{transform:none}
+.at-form .mbar{transform:translateY(130%)}
+.mbar a{flex:1;padding:15px 10px}
+
+.js .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav,.hdr .tel{display:none}
+  .mnav{display:block;margin-left:auto}
+  .hgrid,.ab,.pgrid,.agrid,.cbox{grid-template-columns:1fr;gap:34px}
+  .hgrid{grid-template-areas:"txt" "map" "find";gap:24px}
+  .map svg{max-height:46vh}
+  .mbar{display:flex}
+  .cbox{padding:80px 0}
+}
+@media (max-width:760px){
+  .wrap{padding:0 18px}
+  .hero{padding:calc(var(--hdr-h) + 34px) 0 60px}
+  .age,.parents,.adults,.faq{padding:84px 0}
+  .slider,.course{padding:26px 22px}
+  .cbox{padding:70px 0}
+  form{padding:24px 18px}
+  .map{padding:6px}
+  .map .cn{font-size:28px}.map .hq text{font-size:22px}.pin text{font-size:22px}
+  .tracks div{grid-template-columns:1fr}
+  .faq .wrap{grid-template-columns:1fr;gap:30px}.faq h2{position:static}
+  .mail{margin:-30px 10px 0}
+}
+@media (max-width:420px){
+  .hdr .btn{display:none}
+  .mnav .mcta{display:block;background:var(--red);color:#fff;text-align:center;margin-top:6px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .pin circle.dot{transform:scale(1)}
+  .pin.sel circle.halo{animation:none}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="top" id="top">
+  <div class="mk"><b>Makieta W3 „W&nbsp;szkole Twojego dziecka”</b> · poglądowa propozycja nowej strony Świata Języków · ODNOVA Studio</div>
+  <header class="hdr"><div class="wrap">
+    <a class="brand" href="#start" aria-label="Świat Języków — początek strony"><img src="img/logo.png" width="203" height="160" alt="Logo Świat Języków"><span>Świat Języków</span></a>
+    <nav class="nav" aria-label="Główna"><a href="#mapa">Mapa szkół</a><a href="#wiek">Kursy dla dzieci</a><a href="#dorosli">Dorośli i&nbsp;firmy</a><a href="#pytania">Pytania</a></nav>
+    <a class="tel" href="tel:+48600220204">600 22 02 04</a>
+    <a class="btn btn-red" href="#zapisy">Zapytaj o&nbsp;miejsce</a>
+    <details class="mnav"><summary>Menu</summary><nav aria-label="Menu"><a href="#mapa">Mapa szkół</a><a href="#wiek">Kursy dla dzieci</a><a href="#dorosli">Dorośli i&nbsp;firmy</a><a href="#pytania">Pytania</a><a href="#zapisy">Kontakt</a><a href="tel:+48600220204">Zadzwoń: 600 22 02 04</a><a class="mcta" href="#zapisy">Zapytaj o&nbsp;miejsce</a></nav></details>
+  </div></header>
+</div>
+
+<main id="start">
+<section class="hero" id="szkoly">
+  <div class="wrap hgrid">
+    <div class="htxt">
+      <h1>Angielski po lekcjach, <span>w&nbsp;szkole Twojego dziecka.</span></h1>
+      <p class="lead">Uczymy w&nbsp;12 szkołach podstawowych w&nbsp;Bytomiu, Świętochłowicach, Radzionkowie i&nbsp;Piekarach. Najmłodszych lektorka odbiera ze świetlicy i&nbsp;tam odprowadza — nie musisz po pracy wozić dziecka na kurs.</p>
+      </div>
+    <div class="find-wrap"><div class="find">
+        <label for="school">Do której szkoły chodzi dziecko?</label>
+        <select id="school">
+          <option value="">Wybierz szkołę…</option>
+          <optgroup label="Bytom"><option value="b4">SP nr 4, ul. Chrobrego 9</option><option value="b6">SP nr 6, ul. Królowej Jadwigi 2</option><option value="b36">SP nr 36, ul. Siemiradzkiego 9</option><option value="b43">SP nr 43, ul. Suchogórska 98 (Stolarzowice)</option><option value="b45">SP nr 45, ul. Zakątek 20 (Szombierki)</option><option value="b46">SP nr 46, ul. Prusa 10</option></optgroup>
+          <optgroup label="Świętochłowice"><option value="s1">SP nr 1, ul. Zubrzyckiego 38</option><option value="s2">SP nr 2, ul. Wyzwolenia 50</option><option value="s4">SP nr 4, ul. Szkolna 17</option><option value="s5">SP nr 5, ul. Sudecka 5</option></optgroup>
+          <optgroup label="Radzionków i Piekary"><option value="r2">SP nr 2 Radzionków, ul. Szymały 36</option><option value="p12">MSP nr 12 Piekary, ul. Związkowa 14</option></optgroup>
+          <option value="none">Mojej szkoły nie ma na liście</option>
+        </select>
+        <p class="answer" id="answer" aria-live="polite">Wybierz szkołę, a&nbsp;powiemy, jak wyglądają u&nbsp;Was zajęcia.</p>
+      </div>
+      <p class="proof">Rodzinna szkoła od 2003 roku, prowadzona przez Amerykanina Andrew Paula III i&nbsp;Danutę Paul · licencje Teddy Eddie i&nbsp;Savvy Ed · <a href="#">4,7 w&nbsp;Google (49 opinii)</a></p>
+    </div>
+    <figure class="map" id="mapa" aria-label="Mapa szkół, w których prowadzimy zajęcia">
+      <svg viewBox="0 0 620 640" role="img" aria-labelledby="mt">
+        <title id="mt">Siedziba w&nbsp;Bytomiu i&nbsp;12 szkół podstawowych w&nbsp;czterech miastach</title>
+        <path class="road" d="M40 300 C 200 280, 420 330, 590 290"/>
+        <path class="road" d="M300 30 C 290 200, 320 420, 300 620"/>
+        <path class="road" d="M120 120 C 230 230, 330 320, 520 540"/>
+        <ellipse class="area" cx="255" cy="120" rx="95" ry="70"/>
+        <ellipse class="area" cx="455" cy="175" rx="95" ry="70"/>
+        <ellipse class="area" cx="300" cy="330" rx="170" ry="110"/>
+        <ellipse class="area" cx="300" cy="545" rx="130" ry="78"/>
+        <text class="cn" x="200" y="62">Radzionków</text>
+        <text class="cn" x="430" y="118">Piekary Śląskie</text>
+        <text class="cn" x="140" y="236">Bytom</text>
+        <text class="cn" x="350" y="482">Świętochłowice</text>
+        <g class="pin" data-id="r2" tabindex="0" role="button" aria-label="SP nr 2" transform="translate(262 128)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 2</text></g>
+        <g class="pin" data-id="p12" tabindex="0" role="button" aria-label="MSP nr 12" transform="translate(462 186)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">MSP nr 12</text></g>
+        <g class="pin" data-id="b43" tabindex="0" role="button" aria-label="SP nr 43" transform="translate(188 338)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 43</text></g>
+        <g class="pin" data-id="b45" tabindex="0" role="button" aria-label="SP nr 45" transform="translate(200 380)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 45</text></g>
+        <g class="pin" data-id="b4" tabindex="0" role="button" aria-label="SP nr 4" transform="translate(330 300)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 4</text></g>
+        <g class="pin" data-id="b6" tabindex="0" role="button" aria-label="SP nr 6" transform="translate(372 334)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 6</text></g>
+        <g class="pin" data-id="b36" tabindex="0" role="button" aria-label="SP nr 36" transform="translate(286 360)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 36</text></g>
+        <g class="pin" data-id="b46" tabindex="0" role="button" aria-label="SP nr 46" transform="translate(408 286)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 46</text></g>
+        <g class="pin" data-id="s1" tabindex="0" role="button" aria-label="SP nr 1" transform="translate(240 540)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 1</text></g>
+        <g class="pin" data-id="s2" tabindex="0" role="button" aria-label="SP nr 2" transform="translate(300 520)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 2</text></g>
+        <g class="pin" data-id="s4" tabindex="0" role="button" aria-label="SP nr 4" transform="translate(352 560)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 4</text></g>
+        <g class="pin" data-id="s5" tabindex="0" role="button" aria-label="SP nr 5" transform="translate(286 588)"><circle class="halo" r="9"/><circle class="dot" r="9"/><text x="14" y="-12">SP nr 5</text></g>
+        <g class="hq" transform="translate(318 326)"><circle r="12"/><circle r="4.5" fill="#fff"/><text x="-16" y="-16" text-anchor="end">Siedziba: Dworcowa 1</text></g>
+      </svg>
+      <div class="legend"><span><i style="background:var(--red)"></i>Siedziba szkoły, ul. Dworcowa 1</span><span><i style="background:var(--blue)"></i>Szkoły podstawowe — kliknij, by sprawdzić</span></div>
+    </figure>
+  </div>
+</section>
+
+<section class="age" id="wiek">
+  <div class="wrap">
+    <h2 class="reveal">Ile lat ma Twoje dziecko?</h2>
+    <p class="lead" style="margin-top:20px">Wybierz wiek — pokażemy kurs, rytm zajęć i&nbsp;cenę na rok 2026/2027. Na drugie dziecko rabat 30%.</p>
+    <div class="ab">
+      <fieldset class="slider ages"><legend>Ile lat ma dziecko?</legend>
+        <div class="opts">
+          <label><input type="radio" name="age" value="0"><span>2–3 lata</span></label>
+          <label><input type="radio" name="age" value="1" checked><span>4–5 lat</span></label>
+          <label><input type="radio" name="age" value="2"><span>6–7 lat</span></label>
+          <label><input type="radio" name="age" value="3"><span>8–11 lat</span></label>
+          <label><input type="radio" name="age" value="4"><span>12–15 lat</span></label>
+          <label><input type="radio" name="age" value="5"><span>16–18 lat</span></label>
+        </div>
+        <p class="hint">Dzieci 7–15 lat mogą też chodzić na zajęcia w&nbsp;swojej szkole podstawowej: 2 × 45 minut po lekcjach, 2 100 zł za rok.</p>
+      </fieldset>
+      <div class="course">
+        <h3 id="cn" aria-live="polite">Teddy Eddie Standard</h3>
+        <p class="what" id="cw">Licencjonowana metoda dla przedszkolaków: zabawa, piosenki i&nbsp;bajki, a&nbsp;angielski jest językiem całych zajęć.</p>
+        <dl><dt>Zajęcia</dt><dd id="cz">2 × 35 minut w&nbsp;tygodniu</dd><dt>Gdzie</dt><dd id="cg">Bytom (Dworcowa 1) i&nbsp;Świętochłowice</dd><dt>Cena</dt><dd id="cc">2 499 zł albo 399 zł + 8 rat po 299 zł</dd></dl>
+        <div class="sp"></div>
+        <a class="btn btn-blue" href="#zapisy">Zapytaj o&nbsp;wolne miejsca</a>
+      </div>
+    </div>
+    <ul class="nojs-list lead">
+      <li>2–3 lata: Teddy Eddie Start, 1 × 40 min, 1 500 zł</li><li>4–5 lat: Teddy Eddie Standard, 2 × 35 min, 2 499 zł</li><li>6–7 lat: Teddy Eddie ABC, 2 × 45 min, 2 850 zł</li><li>8–18 lat: Savvy Ed, EL. i&nbsp;Teens, 2 × 60 min, 3 149 zł</li><li>w&nbsp;szkole podstawowej: 2 × 45 min, 2 100 zł</li>
+    </ul>
+  </div>
+</section>
+
+<section class="parents" aria-labelledby="ph">
+  <div class="wrap pgrid">
+    <figure class="reveal"><img src="img/lawka.jpg" width="1800" height="1005" alt="Dziecięce dłonie nad kolorowym podręcznikiem do angielskiego" loading="lazy"><figcaption>Zdjęcie poglądowe — przy wdrożeniu sesja na Państwa zajęciach.</figcaption>
+      <div class="mail"><p class="mh">Przykładowy mail po zajęciach</p><p><b>Temat:</b> Wtorek — owoce i&nbsp;kolory</p><p>Dziś poznaliśmy: apple, banana, red, yellow. W&nbsp;domu: zaśpiewajcie piosenkę z&nbsp;teczki i&nbsp;nazwijcie kolory przy obiedzie — 10 minut wystarczy.</p></div></figure>
+    <div>
+      <h2 id="ph" class="reveal">Wiesz, czego dziecko się uczy.</h2>
+      <ul class="plist">
+        <li><strong>Raport co semestr</strong>Na piśmie: postępy, oceny i&nbsp;frekwencja. Do tego lekcje otwarte dla rodziców.</li>
+        <li><strong>Mail po zajęciach</strong>Co było na lekcji i&nbsp;jak powtórzyć to w&nbsp;domu w&nbsp;dziesięć minut.</li>
+        <li><strong>Zestaw kursanta w&nbsp;cenie</strong>Książka, ćwiczenia i&nbsp;materiały — bez dopłat we wrześniu.</li>
+        <li><strong>Płatność w&nbsp;9 ratach</strong>Albo jednorazowo taniej. Rabat rodzinny 30% na rodzeństwo lub drugi kurs.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="adults" id="dorosli">
+  <div class="wrap agrid">
+    <div>
+      <h2 class="reveal">A&nbsp;kiedy dziecko jest na zajęciach — Twoja kolej.</h2>
+      <p class="lead" style="margin-top:20px">Kursy dla dorosłych w&nbsp;sześciu językach, z&nbsp;lektorami z&nbsp;USA i&nbsp;native speakerką z&nbsp;Austrii. Popołudniami w&nbsp;centrum Bytomia.</p>
+      <div class="tracks">
+        <div><p><b>Kurs roczny w&nbsp;grupie</b><span>Angielski, niemiecki, francuski, hiszpański, włoski, rosyjski · 6 poziomów A1–C2</span></p><em>9 × 299 zł</em></div>
+        <div><p><b>Grupa konwersacyjna z&nbsp;native speakerami</b><span>Poniedziałki 19:30–21:00, od października do czerwca</span></p><em>1. lekcja gratis</em></div>
+        <div><p><b>Lekcje indywidualne</b><span>W&nbsp;szkole lub online, z&nbsp;lektorem polskim albo native speakerem</span></p><em>od 120 zł / 60 min</em></div>
+        <div><p><b>Szkolenia dla firm</b><span>W&nbsp;Twojej firmie, na całym Śląsku · biznesowy, techniczny, medyczny</span></p><em>wycena indywidualna</em></div>
+      </div>
+    </div>
+    <figure class="reveal"><img src="img/wieczor.jpg" width="1800" height="1005" alt="Wieczorne zajęcia konwersacyjne dla dorosłych przy stole z mapą i kawą" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="faq" id="pytania">
+  <div class="wrap">
+    <h2 class="reveal">Pytania rodziców.</h2>
+    <div class="list">
+      <details><summary>Jak zapisać dziecko na zajęcia w&nbsp;jego szkole?</summary><p>Zajęcia w&nbsp;szkołach podstawowych organizujemy we współpracy z&nbsp;placówkami, więc zapisy prowadzi szkoła, do której chodzi dziecko. Zadzwoń do nas — powiemy, jak to wygląda w&nbsp;Waszej szkole i&nbsp;kiedy startuje grupa.</p></details>
+      <details><summary>Kto odbiera dziecko ze świetlicy?</summary><p>Lektorka odbiera najmłodsze dzieci ze świetlicy przed zajęciami i&nbsp;odprowadza je tam po lekcji angielskiego.</p></details>
+      <details><summary>Czy dwulatek to nie za wcześnie?</summary><p>Nie. Teddy Eddie Start to 40 minut raz w&nbsp;tygodniu, przez zabawę i&nbsp;piosenki. Dzieci osłuchują się z&nbsp;językiem tak, jak z&nbsp;mową ojczystą.</p></details>
+      <details><summary>Czy jest lekcja próbna?</summary><p>Tak — organizujemy bezpłatne lekcje pokazowe Teddy Eddie dla rodziców z&nbsp;dziećmi, a&nbsp;dorośli mogą przyjść na darmową lekcję próbną grupy konwersacyjnej.</p></details>
+      <details><summary>Kto prowadzi zajęcia?</summary><p>Lektorzy z&nbsp;wieloletnim doświadczeniem, egzaminatorzy maturalni i&nbsp;native speakerzy z&nbsp;USA. Szkołę prowadzą Andrew Paul III i&nbsp;Danuta Paul. [uzupełnić: kto uczy w&nbsp;szkołach podstawowych]</p></details>
+      <details><summary>Ile dzieci jest w&nbsp;grupie?</summary><p>Grupy dobieramy wiekiem i&nbsp;poziomem. W&nbsp;kursach Savvy Ed to najwyżej dziesięcioro dzieci.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="zapisy">
+  <div class="wrap">
+    <div class="cbox">
+      <div>
+        <h2 class="reveal">Zapisy na rok 2026/2027 trwają.</h2>
+        <p class="lead" style="margin-top:18px">Zostaw numer — oddzwonimy, dobierzemy grupę do wieku i&nbsp;poziomu, a&nbsp;przy zajęciach w&nbsp;szkole powiemy, jak wygląda zapis.</p>
+        <dl>
+          <dt>Telefon</dt><dd><a href="tel:+48600220204">600 22 02 04</a> (8:00–21:00)</dd>
+          <dt>Sekretariat</dt><dd><a href="tel:+48322823003">32 282 30 03</a></dd>
+          <dt>E-mail</dt><dd><a href="mailto:bytomswiatjezykow@gmail.com">bytomswiatjezykow@gmail.com</a></dd>
+          <dt>Adres</dt><dd>ul. Dworcowa 1, II piętro, Bytom · pon.–pt. 10:00–18:00</dd>
+        </dl>
+        <p class="stars"><b>4,7</b>w&nbsp;Google, 49 opinii rodziców i&nbsp;kursantów</p>
+      </div>
+      <form onsubmit="event.preventDefault();this.querySelector('.ok').textContent='To makieta — w gotowej stronie zgłoszenie trafi do sekretariatu.'">
+        <h3>Zapytaj o&nbsp;miejsce</h3>
+        <p>Odpowiadamy w&nbsp;ciągu jednego dnia roboczego.</p>
+        <label for="f1">Imię rodzica</label><input id="f1" autocomplete="given-name" required>
+        <label for="f2">Telefon</label><input id="f2" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 +]{9,15}" aria-describedby="f2e" required><small id="f2e" class="ok">np. 600 22 02 04</small>
+        <label for="f3">Wiek dziecka</label><select id="f3" required><option value="" selected disabled>Wybierz</option><option>2–3 lata</option><option>4–5 lat</option><option>6–7 lat</option><option>8–11 lat</option><option>12–15 lat</option><option>16–18 lat</option><option>Zapisuję siebie</option></select>
+        <label for="f4">Szkoła dziecka</label><select id="f4">
+          <option value="">Nie wiem / zajęcia przy Dworcowej</option>
+          <optgroup label="Bytom"><option value="b4">SP nr 4, ul. Chrobrego 9</option><option value="b6">SP nr 6, ul. Królowej Jadwigi 2</option><option value="b36">SP nr 36, ul. Siemiradzkiego 9</option><option value="b43">SP nr 43, ul. Suchogórska 98 (Stolarzowice)</option><option value="b45">SP nr 45, ul. Zakątek 20 (Szombierki)</option><option value="b46">SP nr 46, ul. Prusa 10</option></optgroup>
+          <optgroup label="Świętochłowice"><option value="s1">SP nr 1, ul. Zubrzyckiego 38</option><option value="s2">SP nr 2, ul. Wyzwolenia 50</option><option value="s4">SP nr 4, ul. Szkolna 17</option><option value="s5">SP nr 5, ul. Sudecka 5</option></optgroup>
+          <optgroup label="Radzionków i Piekary"><option value="r2">SP nr 2 Radzionków, ul. Szymały 36</option><option value="p12">MSP nr 12 Piekary, ul. Związkowa 14</option></optgroup>
+          <option value="none">Mojej szkoły nie ma na liście</option>
+        </select>
+        <label for="f5">Kiedy zadzwonić?</label><select id="f5"><option>Rano</option><option>Po 16:00</option><option>Obojętnie</option></select>
+        <p class="ok">Numer służy tylko do kontaktu w&nbsp;sprawie zapisu. Administrator danych: [uzupełnić] · <a href="#">Polityka prywatności</a></p>
+        <button class="btn btn-red" type="submit">Poproś o&nbsp;telefon</button>
+        <p class="ok" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Świat Języków</strong>ul. Dworcowa 1, II piętro, 41-902 Bytom<br>Tel. 600 22 02 04 · sekretariat pon.–pt. 10:00–18:00<br>NIP [uzupełnić] · REGON [uzupełnić]</div>
+    <nav aria-label="Stopka"><a href="#mapa">Mapa szkół</a><a href="#wiek">Kursy dla dzieci</a><a href="#dorosli">Dorośli i&nbsp;firmy</a><a href="#pytania">Pytania</a><a href="#zapisy">Kontakt</a><a href="#">Facebook</a><a href="#">Polityka prywatności</a></nav>
+    <p class="credit">Makieta W3 „W&nbsp;szkole Twojego dziecka” · przygotowana przez ODNOVA Studio · treści na podstawie obecnej strony szkoły</p>
+  </div>
+</footer>
+<div class="mbar"><a class="btn btn-ghost" href="tel:+48600220204">Zadzwoń</a><a class="btn btn-red" href="#zapisy">Zapytaj o&nbsp;miejsce</a></div>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement, hdr=d.getElementById('top');
+  function m(){root.style.setProperty('--hdr-h',hdr.offsetHeight+'px')}
+  m(); addEventListener('resize',m); addEventListener('load',m);
+  d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* pins light up one by one */
+  var pins=[].slice.call(d.querySelectorAll('.pin'));
+  pins.forEach(function(p,i){setTimeout(function(){p.classList.add('on')}, reduce?0:350+i*140)});
+
+  var info={b4:'Bytom',b6:'Bytom',b36:'Bytom',b43:'Bytom (Stolarzowice)',b45:'Bytom (Szombierki)',b46:'Bytom',s1:'Świętochłowice',s2:'Świętochłowice',s4:'Świętochłowice',s5:'Świętochłowice',r2:'Radzionków',p12:'Piekary Śląskie'};
+  var sel=d.getElementById('school'), ans=d.getElementById('answer');
+  pins.forEach(function(p){function go(){sel.value=p.dataset.id;sel.dispatchEvent(new Event('change'))}p.addEventListener('click',go);p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
+  sel.addEventListener('change',function(){
+    var v=sel.value; pins.forEach(function(p){p.classList.toggle('sel',p.dataset.id===v)});
+    if(!v){ans.textContent='Wybierz szkołę, a powiemy, jak wyglądają u Was zajęcia.';return}
+    if(v==='none'){ans.innerHTML='<strong>Zaproś nas do swojej szkoły.</strong> Zadzwoń albo napisz — chętnie zorganizujemy zajęcia w kolejnej placówce. Do tego czasu zapraszamy na Dworcową 1.';return}
+    var t=sel.options[sel.selectedIndex].text, short=t.split(',')[0];
+    ans.innerHTML='<strong>Tak, uczymy w: '+t+' ('+info[v]+').</strong> Zajęcia [dni i godzina — uzupełnić], 2 × 45 minut zaraz po lekcjach, od października do czerwca · 2 100 zł albo 9 rat po 245 zł.<br><a class="btn btn-red" href="#zapisy" id="ask">Zapytaj o grupę w '+short+'</a>';
+    d.getElementById('ask').addEventListener('click',function(){var f=d.getElementById('f4');for(var k=0;k<f.options.length;k++){if(f.options[k].value===v)f.selectedIndex=k}});
+  });
+
+  /* age groups */
+  var C=[
+    [3,'Teddy Eddie Start','Pierwsze spotkanie z angielskim: krótkie zajęcia pełne ruchu, piosenek i zabawy, raz w tygodniu.','1 × 40 minut w tygodniu, 30 lekcji','Bytom (Dworcowa 1) i Świętochłowice','1 500 zł albo 399 zł + 8 rat po 175 zł'],
+    [5,'Teddy Eddie Standard','Licencjonowana metoda dla przedszkolaków: zabawa, piosenki i bajki, a angielski jest językiem całych zajęć.','2 × 35 minut w tygodniu, 60 lekcji','Bytom (Dworcowa 1) i Świętochłowice','2 499 zł albo 399 zł + 8 rat po 299 zł'],
+    [7,'Teddy Eddie ABC i Superhero','Dłuższe zajęcia dla dzieci gotowych na więcej — pierwsze czytanie i całe zdania po angielsku.','2 × 45 minut w tygodniu, 60 lekcji','Bytom (Dworcowa 1) i Świętochłowice','2 850 zł albo 399 zł + 8 rat po 335 zł'],
+    [11,'Savvy Ed','Trzy poziomy zgodne z Cambridge Starters, Movers i Flyers. Grupy do dziesięciu osób — każde dziecko ma czas mówić.','2 × 60 minut w tygodniu, 60 lekcji','Bytom (Dworcowa 1) — lub w szkole dziecka 2 × 45 min','3 149 zł albo 399 zł + 8 rat po 379 zł'],
+    [15,'EL. 1–3 i egzamin ósmoklasisty','Program dla nastolatków z naciskiem na mówienie, a w klasie ósmej osobne przygotowanie do egzaminu.','2 × 60 minut w tygodniu, 60 lekcji','Bytom (Dworcowa 1) — lub w szkole dziecka 2 × 45 min','3 149 zł albo 399 zł + 8 rat po 379 zł'],
+    [18,'Teens i matura','Dla licealistów: native speakerzy z USA i kursy maturalne prowadzone przez egzaminatorów OKE.','2 × 60 minut w tygodniu, 60 lekcji','Bytom (Dworcowa 1)','3 149 zł albo 399 zł + 8 rat po 379 zł']
+  ];
+  var radios=[].slice.call(d.querySelectorAll('input[name=age]'));
+  function upd(){var r=radios.filter(function(x){return x.checked})[0]; var c=C[+r.value];
+    d.getElementById('cn').textContent=c[1]; d.getElementById('cw').textContent=c[2]; d.getElementById('cz').textContent=c[3]; d.getElementById('cg').textContent=c[4]; d.getElementById('cc').textContent=c[5];}
+  radios.forEach(function(x){x.addEventListener('change',upd)}); upd();
+
+  function sc(){d.body.classList.toggle('past-hero', d.getElementById('szkoly').getBoundingClientRect().bottom < innerHeight*.5);var z=d.getElementById('zapisy').getBoundingClientRect();d.body.classList.toggle('at-form',z.top<innerHeight*.8&&z.bottom>0)}
+  addEventListener('scroll',sc,{passive:true}); sc();
+
+  var rv=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){io.observe(el)});
+    function sweep(){rv.forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in')})}
+    var st; addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
+    setTimeout(function(){if(!fired)rv.forEach(function(el){el.classList.add('in')})},4000);
+  } else rv.forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>

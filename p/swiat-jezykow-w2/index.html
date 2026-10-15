@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Świat Języków Bytom — makieta W2 „Z Long Island do Bytomia”</title>
+<meta name="description" content="Szkoła językowa prowadzona przez Amerykanina. Od 2003 roku w centrum Bytomia: angielski dla dzieci, młodzieży i dorosłych, pięć innych języków, kursy dla firm.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Świat Języków — makieta W2 „Z Long Island do Bytomia”">
+<meta property="og:description" content="Makieta W2 „Z Long Island do Bytomia” — propozycja nowej strony Świata Języków w Bytomiu. Przygotowało ODNOVA Studio.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/swiat-jezykow-w2/img/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/swiat-jezykow-w2/">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<meta name="theme-color" content="#14163A">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@800&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14163A; --navy2:#1D2050; --bone:#EDE8DD; --bone2:#E2DBCC; --ink:#17183A; --ink2:#4B4A63;
+  --red:#C42A23; --redd:#A9241F; --brass:#B08A4A; --brassL:#D9B97C; --line:rgba(23,24,58,.16); --lineL:rgba(237,232,221,.18);
+  --d:"Alfa Slab One",Rockwell,serif; --b:"Hanken Grotesk",system-ui,sans-serif; --hdr-h:110px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--bone);font:400 1.08rem/1.6 var(--b);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:3px solid var(--brassL);outline-offset:3px}
+.bone :focus-visible{outline-color:var(--navy)}
+input,select,textarea{caret-color:var(--red);accent-color:var(--red)}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+.wrap{width:100%;max-width:1260px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--d);font-weight:400;line-height:1.02;letter-spacing:-.005em}
+h2{font-size:clamp(2rem,4vw,3.2rem);text-wrap:balance}
+p{text-wrap:pretty}
+.steps h3,.story .facts strong,form h3,.clients,footer strong,.brand span,.city text,.st h3{font-family:var(--b)!important;font-weight:800;letter-spacing:-.01em}
+.lead{font-size:clamp(1.12rem,1.5vw,1.28rem);max-width:38em}
+.airmail{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 18px,var(--bone) 18px 30px,var(--navy2) 30px 48px,var(--bone) 48px 60px)}
+
+/* top */
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mk{background:#0B0C24;color:#d7d4ea;font:500 .8rem/1.35 var(--b);text-align:center;padding:7px 14px}
+.mk b{color:#fff}
+.hdr{background:rgba(20,22,58,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--lineL)}
+.hdr .wrap{display:flex;align-items:center;gap:26px;min-height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:60px}
+.brand span{font:400 1.12rem/1 var(--d);color:#fff}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{font:500 .98rem/1 var(--b);text-decoration:none;padding:8px 0;border-bottom:2px solid transparent;color:#e9e5f5}
+.nav a:hover{border-color:var(--brassL)}
+.tel{font:700 1rem/1 var(--b);text-decoration:none;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem/1 var(--b);text-decoration:none;border-radius:6px;padding:16px 22px;border:0;cursor:pointer;transition:background .2s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--redd)}
+.btn-bone{background:transparent;color:var(--bone);border:1.5px solid rgba(237,232,221,.5)}
+.hdr .btn{padding:12px 18px}
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;font:600 1rem/1 var(--b);padding:13px 16px;border:1.5px solid rgba(237,232,221,.5);border-radius:6px;min-height:44px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:54px;background:var(--bone);color:var(--ink);border-radius:10px;padding:10px;min-width:230px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.mnav nav a{display:block;padding:13px 14px;font:600 1.05rem/1.1 var(--b);text-decoration:none;border-radius:6px}
+.mnav nav a:hover{background:var(--bone2)}
+.mnav .mcta{display:none}
+
+/* hero */
+.hero{position:relative;background:var(--navy)}
+.js .hero{height:165vh}
+.pin{position:relative;min-height:100vh;overflow:hidden}
+.js .pin{position:sticky;top:0;height:100vh}
+.bg{position:absolute;inset:0;background:url(img/airmail.jpg) 66% 50%/cover no-repeat;transform-origin:60% 50%}
+.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,22,58,.95) 0%,rgba(20,22,58,.85) 46%,rgba(20,22,58,.3) 78%,rgba(20,22,58,.5) 100%),linear-gradient(0deg,rgba(20,22,58,.9),transparent 30%)}
+.route{position:absolute;inset:var(--hdr-h) 0 0 0;width:100%;height:calc(100% - var(--hdr-h))}
+.route .arc{fill:none;stroke:var(--brassL);stroke-width:3;stroke-dasharray:1 1;stroke-linecap:round}
+.route .dash{fill:none;stroke:rgba(237,232,221,.25);stroke-width:1.4;stroke-dasharray:3 9}
+.city text{font:400 22px var(--d);fill:var(--bone)}
+.city .sub{font:500 13px var(--b);fill:var(--brassL);letter-spacing:.02em}
+.city circle{fill:var(--red)}
+.stamp{position:absolute;left:63%;top:24%;width:clamp(150px,17vw,230px);aspect-ratio:1;border-radius:50%;border:3px solid var(--red);color:var(--red);display:grid;place-items:center;text-align:center;transform:rotate(-14deg) scale(1.6);opacity:0;mix-blend-mode:screen;font:400 1rem/1.05 var(--d)}
+.stamp::before{content:"";position:absolute;inset:9px;border-radius:50%;border:1.5px dashed var(--red)}
+.stamp span{display:block;font:700 .78rem/1.2 var(--b);letter-spacing:.06em}
+.stamp b{display:block;font:400 clamp(1.3rem,2.2vw,1.9rem)/1 var(--d);margin:6px 0}
+.htxt{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:var(--hdr-h)}
+.htxt h1{font-size:clamp(2.5rem,5.2vw,4.8rem);max-width:15ch;line-height:.98;color:#fff}
+.htxt h1 em{font-style:normal;color:var(--brassL)}
+.htxt p{margin-top:24px;max-width:31em;font-size:clamp(1.08rem,1.5vw,1.28rem);color:#d9d5e8}
+.htxt p strong{color:#fff;font-weight:600}
+.hcta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+.plane{fill:var(--bone)}
+.no-js .stamp{opacity:1;transform:rotate(-14deg)}
+
+/* story (bone) */
+.bone{background:var(--bone);color:var(--ink)}
+.bone .lead{color:var(--ink2)}
+.story{padding:130px 0 120px}
+.sgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.story h2{max-width:13ch}
+.story .facts{margin-top:40px;display:grid;gap:22px}
+.story .facts{gap:0}
+.story .facts p{font-size:1.08rem;color:var(--ink2);max-width:34em;padding:18px 0;border-top:1px solid var(--line)}
+.story .facts strong{display:block;font:400 1.35rem/1.15 var(--d);color:var(--ink);margin-bottom:4px}
+.photo{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 30px 60px rgba(23,24,58,.18)}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;font:500 .9rem/1.3 var(--b);color:#fff;background:linear-gradient(0deg,rgba(20,22,58,.75),transparent)}
+
+/* path (navy) */
+.path{padding:130px 0}
+.path .lead{color:#cfcbe0;margin-top:22px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:70px;border-top:1px solid var(--lineL);counter-reset:s}
+.steps li{padding:34px 26px 0 0;position:relative}
+.steps{border-top:2px dashed rgba(217,185,124,.5)}
+.steps li::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--navy)}
+.steps .age{font:700 .92rem/1 var(--b);color:var(--redd);background:var(--bone);display:inline-block;padding:6px 9px;border-radius:3px}
+.steps h3{font-size:1.55rem;margin:16px 0 10px;color:#fff}
+.steps p{color:#cfcbe0;font-size:1rem}
+.steps .price{margin-top:14px;font:600 1rem/1.3 var(--b);color:#fff;font-variant-numeric:lining-nums}
+
+/* stamps (bone) */
+.langs{padding:130px 0}
+.sgrid2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;margin-top:64px}
+.stw{filter:drop-shadow(0 10px 18px rgba(23,24,58,.14))}
+.st{position:relative;padding:14px;background:#fff;-webkit-mask:radial-gradient(circle,#0000 5px,#000 5.5px) -11px -11px/22px 22px,linear-gradient(#000 0 0) content-box;-webkit-mask-composite:source-over;mask:radial-gradient(circle,#0000 5px,#000 5.5px) -11px -11px/22px 22px,linear-gradient(#000 0 0) content-box;mask-composite:add;height:100%}
+.st .in{background:#fff;outline:2px solid var(--c,var(--navy));outline-offset:-2px;padding:22px 44px 22px 20px;min-height:210px;display:flex;flex-direction:column;height:100%;position:relative}
+.st .g{font:400 2.1rem/1 var(--d);color:var(--c,var(--navy))}
+.st .g:lang(ru){font-family:"Bitter",serif;font-weight:800}
+.st h3{font:700 1.1rem/1.2 var(--b);margin-top:10px;color:var(--ink)}
+.st p{font-size:.98rem;color:var(--ink2);margin-top:8px}
+.st .val{writing-mode:vertical-rl;position:absolute;right:14px;top:22px;font:800 .72rem/1 var(--b);letter-spacing:.14em;color:var(--c,var(--red))}
+.stw:nth-child(1){--c:#14163A}.stw:nth-child(2){--c:#A9241F}.stw:nth-child(3){--c:#2F5D50}.stw:nth-child(4){--c:#8A5A12}.stw:nth-child(5){--c:#1F5A8A}.stw:nth-child(6){--c:#5B2A6E}
+.stw:nth-child(2n){transform:rotate(1.2deg)}.stw:nth-child(3n){transform:rotate(-1deg)}
+.adult{margin-top:56px;font-size:1.12rem;color:var(--ink2);max-width:46em}
+.adult strong{color:var(--ink)}
+
+/* firms (navy) */
+.firms{padding:100px 0}
+.firms .lead{color:#cfcbe0;margin-top:22px}
+.clients{list-style:none;margin-top:48px;columns:3 13em;column-gap:40px;font-size:clamp(1.05rem,1.4vw,1.2rem)!important;color:#fff}
+.clients li{padding:12px 0;border-top:1px solid var(--lineL);break-inside:avoid}
+.firms .row{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;align-items:center}
+.firms .row p{color:#cfcbe0;font-size:1rem;margin-right:16px}
+
+/* reviews + contact (bone) */
+.contact{padding:130px 0 120px}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.rating{font:700 1.1rem/1.4 var(--b);margin-top:24px}
+.rating a{text-decoration:none;border-bottom:2px solid var(--red)}
+.cinfo dl{margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:12px 24px}
+.cinfo dt{font:500 .95rem/1.6 var(--b);color:var(--ink2)}
+.cinfo dd{font-weight:600;overflow-wrap:anywhere}
+.cinfo dd a{text-decoration:none;border-bottom:2px solid var(--red);font-variant-numeric:lining-nums tabular-nums}
+form{background:#fff;border-radius:0 0 6px 6px;padding:36px;box-shadow:0 26px 60px rgba(23,24,58,.12);border-top:10px solid transparent;border-image:repeating-linear-gradient(-45deg,var(--red) 0 18px,#fff 18px 30px,var(--navy2) 30px 48px,#fff 48px 60px) 10}
+form h3{font-size:1.7rem;color:var(--ink)}
+form > p{color:var(--ink2);margin:6px 0 18px}
+label{display:block;font:600 .95rem/1.3 var(--b);margin:16px 0 7px;color:var(--ink)}
+input,select,textarea{width:100%;font:400 1.02rem/1.4 var(--b);color:var(--ink);background:#fff;border:1.5px solid #7D7990;border-radius:4px;padding:14px 15px;min-height:50px}
+input:focus,select:focus,textarea:focus{border-color:var(--navy);outline:0}
+textarea{min-height:110px}
+form .btn{width:100%;margin-top:22px}
+.ok{font-size:.9rem;color:var(--ink2);margin-top:12px}
+
+footer{background:#0B0C24;color:#c9c5dc;padding:56px 0 110px;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between}
+footer strong{font:400 1.15rem/1.2 var(--d);color:#fff;display:block;margin-bottom:6px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a{text-decoration:none}
+@media(min-width:981px){footer{padding-bottom:56px}}
+footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;font-size:.85rem;opacity:.75}
+
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:none;gap:10px;transform:translateY(130%);transition:transform .35s}
+.past-hero .mbar,.no-js .mbar{transform:none}
+.mbar a{flex:1;padding:15px 10px}
+.mbar .btn-bone{background:var(--navy)}
+
+.js .reveal{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.js .reveal.in{opacity:1;transform:none}
+
+@keyframes thunk{0%{opacity:0;transform:rotate(-14deg) scale(1.5)}70%{opacity:1;transform:rotate(-14deg) scale(.96)}100%{opacity:1;transform:rotate(-14deg) scale(1)}}
+@media (max-width:980px){
+  .nav,.hdr .tel{display:none}
+  .mnav{display:block;margin-left:auto}
+  .sgrid,.cgrid{grid-template-columns:1fr;gap:44px}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .sgrid2{grid-template-columns:1fr 1fr}
+  .mbar{display:flex}
+  .stamp{right:5%;bottom:6%}
+}
+@media (max-width:760px){
+  .wrap{padding:0 18px}
+  .story,.path,.langs,.firms,.contact{padding:90px 0}
+  .steps{grid-template-columns:1fr}
+  .sgrid2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+  .st .g{font-size:clamp(1.1rem,5.4vw,1.45rem);overflow-wrap:anywhere}.st .in{min-height:0;padding:14px 30px 14px 12px}.st p{font-size:.9rem}.st .val{right:8px;top:14px}
+  .bg{background-position:70% center}
+  .bg::after{background:linear-gradient(0deg,rgba(20,22,58,.97) 30%,rgba(20,22,58,.55) 70%,rgba(20,22,58,.7))}
+  .htxt{justify-content:flex-end;padding-bottom:13vh}
+  .route{display:none}
+  .stamp{top:calc(var(--hdr-h) + 14px);bottom:auto;left:auto;right:6%;width:96px}
+  .js .pin{position:relative;height:100svh}
+  .js .hero{height:auto!important}
+  .bg{background-position:24% 30%}
+  .stamp.go{animation:thunk .5s .6s both}
+  .stamp span{font-size:.62rem}
+  form{padding:26px 20px}
+  .photo img{aspect-ratio:4/3}
+}
+@media (max-width:420px){
+  .hdr .btn{display:none}
+  .mnav .mcta{display:block;background:var(--red);color:#fff;text-align:center;margin-top:6px}
+  .brand span{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .hero{height:auto}.js .pin{position:relative;height:auto;min-height:100vh}
+  .js .reveal{opacity:1;transform:none}
+  .stamp{opacity:1;transform:rotate(-14deg)}
+}
+</style>
+</head>
+<body>
+<div class="top" id="top">
+  <div class="mk"><b>Makieta W2 „Z&nbsp;Long Island do Bytomia”</b> · poglądowa propozycja nowej strony Świata Języków · ODNOVA Studio</div>
+  <header class="hdr"><div class="wrap">
+    <a class="brand" href="#start" aria-label="Świat Języków — początek strony"><img src="img/logo.png" width="203" height="160" alt="Logo Świat Języków"><span>Świat Języków</span></a>
+    <nav class="nav" aria-label="Główna"><a href="#historia">O&nbsp;szkole</a><a href="#dzieci">Dzieci</a><a href="#jezyki">Dorośli</a><a href="#firmy">Firmy</a></nav>
+    <a class="tel" href="tel:+48322823003">32 282 30 03</a>
+    <a class="btn btn-red" href="#kontakt">Zapisz się</a>
+    <details class="mnav"><summary>Menu</summary><nav aria-label="Menu"><a href="#historia">O&nbsp;szkole</a><a href="#dzieci">Dzieci</a><a href="#jezyki">Dorośli</a><a href="#firmy">Firmy</a><a href="#kontakt">Kontakt</a><a href="tel:+48322823003">Zadzwoń: 32 282 30 03</a><a class="mcta" href="#kontakt">Zapisz się</a></nav></details>
+  </div></header>
+</div>
+
+<main id="start">
+<section class="hero" id="hero" aria-label="Wstęp">
+  <div class="pin">
+    <div class="bg" role="img" aria-label="Koperta lotnicza, pocztówka i paszport na granatowym obrusie"></div>
+    <svg class="route" viewBox="0 0 1440 790" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <path class="dash" d="M900 620 C 1000 260, 1160 180, 1290 300"/>
+      <path class="arc" id="arc" d="M900 620 C 1000 260, 1160 180, 1290 300" pathLength="1" style="stroke-dashoffset:1"/>
+      <g class="city" transform="translate(900 620)"><circle r="7"/><text x="-14" y="40" text-anchor="start">New York</text><text class="sub" x="-14" y="62">Long Island</text></g>
+      <g class="city" id="bytom" transform="translate(1290 300)" opacity="0"><circle r="7"/><text x="-18" y="-22" text-anchor="end">Bytom</text><text class="sub" x="-18" y="0" text-anchor="end">ul. Dworcowa 1</text></g>
+      <path class="plane" id="plane" d="M0 -3 L 14 0 L 0 3 L 3 0 Z M4 -1 L 4 -9 L 8 -9 L 9 -1 Z M4 1 L 4 9 L 8 9 L 9 1 Z" transform="translate(900 620)"/>
+    </svg>
+    <div class="stamp" aria-hidden="true"><div><span>BYTOM · POCZTA</span><b>2003</b><span>DWORCOWA 1</span></div></div>
+    <div class="wrap htxt">
+      <h1>Szkoła prowadzona<br>przez <em>Amerykanina.</em></h1>
+      <p><strong>Andrew Paul III przyjechał z&nbsp;Long Island.</strong> Od 2003 roku razem z&nbsp;żoną Danutą uczy Bytom mówić po angielsku — dzieci od drugiego roku życia, młodzież, dorosłych i&nbsp;firmy. Do tego pięć innych języków.</p>
+      <div class="hcta"><a class="btn btn-red" href="#kontakt">Umów bezpłatną lekcję próbną</a><a class="btn btn-bone" href="#historia">Poznaj naszą historię</a></div>
+    </div>
+  </div>
+</section>
+<div class="airmail" aria-hidden="true"></div>
+
+<section class="bone story" id="historia">
+  <div class="wrap sgrid">
+    <div>
+      <h2 class="reveal">Rodzinna szkoła, nie oddział sieci.</h2>
+      <p class="lead" style="margin-top:24px">Znamy kursantów z&nbsp;imienia, a&nbsp;rodziców z&nbsp;rozmów po zajęciach. W&nbsp;Bytomiu to szkoła, w&nbsp;której właściciel sam jest Amerykaninem i&nbsp;lektorem.</p>
+      <div class="facts">
+        <p><strong>Od 2003 roku przy Dworcowej.</strong>Ponad dwadzieścia lat nauczania w&nbsp;centrum Bytomia, blisko Agory. Od 2009 roku jako firma rodzinna Andrew i&nbsp;Danuty Paul.</p>
+        <p><strong>Native speakerzy, którzy zostali.</strong>Amerykanie z&nbsp;Saint Louis i&nbsp;Kalifornii, native speakerka z&nbsp;Austrii — mieszkają tu od lat i&nbsp;znają polskich uczniów.</p>
+        <p><strong>Najpierw mówimy, potem ćwiczymy.</strong>Gramatyka jest narzędziem, nie tematem samym w&nbsp;sobie. Uczą też egzaminatorzy maturalni z&nbsp;OKE.</p>
+      </div>
+    </div>
+    <figure class="photo reveal"><img src="img/sala.jpg" width="1376" height="768" alt="Jasna sala lekcyjna w kamienicy, krzesła ustawione w krąg do rozmowy" loading="lazy"><figcaption>Zdjęcie poglądowe — przy wdrożeniu sesja w&nbsp;Państwa salach.</figcaption></figure>
+  </div>
+</section>
+
+<section class="path" id="dzieci">
+  <div class="wrap">
+    <h2 class="reveal">Od pierwszych słów do matury.</h2>
+    <p class="lead">Dziecko może uczyć się u&nbsp;nas od drugiego roku życia aż po egzamin dojrzałości — w&nbsp;jednej szkole, z&nbsp;programem, który rośnie razem z&nbsp;nim.</p>
+    <ol class="steps">
+      <li><span class="age">2–7 lat</span><h3>Teddy Eddie</h3><p>Akredytowany ośrodek licencjonowanej metody. Nauka przez zabawę, piosenki i&nbsp;bajki — angielski jest językiem całych zajęć.</p><p class="price">od 175 zł miesięcznie</p></li>
+      <li><span class="age">8–11 lat</span><h3>Savvy Ed</h3><p>Trzy poziomy zgodne z&nbsp;Cambridge Starters, Movers i&nbsp;Flyers. Grupy do dziesięciu osób, 2 × 60 minut w&nbsp;tygodniu.</p><p class="price">od 379 zł miesięcznie</p></li>
+      <li><span class="age">12–18 lat</span><h3>EL. i&nbsp;Teens</h3><p>Programy dla nastolatków z&nbsp;naciskiem na swobodę mówienia; w&nbsp;grupach wyższych na zmianę native speaker i&nbsp;lektor polski.</p><p class="price">od 379 zł miesięcznie</p></li>
+      <li><span class="age">klasa 8 i&nbsp;matura</span><h3>Egzamin i&nbsp;matura</h3><p>Osobne kursy przygotowujące do egzaminu ósmoklasisty i&nbsp;matury, prowadzone przez egzaminatorów maturalnych.</p><p class="price">zapisy w&nbsp;sekretariacie</p></li>
+    </ol>
+    <p class="lead" style="margin-top:56px">Te same programy prowadzimy też <strong style="color:#fff">w&nbsp;12 szkołach podstawowych</strong> w&nbsp;Bytomiu, Świętochłowicach, Radzionkowie i&nbsp;Piekarach — zaraz po lekcjach, lektorka odbiera najmłodszych ze świetlicy. 2 × 45 minut, 9 rat po 245 zł.</p>
+  </div>
+</section>
+
+<section class="bone langs" id="jezyki">
+  <div class="wrap">
+    <h2 class="reveal">Sześć języków dla dorosłych.</h2>
+    <p class="lead" style="margin-top:22px">Grupy popołudniowe na sześciu poziomach, od A1 do C2 — przed zapisem krótka rozmowa i&nbsp;test, żeby trafić do właściwej grupy.</p>
+    <div class="sgrid2">
+      <div class="stw"><div class="st"><div class="in"><span class="g" lang="en">Hello</span><h3>Angielski</h3><p>Grupy, lekcje indywidualne i&nbsp;konwersacje z&nbsp;lektorami z&nbsp;USA. FCE, CAE, TOEFL, TOEIC.</p><span class="val">LEKTORZY Z&nbsp;USA</span></div></div></div>
+      <div class="stw"><div class="st"><div class="in"><span class="g" lang="de">Guten Tag</span><h3>Niemiecki</h3><p>Z&nbsp;native speakerką z&nbsp;Austrii. Matura i&nbsp;egzaminy Goethe-Institut.</p><span class="val">Z&nbsp;AUSTRII</span></div></div></div>
+      <div class="stw"><div class="st"><div class="in"><span class="g" lang="fr">Bonjour</span><h3>Francuski</h3><p>Od podstaw po przygotowanie do DELF i&nbsp;DALF.</p><span class="val">DELF · DALF</span></div></div></div>
+      <div class="stw"><div class="st"><div class="in"><span class="g" lang="es">¡Hola!</span><h3>Hiszpański</h3><p>Kurs roczny i&nbsp;intensywne kursy wakacyjne przed wyjazdem.</p><span class="val">KURS ROCZNY</span></div></div></div>
+      <div class="stw"><div class="st"><div class="in"><span class="g" lang="it">Ciao</span><h3>Włoski</h3><p>Grupy dla początkujących i&nbsp;średnio zaawansowanych.</p><span class="val">KURS ROCZNY</span></div></div></div>
+      <div class="stw"><div class="st"><div class="in"><span class="g" lang="ru">Привет</span><h3>Rosyjski</h3><p>Grupowo i&nbsp;indywidualnie.</p><span class="val">KURS ROCZNY</span></div></div></div>
+    </div>
+    <p class="adult"><strong>Kurs roczny: 1 × 90 minut w&nbsp;tygodniu, 30 lekcji — 2 299 zł albo 9 rat po 299 zł.</strong> Ta sama cena dla każdego języka. Lekcje indywidualne od 120 zł, z&nbsp;native speakerem 150 zł. Rabat rodzinny 30% na kolejny kurs.</p>
+  </div>
+</section>
+
+<section class="firms" id="firmy">
+  <div class="wrap">
+    <h2 class="reveal">Angielski w&nbsp;Państwa biurze.</h2>
+    <p class="lead">Przyjeżdżamy do firm na całym Śląsku. Program, terminy i&nbsp;zakres — także język biznesowy, techniczny i&nbsp;medyczny — ustalamy pod zespół. Szkolenia prowadzi m.in. Andrew Paul III.</p>
+    <ul class="clients"><li>Bayer</li><li>Fortum Bytom</li><li>ERBUD</li><li>Liberty Poland</li><li>Bank Śląski</li><li>UPC</li><li>Rödl Audit</li><li>TRW Braking Systems</li><li>GEA Technika Cieplna</li><li>Arcelor Stal Serwis</li><li>Billennium</li><li>Urząd Miasta Chorzów</li></ul>
+    <div class="row"><p>Ceny zajęć w&nbsp;firmach ustalamy indywidualnie.</p><a class="btn btn-red" href="#kontakt">Poproś o&nbsp;ofertę dla firmy</a></div>
+  </div>
+</section>
+<div class="airmail" aria-hidden="true"></div>
+
+<section class="bone contact" id="kontakt">
+  <div class="wrap cgrid">
+    <div class="cinfo">
+      <h2 class="reveal">Napisz albo wpadnij na Dworcową.</h2>
+      <p class="rating"><a href="#">4,7 / 5 w&nbsp;Google · 49 opinii</a></p>
+      <dl>
+        <dt>Telefon</dt><dd><a href="tel:+48322823003">32 282 30 03</a></dd>
+        <dt>Komórka</dt><dd><a href="tel:+48600220204">600 22 02 04</a> (8:00–21:00)</dd>
+        <dt>E-mail</dt><dd><a href="mailto:bytomswiatjezykow@gmail.com">bytomswiatjezykow@gmail.com</a></dd>
+        <dt>Sekretariat</dt><dd>ul. Dworcowa 1, II piętro, Bytom · pon.–pt. 10:00–18:00</dd>
+      </dl>
+    </div>
+    <form onsubmit="event.preventDefault();this.querySelector('.ok').textContent='To makieta — w gotowej stronie zgłoszenie trafi do sekretariatu.'">
+      <h3>Bezpłatna lekcja próbna</h3>
+      <p>Oddzwonimy i&nbsp;dobierzemy grupę do poziomu i&nbsp;wieku.</p>
+      <label for="f1">Imię</label><input id="f1" autocomplete="given-name" required>
+      <label for="f2">Telefon</label><input id="f2" type="tel" autocomplete="tel" required>
+      <label for="f3">Kurs</label><select id="f3" required><option value="" selected disabled>Wybierz kurs</option><option>Dziecko 2–7 lat (Teddy Eddie)</option><option>Dziecko 8–11 lat (Savvy Ed)</option><option>Uczeń / matura</option><option>Dorosły — angielski</option><option>Dorosły — inny język</option><option>Firma</option></select>
+      <label for="f4">Wiadomość (opcjonalnie)</label><textarea id="f4"></textarea>
+      <p class="ok">Dane wykorzystamy tylko, żeby oddzwonić. Administrator: [uzupełnić] · <a href="#">Polityka prywatności</a></p>
+      <button class="btn btn-red" type="submit">Poproś o&nbsp;telefon</button>
+      <p class="ok" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Świat Języków</strong>ul. Dworcowa 1, II piętro, 41-902 Bytom<br>Sekretariat pon.–pt. 10:00–18:00 · <a href="#">Jak dojechać</a> · <a href="#">Facebook</a><br>NIP [uzupełnić] · REGON [uzupełnić]</div>
+    <nav aria-label="Stopka"><a href="#historia">O&nbsp;szkole</a><a href="#dzieci">Dzieci</a><a href="#jezyki">Dorośli</a><a href="#firmy">Firmy</a><a href="#kontakt">Kontakt</a></nav>
+    <p class="credit">Makieta W2 „Z&nbsp;Long Island do Bytomia” · przygotowana przez ODNOVA Studio · treści na podstawie obecnej strony szkoły</p>
+  </div>
+</footer>
+<div class="mbar"><a class="btn btn-bone" href="tel:+48322823003">Zadzwoń</a><a class="btn btn-red" href="#kontakt">Zapisz się</a></div>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement, hdr=d.getElementById('top');
+  function m(){root.style.setProperty('--hdr-h',hdr.offsetHeight+'px')}
+  m(); addEventListener('resize',m); addEventListener('load',m);
+  d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero=d.getElementById('hero'), arc=d.getElementById('arc'), plane=d.getElementById('plane'), by=d.getElementById('bytom'), stamp=d.querySelector('.stamp'), bg=d.querySelector('.bg');
+  var svg=d.querySelector('.route');
+  function vb(){svg.setAttribute('viewBox', innerWidth<760 ? '760 150 600 560' : '0 0 1440 790')}
+  vb(); addEventListener('resize',vb);
+  var L=arc.getTotalLength ? arc.getTotalLength() : 0;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  function ease(t){return 1-Math.pow(1-t,3)}
+  function frame(){
+    var r=hero.getBoundingClientRect(), H=innerHeight, total=Math.max(1,hero.offsetHeight-H);
+    var p=reduce?1:clamp(-r.top/total,0,1);
+    var t=ease(clamp((p-.04)/.62,0,1));
+    arc.style.strokeDashoffset=1-t;
+    if(L){var pt=arc.getPointAtLength(L*t), pt2=arc.getPointAtLength(Math.min(L,L*t+2));
+      var ang=Math.atan2(pt2.y-pt.y,pt2.x-pt.x)*180/Math.PI;
+      plane.setAttribute('transform','translate('+pt.x+' '+pt.y+') rotate('+ang+') scale(1.6)');
+      plane.style.opacity=(t<.02||t>.985)?0:1;}
+    by.setAttribute('opacity',clamp((t-.85)/.15,0,1));
+    if(innerWidth<760){stamp.classList.add('go');stamp.style.opacity='';stamp.style.transform='';}else{
+    var s=clamp((p-.7)/.12,0,1);
+    stamp.style.opacity=s; stamp.style.transform='rotate(-14deg) scale('+(1.6-.6*ease(s))+')';}
+    bg.style.transform='scale('+(1.08-.08*p)+')';
+    d.body.classList.toggle('past-hero', r.bottom < H*.5);
+  }
+  var tick=false; function req(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;frame()})}}
+  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); frame();
+
+  var rv=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
+  var steps=[].slice.call(d.querySelectorAll('.steps li'));
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){io.observe(el)});
+    steps.forEach(function(li){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){li.classList.add('lit');o.disconnect()}},{rootMargin:'0px 0px -30% 0px'});o.observe(li)});
+    function sweep(){rv.concat(steps).forEach(function(el){if(el.getBoundingClientRect().top<innerHeight*.8){el.classList.add('in');if(el.tagName==='LI')el.classList.add('lit')}})}
+    var st; addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
+    setTimeout(function(){if(!fired){rv.forEach(function(el){el.classList.add('in')});steps.forEach(function(l){l.classList.add('lit')})}},4000);
+  } else {rv.forEach(function(el){el.classList.add('in')});steps.forEach(function(l){l.classList.add('lit')})}
+})();
+</script>
+</body>
+</html>
