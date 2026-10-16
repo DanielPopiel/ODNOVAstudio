@@ -1,4 +1,4 @@
-// Kino 250 przeniesione do ../kino1000/ – ten service worker czyści pamięć i się wyłącza.
+// Kino 250 przeniesione do ../kino3000/ – ten service worker czyści pamięć i się wyłącza.
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
