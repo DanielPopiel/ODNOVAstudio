@@ -64,7 +64,8 @@ p{text-wrap:pretty}
 .mnav .mcta{display:none}
 
 /* hero */
-.hero{padding:calc(var(--hdr-h) + 34px) 0 80px;overflow:hidden}
+.hero{padding:40px 0 80px;overflow:hidden}
+.hero .h1like{font-size:clamp(2.1rem,3.4vw,3.2rem);font-weight:600;letter-spacing:-.02em;text-wrap:balance}
 .hgrid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px 50px;align-items:center}
 .hero h1{font-size:clamp(2.6rem,4.4vw,4.1rem);font-weight:600;letter-spacing:-.02em;text-wrap:balance}
 .hero h1 span{background:linear-gradient(transparent 62%,var(--yel) 62% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
@@ -269,7 +270,7 @@ span.sk{font:700 1.15rem/1 var(--h);padding:12px 18px;border-radius:16px;backgro
 }
 @media (max-width:760px){
   .wrap{padding:0 18px}
-  .hero{padding:calc(var(--hdr-h) + 34px) 0 60px}
+  .hero{padding:24px 0 60px}
   .age,.parents,.adults,.faq{padding:84px 0}
   .slider,.course{padding:26px 22px}
   .cbox{padding:70px 0}
@@ -290,6 +291,44 @@ span.sk{font:700 1.15rem/1 var(--h);padding:12px 18px;border-radius:16px;backgro
   .pin.sel circle.halo{animation:none}
   .js .reveal{opacity:1;transform:none}
 }
+
+/* hero film: rysunki ożywają (przewijanie) */
+.vh{position:relative;height:260vh;background:var(--bg)}
+.vh-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.vh-stage{position:absolute;top:var(--hdr-h);right:0;bottom:0;width:58%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 96%,transparent)}
+.vh-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.vh-stage:after{content:"";position:absolute;inset:auto 0 0 0;height:22%;background:linear-gradient(transparent,var(--bg))}
+.vh-txt{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:calc(var(--hdr-h) + 9vh) 24px 0}
+.vh-txt .in{max-width:min(540px,40vw)}
+.vh-kick{font:600 1.05rem/1.2 var(--b);color:var(--blue);height:1.4em;position:relative}
+.vh-kick span{position:absolute;left:0;top:0;transition:opacity .4s,transform .4s}
+.vh-kick span+span{opacity:0;transform:translateY(8px)}
+.vh.talk .vh-kick span:first-child{opacity:0;transform:translateY(-8px)}
+.vh.talk .vh-kick span+span{opacity:1;transform:none}
+.vh h1{font-size:clamp(2.6rem,4.6vw,4.4rem);font-weight:600;letter-spacing:-.02em;text-wrap:balance;margin-top:10px}
+.vh h1 span{background:linear-gradient(transparent 62%,var(--yel) 62% 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.vh .lead{margin-top:20px;max-width:30em}
+.vh .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.vh .btn-ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(20,33,61,.18)}
+.word{position:absolute;z-index:3;font:700 clamp(1.1rem,1.8vw,1.6rem)/1 var(--h);background:#fff;color:var(--ink);padding:10px 16px 8px;border-radius:999px;box-shadow:0 10px 26px rgba(20,33,61,.16);opacity:0;transform:translate(-50%,10px) scale(.6) rotate(var(--r,0deg));transition:opacity .35s,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.word small{display:block;font:500 .72rem/1.2 var(--b);color:var(--ink2);margin-top:3px;text-align:center}
+.word.on{opacity:1;transform:translate(-50%,0) scale(1) rotate(var(--r,0deg))}
+.vh-hint{position:absolute;z-index:2;left:50%;bottom:22px;transform:translateX(-50%);font:500 .85rem var(--b);color:var(--ink2);transition:opacity .3s}
+.vh.go .vh-hint{opacity:0}
+@media(max-width:860px){
+  .vh{height:230vh}
+  .vh-stage{top:calc(var(--hdr-h) - 20px);left:0;width:100%;bottom:auto;height:48svh;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+  .vh-stage:after{display:none}
+  .vh-txt{padding-top:calc(var(--hdr-h) + 44svh)}
+  .vh-txt .in{max-width:none}
+  .vh h1{font-size:clamp(2.1rem,8.4vw,2.8rem)}
+  .vh .lead{font-size:1rem;margin-top:12px}
+  .vh .acts{margin-top:18px}
+  .vh-hint{display:none}
+}
+.no-js .vh-stage{background:url(img/vh/f120.jpg) center/cover}
+.no-js .vh,.rm .vh{height:auto}
+.no-js .vh-pin,.rm .vh-pin{position:relative;height:auto;min-height:100svh}
 [data-par]{overflow:hidden}[data-par] img{will-change:transform;transform-origin:center}
 </style>
 </head>
@@ -306,10 +345,28 @@ span.sk{font:700 1.15rem/1 var(--h);padding:12px 18px;border-radius:16px;backgro
 </div>
 
 <main id="start">
+<script>window.VH_N=120</script>
+<section class="vh" id="hero" aria-label="Nauka przez zabawę">
+  <div class="vh-pin">
+    <div class="vh-stage" aria-hidden="true"><canvas id="vhc"></canvas>
+      <span class="word" data-at=".62" data-x=".23" data-y=".36" style="--r:-6deg">cat<small>kot</small></span>
+      <span class="word" data-at=".72" data-x=".47" data-y=".47" style="--r:5deg">bus<small>autobus</small></span>
+      <span class="word" data-at=".8" data-x=".72" data-y=".1" style="--r:-3deg">sun<small>słońce</small></span>
+    </div>
+    <div class="vh-txt"><div class="in">
+      <p class="vh-kick"><span>Rysujemy…</span><span>…i mówimy po angielsku.</span></p>
+      <h1>Angielski po lekcjach, <span>w&nbsp;szkole Twojego dziecka.</span></h1>
+      <p class="lead">Przez zabawę, piosenki i&nbsp;rysunki — w&nbsp;12 szkołach podstawowych Bytomia, Świętochłowic, Radzionkowa i&nbsp;Piekar. Lektorka odbiera dziecko ze świetlicy, więc nie musisz go nigdzie wozić.</p>
+      <div class="acts"><a class="btn btn-red" href="#szkoly">Sprawdź swoją szkołę</a><a class="btn btn-ghost" href="#wiek">Kursy według wieku</a></div>
+    </div></div>
+    <p class="vh-hint">Przewiń, a&nbsp;rysunki ożyją ↓</p>
+  </div>
+</section>
+
 <section class="hero" id="szkoly">
   <div class="wrap hgrid">
     <div class="htxt">
-      <h1>Angielski po lekcjach, <span>w&nbsp;szkole Twojego dziecka.</span></h1>
+      <h2 class="h1like">Sprawdź, czy uczymy w&nbsp;Twojej szkole</h2>
       <p class="lead">Uczymy w&nbsp;12 szkołach podstawowych w&nbsp;Bytomiu, Świętochłowicach, Radzionkowie i&nbsp;Piekarach. Najmłodszych lektorka odbiera ze świetlicy i&nbsp;tam odprowadza — nie musisz po pracy wozić dziecka na kurs.</p>
       </div>
     <div class="find-wrap"><div class="find">
@@ -552,6 +609,18 @@ span.sk{font:700 1.15rem/1 var(--h);padding:12px 18px;border-radius:16px;backgro
     setTimeout(function(){if(!fired)rv.forEach(function(el){el.classList.add('in')})},4000);
   } else rv.forEach(function(el){el.classList.add('in')});
 })();
+
+/* hero film */
+(function(){var d=document,sec=d.getElementById('hero'),cv=d.getElementById('vhc');if(!sec||!cv)return;
+var N=window.VH_N||0,fr=[],ctx=cv.getContext('2d'),last=-1,words=[].slice.call(sec.querySelectorAll('.word'));
+var AX=.3,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm)d.documentElement.classList.add('rm');
+function size(){var r=cv.getBoundingClientRect(),dp=Math.min(devicePixelRatio||1,2);cv.width=r.width*dp;cv.height=r.height*dp;last=-1;draw(cur);var sc=Math.max(r.width/1280,r.height/720),ox=(r.width-1280*sc)*AX,oy=(r.height-720*sc)/2;words.forEach(function(w){var x=ox+1280*sc*w.dataset.x,y=oy+720*sc*w.dataset.y;w.style.left=Math.min(r.width-50,Math.max(50,x))+'px';w.style.top=Math.max(8,y)+'px'})}
+function cover(img){var W=cv.width,H=cv.height,iw=img.naturalWidth,ih=img.naturalHeight,s=Math.max(W/iw,H/ih),w=iw*s,h=ih*s;ctx.drawImage(img,(W-w)*AX,(H-h)/2,w,h)}
+var cur=0;function draw(i){var img=fr[i];if(!img||!img.complete||!img.naturalWidth){for(var k=i;k>=0;k--){if(fr[k]&&fr[k].complete&&fr[k].naturalWidth){img=fr[k];break}}}if(!img)return;if(i===last)return;last=i;cover(img)}
+for(var i=0;i<N;i++){var im=new Image();im.decoding='async';im.src='img/vh/f'+String(i+1).padStart(3,'0')+'.jpg';(function(k){im.onload=function(){if(k===cur||k===0){last=-1;draw(cur)}}})(i);fr.push(im)}
+function prog(){var r=sec.getBoundingClientRect(),tot=sec.offsetHeight-innerHeight;return rm?1:Math.min(1,Math.max(0,-r.top/tot))}
+function tick(){var p=prog();cur=Math.round(p*(N-1));draw(cur);sec.classList.toggle('go',p>.02);sec.classList.toggle('talk',p>.42);words.forEach(function(w){w.classList.toggle('on',p>=+w.dataset.at)})}
+addEventListener('scroll',function(){requestAnimationFrame(tick)},{passive:true});addEventListener('resize',size);size();tick();})();
 </script>
 </body>
 </html>
