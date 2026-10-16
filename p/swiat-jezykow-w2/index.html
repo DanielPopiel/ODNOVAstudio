@@ -424,7 +424,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   var lastY=scrollY, vel=0; addEventListener('scroll',function(){vel+=scrollY-lastY;lastY=scrollY},{passive:true});
   var tk=d.querySelector('.tk-track'), tx=0, prints=[].slice.call(d.querySelectorAll('.print[data-speed]'));
   function loop(){ vel*=.9; var b=Math.min(40,Math.abs(vel))*.25;
-    if(tk){var w=tk.scrollWidth/2; tx-=(.7+b); if(-tx>=w)tx+=w; tk.style.transform='translateX('+tx+'px)';}
+    if(tk){var w=tk.scrollWidth/2; tx-=.3; if(-tx>=w)tx+=w; tk.style.transform='translateX('+tx+'px)';}
     var vh=innerHeight; prints.forEach(function(f){var r=f.parentNode.getBoundingClientRect(); f.style.transform='translateY('+Math.max(-70,Math.min(70,(r.top+r.height/2-vh/2)*(+f.dataset.speed)))+'px)';});
     requestAnimationFrame(loop);}
   if(!reduce) requestAnimationFrame(loop);

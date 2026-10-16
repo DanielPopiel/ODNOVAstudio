@@ -79,7 +79,7 @@ p{text-wrap:pretty}
 .bub.r::after{left:auto;right:1.1em;clip-path:polygon(0 0,100% 0,100% 100%)}
 .bub.navy{background:var(--navy);color:#fff}.bub.navy i{color:#c9c7ea}
 .bub.red{background:var(--red);color:#fff}.bub.red i{color:#fff}
-.bub.main{background:var(--ink);color:#fff;font-size:clamp(1.8rem,4.6vw,3.6rem)}
+.bub.main{background:var(--ink);color:#fff;font-size:clamp(1.5rem,2.9vw,2.6rem)}
 .bub.main i{color:#bdbbe0}
 .htxt{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 28px;height:100%;display:flex;flex-direction:column;justify-content:center;padding-bottom:6vh}
 .htxt h1{font-size:clamp(3.2rem,7.4vw,7rem);font-weight:700;letter-spacing:-.045em;line-height:.92;max-width:11ch}
@@ -235,6 +235,15 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .rv figcaption{margin-top:12px;font:500 .88rem/1.3 var(--h);color:var(--ink2)}
 .rv.r figcaption{color:#c9c7ea}
 .rv b{font-weight:600;color:inherit}
+
+.rv-rows{display:block}
+.rv-row{mask-image:none;-webkit-mask-image:none;overflow:visible}
+.rv-row+.rv-row{margin-top:22px}
+.rv-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;transform:none!important;max-width:1240px;margin:0 auto;padding:0 28px}
+.rv[aria-hidden]{display:none}
+.rv{width:auto}
+.rv-row:nth-child(2) .rv-track > .rv:nth-child(n+4){display:none}
+@media (max-width:760px){.rv-track{grid-template-columns:1fr;padding:0 18px}.rv-row .rv-track > .rv:nth-child(n+3){display:none}}
 @media (max-width:980px){.floaters{display:none}.team h2,.team .lead{max-width:none}}
 @media (prefers-reduced-motion:reduce){.fl img,.ftxt{animation:none}}
 
@@ -508,13 +517,18 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   var hero=d.getElementById('hero'), bubs=[].slice.call(d.querySelectorAll('.bub')), bar=d.querySelector('.progress span');
   function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
   function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+  var stageEl=d.querySelector('.stage'), h1=d.querySelector('.htxt h1'), mainB=d.querySelector('.bub.main');
   function frame(){
     var r=hero.getBoundingClientRect(), H=innerHeight, total=Math.max(1,hero.offsetHeight-H);
     var p=reduce?1:clamp(-r.top/total,0,1);
     var W=innerWidth, narrow=W<760, hh=hdr.offsetHeight;
     /* target point (relative to stage centre) and spread */
-    var stageH=H-hh, tx=narrow?0:Math.min(W*.24,340), ty=narrow?-stageH*.37:-stageH*.27;
-    var spx=narrow?W*.28:Math.min(W*.12,170), spy=narrow?stageH*.075:stageH*.17;
+    var stageH=H-hh, st=stageEl.getBoundingClientRect(), hr=h1.getBoundingClientRect(), mb=mainB.offsetHeight||70, mw=mainB.offsetWidth||300;
+    var right=!narrow && (W-hr.right-48 >= mw+24);
+    var absY=right ? hr.top+mb/2+8 : Math.max(hh+mb/2+14, hr.top-mb/2-26);
+    var absX=right ? hr.right+48+mw/2 : Math.min(W-16-mw/2, hr.left+mw/2);
+    var tx=absX-(st.left+st.width/2), ty=absY-(st.top+st.height/2);
+    var spx=narrow?W*.28:Math.min(W*.16,230), spy=narrow?Math.min(stageH*.07,(hr.top-hh)*.22):Math.min(stageH*.12,(hr.top-hh)*.3);
     var a=ease(clamp(p/.55,0,1));
     bubs.forEach(function(b){
       if(b.hasAttribute('data-main')){
@@ -544,12 +558,12 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   var fls=[].slice.call(d.querySelectorAll('.fl[data-speed]'));
   function loop(){
     vel*=0.9; var boost=Math.max(-40,Math.min(40,vel))*0.25;
-    if(mq){var w=mq.scrollWidth/2; mx-= (0.6+Math.abs(boost)); if(-mx>=w)mx+=w; mq.style.transform='translateX('+mx+'px)';}
+    if(mq){var w=mq.scrollWidth/2; mx-= 0.3; if(-mx>=w)mx+=w; mq.style.transform='translateX('+mx+'px)';}
     rows.forEach(function(o){ if(o.hover)return; var w=o.el.scrollWidth/2; o.x+= o.dir*(0.35+Math.abs(boost)*.5); if(o.dir<0&&-o.x>=w)o.x+=w; if(o.dir>0&&o.x>=0)o.x-=w; o.el.style.transform='translateX('+o.x+'px)';});
     var vh=innerHeight; fls.forEach(function(f){var r=f.parentNode.getBoundingClientRect(); var c=(r.top+r.height/2-vh/2); f.style.translate='0 '+Math.max(-70,Math.min(70,c*(+f.dataset.speed)))+'px';});
     requestAnimationFrame(loop);
   }
-  rows.forEach(function(o){if(o.dir>0)o.x=-o.el.scrollWidth/2});
+  rows=[];
   if(!reduce) requestAnimationFrame(loop);
 
 
