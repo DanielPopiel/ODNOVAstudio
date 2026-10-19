@@ -288,6 +288,94 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   .mbar{transition:none}
 }
 [data-par]{overflow:hidden}[data-par] img{will-change:transform;transform-origin:center}
+
+/* r5: galeria zajęć */
+.gal{padding:120px 0 40px;position:relative}
+.gal-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.gal-head h2{font-size:clamp(2.4rem,5vw,4.4rem);max-width:13ch}
+.gal-head .lead{max-width:30em;color:var(--ink2)}
+.ggrid{display:grid;grid-template-columns:1.25fr .9fr;grid-template-rows:auto auto;gap:22px;margin-top:56px}
+.gph{position:relative;margin:0;border-radius:26px;overflow:hidden;background:var(--paper2)}
+.gph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gph:hover img{transform:scale(1.04)}
+.gph.g1{grid-row:1/3;min-height:560px}
+.gph.g2,.gph.g3{min-height:268px}
+.say{position:absolute;font:600 clamp(1rem,1.5vw,1.25rem)/1.2 var(--h);background:#fff;color:var(--ink);padding:14px 18px;border-radius:18px;box-shadow:0 14px 34px rgba(27,26,58,.18);max-width:20ch}
+.say::after{content:"";position:absolute;bottom:-9px;left:22px;width:18px;height:18px;background:inherit;clip-path:polygon(0 0,100% 0,0 100%)}
+.say.r::after{left:auto;right:22px;clip-path:polygon(0 0,100% 0,100% 100%)}
+.say.red{background:var(--red);color:#fff}.say.navy{background:var(--navy);color:#fff}
+.say small{display:block;font:italic 400 .78rem/1.3 var(--b);opacity:.75;margin-top:4px}
+.g1 .say{left:28px;bottom:34px}.g2 .say{left:22px;right:auto;top:22px}.g3 .say{left:22px;bottom:26px}
+.gnote{font:500 .85rem var(--h);color:var(--ink2);margin-top:14px}
+/* r5: flagi przy lektorach */
+.trow .from{display:flex;align-items:center;gap:10px}
+.flag{width:26px;height:26px;border-radius:50%;flex:none;box-shadow:0 0 0 2px #fff,0 2px 8px rgba(27,26,58,.2);overflow:hidden}
+.flag svg{width:100%;height:100%;display:block}
+.trow h3{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+.ava{width:54px;height:54px;border-radius:50%;flex:none;display:grid;place-items:center;font:700 1.1rem var(--h);color:#fff;background:var(--navy)}
+.trow:nth-child(3n+2) .ava{background:var(--red)}.trow:nth-child(3n) .ava{background:#E8B04A;color:var(--ink)}
+/* r5: karty „dlaczego” ze zdjęciami */
+.band .why p{background:rgba(255,255,255,.08);border-radius:22px;padding:0 0 24px;overflow:hidden}
+.band .why p img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:20px}
+.band .why p strong,.band .why p span{padding:0 22px}.band .why p span{display:block}
+/* r5: kamienica w „gdzie” */
+.hqimg{margin:34px 0 0;border-radius:24px;overflow:hidden;position:relative}
+.hqimg img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.hqimg figcaption{position:absolute;left:16px;bottom:16px;background:var(--red);color:#fff;font:600 .95rem var(--h);padding:8px 14px;border-radius:999px}
+/* r5: pocztówka w kontakcie */
+.post{margin-top:38px;position:relative;max-width:440px;transform:rotate(-2.5deg);background:#fff;padding:12px 12px 16px;border-radius:6px;box-shadow:0 22px 50px rgba(27,26,58,.16)}
+.post img{border-radius:3px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.post figcaption{font:italic 400 1rem/1.4 var(--b);color:var(--ink2);margin-top:12px;padding:0 4px}
+.post .stamp{position:absolute;top:-16px;right:-14px;width:78px;height:78px;border-radius:50%;border:2.5px dashed var(--red);color:var(--red);display:grid;place-items:center;text-align:center;font:700 .62rem/1.15 var(--h);text-transform:uppercase;letter-spacing:.06em;transform:rotate(12deg);background:rgba(255,255,255,.9)}
+@media(max-width:760px){
+  .gal{padding:80px 0 20px}.ggrid{grid-template-columns:1fr;margin-top:34px}
+  .gph.g1{grid-row:auto;min-height:380px}.gph.g2,.gph.g3{min-height:240px}
+  .ava{width:42px;height:42px;font-size:.95rem}
+  .post{transform:rotate(-1.5deg)}
+}
+
+/* r5: hero filmowe „Z pocztówki na ulicę” */
+.fh{position:relative;height:280vh;background:var(--navy2);color:#fff}
+.fh-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.fh-stage{position:absolute;inset:0}
+.fh-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fh-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,23,72,.92) 0,rgba(25,23,72,.8) 34%,rgba(25,23,72,.5) 52%,transparent 68%),linear-gradient(0deg,rgba(25,23,72,.55),transparent 35%)}
+.fh-txt{position:relative;z-index:2;max-width:1240px;height:100%;margin:0 auto;padding:var(--hdr-h) 28px 9vh;display:flex;flex-direction:column;justify-content:flex-end}
+.fh-txt>*{max-width:560px}
+.fh-when{font:600 1rem/1.2 var(--h);height:2.4em;position:relative}
+.fh .fh-when{height:40px;min-height:40px}
+.fh-when span{position:absolute;left:0;top:0;display:inline-block;background:none;color:#fff;padding:2px 0 2px 14px;border-left:2px solid var(--red);font:italic 400 1.08rem/1.4 var(--b);letter-spacing:.01em;transition:opacity .45s,transform .45s}
+.fh-when .w2{opacity:0;transform:translateY(10px)}
+.fh.abroad .fh-when .w1{opacity:0;transform:translateY(-10px)}.fh.abroad .fh-when .w2{opacity:1;transform:none}
+.fh h1{font-size:clamp(3.2rem,7vw,6.6rem);font-weight:700;letter-spacing:-.045em;line-height:.96;margin-top:26px}
+.fh h1 .dot{color:var(--red)}
+.fh-lead{max-width:30em;text-shadow:0 1px 14px rgba(25,23,72,.6);margin-top:20px;font-size:clamp(1.05rem,1.4vw,1.22rem);color:#d9d8ee}
+.fh-lead strong{color:#fff;font-weight:500}
+.fh .hcta{margin-top:28px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.fh .hcta .tel{color:#fff;font:600 1.15rem var(--h);text-decoration:none;border-bottom:1.5px solid var(--red)}
+.fh-say{position:absolute;z-index:3;font:600 clamp(1rem,1.5vw,1.3rem)/1.2 var(--h);background:#fff;color:var(--ink);padding:12px 16px;border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.25);opacity:0;transform:translateY(12px) scale(.9);transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1);white-space:nowrap}
+.fh-say::after{content:"";position:absolute;bottom:-9px;left:20px;width:18px;height:18px;background:inherit;clip-path:polygon(0 0,100% 0,0 100%)}
+.fh-say.r{background:var(--red);color:#fff}.fh-say.r::after{left:auto;right:20px;clip-path:polygon(0 0,100% 0,100% 100%)}
+.fh-say.on{opacity:1;transform:none}
+.fh-say.s1{left:45%;top:24%}.fh-say.s2{right:6%;top:17%}.fh-say.s3{left:47%;top:37%}
+.fh-hint{position:absolute;z-index:2;right:28px;bottom:24px;font:500 .85rem var(--h);color:#c9c8e6;transition:opacity .3s}
+.fh.go .fh-hint{opacity:0}
+.fh .progress{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3}.fh .progress span{display:block;height:100%;width:0;background:var(--red)}
+@media(max-width:760px){
+  .fh{height:170vh}
+  .fh-stage{bottom:auto;top:var(--hdr-h);height:44svh}
+  .fh-stage:after{background:linear-gradient(0deg,var(--navy2) 0,rgba(25,23,72,0) 40%)}
+  .fh-txt{padding:calc(var(--hdr-h) + 50svh) 18px 4vh;justify-content:flex-start}
+  .fh h1{font-size:clamp(2.6rem,12vw,3.4rem);margin-top:24px}
+  .fh-txt{padding-top:calc(var(--hdr-h) + 39svh)}
+  .fh-lead{font-size:1rem;margin-top:12px}
+  .fh .hcta{margin-top:18px}
+  .fh-say{font-size:.9rem;padding:9px 12px}
+  .fh-say.s1{left:8%;top:12%}.fh-say.s2{right:2%;top:18%}.fh-say.s3{left:12%;top:52%}
+  .fh-hint{display:none}
+}
+.no-js .fh{height:auto}.no-js .fh-pin{position:relative;height:auto;min-height:100svh}
+.no-js .fh-stage{background:url(img/fh/f120.jpg) center/cover}
 </style>
 </head>
 <body>
@@ -303,42 +391,52 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 </div>
 
 <main id="start">
-<section class="hero" id="hero" aria-label="Wstęp">
-  <div class="pin">
-    <div class="stage" aria-hidden="true">
-      <div class="bub" data-x="-1.1" data-y="-.35">Hello!<i>angielski</i></div>
-      <div class="bub r navy" data-x=".7" data-y="-.95">Bonjour&#8239;!<i>francuski</i></div>
-      <div class="bub red" data-x="-.55" data-y=".35">¡Hola!<i>hiszpański</i></div>
-      <div class="bub r" data-x=".95" data-y=".1">Guten Tag!<i>niemiecki</i></div>
-      <div class="bub navy" data-x="-.45" data-y="-1.1">Ciao!<i>włoski</i></div>
-      <div class="bub r red" data-x=".45" data-y=".85">Привет!<i>rosyjski</i></div>
-      <div class="bub main" data-main>Dzień dobry, Bytomiu!<i>a&nbsp;teraz Ty</i></div>
+<script>window.FH_N=120</script>
+<section class="fh" id="hero" aria-label="Wstęp">
+  <div class="fh-pin">
+    <div class="fh-stage" aria-hidden="true"><canvas id="fhc"></canvas>
+      <span class="fh-say s1" data-a=".72">Hi! One flat white, please.</span>
+      <span class="fh-say s2 r" data-a=".8">Sure! Where are you from?</span>
+      <span class="fh-say s3" data-a=".88">Poland. Bytom!</span>
     </div>
-    <div class="htxt">
-      <h1 class="fade">Nauczymy Cię mówić<span class="dot">.</span></h1>
-      <p class="fade">Angielski i&nbsp;pięć innych języków w&nbsp;centrum Bytomia. <strong>Od 2003 roku szkołę prowadzi Amerykanin z&nbsp;Long Island razem z&nbsp;żoną</strong> — a&nbsp;uczą native speakerzy z&nbsp;USA i&nbsp;Austrii oraz egzaminatorzy maturalni.</p>
-      <div class="hcta fade"><a class="btn btn-red" href="#kontakt">Umów bezpłatną lekcję próbną</a><a class="tel" href="tel:+48600220204">600 22 02 04</a></div>
+    <div class="fh-txt">
+      <p class="fh-when"><span class="w1">Wtorek, 18:00 · Bytom, Dworcowa 1</span><span class="w2">Sobota, 10:00 · Lizbona</span></p>
+      <h1>Nauczymy Cię mówić<span class="dot">.</span></h1>
+      <p class="fh-lead">Angielski i&nbsp;pięć innych języków w&nbsp;centrum Bytomia. <strong>Od 2003 roku szkołę prowadzi Amerykanin z&nbsp;Long Island razem z&nbsp;żoną</strong>, a&nbsp;uczą native speakerzy i&nbsp;egzaminatorzy maturalni.</p>
+      <div class="hcta"><a class="btn btn-red" href="#kontakt">Umów bezpłatną lekcję próbną</a><a class="tel" href="tel:+48600220204">600 22 02 04</a></div>
     </div>
+    <p class="fh-hint">Przewiń — pocztówka ożyje ↓</p>
     <div class="progress" aria-hidden="true"><span></span></div>
   </div>
 </section>
 
-<div class="mq" aria-hidden="true"><div class="mq-track"><span>Dzień dobry</span><i>Hello</i><span>Guten Tag</span><i>¡Hola!</i><span>Bonjour</span><i>Ciao</i><span>Привет</span><i>Good morning</i><span>Dzień dobry</span><i>Hello</i><span>Guten Tag</span><i>¡Hola!</i><span>Bonjour</span><i>Ciao</i><span>Привет</span><i>Good morning</i></div></div>
+<section class="gal" id="zajecia" aria-labelledby="galh">
+  <div class="wrap">
+    <div class="gal-head"><h2 id="galh" class="reveal">Tak wygląda lekcja, na której się mówi.</h2><p class="lead">Grupy do dziesięciu osób, krzesła w&nbsp;kręgu zamiast ławek, kawa na stole. Od pierwszych zajęć rozmawiasz — o&nbsp;pracy, wyjazdach, rodzinie — a&nbsp;lektor pilnuje, żeby każdy doszedł do głosu.</p></div>
+    <div class="ggrid">
+      <figure class="gph g1"><img src="img/rozmowa1.jpg" alt="Dorośli kursanci w kręgu rozmawiają z lektorką w sali w kamienicy" loading="lazy" width="1024" height="572"><span class="say">„Nikt tu nie siedzi w&nbsp;ławce.”<small>grupa konwersacyjna, pon. 19:30</small></span></figure>
+      <figure class="gph g2"><img src="img/rozmowa2.jpg" alt="Grupa kursantów śmieje się podczas zajęć" loading="lazy" width="1024" height="572"><span class="say red">Gramatyka jest narzędziem, nie tematem.</span></figure>
+      <figure class="gph g3"><img src="img/sala-wieczor.jpg" alt="Sala w kamienicy przy Dworcowej wieczorem, krzesła w kręgu" loading="lazy" width="1024" height="572"><span class="say navy">Wieczorem, po pracy.<small>kursy dla dorosłych 1 × 90 min</small></span></figure>
+    </div>
+    <p class="gnote">Zdjęcia poglądowe — przy wdrożeniu robimy sesję na Państwa zajęciach.</p>
+  </div>
+</section>
+
 <section class="dark chat" id="kursy">
   <div class="wrap">
     <div class="chat-head">
-      <h2 class="reveal">Zapytaj o&nbsp;to, o&nbsp;co pytają nas rodzice.</h2>
-      <p class="lead">Pięć najczęstszych rozmów przy zapisach. Wybierz, kogo chcesz zapisać — odpowiadamy tak, jak przez telefon.</p>
+      <h2 class="reveal">Zapytaj o&nbsp;to, o&nbsp;co pytają nas dorośli.</h2>
+      <p class="lead">Najczęstsze rozmowy przy zapisach. Zaczynamy od Ciebie, ale zapiszemy też dziecko albo cały zespół — odpowiadamy tak, jak przez telefon.</p>
     </div>
     <div class="who" role="tablist" aria-label="Kogo zapisujesz">
-      <button type="button" role="tab" aria-selected="true" aria-controls="t1" id="b1" tabindex="0">Dziecko 2–7 lat</button>
+      <button type="button" role="tab" aria-selected="true" aria-controls="t4" id="b4" tabindex="0">Siebie</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="t1" id="b1" tabindex="-1">Dziecko 2–7 lat</button>
       <button type="button" role="tab" aria-selected="false" aria-controls="t2" id="b2" tabindex="-1">8–11 lat, przy Dworcowej</button>
       <button type="button" role="tab" aria-selected="false" aria-controls="t3" id="b3" tabindex="-1">W&nbsp;szkole dziecka (SP)</button>
-      <button type="button" role="tab" aria-selected="false" aria-controls="t4" id="b4" tabindex="-1">Siebie</button>
       <button type="button" role="tab" aria-selected="false" aria-controls="t5" id="b5" tabindex="-1">Firmę</button>
     </div>
 
-    <div class="thread on" tabindex="0" role="tabpanel" id="t1" aria-labelledby="b1">
+    <div class="thread" tabindex="0" role="tabpanel" id="t1" aria-labelledby="b1">
       <div class="msg q"><p><small>Rodzic</small>Syn ma cztery lata. Czy to nie za wcześnie na angielski?</p></div>
       <div class="msg a"><p><small>Świat Języków</small>Nie — to najlepszy moment. Uczymy licencjonowaną metodą <strong>Teddy Eddie</strong>: przez zabawę, piosenki i&nbsp;bajki, a&nbsp;angielski jest językiem całych zajęć, więc dziecko mówi zdaniami, a&nbsp;nie pojedynczymi słówkami.</p></div>
       <div class="msg q"><p><small>Rodzic</small>A&nbsp;skąd będę wiedzieć, czy robi postępy?</p></div>
@@ -362,7 +460,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
       <div class="facts"><span><b>2 × 45 min</b> w&nbsp;szkole dziecka</span><span><b>60 spotkań</b> od X do VI</span><span><b>9 rat</b> po 245 zł</span></div>
     </div>
 
-    <div class="thread" tabindex="0" role="tabpanel" id="t4" aria-labelledby="b4">
+    <div class="thread on" tabindex="0" role="tabpanel" id="t4" aria-labelledby="b4">
       <div class="msg q"><p><small>Dorosły</small>Uczyłem się w&nbsp;szkole, ale nie potrafię się odezwać. Czy jest dla mnie grupa?</p></div>
       <div class="msg a"><p><small>Świat Języków</small>Tak — najpierw krótka rozmowa i&nbsp;test, żeby trafić do grupy, w&nbsp;której nie będzie Pan się nudzić ani gonić reszty. Mamy sześć poziomów, od A1 do C2, a&nbsp;na zajęciach <strong>gramatyka jest narzędziem, nie tematem</strong>.</p></div>
       <div class="msg q"><p><small>Dorosły</small>A&nbsp;inne języki niż angielski?</p></div>
@@ -381,17 +479,16 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 </section>
 
 <section class="team" id="kadra">
-  <div class="floaters" aria-hidden="true"><figure class="fl f1" data-speed="-.07"><img src="img/zeszyt.jpg" alt=""></figure><figure class="fl f2" data-speed=".06"><img src="img/fiszki.jpg" alt=""></figure><figure class="fl f3" data-speed="-.04"><img src="img/globus.jpg" alt=""></figure><span class="fl ftxt t1" data-speed=".09">native speakerzy</span><span class="fl ftxt t2" data-speed="-.06">od 2003</span></div>
   <div class="wrap">
     <h2 class="reveal">Z&nbsp;kim będziesz rozmawiać.</h2>
     <p class="lead" style="margin-top:22px">Rodzinna szkoła, nie oddział sieci. Lektorzy z&nbsp;wieloletnim doświadczeniem, egzaminatorzy maturalni i&nbsp;native speakerzy, którzy w&nbsp;Polsce zostali na dłużej.</p>
     <div class="tlist">
-      <div class="trow"><h3>Andrew Paul III</h3><span class="from">Long Island, Nowy Jork</span><p>Właściciel szkoły. Uczy angielskiego od ponad 15 lat, specjalizuje się w&nbsp;coachingu językowym dla firm.</p></div>
-      <div class="trow"><h3>Danuta Paul</h3><span class="from">Bytom</span><p>Współwłaścicielka i&nbsp;lektorka. Zaczynała w&nbsp;The American Academy of English, potwierdzone egzaminami TOEFL i&nbsp;TOEIC.</p></div>
-      <div class="trow"><h3>Amanda Jackson-Piernik</h3><span class="from">Saint Louis, USA</span><p>Native speakerka, magister edukacji Framingham University. Od ponad dziesięciu lat w&nbsp;Polsce.</p></div>
-      <div class="trow"><h3>Izabela Mrozek</h3><span class="from">Radzionków</span><p>Lektorka i&nbsp;metodyk, egzaminator OKE. Prowadzi kursy maturalne.</p></div>
-      <div class="trow"><h3>Birgit Wesołowski-Schwingenschlögel</h3><span class="from">Austria</span><p>Native speakerka języka niemieckiego. Uczy dzieci, młodzież i&nbsp;dorosłych.</p></div>
-      <div class="trow"><h3>Kayla Hall</h3><span class="from">Kalifornia, USA</span><p>Native speakerka. Uczy dzieci i&nbsp;młodzież, prowadzi zajęcia konwersacyjne.</p></div>
+      <div class="trow"><h3>Andrew Paul III</h3><span class="from"><span class="flag" aria-hidden="true"><svg viewBox="0 0 30 30"><rect width="30" height="30" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="2.3"/><rect y="4.6" width="30" height="2.3"/><rect y="9.2" width="30" height="2.3"/><rect y="13.8" width="30" height="2.3"/><rect y="18.4" width="30" height="2.3"/><rect y="23" width="30" height="2.3"/><rect y="27.6" width="30" height="2.4"/></g><rect width="14" height="16" fill="#3C3B6E"/></svg></span>Long Island, Nowy Jork</span><p>Właściciel szkoły. Uczy angielskiego od ponad 15 lat, specjalizuje się w&nbsp;coachingu językowym dla firm.</p></div>
+      <div class="trow"><h3>Danuta Paul</h3><span class="from"><span class="flag" aria-hidden="true"><svg viewBox="0 0 30 30"><rect width="30" height="15" fill="#fff"/><rect y="15" width="30" height="15" fill="#DC143C"/></svg></span>Bytom</span><p>Współwłaścicielka i&nbsp;lektorka. Zaczynała w&nbsp;The American Academy of English, potwierdzone egzaminami TOEFL i&nbsp;TOEIC.</p></div>
+      <div class="trow"><h3>Amanda Jackson-Piernik</h3><span class="from"><span class="flag" aria-hidden="true"><svg viewBox="0 0 30 30"><rect width="30" height="30" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="2.3"/><rect y="4.6" width="30" height="2.3"/><rect y="9.2" width="30" height="2.3"/><rect y="13.8" width="30" height="2.3"/><rect y="18.4" width="30" height="2.3"/><rect y="23" width="30" height="2.3"/><rect y="27.6" width="30" height="2.4"/></g><rect width="14" height="16" fill="#3C3B6E"/></svg></span>Saint Louis, USA</span><p>Native speakerka, magister edukacji Framingham University. Od ponad dziesięciu lat w&nbsp;Polsce.</p></div>
+      <div class="trow"><h3>Izabela Mrozek</h3><span class="from"><span class="flag" aria-hidden="true"><svg viewBox="0 0 30 30"><rect width="30" height="15" fill="#fff"/><rect y="15" width="30" height="15" fill="#DC143C"/></svg></span>Radzionków</span><p>Lektorka i&nbsp;metodyk, egzaminator OKE. Prowadzi kursy maturalne.</p></div>
+      <div class="trow"><h3>Birgit Wesołowski-Schwingenschlögel</h3><span class="from"><span class="flag" aria-hidden="true"><svg viewBox="0 0 30 30"><rect width="30" height="30" fill="#ED2939"/><rect y="10" width="30" height="10" fill="#fff"/></svg></span>Austria</span><p>Native speakerka języka niemieckiego. Uczy dzieci, młodzież i&nbsp;dorosłych.</p></div>
+      <div class="trow"><h3>Kayla Hall</h3><span class="from"><span class="flag" aria-hidden="true"><svg viewBox="0 0 30 30"><rect width="30" height="30" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="2.3"/><rect y="4.6" width="30" height="2.3"/><rect y="9.2" width="30" height="2.3"/><rect y="13.8" width="30" height="2.3"/><rect y="18.4" width="30" height="2.3"/><rect y="23" width="30" height="2.3"/><rect y="27.6" width="30" height="2.4"/></g><rect width="14" height="16" fill="#3C3B6E"/></svg></span>Kalifornia, USA</span><p>Native speakerka. Uczy dzieci i&nbsp;młodzież, prowadzi zajęcia konwersacyjne.</p></div>
     </div>
   </div>
 </section>
@@ -402,9 +499,9 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   <div class="wrap">
     <blockquote class="reveal">„Główny cel to swoboda w&nbsp;rozmowie, a&nbsp;nie wypełnianie ćwiczeń.”</blockquote>
     <div class="why">
-      <p><strong>Od 2003 roku w&nbsp;Bytomiu.</strong>Ponad dwadzieścia lat przy Dworcowej, od 2009 jako firma rodzinna Andrew i&nbsp;Danuty Paul.</p>
-      <p><strong>Rabat rodzinny 30%.</strong>Na drugie dziecko, rodzica albo kolejny kurs. Płatność jednorazowo, w&nbsp;2 albo w&nbsp;9 ratach.</p>
-      <p><strong>Licencjonowane metody.</strong>Akredytowany ośrodek Teddy Eddie i&nbsp;centrum Savvy Ed — programy z&nbsp;własnymi materiałami i&nbsp;przeszkoloną kadrą.</p>
+      <p><img src="img/airmail.jpg" alt="" loading="lazy"><strong>Od 2003 roku w&nbsp;Bytomiu.</strong><span>Ponad dwadzieścia lat przy Dworcowej, od 2009 jako firma rodzinna Andrew i&nbsp;Danuty Paul.</span></p>
+      <p><img src="img/wieczor.jpg" alt="" loading="lazy"><strong>Rabat rodzinny 30%.</strong><span>Na drugie dziecko, rodzica albo kolejny kurs. Płatność jednorazowo, w&nbsp;2 albo w&nbsp;9 ratach.</span></p>
+      <p><img src="img/krag.jpg" alt="" loading="lazy"><strong>Konwersacje z&nbsp;Amerykanami.</strong><span>W&nbsp;każdy poniedziałek o&nbsp;19:30 grupa konwersacyjna z&nbsp;native speakerami z&nbsp;USA — dla tych, którzy chcą wreszcie mówić swobodnie.</span></p>
     </div>
   </div>
 </section>
@@ -445,6 +542,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
     <div>
       <h2 class="reveal">Przy Dworcowej i&nbsp;w&nbsp;szkole Twojego dziecka.</h2>
       <p class="hq">ul. Dworcowa 1, II piętro<br>41-902 Bytom<small>Blisko Agory. Tu prowadzimy wszystkie kursy i&nbsp;przyjmujemy zapisy — sekretariat pon.–pt. 10:00–18:00, telefon 8:00–21:00.</small></p>
+      <figure class="hqimg"><img src="img/kamienica.jpg" alt="Kamienica w centrum Bytomia wieczorem, światło w oknie na drugim piętrze" loading="lazy" width="1024" height="572"><figcaption>II piętro — tu się uczymy</figcaption></figure>
     </div>
     <div class="cities">
       <div class="city"><h3>Bytom</h3><ul><li>SP nr 4, ul. Chrobrego 9</li><li>SP nr 6, ul. Królowej Jadwigi 2</li><li>SP nr 36, ul. Siemiradzkiego 9</li><li>SP nr 43, ul. Suchogórska 98</li><li>SP nr 45, ul. Zakątek 20</li><li>SP nr 46, ul. Prusa 10</li></ul></div>
@@ -466,6 +564,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
         <dt>E-mail</dt><dd><a href="mailto:bytomswiatjezykow@gmail.com">bytomswiatjezykow@gmail.com</a></dd>
         <dt>Adres</dt><dd>ul. Dworcowa 1, II piętro, Bytom</dd>
       </dl>
+      <figure class="post"><img src="img/lizbona.jpg" alt="Kursantka zamawia kawę w kawiarni w Lizbonie" loading="lazy" width="1024" height="576"><figcaption>Uczysz się we wtorki przy Dworcowej, a&nbsp;w&nbsp;wakacje zamawiasz kawę bez stresu. Po to są te lekcje.</figcaption><span class="stamp" aria-hidden="true">Bytom<br>→<br>świat</span></figure>
       <p class="gplace"><a href="https://www.google.com/maps/place/?q=place_id:ChIJozKRFy_TFkcRysrJMQ7-mKE" target="_blank" rel="noopener">4,7 w&nbsp;Google · 49 opinii rodziców i&nbsp;kursantów</a></p>
     </div>
     <form onsubmit="event.preventDefault();this.querySelector('.ok').textContent='To makieta — w gotowej stronie wiadomość trafi do sekretariatu.'">
@@ -502,7 +601,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 
   /* tabs */
   var tabs=[].slice.call(d.querySelectorAll('.who [role=tab]'));
-  d.querySelectorAll('.thread').forEach(function(t,i){if(i)t.hidden=true});
+  d.querySelectorAll('.thread').forEach(function(t){if(!t.classList.contains('on'))t.hidden=true});
   function act(b,focus){
     tabs.forEach(function(x){x.setAttribute('aria-selected','false');x.tabIndex=-1;var p=d.getElementById(x.getAttribute('aria-controls'));p.hidden=true;p.classList.remove('on')});
     b.setAttribute('aria-selected','true');b.tabIndex=0;if(focus)b.focus();var p=d.getElementById(b.getAttribute('aria-controls'));p.hidden=false;p.classList.add('on');
@@ -514,33 +613,20 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
 
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hero=d.getElementById('hero'), bubs=[].slice.call(d.querySelectorAll('.bub')), bar=d.querySelector('.progress span');
+  var hero=d.getElementById('hero'), bar=d.querySelector('.fh .progress span');
   function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
-  var stageEl=d.querySelector('.stage'), h1=d.querySelector('.htxt h1'), mainB=d.querySelector('.bub.main');
+  var cv=d.getElementById('fhc'), ctx=cv.getContext('2d'), N=window.FH_N||0, fr=[], cur=0, last=-1, says=[].slice.call(d.querySelectorAll('.fh-say'));
+  function cover(img){var W=cv.width,H=cv.height,iw=img.naturalWidth,ih=img.naturalHeight,s=Math.max(W/iw,H/ih),w=iw*s,h=ih*s;ctx.drawImage(img,(W-w)*(innerWidth<760?.68:.62),(H-h)/2,w,h)}
+  function draw(i){var img=fr[i];if(!img||!img.naturalWidth){for(var k=i;k>=0;k--){if(fr[k]&&fr[k].naturalWidth){img=fr[k];break}}}if(!img||i===last)return;last=i;cover(img)}
+  for(var i=0;i<N;i++){var im=new Image();im.decoding='async';im.src='img/fh/f'+String(i+1).padStart(3,'0')+'.jpg';(function(k){im.onload=function(){if(k===0||k===cur){last=-1;draw(cur)}}})(i);fr.push(im)}
+  function size(){var r=cv.getBoundingClientRect(),dp=Math.min(devicePixelRatio||1,2);cv.width=r.width*dp;cv.height=r.height*dp;last=-1;draw(cur)}
+  addEventListener('resize',size); size();
   function frame(){
     var r=hero.getBoundingClientRect(), H=innerHeight, total=Math.max(1,hero.offsetHeight-H);
     var p=reduce?1:clamp(-r.top/total,0,1);
-    var W=innerWidth, narrow=W<760, hh=hdr.offsetHeight;
-    /* target point (relative to stage centre) and spread */
-    var stageH=H-hh, st=stageEl.getBoundingClientRect(), hr=h1.getBoundingClientRect(), mb=mainB.offsetHeight||70, mw=mainB.offsetWidth||300;
-    var right=!narrow && (W-hr.right-48 >= mw+24);
-    var absY=right ? hr.top+mb/2+8 : Math.max(hh+mb/2+14, hr.top-mb/2-26);
-    var absX=right ? hr.right+48+mw/2 : Math.min(W-16-mw/2, hr.left+mw/2);
-    var tx=absX-(st.left+st.width/2), ty=absY-(st.top+st.height/2);
-    var spx=narrow?W*.28:Math.min(W*.16,230), spy=narrow?Math.min(stageH*.07,(hr.top-hh)*.22):Math.min(stageH*.12,(hr.top-hh)*.3);
-    var a=ease(clamp(p/.55,0,1));
-    bubs.forEach(function(b){
-      if(b.hasAttribute('data-main')){
-        var t=reduce?1:ease(clamp((p-.35)/.3,0,1));
-        b.style.opacity=t>0?1:0; b.style.clipPath='inset(0 '+((1-t)*100)+'% 0 0 round 1.1em)'; b.style.transform='translate(-50%,-50%) translate('+tx+'px,'+ty+'px)';
-        return;
-      }
-      var x=tx+(+b.dataset.x)*spx*(1-a*.9), y=ty+(+b.dataset.y)*spy*(1-a*.9);
-      var op=1-clamp((p-.3)/.15,0,1);
-      b.style.opacity=op; b.style.transform='translate(-50%,-50%) translate('+x+'px,'+y+'px) scale('+(1-a*.3)+')';
-      var br=b.getBoundingClientRect(); if(br.right>W-16){x-=br.right-(W-16); b.style.transform='translate(-50%,-50%) translate('+x+'px,'+y+'px) scale('+(1-a*.3)+')';}
-    });
+    var q=p<.18?p/.18*.18:(p<.32?.18+(p-.18)/.14*.16:.34+(p-.32)/.68*.66); cur=Math.round(q*(N-1)); draw(cur);
+    hero.classList.toggle('go',p>.02); hero.classList.toggle('abroad',p>.22);
+    says.forEach(function(e){e.classList.toggle('on',p>=+e.dataset.a)});
     if(bar) bar.style.width=(p*100)+'%';
     d.body.classList.toggle('past-hero', r.bottom < H*.5);
     d.body.classList.toggle('scrolled', scrollY>10);
