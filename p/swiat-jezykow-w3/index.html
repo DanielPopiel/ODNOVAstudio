@@ -338,7 +338,7 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .fh{position:relative;height:100vh;height:100svh;min-height:620px;background:var(--navy2);color:#fff}
 .fh-pin{position:relative;height:100%;overflow:hidden}
 .fh-stage{position:absolute;inset:0}
-.fh-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;display:block}
+.fh-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
 .fh-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,23,72,.92) 0,rgba(25,23,72,.8) 34%,rgba(25,23,72,.5) 52%,transparent 68%),linear-gradient(0deg,rgba(25,23,72,.55),transparent 35%)}
 .fh-txt{position:relative;z-index:2;max-width:1240px;height:100%;margin:0 auto;padding:var(--hdr-h) 28px 9vh;display:flex;flex-direction:column;justify-content:flex-end}
 .fh-txt>*{max-width:560px}
@@ -357,13 +357,13 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .fh-say::after{content:"";position:absolute;bottom:-9px;left:20px;width:18px;height:18px;background:inherit;clip-path:polygon(0 0,100% 0,0 100%)}
 .fh-say.r{background:var(--red);color:#fff}.fh-say.r::after{left:auto;right:20px;clip-path:polygon(0 0,100% 0,100% 100%)}
 .fh-say.on{opacity:1;transform:none}
-.fh-say.s1{left:45%;top:24%}.fh-say.s2{right:6%;top:17%}.fh-say.s3{left:47%;top:37%}
+.fh-say.s1{left:64%;top:26%}.fh-say.s2{left:46%;top:15%}.fh-say.s3{left:66%;top:40%}
 .fh-hint{position:absolute;z-index:2;right:28px;bottom:24px;font:500 .85rem var(--h);color:#c9c8e6;transition:opacity .3s}
 .fh.go .fh-hint{opacity:0}
 .fh .progress{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3}.fh .progress span{display:block;height:100%;width:0;background:var(--red)}
 @media(max-width:760px){
   .fh{height:auto;min-height:100svh}
-  .fh-stage video{object-position:68% 50%}
+  .fh-stage video{object-position:78% 50%}
   .fh-stage{bottom:auto;top:var(--hdr-h);height:44svh}
   .fh-stage:after{background:linear-gradient(0deg,var(--navy2) 0,rgba(25,23,72,0) 40%)}
   .fh-txt{padding:calc(var(--hdr-h) + 50svh) 18px 4vh;justify-content:flex-start}
@@ -393,9 +393,9 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 <section class="fh" id="hero" aria-label="Wstęp">
   <div class="fh-pin">
     <div class="fh-stage" aria-hidden="true"><video id="fhv" poster="img/vid/lizbona-poster.jpg" autoplay muted loop playsinline preload="auto"><source src="img/vid/lizbona.webm" type="video/webm"><source src="img/vid/lizbona.mp4" type="video/mp4"></video>
-      <span class="fh-say s1" data-t="5">Hi! One flat white, please.</span>
-      <span class="fh-say s2 r" data-t="5.8">Sure! Where are you from?</span>
-      <span class="fh-say s3" data-t="6.6">Poland. Bytom!</span>
+      <span class="fh-say s1" data-t="5.4">Hi! One flat white, please.</span>
+      <span class="fh-say s2 r" data-t="6.2">Sure! Where are you from?</span>
+      <span class="fh-say s3" data-t="7">Poland. Bytom!</span>
     </div>
     <div class="fh-txt">
       <p class="fh-when"><span class="w1">Wtorek, 18:00 · Bytom, Dworcowa 1</span><span class="w2">Sobota, 10:00 · Lizbona</span></p>
@@ -614,8 +614,8 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   var vid=d.getElementById('fhv'), says=[].slice.call(d.querySelectorAll('.fh-say'));
   if(reduce&&vid){vid.removeAttribute('autoplay');vid.pause();}
   function vt(){var t=vid.currentTime; if(reduce)t=7;
-    hero.classList.toggle('abroad',t>1.8&&t<8.3);
-    says.forEach(function(e){e.classList.toggle('on',t>=+e.dataset.t&&t<8)});
+    hero.classList.toggle('abroad',t>2&&t<8.8);
+    says.forEach(function(e){e.classList.toggle('on',t>=+e.dataset.t&&t<8.6)});
     requestAnimationFrame(vt)}
   if(vid) requestAnimationFrame(vt);
   function frame(){
