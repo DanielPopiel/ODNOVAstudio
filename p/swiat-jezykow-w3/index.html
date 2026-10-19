@@ -335,10 +335,10 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 }
 
 /* r5: hero filmowe „Z pocztówki na ulicę” */
-.fh{position:relative;height:280vh;background:var(--navy2);color:#fff}
-.fh-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.fh{position:relative;height:100vh;height:100svh;min-height:620px;background:var(--navy2);color:#fff}
+.fh-pin{position:relative;height:100%;overflow:hidden}
 .fh-stage{position:absolute;inset:0}
-.fh-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fh-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;display:block}
 .fh-stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,23,72,.92) 0,rgba(25,23,72,.8) 34%,rgba(25,23,72,.5) 52%,transparent 68%),linear-gradient(0deg,rgba(25,23,72,.55),transparent 35%)}
 .fh-txt{position:relative;z-index:2;max-width:1240px;height:100%;margin:0 auto;padding:var(--hdr-h) 28px 9vh;display:flex;flex-direction:column;justify-content:flex-end}
 .fh-txt>*{max-width:560px}
@@ -362,7 +362,8 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 .fh.go .fh-hint{opacity:0}
 .fh .progress{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3}.fh .progress span{display:block;height:100%;width:0;background:var(--red)}
 @media(max-width:760px){
-  .fh{height:170vh}
+  .fh{height:auto;min-height:100svh}
+  .fh-stage video{object-position:68% 50%}
   .fh-stage{bottom:auto;top:var(--hdr-h);height:44svh}
   .fh-stage:after{background:linear-gradient(0deg,var(--navy2) 0,rgba(25,23,72,0) 40%)}
   .fh-txt{padding:calc(var(--hdr-h) + 50svh) 18px 4vh;justify-content:flex-start}
@@ -374,8 +375,6 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   .fh-say.s1{left:8%;top:12%}.fh-say.s2{right:2%;top:18%}.fh-say.s3{left:12%;top:52%}
   .fh-hint{display:none}
 }
-.no-js .fh{height:auto}.no-js .fh-pin{position:relative;height:auto;min-height:100svh}
-.no-js .fh-stage{background:url(img/fh/f120.jpg) center/cover}
 </style>
 </head>
 <body>
@@ -391,13 +390,12 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
 </div>
 
 <main id="start">
-<script>window.FH_N=120</script>
 <section class="fh" id="hero" aria-label="Wstęp">
   <div class="fh-pin">
-    <div class="fh-stage" aria-hidden="true"><canvas id="fhc"></canvas>
-      <span class="fh-say s1" data-a=".72">Hi! One flat white, please.</span>
-      <span class="fh-say s2 r" data-a=".8">Sure! Where are you from?</span>
-      <span class="fh-say s3" data-a=".88">Poland. Bytom!</span>
+    <div class="fh-stage" aria-hidden="true"><video id="fhv" poster="img/vid/lizbona-poster.jpg" autoplay muted loop playsinline preload="auto"><source src="img/vid/lizbona.webm" type="video/webm"><source src="img/vid/lizbona.mp4" type="video/mp4"></video>
+      <span class="fh-say s1" data-t="5">Hi! One flat white, please.</span>
+      <span class="fh-say s2 r" data-t="5.8">Sure! Where are you from?</span>
+      <span class="fh-say s3" data-t="6.6">Poland. Bytom!</span>
     </div>
     <div class="fh-txt">
       <p class="fh-when"><span class="w1">Wtorek, 18:00 · Bytom, Dworcowa 1</span><span class="w2">Sobota, 10:00 · Lizbona</span></p>
@@ -405,8 +403,6 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
       <p class="fh-lead">Angielski i&nbsp;pięć innych języków w&nbsp;centrum Bytomia. <strong>Od 2003 roku szkołę prowadzi Amerykanin z&nbsp;Long Island razem z&nbsp;żoną</strong>, a&nbsp;uczą native speakerzy i&nbsp;egzaminatorzy maturalni.</p>
       <div class="hcta"><a class="btn btn-red" href="#kontakt">Umów bezpłatną lekcję próbną</a><a class="tel" href="tel:+48600220204">600 22 02 04</a></div>
     </div>
-    <p class="fh-hint">Przewiń — pocztówka ożyje ↓</p>
-    <div class="progress" aria-hidden="true"><span></span></div>
   </div>
 </section>
 
@@ -613,23 +609,20 @@ footer .credit{width:100%;border-top:1px solid var(--lineL);padding-top:20px;fon
   d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
 
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hero=d.getElementById('hero'), bar=d.querySelector('.fh .progress span');
+  var hero=d.getElementById('hero');
   function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-  var cv=d.getElementById('fhc'), ctx=cv.getContext('2d'), N=window.FH_N||0, fr=[], cur=0, last=-1, says=[].slice.call(d.querySelectorAll('.fh-say'));
-  function cover(img){var W=cv.width,H=cv.height,iw=img.naturalWidth,ih=img.naturalHeight,s=Math.max(W/iw,H/ih),w=iw*s,h=ih*s;ctx.drawImage(img,(W-w)*(innerWidth<760?.68:.62),(H-h)/2,w,h)}
-  function draw(i){var img=fr[i];if(!img||!img.naturalWidth){for(var k=i;k>=0;k--){if(fr[k]&&fr[k].naturalWidth){img=fr[k];break}}}if(!img||i===last)return;last=i;cover(img)}
-  for(var i=0;i<N;i++){var im=new Image();im.decoding='async';im.src='img/fh/f'+String(i+1).padStart(3,'0')+'.jpg';(function(k){im.onload=function(){if(k===0||k===cur){last=-1;draw(cur)}}})(i);fr.push(im)}
-  function size(){var r=cv.getBoundingClientRect(),dp=Math.min(devicePixelRatio||1,2);cv.width=r.width*dp;cv.height=r.height*dp;last=-1;draw(cur)}
-  addEventListener('resize',size); size();
+  var vid=d.getElementById('fhv'), says=[].slice.call(d.querySelectorAll('.fh-say'));
+  if(reduce&&vid){vid.removeAttribute('autoplay');vid.pause();}
+  function vt(){var t=vid.currentTime; if(reduce)t=7;
+    hero.classList.toggle('abroad',t>1.8&&t<8.3);
+    says.forEach(function(e){e.classList.toggle('on',t>=+e.dataset.t&&t<8)});
+    requestAnimationFrame(vt)}
+  if(vid) requestAnimationFrame(vt);
   function frame(){
-    var r=hero.getBoundingClientRect(), H=innerHeight, total=Math.max(1,hero.offsetHeight-H);
-    var p=reduce?1:clamp(-r.top/total,0,1);
-    var q=p<.18?p/.18*.18:(p<.32?.18+(p-.18)/.14*.16:.34+(p-.32)/.68*.66); cur=Math.round(q*(N-1)); draw(cur);
-    hero.classList.toggle('go',p>.02); hero.classList.toggle('abroad',p>.22);
-    says.forEach(function(e){e.classList.toggle('on',p>=+e.dataset.a)});
-    if(bar) bar.style.width=(p*100)+'%';
+    var r=hero.getBoundingClientRect(), H=innerHeight;
     d.body.classList.toggle('past-hero', r.bottom < H*.5);
     d.body.classList.toggle('scrolled', scrollY>10);
+    if(vid){ if(r.bottom<0){if(!vid.paused)vid.pause()} else if(vid.paused&&!reduce){var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){})} }
   }
   var tick=false; function req(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;frame()})}}
   addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); frame();
