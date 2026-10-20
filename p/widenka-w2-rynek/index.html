@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radca prawny Rybnik — Mateusz Widenka · makieta W2 „Rynek 4”</title>
+<meta name="description" content="Kancelaria Radcy Prawnego Mateusz Widenka, Rynek 4/1, Rybnik. Prawo pracy, umowy, prawo konsumenckie, kredyty we frankach. Porady stacjonarne i online.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Radca prawny Rybnik — Mateusz Widenka">
+<meta property="og:description" content="Makieta W2 „Rynek 4” — projekt nowej strony kancelarii. Odnova Studio.">
+<meta property="og:url" content="https://www.odnovastudio.com/p/widenka-w2-rynek/">
+<meta property="og:image" content="https://www.odnovastudio.com/p/widenka-w2-rynek/a/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="a/fav.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F4F1; --white:#FBFBF9; --ink:#141A2E; --mut:#555D70; --line:#D6D9D2;
+  --acc:#254896; --acc2:#2F62E8; --navy:#121C3A; --navy2:#18244A; --nink:#EEF1F7; --nmut:#AEB8CE; --nline:rgba(238,241,247,.16);
+  --serif:'Young Serif',Georgia,serif; --sans:'Figtree',system-ui,sans-serif; --hdr-h:96px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--sans);-webkit-font-smoothing:antialiased;caret-color:var(--acc);accent-color:var(--acc)}
+::selection{background:var(--acc);color:#fff}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 36px}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.012em}
+h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
+.dark{background:var(--navy);color:var(--nink)}
+.lead{font-size:1.14rem;color:var(--mut);max-width:36em}
+.dark .lead{color:var(--nmut)}
+
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mk{background:var(--ink);color:#E9ECF3;font-size:13px;text-align:center;padding:6px 12px;line-height:1.35}
+.mk b{font-weight:600}
+.hdr{background:rgba(243,244,241,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:30px;height:70px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{width:52px}
+.brand span{font-family:var(--serif);font-size:1.18rem;line-height:1.05;padding-left:14px;border-left:1px solid var(--line)}
+.brand small{display:block;font-family:var(--sans);font-size:.8rem;color:var(--mut)}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{text-decoration:none;font-size:.97rem;color:var(--mut);font-weight:500}
+.nav a:hover{color:var(--acc)}
+.tel{text-decoration:none;font-weight:600;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:3px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600;font-size:.98rem;border:1px solid var(--acc);cursor:pointer;font-family:var(--sans);transition:background .2s,color .2s}
+.btn:hover{background:#1B3672}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:#fff}
+.btn svg{width:17px;height:17px}
+.mnav{display:none;position:relative}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 16px;border:1px solid var(--ink);border-radius:3px;font-weight:600}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:54px;background:var(--white);border:1px solid var(--line);min-width:240px;padding:8px 0;display:flex;flex-direction:column}
+.mnav nav a{padding:12px 20px;text-decoration:none}
+.mnav nav .btn{margin:8px 16px;justify-content:center}
+
+/* hero */
+.hero{padding:calc(var(--hdr-h) + 56px) 0 80px}
+.hero .grid{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end}
+.hero h1{font-size:clamp(2.5rem,4.8vw,4.5rem);line-height:1.04;text-wrap:balance}
+.hero h1 .who{display:block;font-family:var(--sans);font-size:1.05rem;font-weight:500;letter-spacing:0;color:var(--mut);margin-top:26px;line-height:1.4}
+.hero p.sub{font-size:1.16rem;color:var(--mut);max-width:31em;margin:22px 0 34px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:#e9eae6;max-height:620px;justify-self:end;width:100%}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.04)}
+.frame .stamp{position:absolute;left:0;bottom:0;background:var(--bg);padding:16px 22px 0 0;max-width:80%}
+.stamp strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.3}
+.stamp span{font-size:.92rem;color:var(--mut)}
+.hero .row3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid var(--ink)}
+.row3 a{display:block;text-decoration:none;padding:20px 24px 0 0;font-size:.98rem;color:var(--mut)}
+.row3 a:hover b{color:var(--acc)}
+.row3 b{display:block;color:var(--ink);font-weight:600;font-size:1.02rem}
+
+/* specjalizacje */
+.spec{padding:120px 0}
+.spec .head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px;flex-wrap:wrap}
+.tabs{display:grid;grid-template-columns:4fr 8fr;gap:60px;align-items:start}
+.tablist{display:flex;flex-direction:column;border-top:1px solid var(--nline)}
+.tab{all:unset;cursor:pointer;display:block;padding:22px 0;border-bottom:1px solid var(--nline);font-family:var(--serif);font-size:1.55rem;line-height:1.3;color:var(--nmut);transition:color .2s;position:relative}
+.tab small{display:block;font-family:var(--sans);font-size:.92rem;margin-top:4px}
+.tab[aria-selected=true]{color:var(--nink)}
+.tab[aria-selected=true]::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:#7FA0FF}
+.tab:hover{color:var(--nink)}
+.tab:focus-visible{outline:2px solid #7FA0FF;outline-offset:4px}
+.panel{scroll-margin-top:calc(var(--hdr-h) + 20px)}
+.panel h3{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.12;margin-bottom:18px;max-width:18em}
+.panel p{color:var(--nmut);max-width:38em;margin:0 0 26px}
+.panel ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+.panel li{padding:14px 0 14px 30px;border-top:1px solid var(--nline);position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:27px;width:14px;height:1px;background:#7FA0FF}
+.panels{display:grid}
+.panel+.panel{margin-top:56px}
+.tabs-on .panel{grid-area:1/1;margin:0}
+.tabs-on .panel[hidden]{display:block;visibility:hidden}
+.reszta{margin-top:84px;padding-top:30px;border-top:1px solid var(--nline);display:grid;grid-template-columns:4fr 8fr;gap:60px}
+.reszta p{margin:0;color:var(--nmut)}
+.reszta ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.reszta ul{gap:6px 0}
+.reszta li{font-size:1.02rem}
+.reszta li+li::before{content:"·";color:var(--nmut);margin:0 12px}
+
+/* list / o mnie */
+.list{padding:130px 0 110px}
+.list .grid{display:grid;grid-template-columns:7fr 4fr;gap:90px;align-items:start}
+.list h2{margin-bottom:34px}
+.letter p{font-size:1.14rem;max-width:34em;margin:0 0 20px}
+.letter p:first-of-type::first-letter{font-family:var(--serif);float:left;font-size:4.3rem;line-height:.82;padding:8px 10px 0 0;color:var(--acc)}
+.sign{margin-top:30px;display:flex;align-items:center;gap:22px}
+.sign img{width:210px}
+.sign span{font-size:.92rem;color:var(--mut);line-height:1.4}
+.portret img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.04)}
+.portret ul{list-style:none;margin:22px 0 0;padding:0}
+.portret li{padding:12px 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--mut)}
+.portret li b{color:var(--ink);font-weight:600}
+
+/* online */
+.online{padding:120px 0}
+.online .grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.online ol{list-style:none;margin:0;padding:0;counter-reset:s}
+.online li{counter-increment:s;display:grid;grid-template-columns:86px 1fr;gap:20px;padding:30px 0;border-top:1px solid var(--nline)}
+.online li:last-child{border-bottom:1px solid var(--nline)}
+.online li::before{content:counter(s);font-family:var(--serif);font-size:3.4rem;line-height:1;color:#7FA0FF}
+.online li h3{font-size:1.5rem;margin-bottom:6px}
+.online li p{margin:0;color:var(--nmut)}
+.online .btn{margin-top:30px;background:#fff;color:var(--navy);border-color:#fff}
+.online .btn:hover{background:transparent;color:#fff}
+
+/* FAQ */
+.faq{padding:120px 0}
+.faq .grid{display:grid;grid-template-columns:4fr 8fr;gap:70px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 50px 24px 0;font-family:var(--serif);font-size:1.38rem;line-height:1.25;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:32px;width:14px;height:14px;border-right:1.6px solid var(--acc);border-bottom:1.6px solid var(--acc);transform:rotate(45deg);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(-135deg);top:38px}
+.faq summary,.online li h3,.form h3{font-family:var(--sans);font-weight:600;letter-spacing:0}
+.faq summary{font-size:1.15rem}
+.faq details p{margin:0 0 26px;color:var(--mut);max-width:42em}
+
+/* opinie */
+.opinie{padding:0 0 130px}
+.opinie .wrap{border-top:1px solid var(--line);padding-top:90px}
+.opinie .q3{display:grid;grid-template-columns:7fr 5fr;gap:34px 70px;margin-top:56px}
+.opinie blockquote{margin:0;border-top:2px solid var(--acc);padding-top:26px}
+.q3 blockquote:first-child{grid-row:span 2}
+.q3 blockquote:first-child p{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,2rem);line-height:1.3}
+.opinie blockquote p{margin:0;font-size:1.12rem;line-height:1.55}
+.opinie blockquote p::before{content:"„"}
+.opinie blockquote p::after{content:"”"}
+.opinie footer{margin-top:18px;color:var(--mut);font-size:.92rem}
+
+/* kontakt */
+.kontakt{padding:120px 0}
+.kontakt .grid{display:grid;grid-template-columns:5fr 6fr;gap:80px}
+.kontakt h2{margin-bottom:24px}
+.dane{display:grid;grid-template-columns:1fr;gap:0;margin-top:34px}
+.dane div{padding:18px 0;border-top:1px solid var(--line)}
+.dane span{display:block;font-size:.88rem;color:var(--mut)}
+.dane a,.dane strong{font-size:1.3rem;font-weight:600;text-decoration:none;font-variant-numeric:lining-nums tabular-nums}
+.dane a:hover{color:var(--acc)}
+.dane a.trasa{display:inline-flex;min-height:40px;align-items:center;font-size:.98rem;color:var(--acc);text-decoration:underline;text-underline-offset:4px}
+.form :user-invalid{border-color:#B3261E}
+.form{background:var(--white);border:1px solid var(--line);padding:42px}
+.form h3{font-size:1.65rem;margin-bottom:6px}
+.form>p{margin:0 0 24px;color:var(--mut);font-size:.98rem}
+.form label{display:block;font-size:.93rem;margin:0 0 6px;font-weight:500}
+.form input,.form textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid #BFC4CC;background:#fff;border-radius:8px;margin-bottom:18px;color:var(--ink)}
+.form textarea{min-height:130px;resize:vertical}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;border:0;padding:0}
+.chips legend{font-size:.93rem;font-weight:500;margin-bottom:8px;padding:0}
+.chips label{margin:0;font-weight:400}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{display:inline-block;border:1px solid #BFC4CC;border-radius:999px;padding:8px 14px;font-size:.93rem;cursor:pointer}
+.chips input:checked+span{background:var(--acc);border-color:var(--acc);color:#fff}
+.chips input:focus-visible+span{outline:2px solid var(--acc2);outline-offset:2px}
+.form .zg{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--mut);margin-bottom:22px;font-weight:400}
+.form .zg input{width:auto;margin:4px 0 0}
+.form .btn{width:100%;justify-content:center}
+.form .ok{display:none;margin-top:14px;font-size:.95rem;color:var(--acc)}
+
+footer.site{background:var(--navy);color:var(--nmut);padding:56px 0 120px;font-size:.93rem}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-start}
+footer.site img{width:60px}
+footer.site strong{color:var(--nink);font-weight:500}
+footer.site nav{display:flex;gap:22px;flex-wrap:wrap;margin-left:auto}
+footer.site nav a{text-decoration:none}
+footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--nline);padding-top:22px}
+
+.mbar{display:none}
+.js .reveal{opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:1020px){
+  .nav,.hdr .tel{display:none}
+  .mnav{display:block}
+  .hdr .hcta{margin-left:auto}
+  .hdr .wrap{gap:14px}
+
+  .hero .grid,.tabs,.reszta,.list .grid,.online .grid,.faq .grid,.kontakt .grid{grid-template-columns:1fr;gap:40px}
+  .frame{aspect-ratio:16/10}
+  .opinie .q3{grid-template-columns:1fr;gap:34px}
+  .list .portret{max-width:420px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .brand img{width:42px}
+  .brand span{font-size:1.02rem;padding-left:10px}
+  .hero{padding-top:calc(var(--hdr-h) + 30px);padding-bottom:56px}
+  .hero .row3{grid-template-columns:1fr;margin-top:40px}
+  .row3 a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .frame{aspect-ratio:4/3}
+  .spec,.list,.online,.faq,.opinie,.kontakt{padding:80px 0}
+  .panel ul{grid-template-columns:1fr}
+  .tab{font-size:1.3rem;padding:16px 0}
+  .online li{grid-template-columns:56px 1fr;gap:12px}
+  .online li::before{font-size:2.6rem}
+  .form{padding:26px 18px}
+  .form .row{grid-template-columns:1fr;gap:0}
+  .sign img{width:160px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--white);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s}
+  .past-hero .mbar,html:not(.js) .mbar{transform:none}
+  .mbar a{min-height:56px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-weight:600}
+  .mbar a+a{background:var(--acc);color:#fff}
+}
+@media (max-width:420px){
+  .hdr .hcta{display:none}
+  .mnav{margin-left:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="mk"><b>Makieta W2 „Rynek 4”</b> · projekt nowej strony dla Kancelarii Radcy Prawnego Mateusza Widenki · Odnova Studio</div>
+  <header class="hdr">
+    <div class="wrap">
+      <a class="brand" href="#start" aria-label="Kancelaria Radcy Prawnego Mateusz Widenka — początek strony">
+        <img src="a/mw-blue.png" alt="" width="374" height="158">
+        <span>Mateusz Widenka<small>Kancelaria Radcy Prawnego</small></span>
+      </a>
+      <nav class="nav" aria-label="Główna">
+        <a href="#specjalizacje">Specjalizacje</a><a href="#o-mnie">O mnie</a><a href="#online">Porada online</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="tel" href="tel:+48792055316">792 055 316</a>
+      <a class="btn hcta" href="#kontakt">Umów spotkanie</a>
+      <details class="mnav"><summary>Menu</summary>
+        <nav aria-label="Menu mobilne">
+          <a href="#specjalizacje">Specjalizacje</a><a href="#o-mnie">O mnie</a><a href="#online">Porada online</a><a href="#pytania">Pytania</a><a href="#kontakt">Kontakt</a>
+          <a class="btn" href="tel:+48792055316">Zadzwoń: 792 055 316</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+</div>
+
+<main>
+<section class="hero" id="start">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h1>Prawo pracy, umowy i&nbsp;spory z&nbsp;bankami<span class="who">Radca prawny Mateusz Widenka · Rynek 4/1, Rybnik · porady także online</span></h1>
+        <p class="sub">Doradzam osobom prywatnym i&nbsp;firmom, piszę pisma i&nbsp;reprezentuję przed sądem. Na początku mówię wprost, jakie są szanse i&nbsp;ile to będzie kosztować.</p>
+        <div class="cta">
+          <a class="btn" href="tel:+48792055316"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>792 055 316</a>
+          <a class="btn line" href="#online">Porada online</a>
+        </div>
+      </div>
+      <div class="frame">
+        <img src="a/portret-ramiona.webp" alt="Radca prawny Mateusz Widenka" width="643" height="603">
+        <div class="stamp"><strong>Mateusz Widenka</strong><span>radca prawny, wpis KT-4093</span></div>
+      </div>
+    </div>
+    <div class="row3">
+      <a href="#p1" data-tab="t1"><b>Prawo pracy</b>pracownicy i&nbsp;pracodawcy</a>
+      <a href="#p2" data-tab="t2"><b>Umowy i&nbsp;konsumenci</b>analiza, reklamacje, zapłata</a>
+      <a href="#p3" data-tab="t3"><b>Franki i&nbsp;polisolokaty</b>sprawy przeciwko bankom</a>
+    </div>
+  </div>
+</section>
+
+<section class="spec dark" id="specjalizacje">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="reveal">Trzy dziedziny, w&nbsp;których pracuję najczęściej</h2>
+      <p class="lead">W każdej z&nbsp;nich prowadzę sprawę od pierwszej porady do prawomocnego wyroku.</p>
+    </div>
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="Specjalizacje">
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Prawo pracy<small>dla pracowników i&nbsp;pracodawców</small></button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false">Umowy i&nbsp;prawo konsumenckie<small>prawo cywilne, kontraktowe</small></button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false">Kredyty we frankach i&nbsp;polisolokaty<small>spory z&nbsp;bankami i&nbsp;ubezpieczycielami</small></button>
+      </div>
+      <div class="panels">
+        <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+          <h3>Zwolnienie, zaległe pensje, mobbing albo kadry w&nbsp;Państwa firmie</h3>
+          <p>Reprezentuję pracowników w&nbsp;sporach z&nbsp;pracodawcą, a&nbsp;pracodawcom pomagam ułożyć sprawy kadrowe tak, żeby do sporu nie doszło.</p>
+          <ul>
+            <li>odwołanie od wypowiedzenia i&nbsp;zwolnienia dyscyplinarnego</li>
+            <li>wynagrodzenie, nadgodziny, ekwiwalent</li>
+            <li>mobbing i&nbsp;dyskryminacja w&nbsp;pracy</li>
+            <li>regulaminy, umowy i&nbsp;bieżąca obsługa kadr</li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2">
+          <h3>Umowa sprawdzona przed podpisem kosztuje mniej niż proces po</h3>
+          <p>Analizuję i&nbsp;redaguję umowy (także handlowe i&nbsp;inwestycyjne) oraz prowadzę spory z&nbsp;przedsiębiorcami w&nbsp;imieniu konsumentów.</p>
+          <ul>
+            <li>analiza, redakcja i&nbsp;zabezpieczenie umów</li>
+            <li>reklamacje i&nbsp;spory konsumenckie</li>
+            <li>zapłata, odszkodowania, windykacja</li>
+            <li>eksmisja i&nbsp;opróżnienie lokalu</li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3">
+          <h3>Klauzule niedozwolone dają realną szansę na unieważnienie umowy</h3>
+          <p>Prowadzę sprawy kredytobiorców frankowych i&nbsp;osób, które straciły na polisolokatach. Skutkiem unieważnienia umowy jest ustanie zobowiązania wobec banku.</p>
+          <ul>
+            <li>pozew o&nbsp;unieważnienie umowy lub nadpłatę</li>
+            <li>zwrot kapitału wpłaconego w&nbsp;ramach umowy</li>
+            <li>zwrot opłaty likwidacyjnej z&nbsp;polisolokaty</li>
+            <li>analiza umowy i&nbsp;ocena szans przed pozwem</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="reszta">
+      <p>Prowadzę też sprawy:</p>
+      <ul><li>rodzinne</li><li>gospodarcze</li><li>karne i&nbsp;o&nbsp;wykroczenia</li><li>zamówień publicznych</li><li>administracyjne</li><li>ubezpieczeń społecznych</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="list" id="o-mnie">
+  <div class="wrap grid">
+    <div class="letter">
+      <h2 class="reveal">Kilka słów, zanim się spotkamy</h2>
+      <p>Prawo studiowałem na Uniwersytecie Jagiellońskim, aplikację radcowską odbyłem w&nbsp;Katowicach, Żorach i&nbsp;Krakowie. Pracowałem w&nbsp;kancelariach adwokackich i&nbsp;radcowskich, u&nbsp;syndyka, w&nbsp;doradztwie podatkowym i&nbsp;w&nbsp;sektorze finansów publicznych.</p>
+      <p>Od 2019 roku prowadzę własną kancelarię w&nbsp;Rybniku. Uważam, że każda sprawa ma swoje okoliczności i&nbsp;dlatego zaczynam od ich dokładnego poznania. Szablon rzadko wygrywa w&nbsp;sądzie.</p>
+      <p>Spotykamy się tam, gdzie Państwu wygodnie: w&nbsp;kancelarii przy Rynku, w&nbsp;firmie albo zdalnie.</p>
+      <div class="sign"><img src="a/podpis-blue.png" alt="Podpis: Mateusz Widenka" width="404" height="94" loading="lazy"><span>radca prawny<br>Mateusz Widenka</span></div>
+    </div>
+    <aside class="portret">
+      <img src="a/portret-bw.webp" alt="Mateusz Widenka, radca prawny" width="900" height="729" loading="lazy">
+      <ul>
+        <li><b>KT-4093</b>: wpis na listę radców prawnych, OIRP w&nbsp;Katowicach, 2018</li>
+        <li><b>OC 1 502 725 zł</b>: obowiązkowe ubezpieczenie każdej czynności</li>
+        <li><b>Tajemnica zawodowa</b>: obejmuje wszystko, co mi Państwo powiedzą</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="opinie" id="opinie">
+  <div class="wrap">
+    <h2 class="reveal">Opinie klientów</h2>
+    <div class="q3">
+      <blockquote><p>Skorzystanie z&nbsp;pomocy prawnej Radcy Prawnego Mateusza Widenki było moją najlepszą decyzją. Wszystkie moje problemy zostały rozwiązane, w&nbsp;najlepszy możliwy sposób.</p><footer>Klientka, sprawa pracownicza</footer></blockquote>
+      <blockquote><p>Wysoki profesjonalizm i&nbsp;rzetelność w&nbsp;analizach umów handlowych i&nbsp;inwestycyjnych. Zlecenia wykonywane dynamicznie, skutecznie i&nbsp;fachowo.</p><footer>Klient biznesowy</footer></blockquote>
+      <blockquote><p>Rzetelność, sprawność, szeroka wiedza i&nbsp;skuteczność. Na pierwszym miejscu zawsze stawia najlepszy rezultat dla Klienta.</p><footer>Klient biznesowy</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="online dark" id="online">
+  <div class="wrap grid">
+    <div>
+      <h2 class="reveal">Porada online w&nbsp;całej Polsce</h2>
+      <p class="lead">Dla spraw, które nie wymagają spotkania w&nbsp;kancelarii.</p>
+      <a class="btn" href="#kontakt">Przejdź do formularza</a>
+    </div>
+    <ol>
+      <li><div><h3>Opisuje Pan lub Pani problem</h3><p>W formularzu albo mailu na kancelaria@radca-widenka.pl. Można dołączyć skany dokumentów.</p></div></li>
+      <li><div><h3>Dostaje wycenę i&nbsp;strategię</h3><p>Szczegółową wycenę oraz plan dalszego postępowania, zanim cokolwiek Pan lub Pani zapłaci.</p></div></li>
+      <li><div><h3>Decyduje o&nbsp;dalszych krokach</h3><p>Dalej prowadzę sprawę zdalnie albo umawiamy spotkanie w&nbsp;kancelarii.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="pytania">
+  <div class="wrap grid">
+    <h2 class="reveal">Pytania, które słyszę najczęściej</h2>
+    <div>
+      <details open><summary>Ile kosztuje pomoc radcy prawnego?</summary><p>Wynagrodzenie ustalam indywidualnie. Decyduje rodzaj i&nbsp;zawiłość sprawy oraz nakład pracy. Może to być ryczałt albo stawka godzinowa. Kwotę znają Państwo przed rozpoczęciem pracy.</p></details>
+      <details><summary>Jak wygląda porada prawna?</summary><p>Ustalamy termin i&nbsp;miejsce: kancelaria przy Rynku 4/1, siedziba Państwa firmy albo inne miejsce. W&nbsp;sprawach, które tego nie wymagają, pracujemy zdalnie.</p></details>
+      <details><summary>Czy radca prawny może reprezentować mnie w&nbsp;sądzie?</summary><p>Tak, w&nbsp;każdej sprawie cywilnej i&nbsp;administracyjnej, na każdym etapie. W&nbsp;sprawach karnych radca prawny może być obrońcą.</p></details>
+      <details><summary>Kiedy pomoc radcy jest obowiązkowa?</summary><p>Przed Sądem Najwyższym, Naczelnym Sądem Administracyjnym i&nbsp;przy skardze konstytucyjnej. W&nbsp;pozostałych sprawach warto zgłosić się wtedy, gdy z&nbsp;przepisów nie wynika jasne rozwiązanie.</p></details>
+      <details><summary>Czy to, co powiem, zostanie poufne?</summary><p>Tak. Radca prawny ma obowiązek zachować w&nbsp;tajemnicy wszystkie informacje dotyczące Klienta i&nbsp;jego sprawy.</p></details>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap grid">
+    <div>
+      <h2 class="reveal">Umówmy pierwszą rozmowę</h2>
+      <p class="lead">Proszę zadzwonić albo zostawić kilka zdań w&nbsp;formularzu, oddzwonię z&nbsp;propozycją terminu.</p>
+      <div class="dane">
+        <div><span>Telefon</span><a href="tel:+48792055316">+48 792 055 316</a></div>
+        <div><span>E-mail</span><a href="mailto:kancelaria@radca-widenka.pl">kancelaria@radca-widenka.pl</a></div>
+        <div><span>Godziny pracy</span><strong>pon.–pt. [uzupełnić]</strong></div>
+        <div><span>Adres kancelarii</span><strong>ul. Rynek 4/1, 44-200 Rybnik</strong><br><a class="trasa" href="https://maps.google.com/?q=Rynek+4,+44-200+Rybnik" target="_blank" rel="noopener">Wyznacz trasę</a></div>
+      </div>
+    </div>
+    <form class="form" id="f">
+      <h3>W czym mogę pomóc?</h3>
+      <p>Odpowiadam zwykle tego samego lub następnego dnia roboczego.</p>
+      <fieldset class="chips"><legend>Czego dotyczy sprawa?</legend>
+        <label><input type="radio" name="d" checked><span>Praca</span></label>
+        <label><input type="radio" name="d"><span>Umowa</span></label>
+        <label><input type="radio" name="d"><span>Kredyt we frankach</span></label>
+        <label><input type="radio" name="d"><span>Rodzina</span></label>
+        <label><input type="radio" name="d"><span>Inne</span></label>
+      </fieldset>
+      <div class="row"><div><label for="n">Imię i&nbsp;nazwisko</label><input id="n" autocomplete="name" required></div><div><label for="t">Telefon</label><input id="t" type="tel" autocomplete="tel"></div></div>
+      <label for="e">E-mail</label><input id="e" type="email" autocomplete="email">
+      <label for="m">Krótki opis</label><textarea id="m"></textarea>
+      <label class="zg"><input type="checkbox" required><span>Akceptuję <a href="#">politykę prywatności</a> i&nbsp;zgadzam się na kontakt w&nbsp;sprawie zapytania.</span></label>
+      <button class="btn" type="submit">Wyślij opis sprawy</button>
+      <p class="ok" role="status">To makieta: formularz zacznie wysyłać wiadomości po wdrożeniu.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <img src="a/mw-white.png" alt="" width="374" height="158" loading="lazy">
+    <div><strong>Kancelaria Radcy Prawnego Mateusz Widenka</strong><br>ul. Rynek 4/1, 44-200 Rybnik<br><a href="tel:+48792055316">+48 792 055 316</a> · <a href="mailto:kancelaria@radca-widenka.pl">kancelaria@radca-widenka.pl</a></div>
+    <nav aria-label="Stopka"><a href="#specjalizacje">Specjalizacje</a><a href="#o-mnie">O mnie</a><a href="#online">Porada online</a><a href="#kontakt">Kontakt</a><a href="#">Polityka prywatności</a></nav>
+    <div class="legal">NIP [uzupełnić] · REGON [uzupełnić] · Radca prawny, wpis KT-4093, OIRP w&nbsp;Katowicach · Makieta W2 „Rynek 4” — Odnova Studio, 2026</div>
+  </div>
+</footer>
+
+<div class="mbar"><a href="#kontakt">Napisz</a><a href="tel:+48792055316">Zadzwoń</a></div>
+
+<script>
+(function(){
+  var d=document, html=d.documentElement, top=d.querySelector('.top');
+  function m(){html.style.setProperty('--hdr-h',top.offsetHeight+'px')}
+  m(); addEventListener('resize',m); addEventListener('load',m);
+  var hero=d.querySelector('.hero');
+  function onS(){d.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5)}
+  addEventListener('scroll',onS,{passive:true}); onS();
+  d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
+  // tabs
+  var tabs=[].slice.call(d.querySelectorAll('.tab')), tabsEl=d.querySelector('.tabs'), mq=matchMedia('(min-width:1021px)');
+  function on(){return tabsEl.classList.contains('tabs-on')}
+  function setup(){var en=mq.matches;tabsEl.classList.toggle('tabs-on',en);tabs.forEach(function(x){var p=d.getElementById(x.getAttribute('aria-controls'));if(en){x.setAttribute('role','tab');p.setAttribute('role','tabpanel')}else{x.removeAttribute('role');p.removeAttribute('role');p.hidden=false}});if(en)sel(tabs.filter(function(x){return x.getAttribute('aria-selected')==='true'})[0]||tabs[0])}
+  function sel(t,focus){if(!on()){var p=d.getElementById(t.getAttribute('aria-controls'));p.scrollIntoView({behavior:'smooth',block:'start'});return}tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;d.getElementById(x.getAttribute('aria-controls')).hidden=!on});if(focus)t.focus()}
+  d.querySelectorAll('[data-tab]').forEach(function(a){a.addEventListener('click',function(e){var t=d.getElementById(a.dataset.tab);if(on()){e.preventDefault();sel(t);d.getElementById('specjalizacje').scrollIntoView({behavior:'smooth'})}})});
+  setup();mq.addEventListener('change',setup);
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});t.addEventListener('keydown',function(e){if(!on())return;var k=e.key==='ArrowDown'||e.key==='ArrowRight'?1:e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();sel(tabs[(i+k+tabs.length)%tabs.length],true)}})});
+  // reveal
+  var els=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+    els.forEach(function(e){io.observe(e)});
+    var t;addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in')})},120)},{passive:true});
+    setTimeout(function(){if(!fired)els.forEach(function(e){e.classList.add('in')})},4000);
+  } else els.forEach(function(e){e.classList.add('in')});
+  var f=d.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();if(f.reportValidity())f.querySelector('.ok').style.display='block'});
+})();
+</script>
+</body>
+</html>
