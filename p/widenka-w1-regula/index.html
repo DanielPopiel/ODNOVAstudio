@@ -17,15 +17,16 @@
 <link rel="icon" href="a/fav.png">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Rethink+Sans:wght@400;500;600&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0F16; --bg2:#101823; --ink:#E7EBEF; --mut:#A3AEBA; --line:rgba(231,235,239,.14);
   --acc:#8FADFF; --paper:#ECEEF0; --pink:#0F1622; --pmut:#4A5463; --pline:#CBD0D6; --pacc:#254896;
-  --serif:'Ibarra Real Nova',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif;
+  --serif:'Libre Caslon Display',Georgia,serif; --sans:'Rethink Sans',system-ui,sans-serif; --cap:'Cinzel',Georgia,serif;
   --hdr-h:96px;
 }
 *{box-sizing:border-box}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;caret-color:var(--acc);accent-color:var(--pacc)}
 ::selection{background:var(--acc);color:#0A0F16}
@@ -34,7 +35,7 @@ img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 .wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 32px}
 section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
-h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.005em;margin:0}
 h2{font-size:clamp(2.3rem,4.4vw,3.7rem);line-height:1.04}
 .lead{font-size:1.15rem;color:var(--mut);max-width:38em}
 .light{background:var(--paper);color:var(--pink)}
@@ -67,24 +68,49 @@ h2{font-size:clamp(2.3rem,4.4vw,3.7rem);line-height:1.04}
 .mnav nav a{padding:12px 20px;text-decoration:none}
 .mnav nav .btn{margin:8px 16px 8px;justify-content:center}
 
-/* hero */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#05080c}
-.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,22,.55) 0%,rgba(10,15,22,0) 30%,rgba(10,15,22,.15) 55%,rgba(10,15,22,.92) 88%,var(--bg) 100%)}
-.vctl{position:absolute;right:32px;bottom:32px;z-index:3;min-height:44px;padding:0 16px;background:rgba(10,15,22,.6);color:var(--ink);border:1px solid var(--line);border-radius:2px;font:500 .9rem var(--sans);cursor:pointer}
+/* hero: szyba, która przeciera się przy przewijaniu */
+.hero{position:relative;background:#05080c;--p:0}
+.pin{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.pin video,.pin .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:calc(.8 - var(--p) * .35)}
+.pin::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,22,.55) 0%,rgba(10,15,22,0) 30%,rgba(10,15,22,.2) 55%,rgba(10,15,22,.93) 90%,var(--bg) 100%)}
+.vctl{position:absolute;right:32px;top:calc(var(--hdr-h) + 20px);z-index:3;min-height:40px;padding:0 14px;background:rgba(10,15,22,.55);color:var(--ink);border:1px solid var(--line);border-radius:2px;font:500 .85rem var(--sans);cursor:pointer}
 .vctl:hover{border-color:var(--ink)}
 html:not(.js) .vctl{display:none}
-.hero .wrap{position:relative;z-index:2;padding-top:calc(var(--hdr-h) + 60px);padding-bottom:64px}
+.hero .wrap{position:relative;z-index:2;padding-top:calc(var(--hdr-h) + 60px);padding-bottom:60px;display:grid;grid-template-columns:7fr 4fr;gap:60px;align-items:end}
+.hero h1{font-size:clamp(2.9rem,6.8vw,6.3rem);line-height:.98;max-width:10em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.hero h1::after{content:"";display:block;width:64px;height:3px;background:var(--acc);margin-top:30px;transform-origin:left;animation:zab 1s .9s cubic-bezier(.22,.61,.36,1) both}
+@keyframes zab{from{transform:scaleX(0)}}
+.js .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .02em .2em;margin:0 -.02em -.2em}
+.js .w>span{display:inline-block;transform:translateY(105%);animation:wup .95s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:calc(.15s + var(--i) * 90ms)}
+@keyframes wup{to{transform:none}}
+.hero p.sub{font-size:1.15rem;max-width:33em;margin:26px 0 32px;color:#D3DAE1;text-shadow:0 1px 16px rgba(0,0,0,.5)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--mut)}
+.hero .meta b{color:var(--ink);font-weight:500}
+.pane{margin:0;justify-self:end;width:100%;max-width:430px}
+.glass{position:relative;aspect-ratio:643/603;overflow:hidden;outline:1px solid rgba(231,235,239,.18);outline-offset:10px}
+.glass img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.glass .frost,.glass .tint{clip-path:inset(0 0 0 calc(var(--p) * 100%))}
+.glass .frost{filter:blur(18px) saturate(.45) brightness(1.12) contrast(.8);transform:scale(1.12)}
+.glass .tint{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(214,226,238,.16) 0 46px,rgba(214,226,238,.05) 46px 50px,rgba(214,226,238,.22) 50px 52px),linear-gradient(180deg,rgba(190,206,222,.28),rgba(120,140,160,.18))}
+.glass .tint::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 48%,transparent 62%);transform:translateX(-120%);animation:shine 2.4s 1.6s ease-in-out both}
+@keyframes shine{to{transform:translateX(120%)}}
+.glass .edge{position:absolute;top:0;bottom:0;left:calc(var(--p) * 100%);width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,#DCE7FF 20%,#fff 50%,#DCE7FF 80%,transparent);box-shadow:0 0 22px 6px rgba(143,173,255,.45);opacity:calc(min(var(--p) * 12, 1) * min((1 - var(--p)) * 12, 1))}
+.pane figcaption{display:flex;justify-content:space-between;gap:16px;margin-top:22px;font-size:.92rem;color:var(--mut)}
+.pane figcaption b{color:var(--ink);font-weight:500}
+.pane .pbar{height:1px;background:rgba(231,235,239,.18);margin-top:14px;position:relative}
+.pane .pbar::after{content:"";position:absolute;left:0;top:-1px;height:3px;width:calc(var(--p) * 100%);background:var(--acc)}
+html:not(.js) .glass .frost,html:not(.js) .glass .tint,html:not(.js) .glass .edge,html:not(.js) .pane .pbar{display:none}
+@media (min-width:1021px){
+  .js .hero{height:235vh}
+  .js .pin{position:sticky;top:0;height:100svh}
+}
 .regula{margin-bottom:110px;padding-bottom:70px;border-bottom:1px solid var(--line)}
-.regula blockquote{margin:0;font:italic 400 clamp(1.8rem,3.6vw,3.2rem)/1.18 var(--serif);max-width:19em}
+.regula blockquote{margin:0;font:400 clamp(1.45rem,3vw,2.7rem)/1.3 var(--cap);letter-spacing:.05em;max-width:22em;color:#DCE3EA}
+.js .regula blockquote span{display:inline-block;filter:blur(9px);opacity:.2;transition:filter 1.1s ease,opacity 1.1s ease;transition-delay:calc(var(--i,0)*110ms)}
+.js .regula.in blockquote span{filter:none;opacity:1}
 .regula p{color:var(--mut);margin:18px 0 0;font-size:1.05rem}
 .regula p::before{content:"";display:inline-block;width:34px;height:2px;background:var(--acc);vertical-align:middle;margin-right:14px}
-.hero h1{font-size:clamp(2.8rem,6.6vw,6rem);line-height:.98;max-width:10em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.45)}
-.hero h1::after{content:"";display:block;width:64px;height:3px;background:var(--acc);margin-top:30px}
-.hero p.sub{font-size:1.18rem;max-width:34em;margin:26px 0 34px;color:#D3DAE1;text-shadow:0 1px 16px rgba(0,0,0,.5)}
-.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.hero .meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:54px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--mut)}
-.hero .meta b{color:var(--ink);font-weight:500}
 
 /* sprawy */
 .sprawy{padding:130px 0 120px}
@@ -117,7 +143,7 @@ html:not(.js) .vctl{display:none}
 .omnie p{color:#CAD2DA;margin:0 0 18px;max-width:36em}
 .facts{margin:38px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
 .facts li{padding:18px 0;border-bottom:1px solid var(--line);color:var(--mut)}
-.facts li b{font-family:var(--serif);font-weight:500;font-size:1.32rem;color:var(--ink);display:block;line-height:1.2;margin-bottom:2px}
+.facts li b{font-family:var(--sans);font-weight:600;font-size:1.06rem;color:var(--ink);display:block;line-height:1.2;margin-bottom:2px}
 
 /* proces */
 .proces{padding:120px 0}
@@ -127,7 +153,7 @@ html:not(.js) .vctl{display:none}
 .step .n{font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--pacc);margin:26px 0 14px}
 .step::before{content:"";position:absolute;top:-1px;left:0;height:2px;width:0;background:var(--pacc);transition:width 1s cubic-bezier(.22,.61,.36,1)}
 .step.in::before{width:calc(100% - 28px)}
-.step h3{font-size:1.45rem;margin-bottom:10px}
+.step h3{font-family:var(--sans);font-weight:600;font-size:1.12rem;margin-bottom:8px}
 .step p{margin:0;color:var(--pmut);font-size:.99rem}
 
 /* opinie */
@@ -136,7 +162,8 @@ html:not(.js) .vctl{display:none}
 .opinie h2{margin-bottom:56px}
 .quotes{display:grid;grid-template-columns:7fr 5fr;gap:0 70px}
 .q{margin:0;padding:30px 0;border-top:1px solid var(--line)}
-.q p{margin:0;font-family:var(--serif);font-size:1.35rem;line-height:1.45;color:#DCE2E8}
+.q p{margin:0;font-size:1.08rem;line-height:1.6;color:#DCE2E8}
+.q.big p{font-family:var(--serif)}
 .q.big{grid-row:span 2}
 .q.big p{font-size:clamp(1.6rem,2.4vw,2.15rem);line-height:1.3;color:var(--ink)}
 .q footer{margin-top:16px;font-size:.92rem;color:var(--mut)}
@@ -161,7 +188,7 @@ html:not(.js) .vctl{display:none}
 .dane{list-style:none;margin:36px 0 0;padding:0}
 .dane li{padding:18px 0;border-top:1px solid var(--line)}
 .dane span{display:block;font-size:.88rem;color:var(--mut)}
-.dane a,.dane strong{font-family:var(--serif);font-size:1.55rem;font-weight:500;text-decoration:none;font-variant-numeric:lining-nums}
+.dane a,.dane strong{font-family:var(--serif);font-size:1.6rem;font-weight:400;text-decoration:none;font-variant-numeric:lining-nums}
 .dane .tnum{font-family:var(--sans);font-size:1.45rem;font-variant-numeric:lining-nums tabular-nums}
 .form{background:var(--paper);color:var(--pink);padding:44px}
 .form h3{font-size:1.7rem;margin-bottom:6px}
@@ -197,6 +224,8 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
   .mnav{display:block}
   .hdr .wrap{gap:14px}
   .hdr .hcta{margin-left:auto}
+  .hero .wrap{grid-template-columns:1fr;gap:44px}
+  .pane{justify-self:stretch;max-width:520px}
   .sprawy .head,.inne,.omnie .grid,.kontakt .grid{grid-template-columns:1fr;gap:36px}
   .case{grid-template-columns:1fr;gap:18px}
   .steps{grid-template-columns:1fr 1fr;gap:10px 0}
@@ -211,9 +240,10 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
   .wrap{padding:0 20px}
   .brand img{width:38px}
   .brand span{font-size:1.06rem}
-  .hero{min-height:92svh}
   .hero .wrap{padding-bottom:40px}
-  .vctl{right:20px;top:calc(var(--hdr-h) + 14px);bottom:auto;min-height:40px;font-size:.85rem}
+  .glass{aspect-ratio:4/3;outline-offset:6px}
+  .glass img{object-position:50% 25%}
+  .vctl{right:20px;top:calc(var(--hdr-h) + 14px)}
   .hero .meta{gap:10px 24px;margin-top:36px}
   .cta .btn{flex:1 1 100%;justify-content:center}
   .sprawy,.omnie,.opinie,.kontakt{padding:84px 0}
@@ -240,6 +270,9 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none;transition:none}
+  .js .w>span,.hero h1::after{animation:none;transform:none}
+  .js .regula blockquote span{filter:none;opacity:1;transition:none}
+  .glass .tint::after{animation:none}
   .step::before{transition:none}
 }
 </style>
@@ -270,6 +303,7 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
 
 <main>
 <section class="hero" id="start">
+ <div class="pin">
   <img class="poster" src="a/w1-hero-poster.jpg" alt="">
   <video autoplay muted loop playsinline preload="auto" poster="a/w1-hero-poster.jpg" aria-hidden="true">
     <source media="(max-width:760px)" src="a/w1-hero-720.mp4" type="video/mp4">
@@ -277,14 +311,27 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
   </video>
   <button class="vctl" type="button" aria-pressed="false">Zatrzymaj film</button>
   <div class="wrap">
-    <h1>Radca prawny w&nbsp;Rybniku</h1>
-    <p class="sub">Prawo pracy, umowy i&nbsp;spory z&nbsp;bankami. Mateusz Widenka, kancelaria przy Rynku 4/1. Doradzam, piszę pisma i&nbsp;występuję przed sądem. Spotkanie w&nbsp;kancelarii, w&nbsp;Państwa firmie albo zdalnie.</p>
-    <div class="cta">
-      <a class="btn" href="tel:+48792055316"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Zadzwoń: 792 055 316</a>
-      <a class="btn ghost" href="#kontakt">Wyślij opis sprawy</a>
+    <div>
+      <h1 data-words>Radca prawny w&nbsp;Rybniku</h1>
+      <p class="sub">Prawo pracy, umowy i&nbsp;spory z&nbsp;bankami. Mateusz Widenka, kancelaria przy Rynku 4/1. Doradzam, piszę pisma i&nbsp;występuję przed sądem. Spotkanie w&nbsp;kancelarii, w&nbsp;Państwa firmie albo zdalnie.</p>
+      <div class="cta">
+        <a class="btn" href="tel:+48792055316"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Zadzwoń: 792 055 316</a>
+        <a class="btn ghost" href="#kontakt">Wyślij opis sprawy</a>
+      </div>
+      <div class="meta"><span><b>Wpis KT-4093</b> · OIRP w&nbsp;Katowicach</span><span><b>Od 2019 r.</b> własna kancelaria</span><span><b>Online</b> w&nbsp;całej Polsce</span></div>
     </div>
-    <div class="meta"><span><b>Wpis KT-4093</b> · OIRP w&nbsp;Katowicach</span><span><b>Od 2019 r.</b> własna kancelaria</span><span><b>Online</b> w&nbsp;całej Polsce</span></div>
+    <figure class="pane">
+      <div class="glass">
+        <img src="a/portret-toga.webp" alt="Radca prawny Mateusz Widenka w todze" width="643" height="603">
+        <img class="frost" src="a/portret-toga.webp" alt="" aria-hidden="true">
+        <div class="tint" aria-hidden="true"></div>
+        <div class="edge" aria-hidden="true"></div>
+      </div>
+      <div class="pbar" aria-hidden="true"></div>
+      <figcaption><b>Mateusz Widenka</b><span>radca prawny od 2018 r.</span></figcaption>
+    </figure>
   </div>
+ </div>
 </section>
 
 <section class="sprawy light" id="sprawy">
@@ -331,7 +378,7 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
 </section>
 
 <section class="omnie" id="o-mnie">
-  <div class="wrap regula"><blockquote lang="la">Non ex regula ius sumatur, sed ex iure quod est regula fiat</blockquote><p>Reguły nie tworzą prawa, lecz się z&nbsp;niego wywodzą.</p></div>
+  <div class="wrap regula" data-split><blockquote lang="la">Non ex regula ius sumatur, sed ex iure quod est regula fiat</blockquote><p>Reguły nie tworzą prawa, lecz się z&nbsp;niego wywodzą.</p></div>
   <div class="wrap grid">
     <figure class="fig">
       <img src="a/portret-toga.webp" alt="Radca prawny Mateusz Widenka w todze" width="643" height="603" loading="lazy">
@@ -435,14 +482,26 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
   var d=document, html=d.documentElement, top=d.querySelector('.top');
   function m(){html.style.setProperty('--hdr-h',top.offsetHeight+'px')}
   m(); addEventListener('resize',m); addEventListener('load',m);
-  var hero=d.querySelector('.hero');
+  var hero=d.querySelector('.hero'), pane=d.querySelector('.pane'), RM=matchMedia('(prefers-reduced-motion:reduce)').matches, wide=matchMedia('(min-width:1021px)');
+  // słowa H1 i maksymy
+  d.querySelectorAll('[data-words]').forEach(function(h){var t=h.textContent.split(' ');var full=h.textContent;h.innerHTML=t.map(function(w,i){return '<span class="w" aria-hidden="true" style="--i:'+i+'"><span>'+w+'</span></span>'}).join(' ')+'<span class="sr">'+full+'</span>'});
+  d.querySelectorAll('[data-split] blockquote').forEach(function(b){var t=b.textContent.split(' ');b.innerHTML=t.map(function(w,i){return '<span style="--i:'+i+'">'+w+'</span>'}).join(' ')});
+  // szyba
+  var tick=false;
+  function prog(){tick=false;var p;
+    if(RM)p=1;
+    else if(wide.matches){var r=hero.getBoundingClientRect();p=-r.top/((r.height-innerHeight)*.8)}
+    else{var q=pane.getBoundingClientRect();p=(innerHeight*.92-q.top)/(innerHeight*.55)}
+    p=Math.max(0,Math.min(1,p));hero.style.setProperty('--p',p.toFixed(4))}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});
+  addEventListener('resize',prog); prog();
   function onS(){
     d.body.classList.toggle('scrolled',scrollY>20);
     d.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);
   }
   addEventListener('scroll',onS,{passive:true}); onS();
   d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
-  var els=[].slice.call(d.querySelectorAll('.reveal,.step')), fired=false;
+  var els=[].slice.call(d.querySelectorAll('.reveal,.step,.regula')), fired=false;
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
     els.forEach(function(e){io.observe(e)});

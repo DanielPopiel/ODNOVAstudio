@@ -17,14 +17,15 @@
 <link rel="icon" href="a/fav.png">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Public+Sans:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F3F4F1; --white:#FBFBF9; --ink:#141A2E; --mut:#555D70; --line:#D6D9D2;
   --acc:#254896; --acc2:#2F62E8; --navy:#121C3A; --navy2:#18244A; --nink:#EEF1F7; --nmut:#AEB8CE; --nline:rgba(238,241,247,.16);
-  --serif:'Young Serif',Georgia,serif; --sans:'Figtree',system-ui,sans-serif; --hdr-h:96px;
+  --serif:'Literata',Georgia,serif; --sans:'Public Sans',system-ui,sans-serif; --hand:'Caveat',cursive; --hdr-h:96px;
 }
 *{box-sizing:border-box}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--sans);-webkit-font-smoothing:antialiased;caret-color:var(--acc);accent-color:var(--acc)}
 ::selection{background:var(--acc);color:#fff}
@@ -33,7 +34,8 @@ img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 36px}
 section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
-h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.012em}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.018em}
+h1,h2{font-weight:600}
 h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 .dark{background:var(--navy);color:var(--nink)}
 .lead{font-size:1.14rem;color:var(--mut);max-width:36em}
@@ -46,7 +48,7 @@ h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 .hdr .wrap{display:flex;align-items:center;gap:30px;height:70px}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
 .brand img{width:52px}
-.brand span{font-family:var(--serif);font-size:1.18rem;line-height:1.05;padding-left:14px;border-left:1px solid var(--line)}
+.brand span{font-family:var(--serif);font-weight:600;font-size:1.14rem;line-height:1.05;padding-left:14px;border-left:1px solid var(--line)}
 .brand small{display:block;font-family:var(--sans);font-size:.8rem;color:var(--mut)}
 .nav{display:flex;gap:26px;margin-left:auto}
 .nav a{text-decoration:none;font-size:.97rem;color:var(--mut);font-weight:500}
@@ -66,16 +68,27 @@ h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 
 /* hero */
 .hero{padding:calc(var(--hdr-h) + 56px) 0 80px}
-.hero .grid{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end}
+.hero .grid{display:grid;grid-template-columns:6fr 6fr;gap:56px;align-items:center}
 .hero h1{font-size:clamp(2.5rem,4.8vw,4.5rem);line-height:1.04;text-wrap:balance}
 .hero h1 .who{display:block;font-family:var(--sans);font-size:1.05rem;font-weight:500;letter-spacing:0;color:var(--mut);margin-top:26px;line-height:1.4}
+.js .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .02em .2em;margin:0 -.02em -.2em}
+.js .w>span{display:inline-block;transform:translateY(105%);animation:wup .9s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:calc(.1s + var(--i) * 70ms)}
+@keyframes wup{to{transform:none}}
 .hero p.sub{font-size:1.16rem;color:var(--mut);max-width:31em;margin:22px 0 34px}
 .cta{display:flex;flex-wrap:wrap;gap:14px}
-.frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:#e9eae6;max-height:620px;justify-self:end;width:100%}
+.desk{position:relative;padding-bottom:40px}
+.frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:#e9eae6;width:76%;max-height:600px;margin-left:auto}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.04)}
-.frame .stamp{position:absolute;left:0;bottom:0;background:var(--bg);padding:16px 22px 0 0;max-width:80%}
-.stamp strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.3}
-.stamp span{font-size:.92rem;color:var(--mut)}
+.paper{position:absolute;left:0;bottom:0;width:66%;background:#fff;padding:24px 26px 18px;transform:rotate(-2deg);box-shadow:0 34px 60px -28px rgba(20,26,46,.45);font-size:.92rem;line-height:1.45}
+.paper .ph{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid #E2E4DE}
+.paper ol{list-style:none;margin:0;padding:0}
+.paper li{margin:0 0 12px}
+.cl{background:linear-gradient(var(--acc2),var(--acc2)) no-repeat 0 60%/0% 2px;transition:background-size .6s cubic-bezier(.6,0,.3,1),color .6s;transition-delay:var(--d)}
+.nt{display:block;font:500 1.32rem/1.15 var(--hand);color:var(--acc2);margin-top:2px;clip-path:inset(0 100% 0 0);transition:clip-path .9s ease;transition-delay:calc(var(--d) + .55s);transform:rotate(-1deg);transform-origin:left}
+.paper li:nth-child(1){--d:.4s}.paper li:nth-child(2){--d:1.75s}.paper li:nth-child(3){--d:3.1s}
+.paper .sig{display:block;width:150px;margin:4px 0 0 auto;clip-path:inset(0 100% 0 0);transition:clip-path 1.3s ease 4.4s}
+.paper.in .cl,html:not(.js) .cl{background-size:100% 2px;color:#7A8090}
+.paper.in .nt,.paper.in .sig,html:not(.js) .nt,html:not(.js) .paper .sig{clip-path:inset(0)}
 .hero .row3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid var(--ink)}
 .row3 a{display:block;text-decoration:none;padding:20px 24px 0 0;font-size:.98rem;color:var(--mut)}
 .row3 a:hover b{color:var(--acc)}
@@ -117,6 +130,8 @@ h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 .letter p:first-of-type::first-letter{font-family:var(--serif);float:left;font-size:4.3rem;line-height:.82;padding:8px 10px 0 0;color:var(--acc)}
 .sign{margin-top:30px;display:flex;align-items:center;gap:22px}
 .sign img{width:210px}
+.js .sign img{clip-path:inset(0 100% 0 0);transition:clip-path 1.5s ease .3s}
+.js .sign.in img{clip-path:inset(0)}
 .sign span{font-size:.92rem;color:var(--mut);line-height:1.4}
 .portret img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.04)}
 .portret ul{list-style:none;margin:22px 0 0;padding:0}
@@ -209,7 +224,9 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   .hdr .wrap{gap:14px}
 
   .hero .grid,.tabs,.reszta,.list .grid,.online .grid,.faq .grid,.kontakt .grid{grid-template-columns:1fr;gap:40px}
-  .frame{aspect-ratio:16/10}
+  .frame{width:100%;aspect-ratio:16/11}
+  .desk{padding-bottom:0}
+  .paper{position:relative;width:calc(100% - 28px);margin:-56px 0 0 14px}
   .opinie .q3{grid-template-columns:1fr;gap:34px}
   .list .portret{max-width:420px}
 }
@@ -222,6 +239,8 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   .hero .row3{grid-template-columns:1fr;margin-top:40px}
   .row3 a{padding:14px 0;border-bottom:1px solid var(--line)}
   .frame{aspect-ratio:4/3}
+  .paper{padding:20px 18px 14px}
+  .nt{font-size:1.2rem}
   .spec,.list,.online,.faq,.opinie,.kontakt{padding:80px 0}
   .panel ul{grid-template-columns:1fr}
   .tab{font-size:1.3rem;padding:16px 0}
@@ -242,6 +261,10 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none;transition:none}
+  .js .w>span{animation:none;transform:none}
+  .cl,.nt,.paper .sig,.js .sign img{transition:none}
+  .js .paper .cl{background-size:100% 2px;color:#7A8090}
+  .js .paper .nt,.js .paper .sig,.js .sign img{clip-path:inset(0)}
 }
 </style>
 </head>
@@ -274,16 +297,24 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   <div class="wrap">
     <div class="grid">
       <div>
-        <h1>Prawo pracy, umowy i&nbsp;spory z&nbsp;bankami<span class="who">Radca prawny Mateusz Widenka · Rynek 4/1, Rybnik · porady także online</span></h1>
+        <h1><span data-words>Prawo pracy, umowy i&nbsp;spory z&nbsp;bankami</span><span class="who">Radca prawny Mateusz Widenka · Rynek 4/1, Rybnik · porady także online</span></h1>
         <p class="sub">Doradzam osobom prywatnym i&nbsp;firmom, piszę pisma i&nbsp;reprezentuję przed sądem. Na początku mówię wprost, jakie są szanse i&nbsp;ile to będzie kosztować.</p>
         <div class="cta">
           <a class="btn" href="tel:+48792055316"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>792 055 316</a>
           <a class="btn line" href="#online">Porada online</a>
         </div>
       </div>
-      <div class="frame">
-        <img src="a/portret-ramiona.webp" alt="Radca prawny Mateusz Widenka" width="643" height="603">
-        <div class="stamp"><strong>Mateusz Widenka</strong><span>radca prawny, wpis KT-4093</span></div>
+      <div class="desk">
+        <div class="frame"><img src="a/portret-ramiona.webp" alt="Radca prawny Mateusz Widenka" width="643" height="603"></div>
+        <div class="paper" role="img" aria-label="Przykład: umowa z poprawkami radcy prawnego — trzy postanowienia skreślone z uzasadnieniem i podpis">
+          <p class="ph">Projekt umowy — uwagi</p>
+          <ol>
+            <li><span class="cl">§ 3. Pracodawca może wypowiedzieć umowę bez podania przyczyny.</span><em class="nt">art. 30 § 4 k.p. — przyczyna musi być podana</em></li>
+            <li><span class="cl">§ 4. Kurs CHF ustala Bank według własnej tabeli.</span><em class="nt">klauzula abuzywna, art. 385¹ k.c.</em></li>
+            <li><span class="cl">§ 7. Reklamacje nie będą rozpatrywane.</span><em class="nt">sprzeczne z&nbsp;prawami konsumenta</em></li>
+          </ol>
+          <img class="sig" src="a/podpis-blue.png" alt="" width="404" height="94">
+        </div>
       </div>
     </div>
     <div class="row3">
@@ -457,6 +488,8 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   function m(){html.style.setProperty('--hdr-h',top.offsetHeight+'px')}
   m(); addEventListener('resize',m); addEventListener('load',m);
   var hero=d.querySelector('.hero');
+  d.querySelectorAll('[data-words]').forEach(function(h){var t=h.textContent.split(' ');var full=h.textContent;h.innerHTML=t.map(function(w,i){return '<span class="w" aria-hidden="true" style="--i:'+i+'"><span>'+w+'</span></span>'}).join(' ')+'<span class="sr">'+full+'</span>'});
+  var paper=d.querySelector('.paper');
   function onS(){d.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5)}
   addEventListener('scroll',onS,{passive:true}); onS();
   d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false})});
@@ -469,7 +502,7 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   setup();mq.addEventListener('change',setup);
   tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});t.addEventListener('keydown',function(e){if(!on())return;var k=e.key==='ArrowDown'||e.key==='ArrowRight'?1:e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();sel(tabs[(i+k+tabs.length)%tabs.length],true)}})});
   // reveal
-  var els=[].slice.call(d.querySelectorAll('.reveal')), fired=false;
+  var els=[].slice.call(d.querySelectorAll('.reveal,.paper,.sign')), fired=false;
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
     els.forEach(function(e){io.observe(e)});
