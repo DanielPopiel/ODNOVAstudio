@@ -21,7 +21,7 @@
 <style>
 :root{
   --bg:#F3F4F1; --white:#FBFBF9; --ink:#141A2E; --mut:#555D70; --line:#D6D9D2;
-  --acc:#254896; --acc2:#2F62E8; --navy:#121C3A; --navy2:#18244A; --nink:#EEF1F7; --nmut:#AEB8CE; --nline:rgba(238,241,247,.16);
+  --acc:#254896; --acc2:#2F62E8; --navy:#121C3A; --navy2:#18244A; --navy3:#1B2952; --nink:#EEF1F7; --nmut:#AEB8CE; --nline:rgba(238,241,247,.16);
   --serif:'Literata',Georgia,serif; --sans:'Public Sans',system-ui,sans-serif; --hand:'Caveat',cursive; --hdr-h:96px;
 }
 *{box-sizing:border-box}
@@ -76,17 +76,17 @@ h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 @keyframes wup{to{transform:none}}
 .hero p.sub{font-size:1.16rem;color:var(--mut);max-width:31em;margin:22px 0 34px}
 .cta{display:flex;flex-wrap:wrap;gap:14px}
-.desk{position:relative;padding-bottom:40px}
-.frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:#e9eae6;width:76%;max-height:600px;margin-left:auto}
+.desk{position:relative}
+.frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:#e9eae6;width:74%;margin-left:auto}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.04)}
-.paper{position:absolute;left:0;bottom:0;width:66%;background:#fff;padding:24px 26px 18px;transform:rotate(-2deg);box-shadow:0 34px 60px -28px rgba(20,26,46,.45);font-size:.92rem;line-height:1.45}
-.paper .ph{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid #E2E4DE}
+.paper{position:relative;z-index:2;width:57%;margin-top:-31%;background:#fff;padding:20px 22px 14px;transform:rotate(-2deg);box-shadow:0 30px 56px -26px rgba(20,26,46,.45);font-size:.84rem;line-height:1.42}
+.paper .ph{font-family:var(--serif);font-weight:600;font-size:.98rem;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid #E2E4DE}
 .paper ol{list-style:none;margin:0;padding:0}
-.paper li{margin:0 0 12px}
+.paper li{margin:0 0 9px}
 .cl{background:linear-gradient(var(--acc2),var(--acc2)) no-repeat 0 60%/0% 2px;transition:background-size .6s cubic-bezier(.6,0,.3,1),color .6s;transition-delay:var(--d)}
-.nt{display:block;font:500 1.32rem/1.15 var(--hand);color:var(--acc2);margin-top:2px;clip-path:inset(0 100% 0 0);transition:clip-path .9s ease;transition-delay:calc(var(--d) + .55s);transform:rotate(-1deg);transform-origin:left}
+.nt{display:block;font:500 1.18rem/1.1 var(--hand);color:var(--acc2);margin-top:2px;clip-path:inset(0 100% 0 0);transition:clip-path .9s ease;transition-delay:calc(var(--d) + .55s);transform:rotate(-1deg);transform-origin:left}
 .paper li:nth-child(1){--d:.4s}.paper li:nth-child(2){--d:1.75s}.paper li:nth-child(3){--d:3.1s}
-.paper .sig{display:block;width:150px;margin:4px 0 0 auto;clip-path:inset(0 100% 0 0);transition:clip-path 1.3s ease 4.4s}
+.paper .sig{display:block;width:128px;margin:4px 0 0 auto;clip-path:inset(0 100% 0 0);transition:clip-path 1.3s ease 4.4s}
 .paper.in .cl,html:not(.js) .cl{background-size:100% 2px;color:#7A8090}
 .paper.in .nt,.paper.in .sig,html:not(.js) .nt,html:not(.js) .paper .sig{clip-path:inset(0)}
 .hero .row3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid var(--ink)}
@@ -98,14 +98,20 @@ h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 .spec{padding:120px 0}
 .spec .head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px;flex-wrap:wrap}
 .tabs{display:grid;grid-template-columns:4fr 8fr;gap:60px;align-items:start}
-.tablist{display:flex;flex-direction:column;border-top:1px solid var(--nline)}
-.tab{all:unset;cursor:pointer;display:block;padding:22px 0;border-bottom:1px solid var(--nline);font-family:var(--serif);font-size:1.55rem;line-height:1.3;color:var(--nmut);transition:color .2s;position:relative}
-.tab small{display:block;font-family:var(--sans);font-size:.92rem;margin-top:4px}
-.tab[aria-selected=true]{color:var(--nink)}
-.tab[aria-selected=true]::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:#7FA0FF}
-.tab:hover{color:var(--nink)}
+.tablist{display:flex;flex-direction:column;gap:10px}
+.tab{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:44px 1fr 18px;gap:16px;align-items:center;padding:18px 20px;border:1px solid var(--nline);border-radius:4px;background:rgba(255,255,255,.025);font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.3;color:var(--nmut);transition:color .2s,background .2s,border-color .2s;position:relative}
+.tab .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--nline);color:#7FA0FF;transition:background .2s,color .2s,border-color .2s}
+.tab .ic svg{width:22px;height:22px}
+.tab .ar{width:18px;height:18px;opacity:.5;transition:transform .25s,opacity .2s}
+.tab small{display:block;font-family:var(--sans);font-weight:400;font-size:.88rem;margin-top:3px}
+.tab:hover{color:var(--nink);background:rgba(255,255,255,.06)}
+.tab:hover .ar{transform:translateX(3px);opacity:.9}
+.tab[aria-selected=true]{color:var(--nink);background:var(--navy3);border-color:#7FA0FF}
+.tab[aria-selected=true] .ic{background:#7FA0FF;color:var(--navy);border-color:#7FA0FF}
+.tab[aria-selected=true] .ar{opacity:1;color:#7FA0FF}
+.tab[aria-selected=true]::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:4px;background:#7FA0FF;border-radius:4px 0 0 4px}
 .tab:focus-visible{outline:2px solid #7FA0FF;outline-offset:4px}
-.panel{scroll-margin-top:calc(var(--hdr-h) + 20px)}
+.panel{scroll-margin-top:calc(var(--hdr-h) + 20px);background:var(--navy3);border:1px solid rgba(127,160,255,.35);border-radius:4px;padding:40px 44px}
 .panel h3{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.12;margin-bottom:18px;max-width:18em}
 .panel p{color:var(--nmut);max-width:38em;margin:0 0 26px}
 .panel ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
@@ -166,14 +172,28 @@ h2{font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.06}
 /* opinie */
 .opinie{padding:0 0 130px}
 .opinie .wrap{border-top:1px solid var(--line);padding-top:90px}
-.opinie .q3{display:grid;grid-template-columns:7fr 5fr;gap:34px 70px;margin-top:56px}
-.opinie blockquote{margin:0;border-top:2px solid var(--acc);padding-top:26px}
-.q3 blockquote:first-child{grid-row:span 2}
-.q3 blockquote:first-child p{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,2rem);line-height:1.3}
-.opinie blockquote p{margin:0;font-size:1.12rem;line-height:1.55}
-.opinie blockquote p::before{content:"„"}
-.opinie blockquote p::after{content:"”"}
-.opinie footer{margin-top:18px;color:var(--mut);font-size:.92rem}
+.ohead{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:60px}
+.gbadge{display:flex;align-items:center;gap:14px;text-decoration:none;padding:12px 18px;border:1px solid var(--line);border-radius:4px;background:var(--white);transition:border-color .2s}
+.gbadge:hover{border-color:var(--acc)}
+.gnum{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1}
+.gtx{font-size:.92rem;font-weight:600;line-height:1.3}
+.gtx small{display:block;font-weight:400;color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+.st{display:inline-flex;gap:2px;color:var(--acc)}
+.st svg{width:16px;height:16px;fill:currentColor}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 34px;align-items:start}
+.note{position:relative;margin:0;background:#fff;padding:30px 26px 22px;box-shadow:0 26px 44px -26px rgba(20,26,46,.42);transform:rotate(var(--r,-1.2deg));transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s}
+.note:nth-child(2){--r:1.1deg}.note:nth-child(3){--r:-.6deg}.note:nth-child(4){--r:1.5deg}.note:nth-child(5){--r:-1.6deg}.note:nth-child(6){--r:.8deg}
+.note:hover{transform:rotate(0) translateY(-4px);box-shadow:0 32px 50px -24px rgba(20,26,46,.5)}
+.note .tape{position:absolute;top:-12px;left:50%;width:84px;height:24px;margin-left:-42px;background:rgba(195,206,228,.55);transform:rotate(calc(var(--r,-1.2deg) * -2))}
+.note blockquote{margin:12px 0 0}
+.note p{margin:0;font-family:var(--serif);font-size:1.04rem;line-height:1.55}
+.note p::before{content:"„"}.note p::after{content:"”"}
+.note figcaption{margin-top:16px;padding-top:12px;border-top:1px dashed #D6D9D2;display:flex;flex-direction:column;gap:2px}
+.note .who{font:500 1.55rem/1 var(--hand);color:var(--acc)}
+.note .src{font-size:.84rem;color:var(--mut)}
+.js .note{opacity:0;transform:rotate(calc(var(--r,-1.2deg) * 3)) translateY(26px);transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1),box-shadow .35s;transition-delay:calc(var(--i) * 110ms)}
+.js .notes.in .note{opacity:1;transform:rotate(var(--r,-1.2deg))}
+.js .notes.in .note:hover{transform:rotate(0) translateY(-4px);transition-delay:0s}
 
 /* kontakt */
 .kontakt{padding:120px 0}
@@ -224,11 +244,14 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   .hdr .wrap{gap:14px}
 
   .hero .grid,.tabs,.reszta,.list .grid,.online .grid,.faq .grid,.kontakt .grid{grid-template-columns:1fr;gap:40px}
-  .frame{width:100%;aspect-ratio:16/11}
-  .desk{padding-bottom:0}
-  .paper{position:relative;width:calc(100% - 28px);margin:-56px 0 0 14px}
-  .opinie .q3{grid-template-columns:1fr;gap:34px}
+  .frame{width:78%;aspect-ratio:4/5;max-width:440px}
+  .paper{width:min(64%,400px);margin-top:-28%}
+  .notes{grid-template-columns:1fr;gap:36px}
+  .note{padding:26px 20px 18px}
   .list .portret{max-width:420px}
+}
+@media (max-width:1020px) and (min-width:641px){
+  .notes{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -238,12 +261,14 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   .hero{padding-top:calc(var(--hdr-h) + 30px);padding-bottom:56px}
   .hero .row3{grid-template-columns:1fr;margin-top:40px}
   .row3 a{padding:14px 0;border-bottom:1px solid var(--line)}
-  .frame{aspect-ratio:4/3}
-  .paper{padding:20px 18px 14px}
-  .nt{font-size:1.2rem}
+  .frame{width:82%}
+  .paper{width:92%;margin-top:-34%;padding:16px 16px 10px;font-size:.82rem}
+  .nt{font-size:1.1rem}
   .spec,.list,.online,.faq,.opinie,.kontakt{padding:80px 0}
   .panel ul{grid-template-columns:1fr}
-  .tab{font-size:1.3rem;padding:16px 0}
+  .tab{font-size:1.12rem;padding:14px 14px;grid-template-columns:38px 1fr 16px;gap:12px}
+  .tab .ic{width:38px;height:38px}
+  .panel{padding:28px 22px}
   .online li{grid-template-columns:56px 1fr;gap:12px}
   .online li::before{font-size:2.6rem}
   .form{padding:26px 18px}
@@ -262,6 +287,7 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none;transition:none}
   .js .w>span{animation:none;transform:none}
+  .js .note,.js .notes.in .note{opacity:1;transform:rotate(var(--r,-1.2deg));transition:none}
   .cl,.nt,.paper .sig,.js .sign img{transition:none}
   .js .paper .cl{background-size:100% 2px;color:#7A8090}
   .js .paper .nt,.js .paper .sig,.js .sign img{clip-path:inset(0)}
@@ -333,9 +359,9 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
     </div>
     <div class="tabs">
       <div class="tablist" role="tablist" aria-label="Specjalizacje">
-        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Prawo pracy<small>dla pracowników i&nbsp;pracodawców</small></button>
-        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false">Umowy i&nbsp;prawo konsumenckie<small>prawo cywilne, kontraktowe</small></button>
-        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false">Kredyty we frankach i&nbsp;polisolokaty<small>spory z&nbsp;bankami i&nbsp;ubezpieczycielami</small></button>
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg></span><span>Prawo pracy<small>dla pracowników i&nbsp;pracodawców</small></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></span><span>Umowy i&nbsp;prawo konsumenckie<small>prawo cywilne, kontraktowe</small></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18"/></svg></span><span>Kredyty we frankach i&nbsp;polisolokaty<small>spory z&nbsp;bankami i&nbsp;ubezpieczycielami</small></span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
       <div class="panels">
         <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
@@ -399,11 +425,17 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
 
 <section class="opinie" id="opinie">
   <div class="wrap">
-    <h2 class="reveal">Opinie klientów</h2>
-    <div class="q3">
-      <blockquote><p>Skorzystanie z&nbsp;pomocy prawnej Radcy Prawnego Mateusza Widenki było moją najlepszą decyzją. Wszystkie moje problemy zostały rozwiązane, w&nbsp;najlepszy możliwy sposób.</p><footer>Klientka, sprawa pracownicza</footer></blockquote>
-      <blockquote><p>Wysoki profesjonalizm i&nbsp;rzetelność w&nbsp;analizach umów handlowych i&nbsp;inwestycyjnych. Zlecenia wykonywane dynamicznie, skutecznie i&nbsp;fachowo.</p><footer>Klient biznesowy</footer></blockquote>
-      <blockquote><p>Rzetelność, sprawność, szeroka wiedza i&nbsp;skuteczność. Na pierwszym miejscu zawsze stawia najlepszy rezultat dla Klienta.</p><footer>Klient biznesowy</footer></blockquote>
+    <div class="ohead">
+      <h2 class="reveal">Opinie klientów</h2>
+      <a class="gbadge" href="https://maps.google.com/?cid=364537749507560106" target="_blank" rel="noopener"><span class="gnum">5,0</span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><span class="gtx">48 opinii w&nbsp;Google<small>Zobacz wszystkie</small></span></a>
+    </div>
+    <div class="notes">
+      <figure class="note" style="--i:0"><span class="tape" aria-hidden="true"></span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><blockquote><p>Prowadził moją sprawę dotyczącą OC samochodu bardzo profesjonalnie, rzetelnie i&nbsp;skutecznie. Od początku czułem, że jestem w&nbsp;dobrych rękach — wszystko zostało jasno wyjaśnione, kontakt był sprawny, a&nbsp;każda kwestia dopilnowana z&nbsp;dużym zaangażowaniem.</p></blockquote><figcaption><span class="who">Anna M.</span><span class="src">sprawa z&nbsp;OC samochodu · opinia w&nbsp;Google</span></figcaption></figure>
+      <figure class="note" style="--i:1"><span class="tape" aria-hidden="true"></span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><blockquote><p>Mi pomógł uniknąć wpakowania się w&nbsp;niekorzystne zlecenia jak i&nbsp;rozwiać wątpliwości w&nbsp;przypadku zawiłych umów. Mecenas przedstawia sprawy w&nbsp;sposób jasny i&nbsp;bez owijania w&nbsp;bawełnę.</p></blockquote><figcaption><span class="who">Damian S.</span><span class="src">umowy w&nbsp;działalności gospodarczej · opinia w&nbsp;Google</span></figcaption></figure>
+      <figure class="note" style="--i:2"><span class="tape" aria-hidden="true"></span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><blockquote><p>Polecam z&nbsp;całego serca. Przerobiłam trochę mecenasów ale na pana Mateusza mogę liczyć zawsze, na każde pytanie odpowie/odpisze, doradzi. Rzetelny, miły z&nbsp;podejściem do sytuacji.</p></blockquote><figcaption><span class="who">Daria Z.</span><span class="src">stała współpraca · opinia w&nbsp;Google</span></figcaption></figure>
+      <figure class="note" style="--i:3"><span class="tape" aria-hidden="true"></span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><blockquote><p>Korzystaliśmy z&nbsp;pomocy radcy prawnego przy umowie najmu i&nbsp;jesteśmy bardzo zadowoleni. Umowa została dokładnie sprawdzona, wszystkie wątpliwości jasno wyjaśnione, a&nbsp;cała współpraca przebiegła sprawnie.</p></blockquote><figcaption><span class="who">Mariusz D.</span><span class="src">umowa najmu · opinia w&nbsp;Google</span></figcaption></figure>
+      <figure class="note" style="--i:4"><span class="tape" aria-hidden="true"></span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><blockquote><p>Rzetelny, kompetentny, zawsze doskonale przygotowany, zaangażowany, empatyczny. (…) Zawsze jest czas na rozmowę i&nbsp;rozwianie jakichkolwiek wątpliwości, służy radą, pomocą, nawet wtedy kiedy grafik bardzo jest napięty.</p></blockquote><figcaption><span class="who">Beata F.</span><span class="src">sprawa sądowa · opinia w&nbsp;Google</span></figcaption></figure>
+      <figure class="note" style="--i:5"><span class="tape" aria-hidden="true"></span><span class="st" role="img" aria-label="5 na 5 gwiazdek"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z"/></svg></span><blockquote><p>Od pierwszego kontaktu czułam się pewnie i&nbsp;dobrze poinformowana o&nbsp;możliwościach prawnych w&nbsp;mojej sprawie. Pan Mateusz wykazał się ogromną wiedzą, a&nbsp;także umiejętnością jasnego tłumaczenia zawiłych kwestii prawnych.</p></blockquote><figcaption><span class="who">Sonia A.</span><span class="src">opinia w&nbsp;Google</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -446,7 +478,7 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
       <div class="dane">
         <div><span>Telefon</span><a href="tel:+48792055316">+48 792 055 316</a></div>
         <div><span>E-mail</span><a href="mailto:kancelaria@radca-widenka.pl">kancelaria@radca-widenka.pl</a></div>
-        <div><span>Godziny pracy</span><strong>pon.–pt. [uzupełnić]</strong></div>
+        <div><span>Godziny pracy</span><strong>pon.–pt. 9:00–17:00</strong></div>
         <div><span>Adres kancelarii</span><strong>ul. Rynek 4/1, 44-200 Rybnik</strong><br><a class="trasa" href="https://maps.google.com/?q=Rynek+4,+44-200+Rybnik" target="_blank" rel="noopener">Wyznacz trasę</a></div>
       </div>
     </div>
@@ -502,7 +534,7 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   setup();mq.addEventListener('change',setup);
   tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});t.addEventListener('keydown',function(e){if(!on())return;var k=e.key==='ArrowDown'||e.key==='ArrowRight'?1:e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();sel(tabs[(i+k+tabs.length)%tabs.length],true)}})});
   // reveal
-  var els=[].slice.call(d.querySelectorAll('.reveal,.paper,.sign')), fired=false;
+  var els=[].slice.call(d.querySelectorAll('.reveal,.paper,.sign,.notes')), fired=false;
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
     els.forEach(function(e){io.observe(e)});
