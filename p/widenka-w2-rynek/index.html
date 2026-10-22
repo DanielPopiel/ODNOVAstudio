@@ -235,9 +235,9 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
 
 .mbar{display:none}
 @media (hover:hover) and (pointer:fine){
-  .fl{transition:translate .6s cubic-bezier(.22,.61,.36,1),scale .6s cubic-bezier(.22,.61,.36,1),box-shadow .5s;will-change:translate}
-  .fl.on{transition:translate .18s linear,scale .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s}
-  .fl.img.on{scale:1.025;box-shadow:0 30px 60px -30px rgba(20,26,46,.45)}
+  .fl{transition:translate 1.1s cubic-bezier(.16,1,.3,1),scale .9s cubic-bezier(.16,1,.3,1),box-shadow .9s;will-change:translate}
+  .fl.on{transition:translate .9s cubic-bezier(.16,1,.3,1),scale .9s cubic-bezier(.16,1,.3,1),box-shadow .9s}
+  .fl.img.on{scale:1.015;box-shadow:0 30px 60px -30px rgba(20,26,46,.45)}
 }
 .js .reveal{opacity:0;transform:translateY(8px);transition:opacity .55s ease,transform .55s ease}
 .js .reveal.in{opacity:1;transform:none}
@@ -301,7 +301,6 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
 </head>
 <body>
 <div class="top">
-  <div class="mk"><b>Makieta W2 „Rynek 4”</b> · projekt nowej strony dla Kancelarii Radcy Prawnego Mateusza Widenki · Odnova Studio</div>
   <header class="hdr">
     <div class="wrap">
       <a class="brand" href="#start" aria-label="Kancelaria Radcy Prawnego Mateusz Widenka — początek strony">
@@ -529,9 +528,9 @@ footer.site .legal{flex-basis:100%;font-size:.84rem;border-top:1px solid var(--n
   var paper=d.querySelector('.paper');
   // pływanie pod kursorem: zdjęcia i karteczki mocniej, tekst delikatnie
   if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
-    [['.frame,.paper,.portret img,.note,.panel',12,1],['.hero h1,.hero .sub,.letter,section h2,.online li,.faq details',5,0]].forEach(function(g){
+    [['.frame,.paper,.portret img,.note',7,1]].forEach(function(g){
       d.querySelectorAll(g[0]).forEach(function(el){el.classList.add('fl');if(g[2])el.classList.add('img');var raf=0;
-        el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){el.classList.add('on');el.style.translate=(x*g[1]*2).toFixed(1)+'px '+(y*g[1]*2-(g[2]?4:0)).toFixed(1)+'px'})});
+        el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){el.classList.add('on');el.style.translate=(x*g[1]*2).toFixed(1)+'px '+(y*g[1]*2-(g[2]?3:0)).toFixed(1)+'px'})});
         el.addEventListener('pointerleave',function(){cancelAnimationFrame(raf);el.classList.remove('on');el.style.translate=''});
       })});
   }
