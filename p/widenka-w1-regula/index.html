@@ -17,7 +17,7 @@
 <link rel="icon" href="a/fav.png">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Rethink+Sans:wght@400;500;600&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Rethink+Sans:wght@400;500;600&family=Cinzel:wght@400;500;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0F16; --bg2:#101823; --ink:#E7EBEF; --mut:#A3AEBA; --line:rgba(231,235,239,.14);
@@ -87,24 +87,30 @@ html:not(.js) .vctl{display:none}
 .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .hero .meta{display:flex;gap:36px;flex-wrap:wrap;margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--mut)}
 .hero .meta b{color:var(--ink);font-weight:500}
-.pane{margin:0;justify-self:end;width:100%;max-width:430px}
-.glass{position:relative;aspect-ratio:643/603;overflow:hidden;outline:1px solid rgba(231,235,239,.18);outline-offset:10px}
-.glass img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.glass .frost,.glass .tint{clip-path:inset(0 0 0 calc(var(--p) * 100%))}
-.glass .frost{filter:blur(18px) saturate(.45) brightness(1.12) contrast(.8);transform:scale(1.12)}
-.glass .tint{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(214,226,238,.16) 0 46px,rgba(214,226,238,.05) 46px 50px,rgba(214,226,238,.22) 50px 52px),linear-gradient(180deg,rgba(190,206,222,.28),rgba(120,140,160,.18))}
-.glass .tint::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 48%,transparent 62%);transform:translateX(-120%);animation:shine 2.4s 1.6s ease-in-out both}
-@keyframes shine{to{transform:translateX(120%)}}
-.glass .edge{position:absolute;top:0;bottom:0;left:calc(var(--p) * 100%);width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,#DCE7FF 20%,#fff 50%,#DCE7FF 80%,transparent);box-shadow:0 0 22px 6px rgba(143,173,255,.45);opacity:calc(min(var(--p) * 12, 1) * min((1 - var(--p)) * 12, 1))}
-.pane figcaption{display:flex;justify-content:space-between;gap:16px;margin-top:22px;font-size:.92rem;color:var(--mut)}
-.pane figcaption b{color:var(--ink);font-weight:500}
-.pane .pbar{height:1px;background:rgba(231,235,239,.18);margin-top:14px;position:relative}
-.pane .pbar::after{content:"";position:absolute;left:0;top:-1px;height:3px;width:calc(var(--p) * 100%);background:var(--acc)}
-html:not(.js) .glass .frost,html:not(.js) .glass .tint,html:not(.js) .glass .edge,html:not(.js) .pane .pbar{display:none}
-@media (min-width:1021px){
-  .js .hero{height:235vh}
-  .js .pin{position:sticky;top:0;height:100svh}
-}
+/* hero: film z przewijania — korytarz, drzwi, wejście na salę rozpraw */
+.pin{background:#0B0F15}
+.pin::after{display:none}
+.film{position:absolute;inset:0}
+.film canvas,.film img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.film .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,18,.8) 0%,rgba(8,12,18,.5) 34%,rgba(8,12,18,0) 62%),linear-gradient(180deg,rgba(8,12,18,.5) 0%,rgba(8,12,18,0) 20%,rgba(8,12,18,0) 55%,rgba(8,12,18,.78) 100%);opacity:calc(1 - var(--mid,0) * .6)}
+.act1,.act2{text-shadow:0 1px 18px rgba(0,0,0,.45)}
+.hero .wrap{grid-template-columns:1fr}
+.act{position:relative;z-index:2}
+.act1{opacity:calc(1 - var(--a1,0));transform:translateY(calc(var(--a1,0) * -40px))}
+.act2{position:absolute;left:0;right:0;bottom:0;z-index:2;opacity:var(--a2,0);transform:translateY(calc((1 - var(--a2,0)) * 30px));pointer-events:none}
+.act2.on{pointer-events:auto}
+.act2 .wrap{padding-bottom:64px}
+.act2 p.big{font:400 clamp(2rem,4.6vw,4rem)/1.05 var(--serif);margin:0 0 22px;max-width:13em;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.hero h1{max-width:6.6em}
+.fprog{position:absolute;left:0;right:0;bottom:0;height:2px;z-index:3;background:rgba(231,235,239,.12)}
+.fprog::after{content:"";position:absolute;left:0;top:0;height:2px;width:calc(var(--p,0) * 100%);background:var(--acc)}
+.fload{position:absolute;right:32px;top:calc(var(--hdr-h) + 20px);z-index:3;font-size:.85rem;color:var(--mut);transition:opacity .4s}
+.fload.done{opacity:0}
+html:not(.js) .act2,html:not(.js) .fprog,html:not(.js) .fload{display:none}
+.js .hero{height:560vh}
+.js .pin{position:sticky;top:0;height:100svh}
+@media (max-width:760px){.js .hero{height:460vh}.fload{display:none}.act2 .wrap{padding-bottom:40px}.film .shade{background:linear-gradient(180deg,rgba(8,12,18,.55) 0%,rgba(8,12,18,.62) 45%,rgba(8,12,18,.86) 100%)}}
+@media (prefers-reduced-motion:reduce){.js .hero{height:auto}.js .pin{position:relative}.act2{display:none}}
 .regula{margin-bottom:110px;padding-bottom:70px;border-bottom:1px solid var(--line)}
 .regula blockquote{margin:0;font:400 clamp(1.45rem,3vw,2.7rem)/1.3 var(--cap);letter-spacing:.05em;max-width:22em;color:#DCE3EA}
 .js .regula blockquote span{display:inline-block;filter:blur(9px);opacity:.2;transition:filter 1.1s ease,opacity 1.1s ease;transition-delay:calc(var(--i,0)*110ms)}
@@ -304,13 +310,8 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
 <main>
 <section class="hero" id="start">
  <div class="pin">
-  <img class="poster" src="a/w1-hero-poster.jpg" alt="">
-  <video autoplay muted loop playsinline preload="auto" poster="a/w1-hero-poster.jpg" aria-hidden="true">
-    <source media="(max-width:760px)" src="a/w1-hero-720.mp4" type="video/mp4">
-    <source src="a/w1-hero.mp4" type="video/mp4">
-  </video>
-  <button class="vctl" type="button" aria-pressed="false">Zatrzymaj film</button>
-  <div class="wrap">
+  <div class="film" aria-hidden="true"><img class="poster" src="a/film-poster.jpg" alt=""><canvas></canvas><div class="shade"></div></div>
+  <div class="wrap act act1">
     <div>
       <h1 data-words>Radca prawny w&nbsp;Rybniku</h1>
       <p class="sub">Prawo pracy, umowy i&nbsp;spory z&nbsp;bankami. Mateusz Widenka, kancelaria przy Rynku 4/1. Doradzam, piszę pisma i&nbsp;występuję przed sądem. Spotkanie w&nbsp;kancelarii, w&nbsp;Państwa firmie albo zdalnie.</p>
@@ -320,17 +321,9 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
       </div>
       <div class="meta"><span><b>Wpis KT-4093</b> · OIRP w&nbsp;Katowicach</span><span><b>Od 2019 r.</b> własna kancelaria</span><span><b>Online</b> w&nbsp;całej Polsce</span></div>
     </div>
-    <figure class="pane">
-      <div class="glass">
-        <img src="a/portret-toga.webp" alt="Radca prawny Mateusz Widenka w todze" width="643" height="603">
-        <img class="frost" src="a/portret-toga.webp" alt="" aria-hidden="true">
-        <div class="tint" aria-hidden="true"></div>
-        <div class="edge" aria-hidden="true"></div>
-      </div>
-      <div class="pbar" aria-hidden="true"></div>
-      <figcaption><b>Mateusz Widenka</b><span>radca prawny od 2018 r.</span></figcaption>
-    </figure>
   </div>
+  <div class="act2" aria-hidden="true"><div class="wrap"><p class="big">Każda sprawa zaczyna się od rozmowy.</p><div class="cta"><a class="btn" href="tel:+48792055316" tabindex="-1">Zadzwoń: 792 055 316</a><a class="btn ghost" href="#kontakt" tabindex="-1">Wyślij opis sprawy</a></div></div></div>
+  <div class="fprog" aria-hidden="true"></div><div class="fload" aria-hidden="true">wczytywanie 0%</div>
  </div>
 </section>
 
@@ -382,7 +375,7 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
   <div class="wrap grid">
     <figure class="fig">
       <img src="a/portret-toga.webp" alt="Radca prawny Mateusz Widenka w todze" width="643" height="603" loading="lazy">
-      <figcaption><b>Niebieski żabot</b> to strój radcy prawnego w&nbsp;sądzie.</figcaption>
+      
     </figure>
     <div>
       <h2 class="reveal">Mateusz Widenka</h2>
@@ -445,7 +438,7 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
       <ul class="dane">
         <li><span>Telefon</span><a class="tnum" href="tel:+48792055316">+48 792 055 316</a></li>
         <li><span>E-mail</span><a href="mailto:kancelaria@radca-widenka.pl">kancelaria@radca-widenka.pl</a></li>
-        <li><span>Godziny pracy</span><strong>pon.–pt. [uzupełnić]</strong></li>
+        <li><span>Godziny pracy</span><strong>pon.–pt. 9:00–17:00</strong></li>
         <li><span>Kancelaria</span><strong>ul. Rynek 4/1, 44-200 Rybnik</strong><br><a class="link" href="https://maps.google.com/?q=Rynek+4,+44-200+Rybnik" target="_blank" rel="noopener">Wyznacz trasę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
       </ul>
     </div>
@@ -482,17 +475,31 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
   var d=document, html=d.documentElement, top=d.querySelector('.top');
   function m(){html.style.setProperty('--hdr-h',top.offsetHeight+'px')}
   m(); addEventListener('resize',m); addEventListener('load',m);
-  var hero=d.querySelector('.hero'), pane=d.querySelector('.pane'), RM=matchMedia('(prefers-reduced-motion:reduce)').matches, wide=matchMedia('(min-width:1021px)');
+  var hero=d.querySelector('.hero'), RM=matchMedia('(prefers-reduced-motion:reduce)').matches, wide=matchMedia('(min-width:1021px)');
   // słowa H1 i maksymy
   d.querySelectorAll('[data-words]').forEach(function(h){var t=h.textContent.split(' ');var full=h.textContent;h.innerHTML=t.map(function(w,i){return '<span class="w" aria-hidden="true" style="--i:'+i+'"><span>'+w+'</span></span>'}).join(' ')+'<span class="sr">'+full+'</span>'});
   d.querySelectorAll('[data-split] blockquote').forEach(function(b){var t=b.textContent.split(' ');b.innerHTML=t.map(function(w,i){return '<span style="--i:'+i+'">'+w+'</span>'}).join(' ')});
-  // szyba
+  // film z przewijania: klatki WebP na <canvas>, tempo z tabeli (wolniej na spokojnych odcinkach)
+  var FL=["a/fl/001.webp", "a/fl/002.webp", "a/fl/003.webp", "a/fl/004.webp", "a/fl/005.webp", "a/fl/006.webp", "a/fl/007.webp", "a/fl/008.webp", "a/fl/009.webp", "a/fl/010.webp", "a/fl/011.webp", "a/fl/012.webp", "a/fl/013.webp", "a/fl/014.webp", "a/fl/015.webp", "a/fl/016.webp", "a/fl/017.webp", "a/fl/018.webp", "a/fl/019.webp", "a/fl/020.webp", "a/fl/021.webp", "a/fl/022.webp", "a/fl/023.webp", "a/fl/024.webp", "a/fl/025.webp", "a/fl/026.webp", "a/fl/027.webp", "a/fl/028.webp", "a/fl/029.webp", "a/fl/030.webp", "a/fl/031.webp", "a/fl/032.webp", "a/fl/033.webp", "a/fl/034.webp", "a/fl/035.webp", "a/fl/036.webp", "a/fl/037.webp", "a/fl/038.webp", "a/fl/039.webp", "a/fl/040.webp", "a/fl/041.webp", "a/fl/042.webp", "a/fl/043.webp", "a/fl/044.webp", "a/fl/045.webp", "a/fl/046.webp", "a/fl/047.webp", "a/fl/048.webp", "a/fl/049.webp", "a/fl/050.webp", "a/fl/051.webp", "a/fl/052.webp", "a/fl/053.webp", "a/fl/054.webp", "a/fl/055.webp", "a/fl/056.webp", "a/fl/057.webp", "a/fl/058.webp", "a/fl/059.webp", "a/fl/060.webp", "a/fl/061.webp", "a/fl/062.webp", "a/fl/063.webp", "a/fl/064.webp", "a/fl/065.webp", "a/fl/066.webp", "a/fl/067.webp", "a/fl/068.webp", "a/fl/069.webp", "a/fl/070.webp", "a/fl/071.webp", "a/fl/072.webp", "a/fl/073.webp", "a/fl/074.webp", "a/fl/075.webp", "a/fl/076.webp", "a/fl/077.webp", "a/fl/078.webp", "a/fl/079.webp", "a/fl/080.webp", "a/fl/081.webp", "a/fl/082.webp", "a/fl/083.webp", "a/fl/084.webp", "a/fl/085.webp", "a/fl/086.webp", "a/fl/087.webp", "a/fl/088.webp", "a/fl/089.webp", "a/fl/090.webp", "a/fl/091.webp", "a/fl/092.webp", "a/fl/093.webp", "a/fl/094.webp", "a/fl/095.webp", "a/fl/096.webp", "a/fl/097.webp", "a/fl/098.webp", "a/fl/099.webp", "a/fl/100.webp", "a/fl/101.webp", "a/fl/102.webp", "a/fl/103.webp", "a/fl/104.webp", "a/fl/105.webp", "a/fl/106.webp", "a/fl/107.webp", "a/fl/108.webp", "a/fl/109.webp", "a/fl/110.webp", "a/fl/111.webp", "a/fl/112.webp", "a/fl/113.webp", "a/fl/114.webp", "a/fl/115.webp", "a/fl/116.webp", "a/fl/117.webp", "a/fl/118.webp", "a/fl/119.webp", "a/fl/120.webp", "a/fl/121.webp", "a/fl/122.webp", "a/fl/123.webp", "a/fl/124.webp", "a/fl/125.webp", "a/fl/126.webp", "a/fl/127.webp", "a/fl/128.webp", "a/fl/129.webp", "a/fl/130.webp", "a/fl/131.webp", "a/fl/132.webp", "a/fl/133.webp", "a/fl/134.webp", "a/fl/135.webp", "a/fl/136.webp", "a/fl/137.webp", "a/fl/138.webp", "a/fl/139.webp", "a/fl/140.webp", "a/fl/141.webp", "a/fl/142.webp", "a/fl/143.webp", "a/fl/144.webp", "a/fl/145.webp", "a/fl/146.webp", "a/fl/147.webp", "a/fl/148.webp", "a/fl/149.webp", "a/fl/150.webp", "a/fl/151.webp", "a/fl/152.webp", "a/fl/153.webp", "a/fl/154.webp", "a/fl/155.webp", "a/fl/156.webp", "a/fl/157.webp", "a/fl/158.webp", "a/fl/159.webp", "a/fl/160.webp", "a/fl/161.webp", "a/fl/162.webp", "a/fl/163.webp", "a/fl/164.webp", "a/fl/165.webp", "a/fl/166.webp", "a/fl/167.webp", "a/fl/168.webp", "a/fl/169.webp", "a/fl/170.webp", "a/fl/171.webp", "a/fl/172.webp", "a/fl/173.webp", "a/fl/174.webp", "a/fl/175.webp", "a/fl/176.webp", "a/fl/177.webp", "a/fl/178.webp", "a/fl/179.webp", "a/fl/180.webp", "a/fl/181.webp", "a/fl/182.webp", "a/fl/183.webp", "a/fl/184.webp", "a/fl/185.webp", "a/fl/186.webp", "a/fl/187.webp", "a/fl/188.webp", "a/fl/189.webp", "a/fl/190.webp", "a/fl/191.webp", "a/fl/192.webp", "a/fl/193.webp", "a/fl/194.webp", "a/fl/195.webp", "a/fl/196.webp", "a/fl/197.webp", "a/fl/198.webp", "a/fl/199.webp", "a/fl/200.webp", "a/fl/201.webp", "a/fl/202.webp", "a/fl/203.webp", "a/fl/204.webp", "a/fl/205.webp", "a/fl/206.webp", "a/fl/207.webp", "a/fl/208.webp", "a/fl/209.webp", "a/fl/210.webp", "a/fl/211.webp", "a/fl/212.webp", "a/fl/213.webp", "a/fl/214.webp", "a/fl/215.webp", "a/fl/216.webp", "a/fl/217.webp", "a/fl/218.webp", "a/fl/219.webp", "a/fl/220.webp", "a/fl/221.webp", "a/fl/222.webp", "a/fl/223.webp", "a/fl/224.webp", "a/fl/225.webp", "a/fl/226.webp", "a/fl/227.webp", "a/fl/228.webp", "a/fl/229.webp", "a/fl/230.webp", "a/fl/231.webp", "a/fl/232.webp", "a/fl/233.webp", "a/fl/234.webp", "a/fl/235.webp", "a/fl/236.webp", "a/fl/237.webp", "a/fl/238.webp", "a/fl/239.webp", "a/fl/240.webp"], FS=["a/fs/001.webp", "a/fs/002.webp", "a/fs/003.webp", "a/fs/004.webp", "a/fs/005.webp", "a/fs/006.webp", "a/fs/007.webp", "a/fs/008.webp", "a/fs/009.webp", "a/fs/010.webp", "a/fs/011.webp", "a/fs/012.webp", "a/fs/013.webp", "a/fs/014.webp", "a/fs/015.webp", "a/fs/016.webp", "a/fs/017.webp", "a/fs/018.webp", "a/fs/019.webp", "a/fs/020.webp", "a/fs/021.webp", "a/fs/022.webp", "a/fs/023.webp", "a/fs/024.webp", "a/fs/025.webp", "a/fs/026.webp", "a/fs/027.webp", "a/fs/028.webp", "a/fs/029.webp", "a/fs/030.webp", "a/fs/031.webp", "a/fs/032.webp", "a/fs/033.webp", "a/fs/034.webp", "a/fs/035.webp", "a/fs/036.webp", "a/fs/037.webp", "a/fs/038.webp", "a/fs/039.webp", "a/fs/040.webp", "a/fs/041.webp", "a/fs/042.webp", "a/fs/043.webp", "a/fs/044.webp", "a/fs/045.webp", "a/fs/046.webp", "a/fs/047.webp", "a/fs/048.webp", "a/fs/049.webp", "a/fs/050.webp", "a/fs/051.webp", "a/fs/052.webp", "a/fs/053.webp", "a/fs/054.webp", "a/fs/055.webp", "a/fs/056.webp", "a/fs/057.webp", "a/fs/058.webp", "a/fs/059.webp", "a/fs/060.webp", "a/fs/061.webp", "a/fs/062.webp", "a/fs/063.webp", "a/fs/064.webp", "a/fs/065.webp", "a/fs/066.webp", "a/fs/067.webp", "a/fs/068.webp", "a/fs/069.webp", "a/fs/070.webp", "a/fs/071.webp", "a/fs/072.webp", "a/fs/073.webp", "a/fs/074.webp", "a/fs/075.webp", "a/fs/076.webp", "a/fs/077.webp", "a/fs/078.webp", "a/fs/079.webp", "a/fs/080.webp", "a/fs/081.webp", "a/fs/082.webp", "a/fs/083.webp", "a/fs/084.webp", "a/fs/085.webp", "a/fs/086.webp", "a/fs/087.webp", "a/fs/088.webp", "a/fs/089.webp", "a/fs/090.webp", "a/fs/091.webp", "a/fs/092.webp", "a/fs/093.webp", "a/fs/094.webp", "a/fs/095.webp", "a/fs/096.webp", "a/fs/097.webp", "a/fs/098.webp", "a/fs/099.webp", "a/fs/100.webp", "a/fs/101.webp", "a/fs/102.webp", "a/fs/103.webp", "a/fs/104.webp", "a/fs/105.webp", "a/fs/106.webp", "a/fs/107.webp", "a/fs/108.webp", "a/fs/109.webp", "a/fs/110.webp", "a/fs/111.webp", "a/fs/112.webp", "a/fs/113.webp", "a/fs/114.webp", "a/fs/115.webp", "a/fs/116.webp", "a/fs/117.webp", "a/fs/118.webp", "a/fs/119.webp", "a/fs/120.webp", "a/fs/121.webp", "a/fs/122.webp", "a/fs/123.webp", "a/fs/124.webp", "a/fs/125.webp", "a/fs/126.webp", "a/fs/127.webp", "a/fs/128.webp", "a/fs/129.webp", "a/fs/130.webp", "a/fs/131.webp", "a/fs/132.webp", "a/fs/133.webp", "a/fs/134.webp", "a/fs/135.webp", "a/fs/136.webp", "a/fs/137.webp", "a/fs/138.webp", "a/fs/139.webp", "a/fs/140.webp", "a/fs/141.webp", "a/fs/142.webp", "a/fs/143.webp", "a/fs/144.webp", "a/fs/145.webp", "a/fs/146.webp", "a/fs/147.webp", "a/fs/148.webp", "a/fs/149.webp", "a/fs/150.webp", "a/fs/151.webp", "a/fs/152.webp", "a/fs/153.webp", "a/fs/154.webp", "a/fs/155.webp", "a/fs/156.webp", "a/fs/157.webp", "a/fs/158.webp", "a/fs/159.webp", "a/fs/160.webp", "a/fs/161.webp", "a/fs/162.webp", "a/fs/163.webp", "a/fs/164.webp", "a/fs/165.webp", "a/fs/166.webp", "a/fs/167.webp", "a/fs/168.webp", "a/fs/169.webp", "a/fs/170.webp", "a/fs/171.webp", "a/fs/172.webp", "a/fs/173.webp", "a/fs/174.webp", "a/fs/175.webp", "a/fs/176.webp", "a/fs/177.webp", "a/fs/178.webp", "a/fs/179.webp", "a/fs/180.webp", "a/fs/181.webp", "a/fs/182.webp", "a/fs/183.webp", "a/fs/184.webp", "a/fs/185.webp", "a/fs/186.webp", "a/fs/187.webp", "a/fs/188.webp", "a/fs/189.webp", "a/fs/190.webp", "a/fs/191.webp", "a/fs/192.webp", "a/fs/193.webp", "a/fs/194.webp", "a/fs/195.webp", "a/fs/196.webp", "a/fs/197.webp", "a/fs/198.webp", "a/fs/199.webp", "a/fs/200.webp", "a/fs/201.webp", "a/fs/202.webp", "a/fs/203.webp", "a/fs/204.webp", "a/fs/205.webp", "a/fs/206.webp", "a/fs/207.webp", "a/fs/208.webp", "a/fs/209.webp", "a/fs/210.webp", "a/fs/211.webp", "a/fs/212.webp", "a/fs/213.webp", "a/fs/214.webp", "a/fs/215.webp", "a/fs/216.webp", "a/fs/217.webp", "a/fs/218.webp", "a/fs/219.webp", "a/fs/220.webp", "a/fs/221.webp", "a/fs/222.webp", "a/fs/223.webp", "a/fs/224.webp", "a/fs/225.webp", "a/fs/226.webp", "a/fs/227.webp", "a/fs/228.webp", "a/fs/229.webp", "a/fs/230.webp", "a/fs/231.webp", "a/fs/232.webp", "a/fs/233.webp", "a/fs/234.webp", "a/fs/235.webp", "a/fs/236.webp", "a/fs/237.webp", "a/fs/238.webp", "a/fs/239.webp", "a/fs/240.webp"], TEMPO=[0.0, 0.00516, 0.01026, 0.01511, 0.01988, 0.02442, 0.02885, 0.03308, 0.03717, 0.04108, 0.04497, 0.04874, 0.05239, 0.05598, 0.05953, 0.06302, 0.06649, 0.06995, 0.07351, 0.07704, 0.08058, 0.08405, 0.08745, 0.09077, 0.09406, 0.09744, 0.10087, 0.10444, 0.10803, 0.11157, 0.11503, 0.11853, 0.12207, 0.12569, 0.12933, 0.13306, 0.13667, 0.14018, 0.14362, 0.14708, 0.1505, 0.15391, 0.15736, 0.16075, 0.16417, 0.16762, 0.17103, 0.17439, 0.17774, 0.18108, 0.18444, 0.1878, 0.19107, 0.19435, 0.19768, 0.20105, 0.20442, 0.20778, 0.21114, 0.21445, 0.21765, 0.22082, 0.22394, 0.22713, 0.23029, 0.23352, 0.2368, 0.24004, 0.24329, 0.24661, 0.24996, 0.2533, 0.25666, 0.26001, 0.26338, 0.26692, 0.27045, 0.27389, 0.27729, 0.28075, 0.28418, 0.28757, 0.29094, 0.29426, 0.29751, 0.3007, 0.30383, 0.30693, 0.31, 0.31313, 0.31656, 0.32011, 0.32382, 0.32749, 0.33115, 0.33472, 0.3382, 0.34161, 0.34499, 0.34833, 0.35161, 0.35527, 0.359, 0.36273, 0.36647, 0.37028, 0.37414, 0.378, 0.38177, 0.38551, 0.38928, 0.39307, 0.39693, 0.4008, 0.40466, 0.40849, 0.41228, 0.41605, 0.41978, 0.42352, 0.4276, 0.43252, 0.43751, 0.44242, 0.4473, 0.45216, 0.45704, 0.46186, 0.46675, 0.47162, 0.47654, 0.48136, 0.48615, 0.4909, 0.49567, 0.50036, 0.50502, 0.50962, 0.51425, 0.51887, 0.52351, 0.52812, 0.53272, 0.53723, 0.54168, 0.54601, 0.55038, 0.55468, 0.559, 0.56332, 0.56771, 0.57216, 0.57677, 0.58135, 0.58598, 0.59055, 0.59515, 0.5997, 0.60431, 0.60888, 0.61354, 0.61818, 0.62284, 0.6275, 0.63218, 0.63672, 0.64124, 0.64574, 0.65023, 0.65471, 0.65927, 0.66389, 0.66855, 0.67323, 0.67793, 0.68264, 0.68736, 0.6921, 0.69686, 0.70151, 0.7062, 0.71082, 0.71542, 0.72008, 0.72476, 0.72943, 0.73419, 0.73892, 0.74368, 0.74834, 0.75297, 0.7575, 0.76201, 0.76657, 0.7711, 0.7757, 0.78034, 0.78498, 0.78961, 0.79418, 0.79882, 0.80351, 0.80827, 0.81303, 0.8178, 0.82252, 0.82725, 0.83189, 0.83656, 0.84119, 0.84586, 0.85046, 0.85517, 0.85983, 0.86458, 0.86928, 0.87399, 0.87869, 0.88344, 0.88825, 0.89311, 0.89798, 0.9029, 0.9078, 0.91276, 0.91778, 0.92284, 0.92797, 0.93324, 0.93858, 0.94403, 0.94955, 0.95516, 0.96083, 0.96654, 0.97233, 0.9782, 0.98412, 0.99005, 0.99603, 1.0];
+  var small=Math.min(innerWidth,screen.width)*Math.min(devicePixelRatio||1,2)<=1000;
+  var SRC=(small&&FS.length)?FS:FL, N=SRC.length, imgs=new Array(N), ok=new Array(N), cv=d.querySelector('.film canvas'), cx=cv.getContext('2d'), loaded=0, cur=-1, fl=d.querySelector('.fload'), a2=d.querySelector('.act2');
+  function load(i){var im=new Image();im.decoding='async';im.onload=function(){ok[i]=1;loaded++;if(fl){fl.textContent='wczytywanie '+Math.round(loaded/N*100)+'%';if(loaded===N)fl.classList.add('done')}if(i===0||Math.abs(i-want)<3)draw(true)};im.src=SRC[i];imgs[i]=im}
+  var order=[];for(var st=8;st>=1;st=st>>1)for(var i=0;i<N;i+=st)if(order.indexOf(i)<0)order.push(i);
+  order.forEach(load);
+  function size(){var r=cv.getBoundingClientRect(),k=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*k);cv.height=Math.round(r.height*k);cur=-1;draw(true)}
+  function nearest(i){for(var dd=0;dd<N;dd++){if(ok[i-dd])return i-dd;if(ok[i+dd])return i+dd}return -1}
+  var want=0;
+  function draw(force){var j=nearest(want);if(j<0||(j===cur&&!force))return;cur=j;var im=imgs[j],W=cv.width,H=cv.height,s=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*s,h=im.naturalHeight*s;cx.drawImage(im,(W-w)/2,(H-h)/2,w,h);d.querySelector('.film .poster').style.opacity=0}
+  function frameAt(p){if(TEMPO.length===N+1){for(var i=0;i<N;i++)if(TEMPO[i+1]>=p)return i;return N-1}return Math.min(N-1,Math.floor(p*N))}
   var tick=false;
   function prog(){tick=false;var p;
-    if(RM)p=1;
-    else if(wide.matches){var r=hero.getBoundingClientRect();p=-r.top/((r.height-innerHeight)*.8)}
-    else{var q=pane.getBoundingClientRect();p=(innerHeight*.92-q.top)/(innerHeight*.55)}
-    p=Math.max(0,Math.min(1,p));hero.style.setProperty('--p',p.toFixed(4))}
+    if(RM)p=0;else{var r=hero.getBoundingClientRect();p=-r.top/(r.height-innerHeight)}
+    p=Math.max(0,Math.min(1,p));hero.style.setProperty('--p',p.toFixed(4));
+    var A1=Math.max(0,Math.min(1,(p-.04)/.1)),A2=Math.max(0,Math.min(1,(p-.86)/.08));
+    hero.style.setProperty('--a1',A1.toFixed(3));hero.style.setProperty('--a2',A2.toFixed(3));hero.style.setProperty('--mid',Math.min(A1,1-A2).toFixed(3));
+    a2.classList.toggle('on',A2>.5);a2.querySelectorAll('a').forEach(function(a){a.tabIndex=A2>.5?0:-1});
+    want=frameAt(p);draw(false)}
+  addEventListener('resize',size); size();
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});
   addEventListener('resize',prog); prog();
   function onS(){
@@ -509,11 +516,6 @@ footer.site .legal{flex-basis:100%;font-size:.82rem;color:#7D8996}
     var t;addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sweep,120)},{passive:true});
     setTimeout(function(){if(!fired)els.forEach(function(e){e.classList.add('in')})},4000);
   } else els.forEach(function(e){e.classList.add('in')});
-  var v=d.querySelector('.hero video');
-  var vb=d.querySelector('.vctl');
-  function setV(play){if(play){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause();vb.setAttribute('aria-pressed',!play);vb.textContent=play?'Zatrzymaj film':'Odtwórz film'}
-  vb.addEventListener('click',function(){setV(v.paused)});
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches&&v){v.removeAttribute('autoplay');setV(false)}
   var f=d.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();if(f.reportValidity())f.querySelector('.ok').style.display='block'});
 })();
 </script>
