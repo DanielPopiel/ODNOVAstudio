@@ -7,7 +7,7 @@
 <meta name="description" content="Prywatna klinika stomatologiczna w Zielonej Górze, ul. Zamoyskiego 5. Implanty, leczenie kanałowe pod mikroskopem, ortodoncja, stomatologia dziecięca. Pomoc w nagłych przypadkach.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dental Caffe — makieta W1 „Kawiarnia”">
-<meta property="og:description" content="Makieta nowej strony Dental Caffe — wariant W1: dentysta jak kawiarnia, karta zabiegów z cenami.">
+<meta property="og:description" content="Makieta nowej strony Dental Caffe — wariant W1: od filiżanki z logo do poczekalni, karta zabiegów z cenami.">
 <meta property="og:url" content="https://www.odnovastudio.com/p/dentalcaffe-w1/">
 <meta property="og:image" content="https://www.odnovastudio.com/p/dentalcaffe-w1/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -56,26 +56,28 @@ p{margin:0 0 1em}
 .mnav nav a{padding:13px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--serif);font-size:1.5rem}
 .mnav nav .btn{margin-top:16px;justify-content:center;font-family:var(--sans);font-size:1rem}
 /* hero */
-.hero{position:relative;min-height:max(660px,100svh);display:flex;align-items:center;color:#fff;overflow:hidden;background:#233A63}
-.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
-.scene.mob{display:none}
-.js .scene{animation:settle 16s cubic-bezier(.2,.6,.2,1) both;transform-origin:77% 50%}
-@keyframes settle{from{transform:scale(1.05)}to{transform:none}}
-.js .art path,.js .art circle{stroke-dasharray:1 1;stroke-dashoffset:1;animation:pour 1.15s cubic-bezier(.35,.05,.25,1) forwards}
-.js .art .o0{animation-delay:.6s}.js .art .o1{animation-delay:1.25s}.js .art .o2{animation-delay:1.75s}.js .art .o3{animation-delay:2.15s}
-@keyframes pour{to{stroke-dashoffset:0}}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,30,58,.5) 0%,rgba(16,30,58,.18) 46%,rgba(16,30,58,0) 62%);pointer-events:none}
-.hero .wrap{position:relative;z-index:2;padding-top:calc(var(--hdr-h) + 30px);padding-bottom:60px}
-.htxt{max-width:min(52vw,700px)}
-.hero h1{font-size:clamp(2.5rem,4.3vw,4.4rem);font-weight:400;line-height:.98;letter-spacing:-.02em}
-.hero .lede{max-width:31rem;font-size:1.2rem;margin:28px 0 34px;color:#E6ECF5}
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#E9E3DA;color:var(--tc,#14213D)}
+.zfb,.zc{position:absolute;inset:0;width:100%;height:100%;display:block}
+.zfb{object-fit:cover;object-position:56% 50%}
+.js .zfb{opacity:0;transition:opacity .4s}.no-canvas .zfb{opacity:1}
+.scr{position:absolute;inset:0;pointer-events:none}
+.scr.l{background:linear-gradient(90deg,rgba(250,247,242,.9) 0%,rgba(250,247,242,.62) 32%,rgba(250,247,242,0) 58%);opacity:calc(1 - var(--k,1))}
+.scr.d{background:linear-gradient(90deg,rgba(14,26,52,.84) 0%,rgba(14,26,52,.52) 36%,rgba(14,26,52,0) 62%);opacity:var(--k,1)}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding-top:var(--hdr-h);padding-bottom:40px}
+.htxt{max-width:min(48vw,640px)}
+.hero h1{font-size:clamp(3rem,6vw,6.2rem);font-weight:400;line-height:.95;letter-spacing:-.025em}
+.hero h1 span{display:block;font-family:var(--sans);font-weight:500;font-size:clamp(1.02rem,1.3vw,1.18rem);letter-spacing:0;line-height:1.45;margin-top:22px;opacity:.85}
+.hero .lede{max-width:30rem;font-size:1.14rem;margin:18px 0 32px;opacity:.88}
 .hero .acts{display:flex;flex-wrap:wrap;gap:12px}
-.hero .btn{background:#fff;color:var(--navy);border-color:#fff}
-.hero .btn:hover{background:var(--velvet2)}
-.board{margin:46px 0 0;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;border-top:1px solid rgba(255,255,255,.3);max-width:640px}
-.board div{padding:14px 28px 0 0;margin-right:28px;border-right:1px solid rgba(255,255,255,.18);font-size:.98rem;color:#DCE4EF;line-height:1.35}
+.hero .btn{background:var(--bb,#1A3260);color:var(--bc,#fff);border-color:var(--bb,#1A3260)}
+.hero .btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.board{margin:40px 0 0;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;border-top:1px solid color-mix(in srgb,currentColor 35%,transparent);max-width:640px}
+.board div{padding:14px 28px 0 0;margin-right:28px;border-right:1px solid color-mix(in srgb,currentColor 22%,transparent);font-size:.98rem;line-height:1.35;opacity:.92}
 .board div:last-child{border-right:0;margin-right:0}
-.board b{display:block;font-family:var(--serif);font-weight:400;font-size:1.3rem;color:#fff;margin-bottom:2px}
+.board b{display:block;font-family:var(--serif);font-weight:400;font-size:1.3rem;margin-bottom:2px}
+.replay{position:absolute;right:28px;bottom:26px;z-index:3;font:500 .9rem var(--sans);color:inherit;background:color-mix(in srgb,var(--bc,#fff) 70%,transparent);border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:999px;padding:8px 16px;cursor:pointer;opacity:0;transition:opacity .5s;pointer-events:none}
+.replay.on{opacity:1;pointer-events:auto}
+.no-js .replay{display:none}
 /* karta */
 .karta{background:var(--paper);padding:120px 0 110px}
 .karta .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px}
@@ -84,7 +86,7 @@ p{margin:0 0 1em}
 .karta aside .note{font-size:.92rem;margin-top:26px;padding-top:18px;border-top:1px solid var(--line)}
 .karta aside a.pdf{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin-top:6px}
 .menu{column-count:2;column-gap:56px}
-.grp{break-inside:avoid;margin:0 0 46px}
+.grp{break-inside:avoid;margin:0 0 46px;will-change:transform}
 .grp h3{font-size:1.75rem;margin:0;padding-bottom:10px;border-bottom:1px solid #7F94A3;flex:1}
 .grp summary{list-style:none;display:flex;align-items:center;gap:14px;cursor:default;margin-bottom:8px}
 .grp summary::-webkit-details-marker{display:none}
@@ -97,7 +99,7 @@ p{margin:0 0 1em}
 .row .p small{font-weight:400;color:var(--muted);font-size:.86rem;margin-right:3px}
 /* komfort */
 .komfort{background:var(--navy);color:#fff;padding:0 0 100px;overflow:hidden}
-.kimg{margin:0;position:relative;height:min(82vh,780px);min-height:440px}
+.kimg{margin:0;position:relative;overflow:hidden;height:min(82vh,780px);min-height:440px}
 .kimg img{width:100%;height:100%;object-fit:cover;object-position:58% 62%}
 .kimg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--navy) 0%,rgba(26,50,96,.82) 22%,rgba(26,50,96,0) 58%)}
 .kimg figcaption{position:absolute;right:28px;top:22px;z-index:2;font-size:.85rem;color:#E6ECF5;background:rgba(16,30,58,.55);padding:6px 12px;border-radius:999px}
@@ -162,11 +164,10 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 @media (max-width:760px){
  body{font-size:1.02rem}.wrap{padding:0 20px}
  .menu{column-count:1}.karta,.zespol,.wizyta,.kontakt{padding:84px 0}
- .hero{display:block;min-height:0;padding-top:var(--hdr-h);background:#1E3359}
- .scene.desk{display:none}.scene.mob{display:block;position:relative;inset:auto;height:auto;aspect-ratio:1/1}
- .hero::after{display:none}
- .hero .wrap{padding-top:30px;padding-bottom:48px}.htxt{max-width:none}.hero h1{font-size:2.45rem}
- .board{grid-template-columns:1fr;max-width:none}.board div{border-right:0;margin-right:0;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+ .hero .wrap{align-items:flex-end;padding-bottom:34px}.htxt{max-width:none}.hero h1{font-size:3rem}
+ .scr.l{background:linear-gradient(0deg,rgba(250,247,242,.94) 0%,rgba(250,247,242,.7) 45%,rgba(250,247,242,0) 70%)}
+ .scr.d{background:linear-gradient(0deg,rgba(14,26,52,.9) 0%,rgba(14,26,52,.6) 45%,rgba(14,26,52,0) 72%)}
+ .board{display:none}.replay{right:16px;top:calc(var(--hdr-h) + 12px);bottom:auto}
  .tech{grid-template-columns:1fr}.kimg{height:72vw;min-height:300px}.ktxt{margin-top:-60px}.kimg::after{background:linear-gradient(0deg,var(--navy) 0%,rgba(26,50,96,0) 50%)}
  .names li{flex-wrap:wrap;gap:4px 14px}.names small{flex-basis:auto}.names em{margin-left:0;text-align:left;flex-basis:100%}
  .form{padding:26px 20px}.kontakt dl{grid-template-columns:1fr;gap:2px 0}.kontakt dt{margin-top:10px}
@@ -178,7 +179,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
  .past-hero .mbar{transform:none}.no-js .mbar{transform:none}
 }
 @media (max-width:420px){.logo{width:150px}.hdr .wrap>.btn{display:none}.hdr .wrap{gap:12px}}
-@media (prefers-reduced-motion:reduce){.js .scene{animation:none}.js .art path,.js .art circle{animation:none;stroke-dashoffset:0}.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231A3260'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M50 14V86M14 50H86M36 36L64 64M64 36L36 64'/%3E%3Ccircle cx='50' cy='10' r='4'/%3E%3Ccircle cx='50' cy='90' r='4'/%3E%3Ccircle cx='10' cy='50' r='4'/%3E%3Ccircle cx='90' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E">
 </head>
@@ -206,27 +207,28 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 </div>
 
 <main>
-<section class="hero" id="start">
- <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="milk" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation=".35"/></filter></defs></svg>
-<svg class="scene desk" viewBox="0 0 1990 1110" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Filiżanka cappuccino z białą śnieżynką z logo Dental Caffe na piance, na granatowym stole"><image href="img/cup-1990.webp" width="1990" height="1110"/><g class="art" filter="url(#milk)" transform="translate(1540 542) rotate(9) scale(2.85) translate(-50 -50)" fill="none" stroke="#FFF9F0" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" opacity=".93"><g transform="rotate(0 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(90 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(180 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(270 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(0 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g><g transform="rotate(90 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g><g transform="rotate(180 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g><g transform="rotate(270 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g></g></svg>
-<svg class="scene mob" viewBox="1250 252 580 580" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Filiżanka cappuccino z białą śnieżynką z logo Dental Caffe na piance, na granatowym stole"><image href="img/cup-1990.webp" width="1990" height="1110"/><g class="art" filter="url(#milk)" transform="translate(1540 542) rotate(9) scale(2.85) translate(-50 -50)" fill="none" stroke="#FFF9F0" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" opacity=".93"><g transform="rotate(0 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(90 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(180 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(270 50 50)"><path pathLength="1" class="o0" d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path pathLength="1" class="o0" d="M50 50L70 30.5"/></g><g transform="rotate(0 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g><g transform="rotate(90 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g><g transform="rotate(180 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g><g transform="rotate(270 50 50)"><circle pathLength="1" cx="50" cy="6.5" r="3.4" class="o3"/><path pathLength="1" class="o1" d="M50 50V9.9"/><path pathLength="1" class="o2" d="M44.5 12.5V20L50 25.5L55.5 20V12.5"/><path pathLength="1" class="o3" d="M38.5 20H44.5M55.5 20H61.5"/></g></g></svg>
+<section class="hero" id="start" aria-label="Od filiżanki do poczekalni Dental Caffe">
+ <img class="zfb" src="img/z0-1990.webp" width="1990" height="1110" alt="Poczekalnia Dental Caffe: granatowa ściana, żyrandol z chromowanych kul, beżowe welurowe sofy i białe stoliki, na jednym filiżanka cappuccino ze śnieżynką z logo">
+ <canvas class="zc" aria-hidden="true"></canvas>
+ <div class="scr l" aria-hidden="true"></div><div class="scr d" aria-hidden="true"></div>
  <div class="wrap"><div class="htxt">
-  <h1>Dentysta w&nbsp;Zielonej Górze, do&nbsp;którego przychodzi się jak na&nbsp;kawę</h1>
-  <p class="lede">Prywatna klinika przy Zamoyskiego 5. Implanty, leczenie kanałowe pod mikroskopem, ortodoncja i&nbsp;opieka nad dziećmi, bez pośpiechu i&nbsp;bez ściśniętego żołądka.</p>
+  <h1>Usiądź. Kawa już czeka.<span>Dental Caffe, prywatna klinika stomatologiczna w&nbsp;Zielonej Górze</span></h1>
+  <p class="lede">Implanty, leczenie kanałowe pod mikroskopem, ortodoncja i&nbsp;opieka nad dziećmi. Bez pośpiechu, przy Zamoyskiego 5.</p>
   <div class="acts"><a class="btn" href="tel:+48534219037">Zadzwoń: 534 219 037</a><a class="btn ghost" href="#karta">Zobacz kartę zabiegów</a></div>
   <div class="board"><div><b>pon.–pt.</b>8:00–21:00</div><div><b>Zamoyskiego 5/5</b>Zielona Góra</div><div><b>Boli?</b>pomagamy poza kolejką</div></div>
  </div></div>
+ <button class="replay" type="button">Odtwórz jeszcze raz</button>
 </section>
 
 <section class="karta" id="karta">
  <div class="wrap">
-  <aside class="rv">
+  <aside class="rv" data-f="-7">
    <h2>Karta zabiegów</h2>
    <p>Wszystko, czym zajmujemy się na&nbsp;miejscu, od&nbsp;pierwszej konsultacji po&nbsp;implanty. Ceny są z&nbsp;aktualnego cennika kliniki, żeby przed wizytą wiedzieć, czego się spodziewać.</p>
    <p class="note">Ceny orientacyjne „od”. Dokładny koszt podajemy po&nbsp;badaniu, razem z&nbsp;planem leczenia.<br><a class="pdf" href="https://dentalcaffe.pl/wp-content/uploads/2025/11/cennik.pdf">Pełny cennik (PDF)</a></p>
   </aside>
   <div class="menu">
-   <details class="grp" open><summary><h3>Na początek</h3></summary>
+   <details class="grp" open data-f="5"><summary><h3>Na początek</h3></summary>
     <div class="row"><span class="n">Konsultacja pierwszorazowa</span><span class="d"></span><span class="p">250&nbsp;zł</span></div>
     <div class="row"><span class="n">Wizyta bólowa — diagnostyka i&nbsp;leki</span><span class="d"></span><span class="p"><small>od</small>300&nbsp;zł</span></div>
     <div class="row"><span class="n">Plan leczenia z&nbsp;omówieniem</span><span class="d"></span><span class="p">300&nbsp;zł</span></div>
@@ -234,30 +236,30 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
     <div class="row"><span class="n">RTG panoramiczne</span><span class="d"></span><span class="p">150&nbsp;zł</span></div>
     <div class="row"><span class="n">Tomografia komputerowa</span><span class="d"></span><span class="p"><small>od</small>250&nbsp;zł</span></div>
    </details>
-   <details class="grp" open><summary><h3>Na co dzień</h3></summary>
+   <details class="grp" open data-f="9"><summary><h3>Na co dzień</h3></summary>
     <div class="row"><span class="n">Higienizacja w&nbsp;protokole GBT</span><span class="d"></span><span class="p">450&nbsp;zł</span></div>
     <div class="row"><span class="n">Fluoryzacja</span><span class="d"></span><span class="p"><small>od</small>150&nbsp;zł</span></div>
     <div class="row"><span class="n">Wypełnienie kompozytowe</span><span class="d"></span><span class="p"><small>od</small>400&nbsp;zł</span></div>
     <div class="row"><span class="n">Leczenie kanałowe pod mikroskopem</span><span class="d"></span><span class="p"><small>od</small>1000&nbsp;zł</span></div>
    </details>
-   <details class="grp" open><summary><h3>Uśmiech</h3></summary>
+   <details class="grp" open data-f="7"><summary><h3>Uśmiech</h3></summary>
     <div class="row"><span class="n">ICON — przebarwienia bez borowania</span><span class="d"></span><span class="p">600&nbsp;zł</span></div>
     <div class="row"><span class="n">Licówka kompozytowa</span><span class="d"></span><span class="p">800&nbsp;zł</span></div>
     <div class="row"><span class="n">Licówka ceramiczna</span><span class="d"></span><span class="p"><small>od</small>1500&nbsp;zł</span></div>
     <div class="row"><span class="n">Projekt uśmiechu DSD</span><span class="d"></span><span class="p">2000&nbsp;zł</span></div>
    </details>
-   <details class="grp" open><summary><h3>Braki zębowe</h3></summary>
+   <details class="grp" open data-f="11"><summary><h3>Braki zębowe</h3></summary>
     <div class="row"><span class="n">Implantacja</span><span class="d"></span><span class="p"><small>od</small>3000&nbsp;zł</span></div>
     <div class="row"><span class="n">Szablon chirurgiczny</span><span class="d"></span><span class="p"><small>od</small>1000&nbsp;zł</span></div>
     <div class="row"><span class="n">Korona / punkt mostu</span><span class="d"></span><span class="p"><small>od</small>1500&nbsp;zł</span></div>
     <div class="row"><span class="n">Proteza akrylowa</span><span class="d"></span><span class="p"><small>od</small>2500&nbsp;zł</span></div>
    </details>
-   <details class="grp" open><summary><h3>Dla dzieci</h3></summary>
+   <details class="grp" open data-f="6"><summary><h3>Dla dzieci</h3></summary>
     <div class="row"><span class="n">Wizyta adaptacyjna (do&nbsp;30&nbsp;min)</span><span class="d"></span><span class="p">300&nbsp;zł</span></div>
     <div class="row"><span class="n">Lakowanie zęba stałego</span><span class="d"></span><span class="p"><small>od</small>200&nbsp;zł</span></div>
     <div class="row"><span class="n">Wypełnienie zęba mlecznego</span><span class="d"></span><span class="p"><small>od</small>250&nbsp;zł</span></div>
    </details>
-   <details class="grp" open><summary><h3>Specjalistycznie</h3></summary>
+   <details class="grp" open data-f="10"><summary><h3>Specjalistycznie</h3></summary>
     <div class="row"><span class="n">Konsultacja ortodontyczna z&nbsp;planem</span><span class="d"></span><span class="p">200&nbsp;zł</span></div>
     <div class="row"><span class="n">Tomografia stawów skroniowo-żuchwowych</span><span class="d"></span><span class="p">450&nbsp;zł</span></div>
     <div class="row"><span class="n">Usunięcie zęba</span><span class="d"></span><span class="p"><small>od</small>500&nbsp;zł</span></div>
@@ -268,16 +270,16 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 </section>
 
 <section class="komfort" id="komfort">
- <figure class="kimg"><img src="img/poczekalnia-1920.webp" width="1920" height="1071" alt="Poczekalnia Dental Caffe: granatowa ściana, beżowe welurowe sofy, żyrandol z kul i filiżanka kawy na stoliku" loading="lazy"><figcaption>Poczekalnia przy Zamoyskiego 5</figcaption></figure>
- <div class="wrap ktxt">
+ <figure class="kimg"><img data-f="-16" src="img/poczekalnia-1920.webp" width="1920" height="1071" alt="Poczekalnia Dental Caffe: granatowa ściana, beżowe welurowe sofy, żyrandol z kul i filiżanka kawy na stoliku" loading="lazy"><figcaption>Poczekalnia przy Zamoyskiego 5</figcaption></figure>
+ <div class="wrap ktxt" data-f="10">
   <h2 class="rv">Poczekalnia, w&nbsp;której nie odlicza się minut</h2>
   <p>Granatowe ściany, miękkie sofy, kawa. Nazwa „Caffe” nie jest przypadkiem: do&nbsp;dentysty ma się przychodzić spokojnie. Za drzwiami gabinetu spokój zostaje, a&nbsp;dochodzi do&nbsp;niego precyzja.</p>
  </div>
  <div class="wrap"><ul class="tech">
-  <li><b>Mikroskop</b>Leczenie kanałowe w&nbsp;powiększeniu: widać więcej niż gołym okiem, więc mniej się zgaduje.</li>
-  <li><b>Tomografia</b>Obraz 3D szczęki na&nbsp;miejscu, bez jeżdżenia ze&nbsp;skierowaniem do&nbsp;innej pracowni.</li>
-  <li><b>Laser</b>Laseroterapia przy leczeniu dziąseł i&nbsp;tkanek miękkich.</li>
-  <li><b>Skan i&nbsp;druk 3D</b>Odtwarzanie braków zębowych ze&nbsp;skanu, implanty z&nbsp;szablonem nawigującym.</li>
+  <li data-f="6"><b>Mikroskop</b>Leczenie kanałowe w&nbsp;powiększeniu: widać więcej niż gołym okiem, więc mniej się zgaduje.</li>
+  <li data-f="10"><b>Tomografia</b>Obraz 3D szczęki na&nbsp;miejscu, bez jeżdżenia ze&nbsp;skierowaniem do&nbsp;innej pracowni.</li>
+  <li data-f="7"><b>Laser</b>Laseroterapia przy leczeniu dziąseł i&nbsp;tkanek miękkich.</li>
+  <li data-f="12"><b>Skan i&nbsp;druk 3D</b>Odtwarzanie braków zębowych ze&nbsp;skanu, implanty z&nbsp;szablonem nawigującym.</li>
  </ul></div>
 </section>
 
@@ -285,11 +287,11 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
  <div class="wrap">
   <div class="head rv"><h2>Pięcioro lekarzy, każdy w&nbsp;swojej dziedzinie</h2><p>W&nbsp;Dental Caffe trafiasz do&nbsp;osoby, która w&nbsp;Twoim problemie ma największe doświadczenie. Wspierają ich asystentki i&nbsp;higienistki.</p></div>
   <ul class="names">
-   <li><small>lek. dent.</small><span>Agnieszka Rutkowska</span></li>
-   <li><small>lek. dent.</small><span>Karolina Reitmajer</span></li>
-   <li><small>lek. dent.</small><span>Natalia Poszumska</span></li>
-   <li><small>lek. dent.</small><span>Bartosz Królikowski</span></li>
-   <li><small>lek. dent.</small><span>Anna Niedziela</span></li>
+   <li data-f="8"><small>lek. dent.</small><span>Agnieszka Rutkowska</span></li>
+   <li data-f="8"><small>lek. dent.</small><span>Karolina Reitmajer</span></li>
+   <li data-f="8"><small>lek. dent.</small><span>Natalia Poszumska</span></li>
+   <li data-f="8"><small>lek. dent.</small><span>Bartosz Królikowski</span></li>
+   <li data-f="8"><small>lek. dent.</small><span>Anna Niedziela</span></li>
   </ul>
  </div>
 </section>
@@ -298,9 +300,9 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
  <div class="wrap">
   <h2 class="rv">Pierwsza wizyta, krok po&nbsp;kroku</h2>
   <div class="steps">
-   <div class="step"><span class="num">1</span><h3>Telefon</h3><p>Zadzwoń i&nbsp;powiedz w&nbsp;dwóch zdaniach, co się dzieje. Przy silnym bólu, obrzęku albo złamanym zębie powiedz to od&nbsp;razu, szukamy terminu jeszcze tego samego dnia.</p></div>
-   <div class="step"><span class="num">2</span><h3>Konsultacja</h3><p>Badanie i&nbsp;rozmowa, w&nbsp;razie potrzeby RTG albo tomografia na&nbsp;miejscu. Weź ze&nbsp;sobą wcześniejsze zdjęcia i&nbsp;dokumentację, jeśli je masz.</p></div>
-   <div class="step"><span class="num">3</span><h3>Plan i&nbsp;leczenie</h3><p>Dostajesz plan leczenia z&nbsp;kosztorysem i&nbsp;wiesz, co, kiedy i&nbsp;za ile. Zaczynamy wtedy, kiedy jest to dla Ciebie jasne.</p></div>
+   <div class="step" data-f="8"><span class="num">1</span><h3>Telefon</h3><p>Zadzwoń i&nbsp;powiedz w&nbsp;dwóch zdaniach, co się dzieje. Przy silnym bólu, obrzęku albo złamanym zębie powiedz to od&nbsp;razu, szukamy terminu jeszcze tego samego dnia.</p></div>
+   <div class="step" data-f="8"><span class="num">2</span><h3>Konsultacja</h3><p>Badanie i&nbsp;rozmowa, w&nbsp;razie potrzeby RTG albo tomografia na&nbsp;miejscu. Weź ze&nbsp;sobą wcześniejsze zdjęcia i&nbsp;dokumentację, jeśli je masz.</p></div>
+   <div class="step" data-f="8"><span class="num">3</span><h3>Plan i&nbsp;leczenie</h3><p>Dostajesz plan leczenia z&nbsp;kosztorysem i&nbsp;wiesz, co, kiedy i&nbsp;za ile. Zaczynamy wtedy, kiedy jest to dla Ciebie jasne.</p></div>
   </div>
  </div>
 </section>
@@ -309,7 +311,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
  <div class="wrap">
   <div>
    <h2 class="rv">Zamoyskiego 5/5, Zielona Góra</h2>
-   <div class="phones"><a href="tel:+48534219037">+48 534 219 037</a><a href="tel:+48780411119">+48 780 411 119</a></div>
+   <div class="phones" data-f="9"><a href="tel:+48534219037">+48 534 219 037</a><a href="tel:+48780411119">+48 780 411 119</a></div>
    <dl>
     <dt>Godziny</dt><dd>poniedziałek–piątek 8:00–21:00</dd>
     <dt>E-mail</dt><dd><a href="mailto:dental.caffe@gmail.com">dental.caffe@gmail.com</a></dd>
@@ -317,7 +319,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
    </dl>
    <p class="sos">Boli teraz? Zadzwoń. W&nbsp;nagłych przypadkach pomagamy poza kolejką.</p>
   </div>
-  <form class="form" onsubmit="event.preventDefault();this.querySelector('.ok').style.display='block'">
+  <form class="form" data-f="-6" onsubmit="event.preventDefault();this.querySelector('.ok').style.display='block'">
    <h3>Poproś o&nbsp;termin</h3>
    <p>Oddzwonimy w&nbsp;godzinach pracy rejestracji.</p>
    <label for="f1">Imię</label><input id="f1" autocomplete="given-name" required>
@@ -347,9 +349,48 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 (()=>{const top=document.getElementById('top'),d=document.documentElement,b=document.body;
 const m=()=>d.style.setProperty('--hdr-h',top.offsetHeight+'px');m();addEventListener('resize',m);addEventListener('load',m);
 const hero=document.querySelector('.hero');
+(()=>{const cv=hero.querySelector('.zc'),fb=hero.querySelector('.zfb'),rb=hero.querySelector('.replay'),cx=cv.getContext('2d');
+ const R0=[0,0,1990,1110],R1=[697,712,560,315];
+ const sub=(P,r)=>[P[0]+r[0]*P[2]/1990,P[1]+r[1]*P[3]/1110,r[2]*P[2]/1990,r[3]*P[3]/1110];
+ const R2=sub(R1,[715,407,560,315]),R3=sub(R2,[585,177,800,446]);
+ const rects=[R0,R1,R2,R3],src=['img/z0-1990.webp','img/z1-1990.webp','img/z2-1990.webp','img/z3-1990.webp'];
+ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ let L=[],W=0,H=0,dpr=1,p=rm?1:0,anim=null;
+ function feather(img,k){if(k===0)return img;const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const g=c.getContext('2d');g.drawImage(img,0,0);g.globalCompositeOperation='destination-out';
+  const fw=c.width*.07,fh=c.height*.09;let gr;
+  gr=g.createLinearGradient(0,0,fw,0);gr.addColorStop(0,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(0,0,fw,c.height);
+  gr=g.createLinearGradient(c.width,0,c.width-fw,0);gr.addColorStop(0,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(c.width-fw,0,fw,c.height);
+  gr=g.createLinearGradient(0,0,0,fh);gr.addColorStop(0,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(0,0,c.width,fh);
+  gr=g.createLinearGradient(0,c.height,0,c.height-fh);gr.addColorStop(0,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(0,c.height-fh,c.width,fh);return c}
+ function size(){W=hero.clientWidth;H=hero.clientHeight;dpr=Math.min(devicePixelRatio||1,2);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+ const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+ function draw(){if(!L.length)return;const A=W/H,mob=W<=760;
+  const sCw=Math.min(R3[2],R3[3]*A)*(mob?1.15:1.5),eCw=Math.min(1990,1110*A);
+  const e=ease(p),lw=Math.log(sCw)+(Math.log(eCw)-Math.log(sCw))*e,cw=Math.exp(lw),ch=cw/A;
+  const cs=[R3[0]+R3[2]*(mob?.5:.3),R3[1]+R3[3]*(mob?.66:.56)],ce=[mob?1990*.52:1990*.47,555];
+  const f=(cw-sCw)/(eCw-sCw);let x=cs[0]+(ce[0]-cs[0])*f,y=cs[1]+(ce[1]-cs[1])*f;
+  x=Math.min(1990-cw/2,Math.max(cw/2,x));y=Math.min(1110-ch/2,Math.max(ch/2,y));
+  const sx=cv.width/cw,ox=x-cw/2,oy=y-ch/2;cx.imageSmoothingQuality='high';
+  for(let k=0;k<4;k++){const r=rects[k],w=r[2]*sx;if(k&&w<cv.width*.06)continue;const dx=(r[0]-ox)*sx,dy=(r[1]-oy)*sx,dh=r[3]*sx;if(dx>cv.width||dy>cv.height||dx+w<0||dy+dh<0)continue;cx.drawImage(L[k],dx,dy,w,dh)}
+  const kk=Math.min(1,Math.max(0,(p-.55)/.3));hero.style.setProperty('--k',kk.toFixed(3));
+  const mix=(a,b)=>Math.round(a+(b-a)*kk);hero.style.setProperty('--tc',`rgb(${mix(20,255)},${mix(33,255)},${mix(61,255)})`);
+  hero.style.setProperty('--bb',kk>.5?'#fff':'#1A3260');hero.style.setProperty('--bc',kk>.5?'#1A3260':'#fff')}
+ function play(){if(rm){p=1;draw();return}rb.classList.remove('on');cancelAnimationFrame(anim);const t0=performance.now()+700,D=7000;
+  const step=t=>{p=Math.min(1,Math.max(0,(t-t0)/D));draw();if(p<1)anim=requestAnimationFrame(step);else rb.classList.add('on')};anim=requestAnimationFrame(step)}
+ if(!cv.getContext){document.documentElement.classList.add('no-canvas');return}
+ Promise.all(src.map(u=>new Promise((ok,no)=>{const i=new Image();i.decoding='async';i.onload=()=>ok(i);i.onerror=no;i.src=u}))).then(imgs=>{L=imgs.map((im,k)=>feather(im,k));size();p=rm?1:0;draw();play()}).catch(()=>document.documentElement.classList.add('no-canvas'));
+ addEventListener('resize',()=>{size();draw()});rb.addEventListener('click',()=>{p=0;play()});
+ if(!rm){let raf;hero.addEventListener('pointermove',e=>{if(p<1||e.pointerType==='touch')return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const r=hero.getBoundingClientRect(),nx=(e.clientX-r.left)/r.width-.5,ny=(e.clientY-r.top)/r.height-.5;cv.style.transform=`scale(1.03) translate(${(-nx*14).toFixed(1)}px,${(-ny*10).toFixed(1)}px)`})});hero.addEventListener('pointerleave',()=>{cv.style.transform=''});cv.style.transition='transform .6s cubic-bezier(.2,.7,.2,1)'}
+})();
 const on=()=>{b.classList.toggle('scrolled',scrollY>20);b.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5)};on();addEventListener('scroll',on,{passive:true});
 if(matchMedia('(max-width:760px)').matches)[...document.querySelectorAll('details.grp')].slice(1).forEach(g=>g.open=false);
 else document.querySelectorAll('details.grp summary').forEach(x=>x.addEventListener('click',e=>e.preventDefault()));
+(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches||matchMedia('(hover:none)').matches)return;
+ const secs=[...document.querySelectorAll('main section:not(.hero)')];
+ secs.forEach(sec=>{const els=[...sec.querySelectorAll('[data-f]')];if(!els.length)return;let tx=0,ty=0,x=0,y=0,run=false;
+  const tick=()=>{x+=(tx-x)*.08;y+=(ty-y)*.08;els.forEach(el=>{const d=+el.dataset.f;el.style.transform=`translate3d(${(x*d).toFixed(2)}px,${(y*d).toFixed(2)}px,0)`+(el.tagName==='IMG'?' scale(1.06)':'')});if(Math.abs(tx-x)+Math.abs(ty-y)>.002)requestAnimationFrame(tick);else run=false};
+  sec.addEventListener('pointermove',e=>{const r=sec.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*2-1;ty=(e.clientY-r.top)/r.height*2-1;if(!run){run=true;requestAnimationFrame(tick)}});
+  sec.addEventListener('pointerleave',()=>{tx=0;ty=0;if(!run){run=true;requestAnimationFrame(tick)}})})})();
 document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
 const els=[...document.querySelectorAll('.rv')];let fired=false;
 if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px 15% 0px'});els.forEach(e=>io.observe(e))}else els.forEach(e=>e.classList.add('in'));

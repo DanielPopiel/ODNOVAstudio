@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dental Caffe · dentysta Zielona Góra — makieta W3 „Witryna”</title>
+<title>Dental Caffe · dentysta Zielona Góra — makieta W3 „Wejście”</title>
 <meta name="description" content="Boli ząb, brakuje zęba, chcesz ładniejszy uśmiech? Dental Caffe w Zielonej Górze: zobacz, co zrobimy i ile to kosztuje. Pomoc w nagłych przypadkach, tel. 534 219 037.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dental Caffe — makieta W3 „Witryna”">
-<meta property="og:description" content="Makieta nowej strony Dental Caffe — wariant W3: zaparowana witryna z ich napisami, za którą czeka poczekalnia.">
+<meta property="og:title" content="Dental Caffe — makieta W3 „Wejście”">
+<meta property="og:description" content="Makieta nowej strony Dental Caffe — wariant W3: wejście do kliniki i trzy szybkie ścieżki z cenami.">
 <meta property="og:url" content="https://www.odnovastudio.com/p/dentalcaffe-w3/">
 <meta property="og:image" content="https://www.odnovastudio.com/p/dentalcaffe-w3/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -16,11 +16,11 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#1A3260">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Rethink+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{--bg:#FFFFFF;--ice:#EAF0F7;--ice2:#DCE6F2;--navy:#1A3260;--deep:#10213F;--ink:#0F1B33;--mid:#7F94A3;--muted:#4B5A72;--line:rgba(15,27,51,.14);--hdr-h:112px;
---head:'Gilda Display',Georgia,serif;--sans:'Rethink Sans',system-ui,sans-serif}
+--head:'Young Serif',Georgia,serif;--sans:'Albert Sans',system-ui,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--sans)}
 img{max-width:100%;height:auto;display:block}a{color:inherit}
@@ -51,30 +51,25 @@ p{margin:0 0 1em}
 .mnav nav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);padding:6px 28px 22px;display:flex;flex-direction:column}
 .mnav nav a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--head);font-weight:400;font-size:1.35rem}
 .mnav nav .btn{margin-top:16px;font-family:var(--sans);font-size:1rem}
-/* OKNO */
-.okno{position:relative;background:#E9EEF4}
-.js .okno{height:190vh}
-.okno .pin{position:relative;height:100svh;min-height:640px;overflow:hidden}
-.js .okno .pin{position:sticky;top:0}
-.room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 62%;transform:scale(var(--sc,1.06));transform-origin:50% 40%}
-.frost{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;cursor:crosshair}
-.frost-css{display:none}
-.no-js .frost-css{display:block;position:absolute;inset:0;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);background:rgba(238,243,248,.5)}
-.decal{position:absolute;left:42%;right:0;top:var(--hdr-h);bottom:0;display:grid;place-items:center;padding:0 4vw;color:#4F5A70;pointer-events:none;opacity:var(--dop,1)}
-.decal ul{list-style:none;margin:0;padding:0;font-family:var(--head);font-size:clamp(.95rem,1.3vw,1.25rem);line-height:2.05;text-align:center}
-.decal .mid{text-align:center}
-.decal .mid svg{width:clamp(70px,8vw,120px);height:auto;color:#4F5A70;display:block;margin:0 auto 14px}
-.decal .mid b{display:block;font:400 clamp(1.6rem,2.6vw,2.5rem)/1 var(--head);letter-spacing:.16em;padding-left:.16em}
-.decal .orn{display:block;width:44px;height:auto;margin:10px auto;color:#6B7690;opacity:.8}
-.film{position:absolute;left:0;top:0;bottom:0;width:42%;backdrop-filter:blur(18px) saturate(1.05);-webkit-backdrop-filter:blur(18px);background:rgba(241,245,249,.84);border-right:1px solid rgba(255,255,255,.95);box-shadow:inset -10px 0 0 -9px rgba(79,90,112,.28),inset -16px 0 0 -15px rgba(79,90,112,.2);padding:calc(var(--hdr-h) + 5vh) 3.2vw 5vh max(28px,calc((100vw - 1260px)/2 + 28px))}
-.film .in{height:100%;display:flex;flex-direction:column;justify-content:center;gap:0}
-.film .svc{list-style:none;margin:34px 0 0;padding:20px 0 0;border-top:1px solid rgba(79,90,112,.3);columns:2;column-gap:24px;font:400 1rem/1.9 var(--head);color:#4F5A70}
-.film .svc li{break-inside:avoid}
-.okno h1{margin-bottom:22px;font-size:clamp(2.3rem,3.6vw,3.9rem);line-height:1.02;letter-spacing:-.01em;color:var(--ink)}
-.okno .lede2{font-size:1.1rem;color:#3E4B63;margin:0 0 22px;max-width:30rem}
-.okno .acts{display:flex;flex-wrap:wrap;gap:10px}
-.hint2{position:absolute;right:28px;bottom:28px;top:auto!important;top:calc(var(--hdr-h) + 18px);z-index:3;font-size:.86rem;color:#3E4B63;background:rgba(255,255,255,.7);padding:6px 12px;border-radius:999px;opacity:var(--dop,1);pointer-events:none}
-.no-js .hint2{display:none}
+/* WEJSCIE */
+.wej{padding:calc(var(--hdr-h) + 56px) 0 90px;background:linear-gradient(180deg,#fff 0%,#fff 55%,var(--ice) 100%);overflow:hidden}
+.wej .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:center}
+.wej h1{font-size:clamp(2.8rem,5.4vw,5.4rem);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.wej h1 span{display:block;font-family:var(--sans);font-size:clamp(1.02rem,1.3vw,1.15rem);line-height:1.5;letter-spacing:0;color:var(--muted);margin-top:22px;font-weight:500}
+.paths{list-style:none;margin:38px 0 0;padding:0;border-top:1px solid #7F94A3;max-width:40rem}
+.paths li{border-bottom:1px solid #7F94A3}
+.paths a{display:grid;grid-template-columns:1fr auto 28px;align-items:baseline;gap:18px;padding:18px 4px;text-decoration:none;color:var(--ink);transition:padding .35s cubic-bezier(.2,.7,.2,1),color .2s}
+.paths b{font:400 clamp(1.4rem,2vw,1.9rem)/1.1 var(--head)}
+.paths small{font-size:.98rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.paths svg{width:22px;height:22px;align-self:center;color:var(--navy);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.paths a:hover{padding-left:14px;color:var(--navy)}.paths a:hover svg{transform:translateX(6px)}
+.wej .tel2{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.door{margin:0;position:relative}
+.door .ph{overflow:hidden;border-radius:4px;aspect-ratio:4/5;background:var(--ice)}
+.door img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(1.08) translate3d(var(--mx,0),var(--my,0),0);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.door figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-size:.9rem;color:var(--muted)}
+.door .badge{position:absolute;left:-28px;bottom:58px;background:var(--navy);color:#fff;padding:16px 20px;border-radius:4px;font-size:.95rem;line-height:1.35;box-shadow:0 20px 40px -24px rgba(15,27,51,.6)}
+.door .badge b{display:block;font:400 1.35rem/1.1 var(--head)}
 /* HERO */
 .powod{padding:120px 0 110px;background:linear-gradient(180deg,#fff 0%,#fff 62%,var(--ice) 100%);overflow:hidden}
 .powod .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
@@ -179,11 +174,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 .js .rv{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}.js .rv.in{opacity:1;transform:none}
 @media (max-width:1060px){.nav{display:none}.mnav{display:block}.hdr .tel{display:none}}
 @media (max-width:900px){
- .decal{left:0;top:var(--hdr-h);bottom:50%}
- .film{top:auto;width:auto;right:0;height:50%;border-right:0;border-top:1px solid rgba(255,255,255,.95);box-shadow:inset 0 10px 0 -9px rgba(79,90,112,.28);padding:22px 20px}.film .svc{display:none}
- .room,.frost,.no-js .frost-css{height:50%;bottom:auto}.room{object-position:60% 62%}
- .okno h1{font-size:2.15rem}.okno .lede2{font-size:1rem;margin-bottom:16px}
- .hint2{display:none}
+ .wej .wrap{grid-template-columns:1fr;gap:40px}.door .badge{left:12px;bottom:56px}.door .ph{aspect-ratio:4/3}.paths a{grid-template-columns:1fr 24px}.paths small{grid-column:1;grid-row:2;white-space:normal}.paths svg{grid-row:1/3;grid-column:2}
  .powod .wrap,.powod .side,.sos .wrap,.zakres .head,.miejsce .grid,.miejsce .txt,.faq .wrap,.kontakt .wrap{grid-template-columns:1fr;gap:36px}
  .photo img{aspect-ratio:16/10}
  .groups{grid-template-columns:1fr;gap:44px}.g,.g.wide{grid-column:auto}.g.wide ul{columns:1}
@@ -204,7 +195,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
  .past-hero .mbar,.no-js .mbar{transform:none}
 }
 @media (max-width:420px){.logo{width:148px}.hdr .wrap>.btn{display:none}.hdr .wrap{gap:12px}}
-@media (prefers-reduced-motion:reduce){.js .okno{height:auto}.js .okno .pin{position:relative}.js .rv{opacity:1;transform:none}.js .panel.in{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.door img{transition:none}.js .rv{opacity:1;transform:none}.js .panel.in{animation:none}html{scroll-behavior:auto}}
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A3260'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M50 14V86M14 50H86M36 36L64 64M64 36L36 64'/%3E%3Ccircle cx='50' cy='10' r='4'/%3E%3Ccircle cx='50' cy='90' r='4'/%3E%3Ccircle cx='10' cy='50' r='4'/%3E%3Ccircle cx='90' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E">
 </head>
@@ -215,7 +206,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 </defs></svg>
 
 <div class="top" id="top">
- <div class="mk">Makieta poglądowa · <b>wariant W3 „Witryna”</b> · przygotowało ODNOVA Studio</div>
+ <div class="mk">Makieta poglądowa · <b>wariant W3 „Wejście”</b> · przygotowało ODNOVA Studio</div>
  <header class="hdr"><div class="wrap">
   <a class="logo" href="#" aria-label="Dental Caffe — strona główna"><img src="img/logo-granat.png" width="520" height="121" alt="Dental Caffe"></a>
   <nav class="nav" aria-label="Główne"><a href="#zakres">Leczenie</a><a href="#miejsce">Klinika i&nbsp;zespół</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a></nav>
@@ -226,18 +217,20 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 </div>
 
 <main>
-<section class="okno" id="start" aria-label="Witryna Dental Caffe">
- <div class="pin">
-  <img class="room" src="img/poczekalnia-1920.webp" srcset="img/poczekalnia-1000.webp 1000w, img/poczekalnia-1920.webp 1920w" sizes="100vw" width="1920" height="1071" alt="Poczekalnia Dental Caffe: granatowa ściana, żyrandol z chromowanych kul, beżowe welurowe sofy">
-  <canvas class="frost" aria-hidden="true"></canvas><div class="frost-css" aria-hidden="true"></div>
-  <div class="decal" aria-hidden="true"><div class="mid"><svg viewBox="0 0 100 100"><use href="#sm"/></svg><b>DENTAL CAFFE</b><svg class="orn" viewBox="0 0 44 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M22 1V13M16 3V8L22 13L28 8V3M10 8H16M28 8H34"/><circle cx="22" cy="1" r=".9"/></svg></div></div>
-  <p class="hint2">Przetrzyj szybę kursorem albo przewiń</p>
-  <div class="film"><div class="in">
-   <h1>Odkryj nową jakość stomatologii w&nbsp;Zielonej Górze</h1>
-   <div><p class="lede2">Za matową szybą przy Zamoyskiego 5 czeka granatowa poczekalnia, welurowe sofy i&nbsp;kawa. Wejdź, a&nbsp;zadbamy o&nbsp;to, żebyś został z&nbsp;nami na&nbsp;dłużej.</p>
-   <div class="acts"><a class="btn" href="tel:+48534219037"><svg><use href="#ph"/></svg>534 219 037</a><a class="btn soft" href="#powod">Z&nbsp;czym przychodzisz?</a></div></div>
-   <ul class="svc" aria-label="Zakres leczenia"><li>Leczenie endodontyczne pod&nbsp;mikroskopem</li><li>Implantologia</li><li>Implantoprotetyka</li><li>Chirurgia stomatologiczna</li><li>Ortodoncja</li><li>Protetyka</li><li>Stomatologia zachowawcza</li><li>Stomatologia dziecięca</li><li>Periodontologia</li><li>Tomografia komputerowa</li><li>Laseroterapia</li><li>Leczenie stawów skroniowo-żuchwowych</li></ul>
-  </div></div>
+<section class="wej" id="start">
+ <div class="wrap">
+  <div>
+   <h1>Wejdź, usiądź. Zajmiemy się resztą.<span>Dental Caffe, dentysta w&nbsp;Zielonej Górze. Parter przy Zamoyskiego 5, pięcioro lekarzy, tomografia i&nbsp;mikroskop na&nbsp;miejscu.</span></h1>
+   <ul class="paths">
+    <li><a href="#powod" data-i="0"><b>Boli mnie ząb</b><small>wizyta bólowa od&nbsp;300&nbsp;zł</small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+    <li><a href="#powod" data-i="1"><b>Brakuje mi zęba</b><small>implant od&nbsp;3000&nbsp;zł</small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+    <li><a href="#powod" data-i="5"><b>Czas na&nbsp;kontrolę</b><small>higienizacja 450&nbsp;zł</small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+   </ul>
+   <div class="tel2"><a class="btn" href="tel:+48534219037"><svg><use href="#ph"/></svg>534 219 037</a><a class="btn soft" href="#powod">Inny powód wizyty</a></div>
+  </div>
+  <figure class="door"><div class="ph"><img src="img/fasada-1920.webp" srcset="img/fasada-1000.webp 1000w, img/fasada-1920.webp 1920w" sizes="(max-width:900px) 100vw, 40vw" width="1920" height="1080" alt="Wejście do Dental Caffe przy ul. Zamoyskiego 5: przeszklona witryna z logo i listą zabiegów"></div>
+   <figcaption><span>Wejście od&nbsp;ulicy, parter</span><span>ul. Jana Zamoyskiego 5/5</span></figcaption>
+   <p class="badge"><b>pon.–pt. 8–21</b>przy bólu poza kolejką</p></figure>
  </div>
 </section>
 
@@ -387,7 +380,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding
 <footer><div class="wrap">
  <img src="img/logo-biale.png" width="520" height="121" alt="Dental Caffe">
  <nav aria-label="Stopka"><a href="#zakres">Leczenie</a><a href="#miejsce">Klinika i&nbsp;zespół</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a href="https://www.facebook.com/DentalCaffe/">Facebook</a></nav>
- <div class="legal"><span>© 2026 Dental Caffe · ul.&nbsp;Jana Zamoyskiego 5/5, 65-255 Zielona Góra · NIP [uzupełnić]</span><span>Makieta W3 „Witryna” · projekt: ODNOVA Studio</span></div>
+ <div class="legal"><span>© 2026 Dental Caffe · ul.&nbsp;Jana Zamoyskiego 5/5, 65-255 Zielona Góra · NIP [uzupełnić]</span><span>Makieta W3 „Wejście” · projekt: ODNOVA Studio</span></div>
 </div></footer>
 <div class="mbar"><a class="btn" href="tel:+48534219037">Zadzwoń</a><a class="btn soft" href="#kontakt">Termin</a></div>
 <script>
@@ -398,27 +391,13 @@ const alts=[...document.querySelectorAll('.alt')],pans=[...document.querySelecto
 const rmm=matchMedia('(prefers-reduced-motion:reduce)').matches;let cur=0,tt;
 function typeIn(txt){clearInterval(tt);if(rmm){pick.textContent=txt;return}let n=pick.textContent.length;const del=setInterval(()=>{n--;pick.textContent=pick.textContent.slice(0,n);if(n<=0){clearInterval(del);let k=0;tt=setInterval(()=>{k++;pick.textContent=txt.slice(0,k);if(k>=txt.length)clearInterval(tt)},34)}},14)}
 function show(i){cur=i;alts.forEach((a,k)=>a.setAttribute('aria-pressed',k===i));pans.forEach((p,k)=>{p.hidden=k!==i;p.classList.toggle('in',k===i)});typeIn(alts[i].textContent);if(sel)sel.selectedIndex=i}
-alts.forEach((a,i)=>a.addEventListener('click',()=>show(i)));
+alts.forEach((a,i)=>a.addEventListener('click',()=>show(i)));window.__pick=show;
 pick.addEventListener('click',()=>show((cur+1)%alts.length));
 pans.forEach((p,k)=>{p.hidden=k!==0});
-const ok=document.querySelector('.okno'),pin=ok.querySelector('.pin'),cv=ok.querySelector('.frost'),room=ok.querySelector('.room'),cx=cv.getContext('2d');
-let dpr=Math.min(devicePixelRatio||1,1.5),last=null;
-function cover(W,H){const iw=room.naturalWidth||1920,ih=room.naturalHeight||1071,s=Math.max(W/iw,H/ih)*1.06;const w=iw*s,h=ih*s;const op=getComputedStyle(room).objectPosition.split(' ').map(v=>parseFloat(v)/100);return [(W-w)*(op[0]||.5),(H-h)*(op[1]||.5),w,h]}
-function fog(){const W=cv.clientWidth,H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);const [x,y,w,h]=cover(W,H);cx.filter='blur(26px)';cx.drawImage(room,x-40,y-40,w+80,h+80);cx.filter='none';cx.fillStyle='rgba(236,241,247,.6)';cx.fillRect(0,0,W,H);
- const g=cx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(255,255,255,.18)');g.addColorStop(1,'rgba(255,255,255,0)');cx.fillStyle=g;cx.fillRect(0,0,W,H)}
-function wipe(x,y){cx.globalCompositeOperation='destination-out';const r=Math.max(60,Math.min(cv.clientWidth,cv.clientHeight)*.09);
- const pts=last?Math.ceil(Math.hypot(x-last[0],y-last[1])/(r*.25)):1;for(let i=1;i<=pts;i++){const px=last?last[0]+(x-last[0])*i/pts:x,py=last?last[1]+(y-last[1])*i/pts:y;const g=cx.createRadialGradient(px,py,0,px,py,r);g.addColorStop(0,'rgba(0,0,0,.9)');g.addColorStop(.6,'rgba(0,0,0,.5)');g.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=g;cx.beginPath();cx.arc(px,py,r,0,7);cx.fill()}
- cx.globalCompositeOperation='source-over';last=[x,y]}
-const start=()=>{fog();if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const W=cv.clientWidth,H=cv.clientHeight;let t0=null;last=null;const run=t=>{t0=t0||t;const k=Math.min(1,(t-t0)/1600);const x=W*(.3+.4*k),y=H*(.22+.12*Math.sin(k*Math.PI*2));wipe(x,y);if(k<1)requestAnimationFrame(run);else last=null};setTimeout(()=>requestAnimationFrame(run),700)}};
-if(room.complete&&room.naturalWidth)start();else room.addEventListener('load',start,{once:true});
-let rw;addEventListener('resize',()=>{clearTimeout(rw);rw=setTimeout(fog,200)});
-cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();wipe(e.clientX-r.left,e.clientY-r.top)});
-cv.addEventListener('pointerleave',()=>last=null);
-cv.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){last=null}});
-function prog(){const r=ok.getBoundingClientRect(),span=Math.max(1,r.height-pin.offsetHeight),p=Math.min(1,Math.max(0,-r.top/span));
- const k=Math.min(1,Math.max(0,(p-.08)/.62));cv.style.opacity=(1-k).toFixed(3);ok.style.setProperty('--dop',(1-k*1.3).toFixed(3));ok.style.setProperty('--sc',(1.06-.06*k).toFixed(4));
- b.classList.toggle('past-hero',r.bottom<innerHeight*.5)}
-prog();addEventListener('scroll',()=>requestAnimationFrame(prog),{passive:true});
+const hero=document.querySelector('.wej'),door=hero.querySelector('.door');
+const on=()=>b.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);on();addEventListener('scroll',on,{passive:true});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&matchMedia('(hover:hover)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),nx=(e.clientX-r.left)/r.width-.5,ny=(e.clientY-r.top)/r.height-.5;door.style.setProperty('--mx',(-nx*18).toFixed(1)+'px');door.style.setProperty('--my',(-ny*14).toFixed(1)+'px')});hero.addEventListener('pointerleave',()=>{door.style.setProperty('--mx','0px');door.style.setProperty('--my','0px')})}
+hero.querySelectorAll('.paths a').forEach(a=>a.addEventListener('click',()=>{if(window.__pick)window.__pick(+a.dataset.i)}));
 const els=[...document.querySelectorAll('.rv')];let fired=false;
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px 15% 0px'});els.forEach(e=>io.observe(e));
 let t;addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(()=>els.forEach(e=>{if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')}),140)},{passive:true});
