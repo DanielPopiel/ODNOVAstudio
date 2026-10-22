@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dental Caffe · dentysta Zielona Góra — makieta W3 „Witryna”</title>
+<meta name="description" content="Boli ząb, brakuje zęba, chcesz ładniejszy uśmiech? Dental Caffe w Zielonej Górze: zobacz, co zrobimy i ile to kosztuje. Pomoc w nagłych przypadkach, tel. 534 219 037.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dental Caffe — makieta W3 „Witryna”">
+<meta property="og:description" content="Makieta nowej strony Dental Caffe — wariant W3: zaparowana witryna z ich napisami, za którą czeka poczekalnia.">
+<meta property="og:url" content="https://www.odnovastudio.com/p/dentalcaffe-w3/">
+<meta property="og:image" content="https://www.odnovastudio.com/p/dentalcaffe-w3/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1A3260">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Rethink+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--bg:#FFFFFF;--ice:#EAF0F7;--ice2:#DCE6F2;--navy:#1A3260;--deep:#10213F;--ink:#0F1B33;--mid:#7F94A3;--muted:#4B5A72;--line:rgba(15,27,51,.14);--hdr-h:112px;
+--head:'Gilda Display',Georgia,serif;--sans:'Rethink Sans',system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--sans)}
+img{max-width:100%;height:auto;display:block}a{color:inherit}
+::selection{background:var(--navy);color:#fff}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+input,select,textarea{caret-color:var(--navy);accent-color:var(--navy)}
+.wrap{width:100%;max-width:1260px;margin:0 auto;padding:0 28px}
+section[id]{scroll-margin-top:calc(var(--hdr-h) + 8px)}
+h1,h2,h3{font-family:var(--head);font-weight:400;letter-spacing:-.012em;line-height:1.02;margin:0}
+h2{font-size:clamp(2.2rem,4.4vw,3.8rem)}
+p{margin:0 0 1em}
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mk{background:var(--navy);color:#D6E0EE;font-size:.8rem;text-align:center;padding:6px 12px;line-height:1.35}.mk b{color:#fff;font-weight:600}
+.hdr{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:70px}
+.logo{display:block;width:180px;flex:none}.logo img{width:100%;height:auto}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:.97rem}
+.nav a{text-decoration:none;padding:6px 0}.nav a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:6px}
+.tel{font-weight:600;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--navy)}
+.btn{font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:10px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;border:1px solid var(--navy);cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--deep)}
+.btn.soft{background:var(--ice);color:var(--navy);border-color:var(--ice)}.btn.soft:hover{background:var(--ice2)}
+.btn.white{background:#fff;color:var(--navy);border-color:#fff}.btn.white:hover{background:var(--ice)}
+.btn svg{width:18px;height:18px}
+.mnav{display:none;margin-left:auto}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 16px;border-radius:10px;background:var(--ice);font-weight:600;color:var(--navy)}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);padding:6px 28px 22px;display:flex;flex-direction:column}
+.mnav nav a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--head);font-weight:400;font-size:1.35rem}
+.mnav nav .btn{margin-top:16px;font-family:var(--sans);font-size:1rem}
+/* OKNO */
+.okno{position:relative;background:#E9EEF4}
+.js .okno{height:190vh}
+.okno .pin{position:relative;height:100svh;min-height:640px;overflow:hidden}
+.js .okno .pin{position:sticky;top:0}
+.room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 62%;transform:scale(var(--sc,1.06));transform-origin:50% 40%}
+.frost{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;cursor:crosshair}
+.frost-css{display:none}
+.no-js .frost-css{display:block;position:absolute;inset:0;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);background:rgba(238,243,248,.5)}
+.decal{position:absolute;left:42%;right:0;top:var(--hdr-h);bottom:0;display:grid;place-items:center;padding:0 4vw;color:#4F5A70;pointer-events:none;opacity:var(--dop,1)}
+.decal ul{list-style:none;margin:0;padding:0;font-family:var(--head);font-size:clamp(.95rem,1.3vw,1.25rem);line-height:2.05;text-align:center}
+.decal .mid{text-align:center}
+.decal .mid svg{width:clamp(70px,8vw,120px);height:auto;color:#4F5A70;display:block;margin:0 auto 14px}
+.decal .mid b{display:block;font:400 clamp(1.6rem,2.6vw,2.5rem)/1 var(--head);letter-spacing:.16em;padding-left:.16em}
+.decal .orn{display:block;width:44px;height:auto;margin:10px auto;color:#6B7690;opacity:.8}
+.film{position:absolute;left:0;top:0;bottom:0;width:42%;backdrop-filter:blur(18px) saturate(1.05);-webkit-backdrop-filter:blur(18px);background:rgba(241,245,249,.84);border-right:1px solid rgba(255,255,255,.95);box-shadow:inset -10px 0 0 -9px rgba(79,90,112,.28),inset -16px 0 0 -15px rgba(79,90,112,.2);padding:calc(var(--hdr-h) + 5vh) 3.2vw 5vh max(28px,calc((100vw - 1260px)/2 + 28px))}
+.film .in{height:100%;display:flex;flex-direction:column;justify-content:center;gap:0}
+.film .svc{list-style:none;margin:34px 0 0;padding:20px 0 0;border-top:1px solid rgba(79,90,112,.3);columns:2;column-gap:24px;font:400 1rem/1.9 var(--head);color:#4F5A70}
+.film .svc li{break-inside:avoid}
+.okno h1{margin-bottom:22px;font-size:clamp(2.3rem,3.6vw,3.9rem);line-height:1.02;letter-spacing:-.01em;color:var(--ink)}
+.okno .lede2{font-size:1.1rem;color:#3E4B63;margin:0 0 22px;max-width:30rem}
+.okno .acts{display:flex;flex-wrap:wrap;gap:10px}
+.hint2{position:absolute;right:28px;bottom:28px;top:auto!important;top:calc(var(--hdr-h) + 18px);z-index:3;font-size:.86rem;color:#3E4B63;background:rgba(255,255,255,.7);padding:6px 12px;border-radius:999px;opacity:var(--dop,1);pointer-events:none}
+.no-js .hint2{display:none}
+/* HERO */
+.powod{padding:120px 0 110px;background:linear-gradient(180deg,#fff 0%,#fff 62%,var(--ice) 100%);overflow:hidden}
+.powod .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
+.powod h2.say{font-size:clamp(2.4rem,4.4vw,4.2rem);line-height:1.08;letter-spacing:-.01em}
+.pick{font:italic 400 1em/1 var(--sans);font-weight:400;color:var(--navy);background:none;border:0;padding:0 .05em;margin:0;cursor:pointer;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.14em;text-decoration-color:#7F94A3;letter-spacing:-.02em}
+.pick::after{content:"";display:inline-block;width:.06em;height:.82em;background:var(--navy);margin-left:.04em;vertical-align:-.06em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.no-js .pick::after{display:none}
+.alts{margin:34px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:10px 8px;align-items:baseline;max-width:44rem}
+.alts>span{font-size:.95rem;color:var(--muted);margin-right:6px}
+.alt{font:italic 400 1.12rem/1.2 var(--sans);color:var(--ink);background:none;border:0;border-bottom:1px solid #7F94A3;padding:6px 2px 4px;margin-right:14px;cursor:pointer;min-height:40px}
+.alt:hover{color:var(--navy);border-color:var(--navy)}
+.alt[aria-pressed="true"]{color:var(--navy);border-bottom:2px solid var(--navy)}
+.no-js .alts{display:none}
+.powod .lede{font-size:1.1rem;color:var(--muted);max-width:36rem;margin:30px 0 0}
+.side{position:relative;padding-top:10px}
+.photo{margin:0 0 0 18%;position:relative}
+.photo img{width:100%;aspect-ratio:5/6;object-fit:cover;object-position:64% 50%;border-radius:4px}
+.card{position:relative;margin:-230px 10% 0 -8%;background:#fff;border-radius:6px;padding:26px 28px 24px 48px;box-shadow:0 1px 2px rgba(15,27,51,.08),0 34px 60px -32px rgba(15,27,51,.45);transform:rotate(-1.8deg)}
+.card::before{content:"";position:absolute;left:16px;top:14px;bottom:14px;width:9px;background:radial-gradient(circle,var(--ice2) 3.2px,transparent 3.8px) 0 0/9px 17px repeat-y}
+.card header{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:6px;border-bottom:1px dashed #9EB0C4}
+.card header svg{width:26px;height:26px;color:var(--navy)}
+.card header b{font:400 1.3rem/1 var(--head);color:var(--navy)}
+.card header span{margin-left:auto;font-size:.82rem;color:var(--muted)}
+.panel h2{font-size:1.75rem;line-height:1.12;margin:14px 0 8px}
+.panel>p{color:var(--muted);font-size:.97rem;line-height:1.5;margin:0}
+.js .panel[hidden]{display:none}
+.no-js .panel{padding-bottom:18px;border-bottom:1px dashed #9EB0C4;margin-bottom:6px}
+.prices{list-style:none;margin:16px 0 18px;padding:0;display:grid;gap:0}
+.prices li{display:flex;align-items:baseline;gap:8px;font-size:.95rem;color:var(--ink);padding:7px 0;border-bottom:1px dotted #9EB0C4}
+.prices li::after{content:none}
+.prices b{margin-left:auto;font-family:var(--sans);font-weight:600;font-size:1rem;color:var(--navy);white-space:nowrap;font-variant-numeric:tabular-nums}
+.prices b small{font-weight:400;font-size:.82rem;color:var(--muted);margin-right:3px}
+.panel .acts{display:flex;flex-wrap:wrap;gap:8px}
+.js .panel.in{animation:slip .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes slip{from{opacity:0;transform:translateX(18px) rotate(1deg)}to{opacity:1;transform:none}}
+.ans .note,.card .note{font-size:.82rem;color:var(--muted);margin:16px 0 0}
+/* SOS */
+/* ZAKRES */
+.zakres{background:var(--deep);color:#fff;padding:120px 0}
+section.zakres .head p,section.zakres .g li span{color:#C3D0E0}
+.zakres .g h3{border-color:#7F94A3}
+.zakres .g li{border-color:rgba(255,255,255,.16)}
+.zakres .head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;margin-bottom:64px}
+.zakres .head p{color:var(--muted);margin:0}
+.groups{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px 40px}
+.g{grid-column:span 4}
+.g.wide{grid-column:span 8}
+.g h3{font-size:1.5rem;padding-bottom:14px;border-bottom:2px solid var(--navy);margin-bottom:6px}
+.g ul{list-style:none;margin:0;padding:0}
+.g.wide ul{columns:2;column-gap:40px}
+.g li{padding:13px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.g li b{display:block;font-weight:600}
+.g li span{font-size:.94rem;color:var(--muted)}
+/* MIEJSCE */
+.miejsce{background:var(--deep);color:#fff;padding:120px 0}
+.miejsce .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end}
+.miejsce figure{margin:0}
+.miejsce figure img{width:100%;border-radius:14px;object-fit:cover}
+.miejsce .big img{aspect-ratio:4/3}
+.miejsce .small img{aspect-ratio:4/3}
+.miejsce figcaption{font-size:.9rem;color:#B9C7DA;margin-top:12px}
+.miejsce .txt{margin-top:70px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px}
+.miejsce .txt p{color:#D6E0EE;font-size:1.08rem}
+.team{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.2)}
+.team li{display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.team b{font-family:var(--head);font-weight:400;font-size:1.35rem}
+.team span{color:#B9C7DA}
+/* FAQ */
+.faq{background:#fff;padding:110px 0}
+.faq .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
+.faq details{border-bottom:1px solid rgba(15,27,51,.18)}
+.faq details:first-child{border-top:1px solid rgba(15,27,51,.18)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-family:var(--head);font-weight:400;font-size:1.3rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{color:var(--muted);padding:0 0 22px;max-width:46rem;margin:0}
+/* KONTAKT */
+.kontakt{background:var(--ice);color:var(--ink);padding:110px 0}
+.kontakt .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px}
+.kontakt dl{display:grid;grid-template-columns:120px 1fr;gap:14px 18px;margin:34px 0 0;font-size:1.06rem}
+.kontakt dt{color:var(--muted)}.kontakt dd{margin:0}
+.kontakt dd a{font-variant-numeric:tabular-nums}
+.form{position:relative;background:#fff;color:var(--ink);border-radius:6px;padding:34px 34px 30px 56px;transform:rotate(.8deg);box-shadow:0 34px 60px -34px rgba(15,27,51,.4)}
+.form::before{content:"";position:absolute;left:18px;top:16px;bottom:16px;width:9px;background:radial-gradient(circle,var(--ice2) 3.2px,transparent 3.8px) 0 0/9px 17px repeat-y}
+.form h3{font-style:italic}
+.form h3{font-size:1.7rem;margin-bottom:6px}.form p{color:var(--muted);font-size:.95rem}
+.form label{display:block;font-weight:600;font-size:.95rem;margin:16px 0 6px}
+.form input,.form select,.form textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1.5px solid #7F94A3;border-radius:10px;background:#fff;color:var(--ink)}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--navy);outline:none;box-shadow:0 0 0 3px rgba(26,50,96,.22)}
+.form textarea{min-height:96px;resize:vertical}
+.form .chk{display:flex;gap:10px;font-weight:400;font-size:.88rem;color:var(--muted)}.form .chk input{width:auto;margin-top:4px}
+.form .btn{width:100%;margin-top:20px}
+.form .ok{display:none;margin-top:12px;color:var(--navy);font-size:.92rem}
+footer{background:var(--deep);color:#B9C7DA;padding:54px 0;font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px 48px;align-items:center;justify-content:space-between}
+footer img{width:165px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}footer a{text-decoration:none}footer a:hover{color:#fff}
+footer .legal{flex-basis:100%;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 30px;justify-content:space-between}
+.mbar{display:none}
+.js .rv{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}.js .rv.in{opacity:1;transform:none}
+@media (max-width:1060px){.nav{display:none}.mnav{display:block}.hdr .tel{display:none}}
+@media (max-width:900px){
+ .decal{left:0;top:var(--hdr-h);bottom:50%}
+ .film{top:auto;width:auto;right:0;height:50%;border-right:0;border-top:1px solid rgba(255,255,255,.95);box-shadow:inset 0 10px 0 -9px rgba(79,90,112,.28);padding:22px 20px}.film .svc{display:none}
+ .room,.frost,.no-js .frost-css{height:50%;bottom:auto}.room{object-position:60% 62%}
+ .okno h1{font-size:2.15rem}.okno .lede2{font-size:1rem;margin-bottom:16px}
+ .hint2{display:none}
+ .powod .wrap,.powod .side,.sos .wrap,.zakres .head,.miejsce .grid,.miejsce .txt,.faq .wrap,.kontakt .wrap{grid-template-columns:1fr;gap:36px}
+ .photo img{aspect-ratio:16/10}
+ .groups{grid-template-columns:1fr;gap:44px}.g,.g.wide{grid-column:auto}.g.wide ul{columns:1}
+ .photo{position:relative;top:auto}
+ .miejsce .txt{margin-top:48px}
+}
+@media (max-width:760px){
+ .photo{display:none}
+ .card{margin:34px 0 0;transform:none;padding:22px 20px 20px 40px}.card::before{left:12px}
+ .powod h2.say{font-size:2.3rem}
+ .alt{font-size:1.12rem;margin-right:8px}
+ .mk{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.8rem}footer{padding-bottom:110px}
+ .wrap{padding:0 20px}.powod{padding:80px 0 70px}
+ .zakres,.miejsce,.faq,.kontakt,.sos{padding:80px 0}
+   .kontakt dl{grid-template-columns:1fr;gap:2px}.kontakt dt{margin-top:12px}
+ .form{padding:24px 18px 22px 40px;transform:none}.form::before{left:12px}
+ .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s}
+ .past-hero .mbar,.no-js .mbar{transform:none}
+}
+@media (max-width:420px){.logo{width:148px}.hdr .wrap>.btn{display:none}.hdr .wrap{gap:12px}}
+@media (prefers-reduced-motion:reduce){.js .okno{height:auto}.js .okno .pin{position:relative}.js .rv{opacity:1;transform:none}.js .panel.in{animation:none}html{scroll-behavior:auto}}
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A3260'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M50 14V86M14 50H86M36 36L64 64M64 36L36 64'/%3E%3Ccircle cx='50' cy='10' r='4'/%3E%3Ccircle cx='50' cy='90' r='4'/%3E%3Ccircle cx='10' cy='50' r='4'/%3E%3Ccircle cx='90' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sm" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><g id="a1"><circle cx="50" cy="6.5" r="3.4"/><path d="M50 9.9V50M44.5 12.5V20L50 25.5L55.5 20V12.5M38.5 20H44.5M55.5 20H61.5"/></g><use href="#a1" transform="rotate(90 50 50)"/><use href="#a1" transform="rotate(180 50 50)"/><use href="#a1" transform="rotate(270 50 50)"/><g id="p1"><path d="M52.5 47.5L56.5 31Q63 33.5 70 30.5Q66.5 37 69 43.5L52.5 47.5Z"/><path d="M50 50L70 30.5"/></g><use href="#p1" transform="rotate(90 50 50)"/><use href="#p1" transform="rotate(180 50 50)"/><use href="#p1" transform="rotate(270 50 50)"/></g></symbol>
+<symbol id="ph" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6.6 3.5h2.6l1.4 4-1.9 1.3a11 11 0 0 0 6.5 6.5l1.3-1.9 4 1.4v2.6A2.1 2.1 0 0 1 18.4 19.5 15 15 0 0 1 4.5 5.6 2.1 2.1 0 0 1 6.6 3.5Z"/></symbol>
+</defs></svg>
+
+<div class="top" id="top">
+ <div class="mk">Makieta poglądowa · <b>wariant W3 „Witryna”</b> · przygotowało ODNOVA Studio</div>
+ <header class="hdr"><div class="wrap">
+  <a class="logo" href="#" aria-label="Dental Caffe — strona główna"><img src="img/logo-granat.png" width="520" height="121" alt="Dental Caffe"></a>
+  <nav class="nav" aria-label="Główne"><a href="#zakres">Leczenie</a><a href="#miejsce">Klinika i&nbsp;zespół</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a></nav>
+  <a class="tel" href="tel:+48534219037">534 219 037</a>
+  <a class="btn" href="#kontakt">Umów wizytę</a>
+  <details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#zakres">Leczenie</a><a href="#miejsce">Klinika i&nbsp;zespół</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a class="btn" href="tel:+48534219037">Zadzwoń: 534 219 037</a></nav></details>
+ </div></header>
+</div>
+
+<main>
+<section class="okno" id="start" aria-label="Witryna Dental Caffe">
+ <div class="pin">
+  <img class="room" src="img/poczekalnia-1920.webp" srcset="img/poczekalnia-1000.webp 1000w, img/poczekalnia-1920.webp 1920w" sizes="100vw" width="1920" height="1071" alt="Poczekalnia Dental Caffe: granatowa ściana, żyrandol z chromowanych kul, beżowe welurowe sofy">
+  <canvas class="frost" aria-hidden="true"></canvas><div class="frost-css" aria-hidden="true"></div>
+  <div class="decal" aria-hidden="true"><div class="mid"><svg viewBox="0 0 100 100"><use href="#sm"/></svg><b>DENTAL CAFFE</b><svg class="orn" viewBox="0 0 44 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M22 1V13M16 3V8L22 13L28 8V3M10 8H16M28 8H34"/><circle cx="22" cy="1" r=".9"/></svg></div></div>
+  <p class="hint2">Przetrzyj szybę kursorem albo przewiń</p>
+  <div class="film"><div class="in">
+   <h1>Odkryj nową jakość stomatologii w&nbsp;Zielonej Górze</h1>
+   <div><p class="lede2">Za matową szybą przy Zamoyskiego 5 czeka granatowa poczekalnia, welurowe sofy i&nbsp;kawa. Wejdź, a&nbsp;zadbamy o&nbsp;to, żebyś został z&nbsp;nami na&nbsp;dłużej.</p>
+   <div class="acts"><a class="btn" href="tel:+48534219037"><svg><use href="#ph"/></svg>534 219 037</a><a class="btn soft" href="#powod">Z&nbsp;czym przychodzisz?</a></div></div>
+   <ul class="svc" aria-label="Zakres leczenia"><li>Leczenie endodontyczne pod&nbsp;mikroskopem</li><li>Implantologia</li><li>Implantoprotetyka</li><li>Chirurgia stomatologiczna</li><li>Ortodoncja</li><li>Protetyka</li><li>Stomatologia zachowawcza</li><li>Stomatologia dziecięca</li><li>Periodontologia</li><li>Tomografia komputerowa</li><li>Laseroterapia</li><li>Leczenie stawów skroniowo-żuchwowych</li></ul>
+  </div></div>
+ </div>
+</section>
+
+<section class="powod" id="powod">
+ <div class="wrap">
+  <div>
+   <h2 class="say">Dzień dobry, przychodzę, bo <button class="pick" type="button" aria-live="polite" aria-label="Zmień powód wizyty">boli mnie ząb</button>.</h2>
+   <div class="alts" role="group" aria-label="Powód wizyty"><span>Albo:</span><button class="alt" type="button" data-i="0" aria-pressed="true">boli mnie ząb</button><button class="alt" type="button" data-i="1" aria-pressed="false">brakuje mi zęba</button><button class="alt" type="button" data-i="2" aria-pressed="false">chcę ładniejszego uśmiechu</button><button class="alt" type="button" data-i="3" aria-pressed="false">dziecko ma pierwszą wizytę</button><button class="alt" type="button" data-i="4" aria-pressed="false">boli mnie szczęka</button><button class="alt" type="button" data-i="5" aria-pressed="false">czas na&nbsp;kontrolę</button></div>
+   <p class="lede">Wybierz swój powód, a&nbsp;na&nbsp;karcie wizyty zobaczysz, co zrobimy, ile to kosztuje i&nbsp;jak się umówić.</p>
+  </div>
+  <div class="side">
+   <figure class="photo"><img src="img/gabinet-1920.webp" width="1920" height="1071" alt="Jasny gabinet stomatologiczny z granatową ścianą i fotelem dentystycznym"></figure>
+   <article class="card" aria-live="polite">
+    <header><svg><use href="#sm"/></svg><b>Karta wizyty</b><span>Dental Caffe</span></header>
+    
+    <div class="panel" id="p1">
+     <h2>Boli ząb? Zadzwoń jeszcze dziś</h2>
+     <p>Przy silnym bólu albo obrzęku powiedz o&nbsp;tym na&nbsp;początku rozmowy, przyjmujemy poza kolejką. Na wizycie bólowej znajdziemy przyczynę i&nbsp;uśmierzymy ból.</p>
+     <ul class="prices"><li>wizyta bólowa<b><small>od</small>300&nbsp;zł</b></li><li>leczenie kanałowe<b><small>od</small>1000&nbsp;zł</b></li><li>wypełnienie<b><small>od</small>400&nbsp;zł</b></li></ul>
+     <div class="acts"><a class="btn" href="tel:+48534219037"><svg><use href="#ph"/></svg>534 219 037</a><a class="btn soft" href="tel:+48780411119">780 411 119</a></div>
+    </div>
+    <div class="panel" id="p2" hidden>
+     <h2>Brakuje zęba? Najpierw dokładny plan</h2>
+     <p>Tomografia na&nbsp;miejscu, potem omówienie możliwości: implant osadzany z&nbsp;szablonem nawigującym, most albo proteza. Dostajesz warianty z&nbsp;kosztem każdego z&nbsp;nich.</p>
+     <ul class="prices"><li>konsultacja z&nbsp;planem<b>300&nbsp;zł</b></li><li>implantacja<b><small>od</small>3000&nbsp;zł</b></li><li>korona<b><small>od</small>1500&nbsp;zł</b></li></ul>
+     <div class="acts"><a class="btn" href="#kontakt">Umów konsultację</a><a class="btn soft" href="tel:+48534219037">Zadzwoń</a></div>
+    </div>
+    <div class="panel" id="p3" hidden>
+     <h2>Ładniejszy uśmiech, bez zgadywania efektu</h2>
+     <p>Wybielanie, ICON na&nbsp;przebarwienia szkliwa bez borowania, licówki kompozytowe i&nbsp;ceramiczne. Przy większej zmianie robimy projekt uśmiechu DSD, żeby zobaczyć efekt przed leczeniem.</p>
+     <ul class="prices"><li>ICON (1 ząb)<b>600&nbsp;zł</b></li><li>licówka kompozytowa<b>800&nbsp;zł</b></li><li>projekt DSD<b>2000&nbsp;zł</b></li></ul>
+     <div class="acts"><a class="btn" href="#kontakt">Umów konsultację</a><a class="btn soft" href="tel:+48534219037">Zadzwoń</a></div>
+    </div>
+    <div class="panel" id="p4" hidden>
+     <h2>Pierwsza wizyta dziecka: oswojenie, nie borowanie</h2>
+     <p>Do 30&nbsp;minut na&nbsp;poznanie gabinetu, fotela i&nbsp;lekarza, bez pośpiechu. Dopiero kiedy dziecko czuje się pewnie, przechodzimy do&nbsp;lakowania czy leczenia zębów mlecznych.</p>
+     <ul class="prices"><li>wizyta adaptacyjna<b>300&nbsp;zł</b></li><li>lakowanie zęba<b><small>od</small>200&nbsp;zł</b></li><li>ząb mleczny<b><small>od</small>250&nbsp;zł</b></li></ul>
+     <div class="acts"><a class="btn" href="#kontakt">Umów dziecko</a><a class="btn soft" href="tel:+48534219037">Zadzwoń</a></div>
+    </div>
+    <div class="panel" id="p5" hidden>
+     <h2>Ból szczęki, głowy, trzaski przy otwieraniu ust</h2>
+     <p>Źródłem bywają stawy skroniowo-żuchwowe albo zaciskanie zębów. Diagnozujemy je na&nbsp;miejscu, z&nbsp;tomografią stawów, i&nbsp;prowadzimy leczenie — także szynami.</p>
+     <ul class="prices"><li>konsultacja specjalistyczna<b><small>od</small>250&nbsp;zł</b></li><li>tomografia stawów<b>450&nbsp;zł</b></li></ul>
+     <div class="acts"><a class="btn" href="#kontakt">Umów konsultację</a><a class="btn soft" href="tel:+48534219037">Zadzwoń</a></div>
+    </div>
+    <div class="panel" id="p6" hidden>
+     <h2>Kontrola i&nbsp;higienizacja co pół roku</h2>
+     <p>Przegląd, higienizacja w&nbsp;protokole Guided Biofilm Therapy i&nbsp;krótki instruktaż. Tyle wystarczy, żeby wyłapać problemy, zanim zaczną boleć.</p>
+     <ul class="prices"><li>higienizacja GBT<b>450&nbsp;zł</b></li><li>konsultacja<b>250&nbsp;zł</b></li><li>fluoryzacja<b><small>od</small>150&nbsp;zł</b></li></ul>
+     <div class="acts"><a class="btn" href="#kontakt">Umów wizytę</a><a class="btn soft" href="tel:+48534219037">Zadzwoń</a></div>
+    </div>
+    <p class="note">Ceny z&nbsp;cennika kliniki. Dokładny koszt po&nbsp;badaniu.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="zakres" id="zakres">
+ <div class="wrap">
+  <div class="head rv"><h2>Wszystko, czym się zajmujemy</h2><p>Cała stomatologia w&nbsp;jednej klinice. Nie trzeba jeździć na&nbsp;tomografię ani szukać osobno chirurga czy ortodonty.</p></div>
+  <div class="groups">
+   <div class="g wide"><h3>Leczenie zębów i&nbsp;dziąseł</h3><ul>
+    <li><b>Stomatologia zachowawcza</b><span>wypełnienia, odbudowy, licówki kompozytowe · od&nbsp;400&nbsp;zł</span></li>
+    <li><b>Leczenie kanałowe pod mikroskopem</b><span>pierwotne i&nbsp;powtórne · od&nbsp;1000&nbsp;zł</span></li>
+    <li><b>Periodontologia</b><span>leczenie dziąseł, recesje, zabiegi regeneracyjne</span></li>
+    <li><b>Chirurgia stomatologiczna</b><span>usuwanie zębów, zęby zatrzymane, torbiele · od&nbsp;500&nbsp;zł</span></li>
+    <li><b>Laseroterapia</b><span>wsparcie leczenia tkanek miękkich</span></li>
+    <li><b>Stawy skroniowo-żuchwowe</b><span>ból szczęki i&nbsp;głowy, zaciskanie zębów</span></li>
+   </ul></div>
+   <div class="g"><h3>Braki zębowe</h3><ul>
+    <li><b>Implantologia</b><span>z&nbsp;szablonem nawigującym · od&nbsp;3000&nbsp;zł</span></li>
+    <li><b>Implantoprotetyka</b><span>korony i&nbsp;mosty na&nbsp;implantach</span></li>
+    <li><b>Protetyka</b><span>korony, onlaye, protezy · od&nbsp;1500&nbsp;zł</span></li>
+   </ul></div>
+   <div class="g"><h3>Uśmiech i&nbsp;profilaktyka</h3><ul>
+    <li><b>Higienizacja GBT</b><span>i&nbsp;instruktaż higieny · 450&nbsp;zł</span></li>
+    <li><b>Wybielanie</b><span>oraz ICON bez borowania</span></li>
+    <li><b>Ortodoncja</b><span>konsultacja z&nbsp;planem · 200&nbsp;zł</span></li>
+   </ul></div>
+   <div class="g"><h3>Diagnostyka</h3><ul>
+    <li><b>Tomografia komputerowa</b><span>na miejscu, bez skierowania · od&nbsp;250&nbsp;zł</span></li>
+    <li><b>RTG zęba i&nbsp;pantomogram</b><span>od ręki w&nbsp;czasie wizyty</span></li>
+   </ul></div>
+   <div class="g"><h3>Dzieci</h3><ul>
+    <li><b>Stomatologia dziecięca</b><span>wizyta adaptacyjna, lakowanie, zęby mleczne</span></li>
+   </ul></div>
+  </div>
+ </div>
+</section>
+
+
+<section class="faq" id="faq">
+ <div class="wrap">
+  <h2 class="rv">Pytania przed pierwszą wizytą</h2>
+  <div>
+   <details open><summary>Czy leczenie boli?</summary><p>Większość zabiegów robimy w&nbsp;znieczuleniu miejscowym, dobranym do&nbsp;zabiegu i&nbsp;Twojej wrażliwości. Jeśli boisz się dentysty albo znieczulenie kiedyś słabo działało — powiedz o&nbsp;tym na&nbsp;początku, dostosujemy tempo i&nbsp;metodę.</p></details>
+   <details><summary>Jak się umówić?</summary><p>Najszybciej telefonicznie: <a href="tel:+48534219037">534 219 037</a> lub <a href="tel:+48780411119">780 411 119</a>. Opisz krótko, co się dzieje — rejestracja dobierze termin i&nbsp;lekarza oraz powie, czy przed wizytą potrzebne są dodatkowe badania.</p></details>
+   <details><summary>Co zabrać na&nbsp;pierwszą wizytę?</summary><p>Wcześniejsze zdjęcia RTG, wyniki badań i&nbsp;dokumentację z&nbsp;dotychczasowego leczenia, jeśli je masz. Przydaje się też lista przyjmowanych leków.</p></details>
+   <details><summary>Kiedy iść do&nbsp;dentysty, jeśli nic nie boli?</summary><p>Co najmniej raz na&nbsp;pół roku. Ból, nadwrażliwość na&nbsp;zimno i&nbsp;ciepło, krwawienie dziąseł czy ruszający się ząb to sygnały, żeby nie czekać do&nbsp;kontroli.</p></details>
+   <details><summary>Czy przyjmujecie dzieci?</summary><p>Tak. Pierwsza wizyta to spokojna wizyta adaptacyjna (do&nbsp;30&nbsp;minut, 300&nbsp;zł), na&nbsp;której dziecko poznaje gabinet bez stresu.</p></details>
+  </div>
+ </div>
+</section>
+<section class="miejsce" id="miejsce">
+ <div class="wrap">
+  <div class="grid">
+   <figure class="big"><img src="img/poczekalnia-real-1600.webp" width="1600" height="1200" alt="Poczekalnia Dental Caffe z granatową ścianą i beżowymi sofami" loading="lazy"><figcaption>Poczekalnia przy Zamoyskiego 5</figcaption></figure>
+   <figure class="small"><img src="img/fasada-1000.webp" width="1000" height="563" alt="Wejście do Dental Caffe z oknami oklejonymi logo i listą usług" loading="lazy"><figcaption>Wejście od&nbsp;strony ulicy, parter</figcaption></figure>
+  </div>
+  <div class="txt">
+   <div class="rv"><h2>Parter, Zamoyskiego 5/5</h2><p style="margin-top:20px">Nowy budynek w&nbsp;Zielonej Górze, wejście od&nbsp;ulicy (<a href="https://www.google.com/maps/search/?api=1&amp;query=Dental+Caffe+Zamoyskiego+5+Zielona+G%C3%B3ra">mapa</a>). W&nbsp;środku granatowe ściany, wygodne sofy i&nbsp;kawa — stąd nazwa. Pięcioro lekarzy, a&nbsp;każdy prowadzi swoją dziedzinę.</p></div>
+   <ul class="team" aria-label="Lekarze dentyści">
+    <li><b>Agnieszka Rutkowska</b></li>
+    <li><b>Karolina Reitmajer</b></li>
+    <li><b>Natalia Poszumska</b></li>
+    <li><b>Bartosz Królikowski</b></li>
+    <li><b>Anna Niedziela</b></li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section class="kontakt" id="kontakt">
+ <div class="wrap">
+  <div>
+   <h2 class="rv">Umów wizytę</h2>
+   <dl>
+    <dt>Telefon</dt><dd><a href="tel:+48534219037">+48 534 219 037</a><br><a href="tel:+48780411119">+48 780 411 119</a></dd>
+    <dt>Adres</dt><dd>ul. Jana Zamoyskiego 5/5<br>65-255 Zielona Góra · <a href="https://www.google.com/maps/search/?api=1&query=Dental+Caffe+Zamoyskiego+5+Zielona+G%C3%B3ra">mapa</a></dd>
+    <dt>Godziny</dt><dd>poniedziałek–piątek 8:00–21:00</dd>
+    <dt>E-mail</dt><dd><a href="mailto:dental.caffe@gmail.com">dental.caffe@gmail.com</a></dd>
+   </dl>
+  </div>
+  <form class="form" onsubmit="event.preventDefault();this.querySelector('.ok').style.display='block'">
+   <h3>Poproś o&nbsp;termin</h3><p>Oddzwonimy, żeby dobrać dogodną godzinę.</p>
+   <label for="h1">Imię</label><input id="h1" autocomplete="given-name" required>
+   <label for="h2">Telefon</label><input id="h2" type="tel" autocomplete="tel" required>
+   <label for="h3">Z&nbsp;czym przychodzisz?</label><select id="h3"><option>Boli ząb</option><option>Brakuje zęba</option><option>Ładniejszy uśmiech</option><option>Wizyta dziecka</option><option>Ból szczęki lub głowy</option><option>Kontrola i&nbsp;higienizacja</option></select>
+   <label for="h4">Wiadomość (opcjonalnie)</label><textarea id="h4"></textarea>
+   <label class="chk"><input type="checkbox" required> Zgadzam się na&nbsp;kontakt w&nbsp;sprawie wizyty. Administratorem danych jest Dental Caffe, szczegóły w&nbsp;polityce prywatności [do&nbsp;uzupełnienia].</label>
+   <button class="btn" type="submit">Wyślij prośbę o&nbsp;termin</button>
+   <p class="ok">To makieta — formularz zacznie działać po&nbsp;wdrożeniu strony.</p>
+  </form>
+ </div>
+</section>
+</main>
+<footer><div class="wrap">
+ <img src="img/logo-biale.png" width="520" height="121" alt="Dental Caffe">
+ <nav aria-label="Stopka"><a href="#zakres">Leczenie</a><a href="#miejsce">Klinika i&nbsp;zespół</a><a href="#faq">Pytania</a><a href="#kontakt">Kontakt</a><a href="https://www.facebook.com/DentalCaffe/">Facebook</a></nav>
+ <div class="legal"><span>© 2026 Dental Caffe · ul.&nbsp;Jana Zamoyskiego 5/5, 65-255 Zielona Góra · NIP [uzupełnić]</span><span>Makieta W3 „Witryna” · projekt: ODNOVA Studio</span></div>
+</div></footer>
+<div class="mbar"><a class="btn" href="tel:+48534219037">Zadzwoń</a><a class="btn soft" href="#kontakt">Termin</a></div>
+<script>
+(()=>{const top=document.getElementById('top'),d=document.documentElement,b=document.body;
+const m=()=>d.style.setProperty('--hdr-h',top.offsetHeight+'px');m();addEventListener('resize',m);addEventListener('load',m);
+document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
+const alts=[...document.querySelectorAll('.alt')],pans=[...document.querySelectorAll('.panel')],pick=document.querySelector('.pick'),sel=document.getElementById('h3');
+const rmm=matchMedia('(prefers-reduced-motion:reduce)').matches;let cur=0,tt;
+function typeIn(txt){clearInterval(tt);if(rmm){pick.textContent=txt;return}let n=pick.textContent.length;const del=setInterval(()=>{n--;pick.textContent=pick.textContent.slice(0,n);if(n<=0){clearInterval(del);let k=0;tt=setInterval(()=>{k++;pick.textContent=txt.slice(0,k);if(k>=txt.length)clearInterval(tt)},34)}},14)}
+function show(i){cur=i;alts.forEach((a,k)=>a.setAttribute('aria-pressed',k===i));pans.forEach((p,k)=>{p.hidden=k!==i;p.classList.toggle('in',k===i)});typeIn(alts[i].textContent);if(sel)sel.selectedIndex=i}
+alts.forEach((a,i)=>a.addEventListener('click',()=>show(i)));
+pick.addEventListener('click',()=>show((cur+1)%alts.length));
+pans.forEach((p,k)=>{p.hidden=k!==0});
+const ok=document.querySelector('.okno'),pin=ok.querySelector('.pin'),cv=ok.querySelector('.frost'),room=ok.querySelector('.room'),cx=cv.getContext('2d');
+let dpr=Math.min(devicePixelRatio||1,1.5),last=null;
+function cover(W,H){const iw=room.naturalWidth||1920,ih=room.naturalHeight||1071,s=Math.max(W/iw,H/ih)*1.06;const w=iw*s,h=ih*s;const op=getComputedStyle(room).objectPosition.split(' ').map(v=>parseFloat(v)/100);return [(W-w)*(op[0]||.5),(H-h)*(op[1]||.5),w,h]}
+function fog(){const W=cv.clientWidth,H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);const [x,y,w,h]=cover(W,H);cx.filter='blur(26px)';cx.drawImage(room,x-40,y-40,w+80,h+80);cx.filter='none';cx.fillStyle='rgba(236,241,247,.6)';cx.fillRect(0,0,W,H);
+ const g=cx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(255,255,255,.18)');g.addColorStop(1,'rgba(255,255,255,0)');cx.fillStyle=g;cx.fillRect(0,0,W,H)}
+function wipe(x,y){cx.globalCompositeOperation='destination-out';const r=Math.max(60,Math.min(cv.clientWidth,cv.clientHeight)*.09);
+ const pts=last?Math.ceil(Math.hypot(x-last[0],y-last[1])/(r*.25)):1;for(let i=1;i<=pts;i++){const px=last?last[0]+(x-last[0])*i/pts:x,py=last?last[1]+(y-last[1])*i/pts:y;const g=cx.createRadialGradient(px,py,0,px,py,r);g.addColorStop(0,'rgba(0,0,0,.9)');g.addColorStop(.6,'rgba(0,0,0,.5)');g.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=g;cx.beginPath();cx.arc(px,py,r,0,7);cx.fill()}
+ cx.globalCompositeOperation='source-over';last=[x,y]}
+const start=()=>{fog();if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const W=cv.clientWidth,H=cv.clientHeight;let t0=null;last=null;const run=t=>{t0=t0||t;const k=Math.min(1,(t-t0)/1600);const x=W*(.3+.4*k),y=H*(.22+.12*Math.sin(k*Math.PI*2));wipe(x,y);if(k<1)requestAnimationFrame(run);else last=null};setTimeout(()=>requestAnimationFrame(run),700)}};
+if(room.complete&&room.naturalWidth)start();else room.addEventListener('load',start,{once:true});
+let rw;addEventListener('resize',()=>{clearTimeout(rw);rw=setTimeout(fog,200)});
+cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();wipe(e.clientX-r.left,e.clientY-r.top)});
+cv.addEventListener('pointerleave',()=>last=null);
+cv.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){last=null}});
+function prog(){const r=ok.getBoundingClientRect(),span=Math.max(1,r.height-pin.offsetHeight),p=Math.min(1,Math.max(0,-r.top/span));
+ const k=Math.min(1,Math.max(0,(p-.08)/.62));cv.style.opacity=(1-k).toFixed(3);ok.style.setProperty('--dop',(1-k*1.3).toFixed(3));ok.style.setProperty('--sc',(1.06-.06*k).toFixed(4));
+ b.classList.toggle('past-hero',r.bottom<innerHeight*.5)}
+prog();addEventListener('scroll',()=>requestAnimationFrame(prog),{passive:true});
+const els=[...document.querySelectorAll('.rv')];let fired=false;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px 15% 0px'});els.forEach(e=>io.observe(e));
+let t;addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(()=>els.forEach(e=>{if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')}),140)},{passive:true});
+setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);})();
+</script>
+</body>
+</html>
