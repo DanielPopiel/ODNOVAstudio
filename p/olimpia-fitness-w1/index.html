@@ -123,15 +123,15 @@ a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:no
 .hero{position:relative;background:#161d45;color:#f6f1e4}
 .js .hero{height:calc(100svh + 4 * 40svh)}
 .stage{position:sticky;top:0;height:100svh;min-height:560px;display:flex;flex-direction:column;padding-top:calc(var(--hdr-h,100px) + clamp(14px,2.4vh,30px));overflow:hidden}
-.hd{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(18px,4vw,64px);align-items:end;padding-bottom:clamp(14px,2.6vh,28px)}
-.hd .live{background:rgba(14,19,48,.55);border:1px solid rgba(243,238,226,.28);padding:7px 14px;border-radius:99px;margin-bottom:14px}
-.hd h1{font-size:clamp(2.3rem,4.9vw,4.5rem);line-height:1.02;max-width:14ch}
-.hd p{font-size:clamp(1.02rem,1.3vw,1.18rem);max-width:42ch}
-.hd .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.hd{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px clamp(24px,4vw,64px);align-items:end;padding-bottom:clamp(16px,2.8vh,30px)}
+.hd h1{font-size:clamp(2.4rem,4.7vw,4.4rem);line-height:1;white-space:nowrap}
+.hd .hl p{font-size:clamp(1.02rem,1.3vw,1.2rem);max-width:56ch;margin-top:12px;opacity:.95}
+.hd .hr{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.hd .live{background:rgba(14,19,48,.55);border:1px solid rgba(243,238,226,.28);padding:7px 14px;border-radius:99px}
+.hd .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
 .hd .acts .btn.g{border-color:rgba(246,241,228,.7)}
 .slats{flex:1;min-height:0;display:flex;gap:6px;padding:0 clamp(16px,4vw,48px) clamp(16px,3.4vh,40px)}
-.sl{position:relative;flex:1 1 0;min-width:0;overflow:hidden;background:#0e1330;cursor:pointer;outline-offset:3px}
-.slats.man .sl{transition:flex-grow .55s cubic-bezier(.22,.61,.36,1)}
+.sl{position:relative;flex:1 1 0;min-width:0;overflow:hidden;background:#0e1330}
 .sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
 .sl::before{content:"";position:absolute;inset:0;background:rgba(14,19,48,.58);transition:background .4s ease;z-index:1}
 .sl.on::before{background:linear-gradient(0deg,rgba(14,19,48,.88),rgba(14,19,48,.05) 62%)}
@@ -144,12 +144,12 @@ a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:no
 .slats .bar{display:none}
 .hint{font-size:.92rem;opacity:.85}
 html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transform:none;left:18px;margin:0}html:not(.js) .sl small{opacity:1}
-@media(max-width:860px){.hd{grid-template-columns:1fr;gap:10px}.hd h1{font-size:2.4rem;max-width:16ch}.hd p{display:none}.hd .acts .btn.g{display:none}.hd .acts{margin-top:10px}
+@media(max-width:860px){.hd{grid-template-columns:1fr;gap:12px}.hd h1{font-size:2.3rem;white-space:normal}.hd .hl p{display:none}.hd .hr{align-items:flex-start;flex-direction:column-reverse;gap:12px}.hd .acts .btn.g{display:none}.hd .acts{justify-content:flex-start}
  .js .hero{height:calc(100svh + 4 * 30svh)}.slats{flex-direction:column;gap:5px}
  .sl:not(.on) b{writing-mode:horizontal-tb;transform:none;left:16px;margin:0;bottom:50%;margin-bottom:-.55em}
  .sl .no{left:auto!important;margin:0!important;right:16px;top:50%;margin-top:-.7em!important}
  .sl b{font-size:1.4rem;left:16px;bottom:16px}.sl small{left:16px;bottom:48px;font-size:.95rem}.sl.on .no{top:14px;margin-top:0!important}}
-@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative;min-height:100svh}.slats.man .sl{transition:none}}
+@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative;min-height:100svh}}
 /* BILET */
 .bilet{position:relative;overflow:hidden;background:#0e1330;color:#f6f1e4;padding:clamp(56px,9vw,112px) 0}
 .bilet .bgi{position:absolute;inset:-20px;opacity:.5;filter:blur(3px)}.bilet .bgi img{width:100%;height:100%;object-fit:cover}
@@ -194,13 +194,18 @@ html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transfor
 /* CENNIK */
 .cennik .head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
 .kar{border-top:1.5px solid var(--ink);margin-top:36px}
-.kar li{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;gap:10px 32px;align-items:center;padding:24px 0 24px 0;border-bottom:1px solid var(--line);position:relative}
+.kar li{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;gap:10px 32px;align-items:center;padding:24px 22px;margin:0 -22px;border-bottom:1px solid var(--line);position:relative}
 .kar li.top{background:linear-gradient(90deg,rgba(211,171,78,.28),rgba(211,171,78,.06));padding-left:22px;margin-left:-22px;padding-right:22px;margin-right:-22px;border-left:4px solid var(--acc)}
 .kar h3{font-size:clamp(1.5rem,2.4vw,2.1rem)}
 .kar .tag{display:block;font:600 .82rem var(--sans);color:var(--gd);margin-top:6px}
 .kar .opis b{display:block;font-weight:600}
 .kar .opis span{display:block;font-size:.95rem;opacity:.78;margin-top:3px}
 .kar .cena{font-family:var(--disp);font-size:clamp(2.1rem,3.4vw,3rem);line-height:1;text-align:right;white-space:nowrap}
+.kar li{transition:background .25s ease,padding .25s ease,box-shadow .25s ease}
+.kar li:hover{background:rgba(211,171,78,.2);box-shadow:inset 4px 0 0 var(--acc)}
+.kar li:hover .nazwa,.kar li:hover h3{color:#161d45}
+.kar li .cena{transition:transform .25s ease}.kar li:hover .cena{transform:scale(1.05);transform-origin:right center}
+@media(max-width:760px){.kar li{margin:0 -16px;padding-inline:16px}.kar li:hover{box-shadow:none}.kar li:hover .cena{transform:none}}
 .kar .cena small{display:inline;font:500 1.1rem var(--sans);opacity:1;margin-left:.2em}.kar .cena em{display:block;font:500 .84rem var(--sans);font-style:normal;opacity:.78;margin-top:6px}
 @media(max-width:860px){.kar li{grid-template-columns:1fr auto;gap:6px 16px}.kar .cena{grid-column:2;grid-row:1;font-size:1.9rem}.kar .opis{grid-column:1/-1}.kar li.top{margin-left:-16px;margin-right:-16px;padding-left:12px;padding-right:16px}.cennik .head{grid-template-columns:1fr}}
 .note{font-size:.95rem;opacity:.8;margin-top:18px;max-width:70ch}
@@ -259,10 +264,10 @@ html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transfor
 </div>
 <div class="mbar"><a class="btn g" href="tel:+48226738734">Zadzwoń</a><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a></div>
 <section class="hero" aria-label="Pięć miejsc w klubie"><div class="stage">
-<div class="wrap hd"><div><p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p><h1>Pięć miejsc.<br>Jeden klub.</h1></div>
-<div><p>Siłownia, fitness, sauna, recepcja ze sklepem i strefa relaksu. Klub z tradycjami na Saskiej Kępie od 2000 roku.</p>
-<div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div></div></div>
-<div class="slats"><div class="sl on" data-i="0" tabindex="0" role="button" aria-label="Siłownia"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"><span class="no">01</span><small>Technogym, Waryński Żelechów, Sevim, Matrix</small><b>Siłownia</b></div><div class="sl" data-i="1" tabindex="0" role="button" aria-label="Sala fitness"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"><span class="no">02</span><small>joga, taniec, Jumping Fitness</small><b>Sala fitness</b></div><div class="sl" data-i="2" tabindex="0" role="button" aria-label="Sauna"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">03</span><small>osobna damska i męska</small><b>Sauna</b></div><div class="sl" data-i="3" tabindex="0" role="button" aria-label="Recepcja i sklep"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"><span class="no">04</span><small>odżywki, shake, barek</small><b>Recepcja i sklep</b></div><div class="sl" data-i="4" tabindex="0" role="button" aria-label="Strefa relaksu"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">05</span><small>odpoczynek po treningu</small><b>Strefa relaksu</b></div></div>
+<div class="wrap hd"><div class="hl"><h1>Pięć miejsc. Jeden klub.</h1>
+<p>Siłownia, fitness, sauna, recepcja ze sklepem i strefa relaksu. Klub z tradycjami na Saskiej Kępie od 2000 roku.</p></div>
+<div class="hr"><p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p><div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div></div></div>
+<div class="slats"><div class="sl on"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"><span class="no">01</span><small>Technogym, Waryński Żelechów, Sevim, Matrix</small><b>Siłownia</b></div><div class="sl"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"><span class="no">02</span><small>joga, taniec, Jumping Fitness</small><b>Sala fitness</b></div><div class="sl"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">03</span><small>osobna damska i męska</small><b>Sauna</b></div><div class="sl"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"><span class="no">04</span><small>odżywki, shake, barek</small><b>Recepcja i sklep</b></div><div class="sl"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">05</span><small>odpoczynek po treningu</small><b>Strefa relaksu</b></div></div>
 </div></section><main><section class="bilet" id="bilet"><div class="bgi"><img src="a/foto/lounge1.jpg" alt="" width="1500" height="1000" loading="lazy" decoding="async"></div><div class="wrap">
 <h2 class="reveal">Zacznij od jednego wejścia.</h2>
 <p class="sub reveal">Obejrzyj klub, wypróbuj sprzęt i dostań plan na start. Bez umowy i bez zobowiązań.</p>
@@ -354,21 +359,14 @@ addEventListener('scroll',function(){clearTimeout(tt);tt=setTimeout(sweep,160)},
 })();
 
 (function(){
-var d=document,hero=d.querySelector('.hero'),sl=[].slice.call(d.querySelectorAll('.sl')),N=sl.length,box=d.querySelector('.slats');
-var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,man=null;
+var d=document,hero=d.querySelector('.hero'),sl=[].slice.call(d.querySelectorAll('.sl')),N=sl.length;
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
-function setOn(c){sl.forEach(function(f,i){f.classList.toggle('on',i===c)})}
 function tour(){
- if(man!==null)return;
- var r=hero.getBoundingClientRect(),tot=Math.max(1,hero.offsetHeight-innerHeight),p=rm?0:clamp(-r.top/tot,0,1),x=p*(N-1);
- sl.forEach(function(f,i){f.style.flexGrow=(1+4.2*clamp(1-Math.abs(x-i),0,1)).toFixed(3)});
- setOn(clamp(Math.round(x),0,N-1));
+ var r=hero.getBoundingClientRect(),tot=Math.max(1,hero.offsetHeight-innerHeight),p=rm?0:clamp(-r.top/tot,0,1),x=p*(N-1),c=clamp(Math.round(x),0,N-1);
+ sl.forEach(function(f,i){f.style.flexGrow=(1+4.2*clamp(1-Math.abs(x-i),0,1)).toFixed(3);f.classList.toggle('on',i===c)});
 }
-function pick(i){man=i;box.classList.add('man');sl.forEach(function(f,k){f.style.flexGrow=k===i?5:1});setOn(i)}
-function free(){man=null;box.classList.remove('man');tour()}
-sl.forEach(function(f,i){f.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover)').matches)pick(i)});f.addEventListener('click',function(){pick(i)});f.addEventListener('focus',function(){pick(i)})});
-box.addEventListener('mouseleave',free);
-addEventListener('scroll',function(){if(man!==null&&!matchMedia('(hover:hover)').matches){man=null;box.classList.remove('man')}tour()},{passive:true});addEventListener('resize',tour);tour();
+addEventListener('scroll',tour,{passive:true});addEventListener('resize',tour);tour();
 /* bilet: lekkie pochylenie za kursorem */
 var tk=d.querySelector('.tk');
 if(tk&&!rm&&matchMedia('(hover:hover)').matches){tk.parentNode.addEventListener('mousemove',function(e){var r=tk.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tk.style.setProperty('--ry',(x*7).toFixed(2)+'deg');tk.style.setProperty('--rx',(-y*6).toFixed(2)+'deg')});tk.parentNode.addEventListener('mouseleave',function(){tk.style.setProperty('--ry','0deg');tk.style.setProperty('--rx','0deg')})}
