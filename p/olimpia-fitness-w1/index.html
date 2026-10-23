@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Olimpia Fitness Club · makieta W1 „Od 2000”</title>
+<meta name="description" content="Propozycja nowej strony Olimpia Fitness Club: klub z tradycjami na Saskiej Kępie, siłownia, fitness, sauna i masaż od 2000 roku.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#161d45">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Olimpia Fitness Club · makieta W1 „Od 2000”">
+<meta property="og:description" content="Propozycja nowej strony Olimpia Fitness Club: klub z tradycjami na Saskiej Kępie, siłownia, fitness, sauna i masaż od 2000 roku.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/olimpia-fitness-w1/a/og.jpg">
+<meta property="og:url" content="https://www.odnovastudio.com/p/olimpia-fitness-w1/">
+<link rel="icon" href="a/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;caret-color:var(--acc);accent-color:var(--acc)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;font-feature-settings:"lnum" 1}
+img,canvas{max-width:100%;display:block;height:auto}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,figure,dl,dd{margin:0}
+h1,h2,h3,h4{font-family:var(--disp);font-weight:var(--dispw,400);line-height:1.02}
+ul{padding:0;list-style:none}
+button{font:inherit}
+::selection{background:var(--acc);color:var(--onacc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+section[id]{scroll-margin-top:calc(var(--hdr-h,96px) + 8px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* pasek makiety + nagłówek w jednym fixed */
+.fixtop{position:fixed;inset:0 0 auto 0;z-index:50}
+.mock{background:#0c0f20;color:#c9cbd8;font-size:12px;text-align:center;padding:6px 12px;line-height:1.3}
+.mock b{color:#fff;font-weight:600}
+@media(max-width:760px){.mock{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}}
+.hdr{background:var(--hdrbg);border-bottom:1px solid var(--hdrline);color:var(--hdrink);transition:background .3s}
+.hdr .wrap{display:flex;align-items:center;gap:14px 24px;min-height:68px;padding-top:6px;padding-bottom:6px}
+.hdr .logo{display:flex;align-items:center;margin-right:auto}
+.hdr .logo img{height:54px;width:auto}
+.hdr nav{display:flex;gap:4px 24px;font-size:16px;font-weight:500}
+.hdr nav a{text-decoration:none;opacity:1;padding:8px 0}
+.hdr nav a:hover{opacity:1}
+.hdr .tel{text-decoration:none;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 22px;border-radius:var(--rad,4px);border:1.5px solid transparent;text-decoration:none;font-weight:600;font-size:16px;line-height:1.2;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn.p{background:var(--acc);color:var(--onacc)}
+.btn.p:hover{background:var(--acc2)}
+.btn.g{background:transparent;color:inherit;border-color:currentColor}
+.btn.g:hover{background:rgba(127,127,127,.14)}
+.mnav{display:none}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--hdrline);border-radius:var(--rad,4px);padding:0 14px;font-weight:600;font-size:14px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;left:0;right:0;top:100%;background:var(--hdrbg2);color:var(--hdrink);border-bottom:1px solid var(--hdrline);padding:8px clamp(16px,4vw,48px) 20px;flex-direction:column;gap:0}
+.mnav nav a{padding:14px 0;text-decoration:none;font-size:19px;border-bottom:1px solid var(--hdrline);opacity:1}
+.mnav nav a:last-child{border:0}
+@media(max-width:1180px){.hdr .tel{display:none}}
+@media(max-width:1020px){.hdr>.wrap>nav{display:none}.mnav{display:block}}
+@media(max-width:760px){.hdr .cta{display:none}.mnav nav .cta{display:flex;margin-top:12px;border-bottom:0}.hdr .logo img{height:46px}}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--hdrbg2);color:var(--hdrink);border-top:1px solid var(--hdrline);transform:translateY(110%);transition:transform .35s}
+.mbar .btn{flex:1;min-height:48px}
+html:not(.js) .mbar,.past-hero .mbar{transform:none}
+@media(max-width:760px){.mbar{display:flex}body{padding-bottom:72px}}
+/* odsłanianie: tylko nagłówki i wybrane bloki */
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(10px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*70ms)}
+.js .stagger.in>*{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .stagger>*{opacity:1!important;transform:none!important;transition:none}html{scroll-behavior:auto}}
+/* znaczki kart partnerskich, mapa */
+.partners{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.partners li{border:1.5px solid currentColor;padding:6px 14px;font-weight:600;font-size:.95rem;border-radius:2px}
+.map{display:block;width:100%;aspect-ratio:16/9;border:0;margin-top:26px;background:#d9dce6}
+/* status otwarcia */
+.live{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.live .dot{width:10px;height:10px;border-radius:50%;background:#8a8f9c;flex:none}
+.live.is-open .dot{background:#2fbf71;box-shadow:0 0 0 0 rgba(47,191,113,.55);animation:pulse 2.2s infinite}
+.live.is-closed .dot{background:#e2574c}
+.live span{font-weight:500;opacity:.8}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(47,191,113,0)}100%{box-shadow:0 0 0 0 rgba(47,191,113,0)}}
+@media(prefers-reduced-motion:reduce){.live.is-open .dot{animation:none}}
+/* FAQ */
+.faq{border-top:1px solid var(--line);margin-top:30px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-weight:600;font-size:1.14rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{flex:0 0 22px;width:22px;height:22px;transition:transform .25s}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq .a{padding:0 0 24px;max-width:66ch;opacity:.9}
+/* formularz */
+.form{background:var(--paper);color:#14182b;padding:clamp(22px,3vw,36px);border-radius:var(--rad,4px);display:grid;gap:14px;border:1.5px solid var(--ink)}
+.form label{display:grid;gap:6px;font-size:.95rem;font-weight:600}.form .chk{font-weight:400}
+.form input,.form textarea,.form select{font:inherit;padding:12px 14px;border:1.5px solid #6b7088;border-radius:4px;background:#fff;font-weight:400;color:#14182b;width:100%}
+.form textarea{min-height:112px;resize:vertical}
+.form .btn{justify-self:start}
+@media(max-width:760px){.form .btn{justify-self:stretch;width:100%}}
+.form small{opacity:.7}
+.form .chk{grid-template-columns:auto 1fr;align-items:start;font-size:.88rem;gap:10px}.form .chk input{width:auto;margin-top:4px}
+/* stopka */
+.foot{padding:52px 0 34px;font-size:.96rem}
+.foot .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px}
+.foot .logo img{height:64px;width:auto;margin-bottom:14px}
+.foot ul{display:grid;gap:2px;align-content:start}
+.foot a{text-decoration:none;opacity:.9;display:inline-block;padding:11px 0}
+.foot a:hover{opacity:1}
+.foot .legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 24px;opacity:.7;font-size:.85rem;border-top:1px solid var(--line);padding-top:18px;margin-top:8px}
+@media(max-width:760px){.foot .wrap{grid-template-columns:1fr}}
+
+:root{--bg:#f3eee2;--bg2:#161d45;--ink:#161d45;--ink2:#f3eee2;--acc:#d3ab4e;--acc2:#e3c373;--onacc:#161d45;--gd:#755a12;--line:rgba(22,29,69,.2);--paper:#fffdf7;
+--hdrbg:rgba(22,29,69,.96);--hdrbg2:#161d45;--hdrink:#f3eee2;--hdrline:rgba(243,238,226,.18);--disp:'Alfa Slab One',Georgia,serif;--sans:'Albert Sans',system-ui,sans-serif;--rad:3px}
+.sec{padding:clamp(60px,9vw,112px) 0}
+.sec.dark{background:var(--bg2);color:var(--ink2);--line:rgba(243,238,226,.22)}
+.h2{font-size:clamp(2.2rem,4.8vw,3.7rem);line-height:1.04;max-width:18ch;letter-spacing:.002em}
+.lead{font-size:clamp(1.06rem,1.4vw,1.24rem);max-width:56ch;margin-top:20px;opacity:.9}
+.btn.n,.sec:not(.dark) .btn.p,.form .btn.p{background:#161d45;color:#f3eee2}.btn.n:hover,.sec:not(.dark) .btn.p:hover,.form .btn.p:hover{background:#26306a}
+.dark .btn.g,.hero .btn.g{color:#f3eee2}
+.gold{color:var(--gd)}.dark .gold{color:var(--acc)}
+.arrow{display:inline-block;width:1.2em;height:.8em;vertical-align:-.05em;margin-left:.45em}
+a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+/* HERO: obchód po klubie */
+.hero{position:relative;background:#0e1330}
+.js .hero{height:calc(100svh + 4 * 44svh)}
+.stage{position:sticky;top:0;height:100svh;min-height:520px;overflow:hidden;color:#f6f1e4;background:#0e1330}
+.sc{position:absolute;inset:0;margin:0;overflow:hidden;will-change:clip-path}
+.sc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;transform:scale(1.06)}
+.scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,19,48,.88) 0%,rgba(14,19,48,.5) 34%,rgba(14,19,48,.12) 62%,rgba(14,19,48,.32) 100%),linear-gradient(90deg,rgba(14,19,48,.78),rgba(14,19,48,0) 82%)}
+.copy{position:absolute;left:0;right:0;bottom:clamp(30px,7vh,76px)}
+.copy h1{font-size:clamp(2.3rem,5.2vw,4.8rem);line-height:1.04;max-width:17ch;text-shadow:0 2px 24px rgba(8,10,28,.45)}
+.copy p{max-width:44ch;font-size:clamp(1.05rem,1.5vw,1.28rem);margin-top:20px;text-shadow:0 1px 14px rgba(8,10,28,.6)}
+.copy .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.copy .acts .btn.g{border-color:rgba(246,241,228,.7)}
+.copy .live{background:rgba(14,19,48,.72);border:1px solid rgba(243,238,226,.28);padding:8px 14px;border-radius:99px;margin-bottom:20px}
+.copy .hint{margin-top:22px;font-size:.92rem;opacity:.85}
+.cap{position:absolute;left:clamp(16px,4vw,48px);right:clamp(16px,4vw,48px);top:calc(var(--hdr-h,100px) + 22px);display:flex;align-items:center;gap:16px;font-size:1.02rem;font-weight:500;text-shadow:0 1px 10px rgba(8,10,28,.7)}
+.cap .no{font-family:var(--disp);font-size:1.05rem;letter-spacing:.04em;min-width:4.4em;font-variant-numeric:tabular-nums}
+.cap .nm{min-width:0}.cap .nm b{font-weight:600}
+.cap i{flex:1;max-width:220px;height:2px;background:rgba(246,241,228,.3);position:relative;overflow:hidden;display:block}
+.cap i::after{content:"";position:absolute;inset:0;background:var(--acc);transform:scaleX(var(--p,0));transform-origin:left}
+html:not(.js) .sc:not(:first-child){display:none}
+@media(max-width:760px){.js .hero{height:calc(100svh + 4 * 34svh)}.cap{font-size:.92rem;gap:10px}.cap .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cap i{max-width:70px;flex:none;width:70px}.copy p{font-size:1.02rem}}
+@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative}.sc:not(:first-child){display:none}.cap i{display:none}}
+/* O KLUBIE */
+.klub .grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(32px,6vw,96px);align-items:start}
+.klub .h2{font-size:clamp(1.9rem,3.2vw,2.7rem);max-width:none}
+.klub .left{position:sticky;top:calc(var(--hdr-h,100px) + 24px)}
+.klub .left .ph{margin-top:34px;aspect-ratio:4/3;overflow:hidden;position:relative;background:#d9d2bf}
+.klub .left .ph img{position:absolute;left:0;width:100%;height:116%;top:-8%;object-fit:cover;transform:translate3d(0,var(--py,0px),0)}
+.klub .list{border-top:1.5px solid var(--ink)}
+.klub .list li{padding:26px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:8px 28px}
+.klub .list h3{font:600 1.2rem/1.25 var(--sans)}
+.klub .list p{font-size:1.04rem;opacity:.92}
+@media(max-width:900px){.klub .grid{grid-template-columns:1fr}.klub .left{position:static}.klub .list li{grid-template-columns:1fr}}
+/* STREFY */
+.zone{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,80px);align-items:center;padding:clamp(24px,3.4vw,44px) 0;border-top:1px solid var(--line)}
+.zone:first-of-type{border-top:0;padding-top:clamp(30px,4vw,48px)}
+.zone:nth-of-type(even){grid-template-columns:5fr 7fr}.zone:nth-of-type(even) .ph{order:2}
+.zone .ph{aspect-ratio:3/2;overflow:hidden;position:relative;background:#0e1330}
+.zone .ph img{position:absolute;left:0;width:100%;height:116%;top:-8%;object-fit:cover;transform:translate3d(0,var(--py,0px),0)}
+.zone h3{font-size:clamp(2rem,3.6vw,3rem)}
+.zone p{margin-top:16px;font-size:1.08rem;max-width:46ch;opacity:.92}
+.zone .cecha{margin-top:18px;font-weight:600;color:var(--acc);font-size:.98rem}
+.zone .more{margin-top:22px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);border-top:1px solid var(--line);padding-top:clamp(28px,4vw,48px)}
+.mini h3{font:600 1.25rem/1.25 var(--sans)}.mini p{margin-top:10px;opacity:.92;max-width:44ch}.mini .cecha{margin-top:10px;color:var(--acc);font-weight:600}
+@media(max-width:860px){.zone,.zone:nth-of-type(even),.mini{grid-template-columns:1fr}.zone:nth-of-type(even) .ph{order:0}.mini{gap:28px}}
+/* CENNIK */
+.cennik .head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+.kar{border-top:1.5px solid var(--ink);margin-top:36px}
+.kar li{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) auto;gap:10px 32px;align-items:center;padding:24px 0 24px 0;border-bottom:1px solid var(--line);position:relative}
+.kar li.top{background:linear-gradient(90deg,rgba(211,171,78,.28),rgba(211,171,78,.06));padding-left:22px;margin-left:-22px;padding-right:22px;margin-right:-22px;border-left:4px solid var(--acc)}
+.kar h3{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.kar .tag{display:block;font:600 .82rem var(--sans);color:var(--gd);margin-top:6px}
+.kar .opis b{display:block;font-weight:600}
+.kar .opis span{display:block;font-size:.95rem;opacity:.78;margin-top:3px}
+.kar .cena{font-family:var(--disp);font-size:clamp(2.1rem,3.4vw,3rem);line-height:1;text-align:right;white-space:nowrap}
+.kar .cena small{display:inline;font:500 1.1rem var(--sans);opacity:1;margin-left:.2em}.kar .cena em{display:block;font:500 .84rem var(--sans);font-style:normal;opacity:.78;margin-top:6px}
+@media(max-width:860px){.kar li{grid-template-columns:1fr auto;gap:6px 16px}.kar .cena{grid-column:2;grid-row:1;font-size:1.9rem}.kar .opis{grid-column:1/-1}.kar li.top{margin-left:-16px;margin-right:-16px;padding-left:12px;padding-right:16px}.cennik .head{grid-template-columns:1fr}}
+.note{font-size:.95rem;opacity:.8;margin-top:18px;max-width:70ch}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);margin-top:clamp(44px,6vw,72px)}
+.cols h3{font-size:1.5rem;margin-bottom:6px}
+.pl{border-top:1.5px solid var(--ink);margin-top:14px}
+.pl li{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.pl li span small{display:block;font-size:.9rem;opacity:.75}
+.pl li b{font-family:var(--disp);font-weight:400;font-size:1.35rem;white-space:nowrap}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.promo{margin-top:clamp(44px,6vw,72px);background:var(--bg2);color:var(--ink2);padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:1fr auto;gap:24px 40px;align-items:center}
+.promo h3{font-size:clamp(1.8rem,3.2vw,2.6rem)}.promo p{margin-top:10px;max-width:58ch;opacity:.92}
+@media(max-width:760px){.promo{grid-template-columns:1fr}}
+/* GOŚCIE */
+.gosc .grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(28px,6vw,88px);align-items:center}
+.gosc .ph{overflow:hidden;position:relative;aspect-ratio:4/3}
+.gosc .ph img{position:absolute;left:0;width:100%;height:116%;top:-8%;object-fit:cover;transform:translate3d(0,var(--py,0px),0)}
+.meta{margin-top:30px;display:grid;gap:0;border-top:1px solid var(--line)}
+.meta div{padding:18px 0;border-bottom:1px solid var(--line)}
+.gosc .lead{font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.4;opacity:1;max-width:34ch}
+.gosc .h2{font-size:clamp(2rem,3.3vw,2.8rem);max-width:22ch}
+.meta b{font-family:var(--disp);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);color:var(--acc);display:block;line-height:1.1}
+.meta span{display:block;margin-top:6px;opacity:.88}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);margin-top:clamp(52px,7vw,88px)}
+.quotes blockquote{margin:0;border-top:1.5px solid var(--acc);padding-top:18px}
+.quotes p{font-size:1.28rem;line-height:1.38}
+.quotes cite{display:block;font-style:normal;margin-top:14px;font-weight:600;color:var(--acc)}
+.qnote{font-size:.82rem;opacity:.65;margin-top:26px}
+@media(max-width:900px){.gosc .grid,.quotes{grid-template-columns:1fr}}
+/* KONTAKT */
+.kontakt .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);margin-top:36px;align-items:start}
+.kontakt dl{display:grid;gap:22px}
+.kontakt dt{font-weight:600;font-size:.95rem;opacity:.9;margin-bottom:4px}
+.kontakt dd{font-size:1.1rem}.kontakt dd a{text-decoration:none;border-bottom:1px solid var(--line)}
+.godz{border-top:1.5px solid var(--ink);margin-top:6px}
+.godz li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.godz li.today{font-weight:700;background:linear-gradient(90deg,rgba(211,171,78,.3),transparent)}
+.kontakt .live{font-size:1.1rem;margin-bottom:12px}
+.kontakt .live.is-open b{color:#12794a}.kontakt .live.is-closed b{color:#a8281f}
+.acts2{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+@media(max-width:860px){.kontakt .grid{grid-template-columns:1fr}}
+.foot{background:var(--bg2);color:var(--ink2);--line:rgba(243,238,226,.22)}
+
+</style>
+</head>
+<body>
+<div class="fixtop" id="top">
+<div class="mock"><b>MAKIETA</b> · propozycja nowej strony olimpiafitness.pl · wariant W1 „Od 2000” · ODNOVA Studio · treści i zdjęcia z obecnej strony</div>
+<header class="hdr"><div class="wrap">
+<a class="logo" href="#top" aria-label="Olimpia Fitness Club, początek strony"><img src="a/logo-light.png" alt="Olimpia Fitness Club" width="103" height="54"></a>
+<nav aria-label="Menu"><a href="#klub">O klubie</a><a href="#strefy">Strefy</a><a href="#cennik">Cennik</a><a href="#kontakt">Kontakt</a><a href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć</a></nav>
+<a class="tel" href="tel:+48226738734">(22) 673 87 34</a>
+<a class="btn p cta" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a>
+<details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#klub">O klubie</a><a href="#strefy">Strefy</a><a href="#cennik">Cennik</a><a href="#kontakt">Kontakt</a><a href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć</a><a href="tel:+48226738734">(22) 673 87 34</a><a class="btn p cta" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a></nav></details>
+</div></header>
+</div>
+<div class="mbar"><a class="btn g" href="tel:+48226738734">Zadzwoń</a><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a></div>
+<section class="hero" aria-label="Obchód po klubie"><div class="stage">
+<figure class="sc" data-n="0"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"></figure><figure class="sc" data-n="1"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"></figure><figure class="sc" data-n="2"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></figure><figure class="sc" data-n="3"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"></figure><figure class="sc" data-n="4"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></figure><div class="scrim"></div>
+<div class="cap" aria-hidden="true"><span class="no">01 / 05</span><span class="nm"><b>Siłownia</b> · Technogym, Waryński Żelechów, Sevim, Matrix</span><i></i></div>
+<div class="copy"><div class="wrap">
+<p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p>
+<h1>Siłownia, fitness i sauna na Saskiej Kępie.</h1>
+<p>Klub z tradycjami: trenujemy na Pradze Południe od 2000 roku. W jednym miejscu także masaż i solarium.</p>
+<div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div>
+<p class="hint">Przewiń, a oprowadzimy Cię po klubie ↓</p>
+</div></div>
+</div></section><main><section class="sec klub" id="klub"><div class="wrap"><div class="grid">
+<div class="left"><h2 class="h2 reveal">Kameralny klub, w którym trenerzy znają klubowiczów.</h2>
+<p class="lead reveal">Od 2000 roku budujemy markę na jednym: dobrej atmosferze i realnych wynikach naszych klubowiczów.</p>
+<div class="ph" data-par><img src="a/foto/wall1.jpg" alt="Ściana ze zdjęciami w klubie Olimpia" width="1300" height="867" loading="lazy" decoding="async"></div></div>
+<ul class="list stagger"><li><h3>Tradycja</h3><p>Działamy na Pradze Południe od 2000 roku. Jesteśmy kameralnym klubem z rodzinną atmosferą, a jednocześnie idziemy z duchem czasu.</p></li><li><h3>Ci sami trenerzy</h3><p>Kadra od lat ta sama i przywiązana do klubu i klubowiczów. Zależy nam na Twoich realnych wynikach.</p></li><li><h3>Sprzęt na światowym poziomie</h3><p>Klimatyzowane sale, linia treningowa Technogym oraz urządzenia Waryński Żelechów, Sevim i Matrix.</p></li><li><h3>Plan na start</h3><p>Każdy nowy klubowicz dostaje indywidualny program ćwiczeń, ułożony pod jego potrzeby i możliwości.</p></li><li><h3>Bez długich umów</h3><p>Karnet Month obowiązuje 30 dni bez umowy, a Flex ma miesiąc wypowiedzenia.</p></li><li><h3>Sklep, barek, relaks</h3><p>Odżywki i suplementy z poradą, dietetyczny posiłek do podgrzania i strefa relaksu po treningu.</p></li></ul>
+</div></div></section><section class="sec dark" id="strefy"><div class="wrap">
+<h2 class="h2 reveal">Wszystko, czego potrzebujesz przed i po treningu.</h2>
+<div style="margin-top:24px"><div class="zone"><div class="ph" data-par><img src="a/foto/gym2.jpg" alt="Siłownia w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"></div><div><h3 class="reveal">Siłownia</h3><p>Przestronna, klimatyzowana sala z urządzeniami na światowym poziomie. Bieżnie, rowerki i przyrządy oszczędzające stawy, dlatego trenuje u nas coraz więcej Pań. Przy pierwszej wizycie dostajesz indywidualny program ćwiczeń.</p><p class="cecha">Technogym · Waryński Żelechów · Sevim · Matrix</p><a class="more" href="#cennik">Zobacz karnety<svg class="arrow" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 8h20M15 2l6 6-6 6"/></svg></a></div></div><div class="zone"><div class="ph" data-par><img src="a/foto/fit1.jpg" alt="Fitness w klubie Olimpia" width="1700" height="1134" loading="lazy" decoding="async"></div><div><h3 class="reveal">Fitness</h3><p>Duża sala z lustrami, od jogi po zajęcia taneczne i Jumping Fitness. Intensywność dopasujesz do swoich możliwości. Aktualne zajęcia sprawdzisz w grafiku.</p><p class="cecha">joga · taniec · Jumping Fitness · zajęcia dla kobiet w ciąży</p><a class="more" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć<svg class="arrow" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 8h20M15 2l6 6-6 6"/></svg></a></div></div><div class="zone"><div class="ph" data-par><img src="a/foto/sauna.jpg" alt="Sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></div><div><h3 class="reveal">Sauna</h3><p>Osobna sauna damska i męska. Po treningu pomaga rozluźnić mięśnie i zregenerować siły, a regularnie wzmacnia odporność i poprawia samopoczucie.</p><p class="cecha">sauna damska i męska · szatnie · prysznice</p></div></div><div class="zone"><div class="ph" data-par><img src="a/foto/masaz.jpg" alt="Gabinet masażu w klubie Olimpia" width="1100" height="730" loading="lazy" decoding="async"></div><div><h3 class="reveal">Gabinet masażu</h3><p>Masaż leczniczy, relaksacyjny, odchudzający, modelujący bańką chińską i sportowy. Przyjmuje Emilia Zielińska, magister fizjoterapii i wielokrotna medalistka Mistrzostw Polski w wioślarstwie.</p><p class="cecha">50 minut · 200 zł · zapisy: 692 375 016</p><a class="more" href="tel:+48692375016">Zapisy: 692 375 016<svg class="arrow" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 8h20M15 2l6 6-6 6"/></svg></a></div></div></div>
+<div class="mini"><div><h3>Solarium</h3><p>Solarium dla klubowiczów, rozliczane za minutę. Rozsądne korzystanie poprawia koloryt skóry.</p><p class="cecha">4,50 zł za minutę</p></div><div><h3>Barek i sklep</h3><p>Dobrze zaopatrzony sklep z odżywkami i suplementami oraz barek z dyspenserem shaków. Dietetyczny posiłek podgrzejesz i zjesz w strefie relaksu.</p><p class="cecha">odżywki · suplementy · shake · posiłek po treningu</p></div></div>
+</div></section><section class="sec cennik" id="cennik"><div class="wrap">
+<div class="head"><div><h2 class="h2 reveal">Cennik karnetów</h2><p class="lead">Siłownia i fitness w cenie karnetu. Zadzwoń i dopytaj o aktualne promocje.</p></div></div>
+<ul class="partners"><li>Multisport</li><li>Fit Profit</li><li>Medicover Sport</li></ul>
+<ul class="kar stagger"><li class=""><div><h3>Day Pass</h3></div><div class="opis"><b>jedno wejście na siłownię i fitness</b><span>bez zobowiązań · dobry na pierwszą wizytę</span></div><div class="cena">59<small>zł</small><em>jednorazowo</em></div></li><li class=""><div><h3>Month</h3></div><div class="opis"><b>karnet na 30 dni, bez umowy</b><span>w tygodniu do 23:00 i weekendy</span></div><div class="cena">249<small>zł</small><em>30 dni</em></div></li><li class="top"><div><h3>Flex</h3><span class="tag">najczęściej wybierana opcja</span></div><div class="opis"><b>umowa na czas nieokreślony</b><span>1 miesiąc wypowiedzenia · w tygodniu do 23:00 i weekendy</span></div><div class="cena">219<small>zł</small><em>mies.</em></div></li><li class=""><div><h3>Open</h3></div><div class="opis"><b>umowa na 12 miesięcy</b><span>w tygodniu do 23:00 i weekendy</span></div><div class="cena">179<small>zł</small><em>mies.</em></div></li><li class=""><div><h3>Open Student</h3></div><div class="opis"><b>z legitymacją studencką</b><span>umowa na 30 dni</span></div><div class="cena">169<small>zł</small><em>30 dni</em></div></li><li class=""><div><h3>Open Senior</h3></div><div class="opis"><b>dla osób powyżej 65. roku życia</b><span>umowa na 30 dni</span></div><div class="cena">149<small>zł</small><em>30 dni</em></div></li></ul>
+<p class="note">Jednorazowo za wydanie karty klubowej płacisz 40 zł (opłata bezzwrotna). Karnety Month, Flex i Open obowiązują w tygodniu do 23:00 i w weekendy. Akceptujemy Multisport, Fit Profit, Medicover Sport i popularne karty płatnicze.</p>
+<div class="acts2"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet online</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div>
+<div class="cols">
+<div><h3>Treningi personalne</h3><ul class="pl"><li><span>Trening indywidualny<small>z instruktorem siłowni, 60–80 min, shake gratis</small></span><b>150 zł</b></li><li><span>Pakiet 5 treningów<small>ważny 30 dni</small></span><b>700 zł</b></li><li><span>Pakiet 10 treningów<small>ważny 60 dni</small></span><b>1350 zł</b></li><li><span>Trening dla dwóch osób<small>pakiet ważny 60 dni</small></span><b>200 zł</b></li></ul></div>
+<div><h3>Jumping Fitness</h3><ul class="pl"><li><span>Wejście jednorazowe</span><b>40 zł</b></li><li><span>4 wejścia</span><b>150 zł</b></li><li><span>8 wejść</span><b>230 zł</b></li></ul><p class="note">Karnet klubu nie obejmuje tych zajęć, karty partnerskie nie obowiązują.</p>
+<h3 style="margin-top:34px">Masaż i solarium</h3><ul class="pl"><li><span>Masaż lub wizyta fizjoterapeutyczna<small>50 minut</small></span><b>200 zł</b></li><li><span>Solarium<small>za minutę</small></span><b>4,50 zł</b></li></ul></div>
+</div>
+<div class="promo"><div><h3>Przyprowadź znajomego</h3><p>Dla Ciebie 25% zniżki na kolejną płatność, a dla osoby towarzyszącej 25% od regularnej ceny pierwszego karnetu.</p></div><a class="btn p" href="tel:+48226738734">Zadzwoń i zapytaj</a></div>
+</div></section><section class="sec dark gosc"><div class="wrap">
+<div class="grid"><div class="ph" data-par><img src="a/foto/wall2.jpg" alt="Ściana ze zdjęciami sportowców w klubie Olimpia" width="1200" height="800" loading="lazy" decoding="async"></div>
+<div><h2 class="h2 reveal">Trenowali tu mistrzowie. Zaczynali zwykli klubowicze.</h2>
+<p class="lead">Wśród gości klubu byli m.in. Mariusz Pudzianowski, najwybitniejszy polski strongman, oraz wielokrotny mistrz świata i Europy w kulturystyce Piotr Głuchowski. W galerii na stronie klubu znajdziesz zdjęcia słynnych gości.</p>
+<div class="meta stagger"><div><b>−23,5 kg w 4 miesiące</b><span>Wojtek: z 120 kg (sierpień 2017) do 96,5 kg (styczeń 2018)</span></div><div><b>−16 kg w 22 miesiące</b><span>Ania: z 80 kg do 64 kg, ze wsparciem trenera Dariuszka</span></div></div></div></div>
+<div class="quotes stagger"><blockquote><p>Miła i profesjonalna obsługa. Instruktorzy chętnie służą pomocą i udzielają cennych uwag.</p><cite>Agnieszka</cite></blockquote><blockquote><p>Zauważalna jest miła atmosfera panująca w klubie, nastawienie na konkretny trening i osiąganie celów. Instruktorzy wspierają i zależy im na sukcesie trenujących.</p><cite>Tomek</cite></blockquote><blockquote><p>Zajęcia dla kobiet w ciąży są wspaniałe. Polecam.</p><cite>Paulina</cite></blockquote></div>
+<p class="qnote">Opinie i metamorfozy pochodzą z obecnej strony klubu. Przed publikacją potwierdzimy zgodę osób, których dotyczą.</p>
+</div></section><section class="sec kontakt" id="kontakt"><div class="wrap">
+<h2 class="h2 reveal">Zapraszamy na trening.</h2>
+<p class="lead">Najłatwiej zacząć od Day Passu za 59 zł: przyjdź, obejrzyj klub i dostań plan na start.</p>
+<div class="grid"><div>
+<p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p>
+<ul class="godz"><li data-days="1,2,3,4,5"><span>Poniedziałek – piątek</span><b>6:00 – 23:00</b></li><li data-days="6"><span>Sobota</span><b>8:00 – 20:00</b></li><li data-days="0"><span>Niedziela</span><b>9:00 – 20:00</b></li></ul>
+<dl style="margin-top:30px">
+<div><dt>Adres</dt><dd>Al. Stanów Zjednoczonych 26A, 03-964 Warszawa<br>Praga Południe, Saska Kępa, dojazd od ul. Afrykańskiej</dd></div>
+<div><dt>Telefon i e-mail</dt><dd><a href="tel:+48226738734">(22) 673 87 34</a> · <a href="mailto:info@olimpiafitness.pl">info@olimpiafitness.pl</a></dd></div>
+<div><dt>Dojazd</dt><dd>Parking wzdłuż ul. Afrykańskiej. Autobusem do przystanku Międzynarodowa 02, można też dojść od ul. Lizbońskiej.</dd></div>
+<div><dt>Weź ze sobą</dt><dd>Strój sportowy, mały ręcznik i buty na zmianę.</dd></div>
+</dl>
+<div class="acts2"><a class="btn n" href="https://www.google.com/maps/search/Olimpia+Fitness+Club+Al.+Stan%C3%B3w+Zjednoczonych+26A+Warszawa" target="_blank" rel="noopener">Pokaż na mapie</a><a class="btn g" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć</a></div>
+</div>
+<div><form class="form" onsubmit="return false">
+<label>Imię<input type="text" name="imie" autocomplete="given-name" required></label>
+<label>Telefon lub e-mail<input type="text" name="kontakt" autocomplete="email" required></label>
+<label>Interesuje mnie<select name="temat"><option>Wejście na próbę (Day Pass)</option><option>Karnet</option><option>Trening personalny</option><option>Masaż</option><option>Coś innego</option></select></label>
+<label>Wiadomość<textarea name="msg" placeholder="Np. chcę wejść na próbę w sobotę"></textarea></label>
+<label class="chk"><input type="checkbox" name="rodo" required> Zgadzam się na kontakt w sprawie mojego zapytania (RODO).</label>
+<button class="btn p" type="submit">Umów wizytę próbną</button>
+<small>Makieta: formularz nie wysyła wiadomości.</small>
+</form><iframe class="map" loading="lazy" title="Mapa dojazdu do Olimpia Fitness Club" src="https://www.google.com/maps?q=Al.+Stan%C3%B3w+Zjednoczonych+26A+Warszawa&output=embed"></iframe></div></div>
+<h2 class="h2" style="margin-top:clamp(56px,8vw,96px);font-size:clamp(1.8rem,3.2vw,2.6rem)">Najczęstsze pytania</h2>
+<div class="faq"><details><summary>Czy muszę podpisywać długą umowę?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Nie. Karnet Month obowiązuje 30 dni bez umowy. Flex to umowa na czas nieokreślony z miesięcznym wypowiedzeniem, a Open jest tańszy przy umowie na 12 miesięcy.</div></details><details><summary>Jak kupić karnet?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Online w systemie klubu (przycisk „Kup karnet”) albo na miejscu w recepcji. Przy pierwszym karnecie jednorazowo płacisz 40 zł za wydanie karty klubowej.</div></details><details><summary>Czy honorujecie Multisport?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Tak, akceptujemy Multisport, Fit Profit i Medicover Sport. Wyjątkiem są zajęcia Jumping Fitness, na których karty partnerskie nie obowiązują.</div></details><details><summary>Co zabrać na pierwszy trening?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Strój sportowy, mały ręcznik i buty sportowe na zmianę. Na salę wchodzi się w czystym, zmienionym obuwiu.</div></details><details><summary>Jak do Was dojechać?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Samochodem najłatwiej od ul. Afrykańskiej, wzdłuż której jest parking. Autobusem do przystanku Międzynarodowa 02 na Al. Stanów Zjednoczonych, można też dojść od ul. Lizbońskiej.</div></details><details><summary>Gdzie sprawdzę grafik zajęć?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">W kalendarzu zajęć w systemie klubu. Zapiszesz się tam od razu, także z telefonu.</div></details></div>
+</div></section></main><footer class="foot"><div class="wrap">
+<div><a class="logo" href="#top"><img src="a/logo-light.png" alt="Olimpia Fitness Club" width="122" height="64"></a><p>Klub z tradycjami na Pradze Południe od 2000 roku.</p><p style="margin-top:10px"><a href="tel:+48226738734">(22) 673 87 34</a> · <a href="mailto:info@olimpiafitness.pl">info@olimpiafitness.pl</a></p></div>
+<ul><li><a href="#klub">O klubie</a></li><li><a href="#strefy">Strefy</a></li><li><a href="#cennik">Cennik</a></li><li><a href="#kontakt">Kontakt</a></li><li><a href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć</a></li></ul>
+<ul><li><a href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/Login/SystemLogin?returnurl=https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/strefa-klienta" target="_blank" rel="noopener">Strefa klienta</a></li><li><a href="https://olimpiafitness.pl/regulamin/" target="_blank" rel="noopener">Regulamin klubu</a></li><li><a href="https://olimpiafitness.pl/rodo/" target="_blank" rel="noopener">RODO</a></li><li><a href="https://www.facebook.com/Olimpia-Fitness-Club-153450561337305/" target="_blank" rel="noopener">Facebook</a></li></ul>
+<div class="legal"><span>© 2026 NET TRADE Robert Lendzion</span><span>Al. Stanów Zjednoczonych 26A, 03-964 Warszawa</span><span>NIP 524 256 40 68</span><span>Projekt makiety: ODNOVA Studio</span></div>
+</div></footer><script>
+(function(){
+var d=document,hdr=d.getElementById('top');
+function m(){d.documentElement.style.setProperty('--hdr-h',hdr.offsetHeight+'px')}
+m();addEventListener('resize',m);addEventListener('load',m);
+d.querySelectorAll('.mnav nav a').forEach(function(a){a.addEventListener('click',function(){d.querySelector('.mnav').removeAttribute('open')})});
+var hero=d.querySelector('.hero');
+function ph(){if(!hero)return;d.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*0.5)}
+addEventListener('scroll',ph,{passive:true});ph();
+/* status otwarcia wg czasu warszawskiego */
+var HRS={"1": [6, 23], "2": [6, 23], "3": [6, 23], "4": [6, 23], "5": [6, 23], "6": [8, 20], "0": [9, 20]};
+function st(){var p={};new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Warsaw',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+var dm={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6},dy=dm[p.weekday],t=(parseInt(p.hour,10)%24)+parseInt(p.minute,10)/60,c=HRS[dy];
+if(t>=c[0]&&t<c[1])return{day:dy,open:true,a:'Otwarte teraz',b:'do '+c[1]+':00'};
+if(t<c[0])return{day:dy,open:false,a:'Zamknięte',b:'otwieramy dziś o '+c[0]+':00'};
+return{day:dy,open:false,a:'Zamknięte',b:'otwieramy jutro o '+HRS[(dy+1)%7][0]+':00'}}
+try{var s=st();d.querySelectorAll('[data-live]').forEach(function(e){e.classList.add(s.open?'is-open':'is-closed');e.innerHTML='<i class="dot"></i><b>'+s.a+'</b><span>'+s.b+'</span>'});
+d.querySelectorAll('[data-days]').forEach(function(e){if(e.getAttribute('data-days').split(',').indexOf(String(s.day))>-1)e.classList.add('today')})}catch(e){}
+/* odsłanianie */
+var els=[].slice.call(d.querySelectorAll('.reveal,.stagger'));var fired=false;
+d.querySelectorAll('.stagger').forEach(function(s){[].forEach.call(s.children,function(c,i){c.style.setProperty('--i',i)})});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);fired=true}})},{rootMargin:'0px 0px -8% 0px',threshold:.06});els.forEach(function(e){io.observe(e)});
+setTimeout(function(){if(!fired)els.forEach(function(e){e.classList.add('in')})},4000);
+var tt;function sweep(){els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in')})}
+addEventListener('scroll',function(){clearTimeout(tt);tt=setTimeout(sweep,160)},{passive:true});}else{els.forEach(function(e){e.classList.add('in')})}
+})();
+
+(function(){
+var d=document,hero=d.querySelector('.hero'),sc=[].slice.call(d.querySelectorAll('.sc')),N=sc.length;
+var cap=d.querySelector('.cap'),no=cap.querySelector('.no'),nm=cap.querySelector('.nm');
+var NAMES=[["Siłownia", "Technogym, Waryński Żelechów, Sevim, Matrix"], ["Sala fitness", "joga, taniec, Jumping Fitness"], ["Sauna", "osobna damska i męska"], ["Recepcja i sklep", "odżywki, shake, barek"], ["Strefa relaksu", "odpoczynek po treningu"]];
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
+function tour(){
+ if(rm)return;
+ var r=hero.getBoundingClientRect(),tot=hero.offsetHeight-innerHeight,p=clamp(-r.top/tot,0,1),x=p*(N-1);
+ sc.forEach(function(f,i){var im=f.firstElementChild;
+  if(i>0){var t=clamp(x-(i-1),0,1);f.style.clipPath='inset(0 0 0 '+((1-t)*100).toFixed(2)+'%)'}
+  im.style.transform='translate3d('+(clamp(x-i,-1.2,1.2)*-2.4).toFixed(2)+'%,0,0) scale(1.07)';
+ });
+ var c=clamp(Math.round(x),0,N-1);
+ no.textContent='0'+(c+1)+' / 0'+N; nm.innerHTML='<b>'+NAMES[c][0]+'</b> · '+NAMES[c][1];
+ cap.style.setProperty('--p',p.toFixed(3));
+}
+addEventListener('scroll',tour,{passive:true});addEventListener('resize',tour);tour();
+/* delikatna paralaksa zdjęć w ramkach */
+var ph=[].slice.call(d.querySelectorAll('[data-par]'));
+function par(){if(rm)return;ph.forEach(function(e){var r=e.getBoundingClientRect();if(r.bottom<-60||r.top>innerHeight+60)return;
+ var k=(r.top+r.height/2-innerHeight/2)/innerHeight,max=r.height*.075;e.style.setProperty('--py',clamp(k*-max*1.6,-max,max).toFixed(1)+'px')})}
+addEventListener('scroll',par,{passive:true});addEventListener('resize',par);par();
+})();
+</script></body></html>
