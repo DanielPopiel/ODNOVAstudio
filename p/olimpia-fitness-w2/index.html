@@ -222,6 +222,57 @@ h1,h2,h3,.h2{text-transform:uppercase;letter-spacing:.005em}
 @media(max-width:860px){.kontakt .grid{grid-template-columns:1fr}}
 .foot{background:var(--bg2);color:var(--ink2);--line:rgba(244,245,248,.2)}
 
+/* EFEKTY */
+.hero h1,.hero .sub,.hero .acts,.hero .week{will-change:transform}
+.hero .vis .a,.hero .vis .b{box-shadow:0 30px 60px -28px rgba(15,21,48,.55)}
+.vis .a img,.vis .b img{transform:scale(1.08)}
+.vis::before{content:"";position:absolute;right:-6%;top:6%;width:46%;aspect-ratio:1;border:2px solid var(--acc);z-index:-1;transform:translate3d(var(--mx,0),var(--my,0),0)}
+.js .week u{transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.22,.61,.36,1) .3s}
+.js .week.go u{transform:scaleX(1)}
+.js .week li:nth-child(2) u{transition-delay:.38s}.js .week li:nth-child(3) u{transition-delay:.46s}.js .week li:nth-child(4) u{transition-delay:.54s}.js .week li:nth-child(5) u{transition-delay:.62s}.js .week li:nth-child(6) u{transition-delay:.7s}.js .week li:nth-child(7) u{transition-delay:.78s}
+/* pasek z napisem */
+.marq{background:var(--bg2);color:var(--ink2);overflow:hidden;white-space:nowrap;padding:16px 0;border-block:3px solid var(--acc)}
+.marq div{display:inline-flex;gap:0;will-change:transform}
+.marq span{font:600 clamp(2rem,4.2vw,3.4rem)/1 var(--disp);text-transform:uppercase;letter-spacing:.02em;padding-right:.9em}
+.marq span::after{content:"";display:inline-block;width:.32em;height:.32em;background:var(--acc);transform:rotate(45deg);margin-left:.9em;vertical-align:.2em}
+/* liczby */
+.stats{background:var(--bg);padding:clamp(34px,5vw,60px) 0}
+.stats ul{display:grid;grid-template-columns:repeat(4,1fr);gap:20px clamp(16px,3vw,48px)}
+.stats li{border-top:2px solid var(--ink);padding-top:14px}
+.stats b{display:block;font:600 clamp(3rem,6vw,5.2rem)/.9 var(--disp);font-variant-numeric:tabular-nums}
+.stats b em{font-style:normal;color:var(--acc)}
+.stats span{display:block;margin-top:8px;font-weight:500;opacity:.85}
+@media(max-width:760px){.stats ul{grid-template-columns:1fr 1fr}}
+/* hover: cennik i listy */
+.tab tbody tr{transition:background .25s ease}
+.tab tbody tr td{transition:background .25s ease,color .25s ease,transform .25s ease,box-shadow .25s ease}
+.tab tbody tr:hover td{background:rgba(15,21,48,.05)}
+.tab tbody tr.top:hover td{background:rgba(193,18,31,.12)}
+.tab tbody tr:hover td.n{color:var(--acc);transform:translateX(8px)}
+.tab tbody tr td:first-child{box-shadow:inset 0 0 0 var(--acc)}
+.tab tbody tr:hover td:first-child{box-shadow:inset 4px 0 0 var(--acc)}
+.tab tbody tr:hover td.c{transform:scale(1.04);transform-origin:right center}
+@media(max-width:760px){.tab tbody tr:hover td{background:none}.tab tbody tr:hover td.n{transform:none}.tab tbody tr:hover td.c{transform:none}}
+.pl li{transition:padding .25s ease,background .25s ease}.pl li:hover{background:rgba(15,21,48,.045);padding-inline:10px}
+.pl li:hover b{color:var(--acc)}
+.zc{transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease}
+.zc:hover{box-shadow:0 26px 50px -30px rgba(15,21,48,.6)}
+.zc .ph img{transform:scale(1.18);transition:filter .4s ease}
+.promo{transition:background .3s ease,color .3s ease}.promo:hover{background:var(--bg2);color:var(--ink2)}
+.promo:hover .btn.n{background:var(--acc)}
+.why li{transition:transform .3s ease,border-color .3s ease}.why li:hover{transform:translateY(-6px)}
+/* zdjęcia: odsłanianie kurtyną i dryf */
+.js .wipe{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.77,0,.18,1)}
+.js .wipe.in{clip-path:inset(0 0 0 0)}
+.wipe img{transform:scale(1.18);will-change:transform}
+/* opinie na czerwonym tle */
+#opinie{background:var(--acc);color:#fff;--line:rgba(255,255,255,.4)}
+#opinie .q blockquote{border-top-color:#fff;position:relative;transition:transform .3s ease}
+#opinie .q blockquote:hover{transform:translateY(-6px)}
+#opinie .q blockquote::before{content:'"';position:absolute;right:0;top:10px;font:700 6rem/.6 Georgia,serif;opacity:.28}
+#opinie .q cite{color:#fff;opacity:.9}#opinie .qnote{opacity:.85}
+@media(prefers-reduced-motion:reduce){.marq div{transform:none!important}.js .wipe{clip-path:none}.js .week u{transform:none}}
+
 </style>
 </head>
 <body>
@@ -239,13 +290,13 @@ h1,h2,h3,.h2{text-transform:uppercase;letter-spacing:.005em}
 <main><section class="hero"><div class="wrap">
 <div>
 <p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p>
-<h1>Siłownia i fitness na Saskiej Kępie.</h1>
-<p class="sub">Sauna, masaż i solarium w tym samym miejscu. Klub działa na Pradze Południe od 2000 roku.</p>
+<h1 data-sp="-22">Siłownia i fitness na Saskiej Kępie.</h1>
+<p class="sub" data-sp="-12">Sauna, masaż i solarium w tym samym miejscu. Klub działa na Pradze Południe od 2000 roku.</p>
 <div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć</a></div>
 <ul class="week" aria-label="Godziny otwarcia w tygodniu"><li data-days="1" data-o="6" data-c="23"><span>Pn</span><i><u style="left:25.00%;width:70.83%"></u></i><b>6–23</b></li><li data-days="2" data-o="6" data-c="23"><span>Wt</span><i><u style="left:25.00%;width:70.83%"></u></i><b>6–23</b></li><li data-days="3" data-o="6" data-c="23"><span>Śr</span><i><u style="left:25.00%;width:70.83%"></u></i><b>6–23</b></li><li data-days="4" data-o="6" data-c="23"><span>Cz</span><i><u style="left:25.00%;width:70.83%"></u></i><b>6–23</b></li><li data-days="5" data-o="6" data-c="23"><span>Pt</span><i><u style="left:25.00%;width:70.83%"></u></i><b>6–23</b></li><li data-days="6" data-o="8" data-c="20"><span>So</span><i><u style="left:33.33%;width:50.00%"></u></i><b>8–20</b></li><li data-days="0" data-o="9" data-c="20"><span>Nd</span><i><u style="left:37.50%;width:45.83%"></u></i><b>9–20</b></li></ul>
 </div>
-<div class="vis" aria-hidden="false"><div class="a" data-sp="-34"><img src="a/foto/gym3.jpg" alt="Siłownia w klubie Olimpia" width="1400" height="934" decoding="async"></div><div class="b" data-sp="46"><img src="a/foto/fit2.jpg" alt="Sala fitness w klubie Olimpia" width="1200" height="800" decoding="async"></div></div>
-</div></section><section class="strefy" id="strefy"><div class="hsw"><div class="stick"><div class="hs"><div class="track">
+<div class="vis" aria-hidden="false"><div class="a" data-sp="-70" data-f="9"><img src="a/foto/gym3.jpg" alt="Siłownia w klubie Olimpia" width="1400" height="934" decoding="async"></div><div class="b" data-sp="90" data-f="-12"><img src="a/foto/fit2.jpg" alt="Sala fitness w klubie Olimpia" width="1200" height="800" decoding="async"></div></div>
+</div></section><div class="marq" aria-hidden="true"><div><span>Siłownia</span><span>Fitness</span><span>Sauna</span><span>Masaż</span><span>Solarium</span><span>Od 2000 roku</span><span>Siłownia</span><span>Fitness</span><span>Sauna</span><span>Masaż</span><span>Solarium</span><span>Od 2000 roku</span><span>Siłownia</span><span>Fitness</span><span>Sauna</span><span>Masaż</span><span>Solarium</span><span>Od 2000 roku</span></div></div><section class="stats"><div class="wrap"><ul class="stagger"><li><b><em data-from="1990" data-to="2000">2000</em></b><span>rok założenia klubu</span></li><li><b><em data-to="6">6</em></b><span>stref w jednym klubie</span></li><li><b><em data-to="59">59</em> zł</b><span>Day Pass na pierwszą wizytę</span></li><li><b><em data-to="7">7</em></b><span>dni w tygodniu otwarte</span></li></ul></div></section><section class="strefy" id="strefy"><div class="hsw"><div class="stick"><div class="hs"><div class="track">
 <div class="intro"><h2 class="h2">Sześć stref pod jednym dachem.</h2><p>Trenujesz, regenerujesz się i regulujesz formę w jednym klubie, bez jeżdżenia po mieście.</p><p class="hint">Przewiń w dół, strefy przesuną się w bok <svg width="26" height="14" viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 7h23M18 1l6 6-6 6"/></svg></p></div>
 <article class="zc"><div class="ph"><img src="a/foto/gym2.jpg" alt="Siłownia w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"></div><div class="tx"><h3>Siłownia</h3><p>Przestronna, klimatyzowana sala z urządzeniami na światowym poziomie. Bieżnie, rowerki i przyrządy oszczędzające stawy, dlatego trenuje u nas coraz więcej Pań. Przy pierwszej wizycie dostajesz indywidualny program ćwiczeń.</p><p class="cecha">Technogym · Waryński Żelechów · Sevim · Matrix</p></div></article><article class="zc"><div class="ph"><img src="a/foto/fit1.jpg" alt="Fitness w klubie Olimpia" width="1700" height="1134" loading="lazy" decoding="async"></div><div class="tx"><h3>Fitness</h3><p>Duża sala z lustrami, od jogi po zajęcia taneczne i Jumping Fitness. Intensywność dopasujesz do swoich możliwości. Aktualne zajęcia sprawdzisz w grafiku.</p><p class="cecha">joga · taniec · Jumping Fitness · zajęcia dla kobiet w ciąży</p></div></article><article class="zc"><div class="ph"><img src="a/foto/sauna.jpg" alt="Sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></div><div class="tx"><h3>Sauna</h3><p>Osobna sauna damska i męska. Po treningu pomaga rozluźnić mięśnie i zregenerować siły, a regularnie wzmacnia odporność i poprawia samopoczucie.</p><p class="cecha">sauna damska i męska · szatnie · prysznice</p></div></article><article class="zc"><div class="ph"><img src="a/foto/masaz.jpg" alt="Gabinet masażu w klubie Olimpia" width="1100" height="730" loading="lazy" decoding="async"></div><div class="tx"><h3>Gabinet masażu</h3><p>Masaż leczniczy, relaksacyjny, odchudzający, modelujący bańką chińską i sportowy. Przyjmuje Emilia Zielińska, magister fizjoterapii i wielokrotna medalistka Mistrzostw Polski w wioślarstwie.</p><p class="cecha">50 minut · 200 zł · zapisy: 692 375 016</p></div></article><article class="zc"><div class="ph"><img src="a/foto/sol.jpg" alt="Solarium w klubie Olimpia" width="1200" height="800" loading="lazy" decoding="async"></div><div class="tx"><h3>Solarium</h3><p>Solarium dla klubowiczów, rozliczane za minutę. Rozsądne korzystanie poprawia koloryt skóry.</p><p class="cecha">4,50 zł za minutę</p></div></article><article class="zc"><div class="ph"><img src="a/foto/bar1.jpg" alt="Barek i sklep w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"></div><div class="tx"><h3>Barek i sklep</h3><p>Dobrze zaopatrzony sklep z odżywkami i suplementami oraz barek z dyspenserem shaków. Dietetyczny posiłek podgrzejesz i zjesz w strefie relaksu.</p><p class="cecha">odżywki · suplementy · shake · posiłek po treningu</p></div></article></div></div><div class="hsbar"><i></i></div></div></div></section><section class="sec cennik" id="cennik"><div class="wrap">
 <h2 class="h2 reveal">Cennik karnetów</h2>
@@ -258,10 +309,10 @@ h1,h2,h3,.h2{text-transform:uppercase;letter-spacing:.005em}
 <div><h3>Masaż i solarium</h3><ul class="pl"><li><span>Masaż lub wizyta fizjoterapeutyczna<small>50 minut</small></span><b>200 zł</b></li><li><span>Solarium<small>za minutę</small></span><b>4,50 zł</b></li></ul></div></div>
 <div class="promo"><div><h3>Przyprowadź znajomego</h3><p>Dla Ciebie 25% zniżki na kolejną płatność, a dla osoby towarzyszącej 25% od regularnej ceny pierwszego karnetu.</p></div><a class="btn n" href="tel:+48226738734">Zadzwoń i zapytaj</a></div>
 </div></section><section class="sec dark why" id="klub"><div class="wrap"><div class="grid">
-<div><h2 class="h2 reveal">Kameralny klub z tradycjami.</h2><p class="goscie">Wśród gości klubu byli m.in. Mariusz Pudzianowski, najwybitniejszy polski strongman, oraz wielokrotny mistrz świata i Europy w kulturystyce Piotr Głuchowski. W galerii na stronie klubu znajdziesz zdjęcia słynnych gości.</p><div class="ph"><img src="a/foto/wall2.jpg" alt="Ściana ze zdjęciami sportowców w klubie Olimpia" width="1200" height="800" loading="lazy" decoding="async"></div></div>
+<div><h2 class="h2 reveal">Kameralny klub z tradycjami.</h2><p class="goscie">Wśród gości klubu byli m.in. Mariusz Pudzianowski, najwybitniejszy polski strongman, oraz wielokrotny mistrz świata i Europy w kulturystyce Piotr Głuchowski. W galerii na stronie klubu znajdziesz zdjęcia słynnych gości.</p><div class="ph wipe" data-drift="30"><img src="a/foto/wall2.jpg" alt="Ściana ze zdjęciami sportowców w klubie Olimpia" width="1200" height="800" loading="lazy" decoding="async"></div></div>
 <ul class="stagger"><li><h3>Tradycja</h3><p>Działamy na Pradze Południe od 2000 roku. Jesteśmy kameralnym klubem z rodzinną atmosferą, a jednocześnie idziemy z duchem czasu.</p></li><li><h3>Ci sami trenerzy</h3><p>Kadra od lat ta sama i przywiązana do klubu i klubowiczów. Zależy nam na Twoich realnych wynikach.</p></li><li><h3>Sprzęt na światowym poziomie</h3><p>Klimatyzowane sale, linia treningowa Technogym oraz urządzenia Waryński Żelechów, Sevim i Matrix.</p></li><li><h3>Plan na start</h3><p>Każdy nowy klubowicz dostaje indywidualny program ćwiczeń, ułożony pod jego potrzeby i możliwości.</p></li><li><h3>Bez długich umów</h3><p>Karnet Month obowiązuje 30 dni bez umowy, a Flex ma miesiąc wypowiedzenia.</p></li><li><h3>Sklep, barek, relaks</h3><p>Odżywki i suplementy z poradą, dietetyczny posiłek do podgrzania i strefa relaksu po treningu.</p></li></ul></div></div></section><section class="sec" id="opinie"><div class="wrap"><h2 class="h2 reveal">Klubowicze o Olimpii</h2>
 <div class="q stagger"><blockquote><p>Miła i profesjonalna obsługa. Instruktorzy chętnie służą pomocą i udzielają cennych uwag.</p><cite>Agnieszka</cite></blockquote><blockquote><p>Zauważalna jest miła atmosfera panująca w klubie, nastawienie na konkretny trening i osiąganie celów. Instruktorzy wspierają i zależy im na sukcesie trenujących.</p><cite>Tomek</cite></blockquote><blockquote><p>Zajęcia dla kobiet w ciąży są wspaniałe. Polecam.</p><cite>Paulina</cite></blockquote></div><p class="qnote">Opinie pochodzą z obecnej strony klubu. W gotowej wersji dodamy też świeże opinie z wizytówki Google.</p></div></section><section class="sec masaz"><div class="wrap"><div class="grid">
-<div class="ph"><img src="a/foto/masaz.jpg" alt="Masaż w gabinecie klubu Olimpia" width="1100" height="730" loading="lazy" decoding="async"></div>
+<div class="ph wipe" data-drift="30"><img src="a/foto/masaz.jpg" alt="Masaż w gabinecie klubu Olimpia" width="1100" height="730" loading="lazy" decoding="async"></div>
 <div><h2 class="h2 reveal">Gabinet masażu</h2>
 <p class="lead">Masaż leczniczy, relaksacyjny, odchudzający, modelujący bańką chińską i sportowy. Wizyta fizjoterapeutyczna lub masaż trwa 50 minut i kosztuje 200 zł.</p>
 <ul class="bio"><li>Emilia Zielińska, magister fizjoterapii (AWF Warszawa)</li><li>trzy lata pracy w przychodni rehabilitacyjnej</li><li>wielokrotna medalistka Mistrzostw Polski w wioślarstwie</li></ul>
@@ -330,10 +381,30 @@ function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
 try{var f=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Warsaw',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),o={};f.forEach(function(x){o[x.type]=x.value});
 var t=(parseInt(o.hour,10)%24)+parseInt(o.minute,10)/60;
 d.querySelectorAll('.week li.today').forEach(function(li){li.style.setProperty('--now',(t/24*100).toFixed(1)+'%');li.classList.add('now')})}catch(e){}
-/* hero: dwa zdjęcia jadą w przeciwne strony */
-var sp=[].slice.call(d.querySelectorAll('[data-sp]'));
-function hp(){if(rm||scrollY>innerHeight*1.2)return;var k=Math.min(1,scrollY/(innerHeight*.9));sp.forEach(function(e){e.style.transform='translate3d(0,'+(parseFloat(e.getAttribute('data-sp'))*k).toFixed(1)+'px,0)'})}
-addEventListener('scroll',hp,{passive:true});hp();
+/* hero: zdjęcia i napisy płyną: przewijanie + kursor + powolne unoszenie */
+var sp=[].slice.call(d.querySelectorAll('[data-sp]')),mx=0,my=0,tx=0,ty=0,hv=d.querySelector('.vis');
+if(!rm){addEventListener('mousemove',function(e){tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2},{passive:true})}
+function hp(t){
+ if(!rm&&scrollY<innerHeight*1.4){mx+=(tx-mx)*.06;my+=(ty-my)*.06;var k=Math.min(1,scrollY/(innerHeight*.9));
+  sp.forEach(function(e){var f=parseFloat(e.getAttribute('data-f')||0),sv=parseFloat(e.getAttribute('data-sp'))*k,fl=f?Math.sin(t/1700+f)*7:0,dx=f?mx*f*1.4:mx*-5,dy=f?my*f*1.1+fl:my*-3;
+   e.style.transform='translate3d('+dx.toFixed(1)+'px,'+(sv+dy).toFixed(1)+'px,0)'});
+  if(hv){hv.style.setProperty('--mx',(mx*-16).toFixed(1)+'px');hv.style.setProperty('--my',(my*-16).toFixed(1)+'px')}}
+ requestAnimationFrame(hp)}
+if(!rm)requestAnimationFrame(hp);
+var wk=d.querySelector('.week');if(wk)setTimeout(function(){wk.classList.add('go')},120);
+/* pasek z napisem jedzie wraz z przewijaniem */
+var mq=d.querySelector('.marq div');
+function mqf(){if(rm||!mq)return;var w=mq.scrollWidth/3,o=(scrollY*.45)%w;mq.style.transform='translate3d('+(-o).toFixed(1)+'px,0,0)'}
+addEventListener('scroll',mqf,{passive:true});mqf();
+/* liczniki i kurtyny zdjęć */
+function cnt(e){var to=+e.getAttribute('data-to'),fr=+(e.getAttribute('data-from')||0),t0=null;if(rm){e.textContent=to;return}
+ (function st(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1200),v=Math.round(fr+(to-fr)*(1-Math.pow(1-p,3)));e.textContent=v;if(p<1)requestAnimationFrame(st)})(performance.now())}
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');if(x.target.tagName==='EM')cnt(x.target);io.unobserve(x.target)}})},{threshold:.25}):null;
+d.querySelectorAll('.wipe,.stats em').forEach(function(e){if(io)io.observe(e);else{e.classList.add('in')}});
+/* dryf zdjęć w sekcjach */
+var dr=[].slice.call(d.querySelectorAll('[data-drift]'));
+function drf(){if(rm)return;dr.forEach(function(b){var r=b.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;var p=(r.top+r.height/2-innerHeight/2)/innerHeight,i=b.querySelector('img');if(i)i.style.transform='translate3d(0,'+(p*-parseFloat(b.getAttribute('data-drift'))).toFixed(1)+'px,0) scale(1.18)'})}
+addEventListener('scroll',drf,{passive:true});drf();
 /* strefy: przypięta galeria jedzie w bok (desktop), na telefonie zwykłe przewijanie palcem */
 var wrap=d.querySelector('.hsw'),hs=d.querySelector('.hs'),track=d.querySelector('.track'),bar=d.querySelector('.hsbar');
 function mode(){return innerWidth>860&&!rm}
@@ -342,7 +413,8 @@ function size(){
  d.documentElement.classList.add('pin');
  var dist=track.scrollWidth-hs.clientWidth+80;wrap.style.setProperty('--hs-h',(dist*.75+innerHeight)+'px');wrap._dist=dist}
 function go(){if(!d.documentElement.classList.contains('pin'))return;var r=wrap.getBoundingClientRect(),dist=wrap._dist||1,p=clamp(-r.top/(dist*.75),0,1);
- track.style.transform='translate3d('+(-p*dist).toFixed(1)+'px,0,0)';bar.style.setProperty('--p',p.toFixed(3))}
+ track.style.transform='translate3d('+(-p*dist).toFixed(1)+'px,0,0)';bar.style.setProperty('--p',p.toFixed(3));
+ [].forEach.call(d.querySelectorAll('.zc'),function(c,i){var r=c.getBoundingClientRect(),o=(r.left+r.width/2-innerWidth/2)/innerWidth,im=c.querySelector('img');c.style.transform='translate3d(0,'+(Math.sin(o*3+i)*16).toFixed(1)+'px,0)';if(im)im.style.transform='translate3d('+(o*-46).toFixed(1)+'px,0,0) scale(1.18)'})}
 size();go();addEventListener('resize',function(){size();go()});addEventListener('load',function(){size();go()});addEventListener('scroll',go,{passive:true});
 })();
 </script></body></html>
