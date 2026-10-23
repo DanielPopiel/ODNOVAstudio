@@ -120,27 +120,53 @@ html:not(.js) .mbar,.past-hero .mbar{transform:none}
 .arrow{display:inline-block;width:1.2em;height:.8em;vertical-align:-.05em;margin-left:.45em}
 a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
 /* HERO: obchód po klubie */
-.hero{position:relative;background:#0e1330}
-.js .hero{height:calc(100svh + 4 * 44svh)}
-.stage{position:sticky;top:0;height:100svh;min-height:520px;overflow:hidden;color:#f6f1e4;background:#0e1330}
-.sc{position:absolute;inset:0;margin:0;overflow:hidden;will-change:clip-path}
-.sc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform;transform:scale(1.06)}
-.scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,19,48,.88) 0%,rgba(14,19,48,.5) 34%,rgba(14,19,48,.12) 62%,rgba(14,19,48,.32) 100%),linear-gradient(90deg,rgba(14,19,48,.78),rgba(14,19,48,0) 82%)}
-.copy{position:absolute;left:0;right:0;bottom:clamp(30px,7vh,76px)}
-.copy h1{font-size:clamp(2.3rem,5.2vw,4.8rem);line-height:1.04;max-width:17ch;text-shadow:0 2px 24px rgba(8,10,28,.45)}
-.copy p{max-width:44ch;font-size:clamp(1.05rem,1.5vw,1.28rem);margin-top:20px;text-shadow:0 1px 14px rgba(8,10,28,.6)}
-.copy .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.copy .acts .btn.g{border-color:rgba(246,241,228,.7)}
-.copy .live{background:rgba(14,19,48,.72);border:1px solid rgba(243,238,226,.28);padding:8px 14px;border-radius:99px;margin-bottom:20px}
-.copy .hint{margin-top:22px;font-size:.92rem;opacity:.85}
-.cap{position:absolute;left:clamp(16px,4vw,48px);right:clamp(16px,4vw,48px);top:calc(var(--hdr-h,100px) + 22px);display:flex;align-items:center;gap:16px;font-size:1.02rem;font-weight:500;text-shadow:0 1px 10px rgba(8,10,28,.7)}
-.cap .no{font-family:var(--disp);font-size:1.05rem;letter-spacing:.04em;min-width:4.4em;font-variant-numeric:tabular-nums}
-.cap .nm{min-width:0}.cap .nm b{font-weight:600}
-.cap i{flex:1;max-width:220px;height:2px;background:rgba(246,241,228,.3);position:relative;overflow:hidden;display:block}
-.cap i::after{content:"";position:absolute;inset:0;background:var(--acc);transform:scaleX(var(--p,0));transform-origin:left}
-html:not(.js) .sc:not(:first-child){display:none}
-@media(max-width:760px){.js .hero{height:calc(100svh + 4 * 34svh)}.cap{font-size:.92rem;gap:10px}.cap .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cap i{max-width:70px;flex:none;width:70px}.copy p{font-size:1.02rem}}
-@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative}.sc:not(:first-child){display:none}.cap i{display:none}}
+.hero{position:relative;background:#161d45;color:#f6f1e4}
+.js .hero{height:calc(100svh + 4 * 40svh)}
+.stage{position:sticky;top:0;height:100svh;min-height:560px;display:flex;flex-direction:column;padding-top:calc(var(--hdr-h,100px) + clamp(14px,2.4vh,30px));overflow:hidden}
+.hd{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(18px,4vw,64px);align-items:end;padding-bottom:clamp(14px,2.6vh,28px)}
+.hd .live{background:rgba(14,19,48,.55);border:1px solid rgba(243,238,226,.28);padding:7px 14px;border-radius:99px;margin-bottom:14px}
+.hd h1{font-size:clamp(2.3rem,4.9vw,4.5rem);line-height:1.02;max-width:14ch}
+.hd p{font-size:clamp(1.02rem,1.3vw,1.18rem);max-width:42ch}
+.hd .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.hd .acts .btn.g{border-color:rgba(246,241,228,.7)}
+.slats{flex:1;min-height:0;display:flex;gap:6px;padding:0 clamp(16px,4vw,48px) clamp(16px,3.4vh,40px)}
+.sl{position:relative;flex:1 1 0;min-width:0;overflow:hidden;background:#0e1330;cursor:pointer;outline-offset:3px}
+.slats.man .sl{transition:flex-grow .55s cubic-bezier(.22,.61,.36,1)}
+.sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06)}
+.sl::before{content:"";position:absolute;inset:0;background:rgba(14,19,48,.58);transition:background .4s ease;z-index:1}
+.sl.on::before{background:linear-gradient(0deg,rgba(14,19,48,.88),rgba(14,19,48,.05) 62%)}
+.sl .no{position:absolute;left:18px;top:16px;z-index:2;font-size:.95rem;font-weight:600;font-variant-numeric:tabular-nums;text-shadow:0 1px 8px rgba(8,10,28,.7)}
+.sl b{position:absolute;z-index:2;font:600 1.6rem/1.1 var(--disp);white-space:nowrap;text-shadow:0 1px 10px rgba(8,10,28,.6);left:18px;bottom:18px;transition:opacity .3s}
+.sl small{position:absolute;z-index:2;left:18px;bottom:54px;max-width:36ch;font-size:1.02rem;opacity:0;transition:opacity .4s ease;text-shadow:0 1px 10px rgba(8,10,28,.7)}
+.sl.on small{opacity:1}
+.sl:not(.on) b{writing-mode:vertical-rl;transform:rotate(180deg);left:50%;margin-left:-.55em;bottom:18px}
+.sl:not(.on) .no{left:50%;margin-left:-.5em}
+.slats .bar{display:none}
+.hint{font-size:.92rem;opacity:.85}
+html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transform:none;left:18px;margin:0}html:not(.js) .sl small{opacity:1}
+@media(max-width:860px){.hd{grid-template-columns:1fr;gap:10px}.hd h1{font-size:2.4rem;max-width:16ch}.hd p{display:none}.hd .acts .btn.g{display:none}.hd .acts{margin-top:10px}
+ .js .hero{height:calc(100svh + 4 * 30svh)}.slats{flex-direction:column;gap:5px}
+ .sl:not(.on) b{writing-mode:horizontal-tb;transform:none;left:16px;margin:0;bottom:50%;margin-bottom:-.55em}
+ .sl .no{left:auto!important;margin:0!important;right:16px;top:50%;margin-top:-.7em!important}
+ .sl b{font-size:1.4rem;left:16px;bottom:16px}.sl small{left:16px;bottom:48px;font-size:.95rem}.sl.on .no{top:14px;margin-top:0!important}}
+@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative;min-height:100svh}.slats.man .sl{transition:none}}
+/* BILET */
+.bilet{position:relative;overflow:hidden;background:#0e1330;color:#f6f1e4;padding:clamp(56px,9vw,112px) 0}
+.bilet .bgi{position:absolute;inset:-20px;opacity:.5;filter:blur(3px)}.bilet .bgi img{width:100%;height:100%;object-fit:cover}
+.bilet .bgi::after{content:"";position:absolute;inset:0;background:rgba(14,19,48,.62)}
+.bilet .wrap{position:relative;text-align:center}
+.bilet h2{font-size:clamp(2.2rem,4.4vw,3.8rem);max-width:20ch;margin:0 auto}
+.bilet .sub{margin:14px auto 0;max-width:46ch;font-size:1.12rem;opacity:.95}
+.tk{position:relative;margin:clamp(34px,5vw,58px) auto 0;width:min(900px,100%);display:grid;grid-template-columns:1fr 260px;background:#f3eee2;color:#161d45;text-align:left;box-shadow:0 40px 80px -24px rgba(0,0,0,.7);transform:perspective(1100px) rotate(-1.6deg) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out;
+ -webkit-mask:radial-gradient(circle 22px at 0 50%,transparent 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 22px at 100% 50%,transparent 97%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 22px at 0 50%,transparent 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 22px at 100% 50%,transparent 97%,#000) right/51% 100% no-repeat}
+.tk .l{padding:clamp(24px,3.4vw,40px) clamp(24px,4vw,48px);border-right:3px dashed rgba(22,29,69,.35)}
+.tk .l small{display:block;letter-spacing:.18em;text-transform:uppercase;font-weight:600;font-size:.8rem}
+.tk h3{font-size:clamp(1.9rem,3.2vw,2.9rem);margin:8px 0 10px}.tk .l p{max-width:34ch;font-size:1.05rem}
+.tk .r{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;text-align:center}
+.tk .r b{font:600 clamp(3.4rem,6vw,5rem)/1 var(--disp)}.tk .r span{font-size:.92rem;opacity:.8}
+.tk .btn{background:#161d45;color:#f3eee2;border-color:#161d45;margin-top:6px}.tk .btn:hover{background:#26306a}
+@media(max-width:700px){.tk{grid-template-columns:1fr;transform:rotate(-1deg);-webkit-mask:none;mask:none}.tk .l{border-right:0;border-bottom:3px dashed rgba(22,29,69,.35)}}
+@media(prefers-reduced-motion:reduce){.tk{transform:none!important;transition:none}}
 /* O KLUBIE */
 .klub .grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(32px,6vw,96px);align-items:start}
 .klub .h2{font-size:clamp(1.9rem,3.2vw,2.7rem);max-width:none}
@@ -232,17 +258,17 @@ html:not(.js) .sc:not(:first-child){display:none}
 </div></header>
 </div>
 <div class="mbar"><a class="btn g" href="tel:+48226738734">Zadzwoń</a><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a></div>
-<section class="hero" aria-label="Obchód po klubie"><div class="stage">
-<figure class="sc" data-n="0"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"></figure><figure class="sc" data-n="1"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"></figure><figure class="sc" data-n="2"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></figure><figure class="sc" data-n="3"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"></figure><figure class="sc" data-n="4"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></figure><div class="scrim"></div>
-<div class="cap" aria-hidden="true"><span class="no">01 / 05</span><span class="nm"><b>Siłownia</b> · Technogym, Waryński Żelechów, Sevim, Matrix</span><i></i></div>
-<div class="copy"><div class="wrap">
-<p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p>
-<h1>Siłownia, fitness i sauna na Saskiej Kępie.</h1>
-<p>Klub z tradycjami: trenujemy na Pradze Południe od 2000 roku. W jednym miejscu także masaż i solarium.</p>
-<div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div>
-<p class="hint">Przewiń, a oprowadzimy Cię po klubie ↓</p>
-</div></div>
-</div></section><main><section class="sec klub" id="klub"><div class="wrap"><div class="grid">
+<section class="hero" aria-label="Pięć miejsc w klubie"><div class="stage">
+<div class="wrap hd"><div><p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p><h1>Pięć miejsc.<br>Jeden klub.</h1></div>
+<div><p>Siłownia, fitness, sauna, recepcja ze sklepem i strefa relaksu. Klub z tradycjami na Saskiej Kępie od 2000 roku.</p>
+<div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div></div></div>
+<div class="slats"><div class="sl on" data-i="0" tabindex="0" role="button" aria-label="Siłownia"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"><span class="no">01</span><small>Technogym, Waryński Żelechów, Sevim, Matrix</small><b>Siłownia</b></div><div class="sl" data-i="1" tabindex="0" role="button" aria-label="Sala fitness"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"><span class="no">02</span><small>joga, taniec, Jumping Fitness</small><b>Sala fitness</b></div><div class="sl" data-i="2" tabindex="0" role="button" aria-label="Sauna"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">03</span><small>osobna damska i męska</small><b>Sauna</b></div><div class="sl" data-i="3" tabindex="0" role="button" aria-label="Recepcja i sklep"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"><span class="no">04</span><small>odżywki, shake, barek</small><b>Recepcja i sklep</b></div><div class="sl" data-i="4" tabindex="0" role="button" aria-label="Strefa relaksu"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">05</span><small>odpoczynek po treningu</small><b>Strefa relaksu</b></div></div>
+</div></section><main><section class="bilet" id="bilet"><div class="bgi"><img src="a/foto/lounge1.jpg" alt="" width="1500" height="1000" loading="lazy" decoding="async"></div><div class="wrap">
+<h2 class="reveal">Zacznij od jednego wejścia.</h2>
+<p class="sub reveal">Obejrzyj klub, wypróbuj sprzęt i dostań plan na start. Bez umowy i bez zobowiązań.</p>
+<div class="tk reveal"><div class="l"><small>Olimpia Fitness Club · Day Pass</small><h3>Jedno wejście na próbę</h3><p>Siłownia i fitness w cenie biletu. Dobry na pierwszą wizytę.</p></div>
+<div class="r"><b>59 zł</b><span>jednorazowo</span><a class="btn" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup bilet</a></div></div>
+</div></section><section class="sec klub" id="klub"><div class="wrap"><div class="grid">
 <div class="left"><h2 class="h2 reveal">Kameralny klub, w którym trenerzy znają klubowiczów.</h2>
 <p class="lead reveal">Od 2000 roku budujemy markę na jednym: dobrej atmosferze i realnych wynikach naszych klubowiczów.</p>
 <div class="ph" data-par><img src="a/foto/wall1.jpg" alt="Ściana ze zdjęciami w klubie Olimpia" width="1300" height="867" loading="lazy" decoding="async"></div></div>
@@ -328,23 +354,24 @@ addEventListener('scroll',function(){clearTimeout(tt);tt=setTimeout(sweep,160)},
 })();
 
 (function(){
-var d=document,hero=d.querySelector('.hero'),sc=[].slice.call(d.querySelectorAll('.sc')),N=sc.length;
-var cap=d.querySelector('.cap'),no=cap.querySelector('.no'),nm=cap.querySelector('.nm');
-var NAMES=[["Siłownia", "Technogym, Waryński Żelechów, Sevim, Matrix"], ["Sala fitness", "joga, taniec, Jumping Fitness"], ["Sauna", "osobna damska i męska"], ["Recepcja i sklep", "odżywki, shake, barek"], ["Strefa relaksu", "odpoczynek po treningu"]];
-var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var d=document,hero=d.querySelector('.hero'),sl=[].slice.call(d.querySelectorAll('.sl')),N=sl.length,box=d.querySelector('.slats');
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,man=null;
 function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
+function setOn(c){sl.forEach(function(f,i){f.classList.toggle('on',i===c)})}
 function tour(){
- if(rm)return;
- var r=hero.getBoundingClientRect(),tot=hero.offsetHeight-innerHeight,p=clamp(-r.top/tot,0,1),x=p*(N-1);
- sc.forEach(function(f,i){var im=f.firstElementChild;
-  if(i>0){var t=clamp(x-(i-1),0,1);f.style.clipPath='inset(0 0 0 '+((1-t)*100).toFixed(2)+'%)'}
-  im.style.transform='translate3d('+(clamp(x-i,-1.2,1.2)*-2.4).toFixed(2)+'%,0,0) scale(1.07)';
- });
- var c=clamp(Math.round(x),0,N-1);
- no.textContent='0'+(c+1)+' / 0'+N; nm.innerHTML='<b>'+NAMES[c][0]+'</b> · '+NAMES[c][1];
- cap.style.setProperty('--p',p.toFixed(3));
+ if(man!==null)return;
+ var r=hero.getBoundingClientRect(),tot=Math.max(1,hero.offsetHeight-innerHeight),p=rm?0:clamp(-r.top/tot,0,1),x=p*(N-1);
+ sl.forEach(function(f,i){f.style.flexGrow=(1+4.2*clamp(1-Math.abs(x-i),0,1)).toFixed(3)});
+ setOn(clamp(Math.round(x),0,N-1));
 }
-addEventListener('scroll',tour,{passive:true});addEventListener('resize',tour);tour();
+function pick(i){man=i;box.classList.add('man');sl.forEach(function(f,k){f.style.flexGrow=k===i?5:1});setOn(i)}
+function free(){man=null;box.classList.remove('man');tour()}
+sl.forEach(function(f,i){f.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover)').matches)pick(i)});f.addEventListener('click',function(){pick(i)});f.addEventListener('focus',function(){pick(i)})});
+box.addEventListener('mouseleave',free);
+addEventListener('scroll',function(){if(man!==null&&!matchMedia('(hover:hover)').matches){man=null;box.classList.remove('man')}tour()},{passive:true});addEventListener('resize',tour);tour();
+/* bilet: lekkie pochylenie za kursorem */
+var tk=d.querySelector('.tk');
+if(tk&&!rm&&matchMedia('(hover:hover)').matches){tk.parentNode.addEventListener('mousemove',function(e){var r=tk.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tk.style.setProperty('--ry',(x*7).toFixed(2)+'deg');tk.style.setProperty('--rx',(-y*6).toFixed(2)+'deg')});tk.parentNode.addEventListener('mouseleave',function(){tk.style.setProperty('--ry','0deg');tk.style.setProperty('--rx','0deg')})}
 /* delikatna paralaksa zdjęć w ramkach */
 var ph=[].slice.call(d.querySelectorAll('[data-par]'));
 function par(){if(rm)return;ph.forEach(function(e){var r=e.getBoundingClientRect();if(r.bottom<-60||r.top>innerHeight+60)return;
