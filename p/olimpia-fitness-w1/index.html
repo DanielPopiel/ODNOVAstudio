@@ -124,8 +124,7 @@ a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:no
 .js .hero{height:calc(100svh + 2.4 * 100svh)}
 .hero .hst{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}
 .hero .ly{position:absolute;inset:0;will-change:transform,opacity}
-.hero .ly img{width:100%;height:100%;object-fit:cover;display:block}
-.hero .l2{opacity:0}.hero .l2 img{filter:saturate(.62) sepia(.32) brightness(.92)}
+.hero .l1 video,.hero .l1 .fb{width:100%;height:100%;object-fit:cover;display:block}.hero .l1 .fb{position:absolute;inset:0;display:none}
 .hero .scr{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,16,14,.84) 0%,rgba(18,16,14,.5) 46%,rgba(18,16,14,.12) 100%),linear-gradient(0deg,rgba(18,16,14,.6),transparent 38%)}
 .hero .txt{position:absolute;left:0;right:0;bottom:clamp(40px,9vh,96px)}
 .hero .txt .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px clamp(24px,4vw,64px);align-items:end}
@@ -139,9 +138,9 @@ a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:no
 .hero .cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75;display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero .cue i{width:1px;height:28px;background:linear-gradient(var(--acc),transparent)}
 .hero .prog{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
-@media(max-width:860px){.hero .l1 img{object-position:14% 50%}.hero .l2 img{object-position:42% 50%}.hero .txt .wrap{grid-template-columns:1fr}.hero .acts{flex-direction:row;flex-wrap:wrap}.hero .acts .btn.g{display:none}.hero .txt p{display:none}.hero .scr{background:linear-gradient(0deg,rgba(18,16,14,.9),rgba(18,16,14,.2) 70%)}.js .hero{height:calc(100svh + 1.6 * 100svh)}}
-@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.hero .hst{position:relative}.hero .l1{opacity:0}.hero .l2{opacity:1}}
-html:not(.js) .hero .l1{opacity:0}html:not(.js) .hero .l2{opacity:1}
+@media(max-width:860px){.hero .l1 video,.hero .l1 .fb{object-position:34% 50%}.hero .txt .wrap{grid-template-columns:1fr}.hero .acts{flex-direction:row;flex-wrap:wrap}.hero .acts .btn.g{display:none}.hero .txt p{display:none}.hero .scr{background:linear-gradient(0deg,rgba(18,16,14,.9),rgba(18,16,14,.2) 70%)}.js .hero{height:calc(100svh + 1.6 * 100svh)}}
+@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.hero .hst{position:relative}.hero .l1 video{display:none}.hero .l1 .fb{display:block}}
+html:not(.js) .hero .l1 video{display:none}html:not(.js) .hero .l1 .fb{display:block}
 /* PIĘĆ MIEJSC: obchód po klubie */
 .tour{position:relative;background:#f3eee2;color:#161d45}
 .js .tour{height:calc(100svh + 4 * 40svh)}
@@ -286,8 +285,7 @@ html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transfor
 </div>
 <div class="mbar"><a class="btn g" href="tel:+48226738734">Zadzwoń</a><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a></div>
 <section class="hero" aria-label="Olimpia Fitness Club"><div class="hst"><div class="prog"></div>
-<div class="ly l1"><img src="a/foto/sztanga1.jpg" alt="Dłonie w magnezji na stalowym gryfie sztangi" width="1600" height="894" fetchpriority="high" decoding="async"></div>
-<div class="ly l2"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym" decoding="async"></div>
+<div class="ly l1"><video id="hv" muted playsinline preload="auto" poster="a/hero/sztanga-first.jpg" aria-label="Dłonie w magnezji na gryfie sztangi; kamera cofa się i odsłania salę siłowni"><source src="a/hero/sztanga.mp4" type="video/mp4"></video><img class="fb" src="a/hero/sztanga-last.jpg" alt="Sztanga z tarczami na tle sali siłowni" width="1600" height="900" decoding="async"></div>
 <div class="scr"></div>
 <div class="txt"><div class="wrap"><div><h1>Od 2000 roku <em>na tym samym gryfie.</em></h1>
 <p>Klub z tradycjami na Saskiej Kępie. Siłownia, fitness, sauna i ludzie, którzy znają Twoje imię.</p></div>
@@ -397,13 +395,15 @@ function tour(){
 }
 addEventListener('scroll',tour,{passive:true});addEventListener('resize',tour);tour();
 /* hero: kamera cofa się od dłoni do sali */
-var H=d.querySelector('.hero'),l1=d.querySelector('.hero .l1'),l2=d.querySelector('.hero .l2'),pg=d.querySelector('.hero .prog'),cue=d.querySelector('.hero .cue');
+var H=d.querySelector('.hero'),hv=d.getElementById('hv'),pg=d.querySelector('.hero .prog'),cue=d.querySelector('.hero .cue'),tg=0,cu=0,run=false;
 function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
-function hs(){if(!H||rm)return;var r=H.getBoundingClientRect(),tot=Math.max(1,H.offsetHeight-innerHeight),p=clamp(-r.top/tot,0,1);
- var a=ease(clamp(p/.55,0,1)),b=ease(clamp((p-.3)/.55,0,1));
- l1.style.transform='scale('+(1.32-.32*a).toFixed(4)+') translate3d(0,'+(-3*a).toFixed(2)+'%,0)';l1.style.opacity=(1-clamp((p-.35)/.4,0,1)).toFixed(3);l1.style.filter='blur('+(clamp((p-.2)/.4,0,1)*5).toFixed(1)+'px)';
- l2.style.opacity=b.toFixed(3);l2.style.transform='scale('+(1.22-.22*b).toFixed(4)+')';
+function frame(){var df=tg-cu;if(Math.abs(df)<.004){cu=tg;run=false}else{cu+=df*.2;run=true}
+ if(hv&&hv.readyState>1&&Math.abs(hv.currentTime-cu)>.008)try{hv.currentTime=cu}catch(e){}
+ if(run)requestAnimationFrame(frame)}
+function hs(){if(!H||rm||!hv)return;var r=H.getBoundingClientRect(),tot=Math.max(1,H.offsetHeight-innerHeight),p=clamp(-r.top/tot,0,1),du=hv.duration||8;
+ tg=clamp(ease(clamp(p/.92,0,1))*du,0,du-.05);if(!run){run=true;requestAnimationFrame(frame)}
  pg.style.transform='scaleX('+p.toFixed(4)+')';if(cue)cue.style.opacity=(.75*(1-clamp(p*6,0,1))).toFixed(3)}
+if(hv){hv.addEventListener('loadeddata',function(){hs()});hv.pause()}
 addEventListener('scroll',hs,{passive:true});addEventListener('resize',hs);hs();
 /* bilet: lekkie pochylenie za kursorem */
 var tk=d.querySelector('.tk');
