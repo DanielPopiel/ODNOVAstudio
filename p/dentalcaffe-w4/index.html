@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<script>document.documentElement.classList.add('js')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dental Caffe · dentysta Zielona Góra — makieta W4 „Wizyta”</title>
+<meta name="description" content="Prywatna klinika stomatologiczna w Zielonej Górze. Wizyta bez napięcia, diagnostyka 3D, leczenie pod mikroskopem.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dental Caffe — makieta W4 „Wizyta”">
+<meta property="og:description" content="Makieta nowej strony Dental Caffe — wariant W4: przewijane wejście do kliniki od poczekalni po mikroskop, karta zabiegów z cenami.">
+<meta property="og:url" content="https://www.odnovastudio.com/p/dentalcaffe-w4/">
+<meta property="og:image" content="https://www.odnovastudio.com/p/dentalcaffe-w4/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1A3260">
+<style>
+@font-face{font-family:"Marcellus";font-weight:400;font-display:swap;src:url("fonts/marcellus-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:"Marcellus";font-weight:400;font-display:swap;src:url("fonts/marcellus-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Schibsted Grotesk";font-weight:400;font-display:swap;src:url("fonts/schibsted-grotesk-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:"Schibsted Grotesk";font-weight:400;font-display:swap;src:url("fonts/schibsted-grotesk-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Schibsted Grotesk";font-weight:600;font-display:swap;src:url("fonts/schibsted-grotesk-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215}
+@font-face{font-family:"Schibsted Grotesk";font-weight:600;font-display:swap;src:url("fonts/schibsted-grotesk-latin-ext-600-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{
+  --navy:#1A3260;--deep:#0E1C38;--ice:#7F94A3;--ice-l:#B9C6D1;--paper:#F1F2F4;--white:#fff;
+  --velour:#DCCBAE;--ink:#13213F;--muted:#47576D;
+  --hd:"Marcellus",Georgia,serif;--bd:"Schibsted Grotesk",system-ui,sans-serif;
+  --hh:68px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--hh)}
+body{font-family:var(--bd);font-size:1rem;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--velour);color:var(--deep)}
+:focus-visible{outline:2px solid var(--velour);outline-offset:3px}
+h1,h2,h3{font-family:var(--hd);font-weight:400;line-height:1.04;letter-spacing:-.01em}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* ---------- header ---------- */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--hh);display:flex;align-items:center;
+  background:linear-gradient(180deg,rgba(14,28,56,.82),rgba(14,28,56,.5));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(127,148,163,.35);color:#fff;transition:background .3s}
+.hdr.solid{background:rgba(14,28,56,.94)}
+.hdr .wrap{display:flex;align-items:center;gap:28px}
+.logo img{width:150px}
+.nav{display:flex;gap:24px;margin-left:auto;font-size:.95rem}
+.nav a{text-decoration:none;padding:8px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-color:var(--velour)}
+.tel{font-weight:600;text-decoration:none;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;background:var(--velour);color:var(--deep);font-weight:600;font-size:1.05rem;text-decoration:none;border:0;cursor:pointer;transition:background .25s,transform .25s;font-family:var(--bd)}
+.btn:hover{background:#fff}
+.btn.sm{min-height:42px;padding:0 20px;font-size:1rem}
+.btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55)}
+.btn.line:hover{background:rgba(255,255,255,.12)}
+.mnav{display:none;margin-left:auto}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;padding:0 4px;display:flex;align-items:center;gap:10px;font-weight:600}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;left:0;right:0;top:var(--hh);background:var(--deep);padding:10px 24px 24px;display:grid;border-bottom:1px solid var(--ice)}
+.mnav nav a{padding:14px 0;border-bottom:1px solid rgba(127,148,163,.3);text-decoration:none;font-size:1.2rem}
+.mnav nav a:last-child{border:0;color:var(--velour);font-weight:600}
+
+/* ---------- hero (przewijane wejście) ---------- */
+.fly{position:relative;background:var(--deep)}
+.js .fly{height:430vh}
+.stage{position:relative;height:100vh;min-height:560px;overflow:hidden;color:#fff}
+.js .stage{position:sticky;top:0}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity 1.1s cubic-bezier(.4,0,.2,1)}
+.scene:first-child{opacity:1}
+.js .scene:first-child{opacity:0}
+.scene.on,.js .scene.on{opacity:1}
+.scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,20,44,.88) 0%,rgba(10,20,44,.55) 42%,rgba(10,20,44,0) 72%),linear-gradient(0deg,rgba(10,20,44,.75),rgba(10,20,44,0) 38%),linear-gradient(180deg,rgba(10,20,44,.55),rgba(10,20,44,0) 22%)}
+.copy{position:absolute;inset:0}
+.txt{position:absolute;left:0;right:0;bottom:clamp(84px,13vh,150px);opacity:0;transform:translateY(16px);transition:opacity .8s .25s,transform .8s .25s;pointer-events:none}
+.txt.on{opacity:1;transform:none;pointer-events:auto}
+.js .txt:first-child{opacity:0}
+.txt:first-child{opacity:1;transform:none;pointer-events:auto;position:relative}
+.js .txt:first-child{position:absolute}
+.js .txt:first-child.on{opacity:1}
+.txt .wrap{max-width:1240px}
+.big{font-size:clamp(2.8rem,7.2vw,6.4rem);line-height:.94;margin-bottom:.22em}
+.say{font-size:clamp(2rem,4.3vw,3.9rem);max-width:17ch;line-height:1}
+.lead{font-size:clamp(1.05rem,1.5vw,1.3rem);max-width:30ch;color:#E7ECF1;margin-bottom:28px;line-height:1.35}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 0 22px}
+.cap .wrap{display:flex;align-items:center;gap:18px;font-size:1rem;color:var(--ice-l);font-variant-numeric:tabular-nums}
+.cap .bar{flex:1;height:1px;background:rgba(185,198,209,.35);position:relative}
+.cap .bar i{position:absolute;left:0;top:-.5px;height:2px;width:calc(var(--p,0)*100%);background:var(--velour)}
+.hint{position:absolute;z-index:3;right:clamp(20px,4vw,48px);top:50%;writing-mode:vertical-rl;font-size:.95rem;color:var(--ice-l);letter-spacing:.04em;opacity:.9}
+.no-js .hint,.no-js .cap{display:none}
+
+/* ---------- sekcje ---------- */
+section{position:relative}
+.pad{padding:clamp(64px,9vw,120px) 0}
+.light{background:var(--paper)}
+.dark{background:var(--navy);color:#fff}
+.deep{background:var(--deep);color:#fff}
+h2{font-size:clamp(2rem,3.7vw,3.4rem)}
+
+.intro .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(32px,7vw,110px);align-items:start}
+.intro h2{max-width:15ch}
+.facts{display:grid;gap:0;margin-top:6px}
+.facts p{padding:22px 0;border-top:1px solid var(--ice);font-size:1rem;color:var(--muted)}
+.facts p:last-child{border-bottom:1px solid var(--ice)}
+.facts b{display:block;font-family:var(--hd);font-weight:400;font-size:1.3rem;color:var(--navy);margin-bottom:4px;line-height:1.15}
+
+.cardhead{padding:clamp(72px,10vw,130px) 0 clamp(40px,6vw,70px);background:var(--paper)}
+.cardhead .wrap{display:flex;flex-wrap:wrap;gap:20px 60px;justify-content:space-between;align-items:end}
+.cardhead p{max-width:34ch;color:var(--muted);font-size:1.12rem}
+
+.row{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--navy);color:#fff}
+.row.l{background:var(--paper);color:var(--ink)}
+.row .pic{position:relative;overflow:hidden;min-height:340px}
+.row .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.row .tx{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px);gap:20px}
+.row.flip .pic{order:2}
+.row h3{font-size:clamp(1.8rem,2.9vw,2.7rem)}
+.row .d{max-width:38ch;font-size:1rem;color:var(--ice-l)}
+.row.l .d{color:var(--muted)}
+.menu{list-style:none;margin-top:8px}
+.menu li{display:flex;align-items:baseline;gap:10px;padding:8px 0;font-size:1rem;line-height:1.3}
+.menu li::after{content:"";order:1;flex:1;border-bottom:1px dotted currentColor;opacity:.4;min-width:20px;transform:translateY(-4px)}
+.menu span:last-child{order:2;white-space:nowrap;font-weight:600;font-variant-numeric:lining-nums tabular-nums}
+.row.l .menu span:last-child{color:var(--navy)}
+.row:not(.l) .menu span:last-child{color:var(--velour)}
+@media(min-width:900px) and (min-height:760px){
+  .row{position:sticky;top:0}
+}
+
+.visit{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,7vw,110px);align-items:start}
+.visit h2{position:sticky;top:calc(var(--hh) + 40px);max-width:9ch}
+.steps{position:relative;margin-top:8px}
+.steps::before{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:1px;background:rgba(127,148,163,.5)}
+.step{position:relative;padding:0 0 clamp(34px,5vw,56px) 78px}
+.step:last-child{padding-bottom:0}
+.step .n{position:absolute;left:0;top:0;width:47px;height:47px;border-radius:50%;display:grid;place-items:center;font-family:var(--hd);font-size:1.25rem;background:var(--deep);box-shadow:inset 0 0 0 1px var(--ice);color:var(--ice-l);transition:background .5s,color .5s,box-shadow .5s}
+.step.lit .n{background:var(--velour);color:var(--deep);box-shadow:none}
+.step h3{font-size:clamp(1.55rem,2.4vw,2.1rem);margin-bottom:8px}
+.step p{max-width:48ch;color:var(--ice-l);font-size:1rem}
+
+.doc{list-style:none;margin-top:clamp(30px,5vw,56px)}
+.doc li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 0;border-top:1px solid var(--ice);font-family:var(--hd);font-size:clamp(1.5rem,2.7vw,2.3rem);line-height:1.1}
+.doc li:last-child{border-bottom:1px solid var(--ice)}
+.note{margin-top:22px;color:var(--muted);font-size:1.05rem;max-width:56ch}
+
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,7vw,110px);align-items:start}
+.contact h2{margin-bottom:26px}
+.phones{display:grid;gap:4px;margin:0 0 26px}
+.phones a{font-weight:600;font-size:clamp(1.8rem,3.2vw,2.7rem);text-decoration:none;line-height:1.1;font-variant-numeric:lining-nums tabular-nums;letter-spacing:.01em}
+.phones a:hover{color:var(--velour)}
+.info{display:grid;gap:0;border-top:1px solid rgba(127,148,163,.55);max-width:480px}
+.info p{padding:14px 0;border-bottom:1px solid rgba(127,148,163,.55);color:#DCE3EA;font-size:1.12rem}
+.info b{color:#fff;font-weight:600}
+.tbd{color:var(--velour)}
+.plate{background:#fff;color:var(--ink);padding:clamp(26px,4vw,48px);border-radius:6px}
+.plate h3{font-size:clamp(1.5rem,2.3vw,1.9rem);margin-bottom:6px}
+.plate .sub{color:var(--muted);margin-bottom:22px;font-size:1.08rem}
+.fld{display:grid;gap:6px;margin-bottom:18px}
+.fld label,.fld legend{font-size:1.05rem;font-weight:600;color:var(--navy)}
+.fld input[type=text],.fld input[type=tel],.fld select{height:52px;border:1px solid #9AA9B8;border-radius:4px;padding:0 14px;font:inherit;background:#fff;color:var(--ink);width:100%;caret-color:var(--navy)}
+.fld input:focus,.fld select:focus{outline:2px solid var(--navy);outline-offset:1px;border-color:var(--navy)}
+fieldset{border:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips label{font-weight:400;color:var(--ink)}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #9AA9B8;border-radius:999px;cursor:pointer;font-size:1.04rem;transition:background .2s,color .2s,border-color .2s}
+.chips input:checked+span{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chips input:focus-visible+span{outline:2px solid var(--navy);outline-offset:2px}
+.rodo{display:flex;gap:10px;align-items:flex-start;font-size:.98rem;color:var(--muted);margin:4px 0 20px}
+.rodo input{margin-top:5px;accent-color:var(--navy);width:18px;height:18px}
+.plate .btn{background:var(--navy);color:#fff;width:100%;min-height:54px}
+.plate .btn:hover{background:var(--deep)}
+.ok{display:none;margin-top:14px;padding:14px;background:#E8EDF3;border-left:3px solid var(--navy);font-size:1.05rem}
+.ok.show{display:block}
+.ftr{background:var(--deep);color:var(--ice-l);padding:44px 0;font-size:1rem}
+.ftr .wrap{display:flex;flex-wrap:wrap;gap:20px 50px;align-items:center;justify-content:space-between}
+.ftr img{width:150px}
+
+/* ---------- odsłanianie ---------- */
+.js .rv{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.js .rv.in{opacity:1;transform:none}
+
+
+/* ---------- efekty ---------- */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.12em 0 .2em;margin:-.12em 0 -.2em}
+.w>i{display:inline-block;font-style:normal}
+.js .w>i{transform:translateY(112%);transition:transform 1s cubic-bezier(.16,.8,.2,1) calc(var(--d,0)*70ms)}
+.js .in .w>i,.js .w.in>i,.js .txt.on .w>i,.js .step.seen .w>i{transform:none}
+.js .txt:not(.on) .w>i{transition:transform .35s ease-in;transition-delay:0s}
+.js .row .pic{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.65,0,.2,1)}
+.js .row.in .pic{clip-path:inset(0 0 0 0)}
+.row .pic img{top:-8%;height:116%;transform:translate3d(0,var(--py,0%),0);will-change:transform}
+.js .row .d,.js .row .menu li{opacity:0;transform:translateY(14px);transition:opacity .8s,transform .8s}
+.js .row .d{transition-delay:.55s}
+.js .row .menu li{transition-delay:calc(.7s + var(--i,0)*90ms)}
+.js .row.in .d,.js .row.in .menu li{opacity:1;transform:none}
+.js .facts p,.js .doc li,.js .info p{opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s;transition-delay:calc(var(--i,0)*110ms)}
+.js .facts.in p,.js .doc.in li,.js .info.in p{opacity:1;transform:none}
+.js .step p{opacity:0;transition:opacity .9s .5s}
+.js .step.seen p{opacity:1}
+.scene img{transform:translate3d(var(--x,0%),0,0) scale(var(--z,1))}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.hint{animation:drift 4.5s ease-in-out infinite}
+.btn{will-change:transform}
+.btn:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){
+  .js .w>i,.js .row .pic,.js .row .d,.js .row .menu li,.js .facts p,.js .doc li,.js .info p,.js .step p{transform:none!important;opacity:1!important;clip-path:none!important}
+  .hint{animation:none}
+}
+
+/* ---------- mobile ---------- */
+@media(max-width:980px){
+  .nav,.tel,.hdr .btn{display:none}
+  .mnav{display:block}
+  .intro .wrap,.contact .wrap,.visit{grid-template-columns:1fr}
+  .visit h2{position:static;max-width:none}
+  .row,.row.flip{grid-template-columns:1fr;min-height:0}
+  .row .pic,.row.flip .pic{order:0;height:46vh;min-height:260px}
+  .row .tx{padding:36px 22px 52px}
+  .hint{display:none}
+}
+@media(max-width:620px){
+  body{font-size:1.1rem}
+  .logo img{width:128px}
+  .js .fly{height:360vh}
+  .scrim{background:linear-gradient(0deg,rgba(10,20,44,.92) 0%,rgba(10,20,44,.68) 40%,rgba(10,20,44,.1) 70%),linear-gradient(180deg,rgba(10,20,44,.55),rgba(10,20,44,0) 20%)}
+  .txt{bottom:84px}
+  .cap .wrap span:last-child{display:none}
+  .cap .wrap{gap:12px;white-space:nowrap}
+  .big{font-size:clamp(2.6rem,13.5vw,3.6rem)}
+  .say{font-size:clamp(1.8rem,8.6vw,2.6rem);max-width:13ch}
+  .cta .btn{width:100%}
+  .doc li{font-size:1.4rem}
+  .step{padding-left:64px}
+  .steps::before{left:19px}
+  .step .n{width:39px;height:39px;font-size:1.05rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .scene img{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Dental Caffe — strona główna"><img src="img/logo-biale.png" width="1000" height="233" alt="Dental Caffe"></a>
+    <nav class="nav" aria-label="Główne">
+      <a href="#karta">Karta zabiegów</a>
+      <a href="#wizyta">Pierwsza wizyta</a>
+      <a href="#lekarze">Lekarze</a>
+      <a href="#rejestracja">Kontakt</a>
+    </nav>
+    <a class="tel" href="tel:+48534219037">534 219 037</a>
+    <a class="btn sm" href="#rejestracja">Umów wizytę</a>
+    <details class="mnav">
+      <summary>Menu</summary>
+      <nav aria-label="Menu mobilne">
+        <a href="#karta">Karta zabiegów</a>
+        <a href="#wizyta">Pierwsza wizyta</a>
+        <a href="#lekarze">Lekarze</a>
+        <a href="#rejestracja">Kontakt</a>
+        <a href="tel:+48534219037">Zadzwoń: 534 219 037</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- WEJŚCIE DO KLINIKI -->
+<section class="fly" id="fly" aria-label="Wejście do kliniki">
+  <div class="stage" id="stage">
+    <div class="scene on" data-i="0"><img src="img/poczekalnia.webp" alt="Poczekalnia Dental Caffe: granatowa ściana, beżowe sofy, żyrandol" width="1800" height="1004" fetchpriority="high"></div>
+    <div class="scene" data-i="1"><img src="img/gabinet-jasny.webp" alt="Jasny gabinet stomatologiczny" width="1800" height="1004" loading="lazy"></div>
+    <div class="scene" data-i="2"><img src="img/tomograf.webp" alt="Tomograf komputerowy w klinice" width="1800" height="1004" loading="lazy"></div>
+    <div class="scene" data-i="3"><img src="img/mikroskop.webp" alt="Mikroskop zabiegowy" width="1800" height="1004" loading="lazy"></div>
+    <div class="scrim"></div>
+    <div class="copy">
+      <div class="txt on" data-i="0"><div class="wrap">
+        <h1 class="big">Dental Caffe</h1>
+        <p class="lead">Wizyta bez napięcia. Technologia, której nie widać.</p>
+        <div class="cta"><a class="btn" href="#rejestracja">Umów wizytę</a><a class="btn line" href="tel:+48534219037">Zadzwoń 534 219 037</a></div>
+      </div></div>
+      <div class="txt" data-i="1"><div class="wrap"><p class="say h">Najpierw rozmowa. Fotel dopiero potem.</p></div></div>
+      <div class="txt" data-i="2"><div class="wrap"><p class="say h">Diagnoza w 3D.</p></div></div>
+      <div class="txt" data-i="3"><div class="wrap"><p class="say h">Leczenie bez zgadywania.</p></div></div>
+    </div>
+    <div class="cap"><div class="wrap"><span id="capn">01 / 04 · Poczekalnia</span><span class="bar" style="--p:0" id="bar"><i></i></span><span>Zielona Góra, ul. Zamoyskiego 5/5</span></div></div>
+    <span class="hint">przewiń, żeby wejść</span>
+  </div>
+</section>
+
+<!-- WSTĘP -->
+<section class="light pad intro">
+  <div class="wrap">
+    <h2 class="rv">Do dentysty jak na kawę. Za ścianą tomograf, mikroskop i laser.</h2>
+    <div class="facts">
+      <p><b>Boli? Zadzwoń od razu.</b>Pomagamy w nagłych przypadkach. Przy silnym bólu, obrzęku lub złamanym zębie powiedz o tym na początku rozmowy.</p>
+      <p><b>Każdy lekarz ma swoją dziedzinę.</b>Trafiasz do osoby z największym doświadczeniem w danym problemie — od zachowawczego, przez endodoncję i chirurgię, po implanty.</p>
+      <p><b>Plan i cena przed zabiegiem.</b>Dostajesz plan leczenia z kosztorysem, zanim cokolwiek zacznie się dziać.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KARTA ZABIEGÓW -->
+<section class="cardhead" id="karta">
+  <div class="wrap">
+    <h2 class="rv">Karta zabiegów</h2>
+    <p class="rv">Ceny z cennika kliniki, poglądowe. O ostatecznej cenie decyduje lekarz po badaniu.</p>
+  </div>
+</section>
+
+<article class="row">
+  <div class="pic"><img src="img/tomograf.webp" alt="Tomograf" width="1800" height="1004" loading="lazy"></div>
+  <div class="tx">
+    <h3>Konsultacje i diagnostyka</h3>
+    <p class="d">Zaczynamy od pełnego obrazu: badanie, RTG, tomografia i plan leczenia przedstawiony przed pierwszym zabiegiem.</p>
+    <ul class="menu">
+      <li><span>Konsultacja pierwszorazowa</span><span>250 zł</span></li>
+      <li><span>Wizyta bólowa — diagnostyka i leki</span><span>od 300 zł</span></li>
+      <li><span>RTG panoramiczne</span><span>150 zł</span></li>
+      <li><span>Tomografia komputerowa</span><span>od 250 zł</span></li>
+      <li><span>Projekt uśmiechu DSD</span><span>2 000 zł</span></li>
+    </ul>
+  </div>
+</article>
+
+<article class="row l flip">
+  <div class="pic"><img src="img/latte.webp" alt="Latte ze śnieżynką w kształcie sygnetu Dental Caffe" width="1800" height="1004" loading="lazy"></div>
+  <div class="tx">
+    <h3>Profilaktyka i wybielanie</h3>
+    <p class="d">Higienizacja w protokole Guided Biofilm Therapy i kontrola co 6 miesięcy — żeby większość zabiegów z tej karty nigdy nie była potrzebna.</p>
+    <ul class="menu">
+      <li><span>Higienizacja Guided Biofilm Therapy</span><span>450 zł</span></li>
+      <li><span>Instruktaż higieny</span><span>250 zł</span></li>
+      <li><span>Fluoryzacja</span><span>od 150 zł</span></li>
+      <li><span>ICON — przebarwienia bez borowania, 1 ząb</span><span>600 zł</span></li>
+      <li><span>Wizyta kontrolna, 15 minut</span><span>200 zł</span></li>
+    </ul>
+  </div>
+</article>
+
+<article class="row">
+  <div class="pic"><img src="img/gabinet-jasny.webp" alt="Gabinet stomatologiczny" width="1800" height="1004" loading="lazy"></div>
+  <div class="tx">
+    <h3>Leczenie zachowawcze i dzieci</h3>
+    <p class="d">Ratujemy naturalny ząb. Najmłodsi zaczynają od wizyty adaptacyjnej, na której nikt niczego nie wierci.</p>
+    <ul class="menu">
+      <li><span>Wypełnienie kompozytowe</span><span>od 400 zł</span></li>
+      <li><span>Licówka kompozytowa wykonana w gabinecie</span><span>800 zł</span></li>
+      <li><span>Wizyta adaptacyjna dzieci (do 30 min)</span><span>300 zł</span></li>
+      <li><span>Lakowanie zęba stałego</span><span>od 200 zł</span></li>
+      <li><span>Wypełnienie stałe zęba mlecznego</span><span>od 250 zł</span></li>
+    </ul>
+  </div>
+</article>
+
+<article class="row l flip">
+  <div class="pic"><img src="img/mikroskop.webp" alt="Mikroskop do leczenia kanałowego" width="1800" height="1004" loading="lazy"></div>
+  <div class="tx">
+    <h3>Endodoncja pod mikroskopem</h3>
+    <p class="d">Leczenie kanałowe w powiększeniu — widzisz to, co zwykle jest zgadywane.</p>
+    <ul class="menu">
+      <li><span>Przygotowanie zęba do leczenia kanałowego</span><span>300 zł</span></li>
+      <li><span>Leczenie endodontyczne pierwotne</span><span>od 1 000 zł</span></li>
+      <li><span>Leczenie endodontyczne wtórne</span><span>od 1 800 zł</span></li>
+      <li><span>Odbudowa korony na wkładzie z włókna szklanego</span><span>800 zł</span></li>
+      <li><span>Zamknięcie perforacji MTA</span><span>500 zł</span></li>
+    </ul>
+  </div>
+</article>
+
+<article class="row">
+  <div class="pic"><img src="img/laser.webp" alt="Laser stomatologiczny" width="1800" height="1004" loading="lazy"></div>
+  <div class="tx">
+    <h3>Chirurgia, laser i przyzębie</h3>
+    <p class="d">Od usunięcia zęba po korektę dziąseł. Laser skraca gojenie i pomaga tam, gdzie wiertło jest zbyt grubym narzędziem.</p>
+    <ul class="menu">
+      <li><span>Usunięcie zęba</span><span>od 500 zł</span></li>
+      <li><span>Usunięcie zęba zatrzymanego</span><span>od 800 zł</span></li>
+      <li><span>Biomodulacja laserowa</span><span>150 zł</span></li>
+      <li><span>Korekta uśmiechu dziąsłowego</span><span>od 400 zł</span></li>
+      <li><span>Pokrycie recesji dziąsła</span><span>od 800 zł</span></li>
+    </ul>
+  </div>
+</article>
+
+<article class="row l flip">
+  <div class="pic"><img src="img/druk3d.webp" alt="Skaner wewnątrzustny i drukarka 3D" width="1800" height="1004" loading="lazy"></div>
+  <div class="tx">
+    <h3>Implanty, protetyka i ortodoncja</h3>
+    <p class="d">Skan, szablon nawigujący i druk 3D. Leczenie ortodontyczne wyceniamy indywidualnie na wizycie konsultacyjnej.</p>
+    <ul class="menu">
+      <li><span>Konsultacja implantologiczna z planem i kosztorysem</span><span>300 zł</span></li>
+      <li><span>Szablon chirurgiczny</span><span>od 1 000 zł</span></li>
+      <li><span>Implantacja</span><span>od 3 000 zł</span></li>
+      <li><span>Korona stała na implancie</span><span>3 500 zł</span></li>
+      <li><span>Konsultacja ortodontyczna</span><span>200 zł</span></li>
+    </ul>
+  </div>
+</article>
+
+<!-- PIERWSZA WIZYTA -->
+<section class="deep pad" id="wizyta">
+  <div class="wrap">
+    <div class="visit"><h2 class="rv">Pierwsza wizyta, krok po kroku</h2>
+    <div class="steps" id="steps">
+      <div class="step"><span class="n">1</span><h3>Rozmowa</h3><p>Opowiadasz, co Cię trapi. Jeśli boisz się dentysty albo masz za sobą złe doświadczenia, powiedz to na starcie.</p></div>
+      <div class="step"><span class="n">2</span><h3>Diagnoza</h3><p>Badanie, RTG, w razie potrzeby tomografia. Obraz jest trójwymiarowy, więc decyzje opierają się na tym, co widać.</p></div>
+      <div class="step"><span class="n">3</span><h3>Plan i kosztorys</h3><p>Dostajesz plan leczenia z ceną. Decydujesz po zobaczeniu całości, nie po pierwszym zabiegu.</p></div>
+      <div class="step"><span class="n">4</span><h3>Leczenie</h3><p>Zwykle w znieczuleniu miejscowym. Na bieżąco reagujemy na każdy zgłaszany dyskomfort.</p></div>
+      <div class="step"><span class="n">5</span><h3>Kontrola co 6 miesięcy</h3><p>Regularne wizyty łapią problem, zanim zacznie boleć.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- LEKARZE -->
+<section class="light pad" id="lekarze">
+  <div class="wrap">
+    <h2 class="rv">Lekarze</h2>
+    <ul class="doc">
+      <li>Agnieszka Rutkowska</li>
+      <li>Karolina Reitmajer</li>
+      <li>Natalia Poszumska</li>
+      <li>Bartosz Królikowski</li>
+      <li>Anna Niedziela</li>
+    </ul>
+    <p class="note">Specjalizacje i zdjęcia lekarzy dodamy po sesji w gabinecie.</p>
+  </div>
+</section>
+
+<!-- REJESTRACJA -->
+<section class="dark pad contact" id="rejestracja">
+  <div class="wrap">
+    <div>
+      <h2 class="rv">Umów wizytę</h2>
+      <div class="phones">
+        <a href="tel:+48534219037">534 219 037</a>
+        <a href="tel:+48780411119">780 411 119</a>
+      </div>
+      <div class="info">
+        <p><b>Adres.</b> ul. Jana Zamoyskiego 5/5, 65-255 Zielona Góra</p>
+        <p><b>Godziny.</b> poniedziałek–piątek 8:00–21:00 <span class="tbd">[do potwierdzenia]</span></p>
+        <p><b>E-mail.</b> <a href="mailto:dental.caffe@gmail.com">dental.caffe@gmail.com</a></p>
+        <p><b>Opinie pacjentów.</b> <span class="tbd">[wtyczka z Google — do podpięcia przy wdrożeniu]</span></p>
+      </div>
+    </div>
+    <form class="plate" id="form" novalidate>
+      <h3>Poproś o telefon</h3>
+      <p class="sub">Oddzwonimy i zaproponujemy termin.</p>
+      <div class="fld"><label for="f1">Imię</label><input id="f1" type="text" autocomplete="given-name"></div>
+      <div class="fld"><label for="f2">Telefon</label><input id="f2" type="tel" autocomplete="tel"></div>
+      <fieldset class="fld"><legend>Z czym przychodzisz?</legend>
+        <div class="chips">
+          <label><input type="radio" name="r" checked><span>Boli ząb</span></label>
+          <label><input type="radio" name="r"><span>Brakuje zęba</span></label>
+          <label><input type="radio" name="r"><span>Ładniejszy uśmiech</span></label>
+          <label><input type="radio" name="r"><span>Dziecko</span></label>
+          <label><input type="radio" name="r"><span>Ból szczęki</span></label>
+          <label><input type="radio" name="r"><span>Kontrola</span></label>
+        </div>
+      </fieldset>
+      <div class="fld"><label for="f3">Kiedy najlepiej?</label>
+        <select id="f3"><option>Jak najszybciej</option><option>Poniedziałek–wtorek</option><option>Środa–czwartek</option><option>Piątek</option></select></div>
+      <label class="rodo"><input type="checkbox"><span>Wyrażam zgodę na kontakt w sprawie wizyty. <em>[treść zgody RODO — do uzupełnienia]</em></span></label>
+      <button class="btn" type="submit">Poproś o telefon</button>
+      <p class="ok" id="ok" role="status">To makieta — formularz niczego nie wysyła. Przy wdrożeniu trafi do rejestracji kliniki.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <img src="img/logo-biale.png" width="1000" height="233" alt="Dental Caffe">
+    <span>ul. Jana Zamoyskiego 5/5, Zielona Góra · NIP <span class="tbd">[uzupełnić]</span></span>
+    <span>Zdjęcia poglądowe. Makieta: ODNOVA Studio</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr');
+  function hs(){hdr.classList.toggle('solid',scrollY>40)}
+  addEventListener('scroll',hs,{passive:true});hs();
+
+  var fly=document.getElementById('fly'),stage=document.getElementById('stage');
+  var sc=[].slice.call(document.querySelectorAll('.scene')),tx=[].slice.call(document.querySelectorAll('.txt'));
+  var names=['Poczekalnia','Gabinet','Tomografia','Mikroskop'],n=sc.length,cur=-1;
+  var capn=document.getElementById('capn'),bar=document.getElementById('bar');
+  function setIdx(i){
+    if(i===cur)return;cur=i;
+    sc.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    tx.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    capn.textContent='0'+(i+1)+' / 0'+n+' · '+names[i];
+  }
+  function onScroll(){
+    var r=fly.getBoundingClientRect(),span=fly.offsetHeight-innerHeight;
+    var p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;
+    var f=Math.min(n-1e-6,p*n),i=Math.floor(f),loc=f-i;
+    setIdx(i);
+    sc[i].style.setProperty('--z',(1+.09*loc).toFixed(4));
+    sc[i].style.setProperty('--x',(-1.6*loc).toFixed(3)+'%');
+    bar.style.setProperty('--p',p.toFixed(4));
+    var out=r.bottom-innerHeight; // wygaszanie przy wyjściu
+    stage.style.opacity=out<0?Math.max(0,1+out/(innerHeight*.5)):1;
+  }
+  if(document.documentElement.classList.contains('js')){
+    setIdx(0);
+    addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+  }
+
+  // odsłanianie nagłówków
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(e){io.observe(e)});
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('lit',e.isIntersecting)})},{rootMargin:'-35% 0px -45% 0px'});
+    [].slice.call(document.querySelectorAll('.step')).forEach(function(e){io2.observe(e)});
+  }else{rv.forEach(function(e){e.classList.add('in')});[].slice.call(document.querySelectorAll('.step')).forEach(function(e){e.classList.add('lit')})}
+  setTimeout(function(){rv.forEach(function(e){if(!e.classList.contains('in')&&e.getBoundingClientRect().top<innerHeight)e.classList.add('in')})},400);
+
+
+  // podział nagłówków na słowa
+  if(document.documentElement.classList.contains('js')){
+    [].slice.call(document.querySelectorAll('h1.big,.say,h2,.row h3,.step h3,.plate h3')).forEach(function(el){
+      var t=el.textContent.trim().split(/\s+/),k=0;el.setAttribute('aria-label',el.textContent.trim());
+      el.innerHTML=t.map(function(w){return '<span class="w" aria-hidden="true"><i style="--d:'+(k++)+'">'+w+'</i></span> '}).join('');
+    });
+    [].slice.call(document.querySelectorAll('.menu,.facts,.doc,.info')).forEach(function(l){
+      [].slice.call(l.children).forEach(function(c,i){c.style.setProperty('--i',i)});
+    });
+  }
+  // wejścia sekcji + dryf zdjęć
+  var fxs=[].slice.call(document.querySelectorAll('.row,.facts,.doc,.info,.plate'));
+  var rows=[].slice.call(document.querySelectorAll('.row'));
+  function fxSweep(){
+    var vh=innerHeight;
+    fxs.forEach(function(e){if(!e.classList.contains('in')&&e.getBoundingClientRect().top<vh*.7)e.classList.add('in')});
+    [].slice.call(document.querySelectorAll('.step')).forEach(function(e){if(e.getBoundingClientRect().top<vh*.62)e.classList.add('seen')});
+    rows.forEach(function(r){var b=r.getBoundingClientRect();if(b.bottom<0||b.top>vh)return;
+      var p=Math.max(-1,Math.min(1,(b.top+b.height/2-vh/2)/vh));r.style.setProperty('--py',(p*5).toFixed(2)+'%');});
+  }
+  addEventListener('scroll',fxSweep,{passive:true});addEventListener('resize',fxSweep);fxSweep();
+
+  // menu mobilne
+  var mn=document.querySelector('.mnav');
+  mn.addEventListener('click',function(e){if(e.target.closest('a'))mn.open=false});
+
+  // formularz (makieta)
+  document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').classList.add('show')});
+})();
+</script>
+</body>
+</html>
