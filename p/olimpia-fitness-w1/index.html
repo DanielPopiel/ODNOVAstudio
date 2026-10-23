@@ -119,12 +119,35 @@ html:not(.js) .mbar,.past-hero .mbar{transform:none}
 .gold{color:var(--gd)}.dark .gold{color:var(--acc)}
 .arrow{display:inline-block;width:1.2em;height:.8em;vertical-align:-.05em;margin-left:.45em}
 a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
-/* HERO: obchód po klubie */
-.hero{position:relative;background:#f3eee2;color:#161d45}
-.js .hero{height:calc(100svh + 4 * 40svh)}
+/* HERO: sztanga — kamera cofa się od dłoni na gryfie do sali */
+.hero{position:relative;background:#1c1a1e;color:#f6f1e4}
+.js .hero{height:calc(100svh + 2.4 * 100svh)}
+.hero .hst{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}
+.hero .ly{position:absolute;inset:0;will-change:transform,opacity}
+.hero .ly img{width:100%;height:100%;object-fit:cover;display:block}
+.hero .l2{opacity:0}.hero .l2 img{filter:saturate(.62) sepia(.32) brightness(.92)}
+.hero .scr{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,16,14,.84) 0%,rgba(18,16,14,.5) 46%,rgba(18,16,14,.12) 100%),linear-gradient(0deg,rgba(18,16,14,.6),transparent 38%)}
+.hero .txt{position:absolute;left:0;right:0;bottom:clamp(40px,9vh,96px)}
+.hero .txt .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px clamp(24px,4vw,64px);align-items:end}
+.hero h1{font-size:clamp(2.6rem,5.6vw,5.4rem);line-height:1;max-width:13ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero .txt p{margin-top:18px;font-size:clamp(1.05rem,1.4vw,1.25rem);max-width:46ch;opacity:.95}
+.hero .acts{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.hero .live{color:#f6f1e4}
+.hero .btn.g{border-color:rgba(246,241,228,.7);color:#f6f1e4}.hero .btn.g:hover{background:#f6f1e4;color:#1c1a1e}
+.hero .btn.p{background:var(--acc);color:#161d45}.hero .btn.p:hover{background:var(--acc2)}
+.hero .cue{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75;display:flex;flex-direction:column;align-items:center;gap:8px}
+.hero .cue i{width:1px;height:28px;background:linear-gradient(var(--acc),transparent)}
+.hero .prog{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+@media(max-width:860px){.hero .l1 img{object-position:14% 50%}.hero .l2 img{object-position:42% 50%}.hero .txt .wrap{grid-template-columns:1fr}.hero .acts{flex-direction:row;flex-wrap:wrap}.hero .acts .btn.g{display:none}.hero .txt p{display:none}.hero .scr{background:linear-gradient(0deg,rgba(18,16,14,.9),rgba(18,16,14,.2) 70%)}.js .hero{height:calc(100svh + 1.6 * 100svh)}}
+@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.hero .hst{position:relative}.hero .l1{opacity:0}.hero .l2{opacity:1}}
+html:not(.js) .hero .l1{opacity:0}html:not(.js) .hero .l2{opacity:1}
+/* PIĘĆ MIEJSC: obchód po klubie */
+.tour{position:relative;background:#f3eee2;color:#161d45}
+.js .tour{height:calc(100svh + 4 * 40svh)}
 .stage{position:sticky;top:0;height:100svh;min-height:560px;display:flex;flex-direction:column;padding-top:calc(var(--hdr-h,100px) + clamp(14px,2.4vh,30px));overflow:hidden}
 .hd{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px clamp(24px,4vw,64px);align-items:end;padding-bottom:clamp(16px,2.8vh,30px)}
-.hd h1{font-size:clamp(2.4rem,4.7vw,4.4rem);line-height:1;white-space:nowrap}
+.hd h2{font-size:clamp(2.4rem,4.7vw,4.4rem);line-height:1;white-space:nowrap}
 .hd .hl p{font-size:clamp(1.02rem,1.3vw,1.2rem);max-width:56ch;margin-top:12px;opacity:.95}
 .hd .hr{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
 .hd .live{background:#fffdf7;border:1px solid rgba(22,29,69,.2);padding:7px 14px;border-radius:99px}
@@ -144,12 +167,12 @@ a.more{display:inline-flex;align-items:center;font-weight:600;text-decoration:no
 .slats .bar{display:none}
 .hint{font-size:.92rem;opacity:.85}
 html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transform:none;left:18px;margin:0}html:not(.js) .sl small{opacity:1}
-@media(max-width:860px){.hd{grid-template-columns:1fr;gap:12px}.hd h1{font-size:2.3rem;white-space:normal}.hd .hl p{display:none}.hd .hr{align-items:flex-start;flex-direction:column-reverse;gap:12px}.hd .acts .btn.g{display:none}.hd .acts{justify-content:flex-start}
- .js .hero{height:calc(100svh + 4 * 30svh)}.slats{flex-direction:column;gap:5px}
+@media(max-width:860px){.hd{grid-template-columns:1fr;gap:12px}.hd h2{font-size:2.3rem;white-space:normal}.hd .hl p{display:none}.hd .hr{align-items:flex-start;flex-direction:column-reverse;gap:12px}.hd .acts .btn.g{display:none}.hd .acts{justify-content:flex-start}
+ .js .tour{height:calc(100svh + 4 * 30svh)}.slats{flex-direction:column;gap:5px}
  .sl:not(.on) b{writing-mode:horizontal-tb;transform:none;left:16px;margin:0;bottom:50%;margin-bottom:-.55em}
  .sl .no{left:auto!important;margin:0!important;right:16px;top:50%;margin-top:-.7em!important}
  .sl b{font-size:1.4rem;left:16px;bottom:16px}.sl small{left:16px;bottom:48px;font-size:.95rem}.sl.on .no{top:14px;margin-top:0!important}}
-@media(prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative;min-height:100svh}}
+@media(prefers-reduced-motion:reduce){.js .tour{height:auto}.stage{position:relative;min-height:100svh}}
 /* BILET */
 .bilet{position:relative;overflow:hidden;background:#1c1a1e;color:#f6f1e4;padding:clamp(56px,9vw,112px) 0}
 .bilet .bgi{position:absolute;inset:-20px;opacity:.5;filter:blur(3px)}.bilet .bgi img{width:100%;height:100%;object-fit:cover}
@@ -262,12 +285,14 @@ html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transfor
 </div></header>
 </div>
 <div class="mbar"><a class="btn g" href="tel:+48226738734">Zadzwoń</a><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Kup karnet</a></div>
-<section class="hero" aria-label="Pięć miejsc w klubie"><div class="stage">
-<div class="wrap hd"><div class="hl"><h1>Pięć miejsc. Jeden klub.</h1>
-<p>Siłownia, fitness, sauna, recepcja ze sklepem i strefa relaksu. Klub z tradycjami na Saskiej Kępie od 2000 roku.</p></div>
-<div class="hr"><p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p><div class="acts"><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div></div></div>
-<div class="slats"><div class="sl on"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"><span class="no">01</span><small>Technogym, Waryński Żelechów, Sevim, Matrix</small><b>Siłownia</b></div><div class="sl"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"><span class="no">02</span><small>joga, taniec, Jumping Fitness</small><b>Sala fitness</b></div><div class="sl"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">03</span><small>osobna damska i męska</small><b>Sauna</b></div><div class="sl"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"><span class="no">04</span><small>odżywki, shake, barek</small><b>Recepcja i sklep</b></div><div class="sl"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">05</span><small>odpoczynek po treningu</small><b>Strefa relaksu</b></div></div>
-</div></section><main><section class="bilet" id="bilet"><div class="bgi"><img src="a/foto/lounge1.jpg" alt="" width="1500" height="1000" loading="lazy" decoding="async"></div><div class="wrap">
+<section class="hero" aria-label="Olimpia Fitness Club"><div class="hst"><div class="prog"></div>
+<div class="ly l1"><img src="a/foto/sztanga1.jpg" alt="Dłonie w magnezji na stalowym gryfie sztangi" width="1600" height="894" fetchpriority="high" decoding="async"></div>
+<div class="ly l2"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym" decoding="async"></div>
+<div class="scr"></div>
+<div class="txt"><div class="wrap"><div><h1>Od 2000 roku <em>na tym samym gryfie.</em></h1>
+<p>Klub z tradycjami na Saskiej Kępie. Siłownia, fitness, sauna i ludzie, którzy znają Twoje imię.</p></div>
+<div class="acts"><p class="live " data-live><i class="dot"></i><b>Godziny otwarcia</b><span>pon.–pt. 6–23, sob. 8–20, niedz. 9–20</span></p><a class="btn p" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kup-karnet" target="_blank" rel="noopener">Wejdź na próbę: Day Pass 59 zł</a><a class="btn g" href="tel:+48226738734">Zadzwoń: (22) 673 87 34</a></div></div></div>
+<div class="cue" aria-hidden="true">Przewiń<i></i></div></div></section><main><section class="bilet" id="bilet"><div class="bgi"><img src="a/foto/lounge1.jpg" alt="" width="1500" height="1000" loading="lazy" decoding="async"></div><div class="wrap">
 <h2 class="reveal">Zacznij od jednego wejścia.</h2>
 <p class="sub reveal">Obejrzyj klub, wypróbuj sprzęt i dostań plan na start. Bez umowy i bez zobowiązań.</p>
 <div class="tk reveal"><div class="l"><small>Olimpia Fitness Club · Day Pass</small><h3>Jedno wejście na próbę</h3><p>Siłownia i fitness w cenie biletu. Dobry na pierwszą wizytę.</p></div>
@@ -277,7 +302,12 @@ html:not(.js) .sl{flex:1}html:not(.js) .sl b{writing-mode:horizontal-tb;transfor
 <p class="lead reveal">Od 2000 roku budujemy markę na jednym: dobrej atmosferze i realnych wynikach naszych klubowiczów.</p>
 <div class="ph" data-par><img src="a/foto/wall1.jpg" alt="Ściana ze zdjęciami w klubie Olimpia" width="1300" height="867" loading="lazy" decoding="async"></div></div>
 <ul class="list stagger"><li><h3>Tradycja</h3><p>Działamy na Pradze Południe od 2000 roku. Jesteśmy kameralnym klubem z rodzinną atmosferą, a jednocześnie idziemy z duchem czasu.</p></li><li><h3>Ci sami trenerzy</h3><p>Kadra od lat ta sama i przywiązana do klubu i klubowiczów. Zależy nam na Twoich realnych wynikach.</p></li><li><h3>Sprzęt na światowym poziomie</h3><p>Klimatyzowane sale, linia treningowa Technogym oraz urządzenia Waryński Żelechów, Sevim i Matrix.</p></li><li><h3>Plan na start</h3><p>Każdy nowy klubowicz dostaje indywidualny program ćwiczeń, ułożony pod jego potrzeby i możliwości.</p></li><li><h3>Bez długich umów</h3><p>Karnet Month obowiązuje 30 dni bez umowy, a Flex ma miesiąc wypowiedzenia.</p></li><li><h3>Sklep, barek, relaks</h3><p>Odżywki i suplementy z poradą, dietetyczny posiłek do podgrzania i strefa relaksu po treningu.</p></li></ul>
-</div></div></section><section class="sec dark" id="strefy"><div class="wrap">
+</div></div></section><section class="tour" id="miejsca" aria-label="Pięć miejsc w klubie"><div class="stage">
+<div class="wrap hd"><div class="hl"><h2 class="h2tour">Pięć miejsc. Jeden klub.</h2>
+<p>Siłownia, fitness, sauna, recepcja ze sklepem i strefa relaksu. Klub z tradycjami na Saskiej Kępie od 2000 roku.</p></div>
+</div>
+<div class="slats"><div class="sl on"><img src="a/foto/gym1.jpg" alt="Siłownia Olimpia: aleja między maszynami Technogym i sprzętem do ćwiczeń siłowych" width="1700" height="956" decoding="async"><span class="no">01</span><small>Technogym, Waryński Żelechów, Sevim, Matrix</small><b>Siłownia</b></div><div class="sl"><img src="a/foto/fit1.jpg" alt="Duża klimatyzowana sala fitness z lustrami" width="1700" height="1134" loading="lazy" decoding="async"><span class="no">02</span><small>joga, taniec, Jumping Fitness</small><b>Sala fitness</b></div><div class="sl"><img src="a/foto/sauna.jpg" alt="Drewniana sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">03</span><small>osobna damska i męska</small><b>Sauna</b></div><div class="sl"><img src="a/foto/bar1.jpg" alt="Recepcja i sklep z odżywkami w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"><span class="no">04</span><small>odżywki, shake, barek</small><b>Recepcja i sklep</b></div><div class="sl"><img src="a/foto/lounge1.jpg" alt="Strefa relaksu z kanapami w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"><span class="no">05</span><small>odpoczynek po treningu</small><b>Strefa relaksu</b></div></div>
+</div></section><section class="sec dark" id="strefy"><div class="wrap">
 <h2 class="h2 reveal">Wszystko, czego potrzebujesz przed i po treningu.</h2>
 <div style="margin-top:24px"><div class="zone"><div class="ph" data-par><img src="a/foto/gym2.jpg" alt="Siłownia w klubie Olimpia" width="1400" height="934" loading="lazy" decoding="async"></div><div><h3 class="reveal">Siłownia</h3><p>Przestronna, klimatyzowana sala z urządzeniami na światowym poziomie. Bieżnie, rowerki i przyrządy oszczędzające stawy, dlatego trenuje u nas coraz więcej Pań. Przy pierwszej wizycie dostajesz indywidualny program ćwiczeń.</p><p class="cecha">Technogym · Waryński Żelechów · Sevim · Matrix</p><a class="more" href="#cennik">Zobacz karnety<svg class="arrow" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 8h20M15 2l6 6-6 6"/></svg></a></div></div><div class="zone"><div class="ph" data-par><img src="a/foto/fit1.jpg" alt="Fitness w klubie Olimpia" width="1700" height="1134" loading="lazy" decoding="async"></div><div><h3 class="reveal">Fitness</h3><p>Duża sala z lustrami, od jogi po zajęcia taneczne i Jumping Fitness. Intensywność dopasujesz do swoich możliwości. Aktualne zajęcia sprawdzisz w grafiku.</p><p class="cecha">joga · taniec · Jumping Fitness · zajęcia dla kobiet w ciąży</p><a class="more" href="https://olimpiafitnessclub-warszawa.cms.efitness.com.pl/kalendarz-zajec" target="_blank" rel="noopener">Grafik zajęć<svg class="arrow" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 8h20M15 2l6 6-6 6"/></svg></a></div></div><div class="zone"><div class="ph" data-par><img src="a/foto/sauna.jpg" alt="Sauna w klubie Olimpia" width="1500" height="1000" loading="lazy" decoding="async"></div><div><h3 class="reveal">Sauna</h3><p>Osobna sauna damska i męska. Po treningu pomaga rozluźnić mięśnie i zregenerować siły, a regularnie wzmacnia odporność i poprawia samopoczucie.</p><p class="cecha">sauna damska i męska · szatnie · prysznice</p></div></div><div class="zone"><div class="ph" data-par><img src="a/foto/masaz.jpg" alt="Gabinet masażu w klubie Olimpia" width="1100" height="730" loading="lazy" decoding="async"></div><div><h3 class="reveal">Gabinet masażu</h3><p>Masaż leczniczy, relaksacyjny, odchudzający, modelujący bańką chińską i sportowy. Przyjmuje Emilia Zielińska, magister fizjoterapii i wielokrotna medalistka Mistrzostw Polski w wioślarstwie.</p><p class="cecha">50 minut · 200 zł · zapisy: 692 375 016</p><a class="more" href="tel:+48692375016">Zapisy: 692 375 016<svg class="arrow" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 8h20M15 2l6 6-6 6"/></svg></a></div></div></div>
 <div class="mini"><div><h3>Solarium</h3><p>Solarium dla klubowiczów, rozliczane za minutę. Rozsądne korzystanie poprawia koloryt skóry.</p><p class="cecha">4,50 zł za minutę</p></div><div><h3>Barek i sklep</h3><p>Dobrze zaopatrzony sklep z odżywkami i suplementami oraz barek z dyspenserem shaków. Dietetyczny posiłek podgrzejesz i zjesz w strefie relaksu.</p><p class="cecha">odżywki · suplementy · shake · posiłek po treningu</p></div></div>
@@ -358,7 +388,7 @@ addEventListener('scroll',function(){clearTimeout(tt);tt=setTimeout(sweep,160)},
 })();
 
 (function(){
-var d=document,hero=d.querySelector('.hero'),sl=[].slice.call(d.querySelectorAll('.sl')),N=sl.length;
+var d=document,hero=d.querySelector('.tour'),sl=[].slice.call(d.querySelectorAll('.sl')),N=sl.length;
 var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
 function tour(){
@@ -366,6 +396,15 @@ function tour(){
  sl.forEach(function(f,i){f.style.flexGrow=(1+4.2*clamp(1-Math.abs(x-i),0,1)).toFixed(3);f.classList.toggle('on',i===c)});
 }
 addEventListener('scroll',tour,{passive:true});addEventListener('resize',tour);tour();
+/* hero: kamera cofa się od dłoni do sali */
+var H=d.querySelector('.hero'),l1=d.querySelector('.hero .l1'),l2=d.querySelector('.hero .l2'),pg=d.querySelector('.hero .prog'),cue=d.querySelector('.hero .cue');
+function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+function hs(){if(!H||rm)return;var r=H.getBoundingClientRect(),tot=Math.max(1,H.offsetHeight-innerHeight),p=clamp(-r.top/tot,0,1);
+ var a=ease(clamp(p/.55,0,1)),b=ease(clamp((p-.3)/.55,0,1));
+ l1.style.transform='scale('+(1.32-.32*a).toFixed(4)+') translate3d(0,'+(-3*a).toFixed(2)+'%,0)';l1.style.opacity=(1-clamp((p-.35)/.4,0,1)).toFixed(3);l1.style.filter='blur('+(clamp((p-.2)/.4,0,1)*5).toFixed(1)+'px)';
+ l2.style.opacity=b.toFixed(3);l2.style.transform='scale('+(1.22-.22*b).toFixed(4)+')';
+ pg.style.transform='scaleX('+p.toFixed(4)+')';if(cue)cue.style.opacity=(.75*(1-clamp(p*6,0,1))).toFixed(3)}
+addEventListener('scroll',hs,{passive:true});addEventListener('resize',hs);hs();
 /* bilet: lekkie pochylenie za kursorem */
 var tk=d.querySelector('.tk');
 if(tk&&!rm&&matchMedia('(hover:hover)').matches){tk.parentNode.addEventListener('mousemove',function(e){var r=tk.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tk.style.setProperty('--ry',(x*7).toFixed(2)+'deg');tk.style.setProperty('--rx',(-y*6).toFixed(2)+'deg')});tk.parentNode.addEventListener('mouseleave',function(){tk.style.setProperty('--ry','0deg');tk.style.setProperty('--rx','0deg')})}
