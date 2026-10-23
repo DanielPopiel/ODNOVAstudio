@@ -72,49 +72,6 @@ p{margin:0 0 1em}
 .xr .acts{display:flex;flex-wrap:wrap;gap:12px}
 .hint{display:flex;align-items:center;gap:12px;margin-top:44px;color:#93A6BC;font-size:.92rem}
 .hint svg{width:34px;height:34px;color:var(--glow);flex:none}
-/* TECH */
-.tech{background:var(--light);color:var(--text);padding:130px 0 110px}
-.tech .intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;margin-bottom:80px}
-.tech .intro p{color:var(--muted);font-size:1.1rem;margin:0}
-.tlist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px}
-.trow{border-top:2px solid var(--navy);padding-top:24px;display:flex;flex-direction:column}
-.trow>div{display:flex;flex-direction:column;flex:1}
-.trow .price{margin-top:auto}
-.trow figure{margin:0 0 22px;aspect-ratio:4/3;overflow:hidden;border-radius:3px;background:var(--ink)}
-.trow figure img{width:100%;height:100%;object-fit:cover;object-position:72% 50%}
-.trow figure{margin:0;aspect-ratio:16/10;overflow:hidden;border-radius:3px;background:var(--ink)}
-.trow figure img{width:100%;height:100%;object-fit:cover;object-position:70% 50%}
-.trow h3{font-size:clamp(1.5rem,1.9vw,1.85rem);margin-bottom:16px;min-height:2.1em}
-.trow p{color:var(--muted);font-size:1.08rem}
-.trow .when{color:var(--text);font-weight:500}
-.trow .price{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid rgba(11,23,48,.14);font-variant-numeric:tabular-nums}
-.trow .price span b{font-family:var(--sans);font-size:1.3rem;font-weight:600;color:var(--navy)}
-/* ZAKRES table */
-.zakres{background:var(--ink);padding:120px 0}
-.zakres .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:54px}
-.zakres .head p{max-width:28rem;color:var(--frost);margin:0}
-table{width:100%;border-collapse:collapse;font-size:1.02rem}
-th{font-family:var(--sans);font-weight:500;text-align:left;color:var(--ice);font-size:.95rem;padding:0 16px 14px 0;border-bottom:1px solid rgba(201,214,230,.35)}
-td{padding:20px 16px 20px 0;border-bottom:1px solid rgba(201,214,230,.14);vertical-align:top;color:var(--frost)}
-td:first-child{font-family:var(--sans);font-weight:600;color:#fff;font-size:1.18rem;width:32%}
-td:last-child,th:last-child{text-align:right;padding-right:0;white-space:nowrap;font-variant-numeric:tabular-nums}
-td:last-child{color:#fff;font-family:var(--sans);font-weight:600;font-size:1.15rem}
-td:last-child small{font-family:var(--sans);font-weight:400;color:var(--ice);font-size:.86rem;margin-right:4px}
-tbody tr{transition:background .2s}tbody tr:hover{background:rgba(201,214,230,.04)}
-.zakres .foot{margin-top:24px;color:var(--ice);font-size:.95rem}
-.zakres .foot a{color:#fff}
-/* ZESPÓŁ */
-.zespol{background:var(--paper);color:var(--text);padding:120px 0}
-.zespol h2{max-width:16ch}
-.zespol .lead{max-width:40rem;font-size:1.15rem;color:var(--muted);margin:26px 0 60px}
-.docs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--text)}
-.docs li{padding:22px 22px 26px 0;border-right:1px solid rgba(11,23,48,.12);margin-right:22px}
-.docs li:last-child{border-right:0;margin-right:0}
-.docs small{display:block;color:var(--muted);font-size:.9rem}
-.docs b{display:block;font-family:var(--sans);font-weight:600;font-size:1.3rem;line-height:1.1;margin-top:6px}
-.docs em{display:block;font-style:normal;color:var(--muted);font-size:.92rem;margin-top:12px}
-.zespol .fact{margin-top:56px;display:grid;grid-template-columns:44px 1fr;gap:18px;max-width:56rem;align-items:start;font-size:1.2rem;border-top:1px solid var(--text);padding-top:28px}
-.zespol .fact svg{width:44px;height:44px;color:var(--navy)}
 /* KONTAKT */
 .kontakt{background:linear-gradient(180deg,var(--ink),var(--deep));padding:120px 0}
 .kontakt .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px}
@@ -139,7 +96,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}footer a{text-decoration:non
 footer .legal{flex-basis:100%;border-top:1px solid rgba(201,214,230,.1);padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 30px;justify-content:space-between}
 .mbar{display:none}
 .js .rv{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}.js .rv.in{opacity:1;transform:none}
-@media (max-width:1080px){.nav{display:none}.mnav{display:block}.hdr .tel{display:none}.docs{grid-template-columns:repeat(2,minmax(0,1fr))}.docs li{border-right:0;margin-right:0;border-bottom:1px solid rgba(11,23,48,.12)}}
+@media (max-width:1080px){.nav{display:none}.mnav{display:block}.hdr .tel{display:none}}
 @media (max-width:900px){
  .xr{display:block;min-height:0;padding-top:var(--hdr-h)}
  .xr-st{position:relative;inset:auto;height:76vw;min-height:290px;--r:84px}
@@ -148,23 +105,128 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(201,214,230,.1);padding-
  .xr::after{display:none}
  .xr .wrap{padding-top:28px;padding-bottom:56px}
  .hint{display:none}
- .tech .intro{grid-template-columns:1fr;gap:28px}.tlist{grid-template-columns:1fr 1fr;gap:44px 28px}
- .kontakt .wrap{grid-template-columns:1fr;gap:48px}.zakres .head{flex-direction:column;align-items:flex-start;gap:16px}
+ .kontakt .wrap{grid-template-columns:1fr;gap:48px}
 }
 @media (max-width:760px){
- .tlist{grid-template-columns:1fr}.trow h3{min-height:0}
  .mk{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.8rem}footer{padding-bottom:110px}
  .wrap{padding:0 20px}
  .tech,.zakres,.zespol,.kontakt{padding:84px 0}
- table,thead,tbody,tr,td{display:block}thead{display:none}
- tr{padding:18px 0;border-bottom:1px solid rgba(201,214,230,.14)}td{border:0;padding:0}
- td:first-child{width:auto}td:last-child{text-align:left;margin-top:8px}
- .docs{grid-template-columns:1fr}.kontakt .info{grid-template-columns:1fr}.form{padding:26px 20px}
+.kontakt .info{grid-template-columns:1fr}.form{padding:26px 20px}
  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(8,18,42,.96);border-top:1px solid rgba(201,214,230,.16);transform:translateY(110%);transition:transform .35s}
  .past-hero .mbar,.no-js .mbar{transform:none}
 }
 @media (max-width:420px){.hdr .wrap>.btn{display:none}.brand span{font-size:1rem;letter-spacing:.1em}}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+/* ===== wspólne: etykiety sekcji, siatka ===== */
+.idx{display:flex;align-items:center;gap:14px;font:600 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--glow);margin-bottom:26px}
+.idx b{font-family:var(--disp);font-size:1.05rem;letter-spacing:.04em;font-weight:600}
+.idx::after{content:"";flex:0 0 64px;height:1px;background:currentColor;opacity:.5}
+.lightsec .idx{color:var(--navy)}
+/* ===== pasek badania ===== */
+.scan{position:relative;background:var(--deep);border-top:1px solid rgba(169,198,232,.16);border-bottom:1px solid rgba(169,198,232,.16);overflow:hidden}
+.scan ul{list-style:none;margin:0 auto;padding:0 32px;max-width:1280px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.scan li{padding:38px 28px 34px;border-left:1px solid rgba(169,198,232,.14);position:relative}
+.scan li:first-child{border-left:0;padding-left:0}
+.scan .n{display:block;font:500 clamp(3.2rem,5.4vw,5.2rem)/.86 var(--disp);color:#fff;font-variant-numeric:tabular-nums}
+.scan .n small{font-size:max(1.1rem,.42em);color:var(--glow);margin-left:6px;letter-spacing:.02em}
+.scan .l{display:block;margin-top:12px;color:var(--frost);font-size:.98rem;max-width:16rem}
+.scan::before{content:"";position:absolute;top:0;bottom:0;width:180px;left:-200px;background:linear-gradient(90deg,transparent,rgba(169,198,232,.16),transparent);pointer-events:none}
+.scan.on::before{animation:sweep 3.2s cubic-bezier(.4,0,.2,1) .2s 1 forwards}
+@keyframes sweep{to{left:calc(100% + 20px)}}
+/* ===== SPRZĘT — sticky skan ===== */
+.tech{background:var(--light);color:var(--text);padding:130px 0 120px}
+.tech .intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;margin-bottom:90px}
+.tech .intro p{color:var(--muted);font-size:1.1rem;margin:0}
+.sk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:start}
+.sk-frame{position:sticky;top:calc(var(--hdr-h) + 40px);aspect-ratio:4/3.3;background:var(--ink);border-radius:4px;overflow:hidden;color:#CFE0F4}
+.sk-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%;clip-path:inset(0 0 100% 0);transition:clip-path 1s cubic-bezier(.7,0,.2,1);transform:scale(1.04)}
+.sk-frame img.on{clip-path:inset(0 0 0 0);transition:clip-path 1s cubic-bezier(.7,0,.2,1),transform 6s linear;transform:scale(1)}
+.sk-frame img.first{clip-path:inset(0)}
+.sk-frame .line{position:absolute;left:0;right:0;height:70px;top:0;transform:translateY(-100%);background:linear-gradient(180deg,rgba(169,198,232,0),rgba(169,198,232,.28));border-bottom:2px solid var(--glow);opacity:0;z-index:3}
+.sk-frame .line.go{animation:lin 1s cubic-bezier(.7,0,.2,1)}
+@keyframes lin{0%{top:0;opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+.sk-frame .c{position:absolute;width:26px;height:26px;border:1.5px solid currentColor;z-index:2;opacity:.85}
+.sk-frame .c1{top:16px;left:16px;border-right:0;border-bottom:0}.sk-frame .c2{top:16px;right:16px;border-left:0;border-bottom:0}
+.sk-frame .c3{bottom:16px;left:16px;border-right:0;border-top:0}.sk-frame .c4{bottom:16px;right:16px;border-left:0;border-top:0}
+.sk-frame .hud{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;font:600 .74rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.sk-frame .hud b{font:500 3.4rem/.8 var(--disp);letter-spacing:0;color:#fff}
+.sk-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,18,42,.72),rgba(8,18,42,0) 42%);z-index:1;pointer-events:none}
+.sk-list{list-style:none;margin:0;padding:0}
+.sk-it{padding:0 0 0 0;min-height:62vh;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(11,23,48,.14);opacity:.32;transition:opacity .5s}
+.sk-it:first-child{border-top:0}
+.sk-it.on{opacity:1}
+.sk-it .no{font:500 1rem/1 var(--disp);letter-spacing:.08em;color:var(--navy);margin:34px 0 18px;display:flex;align-items:center;gap:12px}
+.sk-it .no::after{content:"";height:1px;width:40px;background:currentColor}
+.sk-it h3{font:500 clamp(2.4rem,3.6vw,3.4rem)/.96 var(--disp);letter-spacing:0;margin-bottom:20px}
+.sk-it p{color:var(--muted);font-size:1.08rem;max-width:32rem}
+.sk-it .when{color:var(--text);font-weight:500}
+.sk-it .price{display:flex;flex-wrap:wrap;gap:10px 28px;padding-top:18px;margin:8px 0 34px;border-top:1px dashed rgba(11,23,48,.22);font-variant-numeric:tabular-nums;color:var(--muted);font-size:.95rem}
+.sk-it .price b{display:block;font:500 2rem/1 var(--disp);color:var(--navy);margin-top:4px}
+.sk-it figure{display:none;margin:0}
+/* ===== ZAKRES — zakładki ===== */
+.zakres{background:var(--ink);padding:120px 0}
+.zakres .head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;margin-bottom:50px}
+.zakres .head p{color:var(--frost);margin:0}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;border-bottom:1px solid rgba(201,214,230,.22)}
+.tabs button{font:500 1.5rem/1 var(--disp);letter-spacing:.02em;background:none;border:0;color:var(--ice);padding:14px 18px 16px;cursor:pointer;position:relative}
+.tabs button:first-child{padding-left:0}
+.tabs button::after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:2px;background:var(--glow);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.tabs button:first-child::after{left:0}
+.tabs button[aria-selected=true]{color:#fff}.tabs button[aria-selected=true]::after{transform:none}
+.tabs button:hover{color:#fff}
+.tabs button span{font:600 .72rem/1 var(--sans);letter-spacing:.1em;color:var(--glow);vertical-align:top;margin-left:6px}
+.pane{list-style:none;margin:0;padding:0}
+.js .pane[hidden]{display:none}
+.pane li{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr) 190px;gap:28px;align-items:center;padding:24px 0;border-bottom:1px solid rgba(201,214,230,.12);position:relative}
+.pane li::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--glow);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.pane li:hover::before{width:100%}
+.pane .nm{font-weight:600;font-size:1.22rem;color:#fff}
+.pane .ds{color:var(--frost);font-size:1rem}
+.pane .pr{font:500 2.3rem/1 var(--disp);color:#fff;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;transition:color .25s}
+.pane .pr small{font:500 .82rem/1 var(--sans);color:var(--ice);margin-right:6px;vertical-align:.5em}
+.pane li:hover .pr{color:var(--glow)}
+.js .pane.in li{animation:row .55s cubic-bezier(.2,.7,.2,1) both}
+.js .pane.in li:nth-child(2){animation-delay:.05s}.js .pane.in li:nth-child(3){animation-delay:.1s}.js .pane.in li:nth-child(4){animation-delay:.15s}.js .pane.in li:nth-child(5){animation-delay:.2s}
+@keyframes row{from{opacity:0;transform:translateY(10px)}}
+.zakres .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;align-items:center;margin-top:40px;padding:26px 30px;border:1px solid rgba(169,198,232,.28);border-radius:4px;color:var(--frost)}
+.zakres .foot b{font:500 2.2rem/1 var(--disp);color:#fff;margin-left:10px;vertical-align:-.12em}
+.zakres .foot a:not(.btn){color:#fff}
+/* ===== ZESPÓŁ — lista nazwisk ===== */
+.zespol{background:var(--paper);color:var(--text);padding:120px 0}
+.zespol .head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;margin-bottom:56px}
+.zespol .head p{color:var(--muted);font-size:1.1rem;margin:0}
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--text)}
+.docs li{display:grid;grid-template-columns:90px minmax(0,1fr) auto;align-items:baseline;gap:20px;padding:18px 0 14px;border-bottom:1px solid rgba(11,23,48,.14);position:relative;overflow:hidden}
+.docs .no{font:500 1.1rem/1 var(--disp);color:var(--navy);letter-spacing:.06em}
+.docs b{font:500 clamp(2.4rem,5.6vw,5.4rem)/.95 var(--disp);color:transparent;-webkit-text-stroke:1.2px var(--text);transition:color .35s}
+.docs small{color:var(--muted);font-size:.95rem}
+.docs li::after{content:"";position:absolute;inset:0;background:var(--light);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.2,.7,.2,1);z-index:-1}
+.docs li:hover b,.docs li:focus-within b{color:var(--text)}
+.docs li:hover::after{transform:none}
+.docs{position:relative;z-index:0}
+.zespol .fact{margin-top:56px;display:grid;grid-template-columns:52px 1fr;gap:22px;max-width:60rem;align-items:start;font-size:1.18rem;background:var(--ink);color:var(--frost);border-radius:4px;padding:32px 34px}
+.zespol .fact b{color:#fff}
+.zespol .fact svg{width:52px;height:52px;color:var(--glow)}
+@media (hover:none){.docs b{color:var(--text);-webkit-text-stroke:0}}
+@media (max-width:900px){
+ .scan ul{grid-template-columns:1fr 1fr}.scan li:nth-child(3){border-left:0;padding-left:0}.scan li:nth-child(n+3){border-top:1px solid rgba(169,198,232,.14)}
+ .tech .intro,.zakres .head,.zespol .head{grid-template-columns:1fr;gap:24px}
+ .sk{grid-template-columns:1fr;gap:0}.sk-frame{display:none}
+ .sk-it{min-height:0;opacity:1;padding-bottom:10px}
+ .sk-it figure{display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:var(--ink);margin-top:30px}
+ .sk-it figure img{width:100%;height:100%;object-fit:cover;object-position:68% 50%}
+ .sk-it .no{margin-top:22px}
+ .pane li{grid-template-columns:minmax(0,1fr) auto;gap:6px 20px}.pane .ds{grid-column:1/-1;grid-row:2}
+}
+@media (max-width:760px){
+ .scan ul{padding:0 20px}.scan li{padding:28px 14px 26px}.scan li:nth-child(odd){padding-left:0}
+ .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tabs button{font-size:1.25rem;white-space:nowrap;padding:12px 14px 14px}
+ .pane .pr{font-size:1.9rem}
+ .docs li{grid-template-columns:44px minmax(0,1fr);gap:4px 12px}.docs small{grid-column:2}
+ .zespol .fact{grid-template-columns:1fr;padding:26px 22px}
+ .zakres .foot{padding:22px 20px}
+}
+@media (prefers-reduced-motion:reduce){.sk-frame img{transition:none!important;transform:none!important}.scan.on::before,.sk-frame .line.go,.js .pane.in li{animation:none}}
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1730'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M50 14V86M14 50H86M36 36L64 64M64 36L36 64'/%3E%3Ccircle cx='50' cy='10' r='4'/%3E%3Ccircle cx='50' cy='90' r='4'/%3E%3Ccircle cx='10' cy='50' r='4'/%3E%3Ccircle cx='90' cy='50' r='4'/%3E%3C/g%3E%3C/svg%3E">
 </head>
@@ -202,53 +264,77 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(201,214,230,.1);padding-
  </div></div>
 </section>
 
-<section class="tech" id="technologie">
+<section class="scan" aria-label="Dental Caffe w liczbach">
+ <ul>
+  <li><span class="n">5</span><span class="l">lekarzy, każdy prowadzi swoją dziedzinę</span></li>
+  <li><span class="n">4</span><span class="l">technologie na&nbsp;miejscu: mikroskop, tomograf, laser, druk&nbsp;3D</span></li>
+  <li><span class="n">21<small>:00</small></span><span class="l">do tej godziny przyjmujemy w&nbsp;dni powszednie</span></li>
+  <li><span class="n">250<small>zł</small></span><span class="l">pierwsza konsultacja z&nbsp;planem leczenia</span></li>
+ </ul>
+</section>
+
+<section class="tech lightsec" id="technologie">
  <div class="wrap">
-  <div class="intro rv"><h2>Sprzęt, który zmienia sposób leczenia</h2><p>Nie pokazujemy go dla efektu. Każde z&nbsp;tych urządzeń skraca drogę od&nbsp;diagnozy do&nbsp;leczenia i&nbsp;zmniejsza ryzyko, że&nbsp;ząb trzeba będzie leczyć drugi raz.</p></div>
-  <div class="tlist">
-  <article class="trow"><figure><img src="img/mikroskop-1000.webp" width="1000" height="558" alt="Mikroskop zabiegowy w ciemnym gabinecie" loading="lazy"></figure><div><h3>Leczenie kanałowe pod mikroskopem</h3><p>Kanały zęba mają ułamki milimetra. Powiększenie pozwala odnaleźć wszystkie, oczyścić je i&nbsp;szczelnie wypełnić — także przy leczeniu powtórnym.</p><p class="when">Kiedy: ból przy nagryzaniu, nadwrażliwość na&nbsp;ciepło, zapalenie miazgi, nieudane wcześniejsze leczenie.</p><div class="price"><span>pierwotne <b>od 1000&nbsp;zł</b></span><span>powtórne <b>od 1800&nbsp;zł</b></span></div></div></article>
-  <article class="trow"><figure><img src="img/tomograf-1000.webp" width="1000" height="558" alt="Tomograf stożkowy i monitor z obrazem 3D szczęki" loading="lazy"></figure><div><h3>Tomografia komputerowa na&nbsp;miejscu</h3><p>Trójwymiarowy obraz kości i&nbsp;zębów bez skierowania do&nbsp;innej pracowni. Na jego podstawie planujemy implant, zabieg chirurgiczny albo leczenie stawów.</p><p class="when">Kiedy: przed implantacją, przy zębach zatrzymanych, bólu szczęki i&nbsp;głowy.</p><div class="price"><span>tomografia <b>od 250&nbsp;zł</b></span><span>stawy skroniowo-żuchwowe <b>450&nbsp;zł</b></span></div></div></article>
-  <article class="trow"><figure><img src="img/laser-1000.webp" width="1000" height="558" alt="Końcówka lasera stomatologicznego" loading="lazy"></figure><div><h3>Laseroterapia</h3><p>Laser wspiera leczenie dziąseł i&nbsp;zabiegi na&nbsp;tkankach miękkich. Dobieramy go wtedy, gdy rzeczywiście przyspiesza gojenie albo zmniejsza dyskomfort.</p><p class="when">Kiedy: stany zapalne dziąseł, kieszonki przyzębne, zabiegi na&nbsp;tkankach miękkich.</p><div class="price"><span>wycena <b>na konsultacji</b></span></div></div></article>
-  <article class="trow"><figure><img src="img/druk3d-1000.webp" width="1000" height="558" alt="Skaner wewnątrzustny i drukarka 3D z wydrukiem korony" loading="lazy"></figure><div><h3>Skan i&nbsp;druk 3D</h3><p>Skan wewnątrzustny zamiast masy wyciskowej, a&nbsp;z&nbsp;niego wydruk: modele, szablony nawigujące do&nbsp;implantów, prace tymczasowe. Implant trafia dokładnie tam, gdzie go zaplanowano.</p><p class="when">Kiedy: implanty, korony i&nbsp;mosty, odbudowa braków zębowych.</p><div class="price"><span>szablon chirurgiczny <b>od 1000&nbsp;zł</b></span><span>implantacja <b>od 3000&nbsp;zł</b></span></div></div></article>
+  <div class="intro rv"><div><p class="idx"><b>01</b>Sprzęt</p><h2>Sprzęt, który zmienia sposób leczenia</h2></div><p>Nie pokazujemy go dla efektu. Każde z&nbsp;tych urządzeń skraca drogę od&nbsp;diagnozy do&nbsp;leczenia i&nbsp;zmniejsza ryzyko, że&nbsp;ząb trzeba będzie leczyć drugi raz.</p></div>
+  <div class="sk">
+   <div class="sk-frame" aria-hidden="true">
+    <img class="first on" src="img/mikroskop-1920.webp" width="1920" height="1071" alt="" data-k="0">
+    <img src="img/tomograf-1920.webp" width="1920" height="1071" alt="" data-k="1">
+    <img src="img/laser-1920.webp" width="1920" height="1071" alt="" data-k="2">
+    <img src="img/druk3d-1920.webp" width="1920" height="1071" alt="" data-k="3">
+    <i class="line"></i><i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
+    <div class="hud"><span class="hl">Mikroskop zabiegowy</span><b class="hn">01<small style="font-size:.4em;color:var(--glow)"> / 04</small></b></div>
+   </div>
+   <ol class="sk-list">
+    <li class="sk-it on" data-k="0" data-l="Mikroskop zabiegowy"><figure><img src="img/mikroskop-1000.webp" width="1000" height="558" alt="Mikroskop zabiegowy w ciemnym gabinecie" loading="lazy"></figure><p class="no">01</p><h3>Leczenie kanałowe pod mikroskopem</h3><p>Kanały zęba mają ułamki milimetra. Powiększenie pozwala odnaleźć wszystkie, oczyścić je i&nbsp;szczelnie wypełnić — także przy leczeniu powtórnym.</p><p class="when">Kiedy: ból przy nagryzaniu, nadwrażliwość na&nbsp;ciepło, zapalenie miazgi, nieudane wcześniejsze leczenie.</p><div class="price"><span>pierwotne<b>od 1000&nbsp;zł</b></span><span>powtórne<b>od 1800&nbsp;zł</b></span></div></li>
+    <li class="sk-it" data-k="1" data-l="Tomograf stożkowy"><figure><img src="img/tomograf-1000.webp" width="1000" height="558" alt="Tomograf stożkowy i monitor z obrazem 3D szczęki" loading="lazy"></figure><p class="no">02</p><h3>Tomografia komputerowa na&nbsp;miejscu</h3><p>Trójwymiarowy obraz kości i&nbsp;zębów bez skierowania do&nbsp;innej pracowni. Na jego podstawie planujemy implant, zabieg chirurgiczny albo leczenie stawów.</p><p class="when">Kiedy: przed implantacją, przy zębach zatrzymanych, bólu szczęki i&nbsp;głowy.</p><div class="price"><span>tomografia<b>od 250&nbsp;zł</b></span><span>stawy skroniowo-żuchwowe<b>450&nbsp;zł</b></span></div></li>
+    <li class="sk-it" data-k="2" data-l="Laser stomatologiczny"><figure><img src="img/laser-1000.webp" width="1000" height="558" alt="Końcówka lasera stomatologicznego" loading="lazy"></figure><p class="no">03</p><h3>Laseroterapia</h3><p>Laser wspiera leczenie dziąseł i&nbsp;zabiegi na&nbsp;tkankach miękkich. Dobieramy go wtedy, gdy rzeczywiście przyspiesza gojenie albo zmniejsza dyskomfort.</p><p class="when">Kiedy: stany zapalne dziąseł, kieszonki przyzębne, zabiegi na&nbsp;tkankach miękkich.</p><div class="price"><span>wycena<b>na konsultacji</b></span></div></li>
+    <li class="sk-it" data-k="3" data-l="Skaner i drukarka 3D"><figure><img src="img/druk3d-1000.webp" width="1000" height="558" alt="Skaner wewnątrzustny i drukarka 3D z wydrukiem korony" loading="lazy"></figure><p class="no">04</p><h3>Skan i&nbsp;druk 3D</h3><p>Skan wewnątrzustny zamiast masy wyciskowej, a&nbsp;z&nbsp;niego wydruk: modele, szablony nawigujące do&nbsp;implantów, prace tymczasowe. Implant trafia dokładnie tam, gdzie go zaplanowano.</p><p class="when">Kiedy: implanty, korony i&nbsp;mosty, odbudowa braków zębowych.</p><div class="price"><span>szablon chirurgiczny<b>od 1000&nbsp;zł</b></span><span>implantacja<b>od 3000&nbsp;zł</b></span></div></li>
+   </ol>
   </div>
  </div>
 </section>
 
 <section class="zakres" id="zakres">
  <div class="wrap">
-  <div class="head rv"><h2>Zakres leczenia i&nbsp;ceny</h2><p>Wszystkie dziedziny stomatologii pod jednym dachem. Ceny z&nbsp;aktualnego cennika kliniki — dokładny koszt podajemy po&nbsp;badaniu, razem z&nbsp;planem leczenia.</p></div>
-  <table>
-   <thead><tr><th>Dziedzina</th><th>Co obejmuje</th><th>Cena</th></tr></thead>
-   <tbody>
-    <tr><td>Wizyta bólowa</td><td>Diagnostyka i&nbsp;leki, pomoc w&nbsp;nagłych przypadkach</td><td><small>od</small>300&nbsp;zł</td></tr>
-    <tr><td>Stomatologia zachowawcza</td><td>Wypełnienia, odbudowy adhezyjne, licówki kompozytowe</td><td><small>od</small>400&nbsp;zł</td></tr>
-    <tr><td>Endodoncja pod mikroskopem</td><td>Leczenie kanałowe pierwotne i&nbsp;powtórne, resekcje</td><td><small>od</small>1000&nbsp;zł</td></tr>
-    <tr><td>Implantologia</td><td>Implanty z&nbsp;szablonem nawigującym, podniesienie dna zatoki</td><td><small>od</small>3000&nbsp;zł</td></tr>
-    <tr><td>Implantoprotetyka i&nbsp;protetyka</td><td>Korony, mosty, licówki, onlaye, protezy</td><td><small>od</small>1500&nbsp;zł</td></tr>
-    <tr><td>Chirurgia stomatologiczna</td><td>Usuwanie zębów, zęby zatrzymane, torbiele</td><td><small>od</small>500&nbsp;zł</td></tr>
-    <tr><td>Periodontologia</td><td>Leczenie dziąseł, pokrycie recesji, zabiegi regeneracyjne</td><td><small>od</small>250&nbsp;zł</td></tr>
-    <tr><td>Ortodoncja</td><td>Konsultacja z&nbsp;planem leczenia i&nbsp;kosztorysem</td><td>200&nbsp;zł</td></tr>
-    <tr><td>Stomatologia dziecięca</td><td>Wizyta adaptacyjna, lakowanie, leczenie zębów mlecznych</td><td><small>od</small>200&nbsp;zł</td></tr>
-    <tr><td>Profilaktyka i&nbsp;wybielanie</td><td>Higienizacja GBT, fluoryzacja, ICON bez borowania</td><td><small>od</small>150&nbsp;zł</td></tr>
-    <tr><td>Stawy skroniowo-żuchwowe</td><td>Diagnostyka bólu szczęki, głowy i&nbsp;trudności z&nbsp;otwieraniem ust</td><td><small>od</small>250&nbsp;zł</td></tr>
-    <tr><td>Tomografia i&nbsp;RTG</td><td>Tomografia komputerowa, pantomogram, zdjęcia punktowe</td><td><small>od</small>50&nbsp;zł</td></tr>
-    <tr><td>Laseroterapia</td><td>Wsparcie leczenia dziąseł i&nbsp;tkanek miękkich</td><td>na konsultacji</td></tr>
-   </tbody>
-  </table>
-  <p class="foot">Konsultacja pierwszorazowa 250&nbsp;zł. <a href="https://dentalcaffe.pl/wp-content/uploads/2025/11/cennik.pdf">Pełny cennik (PDF)</a></p>
+  <div class="head rv"><div><p class="idx"><b>02</b>Zakres i ceny</p><h2>Zakres leczenia i&nbsp;ceny</h2></div><p>Wszystkie dziedziny stomatologii pod jednym dachem. Ceny z&nbsp;aktualnego cennika kliniki — dokładny koszt podajemy po&nbsp;badaniu, razem z&nbsp;planem leczenia.</p></div>
+  <div class="tabs" role="tablist" aria-label="Rodzaj leczenia">
+   <button role="tab" id="t1" aria-controls="zp1" aria-selected="true">Leczenie teraz<span>04</span></button>
+   <button role="tab" id="t2" aria-controls="zp2" aria-selected="false" tabindex="-1">Leczenie planowe<span>05</span></button>
+   <button role="tab" id="t3" aria-controls="zp3" aria-selected="false" tabindex="-1">Profilaktyka i&nbsp;diagnostyka<span>04</span></button>
+  </div>
+  <ul class="pane in" id="zp1" role="tabpanel" aria-labelledby="t1">
+   <li><span class="nm">Wizyta bólowa</span><span class="ds">Diagnostyka i&nbsp;leki, pomoc w&nbsp;nagłych przypadkach</span><span class="pr"><small>od</small>300&nbsp;zł</span></li>
+   <li><span class="nm">Stomatologia zachowawcza</span><span class="ds">Wypełnienia, odbudowy adhezyjne, licówki kompozytowe</span><span class="pr"><small>od</small>400&nbsp;zł</span></li>
+   <li><span class="nm">Endodoncja pod mikroskopem</span><span class="ds">Leczenie kanałowe pierwotne i&nbsp;powtórne, resekcje</span><span class="pr"><small>od</small>1000&nbsp;zł</span></li>
+   <li><span class="nm">Chirurgia stomatologiczna</span><span class="ds">Usuwanie zębów, zęby zatrzymane, torbiele</span><span class="pr"><small>od</small>500&nbsp;zł</span></li>
+  </ul>
+  <ul class="pane" id="zp2" role="tabpanel" aria-labelledby="t2" hidden>
+   <li><span class="nm">Implantologia</span><span class="ds">Implanty z&nbsp;szablonem nawigującym, podniesienie dna zatoki</span><span class="pr"><small>od</small>3000&nbsp;zł</span></li>
+   <li><span class="nm">Implantoprotetyka i&nbsp;protetyka</span><span class="ds">Korony, mosty, licówki, onlaye, protezy</span><span class="pr"><small>od</small>1500&nbsp;zł</span></li>
+   <li><span class="nm">Periodontologia</span><span class="ds">Leczenie dziąseł, pokrycie recesji, zabiegi regeneracyjne</span><span class="pr"><small>od</small>250&nbsp;zł</span></li>
+   <li><span class="nm">Ortodoncja</span><span class="ds">Konsultacja z&nbsp;planem leczenia i&nbsp;kosztorysem</span><span class="pr">200&nbsp;zł</span></li>
+   <li><span class="nm">Stawy skroniowo-żuchwowe</span><span class="ds">Diagnostyka bólu szczęki, głowy i&nbsp;trudności z&nbsp;otwieraniem ust</span><span class="pr"><small>od</small>250&nbsp;zł</span></li>
+  </ul>
+  <ul class="pane" id="zp3" role="tabpanel" aria-labelledby="t3" hidden>
+   <li><span class="nm">Profilaktyka i&nbsp;wybielanie</span><span class="ds">Higienizacja GBT, fluoryzacja, ICON bez borowania</span><span class="pr"><small>od</small>150&nbsp;zł</span></li>
+   <li><span class="nm">Stomatologia dziecięca</span><span class="ds">Wizyta adaptacyjna, lakowanie, leczenie zębów mlecznych</span><span class="pr"><small>od</small>200&nbsp;zł</span></li>
+   <li><span class="nm">Tomografia i&nbsp;RTG</span><span class="ds">Tomografia komputerowa, pantomogram, zdjęcia punktowe</span><span class="pr"><small>od</small>50&nbsp;zł</span></li>
+   <li><span class="nm">Laseroterapia</span><span class="ds">Wsparcie leczenia dziąseł i&nbsp;tkanek miękkich</span><span class="pr" style="font-size:1.5rem">na konsultacji</span></li>
+  </ul>
+  <div class="foot"><span>Nie wiesz, od czego zacząć? Pierwsza konsultacja z&nbsp;planem i&nbsp;kosztorysem<b>250&nbsp;zł</b></span><span><a class="btn" href="#kontakt">Umów konsultację</a> &nbsp; <a href="https://dentalcaffe.pl/wp-content/uploads/2025/11/cennik.pdf">Pełny cennik (PDF)</a></span></div>
  </div>
 </section>
 
-<section class="zespol" id="zespol">
+<section class="zespol lightsec" id="zespol">
  <div class="wrap">
-  <h2 class="rv">Lekarz dobrany do&nbsp;problemu, nie do&nbsp;grafiku</h2>
-  <p class="lead">Każdy lekarz Dental Caffe prowadzi swoją dziedzinę. Dzięki temu trafiasz do&nbsp;osoby, która w&nbsp;Twoim przypadku ma najwięcej doświadczenia.</p>
+  <div class="head rv"><div><p class="idx"><b>03</b>Zespół</p><h2>Lekarz dobrany do&nbsp;problemu, nie do&nbsp;grafiku</h2></div><p>Każdy lekarz Dental Caffe prowadzi swoją dziedzinę. Dzięki temu trafiasz do&nbsp;osoby, która w&nbsp;Twoim przypadku ma najwięcej doświadczenia.</p></div>
   <ul class="docs">
-   <li><small>lek. dent.</small><b>Agnieszka Rutkowska</b></li>
-   <li><small>lek. dent.</small><b>Karolina Reitmajer</b></li>
-   <li><small>lek. dent.</small><b>Natalia Poszumska</b></li>
-   <li><small>lek. dent.</small><b>Bartosz Królikowski</b></li>
-   <li><small>lek. dent.</small><b>Anna Niedziela</b></li>
+   <li><span class="no">01</span><b>Agnieszka Rutkowska</b><small>lek. dent.</small></li>
+   <li><span class="no">02</span><b>Karolina Reitmajer</b><small>lek. dent.</small></li>
+   <li><span class="no">03</span><b>Natalia Poszumska</b><small>lek. dent.</small></li>
+   <li><span class="no">04</span><b>Bartosz Królikowski</b><small>lek. dent.</small></li>
+   <li><span class="no">05</span><b>Anna Niedziela</b><small>lek. dent.</small></li>
   </ul>
   <p class="fact"><svg><use href="#sm"/></svg><span><b>Ciągle się szkolimy.</b> Lek. dent. Agnieszka Rutkowska jest w&nbsp;trakcie rocznego, międzynarodowego programu z&nbsp;bólu ustno-twarzowego i&nbsp;stomatologii snu (Fellowship in Orofacial Pain &amp; Dental Sleep Medicine) — stąd diagnostyka stawów skroniowo-żuchwowych na&nbsp;miejscu.</span></p>
  </div>
@@ -257,7 +343,7 @@ footer .legal{flex-basis:100%;border-top:1px solid rgba(201,214,230,.1);padding-
 <section class="kontakt" id="kontakt">
  <div class="wrap">
   <div>
-   <h2>Boli? Zadzwoń teraz</h2>
+   <p class="idx"><b>04</b>Kontakt</p><h2>Boli? Zadzwoń teraz</h2>
    <div class="phones"><a href="tel:+48534219037">+48 534 219 037</a><a href="tel:+48780411119">+48 780 411 119</a></div>
    <div class="info">
     <div><b>Adres</b>ul. Jana Zamoyskiego 5/5<br>65-255 Zielona Góra<br><a href="https://www.google.com/maps/search/?api=1&query=Dental+Caffe+Zamoyskiego+5+Zielona+G%C3%B3ra">Mapa Google</a></div>
@@ -305,6 +391,18 @@ const els=[...document.querySelectorAll('.rv')];let fired=false;
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px 15% 0px'});els.forEach(e=>io.observe(e));
 let t;addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(()=>els.forEach(e=>{if(e.getBoundingClientRect().top<innerHeight)e.classList.add('in')}),140)},{passive:true});
 setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);})();
+</script>
+<script>
+(()=>{const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const sc=document.querySelector('.scan');if(sc){const o=new IntersectionObserver(e=>{if(e[0].isIntersecting){sc.classList.add('on');o.disconnect()}},{threshold:.4});o.observe(sc)}
+const fr=document.querySelector('.sk-frame');if(fr){const ims=[...fr.querySelectorAll('img')],its=[...document.querySelectorAll('.sk-it')],ln=fr.querySelector('.line'),hl=fr.querySelector('.hl'),hn=fr.querySelector('.hn');let cur=0;
+ const set=k=>{if(k===cur)return;cur=k;its.forEach(i=>i.classList.toggle('on',+i.dataset.k===k));ims.forEach(i=>{i.classList.remove('first');i.style.zIndex=+i.dataset.k===k?1:0;i.classList.toggle('on',+i.dataset.k===k)});
+  hl.textContent=its[k].dataset.l;hn.firstChild.nodeValue='0'+(k+1);if(!rm){ln.classList.remove('go');void ln.offsetWidth;ln.classList.add('go')}};
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)set(+e.target.dataset.k)}),{rootMargin:'-45% 0px -45% 0px'});its.forEach(i=>io.observe(i))}
+const tabs=[...document.querySelectorAll('.tabs [role=tab]')];
+const sel=t=>{tabs.forEach(b=>{const on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;const p=document.getElementById(b.getAttribute('aria-controls'));p.hidden=!on;p.classList.toggle('in',on)})};
+tabs.forEach((b,i)=>{b.addEventListener('click',()=>sel(b));b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];sel(n);n.focus()}})});
+})();
 </script>
 </body>
 </html>
