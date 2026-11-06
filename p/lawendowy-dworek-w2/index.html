@@ -97,10 +97,11 @@ html:not(.js) .stage{height:auto;position:relative}
 .carta::before{content:"";position:absolute;inset:12px;border:1px solid #D9CCB3;border-radius:2px;pointer-events:none}
 .carta .hd{text-align:center;margin-bottom:22px}.carta .hd h3{font-size:clamp(1.9rem,3vw,2.6rem)}
 .carta .hd p{color:#7A6A52;margin:6px 0 0;font-size:.95rem}
-.tabs{display:grid;grid-template-columns:repeat(4,auto);justify-content:center;gap:4px 6px;margin:0 auto 26px;position:relative}
+.tabs{display:grid;grid-template-columns:repeat(4,auto);justify-content:center;gap:8px;margin:0 auto 26px;position:relative}
 @media (max-width:640px){.tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.tabs button{white-space:nowrap}}
-.tabs button{all:unset;cursor:pointer;padding:9px 14px;font:500 .98rem/1.2 var(--sans);border-bottom:1px solid transparent;min-height:26px;color:#5A4E46}
-.tabs button[aria-selected=true]{color:var(--acc);border-color:var(--acc)}
+.tabs button{all:unset;box-sizing:border-box;cursor:pointer;padding:10px 16px;font:500 .98rem/1.2 var(--sans);border:1px solid #CDBFA6;border-radius:3px;min-height:26px;color:#4E433B;background:#FBF8F2;text-align:center;transition:background .2s,color .2s,border-color .2s}
+.tabs button:hover{background:#EFE5D3;border-color:#B9A887}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:#fff}
 .tabs button:focus-visible{outline:2px solid var(--acc)}
 .panel h3{display:none}.panel .note{text-align:center;color:#7A6A52;font:400 1.05rem/1.4 var(--serif);margin-bottom:16px}
 .panel ul{list-style:none;margin:0;padding:0;columns:2;column-gap:44px;position:relative}
