@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>oknonet.pl — wariant W3 „Okno” · makieta nowej strony</title>
+<meta name="description" content="Makieta nowej strony portalu oknonet.pl: okno otwierane przewijaniem, za którym widać kulisy przemysłu stolarki.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#e8ecef">
+<meta property="og:type" content="website">
+<meta property="og:title" content="oknonet.pl — wariant W3 „Okno” · makieta nowej strony">
+<meta property="og:description" content="Makieta nowej strony portalu oknonet.pl: okno otwierane przewijaniem, za którym widać kulisy przemysłu stolarki.">
+<meta property="og:url" content="https://www.odnovastudio.com/p/oknonet-w3/">
+<meta property="og:image" content="https://www.odnovastudio.com/p/oknonet-w3/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%231E5B88%22/%3E%3Cpath%20d%3D%22M16%207l9%209-9%209-9-9z%22%20fill%3D%22%23DDAF11%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--wall:#e8ecef;--white:#fbfcfc;--tint:#eef2f4;--ink:#1d2327;--mut:#56616a;--ant:#2f3539;--ant2:#23282b;--frame:#3b4246;--blue:#1E5B88;--y:#DDAF11;--line:#cdd5da;
+--serif:"Hedvig Letters Serif",Georgia,serif;--sans:"Schibsted Grotesk",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font:400 1rem/1.62 var(--sans);font-variant-numeric:lining-nums}
+::selection{background:#cfe0ec;color:var(--ink)}:focus-visible{outline:2px solid var(--blue);outline-offset:3px}input{caret-color:var(--blue);accent-color:var(--blue)}
+a{color:inherit}img{max-width:100%;height:auto}
+.wrap{width:min(1240px,100% - 48px);margin:0 auto}
+section[id]{scroll-margin-top:calc(var(--hdr-h,70px) + 10px)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.08;letter-spacing:-.012em;text-wrap:pretty}
+h2{font-size:clamp(2.1rem,3.6vw,3.3rem)}
+.arr{width:1em;height:1em;flex:none}
+.meta{display:block;color:var(--mut);font-size:.92rem;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:10px;font:600 1rem var(--sans);text-decoration:none;border:0;cursor:pointer}
+.btn-b{background:var(--blue);color:#fff}.btn-b:hover{background:#174b71}
+.btn-l{border:1px solid currentColor;color:inherit;background:transparent}
+/* nagłówek */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;background:rgba(251,252,252,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:26px;min-height:66px}
+.logo{width:146px;height:auto;color:var(--blue);display:block}
+.hdr nav{display:flex;gap:24px;margin-left:auto;font-weight:500}
+.hdr nav a{text-decoration:none;color:var(--mut)}.hdr nav a:hover{color:var(--ink)}
+.mnav summary{border:1px solid var(--line);border-radius:10px}
+.mnav nav{position:absolute;right:0;top:54px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;display:flex;flex-direction:column;min-width:220px;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.mnav nav a{padding:12px 14px;text-decoration:none}
+@media (max-width:980px){.hdr nav.dn{display:none}.hdr .btn-b{margin-left:auto}.hdr .wrap{gap:12px}}
+@media (max-width:420px){.hdr .btn-b{display:none}.mnav{margin-left:auto}.logo{width:126px}}
+/* hero okno */
+.hero{background:var(--wall);position:relative}
+.js .hero{height:220vh}
+.hero .pin{position:sticky;top:0;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:calc(var(--hdr-h,66px) + 24px) 0 36px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:5fr 6fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,5vw,4.8rem)}
+.hero .lead{font-size:1.12rem;color:var(--mut);max-width:30em;margin:22px 0 28px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap}
+.hero .after{margin-top:30px;color:var(--mut);max-width:30em;opacity:var(--af,1);transform:translateY(calc((1 - var(--af,1))*10px))}
+.hero .after b{color:var(--ink);font-family:var(--serif);font-weight:400;font-size:1.2rem}
+.scene{display:grid;place-items:center}
+.win{--fw:clamp(12px,1.6vw,20px);position:relative;height:min(74vh,700px);aspect-ratio:4/5;max-width:100%;background:var(--frame);border-radius:4px;padding:var(--fw);
+ box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 30px 60px -20px rgba(20,30,40,.35),0 0 0 10px #dfe4e7,0 0 0 11px #cfd6da;perspective:2300px}
+.win::after{content:"";position:absolute;left:-26px;right:-26px;bottom:-24px;height:14px;background:#d5dbdf;border-radius:2px;box-shadow:0 6px 14px -6px rgba(0,0,0,.25)}
+.view{position:absolute;inset:var(--fw);overflow:hidden;background:#cfd8de}
+.view img{width:100%;height:100%;object-fit:cover;transform:scale(var(--vz,1));transform-origin:50% 60%;filter:blur(var(--vb,0px)) saturate(var(--vs,1))}
+.sash{position:absolute;inset:var(--fw);border:clamp(10px,1.3vw,16px) solid #454d52;border-radius:2px;transform-origin:var(--ox,0%) var(--oy,50%);
+ transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,72deg));box-shadow:0 0 0 1px #2e3438,inset 0 0 0 1px rgba(255,255,255,.08),12px 16px 30px -12px rgba(0,0,0,.4);transform-style:preserve-3d;will-change:transform}
+.glass{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.78) 0%,rgba(228,238,245,.6) 28%,rgba(255,255,255,.18) 44%,rgba(255,255,255,.3) 50%,rgba(214,228,238,.5) 64%,rgba(255,255,255,.72) 100%);
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.glass::before{content:"";position:absolute;inset:6%;border:1px solid rgba(255,255,255,.35)}
+.handle{position:absolute;right:calc(clamp(10px,1.3vw,16px)*-1 + 2px);top:50%;width:12px;height:12px;margin-top:-6px;transform:rotate(var(--hd,90deg));transform-origin:50% 50%}
+.handle::before{content:"";position:absolute;left:3px;top:3px;width:6px;height:52px;background:#d9dee1;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.35)}
+.handle::after{content:"";position:absolute;left:-2px;top:-2px;width:16px;height:16px;border-radius:50%;background:#e6eaec;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:120px;height:2px;background:rgba(0,0,0,.1);opacity:var(--hi,0)}
+.hint i{display:block;height:100%;background:var(--blue);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:22px}.scene{order:-1}.win{height:40svh;width:auto}.hero h1{font-size:clamp(2rem,8.2vw,2.6rem)}.hero .lead{font-size:1.02rem;margin:12px 0 16px}.js .hero{height:190vh}
+ .hero .pin{align-items:start}.hero .after{display:none}}
+/* sekcje */
+.sec{padding:100px 0}
+.dark{background:var(--ant);color:#eef1f2}.dark .meta{color:#a9b3b9}
+.tint{background:var(--tint)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:44px}
+.head a{display:inline-flex;gap:8px;align-items:center;font-weight:600;text-decoration:none;white-space:nowrap}
+/* wejścia */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.2)}
+.door{padding:30px 34px 6px;border-left:1px solid rgba(255,255,255,.2)}.door:first-child{border-left:0;padding-left:0}
+.door h3{font-size:clamp(1.7rem,2.4vw,2.2rem)}
+.door p{color:#c3cbd0;margin:10px 0 18px;max-width:22em}
+.door ul{list-style:none;margin:0;padding:0}.door li a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.14);text-decoration:none;font-weight:500}
+.door li a:hover{color:var(--y)}
+/* aktualności */
+.ngrid{display:grid;grid-template-columns:7fr 5fr 5fr;grid-template-rows:auto auto;gap:36px 32px}
+.n a{text-decoration:none;display:block}.n .ph{aspect-ratio:3/2;border-radius:8px}
+.n h3{font-size:1.35rem;line-height:1.22;margin-top:14px}
+.n a:hover h3{color:var(--blue)}
+.n0{grid-row:span 2}.n0 .ph{aspect-ratio:4/5}.n0 h3{font-size:clamp(1.7rem,2.6vw,2.4rem)}
+.nmore{list-style:none;padding:0;margin:52px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 32px}
+.nmore a{display:block;padding:16px 0;border-top:1px solid var(--line);text-decoration:none;font-family:var(--serif);font-size:1.12rem;line-height:1.3}.nmore a:hover{color:var(--blue)}
+.nmore .meta{font-family:var(--sans)}
+.adslot{display:grid;place-content:center;text-align:center;gap:2px;aspect-ratio:7/1;min-height:110px;border:1px solid #c9d3da;border-radius:0;background:#fff;color:var(--mut);padding:20px;margin-top:56px}
+.adslot strong{font:400 1.5rem var(--serif);color:var(--ink)}.ad-k,.ad-s,.ad-n{font-size:.9rem}
+/* wywiady */
+.wyw{list-style:none;margin:0;padding:0}
+.wyw a{display:grid;grid-template-columns:76px 1fr 28px;gap:24px;align-items:center;padding:22px 0;border-top:1px solid rgba(255,255,255,.16);text-decoration:none}
+.wyw li:last-child a{border-bottom:1px solid rgba(255,255,255,.16)}
+.wyw img{width:76px;height:76px;object-fit:cover;border-radius:50%}
+.wyw span{font:400 clamp(1.3rem,2.2vw,1.9rem)/1.22 var(--serif)}
+.wyw .arr{width:24px;height:24px;color:var(--y);transition:transform .3s}.wyw a:hover .arr{transform:translate(3px,-3px)}
+.wyw a:hover span{color:#fff;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+/* forum + katalog */
+.fk{display:grid;grid-template-columns:7fr 5fr;gap:64px}
+.forum{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.forum a{display:block;padding:14px 0;border-top:1px solid var(--line);text-decoration:none;font-weight:500}.forum a:hover{color:var(--blue)}
+.forum .meta{margin:0 0 2px;font-weight:400}
+.kat{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.kat a{padding:10px 14px;border-radius:10px;background:#fff;border:1px solid var(--line);text-decoration:none;font-weight:500;min-height:44px;display:inline-flex;align-items:center;box-shadow:inset 0 1px 0 #fff}
+.kat a:hover{border-color:var(--blue);color:var(--blue)}
+.big-n{font:400 clamp(3rem,5.6vw,5rem)/1 var(--serif);margin-top:20px}
+/* reklama */
+.blue{background:var(--blue);color:#fff}
+.blue .lead2{font:400 clamp(1.8rem,3.4vw,3rem)/1.15 var(--serif);max-width:20em;margin:0}
+.blue .lead2 em{font-style:normal;color:#fff;box-shadow:inset 0 -.14em 0 var(--y)}
+.fm{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
+.fm h3{font:600 1.02rem var(--sans);padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.45)}
+.fm ul{list-style:none;margin:0;padding:0}.fm li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.18);color:#d7e4ee}.fm li b{color:#fff;font-weight:600;display:block}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}.blue .btn-b{background:#fff;color:var(--blue)}
+/* faq */
+.faq{display:grid;grid-template-columns:5fr 7fr;gap:56px}
+.faq details{border-top:1px solid var(--line)}.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font:400 1.3rem/1.3 var(--serif)}
+.faq summary::-webkit-details-marker{display:none}
+.pm{width:16px;height:16px;position:relative;flex:none}.pm::before,.pm::after{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--blue);transition:transform .3s}
+.pm::after{transform:rotate(90deg)}details[open] .pm::after{transform:rotate(0)}
+.faq p{margin:0 0 22px;color:var(--mut);max-width:40em}
+/* kontakt */
+.kont{display:grid;grid-template-columns:5fr 7fr;gap:56px}.kont>*{min-width:0}
+.kont .phone{display:inline-block;font:500 clamp(1.8rem,3vw,2.5rem)/1.1 var(--sans);font-variant-numeric:lining-nums tabular-nums;text-decoration:none;margin:20px 0 6px}
+.kont dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:22px 0 0}.kont dt{color:#a9b3b9}.kont dd{margin:0;overflow-wrap:anywhere}
+.map{min-height:380px;border-radius:12px;overflow:hidden}.map iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.7)}
+.nl{margin-top:34px;padding:22px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+.nl form{display:flex;gap:8px;margin-top:12px}.nl input{flex:1;min-width:0;min-height:46px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.95);padding:0 14px;font:1rem var(--sans)}
+.nl .btn{background:var(--y);color:var(--ink)}
+footer{background:var(--ant2);color:#a9b3b9;padding:44px 0;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:space-between}footer .logo{width:120px;color:#fff}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}footer a{text-decoration:none}footer a:hover{color:#fff}
+.mbar a{background:#fff;color:var(--ink);border:1px solid var(--line)}.mbar a+a{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media (max-width:1000px){.doors{grid-template-columns:1fr}.door{padding:26px 0 6px;border-left:0}.ngrid{grid-template-columns:1fr 1fr}.n0{grid-column:1/-1;grid-row:auto}.n0 .ph{aspect-ratio:3/2}
+.nmore{grid-template-columns:1fr 1fr}.fk,.faq,.kont{grid-template-columns:1fr}.fm{grid-template-columns:1fr}}
+@media (max-width:640px){.wrap{width:min(1240px,100% - 32px)}.sec{padding:70px 0}.ngrid,.nmore,.forum{grid-template-columns:1fr}.head{flex-direction:column;align-items:start}
+.wyw a{grid-template-columns:56px 1fr;gap:16px}.wyw img{width:56px;height:56px}.wyw .arr{display:none}}
+
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*70ms)}
+.js .stagger.in>*{opacity:1;transform:none}
+.js [data-words] .w{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*55ms)}
+.js [data-words].in .w{opacity:1;transform:none}
+.ph{overflow:hidden;position:relative}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.js .ph{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.22,.61,.36,1)}
+.js .ph.in{clip-path:inset(0 0 0 0)}
+.ph.drift img{transform:translateY(var(--dy,0px)) scale(1.08);will-change:transform}
+@media (max-width:760px){.js .reveal,.js .stagger>*{transform:translateY(10px)}.js .stagger>*{transition-delay:calc(var(--i,0)*45ms)}}
+@media (prefers-reduced-motion:reduce){
+ .js .hero{height:auto!important}.hero .pin{position:relative!important}
+ .js .reveal,.js .stagger>*,.js [data-words] .w{opacity:1!important;transform:none!important;transition:none!important}
+ .js .ph{clip-path:none!important;transition:none!important}.ph.drift img{transform:none!important}
+}
+.mnav{display:none}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 14px;border-radius:999px}
+.mnav summary::-webkit-details-marker{display:none}
+.mbar{display:none}
+@media (max-width:980px){.mnav{display:block;position:relative}}
+@media (max-width:760px){
+ .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:60;transform:translateY(130%);transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+ .past-hero .mbar{transform:none}
+ html:not(.js) .mbar{transform:none}
+ .mbar a{min-height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;font-weight:600;text-decoration:none}
+ body{padding-bottom:76px}
+}
+.head a,.sec-h a,footer nav a,.links a,.hero .more a{min-height:40px;display:inline-flex;align-items:center}
+.adslot{max-width:100%;box-sizing:border-box}@media (max-width:760px){.adslot{aspect-ratio:auto!important;min-height:110px}}
+.skip{position:absolute;left:-9999px;top:8px}.skip:focus{left:12px;z-index:200;background:#fff;color:#000;padding:10px 14px;border-radius:8px}
+</style>
+</head>
+<body>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+<header class="hdr"><div class="wrap">
+<a href="#top" aria-label="oknonet.pl — strona główna"><svg class="logo" viewBox="0 0 160 30" role="img" aria-label="oknonet.pl — strona główna"><path d="M160 23.3333L153.476 24V0.619045L160 0.0476183V23.3333ZM139.238 29.0476L132.667 29.619V7.04762L138.81 6.52381V8.57143C139.429 7.95238 140.048 7.47619 140.81 7.19048C141.524 6.90476 142.381 6.7619 143.333 6.7619C145.667 6.7619 147.571 7.52381 149.048 9.14286C150.524 10.7143 151.19 12.8095 151.19 15.4286C151.19 18 150.476 20.0952 149 21.7143C147.524 23.3333 145.619 24.1429 143.19 24.1429C142.333 24.1429 141.571 24.0476 140.952 23.8095C140.286 23.5714 139.714 23.2381 139.238 22.8095V29.0476ZM139.238 15.2381C139.238 16 139.476 16.6667 139.952 17.1429C140.429 17.619 141.095 17.8571 141.857 17.8571C142.619 17.8571 143.286 17.619 143.762 17.1429C144.286 16.6667 144.524 16 144.524 15.2381C144.524 14.4286 144.286 13.8095 143.762 13.2857C143.286 12.8095 142.619 12.5238 141.857 12.5238C141.095 12.5238 140.429 12.7619 139.952 13.2857C139.476 13.8095 139.238 14.4286 139.238 15.2381ZM110.905 12.4286L111.952 7.28571H112.81V5.04762L119.286 2.19048V7.28571H121.19V12.4286H119.286V16.619C119.286 17.1905 119.381 17.5714 119.667 17.8095C119.905 18.0476 120.286 18.1905 120.81 18.1905C120.952 18.1905 121.095 18.1905 121.238 18.1429C121.429 18.1429 121.571 18.0952 121.762 18.0476L120.714 23.8571C120.476 23.9048 120.286 23.9048 120.048 23.9048C119.857 23.9048 119.524 23.9048 119.143 23.9048C116.952 23.9048 115.333 23.4286 114.333 22.4762C113.286 21.5238 112.762 20.0476 112.762 18.0476V12.3333H110.905V12.4286ZM110.714 21.7143C109.571 22.5714 108.381 23.1905 107.143 23.5714C105.857 24 104.571 24.1905 103.095 24.1905C100.333 24.1905 98.0952 23.381 96.381 21.7143C94.6667 20.0476 93.8571 17.9524 93.8571 15.2857C93.8571 12.6667 94.7143 10.5714 96.381 8.90476C98.1429 7.28572 100.333 6.42857 103.095 6.42857C104.81 6.42857 106.286 6.85715 107.667 7.71429C109 8.57143 110.095 9.85715 111 11.5238L102.476 18.1429C102.714 18.2381 103 18.2857 103.238 18.3333C103.524 18.3809 103.762 18.4286 104 18.4286C104.571 18.4286 105.19 18.2857 105.81 18.0476C106.429 17.8095 107.143 17.381 107.857 16.8571L110.714 21.7143ZM100.19 15.3809L104.524 12.1429C104.238 11.9048 103.952 11.7143 103.667 11.619C103.381 11.4762 103.095 11.4286 102.762 11.4286C101.905 11.4286 101.19 11.6667 100.714 12.1905C100.19 12.7143 99.9524 13.4286 99.9524 14.2857C99.9524 14.4762 99.9524 14.6667 100 14.8095C100.048 15 100.143 15.1905 100.19 15.3809ZM76.5238 24.0476V7.09524L82.5238 6.57143V8.80952C83.0952 8 83.7619 7.42857 84.4762 7.04762C85.2381 6.66666 86.0952 6.47619 87.0476 6.47619C88.6667 6.47619 89.8095 6.95238 90.5714 7.95238C91.3333 8.95238 91.7143 10.4286 91.7143 12.4762V23.4762L85.2381 24.0952V13.8095C85.2381 13.3809 85.1429 13.0476 84.9524 12.8095C84.7619 12.5714 84.4762 12.4286 84.0952 12.4286C83.7619 12.4286 83.4762 12.5714 83.2857 12.8095C83.0952 13.0476 83 13.3809 83 13.8095V23.4762L76.5238 24.0476ZM55.9524 15.2857C55.9524 12.6667 56.8571 10.5714 58.5714 8.90476C60.2857 7.28572 62.5238 6.42857 65.2381 6.42857C67.9524 6.42857 70.2381 7.2381 71.9048 8.90476C73.6667 10.5238 74.4762 12.6667 74.4762 15.2857C74.4762 17.9048 73.619 20.0476 71.9048 21.7143C70.1905 23.381 67.9524 24.1905 65.2381 24.1905C62.4762 24.1905 60.2381 23.381 58.5238 21.7143C56.8095 20.0476 55.9524 17.9524 55.9524 15.2857ZM65.2381 12.6667C64.4762 12.6667 63.8571 12.9048 63.3333 13.381C62.8571 13.8571 62.619 14.4762 62.619 15.2381C62.619 16 62.8571 16.5714 63.3333 17.0476C63.8095 17.5238 64.4286 17.7619 65.2381 17.7619C66 17.7619 66.619 17.5238 67.1429 17.0476C67.619 16.5714 67.8571 16 67.8571 15.2381C67.8571 14.4762 67.619 13.8571 67.0952 13.381C66.619 12.9048 66 12.6667 65.2381 12.6667ZM38.7619 24.0476V7.09524L44.7619 6.57143V8.80952C45.3333 8 46 7.42857 46.7143 7.04762C47.4762 6.66666 48.3333 6.47619 49.2857 6.47619C50.8571 6.47619 52.0476 6.95238 52.8095 7.95238C53.5714 8.95238 53.9524 10.4286 53.9524 12.4762V23.4762L47.4762 24.0952V13.8095C47.4762 13.3809 47.381 13.0476 47.1905 12.8095C47 12.5714 46.7143 12.4286 46.3333 12.4286C46 12.4286 45.7143 12.5714 45.5238 12.8095C45.3333 13.0476 45.2381 13.3809 45.2381 13.8095V23.4762L38.7619 24.0476ZM20.5714 24.0476V0.571427L27.1429 0V13.5714L30.1429 6.19048L36.9048 6.85714L33.381 13.8571L37.7619 22.9048L30.9048 24L27.1429 15V23.3333L20.5714 24.0476ZM0 15.2857C0 12.6667 0.857144 10.5714 2.57143 8.90476C4.33333 7.28572 6.52381 6.42857 9.23809 6.42857C12 6.42857 14.2381 7.2381 15.9524 8.90476C17.6667 10.5238 18.4762 12.6667 18.4762 15.2857C18.4762 17.9048 17.619 20.0476 15.9524 21.7143C14.1905 23.381 12 24.1905 9.23809 24.1905C6.52381 24.1905 4.2381 23.381 2.57143 21.7143C0.809525 20.0476 0 17.9524 0 15.2857ZM9.23809 12.6667C8.47619 12.6667 7.85714 12.9048 7.38095 13.381C6.85714 13.8571 6.61905 14.4762 6.61905 15.2381C6.61905 16 6.85714 16.5714 7.33333 17.0476C7.80952 17.5238 8.47619 17.7619 9.23809 17.7619C10.0476 17.7619 10.6667 17.5238 11.1429 17.0476C11.619 16.5714 11.8571 16 11.8571 15.2381C11.8571 14.4762 11.619 13.8571 11.1429 13.381C10.6667 12.9048 10.0476 12.6667 9.23809 12.6667Z" fill="currentColor"/><path d="M126.81 24.6193L122.477 20.3336L126.81 16.0479L131.096 20.3336L126.81 24.6193Z" fill="#DDAF11"/></svg></a>
+<nav class="dn" aria-label="Główne"><a href="#aktualnosci">Aktualności</a><a href="#wywiady">Wywiady</a><a href="#forum">Forum i katalog</a><a href="https://oknonet.pl/praca/">Praca</a></nav>
+<a class="btn btn-b" href="#reklama">Reklama</a>
+<details class="mnav"><summary>Menu</summary><nav aria-label="Menu mobilne"><a href="#aktualnosci">Aktualności</a><a href="#wywiady">Wywiady</a><a href="#forum">Forum i katalog</a><a href="https://oknonet.pl/praca/">Praca</a><a href="#reklama">Reklama</a><a href="#kontakt">Kontakt</a></nav></details>
+</div></header>
+<main id="top">
+<section class="hero" data-hero><div class="pin"><div class="wrap">
+<div>
+<h1 data-words>Zajrzyj za kulisy branży okien, drzwi i fasad.</h1>
+<p class="lead reveal">oknonet.pl to portal branży okien, drzwi, fasad i bram. Wiadomości, wywiady, giełda i katalog 17 299 produktów. Codziennie od 1999 roku.</p>
+<div class="acts reveal"><a class="btn btn-b" href="#aktualnosci">Czytaj dzisiejsze wiadomości</a><a class="btn btn-l" href="#wejscia">Czego szukasz?</a></div>
+<p class="after"><b>6,3 mln czytelników</b> w ostatnich 12 miesiącach. Producenci, handlowcy, montażyści i ci, którzy wybierają okna do domu.</p>
+</div>
+<div class="scene"><div class="win" role="img" aria-label="Okno otwierające się na jasną halę produkcji okien">
+<div class="view"><picture><source media="(max-width:760px)" srcset="img/widok-900.webp"><img src="img/widok-1600.webp" alt="" width="1600" height="1770" fetchpriority="high"></picture></div>
+<div class="sash"><div class="glass"></div><div class="handle"></div></div>
+</div></div>
+</div><div class="hint" aria-hidden="true"><i></i></div></div></section>
+
+<section class="sec dark" id="wejscia"><div class="wrap" id="tresc">
+<div class="head"><h2 data-words>Po co przychodzisz?</h2></div>
+<div class="doors stagger">
+<div class="door"><h3>Czytam branżę</h3><p>Codzienne wiadomości z rynku, rozmowy z ludźmi, którzy go budują, prawo i poradniki.</p><ul><li><a href="#aktualnosci">Aktualności <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#wywiady">Sylwetki i wywiady <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/strefa-eksperta/prawo/">Strefa eksperta: prawo <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/strefa-eksperta/poradniki/">Poradniki <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul></div>
+<div class="door"><h3>Szukam</h3><p>Pracy, ekipy montażowej, używanej maszyny albo konkretnego produktu.</p><ul><li><a href="https://oknonet.pl/praca/">Oferty pracy <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#forum">Giełda montaży <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#forum">Maszyny na sprzedaż <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#katalog">Katalog 17 299 produktów <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul></div>
+<div class="door"><h3>Reklamuję firmę</h3><p>Docieram do producentów, handlowców i montażystów w całej Polsce.</p><ul><li><a href="#reklama">Formaty reklamy <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#reklama">Artykuł sponsorowany <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/logowanie/">Dodaj firmę do katalogu <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="#kontakt">Kontakt z wydawcą <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul></div>
+</div></div></section>
+
+<section class="sec tint" id="aktualnosci"><div class="wrap">
+<div class="head"><h2 data-words>Aktualności branży stolarki</h2><a href="https://oknonet.pl/aktualnosci/">Wszystkie <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="ngrid"><article class="n n0"><a href="https://oknonet.pl/aktualnosci/"><div class="ph drift"><img src="img/innoview.webp" alt="" loading="lazy" width="900" height="1125"></div><h3>Stolarka pionowa INNOVIEW w niestandardowych projektach</h3><span class="meta">Realizacje · oknonet.pl</span></a></article><article class="n"><a href="https://oknonet.pl/aktualnosci/"><div class="ph"><img src="img/aluron.webp" alt="" loading="lazy" width="900" height="600"></div><h3>ASH 80 HYBRID: ALURON zaprasza na spotkanie z technologią hybrydową</h3><span class="meta">Wydarzenia · oknonet.pl</span></a></article><article class="n"><a href="https://oknonet.pl/aktualnosci/"><div class="ph"><img src="img/aluprof.webp" alt="" loading="lazy" width="900" height="600"></div><h3>ALUPROF wprowadza powłoki lakiernicze klasy 2 QUALICOAT w standardzie</h3><span class="meta">Premiery · oknonet.pl</span></a></article><article class="n"><a href="https://oknonet.pl/aktualnosci/"><div class="ph"><img src="img/fakro.webp" alt="" loading="lazy" width="900" height="600"></div><h3>FAKRO na Xponential Exchange 2026 w Berlinie</h3><span class="meta">Targi · oknonet.pl</span></a></article><article class="n"><a href="https://oknonet.pl/aktualnosci/"><div class="ph"><img src="img/siegenia.webp" alt="" loading="lazy" width="900" height="600"></div><h3>Dotykowy pochwyt SIEGENIA – wygodne otwieranie drzwi od wewnątrz</h3><span class="meta">Okucia · oknonet.pl</span></a></article></div>
+<ul class="nmore stagger"><li><a href="https://oknonet.pl/aktualnosci/">WEISS Chemie + Technik o transformacji i przyszłości średnich przedsiębiorstw<span class="meta">Rynek</span></a></li><li><a href="https://oknonet.pl/aktualnosci/">Aluron wprowadza 2. klasę QUALICOAT dla całej palety Top Colors Collection<span class="meta">Premiery</span></a></li><li><a href="https://oknonet.pl/aktualnosci/">DKV SERVICE wprowadza do oferty dwa centra CNC marki YILMAZ<span class="meta">Maszyny</span></a></li><li><a href="https://oknonet.pl/aktualnosci/">Precyzyjne cięcie profili w Grupie Iguana. R&amp;D Tech dostarczyło piłę Precision TS2<span class="meta">Maszyny</span></a></li><li><a href="https://oknonet.pl/aktualnosci/">Aluprof na BAU 2027: połączenie aluminium i PVC w centrum ekspozycji<span class="meta">Targi</span></a></li><li><a href="https://oknonet.pl/aktualnosci/">GEZE ActiveStop – mały detal, który zmienia komfort użytkowania drzwi<span class="meta">Premiery</span></a></li></ul>
+<aside class="adslot reveal" aria-label="Miejsce reklamowe Responsive Wideboard"><span class="ad-k">Reklama</span><strong>Responsive Wideboard</strong><span class="ad-s">pełna szerokość pod aktualnościami</span></aside>
+</div></section>
+
+<section class="sec dark" id="wywiady"><div class="wrap">
+<div class="head"><h2 data-words>Rozmowy z ludźmi branży</h2><a href="https://oknonet.pl/aktualnosci/">Wszystkie wywiady <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<ul class="wyw stagger"><li><a href="https://oknonet.pl/aktualnosci/"><img src="img/bubien.webp" alt="" loading="lazy" width="160" height="160"><span>Czy fabryka okien może działać bez człowieka? Janusz Bubień o przyszłości automatyzacji</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/aktualnosci/"><img src="img/grochocka.webp" alt="" loading="lazy" width="160" height="160"><span>Od wkrętów po logistykę. Jak zmienia się rola dostawcy komponentów?</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/aktualnosci/"><img src="img/medrek.webp" alt="" loading="lazy" width="160" height="160"><span>Nie tylko technologia. Schüco o nowej roli systemodawców</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/aktualnosci/"><img src="img/matenko.webp" alt="" loading="lazy" width="160" height="160"><span>Jak zmienia się rynek powłok do stolarki? Rozmowa z Magdaleną Mateńko-Nożewnik</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/aktualnosci/"><img src="img/drozdzewicz.webp" alt="" loading="lazy" width="160" height="160"><span>30 lat Salamander w Polsce. Sławomir Drożdżewicz o rynku stolarki i jego przyszłości</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="https://oknonet.pl/aktualnosci/"><img src="img/rodex.webp" alt="" loading="lazy" width="160" height="160"><span>Architekci zmian. RODEX i REHAU o budowaniu branży stolarki PVC w Polsce</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul>
+</div></section>
+
+<section class="sec" id="forum"><div class="wrap fk">
+<div><div class="head"><h2 data-words>Forum i giełdy</h2><a href="https://forum.oknonet.pl/">Na forum <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div><ul class="forum stagger"><li><a href="https://forum.oknonet.pl/"><span class="meta">Giełda montaży</span>Zlecimy montaż stolarki – Siedlce k. Warszawy</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Giełda montaży</span>Brygada podejmie współpracę</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Giełda montaży</span>Nawiążę współpracę z brygadą montażystów Krosno</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Giełda montaży</span>Montaż witryny w Gnieźnie</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Sprzedam maszyny</span>SPRZEDAM – Zagniatarka naroży ELUMATEC EP 124 (2013)</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Sprzedam maszyny</span>SPRZEDAM – Piła dwugłowicowa HAFFNER DGS 188 (2006)</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Sprzedam maszyny</span>Sprzedam ładowarkę teleskopową HAULOTTE HTL 4017, rok 2009</a></li><li><a href="https://forum.oknonet.pl/"><span class="meta">Kupię / szukam wykonawcy</span>Wymiana okien w budynku Polskiego Holdingu Obronnego przy ul. Fort Wola 22</a></li></ul></div>
+<div id="katalog"><h2 data-words>Katalog produktów</h2><p class="big-n reveal">17 299</p><p class="reveal" style="color:var(--mut);margin-top:8px">produktów w 11 kategoriach.</p><div class="kat stagger"><a href="https://oknonet.pl/kategoria/okna/">Okna</a><a href="https://oknonet.pl/kategoria/drzwi/">Drzwi</a><a href="https://oknonet.pl/kategoria/komponenty-akcesoria/">Komponenty</a><a href="https://oknonet.pl/kategoria/komponenty-akcesoria/">Akcesoria</a><a href="https://oknonet.pl/kategoria/fasady-ogrody-zimowe-oze/">Fasady i ogrody zimowe</a><a href="https://oknonet.pl/kategoria/oslony-bramy/">Osłony</a><a href="https://oknonet.pl/kategoria/bramy/">Bramy</a><a href="https://oknonet.pl/kategoria/maszyny-obrobka-powierzchni/">Maszyny i obróbka powierzchni</a><a href="https://oknonet.pl/kategoria/szklo/">Szkło</a><a href="https://oknonet.pl/kategoria/montaz-stolarki/">Montaż stolarki</a><a href="https://oknonet.pl/kategoria/uslugi_dla_branzy/">Usługi dla branży</a></div><p style="margin-top:22px"><a class="btn btn-l" href="https://oknonet.pl/logowanie/">Dodaj firmę</a></p></div>
+</div></section>
+
+<section class="sec blue" id="reklama"><div class="wrap">
+<div class="head"><h2 data-words>Reklama na oknonet</h2><a href="https://oknonet.pl/reklama/">Pełna oferta <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<p class="lead2 reveal">Według danych portalu, w ostatnich 12 miesiącach: <em>6,3 mln</em> aktywnych użytkowników, ponad 10 mln wyświetleń i 32 mln interakcji.</p>
+<div class="fm"><div><h3>Reklama graficzna</h3><ul class="stagger"><li><b>Panel Premium</b><span>Pierwsze, co widzi czytelnik po wejściu na portal. Format dla marek premium.</span></li><li><b>Responsive Wideboard</b><span>Pozycja na górze strony, dopasowana do każdego ekranu.</span></li><li><b>Halfpage</b><span>Duża kreacja obok artykułów, na telefonie w pełnej szerokości.</span></li><li><b>Śródtekstowa</b><span>Reklama w treści artykułu — wysoka zauważalność.</span></li><li><b>Rectangle</b><span>Uniwersalny format w wielu miejscach emisji.</span></li><li><b>Scroller</b><span>Stała obecność na ekranie przy krótkim komunikacie.</span></li><li><b>Expand Strip</b><span>Pas, który rozwija się w dużą powierzchnię.</span></li></ul></div><div><h3>Marketing treści</h3><ul class="stagger"><li><b>Artykuł sponsorowany</b><span>Pełna treść redakcyjna w aktualnościach, z korzyścią dla SEO.</span></li><li><b>Mailing</b><span>Bezpośrednio do bazy czytelników, z możliwością targetowania.</span></li><li><b>Wieści z branży</b><span>Regularna dystrybucja informacji do profesjonalistów.</span></li><li><b>oknoAD</b><span>Reklama natywna w katalogu firm, obok produktów.</span></li><li><b>Newsboard</b><span>Wyeksponowana sekcja z aktualnościami Twojej marki.</span></li><li><b>Promocja Facebook</b><span>Dystrybucja treści poza portalem.</span></li><li><b>Pakiet medialny</b><span>Zestaw formatów w jednej cenie, dopasowany do budżetu.</span></li></ul></div></div>
+<div class="cta"><a class="btn btn-b" href="mailto:andrzej.p@oknonet.pl?subject=Reklama%20na%20oknonet.pl">Zapytaj o reklamę</a><a class="btn btn-l" href="tel:+48507029853">+48 507 029 853</a></div>
+</div></section>
+
+<section class="sec"><div class="wrap faq"><h2 data-words>Pytania reklamodawców</h2><div class="reveal"><details><summary>Jak opublikować informację o naszej firmie?<span class="pm" aria-hidden="true"></span></summary><p>Informacje prasowe redakcja przyjmuje mailowo. Jeśli zależy Państwu na terminie i pełnej kontroli nad treścią, najlepszy będzie artykuł sponsorowany: pełna treść redakcyjna, publikacja w aktualnościach i trwały link, który pracuje na SEO.</p></details><details><summary>Ilu czytelników ma oknonet.pl?<span class="pm" aria-hidden="true"></span></summary><p>W ciągu ostatnich 12 miesięcy portal odwiedziło 6,3 mln aktywnych użytkowników, którzy wygenerowali ponad 10 mln wyświetleń i 32 mln interakcji.</p></details><details><summary>Jak dodać firmę i produkty do katalogu?<span class="pm" aria-hidden="true"></span></summary><p>Przez „Dodaj firmę” — po założeniu konta produkty trafiają do katalogu, w którym jest dziś 17 299 pozycji w 11 kategoriach.</p></details><details><summary>Jak zamieścić ogłoszenie o pracę?<span class="pm" aria-hidden="true"></span></summary><p>Ogłoszenia o pracę zamawia się w dziale Praca. Trafiają do osób, które na co dzień czytają o stolarce — producentów, handlowców i montażystów.</p></details><details><summary>Ile kosztuje reklama?<span class="pm" aria-hidden="true"></span></summary><p>Cena zależy od formatu, czasu emisji i pakietu. Wydawca przygotowuje wycenę po krótkiej rozmowie o celu kampanii.</p></details></div></div></section>
+
+<section class="sec dark" id="kontakt"><div class="wrap kont">
+<div><h2 data-words>Wydawca portalu</h2><a class="phone" href="tel:+48507029853">+48 507 029 853</a>
+<dl class="reveal"><dt>Wydawca</dt><dd>Andrzej Parzonka</dd><dt>E-mail</dt><dd><a href="mailto:andrzej.p@oknonet.pl">andrzej.p@oknonet.pl</a></dd><dt>Adres</dt><dd>MEDIA B2B Andrzej Parzonka<br>ul. Ogrodowa 3A, 58-306 Wałbrzych</dd><dt>NIP / REGON</dt><dd>886-268-96-47 / 020367021</dd></dl>
+<div class="nl" id="newsletter"><b>Newsletter.</b> Branża na maila, codziennie.<form onsubmit="event.preventDefault();this.nextElementSibling.textContent='To makieta — formularz nie wysyła danych.'"><label class="skip" for="nl3">E-mail</label><input id="nl3" type="email" placeholder="Twój e-mail" autocomplete="email"><button class="btn" type="submit">Zapisz mnie</button></form><small></small></div>
+</div>
+<div class="map reveal"><iframe title="Mapa: ul. Ogrodowa 3A, 58-306 Wałbrzych" src="https://maps.google.com/maps?q=Ogrodowa+3A,+58-306+Wa%C5%82brzych&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div></section>
+</main>
+<footer><div class="wrap"><svg class="logo" viewBox="0 0 160 30" role="img" aria-label="oknonet.pl — strona główna"><path d="M160 23.3333L153.476 24V0.619045L160 0.0476183V23.3333ZM139.238 29.0476L132.667 29.619V7.04762L138.81 6.52381V8.57143C139.429 7.95238 140.048 7.47619 140.81 7.19048C141.524 6.90476 142.381 6.7619 143.333 6.7619C145.667 6.7619 147.571 7.52381 149.048 9.14286C150.524 10.7143 151.19 12.8095 151.19 15.4286C151.19 18 150.476 20.0952 149 21.7143C147.524 23.3333 145.619 24.1429 143.19 24.1429C142.333 24.1429 141.571 24.0476 140.952 23.8095C140.286 23.5714 139.714 23.2381 139.238 22.8095V29.0476ZM139.238 15.2381C139.238 16 139.476 16.6667 139.952 17.1429C140.429 17.619 141.095 17.8571 141.857 17.8571C142.619 17.8571 143.286 17.619 143.762 17.1429C144.286 16.6667 144.524 16 144.524 15.2381C144.524 14.4286 144.286 13.8095 143.762 13.2857C143.286 12.8095 142.619 12.5238 141.857 12.5238C141.095 12.5238 140.429 12.7619 139.952 13.2857C139.476 13.8095 139.238 14.4286 139.238 15.2381ZM110.905 12.4286L111.952 7.28571H112.81V5.04762L119.286 2.19048V7.28571H121.19V12.4286H119.286V16.619C119.286 17.1905 119.381 17.5714 119.667 17.8095C119.905 18.0476 120.286 18.1905 120.81 18.1905C120.952 18.1905 121.095 18.1905 121.238 18.1429C121.429 18.1429 121.571 18.0952 121.762 18.0476L120.714 23.8571C120.476 23.9048 120.286 23.9048 120.048 23.9048C119.857 23.9048 119.524 23.9048 119.143 23.9048C116.952 23.9048 115.333 23.4286 114.333 22.4762C113.286 21.5238 112.762 20.0476 112.762 18.0476V12.3333H110.905V12.4286ZM110.714 21.7143C109.571 22.5714 108.381 23.1905 107.143 23.5714C105.857 24 104.571 24.1905 103.095 24.1905C100.333 24.1905 98.0952 23.381 96.381 21.7143C94.6667 20.0476 93.8571 17.9524 93.8571 15.2857C93.8571 12.6667 94.7143 10.5714 96.381 8.90476C98.1429 7.28572 100.333 6.42857 103.095 6.42857C104.81 6.42857 106.286 6.85715 107.667 7.71429C109 8.57143 110.095 9.85715 111 11.5238L102.476 18.1429C102.714 18.2381 103 18.2857 103.238 18.3333C103.524 18.3809 103.762 18.4286 104 18.4286C104.571 18.4286 105.19 18.2857 105.81 18.0476C106.429 17.8095 107.143 17.381 107.857 16.8571L110.714 21.7143ZM100.19 15.3809L104.524 12.1429C104.238 11.9048 103.952 11.7143 103.667 11.619C103.381 11.4762 103.095 11.4286 102.762 11.4286C101.905 11.4286 101.19 11.6667 100.714 12.1905C100.19 12.7143 99.9524 13.4286 99.9524 14.2857C99.9524 14.4762 99.9524 14.6667 100 14.8095C100.048 15 100.143 15.1905 100.19 15.3809ZM76.5238 24.0476V7.09524L82.5238 6.57143V8.80952C83.0952 8 83.7619 7.42857 84.4762 7.04762C85.2381 6.66666 86.0952 6.47619 87.0476 6.47619C88.6667 6.47619 89.8095 6.95238 90.5714 7.95238C91.3333 8.95238 91.7143 10.4286 91.7143 12.4762V23.4762L85.2381 24.0952V13.8095C85.2381 13.3809 85.1429 13.0476 84.9524 12.8095C84.7619 12.5714 84.4762 12.4286 84.0952 12.4286C83.7619 12.4286 83.4762 12.5714 83.2857 12.8095C83.0952 13.0476 83 13.3809 83 13.8095V23.4762L76.5238 24.0476ZM55.9524 15.2857C55.9524 12.6667 56.8571 10.5714 58.5714 8.90476C60.2857 7.28572 62.5238 6.42857 65.2381 6.42857C67.9524 6.42857 70.2381 7.2381 71.9048 8.90476C73.6667 10.5238 74.4762 12.6667 74.4762 15.2857C74.4762 17.9048 73.619 20.0476 71.9048 21.7143C70.1905 23.381 67.9524 24.1905 65.2381 24.1905C62.4762 24.1905 60.2381 23.381 58.5238 21.7143C56.8095 20.0476 55.9524 17.9524 55.9524 15.2857ZM65.2381 12.6667C64.4762 12.6667 63.8571 12.9048 63.3333 13.381C62.8571 13.8571 62.619 14.4762 62.619 15.2381C62.619 16 62.8571 16.5714 63.3333 17.0476C63.8095 17.5238 64.4286 17.7619 65.2381 17.7619C66 17.7619 66.619 17.5238 67.1429 17.0476C67.619 16.5714 67.8571 16 67.8571 15.2381C67.8571 14.4762 67.619 13.8571 67.0952 13.381C66.619 12.9048 66 12.6667 65.2381 12.6667ZM38.7619 24.0476V7.09524L44.7619 6.57143V8.80952C45.3333 8 46 7.42857 46.7143 7.04762C47.4762 6.66666 48.3333 6.47619 49.2857 6.47619C50.8571 6.47619 52.0476 6.95238 52.8095 7.95238C53.5714 8.95238 53.9524 10.4286 53.9524 12.4762V23.4762L47.4762 24.0952V13.8095C47.4762 13.3809 47.381 13.0476 47.1905 12.8095C47 12.5714 46.7143 12.4286 46.3333 12.4286C46 12.4286 45.7143 12.5714 45.5238 12.8095C45.3333 13.0476 45.2381 13.3809 45.2381 13.8095V23.4762L38.7619 24.0476ZM20.5714 24.0476V0.571427L27.1429 0V13.5714L30.1429 6.19048L36.9048 6.85714L33.381 13.8571L37.7619 22.9048L30.9048 24L27.1429 15V23.3333L20.5714 24.0476ZM0 15.2857C0 12.6667 0.857144 10.5714 2.57143 8.90476C4.33333 7.28572 6.52381 6.42857 9.23809 6.42857C12 6.42857 14.2381 7.2381 15.9524 8.90476C17.6667 10.5238 18.4762 12.6667 18.4762 15.2857C18.4762 17.9048 17.619 20.0476 15.9524 21.7143C14.1905 23.381 12 24.1905 9.23809 24.1905C6.52381 24.1905 4.2381 23.381 2.57143 21.7143C0.809525 20.0476 0 17.9524 0 15.2857ZM9.23809 12.6667C8.47619 12.6667 7.85714 12.9048 7.38095 13.381C6.85714 13.8571 6.61905 14.4762 6.61905 15.2381C6.61905 16 6.85714 16.5714 7.33333 17.0476C7.80952 17.5238 8.47619 17.7619 9.23809 17.7619C10.0476 17.7619 10.6667 17.5238 11.1429 17.0476C11.619 16.5714 11.8571 16 11.8571 15.2381C11.8571 14.4762 11.619 13.8571 11.1429 13.381C10.6667 12.9048 10.0476 12.6667 9.23809 12.6667Z" fill="currentColor"/><path d="M126.81 24.6193L122.477 20.3336L126.81 16.0479L131.096 20.3336L126.81 24.6193Z" fill="#DDAF11"/></svg><nav aria-label="Stopka"><a href="https://oknonet.pl/redakcja/">Redakcja</a><a href="https://oknonet.pl/reklama/">Reklama</a><a href="https://oknonet.pl/nasi-partnerzy/">Partnerzy</a><a href="https://oknonet.pl/praca/">Praca</a><a href="https://forum.oknonet.pl/">Forum</a><a href="https://oknonet.pl/polityka-prywatnosci/">Polityka prywatności</a></nav><span>© 1999–2026 Media B2B · makieta: ODNOVA Studio</span></div></footer>
+<div class="mbar"><a href="#newsletter">Newsletter</a><a href="#reklama">Reklama</a></div>
+<script>
+(function(){
+var d=document,root=d.documentElement,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hdr=d.querySelector('.hdr');function m(){if(hdr)root.style.setProperty('--hdr-h',hdr.offsetHeight+'px')}m();addEventListener('resize',m);addEventListener('load',m);
+function e(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+d.querySelectorAll('[data-words]').forEach(function(h){var t=h.textContent.trim();h.setAttribute('aria-label',t);h.innerHTML=t.split(/\s+/).map(function(w,i){return '<span class="w" aria-hidden="true" style="--i:'+i+'">'+e(w)+'</span>'}).join(' ')});
+d.querySelectorAll('.stagger').forEach(function(s){Array.prototype.forEach.call(s.children,function(c,i){c.style.setProperty('--i',Math.min(i,10))})});
+var els=d.querySelectorAll('.reveal,.stagger,[data-words],.ph'),fired=false;
+function show(el){el.classList.add('in')}
+if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fired=true;show(x.target);io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.06});els.forEach(function(el){io.observe(el)});
+setTimeout(function(){if(!fired)els.forEach(show)},4000);
+var st;addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){var h=innerHeight;els.forEach(function(el){if(!el.classList.contains('in')&&el.getBoundingClientRect().top<h)show(el)})},140)},{passive:true});
+}else els.forEach(show);
+var dr=d.querySelectorAll('.ph.drift');
+if(dr.length&&!rm){var tick=false;function upd(){tick=false;var h=innerHeight;dr.forEach(function(p){var r=p.getBoundingClientRect();if(r.bottom<0||r.top>h)return;var c=(r.top+r.height/2-h/2)/h;p.style.setProperty('--dy',(-c*22).toFixed(1)+'px')})}addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd()}
+var hero=d.querySelector('[data-hero]');function ph(){if(!hero)return;d.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5)}addEventListener('scroll',ph,{passive:true});ph();
+d.querySelectorAll('.mnav a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').removeAttribute('open')})});
+})();
+
+(function(){
+var hero=document.querySelector('.hero'),pin=hero.querySelector('.pin'),sash=hero.querySelector('.sash'),win=hero.querySelector('.win'),intro=0;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function cl(x){return x<0?0:x>1?1:x}function e(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+function set(n,v){hero.style.setProperty(n,v)}
+function upd(){var r=hero.getBoundingClientRect(),tot=hero.offsetHeight-pin.offsetHeight;var p=tot>0?cl(-r.top/(tot*.9)):1;
+set('--p',p.toFixed(3));set('--hi',p<.95?1:0);
+var hd,rx=0,ry=0,ox='0%',oy='50%';
+if(p<.08){hd=e(p/.08)*180}else if(p<.36){hd=180;var t=p<.22?e((p-.08)/.14):1-e((p-.22)/.14);rx=-15*t}
+else if(p<.42){hd=180-90*e((p-.36)/.06)}else{hd=90;ry=-66*e(cl((p-.42)/.33))}
+if(p>=.36){ox='0%';oy='50%'}else{ox='50%';oy='100%'}
+if(p<.08){rx=Math.min(rx,-5*intro)}
+sash.style.setProperty('--hd',hd.toFixed(1)+'deg');sash.style.setProperty('--rx',rx.toFixed(2)+'deg');sash.style.setProperty('--ry',ry.toFixed(2)+'deg');sash.style.setProperty('--ox',ox);sash.style.setProperty('--oy',oy);
+var vw=win.querySelector('.view');var op=e(cl((p-.42)/.3));var tl=(p>.08&&p<.36)?Math.sin(Math.PI*(p-.08)/.28):0;vw.style.setProperty('--vz',(1.14-.14*e(cl((p-.45)/.5))).toFixed(4));vw.style.setProperty('--vb',((1-op)*(1.4-.9*tl)).toFixed(2)+'px');vw.style.setProperty('--vs',(.75+.25*op).toFixed(3));
+set('--af',e(cl((p-.62)/.18)).toFixed(3));}
+var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;upd()})}},{passive:true});addEventListener('resize',upd);upd();
+var t0=null;function it(ts){if(t0===null)t0=ts;var x=(ts-t0)/1400;intro=x<1?Math.sin(Math.PI*cl(x)):0;upd();if(x<1)requestAnimationFrame(it)}setTimeout(function(){requestAnimationFrame(it)},500);
+})();</script>
+</body>
+</html>
