@@ -71,7 +71,7 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 .ink2{color:var(--ink2)}
 /* dworek */
 .dw{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,96px);align-items:start}
-.dw .ph{border-radius:calc(min(40vw,460px)/2) calc(min(40vw,460px)/2) 6px 6px;overflow:hidden;aspect-ratio:.86}.dw .ph img{object-position:22% 60%}
+.dw .ph{border-radius:calc(min(40vw,460px)/2) calc(min(40vw,460px)/2) 6px 6px;overflow:hidden;aspect-ratio:1.04}
 .dw .ph img{width:100%;height:100%;object-fit:cover}
 .dw .intro{font:400 clamp(1.6rem,2.5vw,2.3rem)/1.25 var(--serif);margin-bottom:1.6em}
 .facts{list-style:none;margin:0;padding:0}.facts li{padding:20px 0;border-top:1px solid rgba(238,234,242,.18);color:#C9C1D3}
@@ -163,7 +163,7 @@ form small{grid-column:1/-1;color:var(--ink2)}
  .mbar a{min-height:52px;justify-content:center}
  .ft{padding-bottom:120px}}
 @media (max-width:640px){.panel ul{columns:1}form{grid-template-columns:1fr}.brand b{font-size:1.15rem}.brand svg{width:36px}}
-@media (max-width:420px){.hdr .btn{display:none}}
+@media (max-width:420px){.hdr .btn{display:none}.hdr .wrap{gap:12px}.brand{gap:8px;min-width:0}.brand b{font-size:1.08rem}.mnav summary{padding:0 12px}}
 @media (prefers-reduced-motion:reduce){.js .hero{height:auto}.stage{position:relative;height:auto;padding:30px 0 60px}.arch .win img:not(:first-child){display:none}*{scroll-behavior:auto!important}.js .reveal,.js .words .w,.js .stagger>*{opacity:1!important;transform:none!important;transition:none!important}.arch .win img{transition:none!important}.drift{transform:none!important}}
 </style>
 </head>
@@ -187,11 +187,11 @@ form small{grid-column:1/-1;color:var(--ink2)}
   </div>
   <div class="arch" id="arch">
    <div class="win">
-    <img src="assets/powitanie.webp" srcset="assets/powitanie-900.webp 900w, assets/powitanie.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Powitanie chlebem i solą, kieliszki szampana na stole" width="1024" height="768">
-    <img src="assets/sala.webp" srcset="assets/sala-900.webp 900w, assets/sala.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Sala weselna nakryta na przyjęcie, krzesła z lawendowymi kokardami" width="1024" height="768">
-    <img src="assets/wiejski.webp" srcset="assets/wiejski-900.webp 900w, assets/wiejski.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Stół wiejski z wędlinami i kiełbasami" width="1024" height="768">
+    <img style="object-position:38% 55%" src="assets/powitanie.webp" srcset="assets/powitanie-900.webp 900w, assets/powitanie.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Powitanie chlebem i solą, kieliszki szampana na stole" width="1024" height="768">
+    <img style="object-position:55% 50%" src="assets/sala.webp" srcset="assets/sala-900.webp 900w, assets/sala.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Sala weselna nakryta na przyjęcie, krzesła z lawendowymi kokardami" width="1024" height="768">
+    <img style="object-position:48% 50%" src="assets/wiejski.webp" srcset="assets/wiejski-900.webp 900w, assets/wiejski.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Stół wiejski z wędlinami i kiełbasami" width="1024" height="768">
     <img src="assets/tort.webp" srcset="assets/tort-900.webp 900w, assets/tort.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Piętrowy tort weselny z kwiatami" width="576" height="768">
-    <img src="assets/altana.webp" srcset="assets/altana-900.webp 900w, assets/altana.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Altana w ogrodzie dworku wieczorem" width="1700" height="1003">
+    <img style="object-position:46% 50%" src="assets/altana.webp" srcset="assets/altana-900.webp 900w, assets/altana.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Altana w ogrodzie dworku wieczorem" width="1700" height="1003">
    </div>
    <svg class="ol" viewBox="0 0 100 139" preserveAspectRatio="none" aria-hidden="true"><path class="bg" d="M0 139V50A50 50 0 0 1 100 50V139"/><path class="fg" id="olp" pathLength="1" d="M0 139V50A50 50 0 0 1 100 50V139"/></svg>
    <svg class="sprig" viewBox="0 0 120 60" aria-hidden="true"><path d="M4 56C40 40 76 26 116 6" stroke="#5C6B53" stroke-width="1.6" fill="none"/><g fill="#8A72B5"><ellipse cx="56.4" cy="29.9" rx="4.2" ry="2" transform="rotate(-54 56.4 29.9)"/><ellipse cx="56.4" cy="37.9" rx="4.2" ry="2" transform="rotate(6 56.4 37.9)"/><ellipse cx="63.7" cy="26.3" rx="4.2" ry="2" transform="rotate(-54 63.7 26.3)"/><ellipse cx="63.7" cy="34.3" rx="4.2" ry="2" transform="rotate(6 63.7 34.3)"/><ellipse cx="71.0" cy="22.7" rx="4.2" ry="2" transform="rotate(-54 71.0 22.7)"/><ellipse cx="71.0" cy="30.7" rx="4.2" ry="2" transform="rotate(6 71.0 30.7)"/><ellipse cx="78.2" cy="19.1" rx="4.2" ry="2" transform="rotate(-54 78.2 19.1)"/><ellipse cx="78.2" cy="27.1" rx="4.2" ry="2" transform="rotate(6 78.2 27.1)"/><ellipse cx="85.5" cy="15.6" rx="4.2" ry="2" transform="rotate(-54 85.5 15.6)"/><ellipse cx="85.5" cy="23.6" rx="4.2" ry="2" transform="rotate(6 85.5 23.6)"/><ellipse cx="92.8" cy="12.3" rx="4.2" ry="2" transform="rotate(-54 92.8 12.3)"/><ellipse cx="92.8" cy="20.3" rx="4.2" ry="2" transform="rotate(6 92.8 20.3)"/><ellipse cx="100.1" cy="9.1" rx="4.2" ry="2" transform="rotate(-54 100.1 9.1)"/><ellipse cx="100.1" cy="17.1" rx="4.2" ry="2" transform="rotate(6 100.1 17.1)"/><ellipse cx="107.4" cy="6.0" rx="4.2" ry="2" transform="rotate(-54 107.4 6.0)"/><ellipse cx="107.4" cy="14.0" rx="4.2" ry="2" transform="rotate(6 107.4 14.0)"/><ellipse cx="114.6" cy="3.1" rx="4.2" ry="2" transform="rotate(-54 114.6 3.1)"/><ellipse cx="114.6" cy="11.1" rx="4.2" ry="2" transform="rotate(6 114.6 11.1)"/><ellipse cx="116" cy="6" rx="4" ry="2" transform="rotate(-24 116 6)"/></g></svg>
@@ -221,11 +221,11 @@ form small{grid-column:1/-1;color:var(--ink2)}
 <section class="sec dark" id="sala"><div class="wrap">
  <div class="sala-t"><h2 class="words">Sala, która mieści całą rodzinę</h2><p class="ink2 reveal">Długie stoły albo okrągłe, stół Pary Młodej pod girlandą, parkiet przy antresoli. Biała zastawa i obrusy, kolor dodatków wybierają Państwo.</p></div>
  <div class="sala-g">
-  <figure class="a reveal"><img class="drift" src="assets/sala4.webp" srcset="assets/sala4-900.webp 900w, assets/sala4.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Długie stoły weselne nakryte na przyjęcie" width="1024" height="768" loading="lazy"><figcaption>Stoły ustawione w dwóch rzędach</figcaption></figure>
+  <figure class="a reveal"><img class="drift" style="object-position:38% 50%" src="assets/sala4.webp" srcset="assets/sala4-900.webp 900w, assets/sala4.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Długie stoły weselne nakryte na przyjęcie" width="1024" height="768" loading="lazy"><figcaption>Stoły ustawione w dwóch rzędach</figcaption></figure>
   <figure class="b reveal"><img src="assets/stol2.webp" srcset="assets/stol2-900.webp 900w, assets/stol2.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Stół Pary Młodej udekorowany kwiatami" width="1024" height="768" loading="lazy"><figcaption>Stół Pary Młodej</figcaption></figure>
   <figure class="c reveal"><img src="assets/aleja.webp" srcset="assets/aleja-900.webp 900w, assets/aleja.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Aleja kwiatów między stołami" width="1024" height="768" loading="lazy"><figcaption>Kwiaty i dekoracje</figcaption></figure>
  </div>
- <div class="wide reveal"><img class="drift" src="assets/sala3.webp" srcset="assets/sala3-900.webp 900w, assets/sala3.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Sala z antresolą i szklaną balustradą" width="1024" height="768" loading="lazy"></div>
+ <div class="wide reveal"><img class="drift" style="object-position:50% 72%" src="assets/sala3.webp" srcset="assets/sala3-900.webp 900w, assets/sala3.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Sala z antresolą i szklaną balustradą" width="1024" height="768" loading="lazy"></div>
 </div></section>
 
 <section class="sec" id="menu"><div class="wrap">
@@ -238,12 +238,12 @@ form small{grid-column:1/-1;color:var(--ink2)}
 
 <section class="sec dark" id="noclegi"><div class="wrap nc">
  <div class="t"><h2 class="words">Siedem pokoi piętro wyżej</h2><p class="ink2 reveal" style="margin-top:20px">Każdy z własną łazienką. Goście z daleka nie szukają hotelu ani taksówki o trzeciej w nocy, a Para Młoda dostaje apartament nowożeńców.</p><a class="btn reveal" href="#kontakt" style="margin-top:12px">Zapytaj o pokoje</a></div>
- <figure class="p1 reveal"><img class="drift" src="assets/pokoj.webp" srcset="assets/pokoj-900.webp 900w, assets/pokoj.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Pokój dwuosobowy na poddaszu" width="1024" height="768" loading="lazy"></figure>
- <figure class="p2 reveal"><img src="assets/pokoj3.webp" srcset="assets/pokoj3-900.webp 900w, assets/pokoj3.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Pokój z dwoma łóżkami" width="1024" height="768" loading="lazy"></figure>
+ <figure class="p1 reveal"><img class="drift" style="object-position:58% 50%" src="assets/pokoj.webp" srcset="assets/pokoj-900.webp 900w, assets/pokoj.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Pokój dwuosobowy na poddaszu" width="1024" height="768" loading="lazy"></figure>
+ <figure class="p2 reveal"><img style="object-position:62% 50%" src="assets/pokoj3.webp" srcset="assets/pokoj3-900.webp 900w, assets/pokoj3.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Pokój z dwoma łóżkami" width="1024" height="768" loading="lazy"></figure>
 </div></section>
 
 <section class="sec" id="altana"><div class="wrap alt">
- <div class="ph reveal"><img class="drift" src="assets/altana2.webp" srcset="assets/altana2-900.webp 900w, assets/altana2.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Drewniana altana w ogrodzie z białym płotkiem" width="1024" height="768" loading="lazy"></div>
+ <div class="ph reveal"><img class="drift" style="object-position:50% 60%" src="assets/altana2.webp" srcset="assets/altana2-900.webp 900w, assets/altana2.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Drewniana altana w ogrodzie z białym płotkiem" width="1024" height="768" loading="lazy"></div>
  <div><h2 class="words">Poprawiny pod altaną</h2><p class="ink2 reveal" style="margin-top:20px">Drugi dzień w ogrodzie: zadaszona altana z oświetleniem, trawnik i grill. Na poprawiny żurek, kwaśnica z żeberkiem, bigos albo placek po zbójnicku.</p><a class="btn ghost reveal" href="#menu" data-tab="poprawiny">Menu poprawinowe</a></div>
 </div></section>
 
