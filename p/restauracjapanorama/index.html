@@ -67,7 +67,7 @@ section[id]{scroll-margin-top:var(--stack)}
 
 /* HERO */
 .hero{position:relative;background:var(--beskid);color:#fff}
-.js .hero{height:270vh}
+.js .hero{height:440vh}
 .stage{position:relative;height:100vh;height:100svh;overflow:hidden}
 .js .stage{position:sticky;top:0}
 .stage img.still,.stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:57% 50%}
@@ -148,7 +148,7 @@ html:not(.js) .lbl,html:not(.js) .ov{display:none}
 .dop{margin-top:24px;display:grid;gap:8px;color:var(--mut);font-size:1rem;padding-left:0;list-style:none}
 .dop li{padding-left:22px;position:relative}
 .dop li::before{content:"";position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--brick)}
-.fot{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fot{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px}
 .fot img{width:100%;object-fit:cover;border-radius:4px}
 .fot .w{grid-column:1/-1;aspect-ratio:16/9}
 .fot .s{aspect-ratio:4/5}
@@ -184,6 +184,23 @@ footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--
 .fnav a{text-decoration:none;color:var(--ink);padding:10px 0;display:inline-block}
 .freg{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 28px}
 .mark{width:54px;height:24px;flex:none}
+
+
+/* ruch w sekcjach */
+.sec{position:relative;overflow:hidden}
+.driftrow{position:relative;height:0;pointer-events:none}
+.drift{position:absolute;left:0;top:0;margin-left:-20vw;white-space:nowrap;font:400 clamp(5.5rem,14vw,13rem)/1 var(--fh);letter-spacing:-.01em;color:rgba(25,34,36,.06);will-change:transform;user-select:none;z-index:0}
+.dark .drift{color:rgba(238,241,237,.065)}
+.kuch,.sale,.spec,.hot,.okno{position:relative;z-index:1}
+.ri{position:relative}
+[data-f]{will-change:transform}
+.ri.a>img,.ri.b>img,.ri.w>img,.ri.s>img{width:100%;height:100%;object-fit:cover;border-radius:4px;display:block}
+.js .ri{clip-path:inset(9% 5% 9% 5% round 4px);transition:clip-path 1.3s cubic-bezier(.22,.61,.36,1)}
+.js .ri.in{clip-path:inset(-60px -60px -60px -60px)}
+.rm .ri{clip-path:none!important}
+.float{animation:bob 8s ease-in-out infinite}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -12px}}
+.rm .float{animation:none}
 
 /* odsłanianie */
 .js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
@@ -259,8 +276,9 @@ footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--
  <div class="wrap">
   <h2 class="h2 reveal">Kuchnia staropolska, którą Nowy Sącz zna od 1966 roku</h2>
   <p class="lead">Szef kuchni od lat stawia na dawne polskie przepisy i dziczyznę przyrządzaną na wiele sposobów. W tej samej karcie są lekkie przystawki, zupy, desery i dania wegetariańskie.</p>
+  <div class="driftrow" aria-hidden="true"><div class="drift" data-d="-36" style="top:10px">od 1966 · dziczyzna · kuchnia staropolska</div></div>
   <div class="kuch">
-   <figure><img src="a/kuchnia.jpg" width="735" height="530" alt="Zupa w glinianej misie, razowy chleb i jarzębina na stole"><figcaption>Śniadania od 7:00, obiady i kolacje do 22:00.</figcaption></figure>
+   <figure><div class="ri "><img data-f="-60" src="a/kuchnia.jpg" width="735" height="530" alt="Zupa w glinianej misie, razowy chleb i jarzębina na stole"></div><figcaption>Śniadania od 7:00, obiady i kolacje do 22:00.</figcaption></figure>
    <div>
     <div class="karta stagger">
      <div><h3>Dziczyzna</h3><p>Specjalność szefa kuchni, przyrządzana na wiele sposobów, zależnie od sezonu.</p></div>
@@ -276,7 +294,7 @@ footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--
    <p><strong>Otwarte 7:00–22:00</strong>Od hotelowego śniadania po kolację przy oknie.</p>
   </div>
   <div class="okno">
-   <img src="a/sala-okna.jpg" width="1024" height="683" alt="Sala restauracji z przeszkleniami na całą ścianę" loading="lazy">
+   <div class="ri "><img data-f="-40" src="a/sala-okna.jpg" width="1024" height="683" alt="Sala restauracji z przeszkleniami na całą ścianę" loading="lazy"></div>
    <div class="reveal">
     <h3>Stolik przy oknie</h3>
     <p>Restauracja zawdzięcza nazwę widokowi: z sali patrzy się na dolinę Dunajca i pasma Beskidu. Przy rezerwacji wystarczy powiedzieć, że chcą Państwo miejsce przy szybie.</p>
@@ -290,9 +308,10 @@ footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--
   <h2 class="h2 reveal">Sale na 20 do 300 gości. Od chrzcin po wesele</h2>
   <p class="lead">Duża sala balowa ze sceną dla orkiestry i osobne sale bankietowe. Jadłospis i cenę ustalamy z Państwem przy jednym stole, a monitorowany parking jest pod budynkiem.</p>
   <div class="sale">
-   <img class="a" src="a/sala-balowa.jpg" width="1024" height="424" alt="Sala balowa nakryta do przyjęcia" loading="lazy">
-   <img class="b" src="a/sala-stoly.jpg" width="1024" height="424" alt="Długie stoły weselne w jasnej sali" loading="lazy">
+   <div class="ri a"><img data-f="-30" src="a/sala-balowa.jpg" width="1024" height="424" alt="Sala balowa nakryta do przyjęcia" loading="lazy"></div>
+   <div class="ri b"><img data-f="-110" src="a/sala-stoly.jpg" width="1024" height="424" alt="Długie stoły weselne w jasnej sali" loading="lazy"></div>
   </div>
+  <div class="driftrow" aria-hidden="true"><div class="drift" data-d="40" style="top:-10px">wesela · chrzciny · studniówki · konferencje</div></div>
   <div class="spec stagger">
    <div><h3>Wesela</h3><p>Powitanie chlebem i solą, obiad z czterema rodzajami mięs, trzy gorące dania, tort, ciasta i wiejskie wędliny. W restauracji albo z wyjazdem.</p><em>menu do ustalenia</em></div>
    <div><h3>Uroczystości</h3><p>Urodziny, imieniny, chrzciny i każda inna okazja, przy której rodzina siada razem do stołu.</p><em class="num">od 50 zł / os.</em></div>
@@ -307,6 +326,7 @@ footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--
  <div class="wrap">
   <h2 class="h2 reveal">Pokoje z balkonem nad Dunajcem</h2>
   <p class="lead">Hotel Dunajec *** ma pokoje od jedno- do czteroosobowych, każdy z łazienką, klimatyzacją, telewizorem i Wi-Fi. Z balkonów widać rzekę i Beskid Sądecki, a do rynku idzie się przez centrum miasta.</p>
+  <div class="driftrow" aria-hidden="true"><div class="drift" data-d="-32" style="top:10px">nad Dunajcem · Beskid Sądecki · Tatry</div></div>
   <div class="hot">
    <div>
     <div class="cennik">
@@ -329,12 +349,12 @@ footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--
    </div>
    <div>
     <div class="fot">
-     <img class="w" src="a/balkon.jpg" width="1024" height="1024" alt="Widok z hotelowego balkonu na Dunajec i góry" loading="lazy">
-     <img class="s" src="a/pokoj.jpg" width="1024" height="683" alt="Pokój dwuosobowy z łożem małżeńskim" loading="lazy">
-     <img class="s" src="a/noc.jpg" width="1024" height="682" alt="Wejście do Hotelu Dunajec wieczorem" loading="lazy">
+     <div class="ri w"><img data-f="-15" src="a/balkon.jpg" width="1024" height="1024" alt="Widok z hotelowego balkonu na Dunajec i góry" loading="lazy"></div>
+     <div class="ri s"><img data-f="-30" src="a/pokoj.jpg" width="1024" height="683" alt="Pokój dwuosobowy z łożem małżeńskim" loading="lazy"></div>
+     <div class="ri s"><img data-f="-55" src="a/noc.jpg" width="1024" height="682" alt="Wejście do Hotelu Dunajec wieczorem" loading="lazy"></div>
     </div>
     <div class="velo">
-     <img src="a/velo.jpg" width="1024" height="768" alt="Ścieżka rowerowa wzdłuż Dunajca" loading="lazy">
+     <img class="float" src="a/velo.jpg" width="1024" height="768" alt="Ścieżka rowerowa wzdłuż Dunajca" loading="lazy">
      <div><strong>VeloDunajec zaczyna się pod hotelem</strong><p>Malownicza trasa rowerowa wzdłuż rzeki, prosto spod budynku.</p></div>
     </div>
    </div>
@@ -390,7 +410,7 @@ const setH=()=>R.style.setProperty('--stack',top.offsetHeight+'px');setH();addEv
 document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
 // odsłanianie
 document.querySelectorAll('.stagger').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i)));
-const els=[...document.querySelectorAll('.reveal,.stagger')];let fired=false;
+const els=[...document.querySelectorAll('.reveal,.stagger,.ri')];let fired=false;
 const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'}):null;
 els.forEach(e=>io?io.observe(e):e.classList.add('in'));
 const sweep=()=>els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingClientRect().top<innerHeight)e.classList.add('in')});
@@ -419,20 +439,24 @@ function frame(){
  const r1=cover(port?.64:.5,port?.42:.44);
  const z=port?1.9:2.5;const w0=r1.w/z,h0=r1.h/z;
  let x0=PIN[0]*W-w0*(port?.45:.62),y0=PIN[1]*H-h0*(port?.28:.42);x0=cl(x0,0,W-w0);y0=cl(y0,0,H-h0);
- const e=ease(cl(p/.72,0,1));
- const r={x:x0+(r1.x-x0)*e,y:y0+(r1.y-y0)*e,w:w0+(r1.w-w0)*e,h:h0+(r1.h-h0)*e};
+ const e=ease(cl(p/.58,0,1));
+ let r={x:x0+(r1.x-x0)*e,y:y0+(r1.y-y0)*e,w:w0+(r1.w-w0)*e,h:h0+(r1.h-h0)*e};
+ const e2=ease(cl((p-.78)/.22,0,1));
+ if(e2>0){const k=1+.14*e2,w2=r.w/k,h2=r.h/k,tx=(port?.62:.66)*W,ty=.36*H;let nx=r.x+(tx-r.x)*(1-1/k),ny=r.y+(ty-r.y)*(1-1/k);nx=cl(nx,0,W-w2);ny=cl(ny,0,H-h2);r={x:nx,y:ny,w:w2,h:h2}}
  if(ok&&!rm){ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(img,r.x,r.y,r.w,r.h,0,0,cv.width,cv.height)}
  const M=(u,v)=>[(u*W-r.x)/r.w*vw,(v*H-r.y)/r.h*vh];
  let map=M;if(rm){const s=Math.max(vw/W,vh/H),ox=(vw-W*s)*.57,oy=(vh-H*s)*.5;map=(u,v)=>[u*W*s+ox,v*H*s+oy]}
  ridge.setAttribute('d','M'+RG.map(q=>map(q[0],q[1]).map(n=>n.toFixed(1)).join(' ')).join(' L'));
- ridge.setAttribute('stroke-dashoffset',(1-cl((p-.42)/.4,0,1)).toFixed(4));
+ ridge.setAttribute('stroke-dashoffset',(1-cl((p-.46)/.3,0,1)).toFixed(4));
  const put=(el,q,fix)=>{let[x,y]=map(q[0],q[1]);if(fix){const sw=el.firstElementChild.offsetWidth;x=cl(x,14,vw-sw-26)}el.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`};
  put(lPin,PIN);put(lRiver,port?[.70,.40]:RIVER,1);put(lMount,port?[.62,MOUNT[1]]:MOUNT,1);
- lPin.classList.toggle('off',port&&p>.55);lRiver.classList.toggle('off',p<.5);lMount.classList.toggle('off',p<.72);lRiver.classList.toggle('up',port);
+ lPin.classList.toggle('off',port&&p>.5);lRiver.classList.toggle('off',p<.42);lMount.classList.toggle('off',p<.7);lRiver.classList.toggle('up',port);
  prog.style.transform=`scaleX(${p.toFixed(4)})`;
 }
 function onScroll(){
- if(!rm){const b=hero.getBoundingClientRect(),span=hero.offsetHeight-innerHeight;p=cl(-b.top/(span*.92),0,1)}
+ if(!rm){const b=hero.getBoundingClientRect(),span=hero.offsetHeight-innerHeight;p=cl(-b.top/(span*.94),0,1)}
+ if(!rm){document.querySelectorAll('[data-f]').forEach(el=>{const r=el.parentElement.getBoundingClientRect();if(r.bottom<-200||r.top>innerHeight+200)return;const c=(r.top+r.height/2-innerHeight/2)/innerHeight;el.style.transform=`translate3d(0,${(c*parseFloat(el.dataset.f)).toFixed(1)}px,0)`});
+ document.querySelectorAll('.drift').forEach(el=>{const r=el.parentElement.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const c=(innerHeight-r.top)/(innerHeight+r.height);el.style.transform=`translate3d(${((c-.5)*parseFloat(el.dataset.d)).toFixed(2)}vw,0,0)`})}
  document.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);
  top.classList.toggle('scrolled',scrollY>20);
  frame();
