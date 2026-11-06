@@ -48,10 +48,10 @@ h2{font-size:clamp(2.1rem,3.6vw,3.3rem)}
 .hero{background:var(--wall);position:relative}
 .js .hero{height:420vh}
 .js .hero .pin{height:100vh;height:100svh;min-height:0}
-.win{will-change:transform}
 .incap{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:0 0 64px;color:#fff;opacity:0;pointer-events:none}
 html:not(.js) .incap{display:none}
 .incap::before{content:"";position:absolute;inset:-160px 0 0;background:linear-gradient(0deg,rgba(14,22,28,.72),rgba(14,22,28,0));z-index:-1}
+.incap .wrap{display:block}
 .incap h2{font-size:clamp(2rem,3.6vw,3.2rem);max-width:15em;text-shadow:0 1px 18px rgba(0,0,0,.25)}
 .incap p{max-width:34em;color:#e6edf1;margin:12px 0 20px}
 .incap .btn-l{color:#fff}
@@ -67,7 +67,7 @@ html:not(.js) .incap{display:none}
  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 30px 60px -20px rgba(20,30,40,.35),0 0 0 10px #dfe4e7,0 0 0 11px #cfd6da;perspective:2300px}
 .win::after{content:"";position:absolute;left:-26px;right:-26px;bottom:-24px;height:14px;background:#d5dbdf;border-radius:2px;box-shadow:0 6px 14px -6px rgba(0,0,0,.25)}
 .view{position:absolute;inset:var(--fw);overflow:hidden;background:#cfd8de}
-.view img{width:100%;height:100%;object-fit:cover;transform:translateY(var(--vy,0)) scale(var(--vz,1));transform-origin:50% 60%;filter:blur(var(--vb,0px)) saturate(var(--vs,1))}
+.view img{width:100%;height:100%;object-fit:cover;transform:translateY(var(--vy,0)) scale(var(--vz,1));transform-origin:50% 60%;filter:var(--vf,none)}
 .sash{position:absolute;inset:var(--fw);border:clamp(10px,1.3vw,16px) solid #454d52;border-radius:2px;transform-origin:var(--ox,0%) var(--oy,50%);
  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,72deg));box-shadow:0 0 0 1px #2e3438,inset 0 0 0 1px rgba(255,255,255,.08),12px 16px 30px -12px rgba(0,0,0,.4);transform-style:preserve-3d;will-change:transform}
 .glass{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.78) 0%,rgba(228,238,245,.6) 28%,rgba(255,255,255,.18) 44%,rgba(255,255,255,.3) 50%,rgba(214,228,238,.5) 64%,rgba(255,255,255,.72) 100%);
@@ -205,7 +205,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}footer a{text-decoration:non
 <p class="after"><b>6,3 mln czytelników</b> w ostatnich 12 miesiącach. Producenci, handlowcy, montażyści i ci, którzy wybierają okna do domu.</p>
 </div>
 <div class="scene"><div class="win" role="img" aria-label="Okno otwierające się na jasną halę produkcji okien">
-<div class="view"><picture><source media="(max-width:760px)" srcset="img/widok-900.webp"><img src="img/widok-1600.webp" alt="" width="1600" height="1770" fetchpriority="high"></picture></div>
+<div class="view"><picture><source media="(max-width:760px)" srcset="img/widok-1200.webp"><img src="img/widok-full.webp" alt="" width="1803" height="1398" fetchpriority="high" decoding="sync"></picture></div>
 <div class="sash"><div class="glass"></div><div class="handle"></div></div>
 </div></div>
 </div><div class="incap"><div class="wrap"><h2>Tak wygląda branża od środka.</h2><p>O producentach, maszynach, montażu i ludziach stolarki piszemy codziennie od 1999 roku.</p><div class="acts"><a class="btn btn-b" href="#aktualnosci">Czytaj aktualności</a><a class="btn btn-l" href="#wejscia">Czego szukasz?</a></div></div></div><div class="hint" aria-hidden="true"><i></i></div></div></section>
@@ -299,7 +299,7 @@ win.style.transformOrigin=geo.ox+'px '+geo.oy+'px';sash.style.opacity=(1-e(cl((z
 var inside=e(cl((p-.8)/.2));
 vw.style.setProperty('--vz',(1.14-.14*e(cl((p-.3)/.25))+.07*inside).toFixed(4));
 vw.style.setProperty('--vy',(-3*inside).toFixed(2)+'%');
-vw.style.setProperty('--vb',((1-op)*(1.4-.9*tl)).toFixed(2)+'px');vw.style.setProperty('--vs',(.75+.25*op).toFixed(3));
+var vb=(1-op)*(1.4-.9*tl);vw.style.setProperty('--vf',op>.995?'none':'blur('+vb.toFixed(2)+'px) saturate('+(.75+.25*op).toFixed(3)+')');
 var f=1-e(cl((p-.46)/.1));txt.style.opacity=f.toFixed(3);txt.style.transform='translateY('+((1-f)*-24).toFixed(1)+'px)';txt.style.pointerEvents=f<.4?'none':'';
 set('--af',(e(cl((p-.3)/.12))*f).toFixed(3));
 cap.style.opacity=e(cl((p-.84)/.1)).toFixed(3);cap.style.transform='translateY('+((1-e(cl((p-.84)/.1)))*16).toFixed(1)+'px)';cap.style.pointerEvents=p>.86?'auto':'none';}
