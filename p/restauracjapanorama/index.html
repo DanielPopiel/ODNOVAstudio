@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Restauracja Panorama i Hotel Dunajec – Nowy Sącz | makieta ODNOVA Studio</title>
+<meta name="description" content="Restauracja Panorama i Hotel Dunajec w centrum Nowego Sącza. Kuchnia staropolska od 1966 roku, sale na 20–300 osób, pokoje z balkonem na Dunajec.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="Restauracja Panorama i Hotel Dunajec – makieta nowej strony">
+<meta property="og:description" content="Poglądowa wersja nowej strony przygotowana przez ODNOVA Studio.">
+<meta property="og:image" content="https://www.odnovastudio.com/p/restauracjapanorama/a/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1d2b2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d2b2e'/%3E%3Cpath d='M8 42 L20 30 L27 35 L38 22 L47 31 L56 26' fill='none' stroke='%23e39a7b' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+ --mist:#eef1ed;--paper:#f8f9f6;--ink:#192224;--mut:#4d5959;--line:rgba(25,34,36,.16);
+ --beskid:#1d2b2e;--beskid2:#25373a;--on-d:#eef1ed;--mut-d:#b5c1bf;--line-d:rgba(238,241,237,.18);
+ --brick:#a2412a;--brick-h:#8a3622;--brick-l:#e8a080;
+ --fh:'Bona Nova',Georgia,serif;--fb:'Hanken Grotesk',system-ui,sans-serif;
+ --stack:104px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.06rem/1.6 var(--fb);caret-color:var(--brick);accent-color:var(--brick)}
+::selection{background:var(--brick);color:#fff}
+:focus-visible{outline:2px solid var(--brick-l);outline-offset:3px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--fh);font-weight:400;line-height:1.08;margin:0;letter-spacing:-.005em}
+p{margin:0}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+section[id]{scroll-margin-top:var(--stack)}
+.num{font-variant-numeric:lining-nums tabular-nums}
+
+/* pasek makiety + nagłówek */
+.top{position:fixed;inset:0 0 auto 0;z-index:50}
+.mock{background:var(--brick);color:#fff;font:500 .8rem/1.35 var(--fb);text-align:center;padding:6px 16px}
+.mock a{color:#fff}
+.hdr{background:rgba(29,43,46,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--on-d);border-bottom:1px solid var(--line-d);transition:background .3s}
+.top.scrolled .hdr{background:rgba(29,43,46,.97)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;min-height:66px}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.brand b{font:400 1.7rem/1 var(--fh)}
+.brand small{font:500 .74rem/1 var(--fb);color:var(--mut-d);margin-top:5px}
+.nav{display:flex;gap:28px;margin-left:auto}
+.nav a{text-decoration:none;padding:8px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-bottom-color:currentColor}
+.tel{font-weight:600;text-decoration:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font:600 1rem/1 var(--fb);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-p{background:var(--brick);color:#fff}
+.btn-p:hover{background:var(--brick-h)}
+.btn-g{border-color:rgba(238,241,237,.55);color:#fff}
+.btn-g:hover{background:rgba(238,241,237,.12)}
+.btn svg{width:18px;height:18px;flex:none}
+.mnav{display:none;margin-left:auto;position:relative}
+.mnav summary{list-style:none;cursor:pointer;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center;font-weight:600;padding:0 6px}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:-8px;top:calc(100% + 10px);background:var(--beskid);border:1px solid var(--line-d);min-width:230px;padding:8px 0;box-shadow:0 18px 40px -20px rgba(0,0,0,.6)}
+.mnav nav a{display:block;padding:12px 20px;text-decoration:none;font-size:1.04rem}
+.mnav .mcta{display:none}
+@media (max-width:980px){.nav,.hdr .tel{display:none}.mnav{display:block}}
+@media (max-width:440px){.hdr .btn{display:none}.mnav .mcta{display:block;font-weight:600;color:var(--brick-l)}.brand b{font-size:1.5rem}}
+
+/* HERO */
+.hero{position:relative;background:var(--beskid);color:#fff}
+.js .hero{height:270vh}
+.stage{position:relative;height:100vh;height:100svh;overflow:hidden}
+.js .stage{position:sticky;top:0}
+.stage img.still,.stage canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:57% 50%}
+.js .stage img.still{display:none}
+.rm .stage img.still{display:block}
+.rm .stage canvas{display:none}
+.stage canvas{display:none}
+.js:not(.rm) .stage canvas{display:block}
+.scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(20,31,33,.88) 0%,rgba(20,31,33,.55) 30%,rgba(20,31,33,0) 58%),linear-gradient(to bottom,rgba(20,31,33,.45),rgba(20,31,33,0) 26%)}
+svg.ov{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.ridge{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.lbl{position:absolute;left:0;top:0;pointer-events:none;font:500 .92rem/1.25 var(--fb);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7),0 0 18px rgba(0,0,0,.35);white-space:nowrap;transition:opacity .4s;will-change:transform}
+.lbl b{display:block;font:400 1.35rem/1.1 var(--fh)}
+.lbl.pin::before{content:"";position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:var(--brick);box-shadow:0 0 0 5px rgba(255,255,255,.35),0 0 0 1px #fff}
+.lbl.pin span{position:absolute;left:22px;top:-14px}
+.lbl.tick::before{content:"";position:absolute;left:0;top:0;width:1px;height:38px;background:#fff;box-shadow:0 0 3px rgba(0,0,0,.6)}
+.lbl.tick span{position:absolute;left:10px;top:30px}
+.lbl.up::before{top:-38px}
+.lbl.up span{top:-40px}
+.lbl.off{opacity:0}
+html:not(.js) .lbl,html:not(.js) .ov{display:none}
+.hcopy{position:absolute;left:0;right:0;bottom:0;padding-bottom:clamp(34px,7vh,72px)}
+.hcopy h1{font-size:clamp(2.2rem,5vw,4.6rem);max-width:17ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hcopy p{margin-top:18px;max-width:46ch;font-size:clamp(1.05rem,1.4vw,1.2rem);color:#e7ecea}
+.hcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.prog{position:absolute;left:0;bottom:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--brick-l)}
+.rm .prog,html:not(.js) .prog{display:none}
+
+/* sekcje */
+.sec{padding:clamp(80px,11vw,150px) 0}
+.light{background:var(--paper);color:var(--ink)}
+.mist{background:var(--mist)}
+.dark{background:var(--beskid);color:var(--on-d)}
+.h2{font-size:clamp(2.3rem,4.6vw,3.9rem);max-width:20ch}
+.lead{font-size:1.18rem;max-width:58ch;color:var(--mut);margin-top:22px}
+.dark .lead{color:var(--mut-d)}
+
+/* restauracja */
+.kuch{display:grid;grid-template-columns:6fr 6fr;gap:clamp(28px,5vw,72px);margin-top:clamp(48px,6vw,80px);align-items:start}
+.kuch figure{margin:0}
+.kuch figure img{width:100%;aspect-ratio:4/3.3;object-fit:cover;border-radius:4px}
+.kuch figcaption{font-size:.9rem;color:var(--mut);margin-top:10px}
+.karta{border-top:1px solid var(--line)}
+.karta div{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(9ch,13ch) 1fr;gap:18px;align-items:baseline}
+.karta h3{font-size:1.55rem}
+.karta p{color:var(--mut)}
+.karta-note{margin-top:22px;font-size:.98rem;color:var(--mut)}
+.karta-note a{color:var(--brick);font-weight:600}
+.laury{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);margin-top:clamp(64px,8vw,110px);padding-top:36px;border-top:1px solid var(--ink)}
+.laury p{font-size:1.04rem;color:var(--mut)}
+.laury strong{display:block;font:400 1.6rem/1.15 var(--fh);color:var(--ink);margin-bottom:8px}
+.okno{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,5vw,72px);align-items:center;margin-top:clamp(72px,9vw,120px)}
+.okno img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px}
+.okno h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.okno p{margin-top:16px;color:var(--mut)}
+
+/* przyjęcia */
+.sale{display:grid;grid-template-columns:7fr 5fr;gap:18px;margin-top:clamp(48px,6vw,80px);align-items:start}
+.sale img{width:100%;object-fit:cover;border-radius:4px}
+.sale .a{aspect-ratio:16/10}
+.sale .b{aspect-ratio:4/5;margin-top:clamp(40px,8vw,120px)}
+.spec{margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--line-d)}
+.spec div{display:grid;grid-template-columns:minmax(150px,3fr) 6fr 3fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line-d);align-items:baseline}
+.spec h3{font-size:1.7rem}
+.spec p{color:var(--mut-d)}
+.spec em{font-style:normal;color:var(--on-d);font-weight:600;text-align:right}
+.sale-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:40px}
+.sale-cta .tel{color:var(--on-d)}
+
+/* hotel */
+.hot{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,5vw,80px);margin-top:clamp(48px,6vw,80px);align-items:start}
+.cennik{border-top:1px solid var(--ink)}
+.cennik caption{text-align:left;font-size:.95rem;color:var(--mut);padding-bottom:12px}
+.cennik table{width:100%;border-collapse:collapse}
+.cennik td{padding:15px 0;border-bottom:1px solid var(--line)}
+.cennik td:first-child{padding-right:16px}
+.cennik td:last-child{text-align:right;font:400 1.45rem/1 var(--fh);font-variant-numeric:lining-nums;white-space:nowrap}
+.dop{margin-top:24px;display:grid;gap:8px;color:var(--mut);font-size:1rem;padding-left:0;list-style:none}
+.dop li{padding-left:22px;position:relative}
+.dop li::before{content:"";position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--brick)}
+.fot{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fot img{width:100%;object-fit:cover;border-radius:4px}
+.fot .w{grid-column:1/-1;aspect-ratio:16/9}
+.fot .s{aspect-ratio:4/5}
+.velo{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+.velo img{width:150px;aspect-ratio:1;object-fit:cover;border-radius:50%}
+.velo strong{font:400 1.4rem/1.2 var(--fh);display:block;margin-bottom:4px}
+.velo p{color:var(--mut)}
+
+/* kontakt */
+.kont{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,6vw,96px);align-items:start}
+.kont .big{display:block;font:600 clamp(2.2rem,4.4vw,3.5rem)/1 var(--fb);font-variant-numeric:lining-nums tabular-nums;text-decoration:none;margin-top:30px;letter-spacing:-.01em}
+.kont .big:hover{color:var(--brick-l)}
+.kdl{margin-top:32px;display:grid;gap:18px}
+.kdl div{border-top:1px solid var(--line-d);padding-top:14px;display:grid;grid-template-columns:110px 1fr;gap:16px}
+.kdl dt{color:var(--mut-d);font-size:.95rem}
+.kdl dd{margin:0}
+.form{background:var(--paper);color:var(--ink);border-radius:6px;padding:clamp(24px,3.5vw,44px)}
+.form h3{font-size:2rem}
+.form p.n{color:var(--mut);font-size:.95rem;margin-top:8px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.fg .full{grid-column:1/-1}
+label{display:grid;gap:6px;font-size:.95rem;font-weight:500}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1px solid rgba(25,34,36,.28);border-radius:4px;min-height:48px;padding:10px 12px;width:100%}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--brick);outline-offset:1px;border-color:transparent}
+.form .btn{margin-top:22px;width:100%}
+
+footer{background:var(--mist);padding:56px 0 110px;font-size:.96rem;color:var(--mut)}
+.ft{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-start;justify-content:space-between}
+.ft .brand{color:var(--ink)}
+.ft .brand small{color:var(--mut)}
+.fnav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.fnav a{text-decoration:none;color:var(--ink);padding:10px 0;display:inline-block}
+.freg{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 28px}
+.mark{width:54px;height:24px;flex:none}
+
+/* odsłanianie */
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(12px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--i,0)*80ms)}
+.js .stagger.in>*{opacity:1;transform:none}
+.rm .reveal,.rm .stagger>*{opacity:1!important;transform:none!important;transition:none!important}
+
+/* dolny pasek telefonu */
+.mbar{display:none}
+@media (max-width:760px){
+ .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;transform:translateY(110%);transition:transform .35s cubic-bezier(.22,.61,.36,1);box-shadow:0 -10px 30px -18px rgba(0,0,0,.5)}
+ .mbar a{min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;text-decoration:none}
+ .mbar a:first-child{background:var(--beskid);color:#fff}
+ .mbar a:last-child{background:var(--brick);color:#fff}
+ body.past-hero .mbar,html:not(.js) .mbar{transform:none}
+}
+
+@media (max-width:900px){
+ .kuch,.okno,.hot,.kont{grid-template-columns:1fr}
+ .laury{grid-template-columns:1fr;gap:28px}
+ .spec div{grid-template-columns:1fr;gap:6px}
+ .spec em{text-align:left}
+ .sale{grid-template-columns:1fr 1fr;gap:12px}
+ .sale .a{grid-column:1/-1}
+ .sale .b{margin-top:0;aspect-ratio:16/9;grid-column:1/-1}
+}
+@media (max-width:600px){
+ .karta div{grid-template-columns:1fr;gap:4px}
+ .fg{grid-template-columns:1fr}
+ .kdl div{grid-template-columns:1fr;gap:2px}
+ .lbl{font-size:.82rem}.lbl b{font-size:1.12rem}
+ .hcta .btn{flex:1 1 auto}
+ .hcopy p{font-size:1rem;margin-top:12px}
+ .hcopy p .lg{display:none}
+ .hcta{margin-top:20px}
+ .velo img{width:96px}
+}
+</style>
+</head>
+<body>
+<div class="top" id="top">
+ <div class="mock">Makieta poglądowa nowej strony od <a href="https://www.odnovastudio.com">ODNOVA Studio</a>. Zdjęcia i treści z obecnej strony restauracji.</div>
+ <header class="hdr"><div class="wrap">
+  <a class="brand" href="#start" aria-label="Restauracja Panorama, strona główna"><b>Panorama</b><small>restauracja · Hotel Dunajec</small></a>
+  <nav class="nav" aria-label="Główne"><a href="#restauracja">Restauracja</a><a href="#przyjecia">Przyjęcia</a><a href="#hotel">Hotel</a><a href="#kontakt">Kontakt</a></nav>
+  <a class="tel num" href="tel:+48184437515">18 443 75 15</a>
+  <a class="btn btn-p" href="#kontakt">Rezerwacja</a>
+  <details class="mnav"><summary aria-label="Otwórz menu">Menu</summary><nav aria-label="Menu mobilne"><a href="#restauracja">Restauracja</a><a href="#przyjecia">Przyjęcia</a><a href="#hotel">Hotel</a><a href="#kontakt">Kontakt</a><a class="mcta" href="#kontakt">Rezerwacja</a></nav></details>
+ </div></header>
+</div>
+
+<main>
+<section class="hero" id="start" aria-label="Widok z restauracji na Dunajec i Beskidy">
+ <div class="stage" id="stage">
+  <img class="still" src="a/hero-2752.jpg" width="2752" height="1536" alt="Nowy Sącz z lotu ptaka: Hotel Dunajec przy skarpie, Dunajec i pasmo Beskidu na horyzoncie">
+  <canvas id="cv" aria-hidden="true"></canvas>
+  <div class="scrim"></div>
+  <svg class="ov" id="ov" aria-hidden="true"><path class="ridge" id="ridge" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></svg>
+  <div class="lbl pin" id="lPin" aria-hidden="true"><span><b>Tu jesteśmy</b>ul. Romanowskiego 6</span></div>
+  <div class="lbl tick off" id="lRiver" aria-hidden="true"><span><b>Dunajec</b>ścieżka VeloDunajec pod hotelem</span></div>
+  <div class="lbl tick up off" id="lMount" aria-hidden="true"><span><b>Beskid Sądecki</b>przy dobrej widoczności także Tatry</span></div>
+  <div class="hcopy"><div class="wrap">
+   <h1>Obiad z widokiem na Dunajec i&nbsp;Beskidy</h1>
+   <p>Restauracja Panorama i Hotel Dunajec w centrum Nowego Sącza. Kuchnia staropolska od 1966 roku<span class="lg">, sale na przyjęcia i pokoje z balkonem nad rzeką</span>.</p>
+   <div class="hcta"><a class="btn btn-p" href="#kontakt">Zarezerwuj stolik</a><a class="btn btn-g num" href="tel:+48184437515"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>18 443 75 15</a></div>
+  </div></div>
+  <div class="prog" id="prog"></div>
+ </div>
+</section>
+
+<section class="sec light" id="restauracja">
+ <div class="wrap">
+  <h2 class="h2 reveal">Kuchnia staropolska, którą Nowy Sącz zna od 1966 roku</h2>
+  <p class="lead">Szef kuchni od lat stawia na dawne polskie przepisy i dziczyznę przyrządzaną na wiele sposobów. W tej samej karcie są lekkie przystawki, zupy, desery i dania wegetariańskie.</p>
+  <div class="kuch">
+   <figure><img src="a/kuchnia.jpg" width="735" height="530" alt="Zupa w glinianej misie, razowy chleb i jarzębina na stole"><figcaption>Śniadania od 7:00, obiady i kolacje do 22:00.</figcaption></figure>
+   <div>
+    <div class="karta stagger">
+     <div><h3>Dziczyzna</h3><p>Specjalność szefa kuchni, przyrządzana na wiele sposobów, zależnie od sezonu.</p></div>
+     <div><h3>Staropolskie</h3><p>Dania, które zamawia się w Sączu na niedzielny obiad z rodziną.</p></div>
+     <div><h3>Bez mięsa</h3><p>Pełne dania wegetariańskie, nie tylko dodatki.</p></div>
+     <div><h3>Do kawy</h3><p>Desery, kawa z ekspresu w coffee barze i wybór alkoholi.</p></div>
+    </div>
+   </div>
+  </div>
+  <div class="laury stagger">
+   <p><strong>Trzy Srebrne Patelnie</strong>Nagroda Centralnej Komisji CZSS w Warszawie, zdobyta trzykrotnie.</p>
+   <p><strong>Znak jakości</strong>Wyróżnienie za całokształt działalności restauracji.</p>
+   <p><strong>Otwarte 7:00–22:00</strong>Od hotelowego śniadania po kolację przy oknie.</p>
+  </div>
+  <div class="okno">
+   <img src="a/sala-okna.jpg" width="1024" height="683" alt="Sala restauracji z przeszkleniami na całą ścianę" loading="lazy">
+   <div class="reveal">
+    <h3>Stolik przy oknie</h3>
+    <p>Restauracja zawdzięcza nazwę widokowi: z sali patrzy się na dolinę Dunajca i pasma Beskidu. Przy rezerwacji wystarczy powiedzieć, że chcą Państwo miejsce przy szybie.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="sec dark" id="przyjecia">
+ <div class="wrap">
+  <h2 class="h2 reveal">Sale na 20 do 300 gości. Od chrzcin po wesele</h2>
+  <p class="lead">Duża sala balowa ze sceną dla orkiestry i osobne sale bankietowe. Jadłospis i cenę ustalamy z Państwem przy jednym stole, a monitorowany parking jest pod budynkiem.</p>
+  <div class="sale">
+   <img class="a" src="a/sala-balowa.jpg" width="1024" height="424" alt="Sala balowa nakryta do przyjęcia" loading="lazy">
+   <img class="b" src="a/sala-stoly.jpg" width="1024" height="424" alt="Długie stoły weselne w jasnej sali" loading="lazy">
+  </div>
+  <div class="spec stagger">
+   <div><h3>Wesela</h3><p>Powitanie chlebem i solą, obiad z czterema rodzajami mięs, trzy gorące dania, tort, ciasta i wiejskie wędliny. W restauracji albo z wyjazdem.</p><em>menu do ustalenia</em></div>
+   <div><h3>Uroczystości</h3><p>Urodziny, imieniny, chrzciny i każda inna okazja, przy której rodzina siada razem do stołu.</p><em class="num">od 50 zł / os.</em></div>
+   <div><h3>Firmy i szkoły</h3><p>Spotkania pracownicze, studniówki, komersy. Duże imprezy obsługujemy na miejscu albo we wskazanym lokalu.</p><em>catering</em></div>
+   <div><h3>Konferencje</h3><p>Rzutnik, ekran i nagłośnienie. W przerwach kawa, herbata, soki i drobne ciastka.</p><em class="num">20–300 osób</em></div>
+  </div>
+  <div class="sale-cta"><a class="btn btn-p" href="#kontakt">Zapytaj o wolny termin</a><span class="tel num">albo zadzwoń: <a href="tel:+48184437515">18 443 75 15</a></span></div>
+ </div>
+</section>
+
+<section class="sec light" id="hotel">
+ <div class="wrap">
+  <h2 class="h2 reveal">Pokoje z balkonem nad Dunajcem</h2>
+  <p class="lead">Hotel Dunajec *** ma pokoje od jedno- do czteroosobowych, każdy z łazienką, klimatyzacją, telewizorem i Wi-Fi. Z balkonów widać rzekę i Beskid Sądecki, a do rynku idzie się przez centrum miasta.</p>
+  <div class="hot">
+   <div>
+    <div class="cennik">
+     <table class="num"><caption>Cena za dobę. Śniadanie i parking w cenie.</caption>
+      <tr><td>Pokój 1-osobowy</td><td>220 zł</td></tr>
+      <tr><td>Pokój 2-osobowy</td><td>320 zł</td></tr>
+      <tr><td>Pokój 2-osobowy z łożem małżeńskim</td><td>350 zł</td></tr>
+      <tr><td>Pokój 2-osobowy dla jednej osoby</td><td>220 zł</td></tr>
+      <tr><td>Pokój 3-osobowy</td><td>420 zł</td></tr>
+      <tr><td>Pokój 4-osobowy</td><td>550 zł</td></tr>
+     </table>
+    </div>
+    <ul class="dop num">
+     <li>Obiadokolacja w restauracji: 40 zł</li>
+     <li>Dzieci do 3 lat: nocleg i śniadanie bezpłatnie</li>
+     <li>Dzieci do 10 lat: śniadanie o połowę taniej</li>
+     <li>Pies w pokoju: 50 zł za dobę</li>
+    </ul>
+    <a class="btn btn-p" href="#kontakt" style="margin-top:30px">Sprawdź wolny pokój</a>
+   </div>
+   <div>
+    <div class="fot">
+     <img class="w" src="a/balkon.jpg" width="1024" height="1024" alt="Widok z hotelowego balkonu na Dunajec i góry" loading="lazy">
+     <img class="s" src="a/pokoj.jpg" width="1024" height="683" alt="Pokój dwuosobowy z łożem małżeńskim" loading="lazy">
+     <img class="s" src="a/noc.jpg" width="1024" height="682" alt="Wejście do Hotelu Dunajec wieczorem" loading="lazy">
+    </div>
+    <div class="velo">
+     <img src="a/velo.jpg" width="1024" height="768" alt="Ścieżka rowerowa wzdłuż Dunajca" loading="lazy">
+     <div><strong>VeloDunajec zaczyna się pod hotelem</strong><p>Malownicza trasa rowerowa wzdłuż rzeki, prosto spod budynku.</p></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="sec dark" id="kontakt">
+ <div class="wrap kont">
+  <div>
+   <h2 class="h2 reveal">Stolik, przyjęcie, pokój. Jeden telefon</h2>
+   <a class="big" href="tel:+48184437515">18 443 75 15</a>
+   <dl class="kdl">
+    <div><dt>Adres</dt><dd>ul. Romanowskiego 6, 33-300 Nowy Sącz<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Restauracja+Panorama+Romanowskiego+6+Nowy+S%C4%85cz" target="_blank" rel="noopener">Wyznacz trasę</a></dd></div>
+    <div><dt>Restauracja</dt><dd class="num">7:00–22:00</dd></div>
+    <div><dt>E-mail</dt><dd><a href="mailto:biuro@restauracjapanorama.pl">biuro@restauracjapanorama.pl</a></dd></div>
+    <div><dt>Parking</dt><dd>monitorowany, przy budynku; dla gości hotelu w cenie pokoju</dd></div>
+   </dl>
+  </div>
+  <form class="form" onsubmit="event.preventDefault();this.querySelector('.n').textContent='Makieta: w gotowej stronie zapytanie trafi na biuro@restauracjapanorama.pl.'">
+   <h3>Zapytanie o rezerwację</h3>
+   <p class="n">Oddzwonimy, żeby potwierdzić termin.</p>
+   <div class="fg">
+    <label class="full">Czego dotyczy<select name="typ"><option>Stolik w restauracji</option><option>Przyjęcie lub wesele</option><option>Pokój w hotelu</option><option>Konferencja</option></select></label>
+    <label>Imię i nazwisko<input name="imie" autocomplete="name" required></label>
+    <label>Telefon<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
+    <label>Data<input name="data" type="date"></label>
+    <label>Liczba osób<input name="osoby" type="number" min="1" inputmode="numeric"></label>
+    <label class="full">Wiadomość<textarea name="msg"></textarea></label>
+   </div>
+   <button class="btn btn-p" type="submit">Wyślij zapytanie</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="ft">
+   <a class="brand" href="#start"><b>Panorama</b><small>restauracja · Hotel Dunajec ***</small></a>
+   <nav class="fnav" aria-label="Stopka"><a href="#restauracja">Restauracja</a><a href="#przyjecia">Przyjęcia</a><a href="#hotel">Hotel</a><a href="#kontakt">Kontakt</a></nav>
+   <svg class="mark" viewBox="0 0 54 24" aria-hidden="true"><path d="M2 20 L12 10 L18 14 L28 3 L36 11 L44 7 L52 12" fill="none" stroke="#a2412a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="freg num"><span>Restauracja Panorama i Hotel Dunajec, ul. Romanowskiego 6, 33-300 Nowy Sącz</span><span>NIP 734-101-29-82</span><span>Makieta: ODNOVA Studio</span></div>
+ </div>
+</footer>
+<div class="mbar"><a class="num" href="tel:+48184437515">Zadzwoń</a><a href="#kontakt">Rezerwacja</a></div>
+
+<script>
+(function(){
+const top=document.getElementById('top'),R=document.documentElement;
+const setH=()=>R.style.setProperty('--stack',top.offsetHeight+'px');setH();addEventListener('resize',setH);addEventListener('load',setH);
+document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').removeAttribute('open')));
+// odsłanianie
+document.querySelectorAll('.stagger').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+const els=[...document.querySelectorAll('.reveal,.stagger')];let fired=false;
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'}):null;
+els.forEach(e=>io?io.observe(e):e.classList.add('in'));
+const sweep=()=>els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingClientRect().top<innerHeight)e.classList.add('in')});
+let st;addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(sweep,140)},{passive:true});
+setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
+
+// hero: od hotelu do panoramy
+const hero=document.getElementById('start'),cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+const ridge=document.getElementById('ridge'),prog=document.getElementById('prog');
+const lPin=document.getElementById('lPin'),lRiver=document.getElementById('lRiver'),lMount=document.getElementById('lMount');
+const RG=[[0.0,0.1868],[0.0087,0.1866],[0.0174,0.1864],[0.0262,0.1862],[0.0349,0.1862],[0.0436,0.1862],[0.0523,0.1862],[0.061,0.186],[0.0698,0.186],[0.0785,0.1861],[0.0872,0.1864],[0.0959,0.1869],[0.1047,0.1876],[0.1134,0.188],[0.1221,0.1884],[0.1308,0.1886],[0.1395,0.1887],[0.1483,0.189],[0.157,0.1895],[0.1657,0.1902],[0.1744,0.1908],[0.1831,0.1908],[0.1919,0.1908],[0.2006,0.1908],[0.2093,0.1914],[0.218,0.1927],[0.2267,0.1942],[0.2355,0.1962],[0.2442,0.1984],[0.2529,0.2],[0.2616,0.2014],[0.2703,0.2023],[0.2791,0.2038],[0.2878,0.2055],[0.2965,0.2073],[0.3052,0.2088],[0.314,0.2098],[0.3227,0.2104],[0.3314,0.2105],[0.3401,0.2095],[0.3488,0.2079],[0.3576,0.2062],[0.3663,0.2047],[0.375,0.2039],[0.3837,0.2033],[0.3924,0.2028],[0.4012,0.2026],[0.4099,0.202],[0.4186,0.2012],[0.4273,0.1991],[0.436,0.1967],[0.4448,0.1947],[0.4535,0.1935],[0.4622,0.1939],[0.4709,0.1945],[0.4797,0.195],[0.4884,0.1951],[0.4971,0.1948],[0.5058,0.1943],[0.5145,0.1938],[0.5233,0.1937],[0.532,0.1942],[0.5407,0.1948],[0.5494,0.1955],[0.5581,0.1958],[0.5669,0.196],[0.5756,0.196],[0.5843,0.196],[0.593,0.1962],[0.6017,0.1968],[0.6105,0.198],[0.6192,0.1999],[0.6279,0.2026],[0.6366,0.2054],[0.6453,0.2076],[0.6541,0.2087],[0.6628,0.2087],[0.6715,0.2085],[0.6802,0.2087],[0.689,0.2099],[0.6977,0.2116],[0.7064,0.2134],[0.7151,0.2148],[0.7238,0.2154],[0.7326,0.2157],[0.7413,0.2156],[0.75,0.2147],[0.7587,0.2134],[0.7674,0.2115],[0.7762,0.21],[0.7849,0.2092],[0.7936,0.2093],[0.8023,0.2098],[0.811,0.2104],[0.8198,0.2109],[0.8285,0.2108],[0.8372,0.2102],[0.8459,0.2094],[0.8547,0.2081],[0.8634,0.2068],[0.8721,0.2055],[0.8808,0.2044],[0.8895,0.2041],[0.8983,0.2053],[0.907,0.2068],[0.9157,0.2084],[0.9244,0.2093],[0.9331,0.2095],[0.9419,0.2096],[0.9506,0.2095],[0.9593,0.2092],[0.968,0.2086],[0.9767,0.2077],[0.9855,0.207],[0.9942,0.2066]];
+const PIN=[.575,.627],RIVER=[.78,.43],MOUNT=[.47,.205];
+const rm=R.classList.contains('rm');
+const img=new Image();let ok=false,W=2752,H=1536,vw=0,vh=0,dpr=1;
+img.onload=()=>{ok=true;W=img.naturalWidth;H=img.naturalHeight;size();frame()};
+img.src=document.querySelector('.stage img.still').currentSrc||document.querySelector('.stage img.still').src;
+function size(){vw=cv.clientWidth;vh=cv.clientHeight;dpr=Math.min(devicePixelRatio||1,2);cv.width=Math.round(vw*dpr);cv.height=Math.round(vh*dpr)}
+addEventListener('resize',()=>{size();frame()});
+function cover(cx,cy){const a=vw/vh;let w=W,h=W/a;if(h>H){h=H;w=H*a}let x=cx*W-w/2,y=cy*H-h/2;x=Math.max(0,Math.min(W-w,x));y=Math.max(0,Math.min(H-h,y));return{x,y,w,h}}
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+let p=rm?1:0;
+function frame(){
+ if(!vw)size();
+ const port=vw/vh<1;
+ const r1=cover(port?.64:.5,port?.42:.44);
+ const z=port?1.9:2.5;const w0=r1.w/z,h0=r1.h/z;
+ let x0=PIN[0]*W-w0*(port?.45:.62),y0=PIN[1]*H-h0*(port?.28:.42);x0=cl(x0,0,W-w0);y0=cl(y0,0,H-h0);
+ const e=ease(cl(p/.72,0,1));
+ const r={x:x0+(r1.x-x0)*e,y:y0+(r1.y-y0)*e,w:w0+(r1.w-w0)*e,h:h0+(r1.h-h0)*e};
+ if(ok&&!rm){ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(img,r.x,r.y,r.w,r.h,0,0,cv.width,cv.height)}
+ const M=(u,v)=>[(u*W-r.x)/r.w*vw,(v*H-r.y)/r.h*vh];
+ let map=M;if(rm){const s=Math.max(vw/W,vh/H),ox=(vw-W*s)*.57,oy=(vh-H*s)*.5;map=(u,v)=>[u*W*s+ox,v*H*s+oy]}
+ ridge.setAttribute('d','M'+RG.map(q=>map(q[0],q[1]).map(n=>n.toFixed(1)).join(' ')).join(' L'));
+ ridge.setAttribute('stroke-dashoffset',(1-cl((p-.42)/.4,0,1)).toFixed(4));
+ const put=(el,q,fix)=>{let[x,y]=map(q[0],q[1]);if(fix){const sw=el.firstElementChild.offsetWidth;x=cl(x,14,vw-sw-26)}el.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`};
+ put(lPin,PIN);put(lRiver,port?[.70,.40]:RIVER,1);put(lMount,port?[.62,MOUNT[1]]:MOUNT,1);
+ lPin.classList.toggle('off',port&&p>.55);lRiver.classList.toggle('off',p<.5);lMount.classList.toggle('off',p<.72);lRiver.classList.toggle('up',port);
+ prog.style.transform=`scaleX(${p.toFixed(4)})`;
+}
+function onScroll(){
+ if(!rm){const b=hero.getBoundingClientRect(),span=hero.offsetHeight-innerHeight;p=cl(-b.top/(span*.92),0,1)}
+ document.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);
+ top.classList.toggle('scrolled',scrollY>20);
+ frame();
+}
+let raf=0;addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;onScroll()})},{passive:true});
+size();onScroll();
+})();
+</script>
+</body>
+</html>
