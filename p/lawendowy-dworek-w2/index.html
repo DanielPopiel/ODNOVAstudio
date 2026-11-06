@@ -49,7 +49,7 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 .above b{display:block;font:400 clamp(1.7rem,3vw,2.4rem)/1.1 var(--serif);color:#F2ECF6;margin-bottom:6px}
 .env{position:absolute;left:50%;top:calc(50% + var(--hdr-h)/2 + 40px);width:min(560px,84vw,(100vh - var(--hdr-h) - 220px)*1.5);aspect-ratio:1.5;transform:translate(-50%,-50%);perspective:1400px}
 .hero{background:linear-gradient(180deg,rgba(19,15,24,.55),rgba(19,15,24,.2) 40%,rgba(19,15,24,.75)),url(assets/tlohero.webp) center/cover,var(--night)}
-.bokeh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.bokeh{position:absolute;inset:0;pointer-events:none;overflow:hidden;will-change:opacity}
 .bokeh i{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,214,150,.55),rgba(255,214,150,0) 70%);filter:blur(2px);animation:bk 14s ease-in-out infinite alternate}
 .bokeh i:nth-child(1){width:90px;height:90px;left:8%;top:30%}.bokeh i:nth-child(2){width:46px;height:46px;left:18%;top:72%;animation-delay:-3s}.bokeh i:nth-child(3){width:120px;height:120px;left:80%;top:22%;animation-delay:-6s;opacity:.7}
 .bokeh i:nth-child(4){width:60px;height:60px;left:88%;top:66%;animation-delay:-9s}.bokeh i:nth-child(5){width:34px;height:34px;left:70%;top:82%;animation-delay:-2s}.bokeh i:nth-child(6){width:70px;height:70px;left:28%;top:12%;animation-delay:-11s;opacity:.6}.bokeh i:nth-child(7){width:28px;height:28px;left:60%;top:8%;animation-delay:-5s}
@@ -86,7 +86,7 @@ section[id]{scroll-margin-top:var(--hdr-h)}
 .photo{position:absolute;inset:0;z-index:6;clip-path:inset(50% 50% 50% 50%);pointer-events:none}
 .photo img{width:100%;height:100%;object-fit:cover}
 .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,15,24,.6),rgba(19,15,24,0) 22%),linear-gradient(90deg,rgba(19,15,24,.8) 0%,rgba(19,15,24,.45) 34%,rgba(19,15,24,0) 62%),linear-gradient(0deg,rgba(19,15,24,.45),rgba(19,15,24,0) 34%)}
-.over{position:absolute;left:0;right:0;bottom:max(9vh,60px);z-index:7;opacity:0;pointer-events:none}
+.over{position:absolute;left:0;right:0;bottom:max(9vh,60px);z-index:7;opacity:0;pointer-events:none}.over .wrap>*{will-change:opacity,transform}.photo img{will-change:transform;transform-origin:50% 60%}
 .over.on{pointer-events:auto}
 .over h1.big{font:400 clamp(2rem,min(4.6vw,7vh),4.2rem)/1.05 var(--serif);max-width:15ch;margin-bottom:.5em;color:#fff}
 .over .sub{max-width:40ch;color:#DCD3E6;font-size:1.1rem;margin-bottom:1.6em}
@@ -311,25 +311,36 @@ const sweep=()=>els.forEach(e=>{const r=e.getBoundingClientRect();if(r.top<inner
 setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
 // koperta
 const hero=document.getElementById('hero'),stage=hero.querySelector('.stage'),env=document.getElementById('env'),card=document.getElementById('card'),flap=document.getElementById('flap'),seal=document.getElementById('seal'),photo=document.getElementById('photo'),over=document.getElementById('over'),above=hero.querySelector('.above'),prog=document.getElementById('prog');
-const cl=(x,a,b)=>Math.min(1,Math.max(0,(x-a)/(b-a)));const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const cl=(x,a,b)=>Math.min(1,Math.max(0,(x-a)/(b-a)));
+const io3=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2, os3=t=>1-Math.pow(1-t,3), ios=t=>-(Math.cos(Math.PI*t)-1)/2;
+const bok=hero.querySelector('.bokeh'),pimg=photo.querySelector('img'),ovk=[...over.querySelectorAll('.wrap>*')];
 const hp=()=>{if(R)return 1;const r=hero.getBoundingClientRect();return Math.min(1,Math.max(0,-r.top/Math.max(1,(hero.offsetHeight-stage.offsetHeight)*.94)))};
-let raf=0;const frame=()=>{raf=0;const p=hp();
- const s=cl(p,0,.08);seal.style.opacity=1-s;seal.style.transform=`translateY(${-s*40}px) scale(${1+s*.25}) rotate(${s*-24}deg)`;
- const f=ease(cl(p,.04,.2));flap.style.transform=`rotateX(${f*180}deg)`;flap.style.zIndex=f>.5?1:4;card.style.zIndex=2;
- const c=ease(cl(p,.2,.4));const ch=card.offsetHeight;card.style.transform=`translateY(${-c*ch*.82}px)`;
- env.style.transform=`translate(-50%,calc(-50% + ${c*ch*.42}px))`;
- above.style.opacity=1-cl(p,.14,.26);
- const g=ease(cl(p,.42,.64));
+let P=hp(),T=P,last=0,run=0;
+const draw=p=>{
+ const s=os3(cl(p,0,.1));seal.style.opacity=(1-s).toFixed(3);seal.style.transform=`translateY(${(-s*46).toFixed(1)}px) scale(${(1+s*.22).toFixed(3)}) rotate(${(s*-20).toFixed(1)}deg)`;
+ const f=ios(cl(p,.05,.26));flap.style.transform=`rotateX(${(f*180).toFixed(2)}deg)`;flap.style.zIndex=f>.5?1:4;card.style.zIndex=2;
+ const c=io3(cl(p,.18,.46));const ch=card.offsetHeight;const lift=os3(cl(p,.38,.5));
+ card.style.transform=`translateY(${(-c*ch*.82).toFixed(1)}px) scale(${(1+lift*.04).toFixed(4)})`;
+ env.style.transform=`translate(-50%,calc(-50% + ${(c*ch*.42).toFixed(1)}px))`;
+ above.style.opacity=(1-ios(cl(p,.1,.24))).toFixed(3);
+ const g=io3(cl(p,.46,.72));
  if(g>0){const r=card.getBoundingClientRect(),W=stage.offsetWidth,H=stage.offsetHeight;
-  const t=r.top*(1-g),l=r.left*(1-g),rt=(W-r.right)*(1-g),b=(H-r.bottom)*(1-g);photo.style.clipPath=`inset(${t}px ${rt}px ${b}px ${l}px round ${4*(1-g)}px)`;photo.style.opacity=Math.min(1,g*4)}
+  const t=r.top*(1-g),l=r.left*(1-g),rt=(W-r.right)*(1-g),b=(H-r.bottom)*(1-g);
+  photo.style.clipPath=`inset(${t.toFixed(1)}px ${rt.toFixed(1)}px ${b.toFixed(1)}px ${l.toFixed(1)}px round ${(3*(1-g)).toFixed(2)}px)`;
+  photo.style.opacity=ios(Math.min(1,g/.22)).toFixed(3);pimg.style.transform=`scale(${(1.16-.16*g).toFixed(4)})`}
  else{photo.style.clipPath='inset(50% 50% 50% 50%)';photo.style.opacity=0}
- env.style.opacity=1-cl(p,.43,.53);
- const o=cl(p,.6,.74);over.style.opacity=o;over.style.transform=`translateY(${(1-o)*14}px)`;over.classList.toggle('on',o>.5);
- prog.style.transform=`scaleX(${p})`;
- document.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);
- if(!R)document.querySelectorAll('.drift').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;el.style.setProperty('--dy',((r.top+r.height/2-innerHeight/2)*-.04).toFixed(1)+'px')});
+ env.style.opacity=(1-ios(Math.min(1,g/.4))).toFixed(3);bok.style.opacity=(1-g).toFixed(3);
+ const o=cl(p,.66,.86);over.classList.toggle('on',o>.4);over.style.opacity=o>0?1:0;
+ ovk.forEach((el,i)=>{const k=os3(cl(o,i*.18,i*.18+.55));el.style.opacity=k.toFixed(3);el.style.transform=`translateY(${((1-k)*18).toFixed(1)}px)`});
+ prog.style.transform=`scaleX(${p.toFixed(4)})`;
 };
-addEventListener('scroll',()=>{raf||(raf=requestAnimationFrame(frame))},{passive:true});addEventListener('resize',frame);frame();
+const side=()=>{document.body.classList.toggle('past-hero',hero.getBoundingClientRect().bottom<innerHeight*.5);
+ if(!R)document.querySelectorAll('.drift').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;el.style.setProperty('--dy',((r.top+r.height/2-innerHeight/2)*-.04).toFixed(1)+'px')})};
+const loop=now=>{const dt=Math.min(64,now-(last||now));last=now;T=hp();
+ P+= (T-P)*(1-Math.exp(-dt/120));if(Math.abs(T-P)<.0004)P=T;draw(P);
+ if(P!==T)run=requestAnimationFrame(loop);else{run=0;last=0}};
+const kick=()=>{side();if(!run){last=0;run=requestAnimationFrame(loop)}};
+addEventListener('scroll',kick,{passive:true});addEventListener('resize',()=>{draw(P);side()});draw(P);side();
 let to;addEventListener('scroll',()=>{clearTimeout(to);to=setTimeout(sweep,140)},{passive:true});
 const tabs=[...document.querySelectorAll('[role=tab]')],panels=[...document.querySelectorAll('[role=tabpanel]')];
 const sel=t=>{tabs.forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1});panels.forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))};

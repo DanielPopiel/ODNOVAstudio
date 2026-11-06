@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lawendowy Dworek — dom weselny pod Nowym Sączem · W3 „Album”</title>
+<meta name="description" content="Dom weselny Lawendowy Dworek w Królowej Polskiej koło Nowego Sącza. Sala do 200 gości, kuchnia polska, 7 pokoi z łazienką, altana na poprawiny.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%236A5491'/%3E%3Cpath d='M9 24C14 18 18 13 24 8' stroke='%23fff' stroke-width='1.6' fill='none'/%3E%3Cg fill='%23E4DAF2'%3E%3Cellipse cx='15' cy='16' rx='3' ry='1.5' transform='rotate(-50 15 16)'/%3E%3Cellipse cx='19' cy='12' rx='3' ry='1.5' transform='rotate(-50 19 12)'/%3E%3Cellipse cx='23' cy='8.5' rx='3' ry='1.5' transform='rotate(-50 23 8.5)'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website"><meta property="og:title" content="Lawendowy Dworek — makieta nowej strony, wariant W3 „Album”"><meta property="og:description" content="Propozycja nowej strony domu weselnego Lawendowy Dworek przygotowana przez ODNOVA Studio."><meta property="og:image" content="https://www.odnovastudio.com/p/lawendowy-dworek-w3/assets/og.jpg"><meta property="og:url" content="https://www.odnovastudio.com/p/lawendowy-dworek-w3/">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Albert+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--mist:#F6F5F2;--white:#FCFBFA;--sage:#2F3B34;--sage2:#3C4A41;--sageL:#C9D2C8;--ink:#232A25;--ink2:#56605A;--lav:#7259A0;--lavL:#D9CFEA;--line:#DDDAD3;
+--serif:"Bellefair",Georgia,serif;--sans:"Albert Sans",system-ui,sans-serif;--hdr-h:72px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 1.0625rem/1.65 var(--sans)}
+::selection{background:var(--lavL);color:var(--ink)}:focus-visible{outline:2px solid var(--lav);outline-offset:3px}
+input,textarea,select{caret-color:var(--lav);accent-color:var(--lav)}
+button,input,select,textarea{font:inherit}
+img{display:block;max-width:100%;height:auto}a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.04;margin:0;text-wrap:balance}
+h2{font-size:clamp(2.3rem,4vw,3.4rem)}h3{font-size:clamp(1.5rem,2.2vw,2rem)}
+p{margin:0 0 1em;text-wrap:pretty}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+section[id]{scroll-margin-top:var(--hdr-h)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:50px;padding:.85em 1.6em;border-radius:2px;background:var(--lav);color:#fff;text-decoration:none;font-weight:500;border:1px solid var(--lav);transition:background .25s,color .25s,border-color .25s;cursor:pointer}
+.btn:hover{background:var(--sage);border-color:var(--sage)}
+.btn.line{background:transparent;color:inherit;border-color:currentColor}.btn.line:hover{background:#fff;color:var(--ink);border-color:#fff}
+/* nagłówek */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s,color .35s;color:#fff}
+.hdr::before{content:"";position:absolute;inset:0 0 -40px;background:linear-gradient(rgba(20,24,21,.55),rgba(20,24,21,0));pointer-events:none;transition:opacity .35s}
+.hdr.sc{background:rgba(252,251,250,.97);color:var(--ink);box-shadow:0 1px 0 var(--line)}.hdr.sc::before{opacity:0}
+.hdr .wrap{position:relative;display:flex;align-items:center;gap:30px;min-height:72px}
+.brand{margin-right:auto;text-decoration:none;font:400 1.65rem/1 var(--serif);letter-spacing:.01em}
+.nav{display:flex;gap:28px}.nav a{text-decoration:none;font-weight:500;font-size:.97rem;opacity:.92}.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.tel{text-decoration:none;font-weight:600;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.hdr .btn{min-height:44px;padding:.5em 1.15em}
+.mnav{display:none;position:relative}.mnav summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;padding:0 14px;border:1px solid currentColor;border-radius:2px;font-weight:600}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav nav{position:absolute;right:0;top:54px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:8px;min-width:230px;box-shadow:0 20px 40px rgba(20,24,21,.15)}
+.mnav nav a{display:block;padding:12px 14px;text-decoration:none}.mnav nav a:hover{background:var(--mist)}
+/* HERO: album kadrów */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;color:#fff;background:#1d2420}
+.hero .sl{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.6s ease}
+.hero .sl.on{opacity:1}
+.hero .sl img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 8s linear}
+.hero .sl.on img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,22,19,.82) 0%,rgba(18,22,19,.45) 40%,rgba(18,22,19,0) 70%),linear-gradient(90deg,rgba(18,22,19,.35),rgba(18,22,19,0) 55%);pointer-events:none}
+html:not(.js) .hero .sl:first-of-type{opacity:1}
+.hero .tx{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:clamp(28px,5vh,56px)}
+.hero h1{font-size:clamp(2.6rem,6vw,5.6rem);max-width:13ch;text-shadow:0 2px 24px rgba(10,14,11,.45)}.hero .sub{text-shadow:0 1px 12px rgba(10,14,11,.6)}
+.hero .sub{max-width:44ch;font-size:1.1rem;color:#E9ECE7;margin:16px 0 26px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(28px,5vh,52px);border-top:1px solid rgba(255,255,255,.28)}
+.strip button{all:unset;cursor:pointer;position:relative;padding:14px 0 10px;min-height:20px;font-size:.92rem;color:#D9DED8}
+.strip button i{position:absolute;left:0;top:-1px;height:2px;width:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+.strip button.on{color:#fff}.strip button.on i{animation:prog var(--dur,7s) linear forwards}
+.strip button:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@keyframes prog{to{transform:scaleX(1)}}
+/* sekcje */
+.sec{padding:clamp(80px,11vw,150px) 0}
+.dark{background:var(--sage);color:#EEF1EC}.dark .ink2{color:#BFC9C0}
+.ink2{color:var(--ink2)}
+.intro{display:grid;grid-template-columns:7fr 5fr;gap:clamp(36px,6vw,96px);align-items:end}
+.intro .big{font:400 clamp(1.9rem,3.2vw,2.8rem)/1.2 var(--serif)}
+.intro ul{list-style:none;margin:0;padding:0}
+.intro li{padding:16px 0;border-top:1px solid var(--line)}.intro li:last-child{border-bottom:1px solid var(--line)}
+.intro li b{font:400 1.35rem/1.2 var(--serif);display:block}
+/* mozaika */
+.mz-h{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px}
+.mz{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(120px,13vw,190px);gap:16px}
+.mz figure{margin:0;position:relative;overflow:hidden;border-radius:2px}
+.mz img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.mz figure:hover img{transform:scale(1.04)}
+.mz figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;font-size:.95rem;color:#fff;background:linear-gradient(0deg,rgba(18,22,19,.7),rgba(18,22,19,0))}
+.mz .a{grid-column:1/8;grid-row:span 3}.mz .b{grid-column:8/13;grid-row:span 2}.mz .c{grid-column:8/13;grid-row:span 2}.mz .d{grid-column:1/8;grid-row:span 1}
+.js .mz figure{clip-path:inset(12% 0 0 0);opacity:0;transition:clip-path 1.1s cubic-bezier(.2,.7,.2,1),opacity .8s}
+.js .mz figure.in{clip-path:inset(0 0 0 0);opacity:1}
+/* okazje */
+.oc{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,6vw,96px)}
+.oc ul{list-style:none;margin:0;padding:0;columns:2;column-gap:36px}
+.oc li{break-inside:avoid;padding:6px 0;border-bottom:1px solid var(--line);font:400 1.4rem/1.2 var(--serif)}
+.oc li a{text-decoration:none;display:flex;align-items:center;gap:12px;min-height:36px}.oc li a::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lav);flex:none}
+.oc li a:hover{color:var(--lav)}
+/* menu – akordeon */
+.mn-g{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,6vw,96px);align-items:start}
+.mn-g figure{margin:28px 0 0;aspect-ratio:4/5;overflow:hidden;border-radius:2px}.mn-g figure img{width:100%;height:100%;object-fit:cover}
+.acc details{border-top:1px solid rgba(238,241,236,.22)}.acc details:last-child{border-bottom:1px solid rgba(238,241,236,.22)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 6px;font:400 1.6rem/1.2 var(--serif);transition:color .2s,background .2s}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{color:var(--lavL);background:rgba(255,255,255,.04)}
+.acc summary .pl{flex:none;width:36px;height:36px;border:1px solid rgba(238,241,236,.5);border-radius:50%;position:relative;transition:transform .3s,background .2s}
+.acc summary .pl::before,.acc summary .pl::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.acc summary .pl::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+.acc details[open] summary .pl{background:var(--lav);border-color:var(--lav)}.acc details[open] summary .pl::after{transform:translate(-50%,-50%) rotate(0)}
+.acc summary small{font:500 .85rem/1 var(--sans);color:#BFC9C0;margin-left:auto;margin-right:10px}
+.acc .body{padding:0 6px 22px}.acc .note{color:var(--lavL);font-weight:500;margin-bottom:10px}
+.acc ul{list-style:none;margin:0;padding:0;columns:2;column-gap:36px}.acc li{break-inside:avoid;padding:7px 0;border-bottom:1px dotted rgba(238,241,236,.2);font-size:1rem}
+/* noclegi */
+.nc{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.nc figure{margin:0;overflow:hidden}.nc figure img{width:100%;height:100%;object-fit:cover}
+.nc .tx{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,7vw,110px)}
+.nc .tx p{margin-top:18px}
+/* altana */
+.alt{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+.alt>img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover}
+.alt::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,22,19,.82),rgba(18,22,19,.25) 45%,rgba(18,22,19,0) 70%)}
+.alt .tx{position:relative;z-index:1;padding-bottom:clamp(50px,8vw,100px)}.alt .tx>div{max-width:540px}.alt p{color:#E6EAE4;margin-top:16px}
+/* kontakt */
+.kt-g{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,96px);align-items:start}
+.kt figure{margin:30px 0 0;aspect-ratio:16/10;overflow:hidden;border-radius:2px}.kt figure img{width:100%;height:100%;object-fit:cover}
+.big-tel{display:block;font:500 clamp(2rem,3.2vw,2.7rem)/1 var(--sans);font-variant-numeric:lining-nums tabular-nums;text-decoration:none;color:var(--lav);margin:26px 0 10px;padding:6px 0}
+.kt dl{margin:26px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 24px}.kt dt{color:var(--ink2)}.kt dd{margin:0}
+form{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:clamp(24px,3.5vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form h3{grid-column:1/-1;font-size:2.1rem}
+label{display:grid;gap:6px;font-size:.95rem;font-weight:500}label.f{grid-column:1/-1}
+label.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400}label.chk input{min-height:0;width:20px;height:20px;margin-top:3px;flex:none}
+input,select,textarea{font-size:1rem;padding:12px 14px;border:1px solid #8E978F;border-radius:2px;background:#fff;color:var(--ink);min-height:48px}
+textarea{min-height:110px;resize:vertical}
+form .btn{grid-column:1/-1}form small{grid-column:1/-1;color:var(--ink2)}
+.ft{background:var(--sage);color:#C9D2C8;padding:60px 0 56px}
+.ft-g{display:flex;flex-wrap:wrap;gap:24px 56px;align-items:center;justify-content:space-between}
+.ft b{font:400 1.9rem/1 var(--serif);color:#fff}.ft nav{display:flex;gap:22px;flex-wrap:wrap}.ft a{text-decoration:none}.ft a:hover{color:#fff}.ft small{flex-basis:100%;color:#9FAAA1}
+.mbar{display:none}
+/* odsłanianie */
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}.js .reveal.in{opacity:1;transform:none}
+.js .words .w{display:inline-block;opacity:0;transform:translateY(.25em);transition:opacity .55s,transform .55s;transition-delay:calc(var(--i)*60ms)}.js .words.in .w{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s;transition-delay:calc(var(--i,0)*60ms)}.js .stagger.in>*{opacity:1;transform:none}
+.drift{transform:translateY(var(--dy,0));will-change:transform}
+@media (max-width:980px){.nav,.hdr .tel{display:none}.mnav{display:block}
+ .intro,.oc,.mn-g,.kt-g{grid-template-columns:1fr}.nc{grid-template-columns:1fr}.nc figure{aspect-ratio:4/3}
+ .mz{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.mz .a{grid-column:1/-1;grid-row:span 2}.mz .b,.mz .c{grid-column:auto;grid-row:span 2}.mz .d{grid-column:1/-1;grid-row:span 2}
+ .mz-h{flex-direction:column;align-items:flex-start}.mn-g figure{display:none}
+ .strip span{display:none}.strip{gap:8px}
+ .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:60;transform:translateY(130%);transition:transform .35s}
+ body.past-hero .mbar,html:not(.js) .mbar{transform:none}.mbar .btn.line{background:var(--white);color:var(--ink);border-color:var(--line)}
+ .ft{padding-bottom:120px}}
+@media (max-width:640px){.oc ul,.acc ul{columns:1}form{grid-template-columns:1fr}.hero .cta{flex-direction:column}.hero .cta .btn{white-space:nowrap;width:100%}.acc summary{font-size:1.35rem}.acc summary small{display:none}}
+@media (max-width:420px){.hdr .btn{display:none}.brand{font-size:1.35rem}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.hero .sl img{transition:none;transform:none!important}.strip button.on i{animation:none;transform:scaleX(1)}.js .reveal,.js .words .w,.js .stagger>*{opacity:1!important;transform:none!important;transition:none!important}.js .mz figure{clip-path:none;opacity:1;transition:none}.drift{transform:none!important}}
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr"><div class="wrap">
+ <a class="brand" href="#top">Lawendowy Dworek</a>
+ <nav class="nav" aria-label="Główna"><a href="#sala">Sala</a><a href="#menu">Karta dań</a><a href="#noclegi">Noclegi</a><a href="#kontakt">Kontakt</a></nav>
+ <a class="tel" href="tel:+48511638486">+48 511 63 84 86</a>
+ <a class="btn" href="#kontakt">Wolne terminy</a>
+ <details class="mnav"><summary aria-label="Nawigacja"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</summary><nav aria-label="Mobilna"><a href="#sala">Sala</a><a href="#okazje">Okazje</a><a href="#menu">Karta dań</a><a href="#noclegi">Noclegi</a><a href="#altana">Altana</a><a href="#kontakt">Kontakt i termin</a><a href="tel:+48511638486">Zadzwoń: +48 511 63 84 86</a></nav></details>
+</div></header>
+
+<main id="top">
+<section class="hero" id="hero" aria-label="Lawendowy Dworek w kadrach">
+ <figure class="sl on"><img src="assets/psala.webp" srcset="assets/psala-900.webp 900w, assets/psala.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Sala weselna nakryta na przyjęcie, długie stoły z lawendowymi kokardami" width="2200" height="1228"></figure>
+ <figure class="sl"><img src="assets/pstol.webp" srcset="assets/pstol-900.webp 900w, assets/pstol.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Stół Pary Młodej przed kurtyną ze światełkami" width="2200" height="1228" loading="lazy"></figure>
+ <figure class="sl"><img src="assets/paltana.webp" srcset="assets/paltana-900.webp 900w, assets/paltana.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Altana w ogrodzie wieczorem, oświetlona girlandą żarówek" width="2200" height="1228" loading="lazy"></figure>
+ <figure class="sl"><img src="assets/pfasada.webp" srcset="assets/pfasada-900.webp 900w, assets/pfasada.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Wejście do Lawendowego Dworku w popołudniowym słońcu" width="2200" height="1228" loading="lazy"></figure>
+ <div class="tx"><div class="wrap">
+  <h1 class="words">Dom weselny pod Nowym Sączem</h1>
+  <p class="sub reveal">Sala na 200 gości, kuchnia polska, siedem pokoi i altana na poprawiny. Królowa Polska 146.</p>
+  <div class="cta reveal"><a class="btn" href="#kontakt">Sprawdź wolny termin</a><a class="btn line" href="tel:+48511638486">+48 511 63 84 86</a></div>
+  <div class="strip" role="tablist" aria-label="Kadry"><button type="button" class="on" data-k="0"><i></i><span>Sala</span></button><button type="button" data-k="1"><i></i><span>Stół Pary Młodej</span></button><button type="button" data-k="2"><i></i><span>Altana nocą</span></button><button type="button" data-k="3"><i></i><span>Wejście</span></button></div>
+ </div></div>
+</section>
+
+<section class="sec" id="dworek"><div class="wrap intro">
+ <p class="big words">Każde przyjęcie układamy od nowa: menu, ustawienie stołów i dekoracje dobieramy do Państwa gości.</p>
+ <ul class="stagger">
+  <li><b>Sala do 200 osób</b>Klimatyzowana, z antresolą i parkietem.</li>
+  <li><b>Kuchnia polska</b>Z produktów najwyższej jakości, cała karta niżej.</li>
+  <li><b>Siedem pokoi z łazienką</b>I apartament dla Pary Młodej.</li>
+  <li><b>Parking na terenie</b>Zamknięty i monitorowany.</li>
+ </ul>
+</div></section>
+
+<section class="sec dark" id="sala"><div class="wrap">
+ <div class="mz-h"><h2 class="words">Tak wygląda dzień w Dworku</h2><p class="ink2 reveal" style="max-width:40ch;margin:0">Od powitania chlebem i solą, przez stół wiejski, po tort o północy.</p></div>
+ <div class="mz">
+  <figure class="a"><img class="drift" src="assets/pstol.webp" srcset="assets/pstol-900.webp 900w, assets/pstol.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Stół Pary Młodej z girlandą kwiatów i świecami" width="2200" height="1228" loading="lazy"><figcaption>Stół Pary Młodej</figcaption></figure>
+  <figure class="b"><img src="assets/ppowitanie.webp" srcset="assets/ppowitanie-900.webp 900w, assets/ppowitanie.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Chleb z różami z ciasta i kieliszki szampana na powitanie" width="2200" height="1228" loading="lazy"><figcaption>Powitanie chlebem i solą</figcaption></figure>
+  <figure class="c"><img src="assets/ptort.webp" srcset="assets/ptort-900.webp 900w, assets/ptort.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Trzypiętrowy tort weselny z różami" width="1856" height="2304" loading="lazy" style="object-position:50% 40%"><figcaption>Tort</figcaption></figure>
+  <figure class="d"><img class="drift" src="assets/pwiejski.webp" srcset="assets/pwiejski-900.webp 900w, assets/pwiejski.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Stół wiejski z wędlinami i kiełbasami" width="2200" height="1228" loading="lazy" style="object-position:50% 60%"><figcaption>Stół wiejski</figcaption></figure>
+ </div>
+</div></section>
+
+<section class="sec" id="okazje"><div class="wrap oc">
+ <div><h2 class="words">Nie tylko wesela</h2><p class="ink2 reveal" style="margin-top:18px">Organizujemy przyjęcie od początku do końca: sala, kuchnia, obsługa i dekoracja stołów. Wybierz okazję, a od razu ustawimy ją w formularzu.</p></div>
+ <ul class="stagger"><li><a href="#kontakt" data-okazja="Wesela">Wesela</a></li><li><a href="#kontakt" data-okazja="Komunie">Komunie</a></li><li><a href="#kontakt" data-okazja="Chrzciny">Chrzciny</a></li><li><a href="#kontakt" data-okazja="Urodziny i osiemnastki">Urodziny i osiemnastki</a></li><li><a href="#kontakt" data-okazja="Jubileusze">Jubileusze</a></li><li><a href="#kontakt" data-okazja="Studniówki i komersy">Studniówki i komersy</a></li><li><a href="#kontakt" data-okazja="Przyjęcia firmowe">Przyjęcia firmowe</a></li><li><a href="#kontakt" data-okazja="Wigilie firmowe">Wigilie firmowe</a></li><li><a href="#kontakt" data-okazja="Bale sylwestrowe">Bale sylwestrowe</a></li><li><a href="#kontakt" data-okazja="Przyjęcia po pogrzebie">Przyjęcia po pogrzebie</a></li></ul>
+</div></section>
+
+<section class="sec dark" id="menu"><div class="wrap mn-g">
+ <div><h2 class="words">Karta dań</h2><p class="ink2 reveal" style="margin-top:18px">Na powitanie chleb, sól i lampka szampana. Za dopłatą stół wiejski, tort, stół słodkości i paczki z ciastem dla gości. Kliknij kategorię, żeby ją rozwinąć.</p>
+  <figure class="reveal"><img class="drift" src="assets/pwiejski.webp" srcset="assets/pwiejski-900.webp 900w, assets/pwiejski.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Wędliny i kiełbasy na stole wiejskim" width="2200" height="1228" loading="lazy" style="object-position:30% 50%"></figure></div>
+ <div class="acc"><details open><summary><span>Zupy</span><small>11 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><ul><li>Rosół z makaronem</li><li>Rosół z makaronem i pierożkami</li><li>Bulion węgierski</li><li>Bulion królewski</li><li>Krem brokułowy z grzanką ziołowo-serową lub groszkiem ptysiowym</li><li>Krem z zielonego groszku</li><li>Krem grzybowy</li><li>Krem pomidorowy</li><li>Krem cebulowy</li><li>Krem z dyni (sezonowo)</li><li>Barszcz z uszkami</li></ul></div></details><details><summary><span>Mięsa</span><small>23 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><p class="note">W zestawie cztery do wyboru</p><ul><li>Kotlet schabowy</li><li>Kotlet po kowalsku</li><li>Kotlet po bawarsku</li><li>Kotlet szwajcarski</li><li>Kotlet góralski</li><li>Kotlet drobiowy tradycyjny</li><li>De Volaille</li><li>Zraz wieprzowy zawijany</li><li>Filet z indyka nadziewany</li><li>Stek z karczku w ziołach</li><li>Pieczeń z karczku w sosie</li><li>Schab nadziewany boczkiem</li><li>Schab ze śliwką w sosie własnym</li><li>Schab pieczony w sosie własnym</li><li>Udko pieczone</li><li>Podudzie faszerowane warzywami</li><li>Roladka drobiowa (pieczarka, ser)</li><li>Roladka drobiowa (szpinak, mozzarella)</li><li>Roladka z indyka</li><li>Łódka z kurczaka</li><li>Eskalopki</li><li>Medalion drobiowy</li><li>Szaszłyk drobiowo-warzywny</li></ul></div></details><details><summary><span>Dodatki</span><small>8 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><ul><li>Ziemniaki</li><li>Ziemniaki opiekane</li><li>Frytki</li><li>Dufinki</li><li>Kopytka</li><li>Kluski śląskie</li><li>Risotto</li><li>Kasza</li></ul></div></details><details><summary><span>Surówki</span><small>19 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><p class="note">W zestawie trzy do wyboru</p><ul><li>Marchewka z jabłkiem</li><li>Marchewka z brzoskwinią</li><li>Marchewka z chrzanem</li><li>Z kapusty pekińskiej</li><li>Selerowa</li><li>Szwedzka</li><li>Coleslaw</li><li>Kapusta biała z sosem vinaigrette lub majonezowo-jogurtowym</li><li>Kapusta czerwona świeża</li><li>Z kapusty kiszonej</li><li>Buraczki z chrzanem</li><li>Buraczki z papryką</li><li>Wielowarzywna</li><li>Wiosenna (sezonowo)</li><li>Mizeria (sezonowo)</li><li>Ciepłe: buraczki zasmażane</li><li>Ciepłe: kapusta biała zasmażana</li><li>Ciepłe: kapusta czerwona zasmażana</li><li>Ciepłe: bukiet warzyw</li></ul></div></details><details><summary><span>Gorące dania</span><small>12 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><p class="note">W zestawie trzy do wyboru</p><ul><li>Frytki, filet z kurczaka zapiekany z pieczarkami i serem, surówka z kapusty pekińskiej</li><li>Frytki, filet z kurczaka w cieście francuskim, sałata lodowa z sosem czosnkowym</li><li>Frytki, kotlet De Volaille, mix sałat z sosem vinaigrette</li><li>Dufinki, łódki z kurczaka, sałatka lodowa z sosem czosnkowym</li><li>Dufinki, eskalopki, surówka z buraczków</li><li>Ziemniaki opiekane, filet z kurczaka zapiekany z ananasem i mozzarellą, surówka z selera</li><li>Ziemniaki opiekane, medalion ze szpinakiem, pomidorem i serem feta, surówka z białej kapusty</li><li>Kluski śląskie, roladka w sosie, surówka szwedzka</li><li>Kluski śląskie, karczek w sosie własnym, surówka z czerwonej kapusty</li><li>Kluseczki gnocchi, rolada z indyka w sosie paprykowym, marchewka koktajlowa</li><li>Kluseczki gnocchi, schab ze śliwką w sosie własnym, surówka z kapusty pekińskiej</li><li>Risotto, szaszłyk drobiowy, surówka z marchewki</li></ul></div></details><details><summary><span>Zimna płyta</span><small>29 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><p class="note">W zestawie sześć lub dwanaście do wyboru</p><ul><li>Sałatka jarzynowa</li><li>Sałatka z brokułów</li><li>Sałatka z selera naciowego</li><li>Sałatka z pora</li><li>Sałatka gyros</li><li>Sałatka meksykańska</li><li>Sałatka grecka</li><li>Sałatka hawajska</li><li>Sałatka caprese</li><li>Sałatka z pieczarek</li><li>Sałatka królewska</li><li>Sałatka z makaronem i szynką</li><li>Sałatka z tuńczyka</li><li>Sos tatarski</li><li>Jajka faszerowane</li><li>Przekąski z ciasta francuskiego</li><li>Babeczki faszerowane</li><li>Galaretki drobiowe</li><li>Mięsa w galarecie</li><li>Szynka faszerowana w galarecie</li><li>Śledzie w śmietanie lub sosie czosnkowym</li><li>Śledzie po węgiersku</li><li>Koreczki śledziowe</li><li>Ryba po grecku</li><li>Filet w zalewie</li><li>Nuggetsy z sosem czosnkowym i ketchupowym</li><li>Rolada szpinakowa i serowa</li><li>Tortilki</li><li>Półmisek serów i wędlin</li></ul></div></details><details><summary><span>Poprawiny</span><small>16 pozycji</small><i class="pl" aria-hidden="true"></i></summary><div class="body"><p class="note">Zupa i gorące danie albo ciepłe danie</p><ul><li>Żurek z jajkiem</li><li>Kwaśnica z żeberkiem</li><li>Krem pomidorowy z kluskami kładzionymi</li><li>Krem grzybowy z groszkiem ptysiowym</li><li>Barszcz z kołdunami mięsnymi</li><li>Ziemniaki, karczek w sosie własnym, zestaw surówek</li><li>Ziemniaki, filet zapiekany z warzywami i serem, mix sałatek z sosem włoskim</li><li>Ziemniaki opiekane, kotlet szwajcarski, surówka z pekinki</li><li>Kluseczki gnocchi, karczek w sosie słodko-kwaśnym, surówka z marchewki</li><li>Placek po zbójnicku, surówka szwedzka</li><li>Gołąbki w sosie grzybowym lub pomidorowym</li><li>Strogonow</li><li>Gulasz</li><li>Bigos</li><li>Bogracz</li><li>Gulasz węgierski</li></ul></div></details></div>
+</div></section>
+
+<section class="nc" id="noclegi">
+ <figure class="reveal"><img class="drift" style="object-position:55% 85%" src="assets/ppokoj.webp" srcset="assets/ppokoj-900.webp 900w, assets/ppokoj.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Pokój na poddaszu z dwuosobowym łóżkiem i lawendową narzutą" width="2200" height="1228" loading="lazy"></figure>
+ <div class="tx"><h2 class="words">Siedem pokoi piętro wyżej</h2><p class="ink2 reveal">Każdy z własną łazienką. Goście z daleka zostają na noc, a Para Młoda ma do dyspozycji apartament nowożeńców. Rano wystarczy zejść na poprawiny.</p><a class="btn reveal" href="#kontakt" style="align-self:flex-start;margin-top:10px">Zapytaj o pokoje</a></div>
+</section>
+
+<section class="alt" id="altana">
+ <img class="drift" src="assets/paltana.webp" srcset="assets/paltana-900.webp 900w, assets/paltana.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Altana nocą ze stołem nakrytym na przyjęcie w ogrodzie" width="2200" height="1228" loading="lazy">
+ <div class="wrap tx"><div><h2 class="words">Poprawiny pod altaną</h2><p class="reveal">Zadaszona altana z girlandą świateł, trawnik i biały płotek. Żurek, kwaśnica z żeberkiem, bigos albo placek po zbójnicku, w spokojniejszym tempie drugiego dnia.</p></div></div>
+</section>
+
+<section class="sec kt" id="kontakt"><div class="wrap kt-g">
+ <div>
+  <h2 class="words">Sprawdźmy Państwa datę</h2>
+  <a class="big-tel" href="tel:+48511638486">+48 511 63 84 86</a>
+  <p class="ink2">Najszybciej telefonicznie. Chętnie pokażemy salę, pokoje i altanę na miejscu.</p>
+  <dl><dt>Adres</dt><dd>Królowa Polska 146, 33-334 Kamionka Wielka<br>koło Nowego Sącza, Małopolska</dd><dt>E-mail</dt><dd><a href="mailto:lawendowydw@gmail.com">lawendowydw@gmail.com</a></dd><dt>Dojazd</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Lawendowy+Dworek+Kr%C3%B3lowa+Polska+146" target="_blank" rel="noopener">Mapy Google</a></dd></dl>
+  <figure class="reveal"><img src="assets/pfasada.webp" srcset="assets/pfasada-900.webp 900w, assets/pfasada.webp 1700w" sizes="(max-width:760px) 100vw, 60vw" alt="Wejście do dworku z donicami lawendy" width="2200" height="1228" loading="lazy"></figure>
+ </div>
+ <form class="reveal" onsubmit="event.preventDefault();this.querySelector('small').textContent='To makieta: formularz zacznie wysyłać zapytania po wdrożeniu.'">
+  <h3>Zapytanie o termin</h3>
+  <label>Imię i nazwisko<input name="n" autocomplete="name" required></label>
+  <label>Telefon<input name="t" type="tel" autocomplete="tel" required></label>
+  <label>Data<input name="d" type="date"></label>
+  <label>Liczba gości<input name="g" type="number" min="10" max="200" placeholder="np. 120"></label>
+  <label class="f">Okazja<select name="o"><option>Wesele</option><option>Komunia lub chrzciny</option><option>Urodziny, osiemnastka, jubileusz</option><option>Studniówka lub komers</option><option>Przyjęcie firmowe</option><option>Inna uroczystość</option></select></label>
+  <label class="f">Wiadomość<textarea name="m"></textarea></label>
+  <label class="f chk"><input type="checkbox" required> <span>Zgadzam się na kontakt w sprawie zapytania. <a href="#">Polityka prywatności [uzupełnić]</a></span></label>
+  <button class="btn" type="submit">Wyślij zapytanie</button>
+  <small>Odpowiadamy telefonicznie albo mailowo, jak Państwu wygodniej.</small>
+ </form>
+</div></section>
+</main>
+<footer class="ft"><div class="wrap ft-g">
+ <b>Lawendowy Dworek</b>
+ <nav aria-label="Stopka"><a href="#sala">Sala</a><a href="#okazje">Okazje</a><a href="#menu">Karta dań</a><a href="#noclegi">Noclegi</a><a href="#kontakt">Kontakt</a></nav>
+ <span><a href="tel:+48511638486">+48 511 63 84 86</a> · <a href="mailto:lawendowydw@gmail.com">lawendowydw@gmail.com</a></span>
+ <small>Lawendowy Dworek Dom Weselny · Królowa Polska 146, 33-334 Kamionka Wielka · NIP [uzupełnić] · REGON [uzupełnić]</small>
+</div></footer>
+<div class="mbar"><a class="btn line" href="tel:+48511638486">Zadzwoń</a><a class="btn" href="#kontakt">Wolne terminy</a></div>
+<script>
+(()=>{
+const R=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hdr=document.getElementById('hdr');const m=()=>document.documentElement.style.setProperty('--hdr-h',hdr.offsetHeight+'px');m();addEventListener('resize',m);
+document.querySelectorAll('.words').forEach(el=>{const t=el.textContent.trim().split(/\s+/);el.textContent='';t.forEach((w,i)=>{const s=document.createElement('span');s.className='w';s.style.setProperty('--i',i);s.textContent=w;el.append(s,' ')})});
+document.querySelectorAll('.stagger').forEach(el=>[...el.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+const els=[...document.querySelectorAll('.reveal,.words,.stagger,.mz figure')];let fired=false;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fired=true;e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+els.forEach(e=>io.observe(e));
+const sweep=()=>els.forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)e.classList.add('in')});
+setTimeout(()=>{if(!fired)els.forEach(e=>e.classList.add('in'))},4000);
+// hero: album kadrów
+const sl=[...document.querySelectorAll('.hero .sl')],bt=[...document.querySelectorAll('.strip button')];let cur=0,tm=0;const D=7000;
+const show=k=>{cur=k;sl.forEach((s,i)=>s.classList.toggle('on',i===k));bt.forEach((b,i)=>{b.classList.remove('on');void b.offsetWidth;b.classList.toggle('on',i===k)});bt.forEach(b=>b.style.setProperty('--dur',D/1000+'s'));clearTimeout(tm);if(!R)tm=setTimeout(()=>show((cur+1)%sl.length),D)};
+bt.forEach(b=>b.addEventListener('click',()=>show(+b.dataset.k)));
+sl.slice(1).forEach(s=>{const i=s.querySelector('img');i.loading='eager'});show(0);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)clearTimeout(tm);else show(cur)});
+let raf=0;const frame=()=>{raf=0;hdr.classList.toggle('sc',scrollY>innerHeight*.6);document.body.classList.toggle('past-hero',scrollY>innerHeight*.6);
+ if(!R)document.querySelectorAll('.drift').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;el.style.setProperty('--dy',((r.top+r.height/2-innerHeight/2)*-.05).toFixed(1)+'px')})};
+addEventListener('scroll',()=>{raf||(raf=requestAnimationFrame(frame))},{passive:true});frame();
+let to;addEventListener('scroll',()=>{clearTimeout(to);to=setTimeout(sweep,140)},{passive:true});
+const fs=document.querySelector('select[name=o]');document.querySelectorAll('[data-okazja]').forEach(a=>a.addEventListener('click',()=>{const t=a.dataset.okazja.toLowerCase();const o=[...fs.options].find(o=>o.text.toLowerCase().split(/[ ,]/).some(w=>w.length>3&&!/^przyj/.test(w)&&t.includes(w.slice(0,5))));if(o)fs.value=o.text}));
+document.querySelectorAll('.acc details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.acc details').forEach(x=>{if(x!==d)x.open=false})}));
+document.querySelectorAll('.mnav nav a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));
+})();
+</script>
+</body>
+</html>
