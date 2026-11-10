@@ -453,6 +453,12 @@ section[id]{scroll-margin-top:84px}
 .about-photo .av-cap b{font:600 .98rem var(--display);letter-spacing:-.01em}
 .about-photo .av-cap span{font-size:.78rem;color:rgba(255,255,255,.78)}
 @media (max-width:760px){.about-photo .av-cap{left:12px;bottom:12px;padding:8px 12px}}
+
+/* delikatne „pływanie” po najechaniu */
+.about-facts li,.steps .vis,.vars a .scr,.offer .of{transition:box-shadow .5s ease,border-color .4s ease}
+.about-facts li.fl-on{box-shadow:0 14px 28px -20px rgba(14,15,20,.35);border-color:#DCDCD5}
+.steps .vis.fl-on{box-shadow:0 26px 40px -26px rgba(14,15,20,.4)}
+.offer .of.fl-on{box-shadow:0 26px 46px -30px rgba(14,15,20,.35)}
 </style>
 </head>
 <body>
@@ -1477,6 +1483,23 @@ function finish(){if(done)return;done=true;clearTimeout(t1);
 }
 t1=setTimeout(finish,2000);
 ov.addEventListener('click',finish);addEventListener('keydown',function kk(){finish();removeEventListener('keydown',kk)});
+})();
+</script><script>
+(function(){
+if(!matchMedia('(hover:hover)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var items=[];
+function add(el,host,lift,amp,per){var o={el:el,a:0,t:Math.random()*6,tg:0,lift:lift,amp:amp,per:per};(host||el).addEventListener('mouseenter',function(){o.tg=1;el.classList.add('fl-on');run()});(host||el).addEventListener('mouseleave',function(){o.tg=0;el.classList.remove('fl-on');run()});items.push(o)}
+document.querySelectorAll('.about-facts li').forEach(function(el){add(el,null,3,1.6,3.2)});
+document.querySelectorAll('.steps li').forEach(function(li){var v=li.querySelector('.vis');if(v)add(v,li,5,2,3.6)});
+document.querySelectorAll('.vars a').forEach(function(a){var sc=a.querySelector('.scr');if(sc)add(sc,a,4,1.6,3.4)});
+document.querySelectorAll('.offer .of').forEach(function(el){add(el,null,4,1.8,3.8)});
+var raf=0,last=0;
+function run(){if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}}
+function tick(now){var dt=Math.min(.05,(now-last)/1000);last=now;var live=false;
+  items.forEach(function(o){o.a+=(o.tg-o.a)*(1-Math.exp(-dt*(o.tg?3.2:2.6)));if(o.tg||o.a>.002){live=true;o.t+=dt}else o.a=0;
+    var y=-o.lift*o.a+Math.sin(o.t*2*Math.PI/o.per)*o.amp*o.a,x=Math.sin(o.t*2*Math.PI/(o.per*1.7))*.6*o.a;
+    o.el.style.translate=o.a?x.toFixed(2)+'px '+y.toFixed(2)+'px':''});
+  raf=live?requestAnimationFrame(tick):0}
 })();
 </script></body>
 </html>
