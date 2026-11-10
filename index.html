@@ -129,7 +129,7 @@ section.block{padding:104px 0;position:relative}
 .clients .wrap{display:flex;align-items:center;gap:32px;padding-top:24px;padding-bottom:24px}
 .clients .eyebrow{flex:none}
 .marq{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.track{display:flex;align-items:center;gap:0;width:max-content}
+.track{display:flex;align-items:center;gap:0;width:max-content;animation:marq 70s linear infinite}
 .track .cl{flex:none}
 @keyframes marq{to{transform:translateX(calc(-100% / 3))}}
 .marq:hover .track{animation-play-state:paused}
@@ -394,21 +394,16 @@ footer .big{margin-left:auto;margin-right:auto;max-width:980px}
 @media (prefers-reduced-motion:reduce){.npill{transition:opacity .2s}}
 
 /* Zaufali mi — statyczny rząd zamiast przewijanego paska */
-.track{animation:none!important;width:100%;justify-content:space-between;flex-wrap:wrap;gap:14px 28px}
-.track .cl{padding-left:0!important;padding-right:0!important;margin:0!important}
-@media (min-width:1100px){.track{flex-wrap:nowrap}}
-@media (max-width:760px){.clients .wrap{flex-direction:column;align-items:flex-start;gap:16px}.track{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}.track .cl{min-width:0}.track .cl span{white-space:normal;font-size:.82rem;line-height:1.25}}
-.track .cl:nth-child(n+5){display:none}
-.marq{mask-image:none;-webkit-mask-image:none}
+
 
 /* intro: rysowane logo, które ląduje w menu */
 #intro{display:none}
 html.intro-on #intro,html.intro-out #intro{display:block;position:fixed;inset:0;z-index:200;cursor:pointer}html.intro-out #intro{pointer-events:none}
 html.intro-on body{overflow:hidden}
 #intro .ibg{position:absolute;inset:0;background:var(--bg)}
-#intro .igrp{position:absolute;left:50%;top:50%;display:flex;align-items:center;gap:22px;transform:translate(-50%,-50%);color:#0E0F14;will-change:transform}
-#intro svg{width:clamp(56px,7vw,92px);height:auto;flex:none;overflow:visible}
-#intro .iw{font:800 clamp(2.2rem,6vw,4.4rem) var(--display);letter-spacing:.02em;white-space:nowrap;clip-path:inset(0 100% 0 0)}
+#intro .igrp{--k:3;position:absolute;left:50%;top:50%;display:flex;align-items:center;gap:calc(10px * var(--k));transform:translate(-50%,-50%);color:#0E0F14;will-change:transform}
+#intro svg{width:calc(26px * var(--k));height:auto;flex:none;overflow:visible}
+#intro .iw{font:800 calc(1.05rem * var(--k)) var(--display);letter-spacing:.02em;white-space:nowrap;clip-path:inset(0 100% 0 0)}
 #intro .iw span{font-weight:400;color:#6A6C7A}
 #intro .ia,#intro .ib{stroke-dasharray:240;stroke-dashoffset:240}
 #intro .ic{transform-box:fill-box;transform-origin:center;transform:scale(0)}
@@ -417,7 +412,8 @@ html.intro-on body{overflow:hidden}
 #intro .ic{animation:iPop .45s cubic-bezier(.3,1.6,.5,1) 1.05s forwards}
 #intro .iw{animation:iWipe .7s cubic-bezier(.65,0,.35,1) 1.05s forwards}
 @keyframes iDraw{to{stroke-dashoffset:0}}@keyframes iPop{to{transform:scale(1)}}@keyframes iWipe{to{clip-path:inset(0 0 0 0)}}
-@media (max-width:600px){#intro .igrp{gap:14px}}
+@media (max-width:600px){#intro .igrp{--k:2}}
+html.intro-on .top .logo,html.intro-out.landing .top .logo{opacity:0}
 </style>
 </head>
 <body>
@@ -1135,6 +1131,7 @@ html.intro-on body{overflow:hidden}
     (function loop(now){
       var dt=Math.min(.05,(now-last)/1000);last=now;
       var act=canHover?null:mobileActive();
+      if(heroHov===0&&!d.documentElement.classList.contains('intro-on')){kbT+=dt;if(kbT>9){show((i+1)%S.length)}}
       boxes.forEach(function(o){
         var r=o.el.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight)return;
         var im=img(o); if(!im)return; var mx=maxY(o);
@@ -1401,19 +1398,20 @@ if(!root.classList.contains('intro-on')){ov.remove();return}
 try{sessionStorage.setItem('odnIntro','1')}catch(e){}
 var grp=ov.querySelector('.igrp'),bg=ov.querySelector('.ibg'),done=false,t1;
 function finish(){if(done)return;done=true;clearTimeout(t1);
-  var target=document.querySelector('.top .logo svg');
-  var a=grp.getBoundingClientRect(),gs=grp.querySelector('svg').getBoundingClientRect();
-  var dx=0,dy=0,sc=.3;
-  if(target){var t=target.getBoundingClientRect();sc=t.width/gs.width;dx=t.left-gs.left*1;dy=(t.top+t.height/2)-(gs.top+gs.height/2)}
-  /* przelicz przesunięcie przy skali względem lewej krawędzi znaku */
-  grp.style.transformOrigin=(gs.left-a.left)+'px 50%';
-  var tx=(target?dx:0),ty=dy;
-  var base='translate(-50%,-50%)';
-  grp.animate([{transform:base},{transform:base+' translate('+tx+'px,'+ty+'px) scale('+sc+')'}],{duration:900,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'});
-  grp.animate([{opacity:1},{opacity:1,offset:.85},{opacity:0}],{duration:1000,fill:'forwards'});
-  bg.animate([{opacity:1},{opacity:0}],{duration:700,delay:200,easing:'ease',fill:'forwards'});
-  root.classList.remove('intro-on');root.classList.add('intro-out');document.body.style.overflow='';setTimeout(function(){dispatchEvent(new Event('odn:introdone'))},350);
-  setTimeout(function(){ov.remove();root.classList.remove('intro-out')},1100);
+  var nl=document.querySelector('.top .logo');
+  ov.querySelector('.iw').style.clipPath='inset(0 0 0 0)';[].forEach.call(ov.querySelectorAll('.ia,.ib'),function(p){p.style.strokeDashoffset=0});ov.querySelector('.ic').style.transform='scale(1)';
+  var a=grp.getBoundingClientRect();
+  root.classList.remove('intro-on');root.classList.add('intro-out','landing');document.body.style.overflow='';
+  if(!nl||nl.offsetWidth===0){bg.animate([{opacity:1},{opacity:0}],{duration:600,fill:'forwards'});grp.animate([{opacity:1},{opacity:0}],{duration:500,fill:'forwards'});setTimeout(end,650);return}
+  var t=nl.getBoundingClientRect(),sc=t.height/a.height;
+  sc=Math.min(sc,t.width/a.width*1.02);
+  var tx=t.left-a.left,ty=(t.top+t.height/2)-(a.top+a.height/2);
+  grp.style.transformOrigin='0 50%';
+  var fly=grp.animate([{transform:'translate(-50%,-50%)'},{transform:'translate(-50%,-50%) translate('+tx+'px,'+ty+'px) scale('+sc+')'}],{duration:1000,easing:'cubic-bezier(.76,0,.18,1)',fill:'forwards'});
+  bg.animate([{opacity:1},{opacity:0}],{duration:800,delay:250,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});
+  setTimeout(function(){dispatchEvent(new Event('odn:introdone'))},550);
+  fly.onfinish=function(){root.classList.remove('landing');requestAnimationFrame(function(){requestAnimationFrame(end)})};
+  function end(){ov.remove();root.classList.remove('intro-out','landing')}
 }
 t1=setTimeout(finish,2000);
 ov.addEventListener('click',finish);addEventListener('keydown',function k(){finish();removeEventListener('keydown',k)});
