@@ -412,6 +412,11 @@ html.intro-on .top .logo svg path{stroke-dasharray:240;stroke-dashoffset:240;ani
 html.intro-on .top .logo svg path+path{animation-delay:.35s}
 html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:iPop .45s cubic-bezier(.3,1.6,.5,1) 1.05s forwards}
 @keyframes iDraw{to{stroke-dashoffset:0}}@keyframes iPop{to{transform:scale(1)}}@keyframes iWipe{to{clip-path:inset(0 0 0 0)}}
+
+.about-photo .av-grain{position:absolute;inset:-50%;pointer-events:none;z-index:1;opacity:.11;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain .9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+@media (prefers-reduced-motion:reduce){.about-photo .av-grain{animation:none}}
+.about-photo{box-shadow:0 30px 60px -30px rgba(14,15,20,.35),inset 0 0 0 1px rgba(14,15,20,.06)}
 </style>
 </head>
 <body>
@@ -572,7 +577,7 @@ html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:cent
 
 <section class="block band" id="omnie">
 <div class="wrap about">
-<div class="about-photo rv" id="avWrap"><img id="avImg" src="/nowa/img/daniel-avatar.jpg" alt="Daniel Popiel — pilot i twórca stron, w kokpicie z laptopem"><video id="avVid" muted playsinline preload="auto" src="/nowa/img/pilot.mp4" aria-hidden="true"></video><span class="av-glare" aria-hidden="true"></span></div>
+<div class="about-photo rv" id="avWrap"><img id="avImg" src="/nowa/img/pilot-f0.jpg" alt="Daniel Popiel — pilot i twórca stron, w kokpicie z laptopem"><video id="avVid" muted playsinline preload="none" data-src="/nowa/img/pilot.mp4" aria-hidden="true"></video><span class="av-grain" aria-hidden="true"></span><span class="av-glare" aria-hidden="true"></span></div>
 <div class="rv" style="--d:.1s">
 <p class="eyebrow">O mnie</p>
 <h2 class="wave">Na co dzień pilot Boeinga 737. Po godzinach robię strony.</h2>
@@ -1354,6 +1359,7 @@ if(vid){
   /* pilot: najechanie = odwraca wzrok na laptopa i pisze (pętla tam-i-z-powrotem w pisaniu); zjechanie = cofa się płynnie do patrzenia na nas */
   var T=0,V=0,dir=1,hov=false,raf=0,last=0,A=2.4,B=5.4,FPS=15;
   vid.addEventListener('loadeddata',function(){vid.currentTime=0;w.classList.add('vid-ok')});
+  (function(){function ld(){if(vid.src)return;vid.preload='auto';vid.src=vid.getAttribute('data-src');vid.load()}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){ld();io.disconnect()}},{rootMargin:'1200px 0px'});io.observe(w)}else ld()})();
   vid.load&&vid.preload!=='auto'&&(vid.preload='auto');
   function tick(now){var dt=Math.min(.05,(now-last)/1000);last=now;
     var want=-1.15;if(hov){if(T>=B-.02)dir=-1;else if(T<=A&&dir<0)dir=1;want=dir<0?-.85:1}
