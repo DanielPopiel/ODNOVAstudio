@@ -1,16 +1,1 @@
-<!doctype html>
-<html lang="pl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Movies</title>
-<meta name="robots" content="noindex">
-<script>
-  // Kino 1000 to teraz Movies – przenosimy pod nowy adres (z kodem wspólnej listy, jeśli był w linku).
-  if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then((r) => r.forEach((x) => { if (x.scope.endsWith('/kino1000/')) x.unregister(); })).catch(() => {});
-  location.replace('../movies/' + location.hash);
-</script>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0b0f;color:#eee;font:16px system-ui,sans-serif}a{color:#f2b33d}</style>
-</head>
-<body><p>Kino 1000 to teraz <a href="../movies/">Movies</a>.</p></body>
-</html>
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Movies</title><meta http-equiv="refresh" content="0;url=/p/movies/"><script>if(navigator.serviceWorker)navigator.serviceWorker.getRegistrations().then(r=>r.forEach(x=>{if(!x.scope.includes('/p/movies/'))x.unregister()}));location.replace('/p/movies/')</script></head><body style="background:#0b0a0f;color:#fff;font-family:sans-serif"><p>Przeniesiono: <a href="/p/movies/" style="color:#f2b33d">/p/movies/</a></p></body></html>
