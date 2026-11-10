@@ -417,6 +417,37 @@ html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:cent
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
 @media (prefers-reduced-motion:reduce){.about-photo .av-grain{animation:none}}
 .about-photo{box-shadow:0 30px 60px -30px rgba(14,15,20,.35),inset 0 0 0 1px rgba(14,15,20,.06)}
+
+/* karuzela na telefonie: lekka wersja 2D (bez warstw 3D, które przeciążały GPU) */
+.rc-stage.flat{perspective:none}
+.rc-stage.flat .rc-scale,.rc-stage.flat .rc-ring,.rc-stage.flat .p3,.rc-stage.flat .p3 .body{transform-style:flat}
+.rc-stage.flat .rc-ring{transform:none!important;transition:none}
+.rc-stage.flat .p3{transition:transform .6s cubic-bezier(.22,.8,.2,1),opacity .6s ease}
+.rc-stage.flat .p3 .front{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 0 0 2px #2c2d33,inset 0 0 0 4px #0a0a0d,0 0 0 2.5px #3a3b42,0 0 0 3.5px #8a8c94,0 34px 50px -26px rgba(14,15,20,.55)}
+
+/* ===== mobile UX ===== */
+section[id]{scroll-margin-top:84px}
+@media (hover:none){
+  .rc-arrow:hover{background:rgba(255,255,255,.86);color:#0E0F14;border-color:rgba(14,15,20,.1);transform:none;box-shadow:0 14px 34px -14px rgba(14,15,20,.35)}
+  .rc-arrow:active{transform:scale(.94)}
+  .hnext:hover{background:#fff;color:#0E0F14}.btn-acc:hover{transform:none}
+  .cgrid a:hover,.vars a:hover .scr{transform:none}
+}
+@media (max-width:760px){
+  .clients .wrap{flex-direction:column;align-items:stretch;gap:14px;padding-top:20px;padding-bottom:20px}
+  .clients .eyebrow{justify-content:flex-start}
+  .rc-arrow{width:46px;height:46px;margin-top:-23px}
+  .rc-arrow.prev{left:4px}.rc-arrow.next{right:4px}
+  .rc-dots{gap:0}
+  .rc-dots button{position:relative;background-clip:content-box;padding:18px 6px;box-sizing:content-box;background:transparent}
+  .rc-dots button::after{content:"";position:absolute;left:6px;right:6px;top:50%;height:8px;margin-top:-4px;border-radius:99px;background:#C9C8C1;transition:background .4s}
+  .rc-dots button[aria-current="true"]::after{background:var(--grad)}
+  .rc-dots button[aria-current="true"]{background:transparent}
+  .rc-caps .rc-cap{transition:opacity .25s ease}
+  .about-photo{max-width:none}
+  h2{text-wrap:balance}
+}
+.rc-cap{transition:opacity .2s ease,transform .2s ease}.rc-cap.on{transition:opacity .45s ease .18s,transform .45s ease .18s}
 </style>
 </head>
 <body>
@@ -536,7 +567,7 @@ html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:cent
 <section class="block" id="realizacje">
 <div class="wrap">
 <p class="eyebrow rv ctr">Realizacje</p>
-<div class="head rv"><h2 class="wave">Tak wyglądają na telefonie</h2><p>Większość Twoich klientów wejdzie z telefonu. Obróć telefony strzałkami — strona na pierwszym planie przewija się sama, tak jak zobaczy ją klient.</p></div>
+<div class="head rv"><h2 class="wave">Tak wyglądają na telefonie</h2><p>Większość Twoich klientów wejdzie z telefonu. Obróć telefony strzałkami albo przesuń palcem — strona na pierwszym planie przewija się sama, tak jak zobaczy ją klient.</p></div>
 <div class="rc rv" id="rc" role="region" aria-roledescription="karuzela" aria-label="Realizacje na telefonie">
 <div class="rc-stage" id="rcStage"><div class="rc-scale"><div class="rc-ring" id="rcRing"></div></div>
 <button class="rc-arrow prev" type="button" aria-label="Poprzednia realizacja"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -1177,15 +1208,16 @@ html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:cent
   /* karuzela 3D telefonów (obrotowy bęben) */
   (function(){
     var D=window.RC_DATA, ring=d.getElementById('rcRing'), stage=d.getElementById('rcStage'); if(!ring||!D)return;
+    var FLAT=matchMedia('(max-width:760px), (pointer:coarse)').matches; if(FLAT)stage.classList.add('flat');
     var mob=false, N=D.length, COUNT=8, ANG=360/COUNT, idx=0, hov=false, t0=performance.now(), R=430, LAY=16, TH=18;
     var caps=[].slice.call(d.querySelectorAll('.rc-cap')), dots=[].slice.call(d.querySelectorAll('.rc-dots button'));
     function mod(a,n){return((a%n)+n)%n}
     var P=[];
     for(var i=0;i<COUNT;i++){
       var s=D[i%N], el=d.createElement('div'), h='<div class="body">';
-      for(var k=0;k<=LAY;k++){var fr=k/LAY,u=2*fr-1,e=(1-Math.sqrt(Math.max(0,1-u*u)))*3.2,lt=k===0||k===LAY;h+='<i class="lay'+(lt?' rim':'')+'" style="inset:'+e.toFixed(2)+'px;border-radius:'+(44-e).toFixed(2)+'px;transform:translateZ('+(-.25-fr*TH).toFixed(2)+'px)"></i>'}
-      h+='<div class="back" style="transform:translateZ('+(-TH-.5)+'px) rotateY(180deg)"></div>';
-      h+='<i class="btn" style="left:-3px;top:112px;height:28px;transform:translateZ(-'+(TH/2)+'px)"></i><i class="btn" style="left:-3px;top:156px;height:48px;transform:translateZ(-'+(TH/2)+'px)"></i><i class="btn" style="left:-3px;top:214px;height:48px;transform:translateZ(-'+(TH/2)+'px)"></i><i class="btn" style="right:-3px;top:170px;height:70px;transform:translateZ(-'+(TH/2)+'px)"></i>';
+      if(!FLAT)for(var k=0;k<=LAY;k++){var fr=k/LAY,u=2*fr-1,e=(1-Math.sqrt(Math.max(0,1-u*u)))*3.2,lt=k===0||k===LAY;h+='<i class="lay'+(lt?' rim':'')+'" style="inset:'+e.toFixed(2)+'px;border-radius:'+(44-e).toFixed(2)+'px;transform:translateZ('+(-.25-fr*TH).toFixed(2)+'px)"></i>'}
+      if(!FLAT)h+='<div class="back" style="transform:translateZ('+(-TH-.5)+'px) rotateY(180deg)"></div>';
+      if(!FLAT)h+='<i class="btn" style="left:-3px;top:112px;height:28px;transform:translateZ(-'+(TH/2)+'px)"></i><i class="btn" style="left:-3px;top:156px;height:48px;transform:translateZ(-'+(TH/2)+'px)"></i><i class="btn" style="left:-3px;top:214px;height:48px;transform:translateZ(-'+(TH/2)+'px)"></i><i class="btn" style="right:-3px;top:170px;height:70px;transform:translateZ(-'+(TH/2)+'px)"></i>';
       h+='<div class="front"><div class="scr3"><img alt="'+s.alt+'" src="'+s.img+'"></div><span class="glass"></span></div><span class="shade"></span></div>';
       el.className='p3';el.innerHTML=h;ring.appendChild(el);
       P.push({el:el,img:el.querySelector('img'),scr:el.querySelector('.scr3'),body:el.querySelector('.body'),shade:el.querySelector('.shade'),i:i,y:0,tg:0,v:0,dir:1,hold:1.2,wt:0});
@@ -1194,12 +1226,14 @@ html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:cent
     function rel(p){return mod(p.i-idx+COUNT/2,COUNT)-COUNT/2}
     function place(){
       mob=stage.clientWidth<640;R=mob?400:430;
+      if(FLAT)return;
       P.forEach(function(p){p.el.style.transform='rotateY('+(p.i*ANG)+'deg) translateZ('+R+'px)'});
     }
     function layout(){
-      ring.style.transform='translateZ('+(-R)+'px) rotateY('+(-idx*ANG)+'deg)';
+      if(!FLAT)ring.style.transform='translateZ('+(-R)+'px) rotateY('+(-idx*ANG)+'deg)';
       var sI=mod(idx,N);
-      P.forEach(function(p){var r=Math.abs(rel(p));p.shade.style.opacity=r===0?0:r===1?.38:r===2?.7:.9;p.el.style.display=r>1?'none':'';p.el.classList.toggle('front-on',r===0)});
+      if(FLAT)P.forEach(function(p){var rr=rel(p),a=Math.abs(rr);p.el.style.display=a>2?'none':'';p.el.style.transform='translateX('+(rr*74)+'%) scale('+(a===0?1:.8)+')';p.el.style.opacity=a===0?1:a===1?.55:0;p.el.style.zIndex=10-a;p.shade.style.opacity=0;p.el.classList.toggle('front-on',a===0)});
+      else P.forEach(function(p){var r=Math.abs(rel(p));p.shade.style.opacity=r===0?0:r===1?.38:r===2?.7:.9;p.el.style.display=r>1?'none':'';p.el.classList.toggle('front-on',r===0)});
       caps.forEach(function(c,j){var on=j===sI;c.classList.toggle('on',on);c.tabIndex=on?0:-1});
       dots.forEach(function(b,j){b.setAttribute('aria-current',j===sI?'true':'false')});
     }
@@ -1402,8 +1436,8 @@ if(!root.classList.contains('intro-on')){ov.remove();return}
 try{sessionStorage.setItem('odnIntro','1')}catch(e){}
 var logo=document.querySelector('.top .logo');
 if(!logo||!logo.offsetWidth){root.classList.remove('intro-on');ov.remove();return}
-var done=false,t1,k=innerWidth<600?2:3;
-function place(){logo.style.transformOrigin='0 50%';logo.style.transform='none';var r=logo.getBoundingClientRect();
+var done=false,t1,k=3;
+function place(){logo.style.transformOrigin='0 50%';logo.style.transform='none';var r=logo.getBoundingClientRect();k=Math.min(3,(innerWidth*.8)/r.width);
   var dx=(innerWidth/2-r.width*k/2)-r.left,dy=innerHeight/2-(r.top+r.height/2);
   logo.style.transform='translate('+dx+'px,'+dy+'px) scale('+k+')';return logo.style.transform}
 var from=place();addEventListener('resize',function(){if(!done)from=place()});
