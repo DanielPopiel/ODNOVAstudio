@@ -1174,7 +1174,7 @@ section[id]{scroll-margin-top:84px}
       var best=null,bd=1e9;boxes.forEach(function(o){if(o.inHero)return;var r=o.el.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)return;var dd=Math.abs((r.top+r.bottom)/2-innerHeight/2);if(dd<bd){bd=dd;best=o}});return best;
     }
     (function loop(now){
-      var dt=Math.min(.05,(now-last)/1000);last=now;
+      var dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
       var act=canHover?null:mobileActive();
       if(heroHov===0&&!d.documentElement.classList.contains('intro-on')){kbT+=dt;if(kbT>9){show((i+1)%S.length)}}
       boxes.forEach(function(o){
@@ -1212,7 +1212,7 @@ section[id]{scroll-margin-top:84px}
     var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v._busy=false});
     v.onended=function(){
       var last=performance.now(),spd=0;
-      (function rw(now){var dt=Math.min(.05,(now-last)/1000);last=now;
+      (function rw(now){var dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
         spd+=(2.2-spd)*(1-Math.exp(-dt*3));             /* łagodny rozbieg cofania */
         var t=v.currentTime-spd*dt;
         if(t<=0.02){try{v.currentTime=0}catch(e){}v._busy=false;return}
@@ -1299,37 +1299,48 @@ section[id]{scroll-margin-top:84px}
       }
       stage.addEventListener('mouseenter',function(){overSt=true;upd()});
       stage.addEventListener('mouseleave',function(){overSt=false;upd()});
+      /* W pobliżu karuzeli przejmujemy przewijanie kółkiem i prowadzimy je sami (jedno płynne źródło ruchu, bez walki z przeglądarką).
+         Środek bloku działa jak miękki „ząbek”: przewijanie płynnie w nim staje; dalsze, zdecydowane kręcenie przepuszcza dalej. */
+      var tgt=0, drive=0, active=false, lastT=0, caughtAt=0, lastWheel=0, wDir=0, ZONE=function(){return innerHeight*0.75};
+      function maxY(){return d.documentElement.scrollHeight-innerHeight}
+      function step(now){
+        var dt=lastT?Math.max(0,Math.min(.05,(now-lastT)/1000)):1/60;lastT=now;
+        var s=scrollY;if((wDir>0&&tgt<s)||(wDir<0&&tgt>s))tgt=s;   // nigdy nie cofamy wbrew kierunkowi kręcenia
+        var n=s+(tgt-s)*(1-Math.exp(-dt*11));
+        if(Math.abs(tgt-n)<.6)n=tgt;
+        window.scrollTo({top:n,behavior:'instant'});upd();
+        if(Math.abs(scrollY-n)>2){tgt=scrollY;drive=0;return}   // nie da się przewinąć (blokada/koniec strony)
+        if(n!==tgt){drive=requestAnimationFrame(step)}else{drive=0}
+      }
+      function run(){if(!drive){lastT=0;drive=requestAnimationFrame(step)}}
       addEventListener('wheel',function(e){
-        if(e.defaultPrevented)return;
-        if(anim){e.preventDefault();return}
-        var now=performance.now(), dy=e.deltaY*(e.deltaMode===1?32:1), Y=idealY(), cur=scrollY;
-        if(now<freeUntil)return;
-        if(Math.abs(cur-Y)<3){                       // stoimy na środku: zbieramy „dokręcenie”
-          if(now-accT>650||acc*dy<0)acc=0; accT=now; acc+=dy;
-          e.preventDefault();
-          if(Math.abs(acc)<320){setBend(Math.max(-26,Math.min(26,acc*0.08)));return}
-          var dir=acc>0?1:-1; acc=0; setBend(0); freeUntil=now+800;
-          go2(cur+dir*Math.round(innerHeight*0.55),520); return;
+        if(e.defaultPrevented||e.ctrlKey||html.classList.contains('intro-on'))return;
+        var now=performance.now(), dy=e.deltaY*(e.deltaMode===1?32:e.deltaMode===2?innerHeight:1), Y=idealY();
+        var cur=active?tgt:scrollY;
+        if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+        e.preventDefault();wDir=dy>0?1:dy<0?-1:0;
+        if(!active||!drive&&Math.abs(tgt-scrollY)>2){active=true;tgt=scrollY}
+        var gap=now-lastWheel;lastWheel=now;
+        if(now<freeUntil){tgt+=dy}
+        else if(Math.abs(tgt-Y)<1){
+          if(now-caughtAt<450&&gap<120){caughtAt=now;setBend(Math.max(-10,Math.min(10,dy*0.05)));return}   // wygaszamy rozpęd (inercja touchpada / szybkie kółko)
+                          // stoimy w ząbku: zbieramy „dokręcenie”
+          if(now-accT>1200||acc*dy<0)acc=0;accT=now;acc+=dy;
+          if(Math.abs(acc)<300){setBend(Math.max(-24,Math.min(24,acc*0.08)));return}
+          var dir=acc>0?1:-1;acc=0;setBend(0);freeUntil=now+700;tgt=Y+dir*Math.round(innerHeight*0.32);
         }
-        if((cur<Y&&cur+dy>=Y-2)||(cur>Y&&cur+dy<=Y+2)){ // przejeżdżamy przez środek — magnes łapie
-          e.preventDefault();acc=0;accT=now;go2(Y,Math.min(520,180+Math.abs(Y-cur)*1.2));
-        }
+        else if((tgt<Y&&tgt+dy>=Y)||(tgt>Y&&tgt+dy<=Y)){tgt=Y;acc=0;accT=now;caughtAt=now}   // dojeżdżamy do środka — miękko staje
+        else tgt+=dy;
+        tgt=Math.max(0,Math.min(maxY(),tgt));run();
       },{passive:false});
-      addEventListener('scroll',function(){
-        upd();clearTimeout(snapT);
-        if(anim||performance.now()<freeUntil)return;
-        snapT=setTimeout(function(){
-          var dy=scrollY-idealY();
-          if(!anim&&Math.abs(dy)>3&&Math.abs(dy)<innerHeight*0.28&&performance.now()>freeUntil)go2(idealY(),420);
-        },180);
-      },{passive:true});
+      addEventListener('scroll',function(){upd();if(!drive)tgt=scrollY},{passive:true});
       addEventListener('keydown',function(e){if(atIdeal()&&['ArrowDown','ArrowUp','PageDown','PageUp',' '].indexOf(e.key)>-1&&!e.target.closest('input,textarea')){freeUntil=performance.now()+800}});
     }
     addEventListener('resize',function(){place();layout()});
     place();layout();
     var last=performance.now();
     (function loop(now){
-      var dt=Math.min(.05,(now-last)/1000);last=now;
+      var dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
       var r=stage.getBoundingClientRect();
       if(r.bottom>0&&r.top<innerHeight){
         var f=front();
@@ -1421,7 +1432,7 @@ if(vid){
   vid.addEventListener('loadeddata',function(){vid.currentTime=0;w.classList.add('vid-ok')});
   (function(){function ld(){if(vid.src)return;vid.preload='auto';vid.src=vid.getAttribute('data-src');vid.load()}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){ld();io.disconnect()}},{rootMargin:'1200px 0px'});io.observe(w)}else ld()})();
   vid.load&&vid.preload!=='auto'&&(vid.preload='auto');
-  function tick(now){var dt=Math.min(.05,(now-last)/1000);last=now;
+  function tick(now){var dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
     var want=-1.15;if(hov){if(T>=B-.02)dir=-1;else if(T<=A&&dir<0)dir=1;want=dir<0?-.85:1}
     V+=(want-V)*(1-Math.exp(-dt*(hov?5:3.5)));T=Math.max(0,Math.min(B,T+V*dt));
     var fr=Math.round(T*FPS)/FPS;if(Math.abs(vid.currentTime-fr)>.001&&!vid.seeking){try{vid.currentTime=fr+.001}catch(e){}}
@@ -1439,7 +1450,7 @@ var t=0,v=0,target=0,last=0,raf=0,TAU=Math.PI*2;
 function pose(){var x=Math.sin(TAU*t/9)*1.1+Math.sin(TAU*t/4.3)*.25,y=Math.sin(TAU*t/6.4+1)*.8,sc=1.06+Math.sin(TAU*t/5.2)*.012+Math.sin(TAU*t/12)*.008,r=Math.sin(TAU*t/10.5)*.35;
 im.style.transform='translate3d('+x.toFixed(3)+'%,'+y.toFixed(3)+'%,0) scale('+sc.toFixed(4)+') rotate('+r.toFixed(3)+'deg)';
 w.style.setProperty('--gx',(30+Math.sin(TAU*t/9)*18).toFixed(1)+'%');w.style.setProperty('--gy',(25+Math.cos(TAU*t/7)*10).toFixed(1)+'%')}
-function loop(now){var dt=Math.min(.05,(now-last)/1000);last=now;v+=(target-v)*(1-Math.exp(-dt*(target?2.2:1.6)));t+=v*dt;pose();if(target||v>.003){raf=requestAnimationFrame(loop)}else{v=0;raf=0}}
+function loop(now){var dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;v+=(target-v)*(1-Math.exp(-dt*(target?2.2:1.6)));t+=v*dt;pose();if(target||v>.003){raf=requestAnimationFrame(loop)}else{v=0;raf=0}}
 function go(on){if(rm)return;target=on?1:0;w.style.setProperty('--go',on?1:0);if(!raf){last=performance.now();raf=requestAnimationFrame(loop)}}
 w.addEventListener('pointerenter',function(){go(1)});w.addEventListener('pointerleave',function(){go(0)});
 if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window){new IntersectionObserver(function(e){go(e[0].isIntersecting)},{threshold:.6}).observe(w)}
@@ -1495,7 +1506,7 @@ document.querySelectorAll('.vars a').forEach(function(a){var sc=a.querySelector(
 document.querySelectorAll('.offer .of').forEach(function(el){add(el,null,4,1.8,3.8)});
 var raf=0,last=0;
 function run(){if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}}
-function tick(now){var dt=Math.min(.05,(now-last)/1000);last=now;var live=false;
+function tick(now){var dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;var live=false;
   items.forEach(function(o){o.a+=(o.tg-o.a)*(1-Math.exp(-dt*(o.tg?3.2:2.6)));if(o.tg||o.a>.002){live=true;o.t+=dt}else o.a=0;
     var y=-o.lift*o.a+Math.sin(o.t*2*Math.PI/o.per)*o.amp*o.a,x=Math.sin(o.t*2*Math.PI/(o.per*1.7))*.6*o.a;
     o.el.style.translate=o.a?x.toFixed(2)+'px '+y.toFixed(2)+'px':''});
