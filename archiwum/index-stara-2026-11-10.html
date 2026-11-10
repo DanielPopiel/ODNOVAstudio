@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ODNOVA°studio — metamorfozy stron internetowych dla małych firm</title>
+<meta name="description" content="Zamieniamy przestarzałe strony w nowoczesne wizytówki, które budują zaufanie i sprzedają. Realizacja w 7 dni, darmowy audyt i wycena. Zobacz metamorfozy na żywo.">
+<link rel="canonical" href="https://www.odnovastudio.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ODNOVA°studio">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://www.odnovastudio.com/">
+<meta property="og:title" content="ODNOVA°studio — metamorfozy stron internetowych dla małych firm">
+<meta property="og:description" content="Twoja strona wygląda jak z 2008 roku? Zamieniamy przestarzałe witryny w nowoczesne wizytówki. Realizacja w 7 dni, darmowy audyt.">
+<meta property="og:image" content="https://www.odnovastudio.com/img/og-odnova.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ODNOVA°studio — stare strony, nowe życie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="./favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<script>
+  // Wejście z podstrony demo (link "← Portfolio") albo dowolny deep-link z #kotwicą
+  // pomija intro: ta sama reguła co przy prefers-reduced-motion, patrz <style> niżej.
+  try {
+    var skip = location.hash.length > 1 || /[?&]skipIntro=1/.test(location.search);
+    if (skip) document.documentElement.className += ' no-intro';
+  } catch (e) {}
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;overflow-x:hidden}
+  /* ===== pasek zaufania pod hero (statyczny — bez przewijanej taśmy) ===== */
+  .tb-in{max-width:1180px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr)}
+  .tb-item{display:flex;align-items:center;justify-content:center;gap:12px;padding:4px 18px;border-left:1px solid rgba(255,255,255,.08)}
+  .tb-item:first-child{border-left:0}
+  .tb-mark{color:#00e5b0;font-size:.7rem;line-height:1;flex:none}
+  .tb-txt{font-family:'Sora',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.02em;color:#cfcfdb;white-space:nowrap}
+  @media(max-width:860px){
+    .tb-in{grid-template-columns:repeat(2,1fr);row-gap:16px;padding:20px 24px}
+    .tb-item:nth-child(odd){border-left:0}
+  }
+  @media(max-width:420px){
+    .tb-txt{font-size:.8rem;white-space:normal}
+    .tb-item{padding:4px 10px;gap:9px}
+  }
+  @keyframes introLogo{from{opacity:0;transform:translateY(46px) skewY(4deg)}to{opacity:1;transform:none}}
+  @keyframes introLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes introTag{from{opacity:0;letter-spacing:.55em}to{opacity:1;letter-spacing:.3em}}
+  @keyframes introFade{to{opacity:0}}
+  @keyframes curtainUp{to{transform:translateY(-101%)}}
+  @keyframes curtainDown{to{transform:translateY(101%)}}
+  @keyframes heroUp{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  @keyframes wordUp{from{transform:translateY(112%)}to{transform:none}}
+  @keyframes navIn{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+  @keyframes beam{0%{transform:translateY(-140px);opacity:0}12%{opacity:1}85%{opacity:1}100%{transform:translateY(600px);opacity:0}}
+  @keyframes evoPulse{
+    0%,100%{box-shadow:0 0 0 6px rgba(124,77,232,0.15),0 0 18px rgba(124,77,232,0.55)}
+    50%{box-shadow:0 0 0 10px rgba(124,77,232,0.24),0 0 32px rgba(124,77,232,0.95)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    [data-intro]{display:none!important}
+    [data-hero],[data-beam]{animation:none!important;opacity:1!important;transform:none!important}
+    [data-evo-marker]{animation:none!important}
+  }
+  /* Powrót z demo / deep-link — od razu treść, bez kurtyny i wjazdów hero */
+  html.no-intro [data-intro]{display:none!important}
+  html.no-intro [data-hero]{animation:none!important;opacity:1!important;transform:none!important}
+  /* kotwice nie mogą chować się pod przyklejonym navem (68px) */
+  section[id]{scroll-margin-top:88px}
+  /* Etapy metamorfozy na mobile — mniejsza typografia, żeby nic nie było ucinane
+     (układ kolumn i paddingi ustawia evoResize) */
+  @media (max-width:760px){
+    [data-evo-inner] h2{font-size:25px!important;letter-spacing:-.3px!important;line-height:1.2!important}
+    [data-evo-inner] p{font-size:15px!important;max-width:100%!important}
+    [data-evo-inner] h2,[data-evo-inner] p{overflow-wrap:break-word}
+  }
+  /* powrót z demo: ląduj niżej, żeby cała lista realizacji zmieściła się na ekranie
+     (nagłówek zostaje tuż pod navem, eyebrow "PORTFOLIO" chowa się za nim) */
+  #portfolio{scroll-margin-top:-60px}
+  /* ===== portfolio: lista realizacji + duży podgląd PRZED/PO ===== */
+  .pfx-grid{display:grid;grid-template-columns:396px 1fr;gap:26px;align-items:start}
+  .pfx-list{display:flex;flex-direction:column;gap:12px;margin:0;padding:0}
+  .pfx-item{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:#12121b;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:11px 18px 11px 11px;color:inherit;font-family:inherit;cursor:pointer;transition:border-color .25s ease,background .25s ease,box-shadow .25s ease}
+  .pfx-item:hover{border-color:rgba(124,92,255,.45);background:#16161f}
+  .pfx-item:focus-visible{outline:2px solid #9d7bff;outline-offset:3px}
+  .pfx-item.is-active{border-color:#7c5cff;background:linear-gradient(115deg,rgba(124,92,255,.17),#14141e 62%);box-shadow:0 0 36px -12px rgba(124,92,255,.75)}
+  .pfx-thumb{flex:none;width:104px;height:66px;border-radius:12px;overflow:hidden;background:#0c0c14;border:1px solid rgba(255,255,255,.08)}
+  .pfx-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+  .pfx-txt{flex:1;min-width:0}
+  .pfx-name{display:block;font-family:'Sora',sans-serif;font-weight:700;font-size:1.06rem;line-height:1.25;color:#f2f2f7}
+  .pfx-cat{display:block;font-size:.85rem;color:#9a9aad;margin-top:3px}
+  .pfx-arrow{flex:none;color:#9a9aad;font-size:1.05rem;transition:transform .25s ease,color .25s ease}
+  .pfx-item:hover .pfx-arrow,.pfx-item.is-active .pfx-arrow{color:#9d7bff;transform:translateX(4px)}
+  .pfx-detail{background:#12121b;border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden}
+  .pfx-stage{position:relative;display:block;aspect-ratio:909/540;background:#0c0c14;cursor:pointer;text-decoration:none;color:inherit}
+  .pfx-stage:focus-visible{outline:2px solid #9d7bff;outline-offset:-3px}
+  .pfx-open{position:absolute;right:16px;top:16px;display:inline-flex;align-items:center;font-family:'Sora',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;padding:9px 17px;border-radius:99px;background:rgba(10,10,18,.78);border:1px solid rgba(124,92,255,.6);color:#f2f2f7;backdrop-filter:blur(6px);opacity:0;transform:translateY(-7px);transition:opacity .28s ease,transform .28s ease;pointer-events:none}
+  .pfx-stage:hover .pfx-open,.pfx-stage:focus-visible .pfx-open{opacity:1;transform:none}
+  @media(hover:none){.pfx-open{opacity:1;transform:none}}
+  .pfx-shot{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+  .pfx-shot.is-active{opacity:1}
+  .pfx-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:opacity .4s ease}
+  .pfx-shot .pfx-old{opacity:0;filter:grayscale(.35) brightness(.9)}
+  .pfx-detail.show-before .pfx-shot .pfx-old{opacity:1}
+  .pfx-badge{position:absolute;left:18px;bottom:18px;font-family:'Sora',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.14em;padding:6px 15px;border-radius:99px;background:rgba(10,10,18,.72);border:1px solid rgba(0,229,176,.5);color:#00e5b0;backdrop-filter:blur(4px)}
+  .pfx-detail.show-before .pfx-badge{border-color:rgba(255,255,255,.18);color:#c9c2b4}
+  .pfx-info{display:flex;gap:28px;align-items:flex-end;padding:24px 28px 26px;flex-wrap:wrap}
+  .pfx-info-txt{flex:1;min-width:250px}
+  .pfx-d-cat{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00e5b0;margin-bottom:8px}
+  .pfx-d-name{font-family:'Sora',sans-serif;font-size:1.45rem;margin:0 0 8px}
+  .pfx-d-desc{font-size:.92rem;color:#9a9aad;margin:0;max-width:54ch}
+  .pfx-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .pfx-toggle{display:inline-flex;background:#0c0c14;border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:4px}
+  .pfx-toggle button{border:0;background:transparent;color:#9a9aad;font-family:'Sora',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:.1em;padding:9px 21px;border-radius:99px;cursor:pointer;transition:background .25s ease,color .25s ease}
+  .pfx-toggle button:hover{color:#f2f2f7}
+  .pfx-toggle button:focus-visible{outline:2px solid #9d7bff;outline-offset:2px}
+  .pfx-toggle button.is-on{background:#00e5b0;color:#06110d}
+  .pfx-cta{font-weight:700;font-size:.92rem;color:#7c5cff;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:gap .25s ease,color .25s ease}
+  .pfx-cta:hover{gap:12px;color:#9d7bff}
+  @media(max-width:1040px){
+    .pfx-grid{grid-template-columns:1fr;gap:20px}
+    .pfx-list{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:8px}
+    .pfx-list::-webkit-scrollbar{height:6px}
+    .pfx-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:99px}
+    .pfx-item{flex:0 0 auto;width:auto;scroll-snap-align:start;padding:9px 16px 9px 9px;gap:12px}
+    .pfx-thumb{width:66px;height:44px}
+    .pfx-name{font-size:.95rem}
+    .pfx-cat,.pfx-arrow{display:none}
+  }
+  @media(max-width:640px){
+    .pfx-info{padding:20px;gap:20px}
+    .pfx-actions{width:100%;justify-content:space-between;gap:14px}
+    .pfx-d-name{font-size:1.25rem}
+  }
+  @media(prefers-reduced-motion:reduce){.pfx-shot,.pfx-shot img,.pfx-item,.pfx-arrow,.pfx-open{transition:none}}
+  @media(max-width:600px){
+    .nav-logo-text{font-size:1.02rem!important}
+    .nav-logo svg{width:24px!important;height:26px!important}
+    .nav-cta{padding:9px 14px!important;font-size:.78rem!important}
+  }
+  @media(max-width:400px){
+    .nav-logo-suffix{display:none!important}
+  }
+  /* ===== formularz kontaktowy ===== */
+  .kf-card{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .kf-list{list-style:none;margin:0 0 28px;padding:0}
+  .kf-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-size:.94rem;color:#cfcfdb}
+  .kf-list b{color:#f2f2f7;font-weight:600}
+  .kf-tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(0,229,176,.12);color:#00e5b0;display:grid;place-items:center;font-size:.72rem;font-weight:800;margin-top:2px}
+  .kf-mail{display:inline-flex;align-items:center;gap:9px;color:#f2f2f7;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(124,92,255,.5);transition:.2s;padding-bottom:2px}
+  .kf-mail:hover{border-color:#00e5b0;color:#00e5b0}
+  .kf-form{position:relative;background:rgba(10,10,18,.66);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:32px 28px;backdrop-filter:blur(8px)}
+  .kf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .kf-fl{position:relative;margin-bottom:18px}
+  .kf-fl input,.kf-fl textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;color:#f2f2f7;font-family:'Inter',sans-serif;font-size:.96rem;padding:22px 16px 10px;outline:none;transition:border-color .22s,box-shadow .22s,background .22s;resize:vertical}
+  .kf-fl textarea{min-height:100px;padding-top:26px}
+  .kf-fl label{position:absolute;left:17px;top:15px;font-size:.94rem;color:#9a9aad;pointer-events:none;transition:.18s cubic-bezier(.22,1,.36,1);transform-origin:left}
+  .kf-fl input:focus,.kf-fl textarea:focus{border-color:rgba(124,92,255,.85);background:rgba(124,92,255,.06);box-shadow:0 0 0 4px rgba(124,92,255,.12)}
+  .kf-fl input:focus+label,.kf-fl textarea:focus+label,.kf-fl input:not(:placeholder-shown)+label,.kf-fl textarea:not(:placeholder-shown)+label{top:7px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#9d7bff;font-weight:600}
+  .kf-req{color:#9d7bff}
+  .kf-submit{width:100%;margin-top:6px;background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;border:0;padding:16px 34px;border-radius:99px;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .kf-submit:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)}
+  .kf-note{font-size:.76rem;color:#9a9aad;text-align:center;margin:14px 0 0}
+  .kf-error{font-size:.86rem;color:#ff9d9d;background:rgba(255,90,90,.08);border:1px solid rgba(255,90,90,.3);border-radius:12px;padding:12px 14px;margin:0 0 18px}
+  .kf-error a{color:#ff9d9d;text-decoration:underline}
+  .kf-honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .kf-submit:disabled{opacity:.6;cursor:not-allowed}
+  .kf-ok{text-align:center;padding:26px 10px;animation:kfPop .5s cubic-bezier(.22,1,.36,1) both}
+  @keyframes kfPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+  .kf-ok-ico{width:64px;height:64px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:rgba(0,229,176,.12);border:1px solid rgba(0,229,176,.4);color:#00e5b0;font-size:1.8rem}
+  .kf-ok-h{font-family:'Sora',sans-serif;margin:0 0 8px;font-size:1.2rem}
+  .kf-ok-p{color:#9a9aad;margin:0;font-size:.92rem}
+  @media(max-width:860px){
+    .kf-card{grid-template-columns:1fr;padding:40px 24px!important;gap:34px}
+    .kf-row{grid-template-columns:1fr}
+  }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;background:#0a0a12;color:#f2f2f7;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;min-height:100vh">
+
+  <div ref="{{ introRef }}" data-intro="true" aria-hidden="true" style="position:fixed;inset:0;z-index:300;pointer-events:none">
+    <div style="position:absolute;left:0;right:0;top:0;height:50.5%;background:#07070d;animation:curtainUp 1.25s cubic-bezier(.76,0,.24,1) 2.25s both"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:50.5%;background:#07070d;animation:curtainDown 1.25s cubic-bezier(.76,0,.24,1) 2.25s both"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;animation:introFade .6s ease 2.2s both">
+      <div style="overflow:hidden;padding:6px 0">
+        <div style="display:flex;align-items:center;gap:18px;animation:introLogo 1.2s cubic-bezier(.22,1,.36,1) .25s both"><svg width="58" height="62" viewBox="0 0 76 84"><defs><linearGradient id="introLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#introLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#introLogoG)"></circle></svg><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,3.6rem);letter-spacing:.02em;color:#f2f2f7">ODNOVA<span style="font-weight:400;color:#9a9aad">°studio</span></div></div>
+      </div>
+      <div style="width:min(320px,60vw);height:2px;background:linear-gradient(90deg,#7c5cff,#00e5b0);transform-origin:left;animation:introLine 1.05s cubic-bezier(.22,1,.36,1) 1.15s both"></div>
+      <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#9a9aad;animation:introTag 1.2s ease 1.45s both">Stare strony · Nowe życie</div>
+    </div>
+  </div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);background:rgba(10,10,18,.72);border-bottom:1px solid rgba(255,255,255,.08);animation:navIn 1.05s cubic-bezier(.22,1,.36,1) 2.65s both" data-hero="true">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px">
+      <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:.02em;color:#f2f2f7;text-decoration:none"><svg width="30" height="32" viewBox="0 0 76 84"><defs><linearGradient id="navLogoG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"></stop><stop offset=".5" stop-color="#3f9fd8"></stop><stop offset="1" stop-color="#00e5b0"></stop></linearGradient></defs><path d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#2c2c3c" stroke-width="6" stroke-linejoin="round"></path><path d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#navLogoG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="38" cy="42" r="7" fill="url(#navLogoG)"></circle></svg><span class="nav-logo-text">ODNOVA<span class="nav-logo-suffix" style="font-weight:400;color:#9a9aad">°studio</span></span></a>
+      <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:32px;font-size:.92rem;color:#9a9aad">
+          <a href="#ewolucja" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Ewolucja</a>
+          <a href="#jak" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Jak działamy</a>
+          <a href="#portfolio" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Metamorfozy</a>
+          <a href="#oferta" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Oferta</a>
+          <a href="#kontakt" style="color:#9a9aad;text-decoration:none" style-hover="color:#f2f2f7">Kontakt</a>
+        </div>
+      </sc-if>
+      <a href="#kontakt" class="nav-cta" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);padding:10px 22px;border-radius:99px;font-weight:600;font-size:.9rem;color:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap" style-hover="transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,92,255,.4)">Darmowa wycena</a>
+    </div>
+  </nav>
+
+  <header style="position:relative;padding:170px 0 140px;text-align:center">
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.28;pointer-events:none;background:#7c5cff;top:-220px;left:-140px"></div>
+    <div style="position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(120px);opacity:.16;pointer-events:none;background:#00e5b0;top:-120px;right:-200px"></div>
+    <canvas id="heroNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none"></canvas>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:2">
+      <div data-hero="true" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:7px 16px;border-radius:99px;font-size:.82rem;color:#9a9aad;margin-bottom:28px;animation:heroUp 1.2s cubic-bezier(.22,1,.36,1) 2.75s both">
+        <span style="width:8px;height:8px;border-radius:50%;background:#00e5b0;box-shadow:0 0 12px #00e5b0;display:inline-block"></span>
+        Przyjmujemy nowe projekty
+      </div>
+      <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0"><span style="display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em"><span data-hero="true" style="display:block;animation:wordUp 1.35s cubic-bezier(.22,1,.36,1) 2.9s both">Stare strony.</span></span><span style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span data-hero="true" style="display:block;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent;animation:wordUp 1.35s cubic-bezier(.22,1,.36,1) 3.1s both">Nowe życie.</span></span></h1>
+      <p data-hero="true" style="max-width:620px;margin:26px auto 0;color:#9a9aad;font-size:1.12rem;animation:heroUp 1.2s cubic-bezier(.22,1,.36,1) 3.3s both">Twoja strona wygląda jak z 2008 roku i odstrasza klientów? Zamieniamy przestarzałe witryny w nowoczesne wizytówki, które budują zaufanie i sprzedają.</p>
+      <div data-hero="true" style="display:flex;gap:16px;justify-content:center;margin-top:42px;flex-wrap:wrap;animation:heroUp 1.2s cubic-bezier(.22,1,.36,1) 3.5s both">
+        <a href="#portfolio" style="background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-block" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">Zobacz metamorfozy</a>
+        <a href="#kontakt" style="border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s;display:inline-block" style-hover="border-color:#00e5b0;color:#f2f2f7">Bezpłatny audyt strony</a>
+      </div>
+
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin-top:90px">
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent"><span data-cnt="true" data-target="7">0</span>&nbsp;dni</b>
+          <span style="font-size:.85rem;color:#9a9aad">średni czas realizacji</span>
+        </div>
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">+<span data-cnt="true" data-target="180">0</span>%</b>
+          <span style="font-size:.85rem;color:#9a9aad">więcej zapytań po redesignie</span>
+        </div>
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent"><span data-cnt="true" data-target="100">0</span>%</b>
+          <span style="font-size:.85rem;color:#9a9aad">stron mobilnych i szybkich</span>
+        </div>
+        <div style="background:#101019;padding:34px 20px;text-align:center">
+          <b style="display:block;font-family:'Sora';font-size:2.1rem;font-weight:800;background:linear-gradient(90deg,#7c5cff,#00e5b0);-webkit-background-clip:text;background-clip:text;color:transparent">0&nbsp;zł</b>
+          <span style="font-size:.85rem;color:#9a9aad">za audyt i wycenę</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tb" style="border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#101019">
+    <div class="tb-in">
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">Strony wizytówki i redesign</span></div>
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">SEO lokalne i Google Maps</span></div>
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">Copywriting</span></div>
+      <div class="tb-item"><span class="tb-mark">✦</span><span class="tb-txt">Opieka techniczna</span></div>
+    </div>
+  </div>
+
+  <section id="ewolucja" style="padding:0">
+    <div style="max-width:1180px;margin:0 auto;padding:100px 24px 0;text-align:center">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;max-width:680px;margin:0 auto">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Metamorfoza krok po kroku</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Zobacz, jak zmienia się Twoja strona</h2>
+        <p style="color:#9a9aad;margin-top:16px">Od przestarzałej wizytówki do nowoczesnej strony — przewiń i prześledź całą drogę.</p>
+      </div>
+    </div>
+
+    <div data-evo-hud="" style="position:fixed;right:26px;bottom:26px;z-index:60;opacity:0;transform:translateY(16px) scale(.96);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none;display:flex;align-items:center;gap:14px;background:rgba(12,11,22,.82);backdrop-filter:blur(14px);border:1px solid rgba(167,139,250,.28);border-radius:16px;padding:12px 18px 12px 14px;box-shadow:0 20px 50px -18px rgba(0,0,0,.9),0 0 40px -22px rgba(124,77,232,.9)">
+      <svg width="46" height="46" viewBox="0 0 46 46" style="flex:none;transform:rotate(-90deg)">
+        <circle cx="23" cy="23" r="19" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="3"></circle>
+        <circle data-evo-hud-ring="" cx="23" cy="23" r="19" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .18s linear"></circle>
+      </svg>
+      <div style="line-height:1.25">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:.68rem;letter-spacing:.18em;color:#8b8a99"><b data-evo-hud-num="" style="color:#eceaf5;font-size:.82rem">01</b> / 04</div>
+        <div data-evo-hud-label="" style="font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:600;color:#eceaf5;white-space:nowrap">Przestarzała strona</div>
+      </div>
+    </div>
+    <div ref="{{ setRoot }}" style="width: 100%; position: relative; background: linear-gradient(180deg, #0a0a12 0%, #141024 20%, #1a1230 50%, #141024 80%, #0a0a12 100%); color: #f3f2f8; font-family: 'Manrope', sans-serif; overflow: hidden; padding: 30px 0 60px;">
+    
+        <div style="position: absolute; top: 4%; left: -180px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(124,77,232,0.30), transparent 68%); filter: blur(12px); pointer-events: none;"></div>
+        <div style="position: absolute; top: 42%; right: -200px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(56,120,255,0.18), transparent 68%); filter: blur(12px); pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -160px; left: 20%; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(20,150,128,0.16), transparent 70%); filter: blur(12px); pointer-events: none;"></div>
+    
+      <!-- glowing line: dim base + scroll-driven fill -->
+      <div ref="{{ setLineBase }}" style="position: absolute; left: 50%; top: -30px; height: 0; width: 2px; transform: translateX(-50%); background: rgba(255,255,255,0.06); border-radius: 2px;">
+        <div ref="{{ setLineFill }}" style="width: 100%; height: 0%; background: linear-gradient(180deg, #7c4de8 0%, #5b8bff 55%, #22d3ee 100%); border-radius: 2px; box-shadow: 0 0 18px rgba(124,77,232,0.8), 0 0 40px rgba(91,139,255,0.4); transition: height 0.15s linear;"></div>
+      </div>
+    
+      <!-- ===== ETAP 01 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 01" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #8b8a99; margin-bottom: 10px;">ETAP 01</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Przestarzała strona</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Wygląda jak z 2008 roku — tabelkowy layout, krzykliwe kolory, licznik odwiedzin. Odstrasza klientów, zamiast ich przyciągać.</p>
+          </div>
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="width: 560px; border-radius: 8px; overflow: hidden; box-shadow: 0 26px 60px -24px rgba(0,0,0,0.8); filter: saturate(0.72) contrast(0.96); position: relative;">
+                <div style="background: linear-gradient(#dfdfdf,#bdbdbd); border: 1px solid #9a9a9a; border-bottom: none; padding: 5px 8px; display: flex; align-items: center; gap: 8px;">
+                  <div style="display: flex; gap: 4px;">
+                    <div style="width: 15px; height: 13px; background: #cfcfcf; border: 1px solid #7a7a7a; font: 9px monospace; text-align: center; line-height: 13px; color: #333;">_</div>
+                    <div style="width: 15px; height: 13px; background: #cfcfcf; border: 1px solid #7a7a7a; font: 9px monospace; text-align: center; line-height: 13px; color: #333;">□</div>
+                    <div style="width: 15px; height: 13px; background: #cfcfcf; border: 1px solid #7a7a7a; font: 9px monospace; text-align: center; line-height: 13px; color: #900;">×</div>
+                  </div>
+                  <div style="flex: 1; background: #fff; border: 1px solid #808080; border-style: inset; font: 10px 'Times New Roman', serif; color: #444; padding: 1px 6px;">http://www.corp-global.com.pl/index.htm</div>
+                </div>
+                <div style="background: #fdfdf5; font-family: 'Times New Roman', Times, serif; color: #111; border: 1px solid #9a9a9a;">
+                  <div style="display: flex;">
+                    <div style="background: #008080; color: #ffff33; font-weight: bold; font-size: 22px; padding: 12px 16px; flex: 1; text-shadow: 1px 1px 0 #000; letter-spacing: 0.5px;">CORP GLOBAL Sp. z o.o.</div>
+                    <div style="background: #cc0000; color: #fff; font-size: 11px; font-weight: bold; padding: 6px 10px; display: grid; place-items: center; text-align: center; line-height: 1.2;">*** POD<br>BUDOWĄ ***</div>
+                  </div>
+                  <div style="background: #000080; padding: 4px 12px; font-size: 12px;">
+                    <span style="color: #ffff00; text-decoration: underline;">Start</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">O firmie</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">Oferta</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">Księga gości</span> <span style="color:#ccc;">|</span> <span style="color: #00ffff; text-decoration: underline;">Kontakt</span>
+                  </div>
+                  <div style="height: 8px; background: repeating-linear-gradient(90deg,#ff0000 0 14px,#ff9900 14px 28px,#ffff00 28px 42px,#00cc00 42px 56px,#0066ff 56px 70px,#9900cc 70px 84px);"></div>
+                  <div style="text-align: center; color: #cc0000; font-weight: bold; font-size: 13px; padding: 7px 0; animation: odnPulse 1.4s infinite;">★★★ WITAMY NA NASZEJ STRONIE INTERNETOWEJ ★★★</div>
+                  <div style="display: flex; padding: 4px 12px 14px; gap: 14px;">
+                    <div style="width: 132px; border: 2px solid #808080; border-style: outset; background: #eee; padding: 8px;">
+                      <div style="background: #000080; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 5px; margin-bottom: 6px;">MENU</div>
+                      <div style="font-size: 12px; color: #0000ee; line-height: 1.9;">► <u>Aktualności</u><br>► <u>Nasze usługi</u><br>► <u>Cennik 2008</u><br>► <u>Galeria</u><br>► <u>Pobierz katalog</u></div>
+                      <div style="margin-top: 10px; border: 1px solid #000; background: #000; color: #0f0; font: 11px 'Courier New', monospace; text-align: center; padding: 3px;">Odwiedziny:<br>0&nbsp;0&nbsp;0&nbsp;1&nbsp;4&nbsp;7</div>
+                    </div>
+                    <div style="flex: 1; font-size: 12.5px; color: #222; line-height: 1.5;">
+                      <div style="background: #ffffcc; border: 1px dashed #999900; padding: 5px 7px; margin-bottom: 8px; color: #666600;">Najlepiej oglądać w rozdzielczości 800×600, Internet Explorer 6.0</div>
+                      <div style="display: flex; gap: 8px;">
+                        <div style="width: 90px; height: 62px; background: #c0c0c0; border: 2px inset #999; display: grid; place-items: center; color: #d00; font-weight: bold; font-size: 20px;">✗</div>
+                        <p style="margin: 0;">Witamy Państwa serdecznie na oficjalnej witrynie naszej firmy. Oferujemy szeroki wachlarz usług dla klientów biznesowych oraz indywidualnych.</p>
+                      </div>
+                      <p style="margin: 8px 0 0;"><span style="background: #ffff00;">NOWOŚĆ!</span> Zapraszamy do zapoznania się z naszą ofertą. W razie pytań prosimy o kontakt telefoniczny.</p>
+                    </div>
+                  </div>
+                  <div style="background: #d4d4d4; border-top: 1px solid #999; font-size: 10px; color: #555; text-align: center; padding: 4px;">Copyright © 2008 CORP GLOBAL. Webmaster: jan.k@corp-global.pl</div>
+                </div>
+                <div style="position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(60,40,10,0.05) 0 2px, transparent 2px 4px); pointer-events: none; mix-blend-mode: multiply;"></div>
+                <div style="position: absolute; inset: 0; background: rgba(120,95,40,0.06); pointer-events: none;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- ===== ETAP 02 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 02" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="position: relative; width: 560px; height: 300px;">
+                <svg sc-camel-view-box="0 0 560 300" width="560" height="300" style="position: absolute; inset: 0;" fill="none">
+                  <path d="M120 70 L250 120" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <path d="M410 60 L280 130" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <path d="M90 210 L255 165" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <path d="M450 235 L300 175" stroke="#5c5b6e" stroke-width="1.4" stroke-dasharray="4 5"></path>
+                  <circle cx="266" cy="146" r="5" fill="#7c4de8"></circle>
+                  <circle cx="120" cy="70" r="3" fill="#6b6a7c"></circle><circle cx="410" cy="60" r="3" fill="#6b6a7c"></circle>
+                  <circle cx="90" cy="210" r="3" fill="#6b6a7c"></circle><circle cx="450" cy="235" r="3" fill="#6b6a7c"></circle>
+                </svg>
+                <div style="position: absolute; left: 40px; top: 30px; width: 150px; transform: rotate(-7deg); background: #008080; color: #ffff33; font-family: 'Times New Roman', serif; font-weight: bold; font-size: 13px; padding: 8px 10px; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7); filter: saturate(0.7);">CORP GLOBAL</div>
+                <div style="position: absolute; left: 350px; top: 22px; width: 76px; height: 54px; transform: rotate(9deg); background: #c0c0c0; border: 2px inset #999; display: grid; place-items: center; color: #d00; font-weight: bold; font-size: 22px; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7);">✗</div>
+                <div style="position: absolute; left: 30px; top: 176px; transform: rotate(6deg); background: #000; color: #0f0; font: 11px 'Courier New', monospace; text-align: center; padding: 6px 8px; border: 1px solid #333; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7);">Odwiedziny<br>000147</div>
+                <div style="position: absolute; left: 405px; top: 210px; transform: rotate(-5deg); background: #ece9d8; border: 2px outset #b5b39e; font-family: 'Times New Roman', serif; font-size: 12px; padding: 5px 14px; box-shadow: 0 12px 26px -12px rgba(0,0,0,0.7);">Kliknij tutaj</div>
+                <div style="position: absolute; left: 190px; top: 78px; width: 158px; background: rgba(19,17,28,0.85); border: 1.5px dashed #7c4de8; border-radius: 8px; padding: 12px; box-shadow: 0 18px 40px -16px rgba(124,77,232,0.5); backdrop-filter: blur(2px);">
+                  <div style="height: 10px; width: 55%; border-radius: 3px; background: rgba(167,139,250,0.5); margin-bottom: 9px;"></div>
+                  <div style="display: flex; gap: 6px; margin-bottom: 9px;">
+                    <div style="width: 34px; height: 34px; border-radius: 6px; border: 1.5px dashed #5b8bff;"></div>
+                    <div style="flex: 1;"><div style="height: 6px; background: rgba(255,255,255,0.22); border-radius: 3px; margin-bottom: 5px;"></div><div style="height: 6px; width: 70%; background: rgba(255,255,255,0.14); border-radius: 3px;"></div></div>
+                  </div>
+                  <div style="height: 30px; border-radius: 6px; border: 1.5px dashed #22d3ee; display: grid; place-items: center; font-size: 9px; letter-spacing: 1px; color: #7fdff0; font-family: 'Space Grotesk';">SIATKA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #a78bfa; margin-bottom: 10px;">ETAP 02</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Rozbiórka i analiza</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Rozkładamy starą stronę na czynniki pierwsze — treść i formę analizujemy osobno. Każdy element trafia na siatkę i idzie do przeprojektowania.</p>
+          </div>
+        </div>
+      </section>
+    
+      <!-- ===== ETAP 03 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 03" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #7fa8ff; margin-bottom: 10px;">ETAP 03</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Przeprojektowanie</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Budujemy nowy układ i testujemy warianty — tła, typografię, akcenty. Ty wybierasz kierunek, my dopracowujemy detale.</p>
+          </div>
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="position: relative; width: 560px; height: 360px;">
+                <svg sc-camel-view-box="0 0 560 360" width="560" height="360" style="position: absolute; inset: 0; pointer-events: none;" fill="none">
+                  <path d="M330 120 C 348 118, 356 128, 364 138" stroke="#5b8bff" stroke-width="1.6" stroke-dasharray="3 4" opacity="0.7"></path>
+                  <path d="M330 250 C 350 258, 356 240, 366 226" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="3 4" opacity="0.7"></path>
+                </svg>
+                <!-- emerging layout -->
+                <div style="position: absolute; left: 0; top: 18px; width: 324px; border-radius: 12px; background: linear-gradient(160deg,#141221,#0e0d17); border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 30px 70px -26px rgba(0,0,0,0.85), 0 0 40px -18px rgba(124,77,232,0.4); overflow: hidden;">
+                  <div style="display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                    <div style="width: 18px; height: 18px; border-radius: 5px; background: linear-gradient(135deg,#a78bfa,#22d3ee);"></div>
+                    <div style="height: 8px; width: 56px; background: rgba(255,255,255,0.5); border-radius: 3px;"></div>
+                    <div style="flex: 1;"></div>
+                    <div style="height: 6px; width: 26px; background: rgba(255,255,255,0.2); border-radius: 3px;"></div>
+                    <div style="height: 6px; width: 26px; background: rgba(255,255,255,0.2); border-radius: 3px;"></div>
+                  </div>
+                  <div style="padding: 18px 16px;">
+                    <div style="height: 12px; width: 70%; background: linear-gradient(90deg,#e9e7f3,#b9c8ff); border-radius: 4px; margin-bottom: 8px;"></div>
+                    <div style="height: 12px; width: 45%; background: linear-gradient(90deg,#7fa8ff,#22d3ee); border-radius: 4px; margin-bottom: 12px;"></div>
+                    <div style="height: 7px; width: 90%; background: rgba(255,255,255,0.14); border-radius: 3px; margin-bottom: 5px;"></div>
+                    <div style="height: 7px; width: 78%; background: rgba(255,255,255,0.11); border-radius: 3px; margin-bottom: 16px;"></div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                      <div style="height: 26px; width: 96px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); box-shadow: 0 8px 20px -6px rgba(124,77,232,0.7);"></div>
+                      <div style="height: 26px; width: 82px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2);"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                      <div style="height: 46px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);"></div>
+                      <div style="height: 46px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);"></div>
+                      <div style="height: 46px; border-radius: 8px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.25);"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- variants panel -->
+                <div style="position: absolute; right: 0; top: 84px; width: 208px; background: rgba(19,17,28,0.94); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px; box-shadow: 0 24px 55px -20px rgba(0,0,0,0.85); animation: odnFloat 7s ease-in-out infinite;">
+                  <div style="font-family: 'Space Grotesk'; font-size: 10px; letter-spacing: 2px; color: #8b8a99; margin-bottom: 12px;">WARIANTY</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px;">
+                    <span style="font-size: 12px; color: #cfced9;">Poświata tła</span>
+                    <div style="width: 32px; height: 18px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); position: relative;"><div style="position: absolute; right: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff;"></div></div>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px;">
+                    <span style="font-size: 12px; color: #cfced9;">Animacje</span>
+                    <div style="width: 32px; height: 18px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); position: relative;"><div style="position: absolute; right: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff;"></div></div>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                    <span style="font-size: 12px; color: #cfced9;">Jasny motyw</span>
+                    <div style="width: 32px; height: 18px; border-radius: 999px; background: rgba(255,255,255,0.12); position: relative;"><div style="position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #8b8a99;"></div></div>
+                  </div>
+                  <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 12px;"></div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                    <span style="padding: 4px 11px; border-radius: 999px; font-size: 10.5px; font-family: 'Space Grotesk'; background: rgba(124,77,232,0.22); border: 1px solid rgba(167,139,250,0.5); color: #d6c9ff; white-space: nowrap;">Wariant A</span>
+                    <span style="padding: 4px 11px; border-radius: 999px; font-size: 10.5px; font-family: 'Space Grotesk'; border: 1px solid rgba(255,255,255,0.14); color: #8f8ea0; white-space: nowrap;">Wariant B</span>
+                    <span style="padding: 4px 11px; border-radius: 999px; font-size: 10.5px; font-family: 'Space Grotesk'; border: 1px solid rgba(255,255,255,0.14); color: #8f8ea0; white-space: nowrap;">Wariant C</span>
+                  </div>
+                </div>
+                <!-- palette chip -->
+                <div style="position: absolute; left: 28px; top: 322px; display: flex; gap: 5px; background: rgba(19,17,28,0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 999px; padding: 7px 9px; box-shadow: 0 18px 40px -16px rgba(0,0,0,0.7); animation: odnFloat 6s ease-in-out infinite 0.5s;">
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #7c4de8;"></div>
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #5b8bff;"></div>
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #22d3ee;"></div>
+                  <div style="width: 15px; height: 15px; border-radius: 50%; background: #10b981;"></div>
+                </div>
+                <!-- type card -->
+                <div style="position: absolute; left: 152px; top: 306px; width: 104px; background: rgba(19,17,28,0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 9px 12px; display: flex; align-items: center; gap: 9px; box-shadow: 0 18px 40px -16px rgba(0,0,0,0.7); animation: odnFloat 6.6s ease-in-out infinite 0.9s;">
+                  <div style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 22px; line-height: 1; background: linear-gradient(135deg,#a78bfa,#22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent;">Aa</div>
+                  <div style="font-size: 8.5px; color: #8f8ea0; font-family: 'Space Grotesk';">Space<br>Grotesk</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- ===== ETAP 04 ===== -->
+      <section ref="{{ sec }}" data-screen-label="Etap 04" style="position: relative; min-height: 600px; display: flex; align-items: center;">
+        <div data-evo-marker="" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%; background: #12111b; border: 2px solid #3a3950; display: grid; place-items: center; z-index: 3; transition: border-color .4s ease;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #55546a; transition: background .4s ease;"></div>
+        </div>
+        <div data-evo-inner="" style="width: 100%; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 120px; align-items: center; padding: 60px 48px;">
+          <div ref="{{ revV }}">
+            <div style="width: 100%;">
+              <div data-evo-fit="" style="width: 560px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 34px 80px -28px rgba(0,0,0,0.9), 0 0 60px -24px rgba(124,77,232,0.45); background: #0b0a12;">
+                <div style="display: flex; align-items: center; gap: 7px; padding: 9px 14px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);">
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div>
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div>
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div>
+                  <div style="flex: 1; margin-left: 8px; height: 18px; border-radius: 6px; background: rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 10px; font-size: 10px; color: #7f7e90; font-family: 'Space Grotesk';">corp-global.pl</div>
+                </div>
+                <div style="position: relative; background: radial-gradient(120% 90% at 15% 0%, rgba(124,77,232,0.4), transparent 55%), radial-gradient(120% 100% at 95% 60%, rgba(20,150,128,0.28), transparent 55%), #0a0910;">
+                  <div style="display: flex; align-items: center; gap: 16px; padding: 14px 22px;">
+                    <div style="display: flex; align-items: center; gap: 7px;">
+                      <div style="width: 18px; height: 18px; border-radius: 5px; background: linear-gradient(135deg,#a78bfa,#22d3ee);"></div>
+                      <span style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 14px;">CORP GLOBAL</span>
+                    </div>
+                    <div style="flex: 1;"></div>
+                    <span style="font-size: 11px; color: #c7c6d4;">O firmie</span>
+                    <span style="font-size: 11px; color: #c7c6d4;">Oferta</span>
+                    <span style="font-size: 11px; color: #c7c6d4;">Realizacje</span>
+                    <span style="font-size: 11px; color: #c7c6d4;">Kontakt</span>
+                    <div style="padding: 7px 15px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); font-family: 'Space Grotesk'; font-weight: 600; font-size: 11px; box-shadow: 0 8px 18px -6px rgba(124,77,232,0.7); white-space: nowrap;">Wyceń projekt</div>
+                  </div>
+                  <div style="text-align: center; padding: 30px 22px 40px;">
+                    <div style="display: inline-flex; align-items: center; gap: 7px; padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); font-size: 10.5px; color: #cfced9; margin-bottom: 20px; white-space: nowrap;">
+                      <span style="width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 7px #10b981; animation: odnPulse 2s infinite;"></span> Zaufało nam 120+ firm
+                    </div>
+                    <h3 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 40px; line-height: 1.02; margin: 0 0 6px; letter-spacing: -1px;">Rozwiązania,<br><span style="background: linear-gradient(100deg,#8b8bff,#22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent;">które działają.</span></h3>
+                    <p style="max-width: 340px; margin: 14px auto 24px; font-size: 12.5px; line-height: 1.6; color: #a3a2b3;">Nowoczesna strona, która buduje zaufanie klientów biznesowych i realnie wspiera Twoją sprzedaż.</p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                      <div style="padding: 12px 26px; border-radius: 999px; background: linear-gradient(135deg,#8b5cf6,#7c4de8); font-family: 'Space Grotesk'; font-weight: 600; font-size: 13px; box-shadow: 0 14px 30px -8px rgba(124,77,232,0.75); white-space: nowrap;">Zobacz ofertę</div>
+                      <div style="padding: 12px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.03); font-family: 'Space Grotesk'; font-weight: 600; font-size: 13px; color: #e6e5ef; white-space: nowrap;">Skontaktuj się</div>
+                    </div>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 0 22px 26px;">
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px;">
+                      <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(124,77,232,0.16); border: 1px solid rgba(167,139,250,0.3); display: grid; place-items: center; margin-bottom: 11px;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"></path></svg></div>
+                      <div style="height: 7px; width: 68%; background: rgba(255,255,255,0.55); border-radius: 3px; margin-bottom: 7px;"></div>
+                      <div style="height: 5px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px;"></div>
+                      <div style="height: 5px; width: 80%; background: rgba(255,255,255,0.12); border-radius: 3px;"></div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px;">
+                      <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(91,139,255,0.16); border: 1px solid rgba(91,139,255,0.3); display: grid; place-items: center; margin-bottom: 11px;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#7fa8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"></path><path d="M12 6v6l4 2"></path></svg></div>
+                      <div style="height: 7px; width: 60%; background: rgba(255,255,255,0.55); border-radius: 3px; margin-bottom: 7px;"></div>
+                      <div style="height: 5px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px;"></div>
+                      <div style="height: 5px; width: 74%; background: rgba(255,255,255,0.12); border-radius: 3px;"></div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px;">
+                      <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(34,211,238,0.14); border: 1px solid rgba(34,211,238,0.3); display: grid; place-items: center; margin-bottom: 11px;"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+                      <div style="height: 7px; width: 72%; background: rgba(255,255,255,0.55); border-radius: 3px; margin-bottom: 7px;"></div>
+                      <div style="height: 5px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 3px; margin-bottom: 4px;"></div>
+                      <div style="height: 5px; width: 66%; background: rgba(255,255,255,0.12); border-radius: 3px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ref="{{ revT }}">
+            <div style="font-family: 'Space Grotesk'; font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #34d399; margin-bottom: 10px;">ETAP 04</div>
+            <h2 style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px; margin: 0 0 12px; letter-spacing: -0.5px; color: #eceaf5;">Gotowa metamorfoza</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #9b93b8; max-width: 420px;">Nowoczesna, profesjonalna wizytówka — czytelna, szybka i budująca zaufanie. Stare strony, nowe życie.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+
+  <section id="jak" style="position:relative;padding:100px 0;overflow:hidden">
+    <canvas id="jakNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%)"></canvas>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Jak działamy</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Od reliktu do wizytówki w 3 krokach</h2>
+        <p style="color:#9a9aad;margin-top:16px">Bez żargonu, bez ukrytych kosztów. Ty prowadzisz firmę — my zajmujemy się resztą.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s,border-color .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px 28px" style-hover="transform:translateY(-6px);border-color:rgba(124,92,255,.5)">
+          <div style="font-family:'Sora';font-size:.8rem;font-weight:700;color:#00e5b0;letter-spacing:.1em;margin-bottom:16px">KROK 01</div>
+          <h3 style="font-size:1.15rem;margin:0 0 10px">Darmowy audyt</h3>
+          <p style="font-size:.92rem;color:#9a9aad;margin:0">Analizujemy Twoją obecną stronę: szybkość, wygląd na telefonie, pozycję w Google. Dostajesz konkretny raport — co odstrasza Twoich klientów i ile Cię to kosztuje.</p>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s,border-color .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px 28px" style-hover="transform:translateY(-6px);border-color:rgba(124,92,255,.5)">
+          <div style="font-family:'Sora';font-size:.8rem;font-weight:700;color:#00e5b0;letter-spacing:.1em;margin-bottom:16px">KROK 02</div>
+          <h3 style="font-size:1.15rem;margin:0 0 10px">Projekt i budowa</h3>
+          <p style="font-size:.92rem;color:#9a9aad;margin:0">Projektujemy nową stronę dopasowaną do Twojej branży. Nowoczesny wygląd, błyskawiczne ładowanie, pełna wersja mobilna. Ty tylko akceptujesz efekt.</p>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s,border-color .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px 28px" style-hover="transform:translateY(-6px);border-color:rgba(124,92,255,.5)">
+          <div style="font-family:'Sora';font-size:.8rem;font-weight:700;color:#00e5b0;letter-spacing:.1em;margin-bottom:16px">KROK 03</div>
+          <h3 style="font-size:1.15rem;margin:0 0 10px">Start i rozwój</h3>
+          <p style="font-size:.92rem;color:#9a9aad;margin:0">Publikujemy stronę, konfigurujemy Google i wizytówkę Google Maps. Na życzenie prowadzimy dalej: pozycjonowanie, treści, marketing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" style="padding:100px 0;background:#101019;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Portfolio</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Zobacz metamorfozy na żywo</h2>
+        <p style="color:#9a9aad;margin-top:16px">Wybierz realizację z listy i przełącz <b style="color:#f2f2f7">PRZED / PO</b> — zobacz różnicę na własne oczy.</p>
+      </div>
+      <div class="pfx-grid" data-pfx="true" data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease">
+
+        <div class="pfx-list" role="tablist" aria-label="Zrealizowane metamorfozy">
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Fryzjer.dc.html" data-pfx-desc="Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.">
+            <span class="pfx-thumb"><img src="img/02-preview-fryzjer.webp" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Atelier Anna</span><span class="pfx-cat">Beauty · Salon fryzjerski</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Autoserwis.dc.html" data-pfx-desc="Rzetelny mechanik, którego strona wyglądała jak awaria silnika. Teraz: umawianie napraw i opinie klientów.">
+            <span class="pfx-thumb"><img src="img/02-preview-autoserwis.webp" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Auto-Serwis Kowalski</span><span class="pfx-cat">Motoryzacja · Warsztat</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Pizzeria.dc.html" data-pfx-desc="Najlepsza pizza w mieście, menu w pliku .doc z 2010 roku. Teraz: apetyczne menu online i zamówienia telefoniczne.">
+            <span class="pfx-thumb"><img src="img/02-preview-pizzeria.webp" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Bella Napoli</span><span class="pfx-cat">Gastronomia · Pizzeria</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Budmax.dc.html" data-pfx-desc="20 lat doświadczenia w remontach, strona &quot;w budowie&quot; od 2013. Teraz: portfolio realizacji, które samo sprzedaje.">
+            <span class="pfx-thumb"><img src="img/02-preview-budmax.webp" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">BUD-MAX</span><span class="pfx-cat">Budownictwo · Remonty</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Dentysta.dc.html" data-pfx-desc="Świetny gabinet, strona budząca większy lęk niż borowanie. Teraz: spokój, zaufanie i rejestracja wizyt online.">
+            <span class="pfx-thumb"><img src="img/02-preview-dentysta.png" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Dent-Med</span><span class="pfx-cat">Zdrowie · Stomatologia</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+          <button type="button" class="pfx-item" data-pfx-item="true" role="tab" aria-controls="pfx-panel" data-pfx-href="Demo%20Pensjonat.dc.html" data-pfx-desc="Piękne widoki, zdjęcia 320×240 px. Teraz: klimatyczna strona, która sprzedaje wypoczynek od pierwszego ekranu.">
+            <span class="pfx-thumb"><img src="img/02-preview-pensjonat.jpg" alt="" loading="lazy"></span>
+            <span class="pfx-txt"><span class="pfx-name">Pensjonat Pod Świerkami</span><span class="pfx-cat">Turystyka · Noclegi</span></span>
+            <span class="pfx-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="pfx-detail" id="pfx-panel" role="tabpanel" data-pfx-detail="true">
+          <a class="pfx-stage" data-pfx-stage="true" href="Demo%20Fryzjer.dc.html?v=po" aria-label="Otwórz nową stronę: Atelier Anna">
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-fryzjer.webp" alt="Nowa strona Atelier Anna">
+              <img class="pfx-old" src="img/01-preview-fryzjer.png" alt="Stara strona salonu Anna" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-autoserwis.webp" alt="Nowa strona Auto-Serwis Kowalski" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-autoserwis.png" alt="Stara strona Auto-Naprawa Kowalski" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-pizzeria.webp" alt="Nowa strona Bella Napoli" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-pizzeria.png" alt="Stara strona Pizzeria Bella Napoli" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-budmax.webp" alt="Nowa strona BUD-MAX" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-budmax.png" alt="Stara strona F.H.U. BUD-MAX" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-dentysta.png" alt="Nowa strona Dent-Med" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-dentysta.png" alt="Stara strona Gabinetu Dent-Med" loading="lazy">
+            </div>
+            <div class="pfx-shot" data-pfx-shot="true">
+              <img src="img/02-preview-pensjonat.jpg" alt="Nowa strona Pensjonatu Pod Świerkami" loading="lazy">
+              <img class="pfx-old" src="img/01-preview-pensjonat.png" alt="Stara strona Pensjonatu U Górala" loading="lazy">
+            </div>
+            <span class="pfx-badge" data-pfx-badge="true">PO</span>
+            <span class="pfx-open" aria-hidden="true">Otwórz stronę →</span>
+          </a>
+          <div class="pfx-info">
+            <div class="pfx-info-txt">
+              <div class="pfx-d-cat" data-pfx-d-cat="true">Beauty · Salon fryzjerski</div>
+              <h3 class="pfx-d-name" data-pfx-d-name="true">Atelier Anna</h3>
+              <p class="pfx-d-desc" data-pfx-d-desc="true">Salon z 15-letnią tradycją i stroną z księgą gości. Nowa odsłona: elegancja, cennik i rezerwacja online.</p>
+            </div>
+            <div class="pfx-actions">
+              <div class="pfx-toggle">
+                <button type="button" data-pfx-mode="before" aria-pressed="false">PRZED</button>
+                <button type="button" class="is-on" data-pfx-mode="after" aria-pressed="true">PO</button>
+              </div>
+              <a class="pfx-cta" data-pfx-cta="true" href="Demo%20Fryzjer.dc.html">Zobacz metamorfozę →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="oferta" style="padding:100px 0">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+      <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;text-align:center;max-width:640px;margin:0 auto 64px">
+        <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Oferta</div>
+        <h2 style="font-family:'Sora';font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin:0">Proste pakiety, jasne ceny</h2>
+        <p style="color:#9a9aad;margin-top:16px">Bez abonamentów-pułapek. Płacisz za efekt, stronę masz na własność.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:stretch">
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column" style-hover="transform:translateY(-6px)">
+          <div style="font-family:'Sora';font-weight:700;font-size:1.05rem">Odświeżenie</div>
+          <div style="font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px">od 1 500 zł <small style="font-size:.9rem;color:#9a9aad;font-weight:400">netto</small></div>
+          <ul style="list-style:none;margin:24px 0;padding:0;flex:1">
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Nowa strona-wizytówka (do 4 podstron)</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Pełna wersja mobilna</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Optymalizacja szybkości</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Certyfikat SSL i podstawowe SEO</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Realizacja w 7 dni</li>
+          </ul>
+          <a href="#kontakt" style="text-align:center;border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#00e5b0;color:#f2f2f7">Wybieram</a>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s;border:1px solid #7c5cff;background:linear-gradient(180deg,rgba(124,92,255,.12),#15151f 60%);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column" style-hover="transform:translateY(-6px)">
+          <div style="position:relative;top:-52px;margin-bottom:-30px;align-self:center;background:linear-gradient(90deg,#7c5cff,#00e5b0);color:#0a0a12;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:99px">Najczęściej wybierany</div>
+          <div style="font-family:'Sora';font-weight:700;font-size:1.05rem">Metamorfoza</div>
+          <div style="font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px">od 2 900 zł <small style="font-size:.9rem;color:#9a9aad;font-weight:400">netto</small></div>
+          <ul style="list-style:none;margin:24px 0;padding:0;flex:1">
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Wszystko z pakietu Odświeżenie</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Do 8 podstron + galeria realizacji</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Wizytówka Google Maps + opinie</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Formularz kontaktowy / rezerwacje</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Teksty pisane pod klienta i Google</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>3 miesiące opieki technicznej gratis</li>
+          </ul>
+          <a href="#kontakt" style="text-align:center;background:linear-gradient(90deg,#7c5cff,#9d7bff);color:#fff;padding:16px 34px;border-radius:99px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,255,.45)">Wybieram</a>
+        </div>
+        <div data-reveal="true" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,transform .25s;background:#15151f;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:38px 32px;display:flex;flex-direction:column" style-hover="transform:translateY(-6px)">
+          <div style="font-family:'Sora';font-weight:700;font-size:1.05rem">Rozwój</div>
+          <div style="font-family:'Sora';font-size:2.2rem;font-weight:800;margin:14px 0 4px">od 199 zł <small style="font-size: 0.9rem; color: rgb(154, 154, 173); font-weight: 400;">/ mies.</small></div>
+          <ul style="list-style:none;margin:24px 0;padding:0;flex:1">
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Pozycjonowanie lokalne (SEO)</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Comiesięczny raport wyników</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Aktualizacje treści i zdjęć</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Opieka techniczna i kopie zapasowe</li>
+            <li style="padding:8px 0;font-size:.92rem;color:#9a9aad;display:flex;gap:10px"><span style="color:#00e5b0;font-weight:700">✓</span>Doradztwo marketingowe</li>
+          </ul>
+          <a href="#kontakt" style="text-align:center;border:1px solid rgba(255,255,255,.08);padding:16px 34px;border-radius:99px;font-weight:600;color:#9a9aad;text-decoration:none;transition:border-color .2s,color .2s" style-hover="border-color:#00e5b0;color:#f2f2f7">Wybieram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" style="position:relative;padding:120px 0;overflow:hidden">
+    <canvas id="kontaktNeuro" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%)"></canvas>
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1">
+      <div data-reveal="true" class="kf-card" style="opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(0,229,176,.08)),#0a0a12;border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:56px 44px">
+        <div class="kf-copy">
+          <div style="display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#00e5b0;margin-bottom:14px">Kontakt</div>
+          <h2 style="font-family:'Sora';font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-height:1.15">Sprawdźmy, ile kosztuje Cię stara strona</h2>
+          <p style="color:#9a9aad;margin:0 0 26px">Wyślij adres swojej strony — w 48 godzin dostaniesz darmowy audyt i konkretną wycenę. Bez zobowiązań, bez spamu.</p>
+          <ul class="kf-list">
+            <li><span class="kf-tick">✓</span><span><b>Audyt w 48 h</b> — lista konkretnych błędów, nie ogólniki.</span></li>
+            <li><span class="kf-tick">✓</span><span><b>Wycena z góry</b> — stała kwota, żadnych dopłat w trakcie.</span></li>
+            <li><span class="kf-tick">✓</span><span><b>Zero zobowiązań</b> — nie odpisujesz, sprawa zamknięta.</span></li>
+          </ul>
+          <a class="kf-mail" href="mailto:biuro.odnovastudio@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5b0" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            biuro.odnovastudio@gmail.com
+          </a>
+        </div>
+
+        <form class="kf-form" onSubmit="{{ handleContactSubmit }}">
+          <sc-if value="{{ contactNotSent }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ contactError }}" hint-placeholder-val="{{ false }}">
+              <p class="kf-error">Coś poszło nie tak przy wysyłce. Spróbuj ponownie albo napisz od razu na <a href="mailto:biuro.odnovastudio@gmail.com">biuro.odnovastudio@gmail.com</a>.</p>
+            </sc-if>
+            <div class="kf-row">
+              <div class="kf-fl"><input name="name" type="text" placeholder=" " required="{{ true }}"></input><label>Imię <span class="kf-req">*</span></label></div>
+              <div class="kf-fl"><input name="email" type="email" placeholder=" " required="{{ true }}"></input><label>E-mail <span class="kf-req">*</span></label></div>
+            </div>
+            <div class="kf-fl"><input name="website" type="text" placeholder=" "></input><label>Adres Twojej strony (jeśli masz)</label></div>
+            <div class="kf-fl"><textarea name="message" placeholder=" "></textarea><label>Co chcesz zmienić?</label></div>
+            <input type="checkbox" name="botcheck" class="kf-honeypot" tabindex="-1" autocomplete="off"></input>
+            <button class="kf-submit" type="submit" disabled="{{ contactSending }}">{{ submitLabel }}</button>
+            <p class="kf-note">Odpowiadamy w 48 h. Twoje dane trafiają wyłącznie do nas.</p>
+          </sc-if>
+          <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+            <div class="kf-ok">
+              <div class="kf-ok-ico">✓</div>
+              <h4 class="kf-ok-h">Dziękujemy — mamy Twoje zgłoszenie</h4>
+              <p class="kf-ok-p">Audyt i wycena wrócą na Twój e-mail w ciągu 48 godzin.</p>
+            </div>
+          </sc-if>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(255,255,255,.08);padding:36px 0;color:#9a9aad;font-size:.85rem">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <span>© 2026 ODNOVA°studio — Stare strony. Nowe życie.</span>
+      <span>Strony demonstracyjne w portfolio przedstawiają fikcyjne firmy.</span>
+    </div>
+  </footer>
+
+  <div ref="{{ cursorGlowRef }}" style="position:fixed;left:0;top:0;width:560px;height:560px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(124,92,255,.13),transparent 62%);z-index:1;opacity:1"></div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  introRef = React.createRef();
+  cursorGlowRef = React.createRef();
+  evoSecs = [];
+
+  state = { navOpen: (typeof window === 'undefined') || window.innerWidth > 820, contactSent: false, contactSending: false, contactError: false };
+
+  WEB3FORMS_KEY = '52e84326-d565-42aa-bfd0-5bc5b4a4d2c3';
+
+  handleContactSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    if (!form.reportValidity()) return;
+    if (form.elements.botcheck && form.elements.botcheck.checked) return;
+    this.setState({ contactSending: true, contactError: false });
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: this.WEB3FORMS_KEY,
+        subject: 'Nowe zapytanie ze strony ODNOVA°studio',
+        from_name: 'ODNOVA°studio — formularz kontaktowy',
+        replyto: form.elements.email.value,
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        website: form.elements.website.value,
+        message: form.elements.message.value,
+      }),
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.success) this.setState({ contactSending: false, contactSent: true });
+        else this.setState({ contactSending: false, contactError: true });
+      })
+      .catch(() => this.setState({ contactSending: false, contactError: true }));
+  };
+
+  // --- sekcja "Ewolucja strony": odsłanianie elementów przy scrollu ---
+  evoReveal(el, delay, scale) {
+    if (!el || el.__rv) return;
+    el.__rv = 1;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)' + (scale ? ' scale(0.96)' : '');
+    el.style.transition = 'opacity .8s ease ' + delay + ', transform .8s ease ' + delay;
+    this.evoRevIO ||= new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0) scale(1)';
+        this.evoRevIO.unobserve(e.target);
+      }
+    }), { threshold: 0.15 });
+    this.evoRevIO.observe(el);
+  }
+
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root) return;
+
+    this.onResize = () => this.setState({ navOpen: window.innerWidth > 820 });
+    window.addEventListener('resize', this.onResize);
+
+    // Wejście z demo / deep-link: intro jest wyłączone w CSS (html.no-intro),
+    // więc nakładkę zdejmujemy od razu i dojeżdżamy do kotwicy — x-dc renderuje
+    // asynchronicznie, więc w chwili wczytania sekcji jeszcze nie ma w DOM
+    // i natywny skok przeglądarki po #hash nie zadziała.
+    const skipIntro = document.documentElement.classList.contains('no-intro');
+    if (skipIntro) {
+      if (this.introRef.current) this.introRef.current.style.display = 'none';
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id && root.querySelector('#' + CSS.escape(id));
+      if (target) {
+        // Zdjęcia w kartach mają loading="lazy" bez wymiarów, więc doładowują się
+        // PO skoku i przesuwają layout — jeden scrollIntoView zostawiał sekcję
+        // ~200 px za wysoko. Stąd ponowienia, aż pozycja się ustabilizuje.
+        const snap = () => {
+          const prev = document.documentElement.style.scrollBehavior;
+          document.documentElement.style.scrollBehavior = 'auto';
+          target.scrollIntoView();
+          document.documentElement.style.scrollBehavior = prev;
+        };
+        snap();
+        this._anchorTimers = [80, 300, 900].map(ms => setTimeout(snap, ms));
+        window.addEventListener('load', snap, { once: true });
+      }
+    } else {
+      // intro overlay cleanup (kurtyna kończy się ~3.5s)
+      this._introTimer = setTimeout(() => {
+        if (this.introRef.current) this.introRef.current.style.display = 'none';
+      }, 3700);
+    }
+
+    // reveal-on-scroll
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'none';
+        io.unobserve(e.target);
+      }
+    }), { threshold: .12 });
+    root.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    this.io = io;
+
+    // --- sekcja "Ewolucja strony": świecąca linia, znaczniki, HUD i scroll-scrub ---
+    const evoReduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const evoHud = root.querySelector('[data-evo-hud]');
+    const evoHudRing = root.querySelector('[data-evo-hud-ring]');
+    const evoHudNum = root.querySelector('[data-evo-hud-num]');
+    const evoHudLabel = root.querySelector('[data-evo-hud-label]');
+    const EVO_RING = 119.4;
+    const EVO_LABELS = ['Przestarzała strona', 'Rozbiórka i analiza', 'Przeprojektowanie', 'Gotowa metamorfoza'];
+
+    this.evoScroll = () => {
+      if (!this.evoRootEl || !this.evoLineFillEl || !this.evoLineBaseEl) return;
+      const vh = window.innerHeight || 800;
+      const scanY = vh * 0.55;               // linia skanująca — na jej wysokości "czyta się" postęp
+      const rootR = this.evoRootEl.getBoundingClientRect();
+      // środki znaczników liczone NA ŻYWO (odporne na przesunięcia layoutu / późne wczytanie fontów)
+      const markCY = this.evoSecs.map(s => {
+        const m = s.querySelector('[data-evo-marker]');
+        const mr = m.getBoundingClientRect();
+        return mr.top + mr.height / 2;
+      });
+      const firstY = rootR.top - 30;                 // linia wchodzi tuż nad pierwszym etapem
+      const lastY = markCY[markCY.length - 1];       // i kończy się dokładnie na ostatnim znaczniku
+      const span = Math.max(1, lastY - firstY);
+      const p = Math.min(1, Math.max(0, (scanY - firstY) / span));
+      // wysokość elementu linii ustawiana na żywo = zawsze sięga znacznika 4, bez zamrożonej wartości
+      this.evoLineBaseEl.style.height = span + 'px';
+      this.evoLineFillEl.style.height = (p * 100) + '%';
+      const tipY = firstY + span * p;
+      let lastLit = -1;
+      markCY.forEach((cy, i) => { if (tipY >= cy - 0.5) lastLit = i; });
+      this.evoSecs.forEach((s, i) => {
+        const m = s.querySelector('[data-evo-marker]');
+        const want = i <= lastLit ? (i === lastLit ? 2 : 1) : 0;
+        if (!m || m.__lit === want) return;
+        const dot = m.firstElementChild;
+        m.style.transition = 'border-color .5s ease, box-shadow .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1)';
+        dot.style.transition = 'background .5s ease, box-shadow .5s ease';
+        m.__lit = want;
+        if (want) {
+          const current = want === 2;
+          m.style.borderColor = current ? '#a78bfa' : '#7c4de8';
+          m.style.transform = current ? 'translate(-50%,-50%) scale(1.18)' : 'translate(-50%,-50%) scale(1)';
+          m.style.animation = current ? 'evoPulse 2.2s ease-in-out infinite' : 'none';
+          m.style.boxShadow = current ? '' : '0 0 0 5px rgba(124,77,232,0.14), 0 0 14px rgba(124,77,232,0.5)';
+          dot.style.background = current ? '#c4b5fd' : '#a78bfa';
+          dot.style.boxShadow = current ? '0 0 12px #a78bfa' : '0 0 6px rgba(167,139,250,0.6)';
+        } else {
+          m.style.borderColor = '#3a3950';
+          m.style.transform = 'translate(-50%,-50%) scale(1)';
+          m.style.animation = 'none';
+          m.style.boxShadow = 'none';
+          dot.style.background = '#55546a';
+          dot.style.boxShadow = 'none';
+        }
+      });
+
+      // --- HUD: licznik etapu + pierścień postępu ---
+      if (evoHud) {
+        const shown = rootR.top < vh * 0.55 && rootR.bottom > vh * 0.45;
+        evoHud.style.opacity = shown ? '1' : '0';
+        evoHud.style.transform = shown ? 'translateY(0) scale(1)' : 'translateY(16px) scale(.96)';
+        const cur = Math.max(0, lastLit);
+        if (evoHudNum) evoHudNum.textContent = String(cur + 1).padStart(2, '0');
+        if (evoHudLabel && evoHudLabel.textContent !== EVO_LABELS[cur]) evoHudLabel.textContent = EVO_LABELS[cur];
+        if (evoHudRing) evoHudRing.style.strokeDashoffset = (EVO_RING * (1 - p)).toFixed(1);
+      }
+
+      // --- scroll-scrub: parallaksa + efekty właściwe dla etapu ---
+      if (evoReduced) return;
+      this.evoSecs.forEach((s, i) => {
+        const fit = s.querySelector('[data-evo-fit]');
+        if (!fit) return;
+        const r = s.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return; // poza ekranem — nie liczymy
+        const prog = (vh - r.top) / (vh + r.height);     // 0 = wchodzi, 1 = wychodzi
+        const c = Math.max(-1, Math.min(1, (prog - 0.5) * 2)); // -1 .. 0 (środek) .. 1
+
+        // parallaksa wizualizacji (na opakowaniu — [data-evo-fit] ma własny scale z evoResize)
+        const wrap = fit.parentElement;
+        if (wrap) wrap.style.transform = 'perspective(1200px) rotateX(' + (c * 3).toFixed(2) + 'deg) translateY(' + (c * -30).toFixed(1) + 'px)';
+
+        if (i === 0) {
+          // Etap 01 — stara strona blaknie i „umiera", gdy ją mijamy
+          if (fit.__baseFilter === undefined) fit.__baseFilter = fit.style.filter || '';
+          const d = Math.max(0, c);
+          fit.style.filter = (fit.__baseFilter + ' grayscale(' + (d * 0.8).toFixed(2) + ') brightness(' + (1 - d * 0.22).toFixed(2) + ')').trim();
+        } else if (i === 1) {
+          // Etap 02 — oderwane kawałki rozsypują się na boki
+          if (!s.__pieces) {
+            s.__pieces = [...fit.children].filter(el => el.tagName === 'DIV' && /rotate/.test(el.style.transform));
+            const fw = fit.offsetWidth / 2, fh = fit.offsetHeight / 2;
+            s.__pieces.forEach(pc => {
+              pc.__base = pc.style.transform;
+              const vx = (pc.offsetLeft + pc.offsetWidth / 2) - fw;
+              const vy = (pc.offsetTop + pc.offsetHeight / 2) - fh;
+              const len = Math.hypot(vx, vy) || 1;
+              pc.__vx = vx / len; pc.__vy = vy / len;
+            });
+          }
+          const sc = Math.max(0, Math.min(1, (prog - 0.32) / 0.46));
+          s.__pieces.forEach((pc, k) => {
+            const dist = sc * (70 + k * 16);
+            pc.style.transform = pc.__base + ' translate(' + (pc.__vx * dist).toFixed(1) + 'px,' + (pc.__vy * dist).toFixed(1) + 'px) rotate(' + (sc * (k % 2 ? 9 : -9)).toFixed(1) + 'deg)';
+            pc.style.opacity = (1 - sc * 0.5).toFixed(2);
+          });
+        } else if (i === 3) {
+          // Etap 04 — nowa strona rozbłyska, gdy trafia na środek
+          if (fit.__baseShadow === undefined) fit.__baseShadow = fit.style.boxShadow || '';
+          const b = 1 - Math.abs(c);
+          fit.style.boxShadow = (fit.__baseShadow ? fit.__baseShadow + ', ' : '') +
+            '0 0 ' + (28 + 72 * b).toFixed(0) + 'px -' + (22 - 12 * b).toFixed(0) + 'px rgba(124,77,232,' + (0.22 + 0.55 * b).toFixed(2) + ')';
+        }
+      });
+    };
+
+    this.evoResize = () => {
+      if (!this.evoRootEl) return;
+      const mob = window.innerWidth < 760;
+      const left = mob ? '26px' : '50%';
+      if (this.evoLineBaseEl) { this.evoLineBaseEl.style.left = left; this.evoLineBaseEl.style.bottom = 'auto'; }
+      // wysokość linii ustawia evoScroll na żywo (kończy się dokładnie na znaczniku Etapu 04)
+      this.evoSecs.forEach(s => {
+        const m = s.querySelector('[data-evo-marker]');
+        if (m) m.style.left = left;
+        const inner = s.querySelector('[data-evo-inner]');
+        if (inner) {
+          // na mobile jedna kolumna, która MOŻE się zwęzić — minmax(320px,1fr)
+          // wymuszałoby 320px i wypychało treść poza ekran (ucinanie przy 375px)
+          inner.style.gridTemplateColumns = mob ? 'minmax(0,1fr)' : 'repeat(auto-fit, minmax(320px, 1fr))';
+          inner.style.paddingLeft = mob ? '58px' : '48px';
+          inner.style.paddingRight = mob ? '18px' : '48px';
+          inner.style.gap = mob ? '34px' : '120px';
+        }
+      });
+      this.evoRootEl.querySelectorAll('[data-evo-fit]').forEach(el => {
+        const pw = el.parentElement.offsetWidth;
+        const sc = Math.min(1, pw / 560);
+        el.style.transform = 'scale(' + sc + ')';
+        el.style.transformOrigin = 'top left';
+        el.parentElement.style.height = (el.offsetHeight * sc) + 'px';
+      });
+      this.evoScroll();
+    };
+
+    window.addEventListener('scroll', this.evoScroll, { passive: true });
+    window.addEventListener('resize', this.evoResize);
+    this.evoScroll();
+    this.evoResize();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.evoResize());
+    this._evoTimer = setTimeout(() => this.evoResize(), 600);
+
+    // animated counters
+    const cntIO = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      cntIO.unobserve(e.target);
+      const el = e.target, target = +el.dataset.target, start = performance.now(), dur = 1500;
+      const tick = now => {
+        const p = Math.min(1, (now - start) / dur);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }), { threshold: .6 });
+    root.querySelectorAll('[data-cnt]').forEach(el => cntIO.observe(el));
+    this.cntIO = cntIO;
+
+    // portfolio: lista realizacji + duży podgląd z przełącznikiem PRZED/PO
+    const pfx = root.querySelector('[data-pfx]');
+    if (pfx) {
+      const items = Array.from(pfx.querySelectorAll('[data-pfx-item]'));
+      const shots = Array.from(pfx.querySelectorAll('[data-pfx-shot]'));
+      const detail = pfx.querySelector('[data-pfx-detail]');
+      const badge = pfx.querySelector('[data-pfx-badge]');
+      const dCat = pfx.querySelector('[data-pfx-d-cat]');
+      const dName = pfx.querySelector('[data-pfx-d-name]');
+      const dDesc = pfx.querySelector('[data-pfx-d-desc]');
+      const cta = pfx.querySelector('[data-pfx-cta]');
+      const stage = pfx.querySelector('[data-pfx-stage]');
+      const modes = Array.from(pfx.querySelectorAll('[data-pfx-mode]'));
+
+      const setMode = mode => {
+        const before = mode === 'before';
+        detail.classList.toggle('show-before', before);
+        badge.textContent = before ? 'PRZED' : 'PO';
+        modes.forEach(b => {
+          const on = b.dataset.pfxMode === mode;
+          b.classList.toggle('is-on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      };
+
+      const select = (i, focus) => {
+        items.forEach((b, k) => {
+          const on = k === i;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          b.tabIndex = on ? 0 : -1;
+        });
+        shots.forEach((s, k) => s.classList.toggle('is-active', k === i));
+        const it = items[i];
+        dCat.textContent = it.querySelector('.pfx-cat').textContent;
+        dName.textContent = it.querySelector('.pfx-name').textContent;
+        dDesc.textContent = it.dataset.pfxDesc;
+        cta.setAttribute('href', it.dataset.pfxHref);
+        cta.setAttribute('aria-label', 'Zobacz metamorfozę: ' + it.querySelector('.pfx-name').textContent);
+        stage.setAttribute('href', it.dataset.pfxHref + '?v=po');   // klik w podgląd = od razu strona PO metamorfozie
+        stage.setAttribute('aria-label', 'Otwórz nową stronę: ' + it.querySelector('.pfx-name').textContent);
+        setMode('after');                          // nowa realizacja zawsze startuje od "PO"
+        if (focus) it.focus();
+        // mobile: lista jest poziomym paskiem — dosuwamy aktywny kafelek do widoku
+        const list = it.parentElement;
+        if (list.scrollWidth > list.clientWidth) {
+          const r = it.getBoundingClientRect(), lr = list.getBoundingClientRect();
+          if (r.left < lr.left || r.right > lr.right) {
+            list.scrollBy({ left: r.left - lr.left - 12, behavior: 'smooth' });
+          }
+        }
+      };
+
+      items.forEach((b, i) => b.addEventListener('click', () => select(i)));
+      modes.forEach(b => b.addEventListener('click', () => setMode(b.dataset.pfxMode)));
+      pfx.querySelector('[role=tablist]').addEventListener('keydown', e => {
+        const cur = items.findIndex(b => b.classList.contains('is-active'));
+        const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1
+          : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1
+            : e.key === 'Home' ? -cur : e.key === 'End' ? items.length - 1 - cur : 0;
+        if (!step && e.key !== 'Home') return;
+        e.preventDefault();
+        select((cur + step + items.length) % items.length, true);
+      });
+      select(0);
+    }
+
+    // kursorowa poświata (fine-pointer only)
+    if (matchMedia('(pointer:fine)').matches) {
+      const glow = this.cursorGlowRef.current;
+      let gx = window.innerWidth / 2, gy = 0, tx = gx, ty = gy;
+      const mmove = e => { tx = e.clientX; ty = e.clientY; };
+      window.addEventListener('mousemove', mmove);
+      this._mmove = mmove;
+      const follow = () => {
+        gx += (tx - gx) * .08;
+        gy += (ty - gy) * .08;
+        if (glow) glow.style.transform = `translate(${gx - 280}px, ${gy - 280}px)`;
+        this._followRaf = requestAnimationFrame(follow);
+      };
+      follow();
+    }
+
+    // --- tło neuronowe (V4b: magnetyczny reflektor) ---
+    this._neuroInstances = [];
+    const initNeuro = (sel, opt) => {
+      opt = opt || {};
+      const density = opt.density || 26000;             // im większa, tym mniej węzłów
+      const maxNodes = opt.maxNodes || 70;
+      const minNodes = opt.minNodes || 18;
+      const withShots = !!opt.shots;
+      const canvas = root.querySelector(sel);
+      if (!canvas) return;
+      const host = canvas.parentElement;                 // <header> / <section> / karta
+      const ctx = canvas.getContext('2d');
+      const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+      const A = [124, 92, 255], B = [0, 229, 176];
+      const mix = (c1, c2, t) => Math.round(c1[0] + (c2[0] - c1[0]) * t) + ',' + Math.round(c1[1] + (c2[1] - c1[1]) * t) + ',' + Math.round(c1[2] + (c2[2] - c1[2]) * t);
+      const sprite = (rgb) => {
+        const s = 64, cc = document.createElement('canvas'); cc.width = cc.height = s;
+        const gg = cc.getContext('2d'), gr = gg.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+        gr.addColorStop(0, 'rgba(' + rgb + ',1)'); gr.addColorStop(.25, 'rgba(' + rgb + ',.55)'); gr.addColorStop(1, 'rgba(' + rgb + ',0)');
+        gg.fillStyle = gr; gg.fillRect(0, 0, s, s); return cc;
+      };
+      const gA = sprite(A.join(',')), gB = sprite(B.join(','));
+      let W = 0, H = 0, nodes = [], MAXD = 160, R = 250;
+      const ptr = { x: -9999, y: -9999, on: false };
+
+      const build = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = host.offsetWidth; H = host.offsetHeight;
+        canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        MAXD = W < 720 ? 125 : 160; R = W < 720 ? 170 : 250;
+        const count = Math.max(minNodes, Math.min(maxNodes, Math.round(W * H / density)));
+        nodes = [];
+        for (let i = 0; i < count; i++) nodes.push({
+          ax: Math.random() * W, ay: Math.random() * H,
+          dsx: .14 + Math.random() * .22, dsy: .14 + Math.random() * .22,
+          drx: 14 + Math.random() * 28, dry: 14 + Math.random() * 28,
+          phx: Math.random() * 6.28, phy: Math.random() * 6.28,
+          tone: Math.random(), prox: 0, x: 0, y: 0
+        });
+      };
+
+      /* =====================================================================
+         ZNIEKSZTAŁCONE SCREENY: obraz rozpięty na 4 neuronach, rysowany
+         trójkątami POD siatką połączeń. Parametry finalne (z laboratorium).
+         ===================================================================== */
+      // stałe z laboratorium (suwaki): freq 2220, size 115, amp 14, per 4, op 100,
+      // max 3, zoom 100, inMs 700, qual 0 (→ shearMax 0.95), life 15500
+      const SCFG = { freq: 2220, size: 115, amp: 14, per: 4, op: 100, max: 3, zoom: 100, inMs: 700, life: 15500 };
+      const SHEAR_MAX = 0.95;                              // qual: 0 → 0.95 - 0/100*0.6
+      const shots = withShots ? [] : null;
+      let lastSwap = 0, hotNodes = [];
+      const BANK = [];
+      const MASKED = new Map();
+      let COLS = 0, ROWS = 0, tri = null, warp = null, drawShot = null,
+          findQuad = null, quadOK = null, trySpawn = null, stepShots = null, centroid = null;
+
+      if (withShots) {
+        // tylko wersje „po” — ścieżki względem index.html
+        // Dokladnie te same pliki, co kafelki w portfolio. Rozszerzenia sie roznia,
+        // wiec lista jest jawna: sklejanie nazwy z '.png' laduje stare duplikaty
+        // z lipca zamiast odswiezonych podgladow.
+        ['02-preview-fryzjer.webp', '02-preview-autoserwis.webp', '02-preview-pizzeria.webp',
+         '02-preview-budmax.webp', '02-preview-dentysta.png', '02-preview-pensjonat.jpg'].forEach(f => {
+          const im = new Image(); im.src = 'img/' + f;
+          im.decoding = 'async'; BANK.push(im);
+        });
+        const pickImg = () => {
+          const pool = BANK.filter(i => i.complete && i.naturalWidth);
+          return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+        };
+
+        // wersja z wytopionymi, nieregularnymi brzegami (cache po obraz/wtopienie/ar/zoom)
+        const masked = (img, feather, ar) => {
+          const key = img.src + '|' + feather + '|' + ar + '|' + SCFG.zoom;
+          if (MASKED.has(key)) return MASKED.get(key);
+          const nw = img.naturalWidth, nh = img.naturalHeight, nAr = nw / nh;
+          let cw = nw, ch = nh, sx = 0;
+          if (ar > nAr) ch = nw / ar; else { cw = nh * ar; sx = (nw - cw) / 2; }
+          const z = SCFG.zoom / 100;
+          cw *= z; ch *= z; sx = (nw - cw) / 2;
+          const iw = Math.round(cw), ih = Math.round(ch);
+          const cc = document.createElement('canvas'); cc.width = iw; cc.height = ih;
+          const g = cc.getContext('2d');
+          g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+          g.drawImage(img, sx, 0, cw, ch, 0, 0, iw, ih);
+          g.globalCompositeOperation = 'destination-out';
+          const fx = iw * feather / 100, fy = ih * feather / 100;
+          const band = (x0, y0, x1, y1, w, h) => {
+            const gr = g.createLinearGradient(x0, y0, x1, y1);
+            gr.addColorStop(0, 'rgba(0,0,0,1)'); gr.addColorStop(.55, 'rgba(0,0,0,.35)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+            g.fillStyle = gr; g.fillRect(Math.min(x0, x1), Math.min(y0, y1), w, h);
+          };
+          band(0, 0, fx, 0, fx, ih);
+          band(iw, 0, iw - fx, 0, fx, ih);
+          band(0, 0, 0, fy, iw, fy);
+          band(0, ih, 0, ih - fy, iw, fy);
+          const RR = Math.max(fx, fy);
+          for (let i = 0; i < 7; i++) {
+            const edge = i % 4;
+            const px = edge === 0 ? 0 : edge === 1 ? iw : Math.random() * iw;
+            const py = edge === 2 ? 0 : edge === 3 ? ih : Math.random() * ih;
+            const x = edge < 2 ? px : px, y = edge < 2 ? Math.random() * ih : py;
+            const r = RR * (.7 + Math.random() * 1.1);
+            const gr = g.createRadialGradient(x, y, 0, x, y, r);
+            gr.addColorStop(0, 'rgba(0,0,0,.85)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+            g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, 6.2832); g.fill();
+          }
+          g.globalCompositeOperation = 'source-over';
+          MASKED.set(key, cc);
+          return cc;
+        };
+
+        COLS = 9; ROWS = 6;
+
+        tri = (img, sx0, sy0, sx1, sy1, sx2, sy2, x0, y0, x1, y1, x2, y2) => {
+          const cx = (x0 + x1 + x2) / 3, cy = (y0 + y1 + y2) / 3, K = 0.3;
+          const ex = (x, y) => { const d = Math.hypot(x - cx, y - cy) || 1; return [x + (x - cx) / d * K, y + (y - cy) / d * K]; };
+          const p0 = ex(x0, y0), p1 = ex(x1, y1), p2 = ex(x2, y2);
+          ctx.save();
+          ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.closePath(); ctx.clip();
+          const u0 = sx0, v0 = sy0, u1 = sx1, v1 = sy1, u2 = sx2, v2 = sy2;
+          const D  = u0 * v1 + v0 * u2 + u1 * v2 - v1 * u2 - v0 * u1 - u0 * v2;
+          if (!D) { ctx.restore(); return; }
+          const Da = x0 * v1 + v0 * x2 + x1 * v2 - v1 * x2 - v0 * x1 - x0 * v2;
+          const Db = u0 * x1 + x0 * u2 + u1 * x2 - x1 * u2 - x0 * u1 - u0 * x2;
+          const Dc = u0 * v1 * x2 + v0 * x1 * u2 + x0 * u1 * v2 - x0 * v1 * u2 - v0 * u1 * x2 - u0 * x1 * v2;
+          const Dd = y0 * v1 + v0 * y2 + y1 * v2 - v1 * y2 - v0 * y1 - y0 * v2;
+          const De = u0 * y1 + y0 * u2 + u1 * y2 - y1 * u2 - y0 * u1 - u0 * y2;
+          const Df = u0 * v1 * y2 + v0 * y1 * u2 + y0 * u1 * v2 - y0 * v1 * u2 - v0 * u1 * y2 - u0 * y1 * v2;
+          ctx.transform(Da / D, Dd / D, Db / D, De / D, Dc / D, Df / D);
+          ctx.drawImage(img, 0, 0);
+          ctx.restore();
+        };
+
+        warp = (s, u, v, t) => {
+          const k = SCFG.size / 100;
+          const q = s.quad, c = s.cen;
+          const P = (n) => [c[0] + (n.x - c[0]) * k, c[1] + (n.y - c[1]) * k];
+          const p00 = P(q[0]), p10 = P(q[1]), p11 = P(q[2]), p01 = P(q[3]);
+          const top = [p00[0] + (p10[0] - p00[0]) * u, p00[1] + (p10[1] - p00[1]) * u];
+          const bot = [p01[0] + (p11[0] - p01[0]) * u, p01[1] + (p11[1] - p01[1]) * u];
+          let x = top[0] + (bot[0] - top[0]) * v;
+          let y = top[1] + (bot[1] - top[1]) * v;
+          const bell = Math.sin(Math.PI * u) * Math.sin(Math.PI * v);
+          const a = SCFG.amp * bell;
+          x += a * (Math.sin(u * 4.1 + v * 2.7 + s.seed + t * .55) + .6 * Math.sin(v * 6.3 - s.seed * 1.7 + t * .31));
+          y += a * (Math.cos(v * 3.7 - u * 2.2 + s.seed * 2.3 + t * .47) + .6 * Math.sin(u * 5.9 + s.seed + t * .27));
+          return [x, y];
+        };
+
+        drawShot = (s, t) => {
+          if (!s.src || !s.src.complete || !s.src.naturalWidth) return;
+          const P = [];
+          for (let r = 0; r <= ROWS; r++) {
+            const row = [];
+            for (let c = 0; c <= COLS; c++) row.push(warp(s, c / COLS, r / ROWS, t));
+            P.push(row);
+          }
+          let bx0 = 1e9, bx1 = -1e9, by0 = 1e9, by1 = -1e9;
+          for (const row of P) for (const p of row) {
+            if (p[0] < bx0) bx0 = p[0]; if (p[0] > bx1) bx1 = p[0];
+            if (p[1] < by0) by0 = p[1]; if (p[1] > by1) by1 = p[1];
+          }
+          const ar = Math.round((bx1 - bx0) / Math.max(1, by1 - by0) * 5) / 5;
+          const img = masked(s.src, SCFG.per, Math.max(1.25, Math.min(2.1, ar)));
+          const iw = img.width, ih = img.height;
+          ctx.save();
+          ctx.globalAlpha = s.a * (SCFG.op / 100);
+          for (let r = 0; r < ROWS; r++) {
+            for (let c = 0; c < COLS; c++) {
+              const sx0 = c / COLS * iw, sx1 = (c + 1) / COLS * iw;
+              const sy0 = r / ROWS * ih, sy1 = (r + 1) / ROWS * ih;
+              const p00 = P[r][c], p10 = P[r][c + 1], p01 = P[r + 1][c], p11 = P[r + 1][c + 1];
+              tri(img, sx0, sy0, sx1, sy0, sx0, sy1, p00[0], p00[1], p10[0], p10[1], p01[0], p01[1]);
+              tri(img, sx1, sy0, sx1, sy1, sx0, sy1, p10[0], p10[1], p11[0], p11[1], p01[0], p01[1]);
+            }
+          }
+          ctx.restore();
+        };
+
+        const TARGET_A = 17300;
+        findQuad = () => {
+          const cand = hotNodes.slice(0, 7);
+          if (cand.length < 4) return null;
+          let best = null, bestScore = -1;
+          for (let i = 0; i < cand.length; i++)
+            for (let j = i + 1; j < cand.length; j++)
+              for (let k = j + 1; k < cand.length; k++)
+                for (let l = k + 1; l < cand.length; l++) {
+                  const q = [cand[i], cand[j], cand[k], cand[l]];
+                  const cx = (q[0].x + q[1].x + q[2].x + q[3].x) / 4, cy = (q[0].y + q[1].y + q[2].y + q[3].y) / 4;
+                  const ord = q.slice().sort((a, b) => Math.atan2(a.y - cy, a.x - cx) - Math.atan2(b.y - cy, b.x - cx));
+                  let A = 0, minEdge = 1e9, maxEdge = 0;
+                  for (let m = 0; m < 4; m++) {
+                    const p = ord[m], n = ord[(m + 1) % 4];
+                    A += p.x * n.y - n.x * p.y;
+                    const e = Math.hypot(p.x - n.x, p.y - n.y);
+                    minEdge = Math.min(minEdge, e); maxEdge = Math.max(maxEdge, e);
+                  }
+                  A = Math.abs(A) / 2;
+                  if (A < 6500 || A > 34000 || minEdge < 30) continue;
+                  if (maxEdge / minEdge > 2.3) continue;
+                  let convex = true, sign = 0, minAng = Math.PI;
+                  for (let m = 0; m < 4 && convex; m++) {
+                    const p0 = ord[(m + 3) % 4], p1 = ord[m], p2 = ord[(m + 1) % 4];
+                    const ax = p1.x - p0.x, ay = p1.y - p0.y, bx = p2.x - p1.x, by = p2.y - p1.y;
+                    const cr = ax * by - ay * bx;
+                    if (m === 0) sign = cr > 0 ? 1 : -1;
+                    else if ((cr > 0 ? 1 : -1) !== sign) convex = false;
+                    const la = Math.hypot(ax, ay) || 1, lb = Math.hypot(bx, by) || 1;
+                    minAng = Math.min(minAng, Math.acos(Math.max(-1, Math.min(1, -(ax * bx + ay * by) / (la * lb)))));
+                  }
+                  if (!convex || minAng < Math.PI / 4) continue;
+                  const xs = ord.map(p => p.x), ys = ord.map(p => p.y);
+                  const qAr = (Math.max.apply(null, xs) - Math.min.apply(null, xs)) /
+                              Math.max(1, Math.max.apply(null, ys) - Math.min.apply(null, ys));
+                  if (qAr < 1.05 || qAr > 2.1) continue;
+                  const e01x = ord[1].x - ord[0].x, e01y = ord[1].y - ord[0].y;
+                  const e12x = ord[2].x - ord[1].x, e12y = ord[2].y - ord[1].y;
+                  const e23x = ord[3].x - ord[2].x, e23y = ord[3].y - ord[2].y;
+                  const e30x = ord[0].x - ord[3].x, e30y = ord[0].y - ord[3].y;
+                  const shear = (Math.hypot(e01x + e23x, e01y + e23y) + Math.hypot(e12x + e30x, e12y + e30y)) /
+                                Math.max(1, minEdge + maxEdge);
+                  if (shear > SHEAR_MAX) continue;
+                  const score = 1 / (1 + Math.abs(A - TARGET_A) / TARGET_A) / (1 + Math.abs(qAr - 1.45)) / (1 + shear);
+                  if (score > bestScore) { bestScore = score; best = ord; }
+                }
+          return best;
+        };
+
+        centroid = (q) => [(q[0].x + q[1].x + q[2].x + q[3].x) / 4, (q[0].y + q[1].y + q[2].y + q[3].y) / 4];
+
+        quadOK = (q) => {
+          const cx = (q[0].x + q[1].x + q[2].x + q[3].x) / 4, cy = (q[0].y + q[1].y + q[2].y + q[3].y) / 4;
+          const ord = q.slice().sort((a, b) => Math.atan2(a.y - cy, a.x - cx) - Math.atan2(b.y - cy, b.x - cx));
+          let A = 0, minEdge = 1e9, maxEdge = 0, minAng = Math.PI, sign = 0;
+          for (let m = 0; m < 4; m++) {
+            const p = ord[m], n = ord[(m + 1) % 4];
+            A += p.x * n.y - n.x * p.y;
+            const e = Math.hypot(p.x - n.x, p.y - n.y);
+            minEdge = Math.min(minEdge, e); maxEdge = Math.max(maxEdge, e);
+            const p0 = ord[(m + 3) % 4];
+            const ax = p.x - p0.x, ay = p.y - p0.y, bx = n.x - p.x, by = n.y - p.y;
+            const cr = ax * by - ay * bx;
+            if (m === 0) sign = cr > 0 ? 1 : -1;
+            else if ((cr > 0 ? 1 : -1) !== sign) return false;
+            const la = Math.hypot(ax, ay) || 1, lb = Math.hypot(bx, by) || 1;
+            minAng = Math.min(minAng, Math.acos(Math.max(-1, Math.min(1, -(ax * bx + ay * by) / (la * lb)))));
+          }
+          A = Math.abs(A) / 2;
+          if (A < 4200 || A > 44000) return false;
+          if (minEdge < 22 || maxEdge / minEdge > 3.2) return false;
+          if (minAng < Math.PI / 7) return false;
+          const xs = ord.map(p => p.x), ys = ord.map(p => p.y);
+          const qAr = (Math.max.apply(null, xs) - Math.min.apply(null, xs)) /
+                      Math.max(1, Math.max.apply(null, ys) - Math.min.apply(null, ys));
+          if (qAr < 0.9 || qAr > 2.6) return false;
+          const e01x = ord[1].x - ord[0].x, e01y = ord[1].y - ord[0].y;
+          const e12x = ord[2].x - ord[1].x, e12y = ord[2].y - ord[1].y;
+          const e23x = ord[3].x - ord[2].x, e23y = ord[3].y - ord[2].y;
+          const e30x = ord[0].x - ord[3].x, e30y = ord[0].y - ord[3].y;
+          const shear = (Math.hypot(e01x + e23x, e01y + e23y) + Math.hypot(e12x + e30x, e12y + e30y)) /
+                        Math.max(1, minEdge + maxEdge);
+          return shear <= SHEAR_MAX + 0.25;                 // histereza względem spawna
+        };
+
+        trySpawn = (now) => {
+          if (shots.length >= SCFG.max) return;
+          const quad = findQuad();
+          if (!quad) return;
+          const cen = centroid(quad);
+          if (shots.some(s => Math.hypot(s.cen[0] - cen[0], s.cen[1] - cen[1]) < 120)) return;
+          shots.push({ src: pickImg(), quad, cen, a: 0, born: now, dying: false, seed: Math.random() * 6.28, nearS: 0 });
+          lastSwap = now;
+        };
+
+        stepShots = (now, t) => {
+          if (!ptr.on) { shots.length = 0; return; }
+          if (now - lastSwap > SCFG.freq && shots.length >= SCFG.max) {
+            if (shots.length) shots[0].dying = true;
+            lastSwap = now;
+          }
+          for (let i = shots.length - 1; i >= 0; i--) {
+            const s = shots[i];
+            s.cen = centroid(s.quad);
+            if (!s.dying && !quadOK(s.quad)) s.dying = true;
+            if (!s.dying && now - s.born > SCFG.life) s.dying = true;
+            const d = Math.hypot(s.cen[0] - ptr.x, s.cen[1] - ptr.y);
+            const near = Math.max(0, Math.min(1, (R * 1.45 - d) / (R * .75)));
+            s.nearS += (near - s.nearS) * .18;
+            const ramp = Math.min(1, (now - s.born) / SCFG.inMs);
+            const easeIn = ramp * ramp * (3 - 2 * ramp);
+            const target = s.dying ? 0 : s.nearS * easeIn;
+            s.a += (target - s.a) * (s.dying ? .055 : .11);
+            if (s.a < .02 && (s.dying || s.nearS <= 0)) { shots.splice(i, 1); continue; }
+            drawShot(s, t);
+          }
+          trySpawn(now);
+        };
+      }
+
+      const frame = (t, now) => {
+        ctx.clearRect(0, 0, W, H);
+        const on = ptr.on, mx = ptr.x, my = ptr.y;
+        for (const n of nodes) {
+          const bx = n.ax + Math.sin(t * n.dsx + n.phx) * n.drx;
+          const by = n.ay + Math.cos(t * n.dsy + n.phy) * n.dry;
+          let prox = 0, ox = 0, oy = 0;
+          if (on) {
+            const dx = mx - bx, dy = my - by, d = Math.hypot(dx, dy);
+            if (d < R) { prox = 1 - d / R; prox *= prox; const pull = prox * 34; ox = dx / (d || 1) * pull; oy = dy / (d || 1) * pull; }
+          }
+          n.prox = prox; n.x = bx + ox; n.y = by + oy;
+        }
+        // screeny rozpięte na neuronach — POD siatką połączeń
+        if (withShots) {
+          hotNodes = on
+            ? nodes.map(n => [n, Math.hypot(n.x - mx, n.y - my)])
+                   .filter(p => p[1] < R * 1.3).sort((a, b) => a[1] - b[1]).map(p => p[0])
+            : [];
+          stepShots(now || 0, t);
+        }
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+            if (d2 < MAXD * MAXD) {
+              const d = Math.sqrt(d2), boost = Math.max(a.prox, b.prox);
+              const al = (1 - d / MAXD) * (.09 + boost * .6);
+              ctx.strokeStyle = 'rgba(' + mix([140, 130, 190], B, boost) + ',' + al.toFixed(3) + ')';
+              ctx.lineWidth = .8 + boost * 1.1;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+        }
+        ctx.globalCompositeOperation = 'lighter';
+        if (on) { ctx.globalAlpha = .3; ctx.drawImage(gB, mx - 90, my - 90, 180, 180); }
+        for (const n of nodes) {
+          const spr = n.tone > .5 ? gB : gA, gs = 8 + n.prox * 30;
+          ctx.globalAlpha = .2 + n.prox * .7;
+          ctx.drawImage(spr, n.x - gs / 2, n.y - gs / 2, gs, gs);
+        }
+        ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+        for (const n of nodes) {
+          ctx.fillStyle = n.prox > .4 ? '#eafff9' : 'rgba(' + mix(A, B, n.tone) + ',.72)';
+          ctx.beginPath(); ctx.arc(n.x, n.y, 1.4 + n.prox * 2.2, 0, 6.2832); ctx.fill();
+        }
+      };
+
+      build();
+      const inView = (r) => r.bottom > 0 && r.top < (window.innerHeight || 0);
+      const onMove = (e) => {
+        const r = host.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        ptr.on = (inView(r) && y >= 0 && y <= r.height && x >= 0 && x <= r.width);
+        if (ptr.on) { ptr.x = x; ptr.y = y; }
+      };
+      const onResize = () => build();
+      const onLeave = () => { ptr.on = false; if (shots) shots.length = 0; };
+      window.addEventListener('mousemove', onMove, { passive: true });
+      host.addEventListener('mouseleave', onLeave);
+      window.addEventListener('resize', onResize);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+
+      // przebuduj gdy host zmieni rozmiar (także pierwszy layout, gdy szerokość = 0)
+      let roRaf = 0, ro = null;
+      if (window.ResizeObserver) {
+        ro = new ResizeObserver(() => {
+          if (roRaf) return;
+          roRaf = requestAnimationFrame(() => {
+            roRaf = 0;
+            if (host.offsetWidth !== W || host.offsetHeight !== H) build();
+          });
+        });
+        ro.observe(host);
+      }
+
+      const inst = { raf: 0 };
+      this._neuroInstances.push(() => {
+        window.removeEventListener('mousemove', onMove);
+        host.removeEventListener('mouseleave', onLeave);
+        window.removeEventListener('resize', onResize);
+        if (ro) ro.disconnect();
+        if (roRaf) cancelAnimationFrame(roRaf);
+        if (inst.raf) cancelAnimationFrame(inst.raf);
+        if (shots) shots.length = 0;
+        MASKED.clear();
+      });
+
+      if (reduced) { frame(0, 0); return; }
+      const loop = (now) => {
+        const r = host.getBoundingClientRect();
+        if (inView(r)) frame(now / 1000, now);          // rysuj tylko gdy sekcja widoczna
+        inst.raf = requestAnimationFrame(loop);
+      };
+      inst.raf = requestAnimationFrame(loop);
+    };
+
+    initNeuro('#heroNeuro', { shots: true, density: 16052, maxNodes: 170, minNodes: 14 });
+    initNeuro('#jakNeuro', { density: 34000, maxNodes: 48 });
+    initNeuro('#kontaktNeuro', { density: 20000, maxNodes: 60 });
+  }
+
+  componentWillUnmount() {
+    if (this._introTimer) clearTimeout(this._introTimer);
+    if (this._anchorTimers) this._anchorTimers.forEach(clearTimeout);
+    if (this._evoTimer) clearTimeout(this._evoTimer);
+    if (this.onResize) window.removeEventListener('resize', this.onResize);
+    if (this.evoScroll) window.removeEventListener('scroll', this.evoScroll);
+    if (this.evoResize) window.removeEventListener('resize', this.evoResize);
+    if (this.io) this.io.disconnect();
+    if (this.evoRevIO) this.evoRevIO.disconnect();
+    if (this.cntIO) this.cntIO.disconnect();
+    if (this._mmove) window.removeEventListener('mousemove', this._mmove);
+    if (this._followRaf) cancelAnimationFrame(this._followRaf);
+    if (this._neuroInstances) this._neuroInstances.forEach(fn => fn());
+  }
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      introRef: this.introRef,
+      cursorGlowRef: this.cursorGlowRef,
+      // --- sekcja "Ewolucja strony" ---
+      setRoot: el => { this.evoRootEl = el; },
+      setLineBase: el => { this.evoLineBaseEl = el; },
+      setLineFill: el => { this.evoLineFillEl = el; },
+      sec: el => {
+        if (!el || el.__evo) return;
+        el.__evo = 1;
+        this.evoSecs.push(el);
+      },
+      revT: el => this.evoReveal(el, '0s', false),
+      revV: el => this.evoReveal(el, '0.18s', true),
+      navOpen: this.state.navOpen,
+      handleContactSubmit: this.handleContactSubmit,
+      contactSent: this.state.contactSent,
+      contactNotSent: !this.state.contactSent,
+      contactSending: this.state.contactSending,
+      contactError: this.state.contactError,
+      submitLabel: this.state.contactSending ? 'Wysyłanie…' : 'Wyślij i odbierz darmowy audyt',
+    };
+  }
+}
+</script>
+</body>
+</html>
