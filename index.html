@@ -396,29 +396,27 @@ footer .big{margin-left:auto;margin-right:auto;max-width:980px}
 /* Zaufali mi — statyczny rząd zamiast przewijanego paska */
 
 
-/* intro: rysowane logo, które ląduje w menu */
+/* intro: prawdziwe logo z menu rysuje się na środku i wraca na swoje miejsce */
 #intro{display:none}
-html.intro-on #intro,html.intro-out #intro{display:block;position:fixed;inset:0;z-index:200;cursor:pointer}html.intro-out #intro{pointer-events:none}
+html.intro-on #intro,html.intro-out #intro{display:block;position:fixed;inset:0;z-index:200;background:var(--bg);cursor:pointer}
+html.intro-out #intro{pointer-events:none}
 html.intro-on body{overflow:hidden}
-#intro .ibg{position:absolute;inset:0;background:var(--bg)}
-#intro .igrp{--k:3;position:absolute;left:50%;top:50%;display:flex;align-items:center;gap:calc(10px * var(--k));transform:translate(-50%,-50%);color:#0E0F14;will-change:transform}
-#intro svg{width:calc(26px * var(--k));height:auto;flex:none;overflow:visible}
-#intro .iw{font:800 calc(1.05rem * var(--k)) var(--display);letter-spacing:.02em;white-space:nowrap;clip-path:inset(0 100% 0 0)}
-#intro .iw span{font-weight:400;color:#6A6C7A}
-#intro .ia,#intro .ib{stroke-dasharray:240;stroke-dashoffset:240}
-#intro .ic{transform-box:fill-box;transform-origin:center;transform:scale(0)}
-#intro .ia{animation:iDraw 1s cubic-bezier(.65,0,.35,1) .15s forwards}
-#intro .ib{animation:iDraw 1s cubic-bezier(.65,0,.35,1) .35s forwards}
-#intro .ic{animation:iPop .45s cubic-bezier(.3,1.6,.5,1) 1.05s forwards}
-#intro .iw{animation:iWipe .7s cubic-bezier(.65,0,.35,1) 1.05s forwards}
+html.intro-on .top,html.intro-out .top{z-index:300}
+.top .wrap{transition:background-color .7s ease,border-color .7s ease,box-shadow .7s ease}
+html.intro-on .top .wrap{background-color:transparent;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.top .nav,.top .btn-acc,.top .menu-btn{transition:opacity .6s ease}
+html.intro-on .top .nav,html.intro-on .top .btn-acc,html.intro-on .top .menu-btn,html.intro-out .top .nav,html.intro-out .top .btn-acc,html.intro-out .top .menu-btn{opacity:0}
+html.intro-on .top .logo{pointer-events:none}
+html.intro-on .top .logo>span{clip-path:inset(0 100% 0 0);animation:iWipe .7s cubic-bezier(.65,0,.35,1) 1.05s forwards}
+html.intro-on .top .logo svg path{stroke-dasharray:240;stroke-dashoffset:240;animation:iDraw 1s cubic-bezier(.65,0,.35,1) .15s forwards}
+html.intro-on .top .logo svg path+path{animation-delay:.35s}
+html.intro-on .top .logo svg circle{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:iPop .45s cubic-bezier(.3,1.6,.5,1) 1.05s forwards}
 @keyframes iDraw{to{stroke-dashoffset:0}}@keyframes iPop{to{transform:scale(1)}}@keyframes iWipe{to{clip-path:inset(0 0 0 0)}}
-@media (max-width:600px){#intro .igrp{--k:2}}
-html.intro-on .top .logo,html.intro-out.landing .top .logo{opacity:0}
 </style>
 </head>
 <body>
 <script>try{if(sessionStorage.getItem("odnIntro")||matchMedia("(prefers-reduced-motion: reduce)").matches||location.hash)document.documentElement.classList.add("no-intro");else document.documentElement.classList.add("intro-on")}catch(e){document.documentElement.classList.add("no-intro")}</script>
-<div id="intro" aria-hidden="true"><div class="ibg"></div><div class="igrp"><svg viewBox="0 0 76 84" aria-hidden="true"><defs><linearGradient id="introG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7C5CFF"/><stop offset=".5" stop-color="#3F9FD8"/><stop offset="1" stop-color="#00E5B0"/></linearGradient></defs><path class="ia" d="M38 4 L72 23 L72 61 L38 80 L4 61 L4 23 Z" fill="none" stroke="#D9D9D2" stroke-width="6" stroke-linejoin="round"/><path class="ib" d="M38 4 L72 23 L72 61 L38 80" fill="none" stroke="url(#introG)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle class="ic" cx="38" cy="42" r="7" fill="url(#introG)"/></svg><span class="iw">ODNOVA<span>°studio</span></span></div></div>
+<div id="intro" aria-hidden="true"></div>
 
 <a class="skip" href="#tresc">Przejdź do treści</a>
 <header class="top" id="top">
@@ -1396,25 +1394,26 @@ addEventListener('scroll',spy,{passive:true});addEventListener('resize',function
 var root=document.documentElement,ov=document.getElementById('intro');if(!ov)return;
 if(!root.classList.contains('intro-on')){ov.remove();return}
 try{sessionStorage.setItem('odnIntro','1')}catch(e){}
-var grp=ov.querySelector('.igrp'),bg=ov.querySelector('.ibg'),done=false,t1;
+var logo=document.querySelector('.top .logo');
+if(!logo||!logo.offsetWidth){root.classList.remove('intro-on');ov.remove();return}
+var done=false,t1,k=innerWidth<600?2:3;
+function place(){logo.style.transformOrigin='0 50%';logo.style.transform='none';var r=logo.getBoundingClientRect();
+  var dx=(innerWidth/2-r.width*k/2)-r.left,dy=innerHeight/2-(r.top+r.height/2);
+  logo.style.transform='translate('+dx+'px,'+dy+'px) scale('+k+')';return logo.style.transform}
+var from=place();addEventListener('resize',function(){if(!done)from=place()});
 function finish(){if(done)return;done=true;clearTimeout(t1);
-  var nl=document.querySelector('.top .logo');
-  ov.querySelector('.iw').style.clipPath='inset(0 0 0 0)';[].forEach.call(ov.querySelectorAll('.ia,.ib'),function(p){p.style.strokeDashoffset=0});ov.querySelector('.ic').style.transform='scale(1)';
-  var a=grp.getBoundingClientRect();
-  root.classList.remove('intro-on');root.classList.add('intro-out','landing');document.body.style.overflow='';
-  if(!nl||nl.offsetWidth===0){bg.animate([{opacity:1},{opacity:0}],{duration:600,fill:'forwards'});grp.animate([{opacity:1},{opacity:0}],{duration:500,fill:'forwards'});setTimeout(end,650);return}
-  var t=nl.getBoundingClientRect(),sc=t.height/a.height;
-  sc=Math.min(sc,t.width/a.width*1.02);
-  var tx=t.left-a.left,ty=(t.top+t.height/2)-(a.top+a.height/2);
-  grp.style.transformOrigin='0 50%';
-  var fly=grp.animate([{transform:'translate(-50%,-50%)'},{transform:'translate(-50%,-50%) translate('+tx+'px,'+ty+'px) scale('+sc+')'}],{duration:1000,easing:'cubic-bezier(.76,0,.18,1)',fill:'forwards'});
-  bg.animate([{opacity:1},{opacity:0}],{duration:800,delay:250,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});
-  setTimeout(function(){dispatchEvent(new Event('odn:introdone'))},550);
-  fly.onfinish=function(){root.classList.remove('landing');requestAnimationFrame(function(){requestAnimationFrame(end)})};
-  function end(){ov.remove();root.classList.remove('intro-out','landing')}
+  [].forEach.call(logo.querySelectorAll('svg path'),function(p){p.style.strokeDashoffset=0});
+  var c=logo.querySelector('svg circle');if(c)c.style.transform='scale(1)';var tx=logo.querySelector(':scope>span');if(tx)tx.style.clipPath='inset(0 0 0 0)';
+  root.classList.remove('intro-on');root.classList.add('intro-out');document.body.style.overflow='';
+  logo.style.transform='none';
+  var fly=logo.animate([{transform:from},{transform:'none'}],{duration:1050,easing:'cubic-bezier(.76,0,.18,1)'});
+  ov.animate([{opacity:1},{opacity:0}],{duration:800,delay:200,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});
+  setTimeout(function(){dispatchEvent(new Event('odn:introdone'))},600);
+  fly.onfinish=function(){logo.style.transform='';logo.style.transformOrigin='';root.classList.remove('intro-out');ov.remove();
+    [].forEach.call(logo.querySelectorAll('svg path,svg circle'),function(p){p.style.strokeDashoffset='';p.style.transform=''});if(tx)tx.style.clipPath=''};
 }
 t1=setTimeout(finish,2000);
-ov.addEventListener('click',finish);addEventListener('keydown',function k(){finish();removeEventListener('keydown',k)});
+ov.addEventListener('click',finish);addEventListener('keydown',function kk(){finish();removeEventListener('keydown',kk)});
 })();
 </script></body>
 </html>
