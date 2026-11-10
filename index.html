@@ -448,6 +448,11 @@ section[id]{scroll-margin-top:84px}
   h2{text-wrap:balance}
 }
 .rc-cap{transition:opacity .2s ease,transform .2s ease}.rc-cap.on{transition:opacity .45s ease .18s,transform .45s ease .18s}
+
+.about-photo .av-cap{position:absolute;left:14px;bottom:14px;z-index:3;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:14px;background:rgba(14,15,20,.55);-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);color:#fff;line-height:1.25;max-width:calc(100% - 28px)}
+.about-photo .av-cap b{font:600 .98rem var(--display);letter-spacing:-.01em}
+.about-photo .av-cap span{font-size:.78rem;color:rgba(255,255,255,.78)}
+@media (max-width:760px){.about-photo .av-cap{left:12px;bottom:12px;padding:8px 12px}}
 </style>
 </head>
 <body>
@@ -462,7 +467,7 @@ section[id]{scroll-margin-top:84px}
 <a class="btn btn-acc" href="#zamow">Zamów darmową makietę</a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="#0E0F14" stroke-width="1.8" stroke-linecap="round"/></svg></button>
 </div>
-<nav class="mobile-nav" id="mnav" aria-label="Menu mobilne"><a href="#warianty">3 warianty</a><a href="#realizacje">Realizacje</a><a href="#jak">Jak to działa</a><a href="#oferta">Oferta</a><a href="#pytania">Pytania</a><a href="#zamow">Zamów makietę</a></nav>
+<nav class="mobile-nav" id="mnav" aria-label="Menu mobilne"><a href="#warianty">3 warianty</a><a href="#realizacje">Realizacje</a><a href="#jak">Jak to działa</a><a href="#oferta">Oferta</a><a href="#omnie">O mnie</a><a href="#pytania">Pytania</a><a href="#zamow">Zamów makietę</a></nav>
 </header>
 
 <main id="tresc">
@@ -608,7 +613,7 @@ section[id]{scroll-margin-top:84px}
 
 <section class="block band" id="omnie">
 <div class="wrap about">
-<div class="about-photo rv" id="avWrap"><img id="avImg" src="/nowa/img/pilot-f0.jpg" alt="Daniel Popiel — pilot i twórca stron, w kokpicie z laptopem"><video id="avVid" muted playsinline preload="none" data-src="/nowa/img/pilot.mp4" aria-hidden="true"></video><span class="av-grain" aria-hidden="true"></span><span class="av-glare" aria-hidden="true"></span></div>
+<div class="about-photo rv" id="avWrap"><img id="avImg" src="/nowa/img/pilot-f0.jpg" alt="Daniel Popiel — pilot i twórca stron, w kokpicie z laptopem"><video id="avVid" muted playsinline preload="none" data-src="/nowa/img/pilot.mp4" aria-hidden="true"></video><span class="av-grain" aria-hidden="true"></span><span class="av-glare" aria-hidden="true"></span><span class="av-cap"><b>Daniel Popiel</b><span>pilot Boeinga 737 · twórca ODNOVA°studio</span></span></div>
 <div class="rv" style="--d:.1s">
 <p class="eyebrow">O mnie</p>
 <h2 class="wave">Na co dzień pilot Boeinga 737. Po godzinach robię strony.</h2>
@@ -1418,7 +1423,10 @@ if(vid){
     raf=requestAnimationFrame(tick)}
   function go(on){if(rm)return;hov=on;if(on&&T<=0)dir=1;if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}}
   w.addEventListener('pointerenter',function(){go(true)});w.addEventListener('pointerleave',function(){go(false)});
-  if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window){new IntersectionObserver(function(e){go(e[0].isIntersecting)},{threshold:.6}).observe(w)}
+  if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window){
+    var want=false;
+    function kick(){if(vid.readyState>=2){go(want);return}if(!vid.src){vid.preload='auto';vid.src=vid.getAttribute('data-src')}var pp=vid.play();if(pp&&pp.then)pp.then(function(){vid.pause();go(want)}).catch(function(){});vid.addEventListener('loadeddata',function(){go(want)},{once:true})}
+    new IntersectionObserver(function(e){want=e[0].intersectionRatio>=.55;if(want)kick();else go(false)},{threshold:[0,.55,.8]}).observe(w)}
   return;
 }
 var t=0,v=0,target=0,last=0,raf=0,TAU=Math.PI*2;
