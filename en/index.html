@@ -1491,7 +1491,7 @@ if(vid){
     if(!hov&&T<=0.0001&&Math.abs(V)<.05){T=0;V=0;raf=0;return}
     raf=requestAnimationFrame(tick)}
   function go(on){if(rm)return;hov=on;if(on&&T<=0)dir=1;if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}}
-  w.addEventListener('pointerenter',function(){go(true)});w.addEventListener('pointerleave',function(){go(false)});
+  var hz=w.closest('section')||w;hz.addEventListener('pointerenter',function(e){if(e.pointerType!=='touch')go(true)});hz.addEventListener('pointerleave',function(e){if(e.pointerType!=='touch')go(false)});
   if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window){
     var want=false;
     function kick(){if(vid.readyState>=2){go(want);return}if(!vid.src){vid.preload='auto';vid.src=vid.getAttribute('data-src')}var pp=vid.play();if(pp&&pp.then)pp.then(function(){vid.pause();go(want)}).catch(function(){});vid.addEventListener('loadeddata',function(){go(want)},{once:true})}
