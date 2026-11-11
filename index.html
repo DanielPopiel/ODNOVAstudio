@@ -1491,11 +1491,14 @@ if(vid){
     if(!hov&&T<=0.0001&&Math.abs(V)<.05){T=0;V=0;raf=0;return}
     raf=requestAnimationFrame(tick)}
   function go(on){if(rm)return;hov=on;if(on&&T<=0)dir=1;if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}}
-  var hz=w.closest('section')||w;hz.addEventListener('pointerenter',function(e){if(e.pointerType!=='touch')go(true)});hz.addEventListener('pointerleave',function(e){if(e.pointerType!=='touch')go(false)});
-  if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window){
+  w.addEventListener('pointerenter',function(){go(true)});w.addEventListener('pointerleave',function(){go(false)});
+  if(matchMedia('(hover: none), (pointer: coarse)').matches&&'IntersectionObserver' in window){
+    /* telefon: rusza, gdy zdjęcie wjeżdża na ekran (górna krawędź minie ~85% wysokości), cofa się, gdy całe zniknie */
     var want=false;
     function kick(){if(vid.readyState>=2){go(want);return}if(!vid.src){vid.preload='auto';vid.src=vid.getAttribute('data-src')}var pp=vid.play();if(pp&&pp.then)pp.then(function(){vid.pause();go(want)}).catch(function(){});vid.addEventListener('loadeddata',function(){go(want)},{once:true})}
-    new IntersectionObserver(function(e){want=e[0].intersectionRatio>=.55;if(want)kick();else go(false)},{threshold:[0,.55,.8]}).observe(w)}
+    new IntersectionObserver(function(e){want=e[0].isIntersecting;if(want)kick();else go(false)},{rootMargin:'0px 0px -15% 0px',threshold:0}).observe(w);
+    /* tryb oszczędzania energii (iOS) blokuje autoplay — pierwszy dotyk ekranu odblokowuje wideo */
+    var unlock=function(){if(vid.readyState<2)kick();removeEventListener('touchend',unlock)};addEventListener('touchend',unlock,{passive:true})}
   return;
 }
 var t=0,v=0,target=0,last=0,raf=0,TAU=Math.PI*2;
