@@ -492,6 +492,24 @@ html.intro-on .top .lang,html.intro-out .top .lang{opacity:0}
 .mobile-nav .mn-lang{padding:4px 0;text-align:center;font:500 .82rem var(--body,Inter),sans-serif;color:var(--soft,#6A6C7A);text-decoration:none;border:0}
 .lang .flag,.mn-lang .flag{flex:none;width:18px;height:12px;border-radius:2.5px;box-shadow:0 0 0 1px rgba(14,15,20,.12);vertical-align:-1px}
 .mobile-nav .mn-lang{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+
+/* === Mobile: spójne wyrównanie (wstępy sekcji wyśrodkowane, długa treść/karty/formularze do lewej) === */
+@media (max-width:760px){
+  h1,h2,.big{text-wrap:balance}
+  p,li,summary{text-wrap:pretty}
+  .hero-text h1,.hero-text .lead,.hero-text .note{text-align:center;margin-left:auto;margin-right:auto}
+  .hero-text .lead{max-width:34ch}
+  .hero-text .trust{text-align:center;grid-template-columns:repeat(3,1fr)}
+  .hero-text .trust li{display:flex;flex-direction:column;align-items:center}
+  .clients .eyebrow{justify-content:center}
+  #warianty .split>.rv:first-child,#omnie .about>.rv:last-child>.eyebrow,#omnie .about>.rv:last-child>h2,#omnie .about-lead{text-align:center}
+  #warianty .split>.rv:first-child .eyebrow,#omnie .eyebrow{justify-content:center}
+  #warianty .split>.rv:first-child p{margin-left:auto;margin-right:auto;max-width:36ch}
+  #omnie .about-lead{margin-left:auto;margin-right:auto;max-width:36ch}
+  .about-facts li,.offer .of,.faq details{text-align:left}
+  footer .fcols{text-align:center;gap:34px}
+  footer .fbar{text-align:center;justify-content:center;flex-direction:column;align-items:center}
+}
 </style>
 </head>
 <body>
@@ -703,7 +721,7 @@ html.intro-on .top .lang,html.intro-out .top .lang{opacity:0}
 <div><p class="fh">Work</p><a href="https://www.fundacjadrzewiecki.pl" target="_blank" rel="noopener">Drzewiecki Foundation</a><a href="https://dreamsolution.pl" target="_blank" rel="noopener">Dream Solution</a><a href="https://www.dzwigsuwalki.pl" target="_blank" rel="noopener">Popiel Cranes</a><a href="https://dobrostanstudio.com" target="_blank" rel="noopener">dobrostanSTUDIO*</a></div>
 <div><p class="fh">Contact</p><a href="mailto:kontakt@odnovastudio.com">kontakt@odnovastudio.com</a><span>Warsaw, Poland · working remotely worldwide</span><span>I reply within 48 h</span></div>
 </div>
-<div class="fbar"><p>© 2026 ODNOVA°studio · Daniel Popiel · VAT ID PL8442349301</p><p><a href="/en/privacy-policy.html">Privacy policy</a></p></div>
+<div class="fbar"><p>© 2026 ODNOVA°studio · Daniel Popiel · <span style="white-space:nowrap">VAT ID PL8442349301</span></p><p><a href="/en/privacy-policy.html">Privacy policy</a></p></div>
 </div>
 </footer>
 <div class="glow" id="glow" aria-hidden="true"></div>
