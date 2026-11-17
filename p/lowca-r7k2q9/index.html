@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Łowca Produktów – produkty z potencjałem</title>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Układ: katalog-dossier – kolumna 980px, każdy produkt to wiersz: zdjęcie | opis + 4 liczby + trzy wiersze faktów */
+:root {
+  --bg: #f6f7f4; --surface: #ffffff; --ink: #1b2420; --muted: #5d6a63; --line: #dfe4df;
+  --accent: #116a57; --accent-soft: #e2f1ec;
+  --ok: #157347; --ok-bg: #e3f3ea; --warn: #94600a; --warn-bg: #fbf0d9; --bad: #b3261e; --bad-bg: #fbe5e3;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --surface: #1a221e; --ink: #e8eee9; --muted: #9baba2; --line: #2b3631;
+  --accent: #5cc3a6; --accent-soft: #1d3a31;
+  --ok: #6fd39b; --ok-bg: #173826; --warn: #f0c063; --warn-bg: #3a2e14; --bad: #ff8a80; --bad-bg: #3d1d1a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --surface: #1a221e; --ink: #e8eee9; --muted: #9baba2; --line: #2b3631;
+  --accent: #5cc3a6; --accent-soft: #1d3a31;
+  --ok: #6fd39b; --ok-bg: #173826; --warn: #f0c063; --warn-bg: #3a2e14; --bad: #ff8a80; --bad-bg: #3d1d1a; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.01em }
+h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.05 }
+h2 { font-size: 24px }
+h3 { font-size: 19px; line-height: 1.25 }
+p { margin: 0 }
+
+.intro { display: grid; gap: 18px }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent) }
+.lead { max-width: 64ch; color: var(--muted); font-size: 16px }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 24px;
+  padding: 16px 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface) }
+.legend div { display: grid; gap: 2px }
+.legend b { font-size: 13px }
+.legend span { font-size: 13px; color: var(--muted) }
+
+.sec { display: grid; gap: 16px }
+.sec-head { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: end;
+  padding-bottom: 12px; border-bottom: 2px solid var(--ink) }
+.sec-head p { grid-column: 1; color: var(--muted); max-width: 70ch }
+.count { grid-row: 1 / span 2; grid-column: 2; font: 600 34px/1 var(--display); color: var(--accent) }
+
+.item { display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 20px; padding: 18px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px }
+.pic { position: relative; align-self: start }
+.pic img, .noimg { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--line); display: block }
+.rank { position: absolute; top: -8px; left: -8px; min-width: 30px; height: 30px; padding: 0 8px; display: grid; place-items: center;
+  font: 600 13px/1 var(--mono); background: var(--ink); color: var(--bg); border-radius: 15px }
+.body { display: grid; gap: 12px; min-width: 0 }
+.head { display: flex; justify-content: space-between; gap: 12px; align-items: start }
+.cat { font-size: 13px; color: var(--muted) }
+.verdict { flex: none; font: 600 12px/1 var(--mono); padding: 6px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: .04em }
+.verdict.ok { background: var(--ok-bg); color: var(--ok) } .verdict.warn { background: var(--warn-bg); color: var(--warn) } .verdict.bad { background: var(--bad-bg); color: var(--bad) }
+.desc { max-width: 68ch }
+
+.nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden }
+.nums div { padding: 10px 12px; display: grid; gap: 2px; border-left: 1px solid var(--line) }
+.nums div:first-child { border-left: 0 }
+.nums dt { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.nums dd { margin: 0; font: 600 15px/1.2 var(--mono); white-space: nowrap; font-variant-numeric: tabular-nums }
+.nums dd.ok { color: var(--ok) } .nums dd.warn { color: var(--warn) } .nums dd.bad { color: var(--bad) }
+
+.rows { display: grid; gap: 8px }
+.row { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; font-size: 14px }
+.lbl { font: 600 11px/1.9 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.row > div { display: grid; gap: 4px }
+.dots { display: inline-flex; gap: 4px; padding-top: 4px }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line) }
+.dot.on { background: var(--accent) }
+.tag { display: inline-block; font: 600 11px/1 var(--mono); padding: 3px 6px; margin-left: 4px; border-radius: 4px; background: var(--accent-soft); color: var(--accent) }
+
+.foot { color: var(--muted); font-size: 13px; display: grid; gap: 6px; max-width: 75ch }
+
+@media (max-width: 640px) {
+  .item { grid-template-columns: 1fr; padding: 14px }
+  .pic { max-width: 200px }
+  .nums { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .nums div:nth-child(3) { border-left: 0 }
+  .nums div:nth-child(n+3) { border-top: 1px solid var(--line) }
+  .row { grid-template-columns: 1fr; gap: 2px }
+  .head { flex-direction: column }
+}
+
+/* dymek z wyliczeniem: najechanie myszą albo dotknięcie (fokus) */
+.calc { position: relative; display: grid; gap: 4px; outline: none; cursor: help; border-radius: 8px }
+.calc:focus-visible .nums { outline: 2px solid var(--accent); outline-offset: 2px }
+.roas { text-transform: none; letter-spacing: 0; color: var(--accent); font-weight: 600 }
+.hint { font-size: 11px; color: var(--muted) }
+.pop { display: none; position: absolute; z-index: 5; top: calc(100% - 14px); left: 0; width: min(380px, 100%);
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--ink); border-radius: 10px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / .18); font-size: 13px }
+.calc:hover .pop, .calc:focus .pop, .calc:focus-within .pop { display: grid; gap: 6px }
+.pop-h { font: 600 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-top: 4px }
+.pop table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums }
+.pop td { padding: 2px 0; vertical-align: top }
+.pop td:last-child { text-align: right; font-family: var(--mono); white-space: nowrap; padding-left: 12px }
+.pop tr.sum td { border-top: 1px solid var(--line); padding-top: 5px; font-weight: 700 }
+.pop-n { color: var(--muted); font-size: 12px; line-height: 1.5 }
+
+/* jak działa Łowca */
+.how { display: grid; gap: 22px }
+.how > p { max-width: 70ch }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; counter-reset: s }
+.flow li { counter-increment: s; position: relative; display: grid; gap: 6px; align-content: start; padding: 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px }
+.flow li::before { content: counter(s); font: 600 12px/1 var(--mono); color: var(--accent) }
+.flow li b { font-family: var(--display); font-size: 16px }
+.flow li span { font-size: 13px; color: var(--muted) }
+.flow li.you { border-color: var(--accent); background: var(--accent-soft) }
+.loop { padding: 14px 16px; border: 1px dashed var(--accent); border-radius: 10px; font-size: 14px; display: grid; gap: 4px }
+.loop b { font-family: var(--display) }
+.calcdoc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px }
+.calcdoc > div { padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; display: grid; gap: 8px; align-content: start; min-width: 0 }
+.calcdoc h3 { font-size: 17px }
+.calcdoc table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums }
+.calcdoc td { padding: 4px 0; border-bottom: 1px solid var(--line) }
+.calcdoc td:last-child { text-align: right; font-family: var(--mono); white-space: nowrap; padding-left: 12px }
+.calcdoc tr.sum td { font-weight: 700; border-bottom: 0; border-top: 2px solid var(--ink) }
+.calcdoc p { font-size: 14px; color: var(--muted) }
+.rules { display: grid; gap: 8px; max-width: 75ch; padding-left: 20px; margin: 0 }
+@media (max-width: 760px) { .flow { grid-template-columns: repeat(2, minmax(0, 1fr)) } .calcdoc { grid-template-columns: 1fr } }
+@media (max-width: 420px) { .flow { grid-template-columns: 1fr } }
+/* schemat */
+.diagram { margin: 0; display: grid; gap: 8px }
+.dg-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 12px }
+.dg { display: block; width: 100%; min-width: 760px; height: auto; font-family: var(--body) }
+.dg rect { fill: var(--bg); stroke: var(--line); stroke-width: 1.5 }
+.dg .src rect { fill: var(--surface) }
+.dg .src text { font-size: 13px; font-weight: 600; fill: var(--ink) }
+.dg .t { font: 700 15px var(--display); fill: var(--ink) }
+.dg .s { font-size: 12px; fill: var(--muted) }
+.dg .cap { font: 600 11px var(--mono); letter-spacing: .06em; fill: var(--muted) }
+.dg .radar rect { fill: var(--surface); stroke: var(--accent); stroke-dasharray: 5 4 }
+.dg .you rect { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2 }
+.dg .rej rect { fill: var(--bad-bg); stroke: var(--bad) }
+.dg .ln, .dg .lnA, .dg .lnB, .dg .lnR { fill: none; stroke-width: 1.8 }
+.dg .ln { stroke: var(--muted) }
+.dg .lnA { stroke: var(--accent); stroke-width: 2.4 }
+.dg .lnR { stroke: var(--accent); stroke-dasharray: 6 5 }
+.dg .lnB { stroke: var(--bad) }
+.dg .ah { fill: var(--muted) } .dg .ahA { fill: var(--accent) } .dg .ahB { fill: var(--bad) }
+.dg .sA { font-size: 12px; font-weight: 600; fill: var(--accent) }
+.dg .sB { font-size: 12px; font-weight: 600; fill: var(--bad) }
+.diagram figcaption { font-size: 13px; color: var(--muted) }
+</style>
+
+
+</head>
+<body>
+<main class="wrap">
+  <section class="intro">
+    <p class="eyebrow">Łowca Produktów · stan na 17 listopada 2026, 17:22</p>
+    <h1>30 produktów z potencjałem na własną markę</h1>
+    <p class="lead">Lista z bazy Łowcy, uzupełniona o radar reklam Meta. Liczby liczy kalkulator Łowcy dla importu partii z logo (300–1000 szt.) i odświeżają się co godzinę. Kolejność w grupach: od największego zysku i najpewniejszego rynku.</p>
+    <div class="legend">
+      <div><b>Koszt z dostawą</b><span>towar, fracht, cło i pakowanie za 1 szt., z VAT</span></div>
+      <div><b>Zysk / szt.</b><span>po reklamie (ROAS 2,5), wysyłce do klienta i zwrotach</span></div>
+      <div><b>Mnożnik</b><span>cena sprzedaży ÷ koszt. Poniżej 3× robi się ciasno</span></div>
+      <div><b>Marka własna</b><span>kropki 1–5: jak łatwo zrobić z tego swoją markę</span></div>
+    </div>
+  </section>
+<section class="sec"><div class="sec-head"><h2>Najmocniejsze pod własną marką</h2><p>Zysk na sztuce się zgadza, a rynek potwierdzają długo działające reklamy.</p><span class="count">15</span></div>
+<article class="item" id="p127">
+  <div class="pic"><img src="img/127.jpg" alt="Personalizowana obroża dla psa z grawerem" loading="lazy"><span class="rank">1</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Personalizowana obroża dla psa z grawerem</h3><p class="cat">Zwierzęta</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Obroża z blaszką, na której grawerujemy imię psa i telefon. Prezent i bezpieczeństwo w jednym, kupujący sam ją „projektuje”.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>27,12 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>189 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">39,64 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>7,0×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>16,01</td></tr><tr><td>Transport z Chin</td><td>4,02</td></tr><tr><td>Cło</td><td>0,80</td></tr><tr><td>VAT importowy (odliczasz)</td><td>4,79</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>27,12</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>153,66</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−22,33</td></tr><tr><td>Bramka płatnicza</td><td>−3,32</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,57</td></tr><tr><td>Reklama: 189 zł ÷ ROAS 2,5</td><td>−75,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>39,64</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,64</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 4 $/szt., partia 300 szt., fracht 4,02 zł/szt. (150 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Hundstaff: 53 reklamy, najstarsza 110 dni, ceny 186–249 zł. Personalizacja dla zwierząt reklamuje się w PL od miesięcy.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Najlepszy kandydat. Grawer robi z taniej obroży unikalny produkt, którego nie da się porównać ceną na Allegro. Logo na klamrze i pudełku, potem smycz, szelki, adresówka i wersja dla kota. Marka „Psiograf” ma wolne domeny.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Grawer lokalnie ok. 5 zł/szt., laser dopiero po teście. Koszt fabryczny to szacunek z ogłoszeń. </p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p75">
+  <div class="pic"><img src="img/75.jpg" alt="Irygator do zębów bezprzewodowy" loading="lazy"><span class="rank">2</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Irygator do zębów bezprzewodowy</h3><p class="cat">Higiena</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Bezprzewodowy irygator do zębów z kilkoma trybami i końcówkami, ładowany USB-C.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>59,35 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>299,99 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">57,27 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>5,1×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>40,02</td></tr><tr><td>Transport z Chin</td><td>5,20</td></tr><tr><td>Cło</td><td>1,81</td></tr><tr><td>VAT importowy (odliczasz)</td><td>10,82</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>59,35</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>243,89</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−48,53</td></tr><tr><td>Bramka płatnicza</td><td>−5,10</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,80</td></tr><tr><td>Reklama: 299,99 zł ÷ ROAS 2,5</td><td>−120,00</td></tr><tr class="sum"><td>Zysk / szt.</td><td>57,27</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,69</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 10 $/szt., partia 500 szt., fracht 5,2 zł/szt. (400 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>57 aktywnych reklam od 13 reklamodawców, najstarsza działa 860 dni (Stormo). Rynek dojrzały, ale stale kupujący.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Dobry pod markę „Uśmiech” w zestawie ze szczoteczką soniczną. Wyróżnik: zestaw, zapas końcówek w subskrypcji, ładne etui. Trzeba się przebić przez znane marki (Waterpik, Oral-B).</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Elektronika z akumulatorem: CE i deklaracja zgodności od fabryki, rejestracja BDO. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p80">
+  <div class="pic"><img src="img/80.jpg" alt="Masażer kolana z ciepłem i wibracją" loading="lazy"><span class="rank">3</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Masażer kolana z ciepłem i wibracją</h3><p class="cat">Zdrowie i relaks</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Masażer kolana z podgrzewaniem i wibracją, zakładany na rzep, na akumulator.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>88,40 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>299 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">33,04 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,4×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>60,03</td></tr><tr><td>Transport z Chin</td><td>7,90</td></tr><tr><td>Cło</td><td>2,72</td></tr><tr><td>VAT importowy (odliczasz)</td><td>16,25</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>88,40</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>243,09</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−72,15</td></tr><tr><td>Bramka płatnicza</td><td>−5,08</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−1,02</td></tr><tr><td>Reklama: 299 zł ÷ ROAS 2,5</td><td>−119,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>33,04</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,96</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 15 $/szt., partia 500 szt., fracht 7,9 zł/szt. (700 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>MediFree: 83 reklamy, najstarsza 418 dni (ortezy i masażery 199–299 zł). Noom sprzedaje model za 299 zł.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Mocny pod markę „Ulga” (ból stawów, 50+). Generyczny produkt z OEM, wyróżnia go opakowanie, instrukcja PL i obietnica „ciepło + masaż”. Dobrze się pokazuje w filmie.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Bez obietnic medycznych w reklamie (to urządzenie relaksacyjne). CE + bateria. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p79">
+  <div class="pic"><img src="img/79.jpg" alt="Mata EMS do stóp (masażer stóp)" loading="lazy"><span class="rank">4</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Mata EMS do stóp (masażer stóp)</h3><p class="cat">Zdrowie i relaks</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Mata do stóp z elektrostymulacją (EMS), kilka programów, pilot.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>38,87 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>179 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">26,03 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>4,6×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>24,01</td></tr><tr><td>Transport z Chin</td><td>5,20</td></tr><tr><td>Cło</td><td>1,17</td></tr><tr><td>VAT importowy (odliczasz)</td><td>6,99</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>38,87</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>145,53</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−31,88</td></tr><tr><td>Bramka płatnicza</td><td>−3,16</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,65</td></tr><tr><td>Reklama: 179 zł ÷ ROAS 2,5</td><td>−71,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>26,03</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,83</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 6 $/szt., partia 500 szt., fracht 5,2 zł/szt. (400 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Noom: 42 reklamy, najstarsza 230 dni, zasięg 1,7 mln osób.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Druga nóżka marki „Ulga”, tani w produkcji i lekki. Łatwy zestaw z masażerem kolana. Efekt „wow” widać w krótkim filmie.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Bez obietnic leczniczych. CE + bateria. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p168">
+  <div class="pic"><img src="img/168.jpg" alt="Fontanna dla kota z filtrem" loading="lazy"><span class="rank">5</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Fontanna dla kota z filtrem</h3><p class="cat">Zwierzęta</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Fontanna-poidło dla kota z filtrem, cicha pompka. Koty chętniej piją bieżącą wodę.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>54,87 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>189 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">16,88 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,4×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>32,02</td></tr><tr><td>Transport z Chin</td><td>9,70</td></tr><tr><td>Cło</td><td>1,67</td></tr><tr><td>VAT importowy (odliczasz)</td><td>9,98</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>54,87</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>153,66</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−44,89</td></tr><tr><td>Bramka płatnicza</td><td>−3,32</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,77</td></tr><tr><td>Reklama: 189 zł ÷ ROAS 2,5</td><td>−75,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>16,88</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,04</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 8 $/szt., partia 500 szt., fracht 9,7 zł/szt. (900 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Radar 17.11: Kocia Troska 61 nowych reklam w 46 dni (130–210 zł), KocieKrólestwo, KociaKraina. Nisza właśnie skaluje.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Naturalny drugi produkt marki zwierzęcej po obroży. Wyróżnik: stal zamiast plastiku, filtry w abonamencie (powtarzalna sprzedaż). Reklamy działają na historii „Twój kot pije za mało”.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Pompka na prąd: CE. Koszt fabryczny to szacunek do potwierdzenia. <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p82">
+  <div class="pic"><img src="img/82.webp" alt="Szczoteczka soniczna z etui" loading="lazy"><span class="rank">6</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Szczoteczka soniczna z etui</h3><p class="cat">Higiena jamy ustnej</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Szczoteczka soniczna z etui podróżnym i kilkoma końcówkami.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>67,41 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>229 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">22,47 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,4×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>48,03</td></tr><tr><td>Transport z Chin</td><td>3,50</td></tr><tr><td>Cło</td><td>2,06</td></tr><tr><td>VAT importowy (odliczasz)</td><td>12,33</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>67,41</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>186,18</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−55,09</td></tr><tr><td>Bramka płatnicza</td><td>−3,96</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,86</td></tr><tr><td>Reklama: 229 zł ÷ ROAS 2,5</td><td>−91,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>22,47</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,01</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 12 $/szt., partia 1000 szt., fracht 3,5 zł/szt. (300 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Smiley: 36 reklam, 236 dni, 249,99 zł. Szczoteczki soniczne mają w PL zasięg reklam ok. 13 mln.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Rdzeń marki „Uśmiech”. Generyczny OEM, logo na rączce. Zarabia się na końcówkach (subskrypcja co 3 miesiące).</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>CE + akumulator. Zamówienie 1000 szt. podnosi wkład. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p87">
+  <div class="pic"><img src="img/87.jpg" alt="Naszyjnik z grawerem, stal chirurgiczna" loading="lazy"><span class="rank">7</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Naszyjnik z grawerem, stal chirurgiczna</h3><p class="cat">Biżuteria</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Naszyjnik ze stali chirurgicznej z grawerowanym imieniem lub datą.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>20,97 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>129 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">20,87 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>6,2×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>12,01</td></tr><tr><td>Transport z Chin</td><td>3,21</td></tr><tr><td>Cło</td><td>0,61</td></tr><tr><td>VAT importowy (odliczasz)</td><td>3,64</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>20,97</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>104,88</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−17,33</td></tr><tr><td>Bramka płatnicza</td><td>−2,36</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,52</td></tr><tr><td>Reklama: 129 zł ÷ ROAS 2,5</td><td>−51,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>20,87</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,78</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 3 $/szt., partia 300 szt., fracht 3,21 zł/szt. (60 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Seewell: 129 zł, reklama 262 dni. Złote Wspomnienia: 24 reklamy.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Ta sama maszyna co do obroży (grawer), więc dwie marki na jednym laserze. Prezent na święta, Walentynki i Dzień Matki. Sezonowy szczyt właśnie trwa.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Stal 316L (bez niklu), żeby uniknąć reklamacji alergicznych. </p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p85">
+  <div class="pic"><img src="img/85.jpg" alt="Portfel damski skórzany slim" loading="lazy"><span class="rank">8</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Portfel damski skórzany slim</h3><p class="cat">Akcesoria</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Cienki damski portfel ze skóry, z blokadą RFID.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>52,72 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>199 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">22,61 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,8×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>36,02</td></tr><tr><td>Transport z Chin</td><td>4,02</td></tr><tr><td>Cło</td><td>1,60</td></tr><tr><td>VAT importowy (odliczasz)</td><td>9,58</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>52,72</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>161,79</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−43,14</td></tr><tr><td>Bramka płatnicza</td><td>−3,48</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,75</td></tr><tr><td>Reklama: 199 zł ÷ ROAS 2,5</td><td>−79,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>22,61</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,95</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 9 $/szt., partia 300 szt., fracht 4,02 zł/szt. (150 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>James Hawk: model 199 zł, zasięg 1,5 mln, reklama 151 dni.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Marka „lifestyle”: logo tłoczone na skórze, ładne pudełko prezentowe. Konkurencja jest, ale małe marki skutecznie sprzedają przez Instagram.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Skóra naturalna – sprawdzić próbki, bo jakość u fabryk bardzo się różni. </p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p89">
+  <div class="pic"><img src="img/89.jpg" alt="Zestaw do sauny 3w1 (kilt, czapka, ręcznik)" loading="lazy"><span class="rank">9</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Zestaw do sauny 3w1 (kilt, czapka, ręcznik)</h3><p class="cat">Sauna</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Zestaw do sauny: kilt, czapka filcowa i ręcznik w jednym komplecie.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>82,50 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>269 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">25,98 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,3×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>48,03</td></tr><tr><td>Transport z Chin</td><td>10,77</td></tr><tr><td>Cło</td><td>7,06</td></tr><tr><td>VAT importowy (odliczasz)</td><td>15,15</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>82,50</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>218,70</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−67,35</td></tr><tr><td>Bramka płatnicza</td><td>−4,60</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,97</td></tr><tr><td>Reklama: 269 zł ÷ ROAS 2,5</td><td>−107,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>25,98</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,01</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 12 $/szt., partia 300 szt., fracht 10,77 zł/szt. (900 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>piubello: 269 zł, reklama działa 321 dni.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Mało konkurencji i wysoka cena zestawu. Logo haftowane na kilcie i czapce. Dobry prezent świąteczny dla par.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Ciężka paczka (ok. 900 g) – droższa wysyłka. </p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p73">
+  <div class="pic"><img src="img/73.avif" alt="Masażer szyi EMS (impulsowy)" loading="lazy"><span class="rank">10</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Masażer szyi EMS (impulsowy)</h3><p class="cat">Masaż</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Mały masażer szyi z impulsami EMS i podgrzewaniem.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>41,69 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>157 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">14,99 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,8×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>28,02</td></tr><tr><td>Transport z Chin</td><td>3,40</td></tr><tr><td>Cło</td><td>1,26</td></tr><tr><td>VAT importowy (odliczasz)</td><td>7,51</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>41,69</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>127,64</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−34,17</td></tr><tr><td>Bramka płatnicza</td><td>−2,81</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,67</td></tr><tr><td>Reklama: 157 zł ÷ ROAS 2,5</td><td>−62,80</td></tr><tr class="sum"><td>Zysk / szt.</td><td>14,99</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,02</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 7 $/szt., partia 500 szt., fracht 3,4 zł/szt. (200 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>154 aktywne reklamy od 35 reklamodawców, najstarsza 346 dni (Zdrowa Postura, zasięg 6,9 mln).</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Rynek jest ogromny, ale gęsty. Marka musi wygrać wyglądem i historią („8 godzin przy biurku”). Pasuje do „Ulgi”.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Dużo konkurencji → droższa reklama. Cena sprzedaży z Ceneo (184 zł). <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p65">
+  <div class="pic"><img src="img/65.avif" alt="Pilnik elektryczny do stóp" loading="lazy"><span class="rank">11</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Pilnik elektryczny do stóp</h3><p class="cat">Beauty – stopy</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Elektryczny pilnik do zrogowaceń na stopach, z wymiennymi wałkami.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>35,16 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>149,99 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">17,56 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>4,3×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>22,01</td></tr><tr><td>Transport z Chin</td><td>4,30</td></tr><tr><td>Cło</td><td>1,05</td></tr><tr><td>VAT importowy (odliczasz)</td><td>6,29</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>35,16</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>121,94</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−28,86</td></tr><tr><td>Bramka płatnicza</td><td>−2,70</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,63</td></tr><tr><td>Reklama: 149,99 zł ÷ ROAS 2,5</td><td>−60,00</td></tr><tr class="sum"><td>Zysk / szt.</td><td>17,56</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,93</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 5,5 $/szt., partia 500 szt., fracht 4,3 zł/szt. (300 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>28 reklam od 9 reklamodawców, najstarsza 262 dni (Sofira, Skinlux, Nalino).</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Mały, tani w wysyłce, świetny „przed/po” w reklamie. Wałki zapasowe to powtarzalna sprzedaż.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Cena sprzedaży 150 zł to cena marek, generyki na Ceneo kosztują ok. 73 zł. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p126">
+  <div class="pic"><img src="img/126.jpg" alt="Bezprzewodowy adapter CarPlay / Android Auto" loading="lazy"><span class="rank">12</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Bezprzewodowy adapter CarPlay / Android Auto</h3><p class="cat">Auto</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Przystawka, która zamienia przewodowe CarPlay / Android Auto w bezprzewodowe.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>81,49 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>249 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">18,86 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,1×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>60,03</td></tr><tr><td>Transport z Chin</td><td>2,50</td></tr><tr><td>Cło</td><td>2,50</td></tr><tr><td>VAT importowy (odliczasz)</td><td>14,96</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>81,49</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>202,44</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−66,53</td></tr><tr><td>Bramka płatnicza</td><td>−4,28</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,96</td></tr><tr><td>Reklama: 249 zł ÷ ROAS 2,5</td><td>−99,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>18,86</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,10</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 15 $/szt., partia 500 szt., fracht 2,5 zł/szt. (100 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Autora: 42 reklamy, najstarsza 589 dni (cała gama multimediów do auta).</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Prosta elektronika z OEM, logo na obudowie. Wyróżnik: wsparcie po polsku i lista zgodnych aut.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Zwroty, gdy nie działa z danym autem. CE. <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p84">
+  <div class="pic"><img src="img/84.jpg" alt="Golarka do głowy rotacyjna" loading="lazy"><span class="rank">13</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Golarka do głowy rotacyjna</h3><p class="cat">Męska pielęgnacja</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Rotacyjna golarka do głowy dla mężczyzn golących się na łyso.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>54,23 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>179 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">13,44 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,3×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>36,02</td></tr><tr><td>Transport z Chin</td><td>5,20</td></tr><tr><td>Cło</td><td>1,65</td></tr><tr><td>VAT importowy (odliczasz)</td><td>9,86</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>54,23</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>145,53</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−44,37</td></tr><tr><td>Bramka płatnicza</td><td>−3,16</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,77</td></tr><tr><td>Reklama: 179 zł ÷ ROAS 2,5</td><td>−71,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>13,44</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,11</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 9 $/szt., partia 500 szt., fracht 5,2 zł/szt. (400 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>BarberScape 171 dni; Shav: 19 nowych reklam w 16 dni (radar 17.11). Zasięg kategorii 4,8 mln.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 5 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span><p>Męska marka „grooming” z akcesoriami (ostrza, olejek). Mała paczka, wysoki „wow” w filmie.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>CE + akumulator. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p138">
+  <div class="pic"><img src="img/138.jpg" alt="Masażer na kark i plecy z pasem (4 głowice)" loading="lazy"><span class="rank">14</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Masażer na kark i plecy z pasem (4 głowice)</h3><p class="cat">masażery</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Masażer na kark i plecy z pasem, 4 głowice, akumulator – nie trzeba go trzymać.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>101,28 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>439 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">78,06 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>4,3×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>70,40</td></tr><tr><td>Transport z Chin</td><td>7,60</td></tr><tr><td>Cło</td><td>3,12</td></tr><tr><td>VAT importowy (odliczasz)</td><td>18,66</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>101,28</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>356,91</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−82,62</td></tr><tr><td>Bramka płatnicza</td><td>−7,32</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−1,11</td></tr><tr><td>Reklama: 439 zł ÷ ROAS 2,5</td><td>−175,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>78,06</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,73</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena jak na AliExpress (brak ceny hurtowej), partia 200 szt., fracht 7,6 zł/szt. (400 g – waga domyślna), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Medi Sleep wprowadziło go jako nowość: 4 reklamy od 3 reklamodawców, najstarsza 29 dni. Świeży produkt.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Wysoka cena (439 zł) daje miejsce na marżę i reklamę. Pasuje do „Ulgi” obok masażera szyi.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Koszt z AliExpress bez ceny hurtowej – do potwierdzenia w fabryce. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p128">
+  <div class="pic"><img src="img/128.jpg" alt="Wodoodporny uchwyt na telefon na rower/motocykl" loading="lazy"><span class="rank">15</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Wodoodporny uchwyt na telefon na rower/motocykl</h3><p class="cat">Sport / moto</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Wodoodporny uchwyt na telefon na kierownicę roweru lub motocykla.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>32,02 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>119 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">7,83 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,7×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>20,01</td></tr><tr><td>Transport z Chin</td><td>3,85</td></tr><tr><td>Cło</td><td>0,95</td></tr><tr><td>VAT importowy (odliczasz)</td><td>5,71</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>32,02</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>96,75</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−26,32</td></tr><tr><td>Bramka płatnicza</td><td>−2,20</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,60</td></tr><tr><td>Reklama: 119 zł ÷ ROAS 2,5</td><td>−47,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>7,83</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,15</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 5 $/szt., partia 500 szt., fracht 3,85 zł/szt. (250 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Currymessi: 39 reklam, 96 dni, ceny 109–239 zł.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Marka „moto/outdoor”, którą znasz z własnego motocykla – autentyczne filmy. Mało zysku na sztuce, więc lepiej w zestawie.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Niski zysk (ok. 8 zł) – sens tylko w zestawie lub z droższą wersją. </p></div>
+    </div>
+  </div>
+</article></section>
+<section class="sec"><div class="sec-head"><h2>Warto, ale do sprawdzenia</h2><p>Zarabiają na papierze, ale marża jest wąska albo liczba wymaga potwierdzenia.</p><span class="count">10</span></div>
+<article class="item" id="p97">
+  <div class="pic"><img src="img/97.avif" alt="Falownica 2w1 ceramiczna (karbownica i lokówka)" loading="lazy"><span class="rank">16</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Falownica 2w1 ceramiczna (karbownica i lokówka)</h3><p class="cat">Urządzenia do stylizacji włosów</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Ceramiczna falownica i lokówka 2w1.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>66,13 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>377,77 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">82,59 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>5,7×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>42,92</td></tr><tr><td>Transport z Chin</td><td>7,60</td></tr><tr><td>Cło</td><td>2,02</td></tr><tr><td>VAT importowy (odliczasz)</td><td>12,08</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>66,13</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>307,13</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−54,04</td></tr><tr><td>Bramka płatnicza</td><td>−6,34</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,85</td></tr><tr><td>Reklama: 377,77 zł ÷ ROAS 2,5</td><td>−151,11</td></tr><tr class="sum"><td>Zysk / szt.</td><td>82,59</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,62</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena jak na AliExpress (brak ceny hurtowej), partia 200 szt., fracht 7,6 zł/szt. (400 g – waga domyślna), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Tylko 2 reklamy jednego sklepu, ale najstarsza działa 410 dni.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 3 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><p>Generyczny sprzęt do włosów, logo na obudowie. Rynek pełen tanich wersji.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Cena sprzedaży 378 zł jest podejrzana (prawdopodobnie zła mediana z Ceneo) – realnie raczej 100–150 zł. Zysk 83 zł nie jest pewny. <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p63">
+  <div class="pic"><img src="img/63.jpg" alt="Kolczyki kulki złote 585" loading="lazy"><span class="rank">17</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Kolczyki kulki złote 585</h3><p class="cat">Biżuteria</p></div>
+      <span class="verdict ok">Testuj</span>
+    </header>
+    <p class="desc">Złote kolczyki-kulki, próba 585.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>18,39 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>180 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="ok">43,24 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>9,8×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>5,60</td></tr><tr><td>Transport z Chin</td><td>7,60</td></tr><tr><td>Cło</td><td>0,53</td></tr><tr><td>VAT importowy (odliczasz)</td><td>3,16</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>18,39</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>146,34</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−15,23</td></tr><tr><td>Bramka płatnicza</td><td>−3,18</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,50</td></tr><tr><td>Reklama: 180 zł ÷ ROAS 2,5</td><td>−72,00</td></tr><tr class="sum"><td>Zysk / szt.</td><td>43,24</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>1,56</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena jak na AliExpress (brak ceny hurtowej), partia 200 szt., fracht 7,6 zł/szt. (400 g – waga domyślna), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>16 reklam od 6 reklamodawców, najstarsza 444 dni, cena 180 zł.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 2 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span><p>Biżuteria złota sprzedaje się dobrze, ale marka wymaga hurtowni złota w PL, nie AliExpress.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Koszt 7 zł z AliExpress nie może być prawdziwym złotem 585. Do sprawdzenia u polskiego hurtownika – obecny zysk jest niewiarygodny. </p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p125">
+  <div class="pic"><img src="img/125.jpg" alt="Butelka wodorowa" loading="lazy"><span class="rank">18</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Butelka wodorowa</h3><p class="cat">Zdrowie i styl życia</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Butelka do wody z generatorem wodoru, ładowana USB.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>80,40 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>229,99 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">12,21 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,9×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>56,03</td></tr><tr><td>Transport z Chin</td><td>5,65</td></tr><tr><td>Cło</td><td>2,47</td></tr><tr><td>VAT importowy (odliczasz)</td><td>14,75</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>80,40</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>186,98</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−65,65</td></tr><tr><td>Bramka płatnicza</td><td>−3,98</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,96</td></tr><tr><td>Reklama: 229,99 zł ÷ ROAS 2,5</td><td>−92,00</td></tr><tr class="sum"><td>Zysk / szt.</td><td>12,21</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,21</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 14 $/szt., partia 500 szt., fracht 5,65 zł/szt. (450 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Wodora: 16 reklam, 109 dni, 229,99 zł (zestaw 269,99 zł).</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Modny produkt „wellness”, łatwo zbudować ładną markę. Wąska marża.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Uwaga na obietnice zdrowotne. CE + akumulator. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p88">
+  <div class="pic"><img src="img/88.jpg" alt="Nawilżacz z efektem płomienia" loading="lazy"><span class="rank">19</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Nawilżacz z efektem płomienia</h3><p class="cat">Dom</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Nawilżacz powietrza z efektem płomienia (podświetlana mgiełka).</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>67,92 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>199 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">10,14 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,9×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>44,02</td></tr><tr><td>Transport z Chin</td><td>7,90</td></tr><tr><td>Cło</td><td>2,08</td></tr><tr><td>VAT importowy (odliczasz)</td><td>12,42</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>67,92</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>161,79</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−55,50</td></tr><tr><td>Bramka płatnicza</td><td>−3,48</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,87</td></tr><tr><td>Reklama: 199 zł ÷ ROAS 2,5</td><td>−79,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>10,14</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,22</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 11 $/szt., partia 500 szt., fracht 7,9 zł/szt. (700 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Aromaholik NATURO 199 zł; reklamy działają 245 i 1130 dni.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Ładny produkt do domu, dobry na prezent. Sezon zimowy (suche powietrze) właśnie trwa.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Marża ok. 10 zł – trzeba wyższej ceny albo zestawu z olejkami. <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p71">
+  <div class="pic"><img src="img/71.avif" alt="Peeling kawitacyjny" loading="lazy"><span class="rank">20</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Peeling kawitacyjny</h3><p class="cat">Beauty – twarz</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Ręczne urządzenie do peelingu kawitacyjnego twarzy.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>46,81 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>149 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">7,61 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,2×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>32,02</td></tr><tr><td>Transport z Chin</td><td>3,40</td></tr><tr><td>Cło</td><td>1,42</td></tr><tr><td>VAT importowy (odliczasz)</td><td>8,47</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>46,81</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>121,14</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−38,33</td></tr><tr><td>Bramka płatnicza</td><td>−2,68</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,71</td></tr><tr><td>Reklama: 149 zł ÷ ROAS 2,5</td><td>−59,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>7,61</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,22</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 8 $/szt., partia 500 szt., fracht 3,4 zł/szt. (200 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>164 reklamy od 81 reklamodawców, najstarsza 717 dni – bardzo nasycony rynek.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 3 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><p>Marka możliwa, ale konkurencja ogromna, a cena spada.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Trend spadkowy w Google, zysk ok. 8 zł. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p90">
+  <div class="pic"><img src="img/90.jpg" alt="Piżama satynowa damska" loading="lazy"><span class="rank">21</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Piżama satynowa damska</h3><p class="cat">Odzież</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Damska piżama satynowa, kilka kolorów.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>64,03 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>179 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">5,39 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,8×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>40,02</td></tr><tr><td>Transport z Chin</td><td>5,37</td></tr><tr><td>Cło</td><td>5,45</td></tr><tr><td>VAT importowy (odliczasz)</td><td>11,69</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>64,03</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>145,53</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−52,34</td></tr><tr><td>Bramka płatnicza</td><td>−3,16</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,84</td></tr><tr><td>Reklama: 179 zł ÷ ROAS 2,5</td><td>−71,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>5,39</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,32</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 10 $/szt., partia 300 szt., fracht 5,37 zł/szt. (300 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>dybcia.pl: 20 reklam, 193 dni.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Odzież pod marką łatwo się buduje (metka, opakowanie). Dobry prezent świąteczny.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Rozmiary = zwroty. Zysk ok. 5 zł przy obecnej cenie. <span class="tag">rozmiary</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p130">
+  <div class="pic"><img src="img/130.jpg" alt="Projektor gwiazd – lampka nocna" loading="lazy"><span class="rank">22</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Projektor gwiazd – lampka nocna</h3><p class="cat">Dom</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Projektor gwiazd i galaktyki – lampka nocna dla dzieci i do sypialni.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>50,26 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>149 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">4,78 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,0×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>32,02</td></tr><tr><td>Transport z Chin</td><td>6,10</td></tr><tr><td>Cło</td><td>1,52</td></tr><tr><td>VAT importowy (odliczasz)</td><td>9,12</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>50,26</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>121,14</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−41,14</td></tr><tr><td>Bramka płatnicza</td><td>−2,68</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,74</td></tr><tr><td>Reklama: 149 zł ÷ ROAS 2,5</td><td>−59,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>4,78</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,31</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 8 $/szt., partia 500 szt., fracht 6,1 zł/szt. (500 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Bez dużych reklam w PL, ale na Ceneo „50+ kupionych ostatnio”.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Prezentowy produkt z „wow”, logo na obudowie.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Tanie wersje po ok. 45 zł psują cenę. Zysk ok. 5 zł. <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p43">
+  <div class="pic"><img src="img/43.webp" alt="Podgrzewana zalotka do rzęs" loading="lazy"><span class="rank">23</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Podgrzewana zalotka do rzęs</h3><p class="cat">Uroda &gt; Akcesoria do makijażu</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Podgrzewana zalotka do rzęs na baterię.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>41,48 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>129 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">4,05 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>3,1×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>23,65</td></tr><tr><td>Transport z Chin</td><td>7,60</td></tr><tr><td>Cło</td><td>1,25</td></tr><tr><td>VAT importowy (odliczasz)</td><td>7,48</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>41,48</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>104,88</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−34,00</td></tr><tr><td>Bramka płatnicza</td><td>−2,36</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,67</td></tr><tr><td>Reklama: 129 zł ÷ ROAS 2,5</td><td>−51,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>4,05</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,32</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena jak na AliExpress (brak ceny hurtowej), partia 200 szt., fracht 7,6 zł/szt. (400 g – waga domyślna), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>19 reklam, ale wszystkie jednego reklamodawcy od 6 dni (model Panasonic).</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 3 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><p>Mała, lekka, tania w wysyłce. Na razie popyt widać tylko na znanej marce.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Zysk ok. 4 zł. <span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p30">
+  <div class="pic"><img src="img/30.jpg" alt="Rashguard do MMA" loading="lazy"><span class="rank">24</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Rashguard do MMA</h3><p class="cat">Sport</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Koszulka kompresyjna (rashguard) do MMA i BJJ.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>66,75 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>189 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">7,13 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,8×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>43,41</td></tr><tr><td>Transport z Chin</td><td>7,60</td></tr><tr><td>Cło</td><td>2,04</td></tr><tr><td>VAT importowy (odliczasz)</td><td>12,20</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>66,75</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>153,66</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−54,55</td></tr><tr><td>Bramka płatnicza</td><td>−3,32</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,86</td></tr><tr><td>Reklama: 189 zł ÷ ROAS 2,5</td><td>−75,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>7,13</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,28</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena jak na AliExpress (brak ceny hurtowej), partia 200 szt., fracht 7,6 zł/szt. (400 g – waga domyślna), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Reklamy Black Friday w USA (TikTok); w PL brak dużych reklamodawców.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 3 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><p>Odzież sportowa pod marką działa w niszy sportów walki (społeczność klubowa).</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Rozmiary = zwroty. Zysk ok. 7 zł. <span class="tag">rozmiary</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p132">
+  <div class="pic"><img src="img/132.jpg" alt="Bielizna chłonna na nietrzymanie moczu (3 szt.)" loading="lazy"><span class="rank">25</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Bielizna chłonna na nietrzymanie moczu (3 szt.)</h3><p class="cat">Zdrowie</p></div>
+      <span class="verdict warn">Ostrożnie</span>
+    </header>
+    <p class="desc">Majtki chłonne wielorazowe na nietrzymanie moczu, 3 sztuki.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>55,80 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>149 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="warn">0,23 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,7×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>36,02</td></tr><tr><td>Transport z Chin</td><td>3,40</td></tr><tr><td>Cło</td><td>4,73</td></tr><tr><td>VAT importowy (odliczasz)</td><td>10,15</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>55,80</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>121,14</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−45,65</td></tr><tr><td>Bramka płatnicza</td><td>−2,68</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,78</td></tr><tr><td>Reklama: 149 zł ÷ ROAS 2,5</td><td>−59,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>0,23</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,49</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 9 $/szt., partia 500 szt., fracht 3,4 zł/szt. (200 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Vitalla: 79–150 zł, reklama 276 dni, grupa kobiety 60+.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Dyskretna marka z dużą lojalnością klientek (kupują regularnie).</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Przy obecnej cenie zysk bliski zera – potrzebny zestaw 5 szt. albo wyższa cena. <span class="tag">rozmiary</span></p></div>
+    </div>
+  </div>
+</article></section>
+<section class="sec"><div class="sec-head"><h2>Na granicy: rynek jest, marża za cienka</h2><p>Mocne reklamy i popyt, ale przy obecnych cenach wychodzi zero albo strata. Zmieni to tańsza fabryka, zestaw albo wyższa cena.</p><span class="count">5</span></div>
+<article class="item" id="p67">
+  <div class="pic"><img src="img/67.avif" alt="Szczotka-suszarka 4w1" loading="lazy"><span class="rank">26</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Szczotka-suszarka 4w1</h3><p class="cat">Beauty – włosy</p></div>
+      <span class="verdict bad">Na minusie</span>
+    </header>
+    <p class="desc">Szczotka-suszarka do włosów 4w1 z wymiennymi końcówkami.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>73,04 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>179 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="bad">−2 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,5×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>48,03</td></tr><tr><td>Transport z Chin</td><td>7,90</td></tr><tr><td>Cło</td><td>2,24</td></tr><tr><td>VAT importowy (odliczasz)</td><td>13,38</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>73,04</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>145,53</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−59,66</td></tr><tr><td>Bramka płatnicza</td><td>−3,16</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,90</td></tr><tr><td>Reklama: 179 zł ÷ ROAS 2,5</td><td>−71,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>−2,00</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,57</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 12 $/szt., partia 500 szt., fracht 7,9 zł/szt. (700 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>58 reklam od 16 reklamodawców, najstarsza 409 dni. Filmy UGC: 1,7 mln wyświetleń szczotki prostującej.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Popyt jest pewny i ciągle rośnie. Problem tylko w cenie: Ceneo pokazuje mediany ok. 88 zł.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Przy 179 zł jest ok. 0 zł zysku; opłaci się dopiero przy tańszej fabryce (do 9 $). <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p69">
+  <div class="pic"><img src="img/69.jpg" alt="Maska LED do twarzy" loading="lazy"><span class="rank">27</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Maska LED do twarzy</h3><p class="cat">Beauty – twarz</p></div>
+      <span class="verdict bad">Na minusie</span>
+    </header>
+    <p class="desc">Maska LED do pielęgnacji twarzy, 7 kolorów światła.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>229,94 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>482,27 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="bad">−10,30 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,1×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>172,51</td></tr><tr><td>Cło</td><td>13,21</td></tr><tr><td>VAT importowy (odliczasz)</td><td>42,72</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>229,94</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>392,09</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−187,22</td></tr><tr><td>Bramka płatnicza</td><td>−8,02</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−2,05</td></tr><tr><td>Reklama: 482,27 zł ÷ ROAS 2,5</td><td>−192,91</td></tr><tr class="sum"><td>Zysk / szt.</td><td>−10,30</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,64</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      </p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>103 reklamy od 25 reklamodawców, najstarsza 407 dni. Silny trend globalny.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Produkt z wielkim „wow”, ale drogi w zakupie. Wymaga dobrej fabryki i zdjęć „przed/po”.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Koszt z AliExpress (ok. 212 zł) zjada marżę – potrzebna wycena OEM. <span class="tag">CE</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p66">
+  <div class="pic"><img src="img/66.avif" alt="Frezarka do paznokci stóp" loading="lazy"><span class="rank">28</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Frezarka do paznokci stóp</h3><p class="cat">Beauty – paznokcie</p></div>
+      <span class="verdict bad">Na minusie</span>
+    </header>
+    <p class="desc">Elektryczna frezarka do paznokci u stóp.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>48,53 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>129,99 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="bad">−1,35 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,7×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>32,02</td></tr><tr><td>Transport z Chin</td><td>4,75</td></tr><tr><td>Cło</td><td>1,47</td></tr><tr><td>VAT importowy (odliczasz)</td><td>8,79</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>48,53</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>105,68</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−39,74</td></tr><tr><td>Bramka płatnicza</td><td>−2,38</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,72</td></tr><tr><td>Reklama: 129,99 zł ÷ ROAS 2,5</td><td>−52,00</td></tr><tr class="sum"><td>Zysk / szt.</td><td>−1,35</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,57</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 8 $/szt., partia 500 szt., fracht 4,75 zł/szt. (350 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>26 reklam od 9 reklamodawców. Nalino skaluje (27 reklam w 37 dni).</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Podobna do pilnika – mogą być w jednym zestawie „Pedicure w domu”.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Zysk ok. 0 zł przy 130 zł; sens tylko w zestawie. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p167">
+  <div class="pic"><img src="img/167.jpg" alt="Radio awaryjne na korbkę z powerbankiem i latarką" loading="lazy"><span class="rank">29</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Radio awaryjne na korbkę z powerbankiem i latarką</h3><p class="cat">Bezpieczeństwo / outdoor</p></div>
+      <span class="verdict bad">Na minusie</span>
+    </header>
+    <p class="desc">Radio awaryjne na korbkę i solar, z powerbankiem i latarką.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>44,56 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>99 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="bad">−10,40 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,2×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>28,02</td></tr><tr><td>Transport z Chin</td><td>5,65</td></tr><tr><td>Cło</td><td>1,35</td></tr><tr><td>VAT importowy (odliczasz)</td><td>8,05</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>44,56</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>80,49</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−36,51</td></tr><tr><td>Bramka płatnicza</td><td>−1,88</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−0,69</td></tr><tr><td>Reklama: 99 zł ÷ ROAS 2,5</td><td>−39,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>−10,40</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>3,39</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 7 $/szt., partia 500 szt., fracht 5,65 zł/szt. (450 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Radar 17.11: najmocniejszy trend dnia. Poligo 78 nowych reklam w 38 dni, DIY-VI 61 w 29 dni, Bezpieczne Radio 32, Frenzis 215 dni.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 4 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span><p>Rynek gorący i rośnie (narracja „blackout”). Marka „bezpieczny dom” z zestawem awaryjnym (radio + latarka + koc termiczny).</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Przy 99 zł strata; zestaw za 149–199 zł powinien dać zysk. Elektronika z baterią. <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article>
+<article class="item" id="p129">
+  <div class="pic"><img src="img/129.jpg" alt="Lokalizator GPS dla psa" loading="lazy"><span class="rank">30</span></div>
+  <div class="body">
+    <header class="head">
+      <div><h3>Lokalizator GPS dla psa</h3><p class="cat">Zwierzęta</p></div>
+      <span class="verdict bad">Na minusie</span>
+    </header>
+    <p class="desc">Lokalizator GPS do obroży psa, z aplikacją.</p>
+    <div class="calc" tabindex="0" aria-label="Pokaż wyliczenie">
+    <dl class="nums">
+      <div><dt>Koszt z dostawą</dt><dd>134,29 zł</dd></div>
+      <div><dt>Sprzedaż</dt><dd>299 zł</dd></div>
+      <div><dt>Zysk / szt. <span class="roas">(ROAS 2,5)</span></dt><dd class="bad">−4,60 zł</dd></div>
+      <div><dt>Mnożnik</dt><dd>2,2×</dd></div>
+    </dl>
+    <span class="hint">Najedź albo dotknij, żeby zobaczyć wyliczenie</span>
+    <div class="pop" role="tooltip">
+      <p class="pop-h">Koszt sztuki w Polsce</p>
+      <table><tr><td>Zakup towaru</td><td>100,06</td></tr><tr><td>Transport z Chin</td><td>3,75</td></tr><tr><td>Cło</td><td>4,15</td></tr><tr><td>VAT importowy (odliczasz)</td><td>24,83</td></tr><tr><td>Pakowanie</td><td>1,50</td></tr><tr class="sum"><td>Koszt z dostawą</td><td>134,29</td></tr></table>
+      <p class="pop-h">Zysk z jednej sprzedaży</p>
+      <table><tr><td>Cena bez VAT</td><td>243,09</td></tr><tr><td>Koszt sztuki (bez VAT)</td><td>−109,46</td></tr><tr><td>Bramka płatnicza</td><td>−5,08</td></tr><tr><td>Wysyłka do klienta</td><td>−12,20</td></tr><tr><td>Zwroty i reklamacje</td><td>−1,35</td></tr><tr><td>Reklama: 299 zł ÷ ROAS 2,5</td><td>−119,60</td></tr><tr class="sum"><td>Zysk / szt.</td><td>−4,60</td></tr></table>
+      <p class="pop-n">ROAS 2,5 = za 1 zł reklamy wraca 2,5 zł sprzedaży.
+      Zarabiasz, dopóki ROAS nie spadnie poniżej <b>2,60</b>. Mnożnik = sprzedaż ÷ koszt z dostawą.
+      Partia: cena hurtowa 25 $/szt., partia 300 szt., fracht 3,75 zł/szt. (120 g), cło 4%.</p>
+    </div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="lbl">Reklamy</span><p>Dogtrace 211 dni; PinPaw 359 zł, „10+ kupionych ostatnio” na Ceneo.</p></div>
+      <div class="row"><span class="lbl">Marka własna</span><div><span class="dots" aria-label="potencjał 3 na 5"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span><p>Pasuje do marki zwierzęcej, ale wymaga aplikacji i karty SIM – trudniejsze niż obroża.</p></div></div>
+      <div class="row"><span class="lbl">Uwaga</span><p>Przy 299 zł lekka strata; drogi zakup (25 $). <span class="tag">CE</span><span class="tag">bateria</span></p></div>
+    </div>
+  </div>
+</article></section>
+
+  <section class="sec how" id="jak-dziala">
+    <div class="sec-head"><h2>Jak działa Łowca</h2><p>Od reklamy w internecie do decyzji „testuj albo odrzuć”. Ty robisz tylko ostatni krok.</p></div>
+    <figure class="diagram">
+      <div class="dg-scroll">
+      <svg class="dg" viewBox="0 0 1000 540" role="img" aria-labelledby="dg-t">
+        <title id="dg-t">Schemat działania Łowcy: źródła, rozpoznanie, kolejka, sito, popyt, kalkulacja, werdykt, decyzja</title>
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+          <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahA"/></marker>
+          <marker id="arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahB"/></marker>
+        </defs>
+
+        <!-- źródła -->
+        <text x="20" y="22" class="cap">ŹRÓDŁA · CODZIENNIE RANO</text>
+        <g class="src">
+          <rect x="20" y="34" width="180" height="38" rx="7"/><text x="34" y="58">Reklamy Meta w PL</text>
+          <rect x="20" y="80" width="180" height="38" rx="7"/><text x="34" y="104">Zapytania sezonowe</text>
+          <rect x="20" y="126" width="180" height="38" rx="7"/><text x="34" y="150">Filmy YouTube</text>
+          <rect x="20" y="172" width="180" height="38" rx="7"/><text x="34" y="196">Nowości w sklepach</text>
+          <rect x="20" y="218" width="180" height="38" rx="7"/><text x="34" y="242">Bestsellery Google</text>
+        </g>
+        <path class="ln" d="M200,53 C222,53 222,145 240,145" marker-end="url(#ar)"/>
+        <path class="ln" d="M200,99 C222,99 222,145 240,145" />
+        <path class="ln" d="M200,145 L240,145" />
+        <path class="ln" d="M200,191 C222,191 222,145 240,145" />
+        <path class="ln" d="M200,237 C222,237 222,145 240,145" />
+
+        <!-- górny rząd -->
+        <g class="box"><rect x="242" y="110" width="160" height="70" rx="9"/>
+          <text x="258" y="139" class="t">Odkrycia</text><text x="258" y="160" class="s">reklamy i filmy z opisem</text></g>
+        <path class="ln" d="M402,145 L448,145" marker-end="url(#ar)"/>
+        <g class="box"><rect x="450" y="110" width="170" height="70" rx="9"/>
+          <text x="466" y="139" class="t">Rozpoznanie</text><text x="466" y="160" class="s">Claude: co to za produkt</text></g>
+        <path class="ln" d="M620,145 L666,145" marker-end="url(#ar)"/>
+        <g class="box"><rect x="668" y="110" width="150" height="70" rx="9"/>
+          <text x="684" y="139" class="t">Kolejka</text><text x="684" y="160" class="s">najpierw pewne marki</text></g>
+
+        <!-- radar -->
+        <g class="radar"><rect x="842" y="20" width="140" height="78" rx="9"/>
+          <text x="856" y="46" class="t">Radar marek</text><text x="856" y="66" class="s">co poniedziałek</text><text x="856" y="84" class="s">kto przyspiesza</text></g>
+        <path class="lnR" d="M890,98 C890,128 850,145 820,145" marker-end="url(#arA)"/>
+        <path class="lnR" d="M842,40 C560,-10 320,40 322,108" marker-end="url(#arA)"/>
+        <text x="336" y="92" class="sA">najlepsze reklamy do Odkryć</text>
+        <g class="radar"><rect x="842" y="196" width="140" height="58" rx="9"/>
+          <text x="856" y="221" class="t">Telegram</text><text x="856" y="241" class="s">raport tygodnia</text></g>
+        <path class="lnR" d="M960,98 L960,194" marker-end="url(#arA)"/>
+
+        <!-- przejście do dolnego rzędu -->
+        <path class="ln" d="M743,180 L743,290 L105,290 L105,334" marker-end="url(#ar)"/>
+
+        <!-- dolny rząd -->
+        <text x="20" y="320" class="cap">SPRAWDZANIE · BEZ TWOJEGO UDZIAŁU</text>
+        <g class="box"><rect x="20" y="336" width="170" height="74" rx="9"/>
+          <text x="36" y="364" class="t">Sito cenowe</text><text x="36" y="384" class="s">cena zakupu i sprzedaży</text><text x="36" y="400" class="s">mnożnik</text></g>
+        <path class="ln" d="M190,373 L226,373" marker-end="url(#ar)"/>
+        <g class="box"><rect x="228" y="336" width="170" height="74" rx="9"/>
+          <text x="244" y="364" class="t">Popyt</text><text x="244" y="384" class="s">reklamy, Trends,</text><text x="244" y="400" class="s">Ceneo, YouTube</text></g>
+        <path class="ln" d="M398,373 L434,373" marker-end="url(#ar)"/>
+        <g class="box"><rect x="436" y="336" width="170" height="74" rx="9"/>
+          <text x="452" y="364" class="t">Kalkulacja</text><text x="452" y="384" class="s">zysk po reklamie</text><text x="452" y="400" class="s">paczki albo partia z logo</text></g>
+        <path class="ln" d="M606,373 L642,373" marker-end="url(#ar)"/>
+        <g class="box"><rect x="644" y="336" width="150" height="74" rx="9"/>
+          <text x="660" y="364" class="t">Werdykt</text><text x="660" y="384" class="s">wynik 0–100</text><text x="660" y="400" class="s">i powód</text></g>
+        <path class="lnA" d="M794,373 L840,373" marker-end="url(#arA)"/>
+        <text x="798" y="362" class="sA">Testuj</text>
+        <g class="you"><rect x="842" y="336" width="140" height="74" rx="9"/>
+          <text x="858" y="364" class="t">Ty decydujesz</text><text x="858" y="384" class="s">ekran „Dziś”</text><text x="858" y="400" class="s">test albo odrzuć</text></g>
+
+        <!-- odrzucenia i test -->
+        <path class="lnB" d="M105,410 L105,456" marker-end="url(#arB)"/>
+        <text x="113" y="438" class="sB">za tanie, bez marży</text>
+        <g class="rej"><rect x="20" y="458" width="170" height="52" rx="9"/>
+          <text x="36" y="482" class="t">Odrzucone</text><text x="36" y="500" class="s">z powodem</text></g>
+        <path class="lnB" d="M719,410 L719,440 L190,484" marker-end="url(#arB)"/>
+        <text x="560" y="436" class="sB">Nie testuj, twarde ryzyko</text>
+        <path class="lnA" d="M912,410 L912,456" marker-end="url(#arA)"/>
+        <g class="you"><rect x="842" y="458" width="140" height="52" rx="9"/>
+          <text x="858" y="482" class="t">Test reklam</text><text x="858" y="500" class="s">ok. 1 500 zł, 14 dni</text></g>
+      </svg>
+      </div>
+      <figcaption>Zielone strzałki pokazują drogę dobrych kandydatów, czerwone prowadzą do odrzuconych, a przerywane wychodzą z cotygodniowego radaru marek.</figcaption>
+    </figure>
+    <ol class="flow">
+      <li><b>Zbieranie</b><span>Codziennie rano: reklamy Meta w Polsce (darmowe API), sezonowe zapytania, filmy YouTube, nowości w sklepach, które długo się reklamują.</span></li>
+      <li><b>Rozpoznanie</b><span>Claude czyta treść reklam i wypisuje produkt: nazwę, frazy PL i EN, ryzyka, efekt „wow” i potencjał marki.</span></li>
+      <li><b>Kolejka</b><span>Najpierw sprawdzane są produkty marek, które długo się reklamują albo skalują, i reklamy w wielu kopiach.</span></li>
+      <li><b>Sito cenowe</b><span>Cena sprzedaży (sklep z reklamy, treść reklamy, Ceneo) i cena zakupu (fabryka albo AliExpress). Za tanie i bez marży odpadają od razu.</span></li>
+      <li><b>Popyt</b><span>Google Trends, liczba i wiek reklam Meta, filmy YouTube, „kupione ostatnio” na Ceneo, Allegro.</span></li>
+      <li><b>Kalkulacja</b><span>Koszt sztuki w Polsce i zysk po reklamie, dla paczek z Chin i dla partii z logo. Wybiera lepszy wariant.</span></li>
+      <li><b>Werdykt</b><span>Testuj, Ostrożnie, Nie testuj albo Brak danych. Twarde ryzyka (np. kosmetyki, żywność) od razu na „Nie”.</span></li>
+      <li class="you"><b>Ty decydujesz</b><span>Na ekranie „Dziś” widzisz kafle. Wybierasz do testu albo odrzucasz – reszta dzieje się sama.</span></li>
+    </ol>
+    <div class="loop"><b>Radar marek (co poniedziałek 6:30)</b><span>Przegląd około 100 zapytań w reklamach Meta, zapis każdej marki i porównanie z poprzednim tygodniem. Marki, które przyspieszają, trafiają na początek kolejki, a raport tygodnia przychodzi na Telegram.</span></div>
+
+    <h3>Jak liczony jest zysk – na przykładzie maty EMS</h3>
+    <div class="calcdoc">
+      <div>
+        <h3>1. Koszt sztuki w Polsce</h3>
+        <table>
+          <tr><td>Zakup towaru (6 $ za sztukę, partia 500 szt.)</td><td>24,01</td></tr>
+          <tr><td>Transport z Chin (400 g)</td><td>5,20</td></tr>
+          <tr><td>Cło 4%</td><td>1,17</td></tr>
+          <tr><td>Pakowanie</td><td>1,50</td></tr>
+          <tr><td>VAT importowy 23%</td><td>6,99</td></tr>
+          <tr class="sum"><td>Koszt z dostawą</td><td>38,87 zł</td></tr>
+        </table>
+        <p>VAT importowy płacisz na granicy, ale odliczasz go w deklaracji VAT. Do liczenia zysku prawdziwy koszt to 31,88 zł bez VAT.</p>
+      </div>
+      <div>
+        <h3>2. Zysk z jednej sprzedaży</h3>
+        <table>
+          <tr><td>Klient płaci 179 zł, bez VAT</td><td>145,53</td></tr>
+          <tr><td>− koszt sztuki</td><td>−31,88</td></tr>
+          <tr><td>− wysyłka do klienta</td><td>−12,20</td></tr>
+          <tr><td>− bramka płatnicza (1,6% + 0,30 zł)</td><td>−3,16</td></tr>
+          <tr><td>− zwroty i reklamacje</td><td>−0,65</td></tr>
+          <tr><td>− reklama: 179 zł ÷ ROAS 2,5</td><td>−71,60</td></tr>
+          <tr class="sum"><td>Zysk / szt.</td><td>26,03 zł</td></tr>
+        </table>
+        <p>Po podatku dochodowym zostaje około 22,90 zł.</p>
+      </div>
+    </div>
+    <ul class="rules">
+      <li><b>ROAS 2,5</b> to założenie: za każdą 1 zł wydaną na reklamy wraca 2,50 zł sprzedaży. Prawdziwą liczbę pokaże pierwszy test reklam.</li>
+      <li><b>Próg zera:</b> mata zarabia, dopóki ROAS nie spadnie poniżej 1,83. Ten próg każdego produktu widać w dymku nad liczbami.</li>
+      <li><b>Mnożnik</b> to cena sprzedaży ÷ koszt z dostawą (179 ÷ 38,87 = 4,6×). Poniżej 3× reklama zjada prawie cały zysk, od 4× jest wygodnie.</li>
+      <li><b>Najsłabsze ogniwo to cena fabryczna.</b> 6 $ za sztukę to szacunek z ogłoszeń; przy 8 $ zysk spada do około 17 zł. Pewną liczbę dadzą zapytania ofertowe.</li>
+    </ul>
+  </section>
+
+  <section class="foot">
+    <p>Skąd dane: reklamy z oficjalnej Biblioteki reklam Meta (liczba aktywnych reklam, wiek najstarszej), ceny sprzedaży ze sklepów reklamodawców, treści reklam i Ceneo, ceny zakupu z cen hurtowych (szacunek OEM) albo wyników AliExpress.</p>
+    <p>Ceny fabryczne z logo to szacunki do potwierdzenia zapytaniami ofertowymi (szkice w docs/zapytania-ofertowe.md). Zdjęcia poglądowe z Ceneo i reklam.</p>
+  </section>
+</main>
+
+</body>
+</html>
